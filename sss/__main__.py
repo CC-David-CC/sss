@@ -7,6 +7,9 @@ from .guard import SkillTree
 def main(argv=None):
     import sys
     argv=sys.argv[1:] if argv is None else argv
+    if argv[:2]==['bench','tool-use']:
+        from .tool_benchmark import main as benchmark
+        return benchmark(argv[2:])
     if argv and argv[0]=='init-pcc':
         from .adapters.pcc_init import main as initialize
         return initialize(argv[1:])
@@ -20,6 +23,7 @@ def main(argv=None):
     p=sub.add_parser('suite',help='Describe available original tool-use scenarios');p.add_argument('name',choices=['tool-use'])
     sub.add_parser('init-pcc',help='Prepare owned arithmetic replay in an optional PCC store; see init-pcc --help')
     sub.add_parser('study',help='Run an optional PCC study; see study ceiling --help')
+    sub.add_parser('bench',help='Run a model-only mock-tool benchmark; see bench tool-use --help')
     args=parser.parse_args(argv)
     if args.action=='tree':value=SkillTree(json.loads(args.active.read_bytes())).describe() if args.active else catalog()
     elif args.action=='verify-tree':value=SkillTree(json.loads(args.file.read_bytes())).describe()

@@ -17,9 +17,10 @@ coding and Linux administration assistant, with basic reasoning underneath.
 | **BranchWrite** | Handle user tasks, files, tools, grants and the canonical task ledger. |
 | **S³** | Define skills, evaluate evidence, detect regressions and choose mixed practice. |
 
-S³ does not grant shell access, execute an untrusted model proposal, replace BW's
-workflow runtime, or promote a model by itself. Host adapters use the real
-runtime and its receipts. A skill score never grants a capability.
+S³ does not grant shell access, replace BW's workflow runtime, or promote a model
+by itself. Its model-only benchmark executes calls against isolated mock files;
+host adapters use the real runtime and its receipts. A skill score never grants
+a capability.
 
 ## The tree we want
 
@@ -74,6 +75,12 @@ python -m unittest discover -s sss_tests -p 'test_*.py'
 The native/BW integration tests are separate and require matching host checkouts.
 See [integration and ownership](docs/INTEGRATION.md),
 [the skill map](docs/SKILL-MAP.md), and [measured status](validation/README.md).
+
+For the complete explanation of the tree, scores, teaching loop and limitations,
+read [the S³ user guide](docs/USER-GUIDE.md). Model comparisons and historical
+hardware results belong in [the benchmark report](docs/MODEL-COMPARISON.md).
+The [benchmark procedure](docs/BENCHMARKING.md) explains how to run the same
+bounded tool tasks against two models without giving either access to your PC.
 
 An application can import the core without importing a model runtime:
 
