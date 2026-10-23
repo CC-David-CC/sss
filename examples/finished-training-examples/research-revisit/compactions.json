@@ -1,0 +1,32 @@
+[
+  {
+    "schema": 2,
+    "as_of": 25,
+    "source_head": "853fe0d5d4f2567a6b85ca5f98eedb6adad6407ad2aefa526f12342d425a2436",
+    "unit": "reference-utf8-byte-tokens",
+    "budget": 2048,
+    "open_question_count": 1,
+    "archive_index_through": 25,
+    "entries": [
+      {
+        "record_id": "44ece29827b25be2bf5225e35b555372da0f6010bbbbef088fc9cdfab16164f5",
+        "topic": "research.search",
+        "quote": "Does indexing always save work, including the setup cost? Keep the first experiment record for a later revisit.",
+        "question_id": "opening"
+      },
+      {
+        "record_id": "853fe0d5d4f2567a6b85ca5f98eedb6adad6407ad2aefa526f12342d425a2436",
+        "topic": "linux",
+        "quote": "{\"established\": \"Reproduced comparison counts for declared inputs only\", \"indexed_wins\": [\"22ddcab54508c0876efe118adaf90b22fac57fd798cde44e3ff6f68652e19626\"], \"measurement_ids\": [\"22ddcab54508c0876efe118adaf90b22fac57fd798cde44e3ff6f68652e19626\"], \"not_established\": [\"wall-clock speed\", \"all input distributions\", \"autonomous scientific capability\"], \"other_cases\": [], \"question\": \"Does sorting plus binary search always use fewer comparisons than repeated linear search?\", \"universal_claim_refuted\": false}",
+        "question_id": ""
+      },
+      {
+        "record_id": "58e462fc4808dd8456f83ab6ae19f207456583b0a8d2ea01b6702819b712058d",
+        "topic": "code",
+        "quote": "{\"established\": \"Reproduced comparison counts for declared inputs only\", \"indexed_wins\": [\"02a7a1b2b28f596ac55e55f78dc76a0991353b50eff7bf657fcf524408f1babf\"], \"measurement_ids\": [\"02a7a1b2b28f596ac55e55f78dc76a0991353b50eff7bf657fcf524408f1babf\"], \"not_established\": [\"wall-clock speed\", \"all input distributions\", \"autonomous scientific capability\"], \"other_cases\": [], \"question\": \"Does sorting plus binary search always use fewer comparisons than repeated linear search?\", \"universal_claim_refuted\": false}",
+        "question_id": ""
+      }
+    ],
+    "note_id": "05e390efef1c20db415b7101e059432a321e67b764b87a6544145a9214f4628b"
+  }
+]

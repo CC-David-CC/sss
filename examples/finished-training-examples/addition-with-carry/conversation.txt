@@ -1,0 +1,12 @@
+Skills cubed: completed teaching record
+Artifact complete; no model weight update is implied.
+Archive head: 2ed191527cc9a6b0ae29b18ef9213de3a8015f95e492fc4e6a36990e7ad91948
+
+[0 | user | question | verified=False | id=91a06d6ac2cc8b1ec6261f63b73023cba3467833abe8df3fc6926e6c35c04416]
+Evaluate this exact prefix expression: ["add", 79, 67]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+
+[1 | assistant | thinking | verified=True | id=f3791bc80a37e900d4b1a2abfc7be5bad82d480c31c1598d335344e0fba97575]
+The earlier proposed answer is incorrect. The independently checked response is 146.
+
+[2 | assistant | answer | verified=True | id=2ed191527cc9a6b0ae29b18ef9213de3a8015f95e492fc4e6a36990e7ad91948]
+{"previous_correct": false, "answer": "146"}

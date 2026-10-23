@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "code.python.read",
+    "title": "Understand Python source",
+    "domains": [
+      "code"
+    ],
+    "requires": [
+      "reading.extraction"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

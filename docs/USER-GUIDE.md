@@ -1,5 +1,7 @@
 # Using Skills³
 
+**New foundations preview:** [Start here](START-HERE.md), [on-disk skill graph](ON-DISK-LAYOUT.md), [operator handoff](OPERATOR-HANDOFF.md), and [implementation gates](FOUNDATIONS-PLAN.md). The reference machinery and model mastery are reported separately.
+
 **S³ answers three questions: what can the assistant do, did this attempt work,
 and did teaching it something new damage something it already knew?** It is the
 shared skill map, test collection, scoring and mixed-practice machinery for PCC

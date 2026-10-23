@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "reference archive, compaction and retrieval mechanics",
+  "cumulative_tokens": 8991,
+  "tokenizer": "reference-utf8-byte-v1",
+  "meaningful_experiments": 9,
+  "compactions": 1,
+  "late_source_record": "da54306e56be3d22dbecf98d615e9b154080113a31e8bb7f6bb9404f8818ceaa",
+  "source_omitted_from_last_note": true,
+  "omission": "controlled withheld detail for archive-retrieval testing",
+  "archive_head": "306f283915d4663e81c82a2c99470d0a93180972db5695628bc10d143a63e28c",
+  "txt": {
+    "archive_head": "306f283915d4663e81c82a2c99470d0a93180972db5695628bc10d143a63e28c",
+    "sha256": "b06bc8eabef6af9cc2dd3f89eb6310c7b72b8ff98b228a1a3f7e7f7ff2349f66",
+    "records": 29,
+    "trained": false
+  },
+  "model_inference": false,
+  "weights_updated": false
+}

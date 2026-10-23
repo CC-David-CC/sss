@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "linux.network",
+    "title": "Ports, name resolution and connectivity",
+    "domains": [
+      "linux"
+    ],
+    "requires": [
+      "linux.processes"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

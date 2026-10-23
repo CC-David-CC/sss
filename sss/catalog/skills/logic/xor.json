@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "logic.xor",
+    "title": "Exclusive OR",
+    "domains": [
+      "logic"
+    ],
+    "requires": [
+      "logic.or",
+      "logic.and",
+      "logic.not"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "xor"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Bounded task family; no model qualification implied."
+}

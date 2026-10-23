@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.polynomial_value",
+    "title": "Polynomial substitution",
+    "domains": [
+      "math"
+    ],
+    "requires": [
+      "math.power",
+      "math.add.signed"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "polynomial_value"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Bounded task family; no model qualification implied."
+}

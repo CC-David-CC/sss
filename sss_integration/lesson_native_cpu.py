@@ -99,10 +99,28 @@ try:
  assert continuation_record['candidate']['base_sha256']==reload_full['candidate_sha256']
  assert hashlib.sha256(model.read_bytes()).hexdigest()==base_hash
  assert len(list((root/'service/runs').iterdir()))==4
+ phase('multi-turn-v2-thinking-target-policy-through-both-clis')
+ from sss.adapters.episode_lessons import pcc_lesson
+ v2ids=[];v2single=None
+ for index,policy in enumerate(('verified_thinking_actions_answer','actions_answer','verified_thinking_actions_answer')):
+  number=index+2;answer=str(number+number)
+  rows=[dict(role=role,kind=kind,rendered=text,verified=verified,scope='practice') for role,kind,text,verified in [
+   ('user','question',str(number)+'+'+str(number)+'?',False),('assistant','thinking','sum='+answer+';',True),('assistant','action','read;',True),('tool','observation',answer+';',False),('user','question','ok?',False),('assistant','answer',answer+'!',True)]]
+  evidence=digest(dict(inputs=[number,number],checked=sum([number,number]),expected=int(answer)))
+  lesson=pcc_lesson('Owned multi-turn '+str(index),contract,rows,archive_sha256=digest(rows),verification_sha256=evidence,renderer_sha256=digest('byte-fixture-spans-v1'),tokenizer_sha256=digest('utf8-byte-v1'),target_policy=policy)
+  path=root/('v2-lesson-'+str(index)+'.json');path.write_text(json.dumps(lesson))
+  queued=bwcli(['submit',path,'--operation-id','v2-lesson-'+str(index)],'v2-queue-'+str(index));v2ids.append(queued['lesson_id'])
+  if index==0:
+   accepted=bwcli(['train',queued['lesson_id'],'--operation-id','v2-single','--learning-rate','.001'],'v2-single-submit');v2single=wait(accepted['job_id'])
+ accepted=cowcli(['train',*v2ids[1:],'--operation-id','v2-batch','--batch-size','2','--mode','full','--learning-rate','.001'],'v2-batch-submit');v2batch=wait(accepted['job_id'])
+ assert v2single['steps'][0]['examples']==1 and v2batch['steps'][0]['examples']==2
+ assert sum(service.lesson(v2ids[0])['example']['loss_mask'])>sum(service.lesson(v2ids[1])['example']['loss_mask'])
+ assert hashlib.sha256(model.read_bytes()).hexdigest()==base_hash
  result=dict(status='PASS',scope='real native CPU single/batch/update/reload wiring through both CLIs and real BW tool boundaries',
     fixture='generated tiny hybrid GGUF with byte vocabulary; not a language-quality test',spontaneous_model_failure=False,
     gpu_used=False,promoted=False,base_unchanged=True,model_sha256=base_hash,executable_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
     single=single,batch=batch,full=full,full_continued=continued,lora_reload=reload_lora,full_reload=reload_full,
+    multi_turn_v2=dict(single=v2single,batch=v2batch,thinking_targets_optional=True,context_gradients_preserved=True),
     duplicate_update_prevented=True,selected_batch_frozen=True,partial_final_batch=True,same_task_failure_and_repair=True)
  (root/'result.json').write_text(json.dumps(result,indent=2)+'\n');phase('complete',status='PASS');(root/'command.exit').write_text('0\n')
 except BaseException as error:

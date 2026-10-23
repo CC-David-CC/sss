@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "linux.files",
+    "title": "Paths, ownership, permissions and storage",
+    "domains": [
+      "linux"
+    ],
+    "requires": [
+      "tools.read",
+      "tools.permissions"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

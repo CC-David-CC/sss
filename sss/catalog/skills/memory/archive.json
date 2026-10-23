@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "memory.archive",
+    "title": "Find and reread archived evidence",
+    "domains": [
+      "memory"
+    ],
+    "requires": [
+      "reading.extraction",
+      "tools.read"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

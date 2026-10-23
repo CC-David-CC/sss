@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.subtract.signed",
+    "title": "Signed subtraction",
+    "domains": [
+      "math"
+    ],
+    "requires": [
+      "math.subtract.borrow",
+      "math.add.signed"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "subtract"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Bounded task family; no model qualification implied."
+}

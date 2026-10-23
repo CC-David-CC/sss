@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.mean",
+    "title": "Arithmetic mean",
+    "domains": [
+      "math"
+    ],
+    "requires": [
+      "math.divide",
+      "math.add.signed"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "mean"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Bounded task family; no model qualification implied."
+}

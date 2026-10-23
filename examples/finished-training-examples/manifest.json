@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "origin": "owned-synthetic-practice",
+  "trained": false,
+  "math": [
+    {
+      "name": "addition-with-carry",
+      "skill_id": "math.add.carry",
+      "archive_head": "2ed191527cc9a6b0ae29b18ef9213de3a8015f95e492fc4e6a36990e7ad91948",
+      "sha256": "d1f463665239c751f9381dc475823b54ef23ab2dcdad97f85eb08f2186dbef8b",
+      "records": 3,
+      "trained": false
+    },
+    {
+      "name": "fraction-composition",
+      "skill_id": "math.fraction.add",
+      "archive_head": "ec558881bab03b437a4de2dc1694be5113dce5509604d4ea4fffbd8a34efbfe4",
+      "sha256": "a470f3548e2c66def9d2943393cad5b59bddfe28f7db73e6a75cffb9d7fe767e",
+      "records": 3,
+      "trained": false
+    }
+  ],
+  "research": {
+    "archive_head": "306f283915d4663e81c82a2c99470d0a93180972db5695628bc10d143a63e28c",
+    "cumulative_reference_byte_tokens": 8991,
+    "txt": {
+      "archive_head": "306f283915d4663e81c82a2c99470d0a93180972db5695628bc10d143a63e28c",
+      "sha256": "b06bc8eabef6af9cc2dd3f89eb6310c7b72b8ff98b228a1a3f7e7f7ff2349f66",
+      "records": 29,
+      "trained": false
+    }
+  }
+}

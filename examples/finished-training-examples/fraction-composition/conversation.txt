@@ -1,0 +1,12 @@
+Skills cubed: completed teaching record
+Artifact complete; no model weight update is implied.
+Archive head: ec558881bab03b437a4de2dc1694be5113dce5509604d4ea4fffbd8a34efbfe4
+
+[0 | user | question | verified=False | id=722894b70728588b09582949914e0cb171f1f9a81fc0acaa5e9b109320fa625a]
+Compute 15/4 + 10/3 exactly. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+
+[1 | assistant | thinking | verified=True | id=97b62e67b3a554795d8c0627241ed05ff893afa8efab0be8b11ac6e48fa4f460]
+The earlier proposed answer is incorrect. The independently checked response is 85/12.
+
+[2 | assistant | answer | verified=True | id=ec558881bab03b437a4de2dc1694be5113dce5509604d4ea4fffbd8a34efbfe4]
+{"previous_correct": false, "answer": "85/12"}

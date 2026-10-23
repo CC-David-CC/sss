@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "id": "pdf",
+  "title": "PDF build and actual page inspection",
+  "skill_ids": [
+    "documents.pdf.author",
+    "documents.pdf.inspect"
+  ],
+  "used_tools": [
+    "read_file",
+    "create_file",
+    "replace",
+    "build_pdf",
+    "render_pdf",
+    "run_check",
+    "finish"
+  ],
+  "implementation": "existing-bw-workflow",
+  "sss_qualification": "not-qualified",
+  "entry_argv": [
+    "branchwrite",
+    "code",
+    "{project}",
+    "--project-files",
+    "--task-file",
+    "{bw_root}/examples/prompts/pdf.txt"
+  ],
+  "required_source_files": [
+    "examples/prompts/pdf.txt",
+    "docs/manual/11_PDF_DOCUMENTS.md",
+    "branchwrite/pdf_execution.py",
+    "branchwrite/pdf_contract.py"
+  ],
+  "environment_requirements": [
+    "Prepared PDF authoring/rendering dependencies",
+    "Matching PCC vision profile if the model itself receives rendered images"
+  ],
+  "independent_verification": [
+    "Render every current page",
+    "Check text/boxes and requested document requirements",
+    "Review actual page images; edits invalidate earlier inspection"
+  ],
+  "limits": [
+    "Content/layout quality requires its own review beyond successful PDF creation"
+  ],
+  "historical_prompt": "pdf.txt",
+  "historical_results": "examples/prompts/results.json"
+}

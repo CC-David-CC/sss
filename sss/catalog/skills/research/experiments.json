@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "research.experiments",
+    "title": "Execute reproducible experiments",
+    "domains": [
+      "research"
+    ],
+    "requires": [
+      "research.controls",
+      "code.python.tests",
+      "planning.recovery"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

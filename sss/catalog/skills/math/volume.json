@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.volume",
+    "title": "Rectangular volume",
+    "domains": [
+      "math",
+      "grade.5"
+    ],
+    "requires": [
+      "math.area"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "volume"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Bounded task family; no model qualification implied."
+}

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "reading.conflicts",
+    "title": "Conflicting documents and source evidence",
+    "domains": [
+      "reading"
+    ],
+    "requires": [
+      "reading.extraction"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

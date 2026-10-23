@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "code.shell.quoting",
+    "title": "Shell quoting and arguments",
+    "domains": [
+      "code",
+      "linux"
+    ],
+    "requires": [
+      "tools.schemas",
+      "reading.extraction"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

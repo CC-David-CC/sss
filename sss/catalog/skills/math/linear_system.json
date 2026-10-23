@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.linear_system",
+    "title": "Nonsingular two-variable systems",
+    "domains": [
+      "math"
+    ],
+    "requires": [
+      "math.linear_equation",
+      "math.matrix_product"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "linear_system"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Bounded task family; no model qualification implied."
+}

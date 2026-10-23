@@ -7,6 +7,15 @@ from .guard import SkillTree
 def main(argv=None):
     import sys
     argv=sys.argv[1:] if argv is None else argv
+    if argv and argv[0]=='workflows':
+        from .workflows import main as workflows_main
+        return workflows_main(argv[1:])
+    if argv and argv[0]=='explore':
+        from .explore_cli import main as explore_main
+        return explore_main(argv[1:])
+    if argv and argv[0] in ('graph','exercise','school-day','report','teaching-example'):
+        from .foundation_cli import main as foundation_main
+        return foundation_main(argv)
     if argv[:2]==['bench','tool-use']:
         from .tool_benchmark import main as benchmark
         return benchmark(argv[2:])
@@ -23,6 +32,10 @@ def main(argv=None):
     p=sub.add_parser('suite',help='Describe available original tool-use scenarios');p.add_argument('name',choices=['tool-use'])
     sub.add_parser('init-pcc',help='Prepare owned arithmetic replay in an optional PCC store; see init-pcc --help')
     sub.add_parser('study',help='Run an optional PCC study; see study ceiling --help')
+    sub.add_parser('workflows',help='Existing BW domain recipes; see workflows --help')
+    sub.add_parser('explore',help='Guided foundations checks; see explore --help')
+    sub.add_parser('graph',help='Show the prerequisite graph; see graph --help')
+    sub.add_parser('report',help='Write an offline report; see report --help')
     sub.add_parser('bench',help='Run a model-only mock-tool benchmark; see bench tool-use --help')
     args=parser.parse_args(argv)
     if args.action=='tree':value=SkillTree(json.loads(args.active.read_bytes())).describe() if args.active else catalog()

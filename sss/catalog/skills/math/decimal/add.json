@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.decimal.add",
+    "title": "Decimal add",
+    "domains": [
+      "math",
+      "grade.5"
+    ],
+    "requires": [
+      "math.fraction",
+      "math.add.signed"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "decimal_add"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Exact bounded rational/decimal family, with independently graded composition and recovery variants. No model qualification implied."
+}

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "id": "web",
+  "title": "Website and browser checks",
+  "skill_ids": [
+    "web.html",
+    "web.layout",
+    "web.interaction",
+    "browser.observe",
+    "browser.actions"
+  ],
+  "used_tools": [
+    "read_file",
+    "create_file",
+    "create_text_file",
+    "replace",
+    "replace_text_file",
+    "run_shell",
+    "run_tests",
+    "run_check",
+    "capture_page",
+    "interact_page",
+    "finish"
+  ],
+  "implementation": "existing-bw-workflow",
+  "sss_qualification": "not-qualified",
+  "entry_argv": [
+    "branchwrite",
+    "code",
+    "{project}",
+    "--project-files",
+    "--task-file",
+    "{bw_root}/examples/prompts/code.txt"
+  ],
+  "required_source_files": [
+    "examples/prompts/code.txt",
+    "docs/BROWSER_ACTIONS.md",
+    "branchwrite/browser_capture.py",
+    "branchwrite/browser_isolation.py"
+  ],
+  "environment_requirements": [
+    "Prepared browser runtime for actual render/action checks",
+    "Explicit project and tool grants"
+  ],
+  "independent_verification": [
+    "Actual desktop/phone page renders",
+    "Independent interaction, layout and resource checks",
+    "Preserve unrelated project files"
+  ],
+  "limits": [
+    "Browser capabilities are bounded and host-granted; this is not arbitrary authenticated browsing"
+  ],
+  "historical_prompt": "code.txt",
+  "historical_results": "examples/prompts/results.json"
+}

@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "id": "writing",
+  "title": "Constrained writing and revision",
+  "skill_ids": [
+    "writing.revision"
+  ],
+  "used_tools": [
+    "read_file",
+    "create_text_file",
+    "replace_text_file",
+    "run_check",
+    "finish"
+  ],
+  "implementation": "existing-bw-workflow",
+  "sss_qualification": "not-qualified",
+  "entry_argv": [
+    "branchwrite",
+    "code",
+    "{project}",
+    "--project-files",
+    "--task-file",
+    "{bw_root}/examples/prompts/writing.txt"
+  ],
+  "required_source_files": [
+    "examples/prompts/writing.txt",
+    "branchwrite/text_file_codec.py"
+  ],
+  "environment_requirements": [
+    "Ordinary prepared BW client"
+  ],
+  "independent_verification": [
+    "Requested structure and word/content constraints",
+    "Review actual saved prose and preserve existing files"
+  ],
+  "limits": [
+    "A command success does not certify writing quality"
+  ],
+  "historical_prompt": "writing.txt",
+  "historical_results": "examples/prompts/results.json"
+}

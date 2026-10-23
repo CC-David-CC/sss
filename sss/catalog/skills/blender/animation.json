@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "blender.animation",
+    "title": "Keyframes and measured object motion",
+    "domains": [
+      "blender"
+    ],
+    "requires": [
+      "blender.scene",
+      "spatial.transforms",
+      "state.registers"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Related BW workflows/checkers exist; separate S3 per-cell qualification is not yet implemented. See the workflow registry for actual version-scoped evidence."
+}

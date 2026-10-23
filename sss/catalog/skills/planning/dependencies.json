@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "planning.dependencies",
+    "title": "Plans, budgets and dependencies",
+    "domains": [
+      "planning"
+    ],
+    "requires": [
+      "state.registers",
+      "tools.finish"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

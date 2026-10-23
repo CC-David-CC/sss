@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "id": "followup",
+  "title": "Follow-up, preserved outputs and original recovery",
+  "skill_ids": [
+    "tools.edit",
+    "tools.finish",
+    "workflow.recovery"
+  ],
+  "used_tools": [
+    "read_file",
+    "replace",
+    "run_check",
+    "capture_page",
+    "finish"
+  ],
+  "implementation": "existing-bw-workflow",
+  "sss_qualification": "not-qualified",
+  "entry_argv": [
+    "branchwrite",
+    "session",
+    "{project}"
+  ],
+  "required_source_files": [
+    "examples/prompts/followup.txt",
+    "docs/manual/09_INTERACTIVE_SESSION.md",
+    "branchwrite/kernel.py",
+    "branchwrite/model_dispatch.py"
+  ],
+  "environment_requirements": [
+    "Original admitted client/runtime for saved work",
+    "Prior project/task state chosen by the operator"
+  ],
+  "independent_verification": [
+    "Actual revised outputs and preserved earlier files",
+    "Original-operation reconciliation and committed context/file identities"
+  ],
+  "limits": [
+    "Never resend an unknown effect with new operation IDs",
+    "One fixed domain per new Work launch; general mixed-domain acceptance remains outstanding"
+  ],
+  "historical_prompt": "followup.txt",
+  "historical_results": "examples/prompts/results.json"
+}

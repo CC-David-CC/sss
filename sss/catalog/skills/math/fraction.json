@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.fraction",
+    "title": "Fraction equivalence",
+    "domains": [
+      "math",
+      "grade.3",
+      "grade.5"
+    ],
+    "requires": [
+      "math.divide"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "fraction"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Bounded task family; no model qualification implied."
+}

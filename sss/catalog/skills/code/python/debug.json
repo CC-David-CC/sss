@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "code.python.debug",
+    "title": "Repair and verify Python defects",
+    "domains": [
+      "code"
+    ],
+    "requires": [
+      "code.python.tests",
+      "tools.edit"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

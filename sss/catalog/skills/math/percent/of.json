@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.percent.of",
+    "title": "Percentage of a quantity",
+    "domains": [
+      "math"
+    ],
+    "requires": [
+      "math.ratio"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "percent_of"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Exact bounded rational/decimal family, with independently graded composition and recovery variants. No model qualification implied."
+}

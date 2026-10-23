@@ -1,0 +1,90 @@
+Skills cubed: completed teaching record
+Artifact complete; no model weight update is implied.
+Archive head: 306f283915d4663e81c82a2c99470d0a93180972db5695628bc10d143a63e28c
+
+[0 | user | question | verified=False | id=44ece29827b25be2bf5225e35b555372da0f6010bbbbef088fc9cdfab16164f5]
+Does indexing always save work, including the setup cost? Keep the first experiment record for a later revisit.
+
+[1 | tool | observation | verified=True | id=da54306e56be3d22dbecf98d615e9b154080113a31e8bb7f6bb9404f8818ceaa]
+{"binary_query_cost": 7, "id": "b0ac02a3a46d7b92337540d80ec7f4ea9384013e15dca8812a58b6fa8f6f70c3", "indexed_total": 218, "input_sha256": "e3dcace808a5394475d6f119542dd786acffefb1c8926b4e5b8cc2b4a9b59b32", "linear_cost": 48, "metric": "key_comparisons_including_sort", "outputs_agree": true, "queries": 1, "schema": 1, "seed": 907, "size": 48, "sort_cost": 211}
+
+[2 | user | question | verified=False | id=f5a5ef7058f725120a3c7ed39cdbad09e5b4ab3b49dd1ede59ea8dc2e9f5db1d]
+Day 0, math class. Investigate size 32, query count 1, seed 10000. Predict whether indexing pays for its setup, then measure it.
+
+[3 | tool | observation | verified=True | id=ce4b3eb704bc6823a0004cc94e586a94ad60403a08573873f3fd1fc50c5c871c]
+{"binary_query_cost": 6, "id": "a06742f4c52702ce38bd540aa34b1dd342cf4314c24b6b63875503ac48e57650", "indexed_total": 131, "input_sha256": "5322fedc7cc8da01566fe76e91a3131ff2f90d9afb9a65455c248ca9a97a1473", "linear_cost": 32, "metric": "key_comparisons_including_sort", "outputs_agree": true, "queries": 1, "schema": 1, "seed": 10000, "size": 32, "sort_cost": 125}
+
+[4 | assistant | answer | verified=True | id=7246ad7c2fa7807a05a7a54426028ac508098089bfd5271e10f6f0f3db2d286f]
+{"established": "Reproduced comparison counts for declared inputs only", "indexed_wins": [], "measurement_ids": ["a06742f4c52702ce38bd540aa34b1dd342cf4314c24b6b63875503ac48e57650"], "not_established": ["wall-clock speed", "all input distributions", "autonomous scientific capability"], "other_cases": ["a06742f4c52702ce38bd540aa34b1dd342cf4314c24b6b63875503ac48e57650"], "question": "Does sorting plus binary search always use fewer comparisons than repeated linear search?", "universal_claim_refuted": true}
+
+[5 | user | question | verified=False | id=611709c6def396dcb2137099bfaaf40294c3c464f69a10d045e4ff48f79c49bf]
+Day 0, logic class. Investigate size 48, query count 3, seed 10001. Predict whether indexing pays for its setup, then measure it.
+
+[6 | tool | observation | verified=True | id=eefffb924321f2c77a53ac2fa69f87dab95e66c0703403aa3fb6d12db7cb2cc6]
+{"binary_query_cost": 20, "id": "87ef83a04f2b205b6b32b9868cea9f6924e930881e0a5849570234a728e1b056", "indexed_total": 230, "input_sha256": "2eac9968978e1e291e9e16fedafce17a5dea31a112d0d82c3ea0b8e35600c97d", "linear_cost": 144, "metric": "key_comparisons_including_sort", "outputs_agree": true, "queries": 3, "schema": 1, "seed": 10001, "size": 48, "sort_cost": 210}
+
+[7 | assistant | answer | verified=True | id=66982e9c68d365ce3188c6441813700547d4cd578482389ae8cdc8bf9f01e08b]
+{"established": "Reproduced comparison counts for declared inputs only", "indexed_wins": [], "measurement_ids": ["87ef83a04f2b205b6b32b9868cea9f6924e930881e0a5849570234a728e1b056"], "not_established": ["wall-clock speed", "all input distributions", "autonomous scientific capability"], "other_cases": ["87ef83a04f2b205b6b32b9868cea9f6924e930881e0a5849570234a728e1b056"], "question": "Does sorting plus binary search always use fewer comparisons than repeated linear search?", "universal_claim_refuted": true}
+
+[8 | user | question | verified=False | id=ec497bfbb2ee97a409a6c90e8aa6276f34a143d75c131a236f693facf6bcd2ba]
+Day 0, code class. Investigate size 64, query count 5, seed 10002. Predict whether indexing pays for its setup, then measure it.
+
+[9 | tool | observation | verified=True | id=29c90602a14a862ff974ba7a00440574f6ad802820fbc6807f806b94618dff09]
+{"binary_query_cost": 35, "id": "c6cc7022e087c89726f6a6d4aa71f52b4092310f5af7b100a5aa227f86e83b7e", "indexed_total": 337, "input_sha256": "41af4dad20be6fa54087e2dc5d75a5b8d025a09b3920019f9626a39d0e85a6ec", "linear_cost": 279, "metric": "key_comparisons_including_sort", "outputs_agree": true, "queries": 5, "schema": 1, "seed": 10002, "size": 64, "sort_cost": 302}
+
+[10 | assistant | answer | verified=True | id=ce317dca460ae78ae2e70045db4136f043d22c92d259d13f1bfb6a26671b4b05]
+{"established": "Reproduced comparison counts for declared inputs only", "indexed_wins": [], "measurement_ids": ["c6cc7022e087c89726f6a6d4aa71f52b4092310f5af7b100a5aa227f86e83b7e"], "not_established": ["wall-clock speed", "all input distributions", "autonomous scientific capability"], "other_cases": ["c6cc7022e087c89726f6a6d4aa71f52b4092310f5af7b100a5aa227f86e83b7e"], "question": "Does sorting plus binary search always use fewer comparisons than repeated linear search?", "universal_claim_refuted": true}
+
+[11 | user | question | verified=False | id=f7269ed1cef4ba59712362ca4a61dc2dc80ee143262ff20b6a78b6989744fa70]
+Day 0, linux class. Investigate size 80, query count 7, seed 10003. Predict whether indexing pays for its setup, then measure it.
+
+[12 | tool | observation | verified=True | id=a21c22b26bd0ed453e183cbca96a03a928f39545da82fd01dab59622c0a177a9]
+{"binary_query_cost": 51, "id": "d60f192856bafdbbed7fa36f52524e5c630a32d03749efda610d7a2bad14d1d3", "indexed_total": 464, "input_sha256": "1ded12800ac6ece59c49ec531db8565d1346816dc1693d93217f8f8cd9f4b824", "linear_cost": 560, "metric": "key_comparisons_including_sort", "outputs_agree": true, "queries": 7, "schema": 1, "seed": 10003, "size": 80, "sort_cost": 413}
+
+[13 | assistant | answer | verified=True | id=342f52606278ecb4fe37891e10cfeacf50fb1bd6e73e5df3018fe7bdddcb24c2]
+{"established": "Reproduced comparison counts for declared inputs only", "indexed_wins": ["d60f192856bafdbbed7fa36f52524e5c630a32d03749efda610d7a2bad14d1d3"], "measurement_ids": ["d60f192856bafdbbed7fa36f52524e5c630a32d03749efda610d7a2bad14d1d3"], "not_established": ["wall-clock speed", "all input distributions", "autonomous scientific capability"], "other_cases": [], "question": "Does sorting plus binary search always use fewer comparisons than repeated linear search?", "universal_claim_refuted": false}
+
+[14 | user | question | verified=False | id=628a71972499e33f42d0ef4e6385031c087010dd0d8ce749ac58c7d1a1abeadb]
+Day 1, math class. Investigate size 96, query count 9, seed 10004. Predict whether indexing pays for its setup, then measure it.
+
+[15 | tool | observation | verified=True | id=edb07d0c053208284bf88e42ee7446180119c77a3d26ad45f716bd047b2e4160]
+{"binary_query_cost": 68, "id": "752c289862ade0af7051335499644a3ab0d6dffb25b659135ff01a6dae7e89d5", "indexed_total": 582, "input_sha256": "822b9ce53ceccfd7eca8fb4d8928c1bab19dd7aefef95db8b7273f532691dd7b", "linear_cost": 716, "metric": "key_comparisons_including_sort", "outputs_agree": true, "queries": 9, "schema": 1, "seed": 10004, "size": 96, "sort_cost": 514}
+
+[16 | assistant | answer | verified=True | id=9bb8e13d2aaa39e4dbdbdd7105958d904eccd05c3aa52f66e43f4736ce28f111]
+{"established": "Reproduced comparison counts for declared inputs only", "indexed_wins": ["752c289862ade0af7051335499644a3ab0d6dffb25b659135ff01a6dae7e89d5"], "measurement_ids": ["752c289862ade0af7051335499644a3ab0d6dffb25b659135ff01a6dae7e89d5"], "not_established": ["wall-clock speed", "all input distributions", "autonomous scientific capability"], "other_cases": [], "question": "Does sorting plus binary search always use fewer comparisons than repeated linear search?", "universal_claim_refuted": false}
+
+[17 | user | question | verified=False | id=5182d6690d4ce66c184b6e30a271f24be1b4ae8bdde1df63aa75697a4c08d6e2]
+Day 1, logic class. Investigate size 112, query count 11, seed 10005. Predict whether indexing pays for its setup, then measure it.
+
+[18 | tool | observation | verified=True | id=313d4732117623f0fe8c6ca9dbfd966ee9b0baf5d78cce20ce21af98e79f922a]
+{"binary_query_cost": 87, "id": "a5ebcd3a6851ba25daf266e9ec36c97dd09656ad7e398c1ce7724060d5b3b4dd", "indexed_total": 719, "input_sha256": "871ce741418793d08f56a957b4854b625625236d56de7f1e00414d2012a7ba5e", "linear_cost": 1232, "metric": "key_comparisons_including_sort", "outputs_agree": true, "queries": 11, "schema": 1, "seed": 10005, "size": 112, "sort_cost": 632}
+
+[19 | assistant | answer | verified=True | id=b17d34a981a94d5eaca413bc7f57334ead322ebbaa203757c9c52a4f3c94bbc5]
+{"established": "Reproduced comparison counts for declared inputs only", "indexed_wins": ["a5ebcd3a6851ba25daf266e9ec36c97dd09656ad7e398c1ce7724060d5b3b4dd"], "measurement_ids": ["a5ebcd3a6851ba25daf266e9ec36c97dd09656ad7e398c1ce7724060d5b3b4dd"], "not_established": ["wall-clock speed", "all input distributions", "autonomous scientific capability"], "other_cases": [], "question": "Does sorting plus binary search always use fewer comparisons than repeated linear search?", "universal_claim_refuted": false}
+
+[20 | user | question | verified=False | id=205aa1f974ac957c902b8930369067f81361d73afebdf5a1029fc8c9cc507586]
+Day 1, code class. Investigate size 128, query count 13, seed 10006. Predict whether indexing pays for its setup, then measure it.
+
+[21 | tool | observation | verified=True | id=4f13d16974d0dfa79f6132370f496958a3031d4c2bf215c1741c8fdb2851179d]
+{"binary_query_cost": 104, "id": "02a7a1b2b28f596ac55e55f78dc76a0991353b50eff7bf657fcf524408f1babf", "indexed_total": 831, "input_sha256": "f53344c018e61a45cd4ea7a301040574997b625b946a36c38f849d738ad8d422", "linear_cost": 1609, "metric": "key_comparisons_including_sort", "outputs_agree": true, "queries": 13, "schema": 1, "seed": 10006, "size": 128, "sort_cost": 727}
+
+[22 | assistant | answer | verified=True | id=58e462fc4808dd8456f83ab6ae19f207456583b0a8d2ea01b6702819b712058d]
+{"established": "Reproduced comparison counts for declared inputs only", "indexed_wins": ["02a7a1b2b28f596ac55e55f78dc76a0991353b50eff7bf657fcf524408f1babf"], "measurement_ids": ["02a7a1b2b28f596ac55e55f78dc76a0991353b50eff7bf657fcf524408f1babf"], "not_established": ["wall-clock speed", "all input distributions", "autonomous scientific capability"], "other_cases": [], "question": "Does sorting plus binary search always use fewer comparisons than repeated linear search?", "universal_claim_refuted": false}
+
+[23 | user | question | verified=False | id=b1f71615f33db8dbd549d796a0b6592c3e875082074820cbdfe5434658eca84e]
+Day 1, linux class. Investigate size 144, query count 15, seed 10007. Predict whether indexing pays for its setup, then measure it.
+
+[24 | tool | observation | verified=True | id=e15106bc61d71a86d315cb54d65e936f686f42a3b2a408182c436ff957e8dd0a]
+{"binary_query_cost": 122, "id": "22ddcab54508c0876efe118adaf90b22fac57fd798cde44e3ff6f68652e19626", "indexed_total": 979, "input_sha256": "f5158314a59e2b08d79f049a2806ee6cf31488ecc2fd73d56d4fc39754129505", "linear_cost": 2097, "metric": "key_comparisons_including_sort", "outputs_agree": true, "queries": 15, "schema": 1, "seed": 10007, "size": 144, "sort_cost": 857}
+
+[25 | assistant | answer | verified=True | id=853fe0d5d4f2567a6b85ca5f98eedb6adad6407ad2aefa526f12342d425a2436]
+{"established": "Reproduced comparison counts for declared inputs only", "indexed_wins": ["22ddcab54508c0876efe118adaf90b22fac57fd798cde44e3ff6f68652e19626"], "measurement_ids": ["22ddcab54508c0876efe118adaf90b22fac57fd798cde44e3ff6f68652e19626"], "not_established": ["wall-clock speed", "all input distributions", "autonomous scientific capability"], "other_cases": [], "question": "Does sorting plus binary search always use fewer comparisons than repeated linear search?", "universal_claim_refuted": false}
+
+[26 | user | question | verified=False | id=ee3be6761e39b8f25a2030e43261392512f551844a3d93490851f567f8f7b8a3]
+Revisit our original measurement with seed 907. What was its input identity and the complete indexing cost? Reread the archived record; the current note omits those values.
+
+[27 | assistant | answer | verified=True | id=aa44a50a17ef43ece329e18a1e8f497e35a1ee3488a6d64f1dbda1a98dd314ac]
+{"input_sha256": "e3dcace808a5394475d6f119542dd786acffefb1c8926b4e5b8cc2b4a9b59b32", "indexed_total": 218, "source_record": "da54306e56be3d22dbecf98d615e9b154080113a31e8bb7f6bb9404f8818ceaa"}
+
+[28 | assistant | answer | verified=True | id=306f283915d4663e81c82a2c99470d0a93180972db5695628bc10d143a63e28c]
+{"established": "Reproduced comparison counts for declared inputs only", "indexed_wins": ["d60f192856bafdbbed7fa36f52524e5c630a32d03749efda610d7a2bad14d1d3", "752c289862ade0af7051335499644a3ab0d6dffb25b659135ff01a6dae7e89d5", "a5ebcd3a6851ba25daf266e9ec36c97dd09656ad7e398c1ce7724060d5b3b4dd", "02a7a1b2b28f596ac55e55f78dc76a0991353b50eff7bf657fcf524408f1babf", "22ddcab54508c0876efe118adaf90b22fac57fd798cde44e3ff6f68652e19626"], "measurement_ids": ["b0ac02a3a46d7b92337540d80ec7f4ea9384013e15dca8812a58b6fa8f6f70c3", "a06742f4c52702ce38bd540aa34b1dd342cf4314c24b6b63875503ac48e57650", "87ef83a04f2b205b6b32b9868cea9f6924e930881e0a5849570234a728e1b056", "c6cc7022e087c89726f6a6d4aa71f52b4092310f5af7b100a5aa227f86e83b7e", "d60f192856bafdbbed7fa36f52524e5c630a32d03749efda610d7a2bad14d1d3", "752c289862ade0af7051335499644a3ab0d6dffb25b659135ff01a6dae7e89d5", "a5ebcd3a6851ba25daf266e9ec36c97dd09656ad7e398c1ce7724060d5b3b4dd", "02a7a1b2b28f596ac55e55f78dc76a0991353b50eff7bf657fcf524408f1babf", "22ddcab54508c0876efe118adaf90b22fac57fd798cde44e3ff6f68652e19626"], "not_established": ["wall-clock speed", "all input distributions", "autonomous scientific capability"], "other_cases": ["b0ac02a3a46d7b92337540d80ec7f4ea9384013e15dca8812a58b6fa8f6f70c3", "a06742f4c52702ce38bd540aa34b1dd342cf4314c24b6b63875503ac48e57650", "87ef83a04f2b205b6b32b9868cea9f6924e930881e0a5849570234a728e1b056", "c6cc7022e087c89726f6a6d4aa71f52b4092310f5af7b100a5aa227f86e83b7e"], "question": "Does sorting plus binary search always use fewer comparisons than repeated linear search?", "universal_claim_refuted": true}

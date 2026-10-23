@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "id": "blender",
+  "title": "Blender scene, views and animation",
+  "skill_ids": [
+    "blender.environment",
+    "blender.scene",
+    "blender.materials",
+    "blender.animation",
+    "blender.render",
+    "blender.video"
+  ],
+  "used_tools": [
+    "read_file",
+    "create_file",
+    "replace",
+    "inspect_scene",
+    "run_check",
+    "finish"
+  ],
+  "implementation": "existing-bw-workflow",
+  "sss_qualification": "not-qualified",
+  "entry_argv": [
+    "branchwrite",
+    "code",
+    "{project}",
+    "--project-files",
+    "--blender-config",
+    "{blender_config}",
+    "--task-file",
+    "{bw_root}/examples/prompts/blender.txt"
+  ],
+  "required_source_files": [
+    "examples/prompts/blender.txt",
+    "branchwrite/blender_mcp.py",
+    "branchwrite/blender_worker.py",
+    "branchwrite/blender_execution.py",
+    "SPATIAL-CREATION-GUIDE.md"
+  ],
+  "environment_requirements": [
+    "Pinned Blender 4.5.3 distribution and MCP SDK 1.26.0 environment",
+    "Owner config: distribution, mcp_python, timeout, require_animation",
+    "CPU Cycles for the existing fixture; matching vision profile for model image inspection"
+  ],
+  "independent_verification": [
+    "Independently reopen scene.blend",
+    "Actual controlled views and camera framing across animation",
+    "Motion checks and decoded video frame checks"
+  ],
+  "limits": [
+    "Bounded stdio MCP, not arbitrary MCP support",
+    "A Blender scene is not accepted as mechanical CAD geometry"
+  ],
+  "historical_prompt": "blender.txt",
+  "historical_results": "examples/prompts/results.json"
+}

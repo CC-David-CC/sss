@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "id": "independent-axes-v1",
+  "axes": {
+    "composition_depth": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "context_tokens": [
+      2048,
+      4096,
+      8192,
+      16384,
+      32768,
+      65536,
+      98304,
+      131072
+    ],
+    "environment_complexity": [
+      "static",
+      "files",
+      "processes",
+      "changing_state",
+      "concurrency"
+    ],
+    "autonomy": [
+      "explicit_step",
+      "explicit_task",
+      "choose_next_action",
+      "discover_question"
+    ]
+  },
+  "timing_is_separate": true,
+  "qualification_gates": [
+    "independent",
+    "composition",
+    "transfer_recovery"
+  ],
+  "advance_rule": "Freeze and qualify a specific cell; retain prior qualified cells. Values listed here are curriculum coordinates, not implemented coverage or model results.",
+  "current_bands": {
+    "bounded-v1": {
+      "composition": "family-defined small expressions and compositions",
+      "context": "self-contained; no long-context qualification",
+      "environment_complexity": "static",
+      "autonomy": "explicit_task",
+      "status": "implemented_bounded_families"
+    },
+    "unmeasured": {
+      "status": "planned"
+    }
+  }
+}

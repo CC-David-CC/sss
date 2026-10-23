@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "code.shell.errors",
+    "title": "Shell pipelines and exit status",
+    "domains": [
+      "code",
+      "linux"
+    ],
+    "requires": [
+      "code.shell.quoting"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

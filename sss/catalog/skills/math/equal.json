@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.equal",
+    "title": "Numerical equality",
+    "domains": [
+      "math"
+    ],
+    "requires": [],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "equal"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Bounded task family; no model qualification implied."
+}

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "tools.edit",
+    "title": "Bounded edits preserving other content",
+    "domains": [
+      "tools"
+    ],
+    "requires": [
+      "tools.read",
+      "tools.write"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

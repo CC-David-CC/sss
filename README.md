@@ -1,4 +1,8 @@
 # Skills³ (S³)
+Development checkpoint: [foundations and workflow validation](validation/foundations-20261023/README.md). Live-model qualification remains pending.
+
+
+**New foundations preview:** [Start here](docs/START-HERE.md), [on-disk skill graph](docs/ON-DISK-LAYOUT.md), [operator handoff](docs/OPERATOR-HANDOFF.md), and [implementation gates](docs/FOUNDATIONS-PLAN.md). The reference machinery and model mastery are reported separately.
 
 **Skills, Scoring, Stability.** Know what an assistant can do, teach it something
 new, and check that it still remembers how to do its other jobs.

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "research.questions",
+    "title": "Choose a testable question",
+    "domains": [
+      "research"
+    ],
+    "requires": [
+      "reading.conflicts",
+      "logic.deduction"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

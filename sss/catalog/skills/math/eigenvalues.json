@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.eigenvalues",
+    "title": "Triangular two-by-two eigenvalues",
+    "domains": [
+      "math"
+    ],
+    "requires": [
+      "math.determinant",
+      "math.quadratic_roots"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "eigenvalues"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Bounded task family; no model qualification implied."
+}

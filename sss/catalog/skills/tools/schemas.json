@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "tools.schemas",
+    "title": "Select tools and construct valid arguments",
+    "domains": [
+      "tools"
+    ],
+    "requires": [
+      "reading.extraction"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

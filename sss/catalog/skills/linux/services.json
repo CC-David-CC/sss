@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "linux.services",
+    "title": "Service state, logs and verified repair",
+    "domains": [
+      "linux"
+    ],
+    "requires": [
+      "linux.processes",
+      "tools.edit"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

@@ -16,3 +16,7 @@ sss = "sss.__main__:main"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["sss", "sss.*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+sss = ["catalog/**/*.json"]

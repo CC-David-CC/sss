@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "tools.finish",
+    "title": "Verify before claiming completion",
+    "domains": [
+      "tools"
+    ],
+    "requires": [
+      "tools.recovery"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

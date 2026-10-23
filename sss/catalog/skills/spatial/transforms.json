@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "spatial.transforms",
+    "title": "Geometric translation and rotation",
+    "domains": [
+      "spatial"
+    ],
+    "requires": [
+      "spatial.coordinates",
+      "math.matrix_product"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Related BW workflows/checkers exist; separate S3 per-cell qualification is not yet implemented. See the workflow registry for actual version-scoped evidence."
+}

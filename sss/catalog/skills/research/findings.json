@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "research.findings",
+    "title": "Evidence, uncertainty and independent reproduction",
+    "domains": [
+      "research"
+    ],
+    "requires": [
+      "research.experiments",
+      "math.variance",
+      "memory.compaction"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

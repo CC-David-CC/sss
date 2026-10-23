@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "writing.revision",
+    "title": "Write and revise a constrained document",
+    "domains": [
+      "writing"
+    ],
+    "requires": [
+      "reading.extraction",
+      "tools.edit"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Related BW workflows/checkers exist; separate S3 per-cell qualification is not yet implemented. See the workflow registry for actual version-scoped evidence."
+}

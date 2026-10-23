@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "id": "cad-plate",
+  "title": "build123d fixed plate",
+  "skill_ids": [
+    "cad.environment",
+    "cad.sketches",
+    "cad.solids",
+    "cad.features",
+    "cad.plate",
+    "cad.measurement"
+  ],
+  "used_tools": [
+    "read_file",
+    "create_file",
+    "replace",
+    "inspect_cad",
+    "run_check",
+    "finish"
+  ],
+  "implementation": "existing-bw-workflow",
+  "sss_qualification": "not-qualified",
+  "entry_argv": [
+    "branchwrite",
+    "code",
+    "{project}",
+    "--project-files",
+    "--cad-config",
+    "{cad_config}",
+    "--task-file",
+    "{bw_root}/examples/prompts/build123d.txt"
+  ],
+  "required_source_files": [
+    "examples/prompts/build123d.txt",
+    "acceptance/cad/plate-v1.json",
+    "branchwrite/cad_requirements.py",
+    "branchwrite/cad_evaluate_worker.py",
+    "tools/check_cad_environment.py",
+    "SPATIAL-CREATION-GUIDE.md"
+  ],
+  "environment_requirements": [
+    "Operator-pinned build123d 0.13.0 plus bd-warehouse 0.4.0 runtime",
+    "OSMesa CPU render libraries",
+    "Owner-selected fixed plate requirements; prepared before the model task"
+  ],
+  "independent_verification": [
+    "Independent STEP reopen and geometric measurements",
+    "Actual controlled views",
+    "Required dimensions and features; preserve protected requirements"
+  ],
+  "limits": [
+    "A plate checker does not accept arbitrary CAD designs or extra hardware",
+    "Printed fit and manufacturing quality are not established"
+  ],
+  "historical_prompt": "build123d.txt",
+  "historical_results": "examples/prompts/results.json"
+}

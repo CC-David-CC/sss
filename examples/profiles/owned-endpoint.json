@@ -1,0 +1,16 @@
+{
+  "model_id": "REPLACE_WITH_SERVED_MODEL_ID",
+  "model_revision": "REPLACE_WITH_INSPECTED_REVISION",
+  "tokenizer_id": "REPLACE_WITH_TOKENIZER_IDENTITY",
+  "template_id": "REPLACE_WITH_TEMPLATE_IDENTITY",
+  "harness_id": "sss-direct-answer",
+  "harness_revision": "REPLACE_WITH_INSPECTED_SSS_REVISION",
+  "thinking": "off",
+  "tool_mode": "direct",
+  "retrieval": "self",
+  "context": {
+    "maximum": 131072,
+    "compact_at": 98304,
+    "target": 32768
+  }
+}

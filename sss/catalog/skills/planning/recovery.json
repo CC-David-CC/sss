@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "planning.recovery",
+    "title": "Checkpoints, recovery and rollback",
+    "domains": [
+      "planning"
+    ],
+    "requires": [
+      "planning.dependencies",
+      "tools.reconcile"
+    ],
+    "bands": [
+      "unmeasured"
+    ],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Planned; no implemented test coverage is claimed."
+}

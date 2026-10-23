@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "id": "cad-components",
+  "title": "CAD catalogue and matching component fixture",
+  "skill_ids": [
+    "cad.environment",
+    "cad.catalogue",
+    "cad.components"
+  ],
+  "used_tools": [
+    "inspect_cad"
+  ],
+  "implementation": "existing-bw-workflow",
+  "sss_qualification": "not-qualified",
+  "entry_argv": [
+    "{cad_python}",
+    "-B",
+    "{bw_root}/tools/check_cad_environment.py"
+  ],
+  "required_source_files": [
+    "tools/check_cad_environment.py",
+    "examples/cad/m4_socket_head_screw.py",
+    "validation/cad-20261020/requirements.lock.txt",
+    "SPATIAL-CREATION-GUIDE.md"
+  ],
+  "environment_requirements": [
+    "Same prepared CAD runtime; use copy installation, not cache hard links"
+  ],
+  "independent_verification": [
+    "Actual catalogue query, M4 screw export/reopen and matching clearance hole"
+  ],
+  "limits": [
+    "Environment/reference fixture, not an autonomous general assembly-design pass",
+    "Do not feed a screw assembly to fixed plate acceptance"
+  ],
+  "historical_prompt": null,
+  "historical_results": null
+}
