@@ -22,6 +22,8 @@ class Tools(unittest.TestCase):
         finish=event(3,'finish',dict(answer='done'));read=event(1,'read_file',dict(path='service.conf'))
         self.assertEqual(grade(c,[change,read,finish],c.expected)['status'],'fail')
         self.assertEqual(grade(c,[read,change,finish],c.expected)['status'],'pass')
+        change['disposition']='applied'
+        self.assertEqual(grade(c,[read,change,finish],c.expected)['status'],'pass')
         self.assertEqual(grade(c,[read,change,finish],{'service.conf':'port=9136\n'})['status'],'fail')
     def test_finish_requires_a_successful_check_after_last_mutation(self):
         c=self.cases['tasks.finish'];write=event(1,'create_file',dict(path='status.txt'))

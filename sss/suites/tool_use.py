@@ -70,7 +70,7 @@ def grade(scenario,events,after_files):
     read=set();mutated=set();writes=0;last_write=-1;matching_checks=[]
     for index,event in enumerate(events):
         tool=event.get('tool');arguments=event.get('arguments',{})
-        successful=(event.get('exit_code')==0 and event.get('disposition') in ('read','created','replaced','mode_changed','exited'))
+        successful=(event.get('exit_code')==0 and event.get('disposition') in ('read','created','applied','replaced','mode_changed','exited'))
         if tool=='run_check' and arguments.get('name')==scenario.required_check:matching_checks.append((index,successful))
         if not successful and tool!='finish':
             continue

@@ -55,11 +55,19 @@ class SkillTree:
             for split in ('validation','blind'):
                 if type(row[split]) is not list:raise ValueError('Explicit case list required')
                 for case in row[split]:
-                    if set(case)!={'id','prompt','kind','parameters'}:raise ValueError('Evaluation cases contain checks, not teaching completions')
-                    parameters=case['parameters']
-                    if (type(parameters) is not list or not parameters or len(set(parameters))!=len(parameters)
-                            or any(type(p) is not str or not p.isidentifier() for p in parameters)):
-                        raise ValueError('Evaluation requires distinct named parameters')
+                    legacy={'id','prompt','kind','parameters'};generic={'id','prompt','checker'}
+                    if set(case) not in (legacy,generic):raise ValueError('Evaluation cases contain checker contracts, not teaching completions')
+                    if set(case)==generic:
+                        checker=case['checker']
+                        if (type(checker) is not dict or set(checker)!={'name','version','case_id'}
+                                or type(checker['version']) is not int or checker['version']<1
+                                or any(type(checker[k]) is not str or not 1<=len(checker[k])<=128 for k in ('name','case_id'))):
+                            raise ValueError('A versioned registered checker contract is required')
+                    else:
+                        parameters=case['parameters']
+                        if (type(parameters) is not list or not parameters or len(set(parameters))!=len(parameters)
+                                or any(type(p) is not str or not p.isidentifier() for p in parameters)):
+                            raise ValueError('Arithmetic evaluation requires distinct named parameters')
                     if (type(case['prompt']) is not str or not case['prompt'] or len(case['prompt'].encode())>65536
                             or case['id']!=hashlib.sha256(case['prompt'].encode()).hexdigest()
                             or case['id'] in self.cases or case['prompt'] in prompts):

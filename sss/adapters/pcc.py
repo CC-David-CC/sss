@@ -14,7 +14,7 @@ class DenseArithmeticEvaluator:
         self.contract_id=digest(dict(oracle_sha256=sha256(oracle),checker_sha256=sha256(Path(check.__code__.co_filename)),
                                      inference_harness_sha256=sha256(Path(oracle_process.__code__.co_filename)),maximum_new_tokens=24))
         for case in tree.cases.values():
-            if (case['kind'] not in ('add','multiply','floor','ceil','abs')
+            if (case.get('kind') not in ('add','multiply','floor','ceil','abs')
                     or len(case['parameters'])!=(1 if case['kind']=='abs' else 2)):
                 raise ValueError('This evaluator currently covers five arithmetic skills only')
 

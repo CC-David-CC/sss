@@ -16,6 +16,17 @@ BW's `/skills` can show the broad S³ map. `branchwrite lesson skills` and the
 standard COW client's `lesson skills` inspect a server's configured active tree.
 Those are different scopes: the broad catalog is not a model qualification.
 
+An active case can name a generic checker contract instead of arithmetic fields:
+
+```json
+{"id":"SHA256_OF_PROMPT","prompt":"Read the assigned file","checker":{"name":"host-tool-trace","version":1,"case_id":"files.read"}}
+```
+
+The host registers the evaluator implementation and supplies validated results.
+The JSON does not import code, choose an executable or grant a tool. This keeps
+the tree usable for tool, admin and coding suites as their adapters are added.
+The built-in arithmetic adapter explicitly rejects other checker contracts.
+
 ## Owner-configured PCC guard
 
 Prepare the starter practice tree before starting a PCC service that owns the

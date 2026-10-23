@@ -26,5 +26,13 @@ class Core(unittest.TestCase):
         t=tree()
         with self.assertRaises(ValueError):t.assess([], 'validation')
         with self.assertRaises(ValueError):t.assess([dict(id=v['id'],passed=None) for v in t.rows('validation')],'validation')
+    def test_tool_and_admin_checkers_do_not_require_arithmetic_parameters(self):
+        doc=tree().document
+        for split in ('validation','blind'):
+            prompt='Read the assigned file; '+split
+            doc['nodes'][1][split]=[dict(id=hashlib.sha256(prompt.encode()).hexdigest(),prompt=prompt,
+                checker=dict(name='host-tool-trace',version=1,case_id='files.read'))]
+        active=SkillTree(doc);row=active.rows('validation')[0]
+        self.assertTrue(active.assess([dict(id=row['id'],passed=True)],'validation')['qualified'])
 
 if __name__=='__main__':unittest.main()

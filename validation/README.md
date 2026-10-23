@@ -5,7 +5,7 @@ language-model ability is qualified by package/unit tests or a controlled evalua
 
 | Check | Observed outcome |
 | --- | --- |
-| Fresh core-only Python environment | 18 tests pass; core installation has no runtime dependencies; CLI smoke and dependency checks pass. |
+| Fresh core-only Python environment | 22 tests pass; core installation has no runtime dependencies; CLI smoke and dependency checks pass. |
 | Optional PCC controller integration | 12 tests pass against the real lesson store, with explicitly controlled model/evaluator callbacks. |
 | Both clients plus real native CPU updates | Four native runs pass across two guarded jobs, including mixed replay, targeted repair, saved-hat continuation and reconciliation. |
 | Earlier single/batch/full workflow through extracted fixtures | Passes actual BW checks, HTTP, native updates, final short batch, full continuation and reload. |
@@ -27,3 +27,10 @@ PCC's native graph expansion before producing a complete guarded candidate.
 That is a native-engine infrastructure failure, not evidence that mixed practice
 does or does not preserve skills. The original run and its first completed
 step are retained. A graph-capacity fix is being checked separately.
+
+The extracted native-oracle adapter initially omitted its POSIX lock-module
+import. A second study stopped before model inference/training on that path.
+Three distinguishing adapter tests reproduced the missing import, then passed
+after the fix: real lease exclusion, inherited worker lease, unchanged idle
+thresholds and refusal to launch without admitted headroom. GPU inventory and
+child creation are mocked in those tests; they are not GPU/model results.

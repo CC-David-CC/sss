@@ -1,6 +1,6 @@
 from pathlib import Path
 from contextlib import contextmanager
-import json,os,select,signal,struct,subprocess,time
+import fcntl,json,os,select,signal,struct,subprocess,time
 
 def receive(proc,count,timeout=120):
     result=bytearray();deadline=time.monotonic()+timeout
