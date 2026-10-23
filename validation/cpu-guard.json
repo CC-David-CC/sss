@@ -1,0 +1,498 @@
+{
+  "status": "PASS",
+  "scope": "native CPU mixed skill orchestration through BW/COW CLI and authenticated HTTP",
+  "semantic_evaluator": "controlled regression/recovery injection, not language-quality inference",
+  "spontaneous_model_failure": false,
+  "gpu_used": false,
+  "promoted": false,
+  "base_unchanged": true,
+  "fixture_sha256": "fc54ab9e54495247befa4be8639614ac74596809a72a67e53e3e5df859d2acc3",
+  "tree_id": "cd23e5beae6cabc623e1efd7b56617e8f434ce41c16307ea26b79fbf3a6c58c6",
+  "policy_id": "31a516326b7c6ee05cb4cd269a1587dbb8283a3a3a6a4de16e22a6b24fb37a69",
+  "native_runs": 4,
+  "first": {
+    "baseline": {
+      "python.arithmetic.abs": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.add": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.ceil": {
+        "meets_requirement": false,
+        "passed": 0,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.floor": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.multiply": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      }
+    },
+    "blind_scores": {
+      "python.arithmetic.abs": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.add": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.ceil": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.floor": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.multiply": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      }
+    },
+    "final_scores": {
+      "python.arithmetic.abs": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.add": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.ceil": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.floor": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.multiply": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      }
+    },
+    "max_training_steps": 6,
+    "policy_id": "31a516326b7c6ee05cb4cd269a1587dbb8283a3a3a6a4de16e22a6b24fb37a69",
+    "promoted": false,
+    "qualified": true,
+    "rounds": [
+      {
+        "candidate_sha256": "458c56768811b12f9778c734605da430ed91d7038f1d39ca1bf25e7564366678",
+        "distribution": {
+          "python.arithmetic.abs": 1,
+          "python.arithmetic.add": 2,
+          "python.arithmetic.ceil": 3,
+          "python.arithmetic.floor": 2,
+          "python.arithmetic.multiply": 2
+        },
+        "examples": 10,
+        "focus_skills": [
+          "python.arithmetic.ceil",
+          "python.arithmetic.multiply"
+        ],
+        "regressed_skills": [
+          "python.arithmetic.floor"
+        ],
+        "round": 1,
+        "scores": {
+          "python.arithmetic.abs": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.add": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.ceil": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.floor": {
+            "meets_requirement": false,
+            "passed": 0,
+            "regressions": 4,
+            "total": 4
+          },
+          "python.arithmetic.multiply": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          }
+        },
+        "weak_skills": [
+          "python.arithmetic.floor"
+        ]
+      },
+      {
+        "candidate_sha256": "ac965d56fd637b22bb930d90b0defc759c2caec57f4d672a4f009155a295329b",
+        "distribution": {
+          "python.arithmetic.abs": 1,
+          "python.arithmetic.add": 2,
+          "python.arithmetic.ceil": 1,
+          "python.arithmetic.floor": 5,
+          "python.arithmetic.multiply": 1
+        },
+        "examples": 10,
+        "focus_skills": [
+          "python.arithmetic.floor"
+        ],
+        "regressed_skills": [],
+        "round": 2,
+        "scores": {
+          "python.arithmetic.abs": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.add": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.ceil": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.floor": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.multiply": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          }
+        },
+        "weak_skills": []
+      }
+    ],
+    "schema": 1,
+    "state": "qualified",
+    "total_examples": 20,
+    "training_steps": 4,
+    "tree_id": "cd23e5beae6cabc623e1efd7b56617e8f434ce41c16307ea26b79fbf3a6c58c6"
+  },
+  "continued": {
+    "baseline": {
+      "python.arithmetic.abs": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.add": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.ceil": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.floor": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.multiply": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      }
+    },
+    "blind_scores": {
+      "python.arithmetic.abs": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.add": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.ceil": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.floor": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.multiply": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      }
+    },
+    "final_scores": {
+      "python.arithmetic.abs": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.add": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.ceil": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.floor": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      },
+      "python.arithmetic.multiply": {
+        "meets_requirement": true,
+        "passed": 4,
+        "regressions": 0,
+        "total": 4
+      }
+    },
+    "max_training_steps": 6,
+    "policy_id": "31a516326b7c6ee05cb4cd269a1587dbb8283a3a3a6a4de16e22a6b24fb37a69",
+    "promoted": false,
+    "qualified": true,
+    "rounds": [
+      {
+        "candidate_sha256": "d33615d67001d74ec9d327ad14b896f393ae72e65f3c3e0df328057f16cc7515",
+        "distribution": {
+          "python.arithmetic.abs": 2,
+          "python.arithmetic.add": 1,
+          "python.arithmetic.ceil": 1,
+          "python.arithmetic.floor": 1,
+          "python.arithmetic.multiply": 5
+        },
+        "examples": 10,
+        "focus_skills": [
+          "python.arithmetic.multiply"
+        ],
+        "regressed_skills": [
+          "python.arithmetic.floor"
+        ],
+        "round": 1,
+        "scores": {
+          "python.arithmetic.abs": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.add": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.ceil": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.floor": {
+            "meets_requirement": false,
+            "passed": 0,
+            "regressions": 4,
+            "total": 4
+          },
+          "python.arithmetic.multiply": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          }
+        },
+        "weak_skills": [
+          "python.arithmetic.floor"
+        ]
+      },
+      {
+        "candidate_sha256": "78f07ce746f596f186fcf3d94ce51b4b10fb6e7d96440e09dace049fa490052d",
+        "distribution": {
+          "python.arithmetic.abs": 1,
+          "python.arithmetic.add": 2,
+          "python.arithmetic.ceil": 1,
+          "python.arithmetic.floor": 5,
+          "python.arithmetic.multiply": 1
+        },
+        "examples": 10,
+        "focus_skills": [
+          "python.arithmetic.floor"
+        ],
+        "regressed_skills": [],
+        "round": 2,
+        "scores": {
+          "python.arithmetic.abs": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.add": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.ceil": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.floor": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          },
+          "python.arithmetic.multiply": {
+            "meets_requirement": true,
+            "passed": 4,
+            "regressions": 0,
+            "total": 4
+          }
+        },
+        "weak_skills": []
+      }
+    ],
+    "schema": 1,
+    "state": "qualified",
+    "total_examples": 20,
+    "training_steps": 4,
+    "tree_id": "cd23e5beae6cabc623e1efd7b56617e8f434ce41c16307ea26b79fbf3a6c58c6"
+  },
+  "evaluations": [
+    {
+      "split": "validation",
+      "phase": "baseline",
+      "failed_skills": [
+        "python.arithmetic.ceil"
+      ]
+    },
+    {
+      "split": "validation",
+      "phase": "check-0",
+      "failed_skills": [
+        "python.arithmetic.floor"
+      ]
+    },
+    {
+      "split": "validation",
+      "phase": "check-1",
+      "failed_skills": []
+    },
+    {
+      "split": "blind",
+      "phase": "blind-original",
+      "failed_skills": [
+        "python.arithmetic.ceil"
+      ]
+    },
+    {
+      "split": "blind",
+      "phase": "blind-candidate",
+      "failed_skills": []
+    },
+    {
+      "split": "validation",
+      "phase": "baseline",
+      "failed_skills": []
+    },
+    {
+      "split": "validation",
+      "phase": "check-0",
+      "failed_skills": [
+        "python.arithmetic.floor"
+      ]
+    },
+    {
+      "split": "validation",
+      "phase": "check-1",
+      "failed_skills": []
+    },
+    {
+      "split": "blind",
+      "phase": "blind-original",
+      "failed_skills": []
+    },
+    {
+      "split": "blind",
+      "phase": "blind-candidate",
+      "failed_skills": []
+    }
+  ],
+  "reconciliation_prevented_duplicate_updates": true,
+  "all_declared_skills_replayed": true
+}
