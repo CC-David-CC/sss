@@ -1,12 +1,12 @@
-# SkillsÃ‚Â³ (SÃ‚Â³)
+# Skills³ (S³)
 
 **Skills, Scoring, Stability.** Know what an assistant can do, teach it something
 new, and check that it still remembers how to do its other jobs.
 
 Repository and Python import: **`sss`**. Distribution: **`skills-cubed`**.
-Say **Ã¢â‚¬Å“Skills cubed.Ã¢â‚¬Â**
+Say **“Skills cubed.”**
 
-SÃ‚Â³ is an independent project. A model server or an app can import its skill tree,
+S³ is an independent project. A model server or an app can import its skill tree,
 tests, scoring and practice curriculum. It is intended to support a useful
 coding and Linux administration assistant, with basic reasoning underneath.
 
@@ -15,9 +15,9 @@ coding and Linux administration assistant, with basic reasoning underneath.
 | **Strata core** | Run supported models and provide native computation. |
 | **COW / PCC** | Manage model context, versions, native training and resources. |
 | **BranchWrite** | Handle user tasks, files, tools, grants and the canonical task ledger. |
-| **SÃ‚Â³** | Define skills, evaluate evidence, detect regressions and choose mixed practice. |
+| **S³** | Define skills, evaluate evidence, detect regressions and choose mixed practice. |
 
-SÃ‚Â³ does not grant shell access, execute an untrusted model proposal, replace BW's
+S³ does not grant shell access, execute an untrusted model proposal, replace BW's
 workflow runtime, or promote a model by itself. Host adapters use the real
 runtime and its receipts. A skill score never grants a capability.
 
@@ -88,7 +88,7 @@ from sss.suites.tool_use import scenarios, grade
 [SeraphimSerapis/tool-eval-bench](https://github.com/SeraphimSerapis/tool-eval-bench)
 informed the tool-use categories: tool selection, precise arguments, dependency
 chains, read-before-write, recovery and truthful completion. Its mock-tool scope
-does not establish whole-agent or Linux-administration competence. SÃ‚Â³'s initial
+does not establish whole-agent or Linux-administration competence. S³'s initial
 file scenarios and graders are newly written around host-supplied evidence.
 See [references and credit](docs/REFERENCES.md).
 

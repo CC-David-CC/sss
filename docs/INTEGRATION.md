@@ -1,18 +1,18 @@
-# Integrating SÂ³
+# Integrating S³
 
-The SÂ³ core takes a tree, completed check results, a native-training callback and
+The S³ core takes a tree, completed check results, a native-training callback and
 host-owned lesson readers. It imports no BW/PCC code. Optional modules under
 `sss.adapters` provide specific connections. They do not grant tools or create a
 second task ledger.
 
-For development, install SÂ³ into the same Python environment as the matching
+For development, install S³ into the same Python environment as the matching
 host checkout:
 
 ```sh
 python -m pip install -e /path/to/sss
 ```
 
-BW's `/skills` can show the broad SÂ³ map. `branchwrite lesson skills` and the
+BW's `/skills` can show the broad S³ map. `branchwrite lesson skills` and the
 standard COW client's `lesson skills` inspect a server's configured active tree.
 Those are different scopes: the broad catalog is not a model qualification.
 
@@ -72,7 +72,7 @@ qualification, not a silent change to an old candidate's meaning.
 
 ## Reproduce integration mechanics on CPU
 
-From the SÂ³ checkout with the matching BW/PCC source available:
+From the S³ checkout with the matching BW/PCC source available:
 
 ```sh
 PYTHONPATH=/path/to/PCC:/path/to/BW python -m unittest discover \
