@@ -217,4 +217,3 @@ class SkillGuardRunner:
     @staticmethod
     def _write(path,value):
         temporary=path.with_suffix('.tmp');temporary.write_text(json.dumps(value,indent=2)+'\n');temporary.replace(path)
-

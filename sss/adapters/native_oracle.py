@@ -62,4 +62,3 @@ def completion(proc,tok,prompt,maximum=24):
         if '\n' in text:return text.split('\n',1)[0]
         if '<|im_end|>' in text or '<|endoftext|>' in text:return text
     return tok.decode(generated)
-

@@ -47,4 +47,3 @@ def generated(kind,split,count):
         completion=' '+expression+'\n'
         if not check(row,completion)['passed']:raise ValueError('Generated teaching target failed independent arithmetic checks')
         yield row,completion
-
