@@ -127,7 +127,23 @@ without loading weight tensors, updating a model or writing a candidate. This is
 a planner estimate, not measured peak memory, and not a claim that every possible
 training implementation needs that much memory.
 
-Wen 0.1.2 training has not started. Normal backpropagation still needs an admitted
-placement and qualified graph allocation for these lesson lengths. A LoRA or full
+Wen 0.1.2 training has not started. The longest full-pack lessons still need an admitted placement and qualified
+graph allocation; the shorter introductory gradient probe below is separate. A LoRA or full
 candidate must then pass separate repair, held-out and retention checks before
 promotion or release; a GGUF file alone does not establish those properties.
+
+## Introductory GPU gradient checkpoint and inspectable practice
+
+PCC's opt-in dense sequence profile passed tiny-model LoRA/full updates and
+reloads at 64 and 375 tokens on two A100s. A separate 178-token introductory Wen
+1.1 lesson passed ordinary LoRA gradient calculation on four A100s. All 498
+adapter gradient tensors were finite; 249 were initially nonzero. Wen's base
+weights stayed unchanged and the probe wrote no candidate. These are mechanics
+results, not evidence of a learned skill or full-pack training capacity.
+
+The owned [108 practice occurrences](../examples/finished-training-examples/foundation-pilot/practice.txt)
+are saved as readable question/checked-answer text, with a separate manifest.
+There are 107 distinct questions; the repeat is labeled rehearsal. These files
+contain no development or blind evaluation questions and no claim of model
+success. The actual candidate-serving factory and a guarded live update remain
+the next learning-loop gate.

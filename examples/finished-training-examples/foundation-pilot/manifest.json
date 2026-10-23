@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "origin": "owned-checked-reference-practice",
+  "model_generated_answers": false,
+  "wen_trained": false,
+  "validation_or_blind_questions_included": false,
+  "practice_occurrences": 108,
+  "distinct_questions": 107,
+  "pack_id": "5a6f502aa9182ebbf37c62f1e7f8d3c8edfc72499a4a55da835b85d59db42272",
+  "sha256": "b69a744b1a1afd9e4ccdd812c73f9d4d12b6d60dc20beaa190a8c9b083c29824",
+  "skills": [
+    "math.place_value",
+    "math.add.no_carry",
+    "math.add.carry",
+    "math.multiply",
+    "math.divide",
+    "math.fraction",
+    "math.add.signed",
+    "state.registers",
+    "math.fraction.add"
+  ],
+  "tiny_fixture_mechanics": {
+    "consumed_occurrences": 18,
+    "language_quality_evaluation": false
+  }
+}

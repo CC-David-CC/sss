@@ -1,0 +1,865 @@
+OWNED SYNTHETIC PRACTICE — not evaluation data or a record of model success.
+
+Example 4c4be92286385994c19598c4653c64e79843f7f5b918716899934b5fc141365d
+Skill: math.place_value
+Gate: independent
+Question:
+Give the base-10 digit at position 0 in 110077; position 0 is units. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+7
+
+Example 8307684d57d80ea8217b3f63b3707759e0a091b92ccc96b2838e4093be8a416b
+Skill: math.add.no_carry
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 24, 42]. Return the exact number.
+Checked answer:
+66
+
+Example b0042eac556175ec788866d938d3f17937252b64dbaeb267f0b603830c142588
+Skill: math.add.carry
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 88, 56]. Return the exact number.
+Checked answer:
+144
+
+Example c178e1ed300dc276dd9df292d4f936009b041b623bf4972aab0e67cd35677dd6
+Skill: math.multiply
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["multiply", 12, 16]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+192
+
+Example 3a02e2882b0c1cff510e6f1a9a21b5649d02ce3c8b3a7123fccec3db0c9368ea
+Skill: math.divide
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["divide", 15, 3]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+5
+
+Example 0ab70e823045e9809e2ad74e1fc385e2be8b402e37386b4fa32590f6173a775e
+Skill: math.fraction
+Gate: independent
+Question:
+Give an exact number equivalent to 35/42. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+5/6
+
+Example bc4757f4af3a422014d9b0314c98ec7f480ee3746842b807eda968998f268382
+Skill: math.add.signed
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 0, 97]. Return the exact number.
+Checked answer:
+97
+
+Example b21e38e584c735bac59b21c905db06086e931b38561de156defdddc3d32308fb
+Skill: state.registers
+Gate: independent
+Question:
+Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": -3, "y": -7}, "operations": [{"destination": "y", "source": "x", "offset": -20}, {"destination": "y", "source": "x", "offset": 6}, {"destination": "y", "source": "x", "offset": -18}, {"destination": "y", "source": "x", "offset": -8}]}. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+{"x": -3, "y": -11}
+
+Example d6cfe7bfb7f9673f25c8bc505171b00ccd07d292612736ffde9e39a53b48eab0
+Skill: math.fraction.add
+Gate: independent
+Question:
+Compute 19/7 + 1/7 exactly. An exact fraction or decimal is acceptable.
+Checked answer:
+20/7
+
+Example 99aac67ff51369659e4d0e6a07e7ea20f8501f265265aa893c0f973a8938cf95
+Skill: math.place_value
+Gate: independent
+Question:
+Give the base-10 digit at position 4 in 170119; position 0 is units. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+7
+
+Example 3080c084bea97508bf8ba08e0a4bb36baeea1ada5a795aeb7efbbb883b765f9a
+Skill: math.add.no_carry
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 22, 33]. Return the exact number.
+Checked answer:
+55
+
+Example c6f5e1b97dc0d833aa2c80a91dac7f697d5d6372a5721bdefd8fe634619981e2
+Skill: math.add.carry
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 68, 87]. Return the exact number.
+Checked answer:
+155
+
+Example e3b42fbbe3b955f9f68895d55c4c505c977e658f68f4884f20100df5fec1fa3e
+Skill: math.multiply
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["multiply", 17, -8]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-136
+
+Example 6a6c4270054356b381dcb7f1f0a94728b55975ce52a1e6798695555e8d7ad608
+Skill: math.divide
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["divide", 4, -11]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-4/11
+
+Example 27cda158e00da58be7ef3a73382d6f54b88a26bc0eabd1910a8e53c4c7d9bc7c
+Skill: math.fraction
+Gate: independent
+Question:
+Give an exact number equivalent to -42/119. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-6/17
+
+Example b7d5558cff499bfdcd601e4b226d8caeaa2301173c907268acbb440356222d3e
+Skill: math.add.signed
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", -15, 55]. Return the exact number.
+Checked answer:
+40
+
+Example 562a2601e2215fb8cede9a36f0e9fed8730a11dfcf6c2c6545692bc52c62f7a9
+Skill: state.registers
+Gate: independent
+Question:
+Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": -9, "y": 19}, "operations": [{"destination": "y", "source": "x", "offset": 17}, {"destination": "y", "source": "x", "offset": -16}, {"destination": "y", "source": "y", "offset": 20}, {"destination": "y", "source": "x", "offset": 5}]}. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+{"x": -9, "y": -4}
+
+Example c8d92d50f8ee6aead68071f84615df868aeab7a7978c5241eb786b5fc7d345a8
+Skill: math.fraction.add
+Gate: independent
+Question:
+Compute 6/7 + 8/7 exactly. An exact fraction or decimal is acceptable.
+Checked answer:
+2
+
+Example d4df289222cfffed94527677bc2457925c5603c996f237ec3a1933efbc103e11
+Skill: math.place_value
+Gate: independent
+Question:
+Give the base-10 digit at position 4 in 100070; position 0 is units. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+0
+
+Example 6e796462eb70353c4983ab9fd1a3a028a405acb53c07cf51e523aa0be7601e20
+Skill: math.add.no_carry
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 33, 24]. Return the exact number.
+Checked answer:
+57
+
+Example 8ea8dea6ab6c038b951706f9652ddd9332243dbc94182321c8b4eb574e0fff6d
+Skill: math.add.carry
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 88, 97]. Return the exact number.
+Checked answer:
+185
+
+Example e109252c20fac22a03817e6247008a8d6b1003bca56580d3e2fcd9071d5c011f
+Skill: math.multiply
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["multiply", -6, -17]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+102
+
+Example 74435536f62d902391bd30b62e493ad3369f084221f02a183664307c922f7386
+Skill: math.divide
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["divide", 15, -9]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-5/3
+
+Example 6b667ea02db6375b9091d326ad52235105684eccf1bfa2823534eb441d6f04f1
+Skill: math.fraction
+Gate: independent
+Question:
+Give an exact number equivalent to 119/-14. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-17/2
+
+Example 6e9c268d550276241616a14792e54a68fa549715a2adefee60680ad511682251
+Skill: math.add.signed
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", -37, 73]. Return the exact number.
+Checked answer:
+36
+
+Example 97e5e2a514e4e10c9e6afddf3469338c8acb3f4600577a8535310f01e0327964
+Skill: state.registers
+Gate: independent
+Question:
+Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": -3, "y": 8}, "operations": [{"destination": "x", "source": "x", "offset": 19}, {"destination": "y", "source": "y", "offset": 2}, {"destination": "y", "source": "y", "offset": 5}, {"destination": "x", "source": "y", "offset": 16}]}. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+{"x": 31, "y": 15}
+
+Example 19fe64e232a4b55f238055b315c676ba30461f9b87d2a63768e36d12246b4975
+Skill: math.fraction.add
+Gate: independent
+Question:
+Compute 5/3 + 2/9 exactly. An exact fraction or decimal is acceptable.
+Checked answer:
+17/9
+
+Example a4616d88447667a31a27612121bec50c96d51667306b227c72c41e04356f190e
+Skill: math.place_value
+Gate: independent
+Question:
+Give the base-10 digit at position 2 in 60042; position 0 is units. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+0
+
+Example b99e52f6960be16cc5d6974faeecaff9056d4b757005cdf44e81dbf5b7f88f7b
+Skill: math.add.no_carry
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 44, 23]. Return the exact number.
+Checked answer:
+67
+
+Example 6f14302d5901a01214678d56c13c26751ddba5d474e6d4a768b788d5e105a8ac
+Skill: math.add.carry
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 87, 77]. Return the exact number.
+Checked answer:
+164
+
+Example 03bbddbb48260c8782774a28f32cfa5c129eac00ba5ddd32a33d88cae804bdd3
+Skill: math.multiply
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["multiply", 3, 8]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+24
+
+Example 89bfb05076f262d2b17eaaf69b29151aeef69f2f0459dfebf11527e0ed67ef31
+Skill: math.divide
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["divide", -19, 9]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-19/9
+
+Example 0658613df9cd30f911af9f30800785cc92eef2058a0d5228519c042e150afc0c
+Skill: math.fraction
+Gate: independent
+Question:
+Give an exact number equivalent to 7/-77. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-1/11
+
+Example 52bd1307b984891bd20acb3e6cf3558276ff66236550be5b8a2041f77fa33066
+Skill: math.add.signed
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", -97, 91]. Return the exact number.
+Checked answer:
+-6
+
+Example 516e2ad82559bd2dcf8aa9836389a206b1221c5b72915597e6cc591f0910299b
+Skill: state.registers
+Gate: independent
+Question:
+Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": -14, "y": 3}, "operations": [{"destination": "y", "source": "x", "offset": -16}, {"destination": "x", "source": "x", "offset": -20}, {"destination": "x", "source": "y", "offset": 16}, {"destination": "y", "source": "x", "offset": 5}]}. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+{"x": -14, "y": -9}
+
+Example a488920a7d6530be321f11473a60feff3c839c464061e8d3115203587d41ede1
+Skill: math.fraction.add
+Gate: independent
+Question:
+Compute 4 + 1/4 exactly. An exact fraction or decimal is acceptable.
+Checked answer:
+17/4
+
+Example 5dd2d5ad2600d097087ad689fcfad2f2fb055f436716bc373b1c90bae3218f83
+Skill: math.place_value
+Gate: composition
+Question:
+Give the base-10 digit at position 0 in 10007; position 0 is units. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+7
+
+Example 40a99068e40583af9578a9fa9113d8a6f303d96dd6fa4c33c500282c09530f5c
+Skill: math.add.no_carry
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", 31, 30], 7], 3]. Return the exact number.
+Checked answer:
+65
+
+Example ca700afa3fac0417029dabcd5d1ad24ca49d86039ce85d090b2d006a86a4cbc9
+Skill: math.add.carry
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", 77, 56], 7], 3]. Return the exact number.
+Checked answer:
+137
+
+Example f34a5895565bbf7475d029b6bf86971a3a0f3dcc3317e22998cca5908203d6e4
+Skill: math.multiply
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["add", ["multiply", ["multiply", 8, -14], 3], ["subtract", 7, 2]]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-331
+
+Example 430cf43df702b9774427da469fd920532eb84c86d613fd590a114da20e358ace
+Skill: math.divide
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["add", ["multiply", ["divide", 9, -17], 3], ["subtract", 7, 2]]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+58/17
+
+Example 16ac35972d7c10e7b71e624a42586c331c97aafafee53d5244b296982462fef0
+Skill: math.fraction
+Gate: composition
+Question:
+Give an exact number equivalent to 21/49. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+3/7
+
+Example 6959cabb7b3b0684b46f9ed115f735a1d7e5209656f7ece3e12bdf90832ca4cf
+Skill: math.add.signed
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", 0, 30], 7], 3]. Return the exact number.
+Checked answer:
+34
+
+Example dab670a9bcbb6137df9e8f3ab6dc987e6cc9f3960c72cceeaee0ee93dc06f461
+Skill: state.registers
+Gate: composition
+Question:
+Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": 20, "y": -4}, "operations": [{"destination": "x", "source": "y", "offset": -4}, {"destination": "y", "source": "y", "offset": 17}, {"destination": "x", "source": "x", "offset": -6}, {"destination": "y", "source": "y", "offset": 15}, {"destination": "x", "source": "y", "offset": 16}, {"destination": "x", "source": "x", "offset": 16}, {"destination": "y", "source": "x", "offset": -12}, {"destination": "y", "source": "x", "offset": -5}, {"destination": "y", "source": "y", "offset": -13}, {"destination": "y", "source": "x", "offset": -4}, {"destination": "y", "source": "y", "offset": -14}, {"destination": "y", "source": "y", "offset": 20}]}. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+{"x": 60, "y": 62}
+
+Example 54de0ce0b0c88e18eee70c09b22aab0fc1d4e1daed8fab3d6f92314072c04356
+Skill: math.fraction.add
+Gate: composition
+Question:
+Compute 1/3 + 2 exactly. Then multiply your result by 3 and subtract 2; return only that final number. An exact fraction or decimal is acceptable.
+Checked answer:
+5
+
+Example b7fed7cebe064f43c292d4ce35df77a5a35cc99ece8508e152b5230320fa18da
+Skill: math.place_value
+Gate: composition
+Question:
+Give the base-10 digit at position 1 in 40028; position 0 is units. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+2
+
+Example 76f1aee1306d79d687533edb1e0b650640e97c63907838c91486ece53feabef4
+Skill: math.add.no_carry
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", 31, 0], 7], 3]. Return the exact number.
+Checked answer:
+35
+
+Example c035d144fa8d46f2d42135e92d248508ecb7e58e7fa88d23ee0eddb5ba140b1e
+Skill: math.add.carry
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", 66, 55], 7], 3]. Return the exact number.
+Checked answer:
+125
+
+Example 2a62d7c0d07c4a7d039aabcd36b857c3098bea5f6340f7f03848cfd1bbc8336e
+Skill: math.multiply
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["add", ["multiply", ["multiply", 5, 5], 3], ["subtract", 7, 2]]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+80
+
+Example 1b719edcf9f725b05bf7a9a4a50bc6542739c7400af4b6c983c9b65fd549d7ad
+Skill: math.divide
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["add", ["multiply", ["divide", -17, 6], 3], ["subtract", 7, 2]]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-7/2
+
+Example 9311c882a4611c244468dc4dd82ada2798606d86f6861bf0d36f6cf7e04fa1de
+Skill: math.fraction
+Gate: composition
+Question:
+Give an exact number equivalent to 28/21. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+4/3
+
+Example 717481ae786f11ac0edaf840e8384f680ea6f3993571631390dcd09497627b3f
+Skill: math.add.signed
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", -40, 34], 7], 3]. Return the exact number.
+Checked answer:
+-2
+
+Example b94684048ce8591585665ef8c4d261a1a1cd24581723a566bad77959e0875cd2
+Skill: state.registers
+Gate: composition
+Question:
+Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": 2, "y": 7}, "operations": [{"destination": "x", "source": "x", "offset": 10}, {"destination": "y", "source": "x", "offset": -8}, {"destination": "x", "source": "y", "offset": -8}, {"destination": "x", "source": "x", "offset": -4}, {"destination": "x", "source": "y", "offset": -3}, {"destination": "y", "source": "x", "offset": -14}, {"destination": "x", "source": "y", "offset": -19}, {"destination": "x", "source": "x", "offset": -13}, {"destination": "x", "source": "x", "offset": -4}, {"destination": "y", "source": "y", "offset": 2}, {"destination": "x", "source": "x", "offset": -9}, {"destination": "y", "source": "y", "offset": 5}]}. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+{"x": -58, "y": -6}
+
+Example 9c7ff2c70dbcfaf1a27e66e03abbcd237f8f83a07d53d465372e76a885d69fad
+Skill: math.fraction.add
+Gate: composition
+Question:
+Compute 20/7 + 19/2 exactly. Then multiply your result by 3 and subtract 2; return only that final number. An exact fraction or decimal is acceptable.
+Checked answer:
+491/14
+
+Example 338e6fcf76bca347f2c7c295663cfe8f550bdc4fa1db47ddeb2b2a5dd7bdafd4
+Skill: math.place_value
+Gate: composition
+Question:
+Give the base-10 digit at position 4 in 100070; position 0 is units. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+0
+
+Example 9ac674acefc2b5d055a2f28f89aae3108ec4ba05e9d29bc560a2d57511f063a1
+Skill: math.add.no_carry
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", 31, 2], 7], 3]. Return the exact number.
+Checked answer:
+37
+
+Example 987fba8027960428d20b1aeeaa54a8b331334b2b48e0b2f988a25a5e54fdfcc9
+Skill: math.add.carry
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", 77, 76], 7], 3]. Return the exact number.
+Checked answer:
+157
+
+Example 3791c352b76c39a6f6258634140beb781b0a4f48d58b581ca7d4285639bac7c3
+Skill: math.multiply
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["add", ["multiply", ["multiply", 3, 20], 3], ["subtract", 7, 2]]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+185
+
+Example 3d69fe3790320429892f07efac296fc977599b65446c65fefee4ca1cec25d772
+Skill: math.divide
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["add", ["multiply", ["divide", 1, 18], 3], ["subtract", 7, 2]]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+31/6
+
+Example 1339f34ef104626c947e69de7c42bd79824e0015ea9d9af0c9a6d0a54fbb08f2
+Skill: math.fraction
+Gate: composition
+Question:
+Give an exact number equivalent to -133/7. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-19
+
+Example 3b92542d8b4d6d5c178587c99ae44ac211e2adc6ad4a189ec5b9cc499418d6b5
+Skill: math.add.signed
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", -89, 18], 7], 3]. Return the exact number.
+Checked answer:
+-67
+
+Example cdaea151f5dad2dfdc964818f9dff374b9410251208abb7c7ddce643a1af37d7
+Skill: state.registers
+Gate: composition
+Question:
+Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": 8, "y": -12}, "operations": [{"destination": "x", "source": "x", "offset": -11}, {"destination": "x", "source": "y", "offset": -6}, {"destination": "x", "source": "y", "offset": 9}, {"destination": "x", "source": "y", "offset": -6}, {"destination": "y", "source": "y", "offset": 15}, {"destination": "y", "source": "x", "offset": -6}, {"destination": "x", "source": "y", "offset": -13}, {"destination": "y", "source": "x", "offset": -1}, {"destination": "y", "source": "y", "offset": 8}, {"destination": "y", "source": "x", "offset": 20}, {"destination": "y", "source": "x", "offset": 15}, {"destination": "y", "source": "x", "offset": 15}]}. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+{"x": -37, "y": -22}
+
+Example 6395cb490eede3b487d2a4a161aeafda8c7454f276e938b9b8b3d172b67e0cca
+Skill: math.fraction.add
+Gate: composition
+Question:
+Compute 7/8 + 12/5 exactly. Then multiply your result by 3 and subtract 2; return only that final number. An exact fraction or decimal is acceptable.
+Checked answer:
+313/40
+
+Example 1eb7b20153e5cc10d98e1a79bb9f6322a62b0064c1cb3d295f6cfe8dd491b597
+Skill: math.place_value
+Gate: composition
+Question:
+Give the base-10 digit at position 3 in 10007; position 0 is units. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+0
+
+Example a78092bc94e4372845533161488cfb196d85f1215a0851f9bbb2fb4dd1714492
+Skill: math.add.no_carry
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", 11, 2], 7], 3]. Return the exact number.
+Checked answer:
+17
+
+Example 9d46aaf63238847786379883e040d5645b22fdd631da18b663bdd81ce07efb4c
+Skill: math.add.carry
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", 96, 65], 7], 3]. Return the exact number.
+Checked answer:
+165
+
+Example 6ec4b85da4de6a9727159fdf1026efbd518a25866529495cdb9d821f0cfaf156
+Skill: math.multiply
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["add", ["multiply", ["multiply", -18, -3], 3], ["subtract", 7, 2]]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+167
+
+Example 21b8cd6559c253445b28f73a93815a2dbcb4f6f4faf1f13d8b59299230be3548
+Skill: math.divide
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["add", ["multiply", ["divide", 20, 1], 3], ["subtract", 7, 2]]. Boolean results are 0 or 1; remainder uses floor division. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+65
+
+Example 6b3d3a1142cf884e1fd1b51b63bf14ff264c763c409834c56a03c39d6e72d0d7
+Skill: math.fraction
+Gate: composition
+Question:
+Give an exact number equivalent to 133/-105. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+-19/15
+
+Example 96b1d822571df4ca781eee44e0e2535679a7ac8836abc96d78e03e17fe31020a
+Skill: math.add.signed
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["add", -37, 64], 7], 3]. Return the exact number.
+Checked answer:
+31
+
+Example 77a785982b3a1b4a7460aa1bd655cd4453ac409d92c1fb69b9859243c535e9c5
+Skill: state.registers
+Gate: composition
+Question:
+Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": 8, "y": 3}, "operations": [{"destination": "x", "source": "y", "offset": -7}, {"destination": "x", "source": "x", "offset": -17}, {"destination": "x", "source": "x", "offset": 2}, {"destination": "x", "source": "y", "offset": 6}, {"destination": "x", "source": "x", "offset": -4}, {"destination": "y", "source": "y", "offset": -6}, {"destination": "x", "source": "y", "offset": 3}, {"destination": "x", "source": "y", "offset": -8}, {"destination": "y", "source": "x", "offset": -8}, {"destination": "x", "source": "x", "offset": -17}, {"destination": "y", "source": "x", "offset": 18}, {"destination": "x", "source": "x", "offset": -13}]}. Return only the requested exact number or JSON value, without markdown.
+Checked answer:
+{"x": -41, "y": -10}
+
+Example 1c4b59c3de32d26c6e64e37fc85237a388bf066d2e764ba21f8916365c41d17e
+Skill: math.fraction.add
+Gate: composition
+Question:
+Compute 5/3 + 3/4 exactly. Then multiply your result by 3 and subtract 2; return only that final number. An exact fraction or decimal is acceptable.
+Checked answer:
+21/4
+
+Example 241029616d3aa05b7eb8d1fb14b46daf4cee52f945cd9c42c3f40fe655956428
+Skill: math.place_value
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Give the base-10 digit at position 3 in 180126; position 0 is units. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": true, "answer": "0"}
+
+Example e47daf8794ac6ddf004ebc29d416afbcd5ec32955b1de6dc0d7f1a3b7ebf229e
+Skill: math.add.no_carry
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", 21, 1]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "22"}
+
+Example 91509a0da2fcde2ce841b73e361f6e2d7fd77afc66e75cfdee2a1c44e22aacaa
+Skill: math.add.carry
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", 96, 98]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "194"}
+
+Example d44bb90128fd2c5b7f0e4073d43719c4e22190bb7654125d82181f6be1516a1f
+Skill: math.multiply
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Evaluate this exact prefix expression: ["multiply", 11, -5]. Boolean results are 0 or 1; remainder uses floor division. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "-55"}
+
+Example 6483bb44c1d7a082f31afe96ab5e3d21ee8be47f7c30126a446342faded14c2e
+Skill: math.divide
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Evaluate this exact prefix expression: ["divide", 16, 16]. Boolean results are 0 or 1; remainder uses floor division. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "1"}
+
+Example c26242d8f56f61749a7f58a1c42a47d5e517b859daf1af610910261211e31391
+Skill: math.fraction
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Give an exact number equivalent to 105/56. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "15/8"}
+
+Example ee310db90b3a0cfb9d574c52c96e66927b3cce2674c8f56b7289083cc86ee33b
+Skill: math.add.signed
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", 0, 34]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "34"}
+
+Example 338dba9dd280db1abaaa8a3fb3e199dfa9e806001549b9de13447cc6e81a53a2
+Skill: state.registers
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": 5, "y": 9}, "operations": [{"destination": "x", "source": "x", "offset": 18}, {"destination": "y", "source": "y", "offset": -12}, {"destination": "y", "source": "x", "offset": -16}, {"destination": "x", "source": "x", "offset": 13}, {"destination": "y", "source": "y", "offset": 19}, {"destination": "x", "source": "y", "offset": 8}, {"destination": "x", "source": "y", "offset": 19}, {"destination": "y", "source": "x", "offset": 8}, {"destination": "y", "source": "y", "offset": 17}, {"destination": "y", "source": "x", "offset": 12}, {"destination": "x", "source": "x", "offset": 19}, {"destination": "x", "source": "x", "offset": 16}]}. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "{\"x\": 80, \"y\": 57}"}
+
+Example fdbfa94dd2d9eabda627f2a01749e6649dace695de81d1c4700901d416ebead2
+Skill: math.fraction.add
+Gate: transfer_recovery
+Question:
+Compute 13/9 + 17/8 exactly. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "257/72"}
+
+Example fe1cb72d7163142e1fd0206b1efffc4ef95bf1c1d055f3573ab93cc786b8cf46
+Skill: math.place_value
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Give the base-10 digit at position 4 in 90063; position 0 is units. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "9"}
+
+Example 4ef6489b8763bad21d9cf6920851e65a55091c976b59d6e38b5b208f3c92af74
+Skill: math.add.no_carry
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", 21, 14]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "35"}
+
+Example 37e602deef33d0799599f39923e5ae39c0e43b89bab5bdffcbcf19b15baf3e17
+Skill: math.add.carry
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", 67, 86]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "153"}
+
+Example 8cc3a453e84ee619a8836ad024705593635cc2bf4826193b0c40a2463bbb3c0b
+Skill: math.multiply
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Evaluate this exact prefix expression: ["multiply", -9, 19]. Boolean results are 0 or 1; remainder uses floor division. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "-171"}
+
+Example 77e31452e6e78f632deff33fd4173e85a39a467e1a808360a802ce0e3232d231
+Skill: math.divide
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Evaluate this exact prefix expression: ["divide", -1, 14]. Boolean results are 0 or 1; remainder uses floor division. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "-1/14"}
+
+Example bfd0e98a834b1c6b42b230a94dc7bf63d44b14a9b3c88b3d54faa9ef1b62cd38
+Skill: math.fraction
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Give an exact number equivalent to -63/-77. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "9/11"}
+
+Example 4045fea2fdd34c96f926798dd6b3e4bb3b95052203698a20395e740c9bc0d058
+Skill: math.add.signed
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", -98, 38]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "-60"}
+
+Example 96e50a4959da26042202942e2b59a549885cc0d57da953dd4275a08f0abe0b0f
+Skill: state.registers
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": 13, "y": 19}, "operations": [{"destination": "y", "source": "x", "offset": -20}, {"destination": "x", "source": "x", "offset": 8}, {"destination": "x", "source": "y", "offset": 8}, {"destination": "x", "source": "y", "offset": 14}, {"destination": "y", "source": "y", "offset": 2}, {"destination": "y", "source": "x", "offset": 5}, {"destination": "x", "source": "y", "offset": -20}, {"destination": "x", "source": "y", "offset": 7}, {"destination": "y", "source": "x", "offset": -6}, {"destination": "y", "source": "x", "offset": 16}, {"destination": "y", "source": "x", "offset": 13}, {"destination": "y", "source": "x", "offset": -9}]}. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "{\"x\": 19, \"y\": 10}"}
+
+Example 50b8cdab68624c61c3a603d33020b3538d21b7bed852ee39174466d8c85ebfae
+Skill: math.fraction.add
+Gate: transfer_recovery
+Question:
+Compute 9/5 + 9/7 exactly. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "108/35"}
+
+Example f871046fbd1726294a6b2cdfdf4f2e07452894c0ad72926b1f53b0f2c93000b5
+Skill: math.place_value
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Give the base-10 digit at position 2 in 40028; position 0 is units. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": true, "answer": "0"}
+
+Example c0c6ad10e726195e460fcd82a1c0a4f93218ac79443f4281e9f920cd55590573
+Skill: math.add.no_carry
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", 31, 41]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "72"}
+
+Example 80a36f1b7c3d74d373625906a47eabe2d062910b2ca4f11ba86e185d16e6dfcd
+Skill: math.add.carry
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", 99, 59]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "158"}
+
+Example 70006810862a3bd3d0569e9cce9ca36e95f192c139f8f14f0cd34b6762daf470
+Skill: math.multiply
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Evaluate this exact prefix expression: ["multiply", -7, -9]. Boolean results are 0 or 1; remainder uses floor division. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "63"}
+
+Example 523d069550d0aeb8532b8b3fb91040ed266a02faf3711526e32b14d2cf4c9915
+Skill: math.divide
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Evaluate this exact prefix expression: ["divide", 13, 10]. Boolean results are 0 or 1; remainder uses floor division. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "13/10"}
+
+Example b10b61ab39812b5c4b214762e78cd9154f1c6e92283afb6851362cd334f067d5
+Skill: math.fraction
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Give an exact number equivalent to 56/7. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "8"}
+
+Example 32c4217c203933b252f74dfbd2f443ad1bed41113ea646d3593031009b8b3858
+Skill: math.add.signed
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", -36, 12]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "-24"}
+
+Example 1200f513cfdf754c10673e891152772a52fe68ddc2cb43718b986f32262bee46
+Skill: state.registers
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": -11, "y": -5}, "operations": [{"destination": "y", "source": "y", "offset": 17}, {"destination": "y", "source": "y", "offset": -16}, {"destination": "x", "source": "y", "offset": -12}, {"destination": "x", "source": "y", "offset": -17}, {"destination": "y", "source": "y", "offset": -5}, {"destination": "x", "source": "y", "offset": -11}, {"destination": "x", "source": "x", "offset": -5}, {"destination": "y", "source": "x", "offset": 5}, {"destination": "y", "source": "x", "offset": -3}, {"destination": "y", "source": "y", "offset": -11}, {"destination": "y", "source": "y", "offset": 10}, {"destination": "y", "source": "y", "offset": 14}]}. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "{\"x\": -25, \"y\": -15}"}
+
+Example 55b474f0d55eaaed86ace0abc986a1685a279acb7e12741d9c4c4cefe87bbc90
+Skill: math.fraction.add
+Gate: transfer_recovery
+Question:
+Compute 17/3 + 11/8 exactly. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "169/24"}
+
+Example 84a8a5739f8aadf737ba0f5ba7c5e3efea674cd9cd41ade6722882e7d51e39b1
+Skill: math.place_value
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Give the base-10 digit at position 0 in 180126; position 0 is units. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "6"}
+
+Example 9fd133735180fc0d8f0a227ee9a211f95b1a9c707b58523feff08124413b3e80
+Skill: math.add.no_carry
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", 33, 1]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "34"}
+
+Example fd50d3b4134fe3310b2ce2099b8c6d865bea7f29d3a9c1067b9b3fd3b1e9911b
+Skill: math.add.carry
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", 68, 79]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "147"}
+
+Example 036a8f6ed3526df4da35c38002cb7ff28a2f3242b7f439895a1b1cc10cfc8ebb
+Skill: math.multiply
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Evaluate this exact prefix expression: ["multiply", -6, 18]. Boolean results are 0 or 1; remainder uses floor division. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "-108"}
+
+Example 19127d9265723eea9acc906111a4bac385c554715593db669846f09664bc49c2
+Skill: math.divide
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Evaluate this exact prefix expression: ["divide", 1, -5]. Boolean results are 0 or 1; remainder uses floor division. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "-1/5"}
+
+Example 4220febff11f8acddbe58476c88a70fa5f38d25e07f974a0ad5b95c2185e6b22
+Skill: math.fraction
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Give an exact number equivalent to -28/-35. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "4/5"}
+
+Example 4cbcd95e96e3510f8617e740589ddab5c6336584945d39d245dd205788d21e7b
+Skill: math.add.signed
+Gate: transfer_recovery
+Question:
+Evaluate this exact prefix expression: ["add", -72, 35]. Return the exact number. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "-37"}
+
+Example 477589b00776a39b4f7a143457d833fbc0b1579abb4731ad49f597f54543e1a7
+Skill: state.registers
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Execute these assignments in order; each reads the state before that assignment. Return the final register dictionary: {"initial": {"x": 4, "y": 9}, "operations": [{"destination": "x", "source": "y", "offset": 10}, {"destination": "y", "source": "x", "offset": 1}, {"destination": "x", "source": "x", "offset": 14}, {"destination": "y", "source": "x", "offset": -2}, {"destination": "y", "source": "y", "offset": 6}, {"destination": "y", "source": "y", "offset": -11}, {"destination": "y", "source": "x", "offset": 15}, {"destination": "x", "source": "y", "offset": -20}, {"destination": "x", "source": "y", "offset": -7}, {"destination": "x", "source": "x", "offset": 11}, {"destination": "x", "source": "y", "offset": -4}, {"destination": "y", "source": "x", "offset": -6}]}. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": false, "answer": "{\"x\": 44, \"y\": 38}"}
+
+Example 0775d7c110310ab217ff8e0f9eefaf5b2a0d944b53d0a8a2c48bc4bef4636a18
+Skill: math.fraction.add
+Gate: transfer_recovery
+Question:
+Compute 1/2 + 2/3 exactly. An earlier answer was 0. Return JSON with previous_correct (boolean) and answer (the exact response as a string).
+Checked answer:
+{"previous_correct": false, "answer": "7/6"}

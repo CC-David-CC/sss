@@ -10,3 +10,5 @@ context measurements. The million-token bulk archive remains outside Git.
 The reasoning spans in the arithmetic examples are checked teaching explanations,
 not captured private thoughts from a language model. Selecting target labels is
 an explicit later lesson decision. Evaluation/protected examples do not belong here.
+
+The [foundation pilot TXT](foundation-pilot/practice.txt) contains 108 checked practice question/answer pairs across 9 prerequisite-connected skills. Its separate manifest records107 distinct questions and one rehearsal repeat. Held-out questions are excluded. Eighteen occurrences exercised a tiny CPU training fixture; Wen has not been trained on this pack.
