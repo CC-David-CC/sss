@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "scope": "The retention guard now inspects admitted tokens across complete multi-turn lessons. Protected validation or blind prompts embedded behind role prefixes or in completions are refused. Four distinguishing unit checks and the actual four-run native CPU guard integration passed.",
+  "source_sha256": {
+    "sss/guard.py": "44a0a9bbf0971b4e79d2e73cb6122fd58989e6f1dbbaf297701a75f3f3d863a7",
+    "sss_tests/test_guard_training_segments.py": "d5eec00e67de37ccb87a6738bdc438743effdc113209e2fca0439b72f6391400"
+  },
+  "wen_training": false
+}

@@ -134,7 +134,11 @@ class SkillGuardRunner:
 
     def _materialize(self,request):
         lessons={};pools={}
-        check_tokens={digest(self.tokenize(v['prompt'])) for v in self.tree.cases.values()}
+        check_tokens={}
+        for case in self.tree.cases.values():
+            tokens=tuple(self.tokenize(case['prompt']))
+            if not tokens:raise ValueError('Protected prompt tokenization is empty')
+            check_tokens.setdefault(len(tokens),set()).add(tokens)
         for skill,node in self.tree.leaves.items():
             pools[skill]=list(node['practice_lesson_ids'])
             for identity in pools[skill]:
@@ -146,9 +150,14 @@ class SkillGuardRunner:
             skill=lesson['skill_id']
             if identity not in pools[skill]:pools[skill].insert(0,identity)
         for identity,lesson in lessons.items():
-            if digest(self.tokenize(lesson['prompt'])) in check_tokens:
+            # Inspect admitted consumed tokens, including multi-turn schema-2
+            # context. A protected prompt cannot hide behind a role prefix.
+            example=self.make_example(lesson,identity)
+            tokens=tuple(example['tokens'])+(example['targets'][-1],)
+            if any(tokens[start:start+size] in protected
+                   for size,protected in check_tokens.items()
+                   for start in range(len(tokens)-size+1)):
                 raise ValueError('Evaluation prompt/token material cannot enter training')
-            self.make_example(lesson,identity)  # Admit every practice item before allocating an evaluator or trainer.
         return lessons,pools
 
     def _select(self,pools,focus,cursors,required):
