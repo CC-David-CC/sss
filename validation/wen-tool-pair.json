@@ -1,0 +1,867 @@
+{
+  "schema": 1,
+  "date": "2026-10-23",
+  "status": "COMPLETED_BOUNDED_PAIRED_TRIAL",
+  "scope": "Real model inference with isolated in-memory tool fixtures; not actual BW/Linux execution",
+  "results": {
+    "wen1": {
+      "manifest": {
+        "schema": 1,
+        "suite": "sss-file-tool-fixtures-v1",
+        "suite_sha256": "48e7826f3784b31df7665384f7b04763def470065d67b61da2b16b53cad6e6c1",
+        "package_version": "0.1.0.dev3",
+        "system_sha256": "020d2b0235933ce105d32c03c231975baa487135da86d3b62e735bcf53d0dc83",
+        "max_turns": 8,
+        "max_new_tokens": 128,
+        "seed": 0,
+        "metadata": {
+          "model": "wen1",
+          "model_sha256": "40f048a00bc2a2a8c2db163999f0af90613d136376e9b3c9372457b1769b44ca",
+          "sss_commit": "0331663e70148eec9b51ae14f0973704a15989b3",
+          "pcc_commit": "21e7a5354ddbdd4dc6324ac4b883c966fb616527",
+          "hardware": "NVIDIA A100-SXM4-80GB",
+          "physical_device": "paired-A100-device-0",
+          "context": 8192,
+          "prefill": 128,
+          "threads": 8,
+          "math_profile": "f32-activations",
+          "native_build_sha256": "9a0dc89842eeb35e08780038c4c32c5a5db33b3164ea36249700d995ef4b4578",
+          "precision": "FP16 KV, F32 activation profile",
+          "fresh_server_store": true,
+          "within_model_prefix_reuse": "normal COW compatibility frontend; not disabled",
+          "attached_lora": false
+        },
+        "scope": "deterministic mock files/checks and real model inference; no actual administration"
+      },
+      "results": [
+        {
+          "schema": 1,
+          "scenario_id": "files.read",
+          "skill_id": "tools.files.read",
+          "status": "fail",
+          "reasons": [
+            "Exactly one final finish action is required"
+          ],
+          "evidence_sha256": "5f446d9ad079fc8c65d8c0eee8336be9012e2170d15cdf99fa9e8b746807534b",
+          "elapsed_seconds": 7.292894070036709,
+          "turns": 2,
+          "tool_calls": 1,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 424,
+              "completion_tokens": 26,
+              "total_tokens": 450,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 493,
+              "completion_tokens": 16,
+              "total_tokens": 509,
+              "prompt_tokens_details": {
+                "cached_tokens": 450
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.write",
+          "skill_id": "tools.files.write",
+          "status": "pass",
+          "reasons": [],
+          "evidence_sha256": "45b65d448bd1abbc247df43171ddc61644b5c4af3e146e3d7b1663cd80a844b8",
+          "elapsed_seconds": 7.542797653004527,
+          "turns": 2,
+          "tool_calls": 2,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 424,
+              "completion_tokens": 38,
+              "total_tokens": 462,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 499,
+              "completion_tokens": 26,
+              "total_tokens": 525,
+              "prompt_tokens_details": {
+                "cached_tokens": 462
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.edit",
+          "skill_id": "tools.files.edit",
+          "status": "pass",
+          "reasons": [],
+          "evidence_sha256": "5a5ed2b28c89c0358a32cba6723752f6fe5f915f9701c7d311f98331e141f824",
+          "elapsed_seconds": 15.402239597402513,
+          "turns": 4,
+          "tool_calls": 4,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 435,
+              "completion_tokens": 26,
+              "total_tokens": 461,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 511,
+              "completion_tokens": 60,
+              "total_tokens": 571,
+              "prompt_tokens_details": {
+                "cached_tokens": 461
+              }
+            },
+            {
+              "prompt_tokens": 610,
+              "completion_tokens": 26,
+              "total_tokens": 636,
+              "prompt_tokens_details": {
+                "cached_tokens": 571
+              }
+            },
+            {
+              "prompt_tokens": 686,
+              "completion_tokens": 90,
+              "total_tokens": 776,
+              "prompt_tokens_details": {
+                "cached_tokens": 636
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "tasks.finish",
+          "skill_id": "tools.tasks.finish",
+          "status": "fail",
+          "reasons": [
+            "Exactly one final finish action is required"
+          ],
+          "evidence_sha256": "df70ae2e230634321eea3c60e92b0d055a7b9af85fb652be21dcc3f75c3b7e19",
+          "elapsed_seconds": 31.340905342251062,
+          "turns": 8,
+          "tool_calls": 8,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 490,
+              "completion_tokens": 38,
+              "total_tokens": 528,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 565,
+              "completion_tokens": 27,
+              "total_tokens": 592,
+              "prompt_tokens_details": {
+                "cached_tokens": 528
+              }
+            },
+            {
+              "prompt_tokens": 632,
+              "completion_tokens": 47,
+              "total_tokens": 679,
+              "prompt_tokens_details": {
+                "cached_tokens": 592
+              }
+            },
+            {
+              "prompt_tokens": 716,
+              "completion_tokens": 99,
+              "total_tokens": 815,
+              "prompt_tokens_details": {
+                "cached_tokens": 679
+              }
+            },
+            {
+              "prompt_tokens": 854,
+              "completion_tokens": 95,
+              "total_tokens": 949,
+              "prompt_tokens_details": {
+                "cached_tokens": 815
+              }
+            },
+            {
+              "prompt_tokens": 988,
+              "completion_tokens": 104,
+              "total_tokens": 1092,
+              "prompt_tokens_details": {
+                "cached_tokens": 949
+              }
+            },
+            {
+              "prompt_tokens": 1131,
+              "completion_tokens": 90,
+              "total_tokens": 1221,
+              "prompt_tokens_details": {
+                "cached_tokens": 1092
+              }
+            },
+            {
+              "prompt_tokens": 1260,
+              "completion_tokens": 85,
+              "total_tokens": 1345,
+              "prompt_tokens_details": {
+                "cached_tokens": 1221
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "tasks.recover",
+          "skill_id": "tools.errors.recover",
+          "status": "pass",
+          "reasons": [],
+          "evidence_sha256": "324954342e398f09e929f8146f2e6ddf0f0ecfb67a71f94b5594cf3631243aa0",
+          "elapsed_seconds": 14.593426071107388,
+          "turns": 5,
+          "tool_calls": 5,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 506,
+              "completion_tokens": 26,
+              "total_tokens": 532,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 572,
+              "completion_tokens": 57,
+              "total_tokens": 629,
+              "prompt_tokens_details": {
+                "cached_tokens": 532
+              }
+            },
+            {
+              "prompt_tokens": 668,
+              "completion_tokens": 27,
+              "total_tokens": 695,
+              "prompt_tokens_details": {
+                "cached_tokens": 629
+              }
+            },
+            {
+              "prompt_tokens": 743,
+              "completion_tokens": 44,
+              "total_tokens": 787,
+              "prompt_tokens_details": {
+                "cached_tokens": 695
+              }
+            },
+            {
+              "prompt_tokens": 827,
+              "completion_tokens": 54,
+              "total_tokens": 881,
+              "prompt_tokens_details": {
+                "cached_tokens": 787
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.scope",
+          "skill_id": "tools.boundaries.scope",
+          "status": "fail",
+          "reasons": [
+            "Actual final files differ from the requested change"
+          ],
+          "evidence_sha256": "8f4bda8afff64298388e1e75b39103f286794620c9aa5deeeb3a9dec5d85c780",
+          "elapsed_seconds": 6.089373945258558,
+          "turns": 2,
+          "tool_calls": 2,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 428,
+              "completion_tokens": 38,
+              "total_tokens": 466,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 503,
+              "completion_tokens": 38,
+              "total_tokens": 541,
+              "prompt_tokens_details": {
+                "cached_tokens": 466
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.noisy_read",
+          "skill_id": "tools.outputs",
+          "status": "pass",
+          "reasons": [],
+          "evidence_sha256": "fc419f5c01c1ec3ae8f909344ae2ad942aac5d3cb2024d669106444c03c01bdd",
+          "elapsed_seconds": 7.375487819314003,
+          "turns": 2,
+          "tool_calls": 2,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 429,
+              "completion_tokens": 26,
+              "total_tokens": 455,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 513,
+              "completion_tokens": 91,
+              "total_tokens": 604,
+              "prompt_tokens_details": {
+                "cached_tokens": 455
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "tasks.chain",
+          "skill_id": "tools.chains",
+          "status": "pass",
+          "reasons": [],
+          "evidence_sha256": "03ed5f1d72ac87467a03d0947a98c78a5bd0a22f7da9ab593b34b41995b39c8a",
+          "elapsed_seconds": 9.987189558334649,
+          "turns": 3,
+          "tool_calls": 3,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 433,
+              "completion_tokens": 26,
+              "total_tokens": 459,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 508,
+              "completion_tokens": 66,
+              "total_tokens": 574,
+              "prompt_tokens_details": {
+                "cached_tokens": 459
+              }
+            },
+            {
+              "prompt_tokens": 611,
+              "completion_tokens": 63,
+              "total_tokens": 674,
+              "prompt_tokens_details": {
+                "cached_tokens": 574
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.exact_path",
+          "skill_id": "tools.arguments",
+          "status": "fail",
+          "reasons": [
+            "Exactly one final finish action is required"
+          ],
+          "evidence_sha256": "f2375c8d99fd04ccd41e07891f3299558d551d9a38d24b3839b469cde1fa80a7",
+          "elapsed_seconds": 5.187333643436432,
+          "turns": 2,
+          "tool_calls": 1,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 430,
+              "completion_tokens": 28,
+              "total_tokens": 458,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 501,
+              "completion_tokens": 17,
+              "total_tokens": 518,
+              "prompt_tokens_details": {
+                "cached_tokens": 458
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        }
+      ],
+      "passed": 5,
+      "failed": 4,
+      "unavailable": 0,
+      "profile_identities": {
+        "model_contract_id": "6647248f15c34c0d22b64fab1a7ddf17887e741996126d178e6eb1ac91db0b6c",
+        "execution_profile_id": "9004abb53cf23e80e51e1fc377e0062697c7c3da65304941832290932f89f8eb"
+      },
+      "summary_file_sha256": "06804bd9ed4661224b5df20323df3bf67196856b00bab46209136fa6263d7935"
+    },
+    "wen1.1": {
+      "manifest": {
+        "schema": 1,
+        "suite": "sss-file-tool-fixtures-v1",
+        "suite_sha256": "48e7826f3784b31df7665384f7b04763def470065d67b61da2b16b53cad6e6c1",
+        "package_version": "0.1.0.dev3",
+        "system_sha256": "020d2b0235933ce105d32c03c231975baa487135da86d3b62e735bcf53d0dc83",
+        "max_turns": 8,
+        "max_new_tokens": 128,
+        "seed": 0,
+        "metadata": {
+          "model": "wen1.1",
+          "model_sha256": "49425fd802b04b400a1725e8afe527c405bb15e828d0275ff295e38396839f34",
+          "sss_commit": "0331663e70148eec9b51ae14f0973704a15989b3",
+          "pcc_commit": "21e7a5354ddbdd4dc6324ac4b883c966fb616527",
+          "hardware": "NVIDIA A100-SXM4-80GB",
+          "physical_device": "paired-A100-device-0",
+          "context": 8192,
+          "prefill": 128,
+          "threads": 8,
+          "math_profile": "f32-activations",
+          "native_build_sha256": "9a0dc89842eeb35e08780038c4c32c5a5db33b3164ea36249700d995ef4b4578",
+          "precision": "FP16 KV, F32 activation profile",
+          "fresh_server_store": true,
+          "within_model_prefix_reuse": "normal COW compatibility frontend; not disabled",
+          "attached_lora": false
+        },
+        "scope": "deterministic mock files/checks and real model inference; no actual administration"
+      },
+      "results": [
+        {
+          "schema": 1,
+          "scenario_id": "files.read",
+          "skill_id": "tools.files.read",
+          "status": "fail",
+          "reasons": [
+            "Exactly one final finish action is required"
+          ],
+          "evidence_sha256": "5f446d9ad079fc8c65d8c0eee8336be9012e2170d15cdf99fa9e8b746807534b",
+          "elapsed_seconds": 5.393259613774717,
+          "turns": 2,
+          "tool_calls": 1,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 424,
+              "completion_tokens": 26,
+              "total_tokens": 450,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 493,
+              "completion_tokens": 16,
+              "total_tokens": 509,
+              "prompt_tokens_details": {
+                "cached_tokens": 450
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.write",
+          "skill_id": "tools.files.write",
+          "status": "pass",
+          "reasons": [],
+          "evidence_sha256": "45b65d448bd1abbc247df43171ddc61644b5c4af3e146e3d7b1663cd80a844b8",
+          "elapsed_seconds": 5.846050004474819,
+          "turns": 2,
+          "tool_calls": 2,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 424,
+              "completion_tokens": 38,
+              "total_tokens": 462,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 499,
+              "completion_tokens": 26,
+              "total_tokens": 525,
+              "prompt_tokens_details": {
+                "cached_tokens": 462
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.edit",
+          "skill_id": "tools.files.edit",
+          "status": "pass",
+          "reasons": [],
+          "evidence_sha256": "5a5ed2b28c89c0358a32cba6723752f6fe5f915f9701c7d311f98331e141f824",
+          "elapsed_seconds": 12.910583666525781,
+          "turns": 4,
+          "tool_calls": 4,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 435,
+              "completion_tokens": 26,
+              "total_tokens": 461,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 511,
+              "completion_tokens": 60,
+              "total_tokens": 571,
+              "prompt_tokens_details": {
+                "cached_tokens": 461
+              }
+            },
+            {
+              "prompt_tokens": 610,
+              "completion_tokens": 26,
+              "total_tokens": 636,
+              "prompt_tokens_details": {
+                "cached_tokens": 571
+              }
+            },
+            {
+              "prompt_tokens": 686,
+              "completion_tokens": 90,
+              "total_tokens": 776,
+              "prompt_tokens_details": {
+                "cached_tokens": 636
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "tasks.finish",
+          "skill_id": "tools.tasks.finish",
+          "status": "fail",
+          "reasons": [
+            "Exactly one final finish action is required"
+          ],
+          "evidence_sha256": "af9e939b0e2efa2b4f557ea02f624593c2c0667e865a5f83afc5f3066f209d5b",
+          "elapsed_seconds": 28.54650818184018,
+          "turns": 7,
+          "tool_calls": 6,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 490,
+              "completion_tokens": 38,
+              "total_tokens": 528,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 565,
+              "completion_tokens": 27,
+              "total_tokens": 592,
+              "prompt_tokens_details": {
+                "cached_tokens": 528
+              }
+            },
+            {
+              "prompt_tokens": 632,
+              "completion_tokens": 47,
+              "total_tokens": 679,
+              "prompt_tokens_details": {
+                "cached_tokens": 592
+              }
+            },
+            {
+              "prompt_tokens": 716,
+              "completion_tokens": 93,
+              "total_tokens": 809,
+              "prompt_tokens_details": {
+                "cached_tokens": 679
+              }
+            },
+            {
+              "prompt_tokens": 848,
+              "completion_tokens": 91,
+              "total_tokens": 939,
+              "prompt_tokens_details": {
+                "cached_tokens": 809
+              }
+            },
+            {
+              "prompt_tokens": 978,
+              "completion_tokens": 118,
+              "total_tokens": 1096,
+              "prompt_tokens_details": {
+                "cached_tokens": 939
+              }
+            },
+            {
+              "prompt_tokens": 1135,
+              "completion_tokens": 128,
+              "total_tokens": 1263,
+              "prompt_tokens_details": {
+                "cached_tokens": 1096
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "tasks.recover",
+          "skill_id": "tools.errors.recover",
+          "status": "pass",
+          "reasons": [],
+          "evidence_sha256": "324954342e398f09e929f8146f2e6ddf0f0ecfb67a71f94b5594cf3631243aa0",
+          "elapsed_seconds": 14.922480250708759,
+          "turns": 5,
+          "tool_calls": 5,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 506,
+              "completion_tokens": 26,
+              "total_tokens": 532,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 572,
+              "completion_tokens": 57,
+              "total_tokens": 629,
+              "prompt_tokens_details": {
+                "cached_tokens": 532
+              }
+            },
+            {
+              "prompt_tokens": 668,
+              "completion_tokens": 27,
+              "total_tokens": 695,
+              "prompt_tokens_details": {
+                "cached_tokens": 629
+              }
+            },
+            {
+              "prompt_tokens": 743,
+              "completion_tokens": 44,
+              "total_tokens": 787,
+              "prompt_tokens_details": {
+                "cached_tokens": 695
+              }
+            },
+            {
+              "prompt_tokens": 827,
+              "completion_tokens": 54,
+              "total_tokens": 881,
+              "prompt_tokens_details": {
+                "cached_tokens": 787
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.scope",
+          "skill_id": "tools.boundaries.scope",
+          "status": "fail",
+          "reasons": [
+            "Actual final files differ from the requested change"
+          ],
+          "evidence_sha256": "8f4bda8afff64298388e1e75b39103f286794620c9aa5deeeb3a9dec5d85c780",
+          "elapsed_seconds": 6.30344532802701,
+          "turns": 2,
+          "tool_calls": 2,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 428,
+              "completion_tokens": 38,
+              "total_tokens": 466,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 503,
+              "completion_tokens": 38,
+              "total_tokens": 541,
+              "prompt_tokens_details": {
+                "cached_tokens": 466
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.noisy_read",
+          "skill_id": "tools.outputs",
+          "status": "fail",
+          "reasons": [
+            "Exactly one final finish action is required"
+          ],
+          "evidence_sha256": "72f74454b444bde1cfa2811751e02f237fe36c266f4bd563149516ac48fb4c17",
+          "elapsed_seconds": 6.728858698159456,
+          "turns": 2,
+          "tool_calls": 1,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 429,
+              "completion_tokens": 26,
+              "total_tokens": 455,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 513,
+              "completion_tokens": 66,
+              "total_tokens": 579,
+              "prompt_tokens_details": {
+                "cached_tokens": 455
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "tasks.chain",
+          "skill_id": "tools.chains",
+          "status": "pass",
+          "reasons": [],
+          "evidence_sha256": "03ed5f1d72ac87467a03d0947a98c78a5bd0a22f7da9ab593b34b41995b39c8a",
+          "elapsed_seconds": 10.075859713368118,
+          "turns": 3,
+          "tool_calls": 3,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 433,
+              "completion_tokens": 26,
+              "total_tokens": 459,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 508,
+              "completion_tokens": 66,
+              "total_tokens": 574,
+              "prompt_tokens_details": {
+                "cached_tokens": 459
+              }
+            },
+            {
+              "prompt_tokens": 611,
+              "completion_tokens": 63,
+              "total_tokens": 674,
+              "prompt_tokens_details": {
+                "cached_tokens": 574
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        },
+        {
+          "schema": 1,
+          "scenario_id": "files.exact_path",
+          "skill_id": "tools.arguments",
+          "status": "fail",
+          "reasons": [
+            "Exactly one final finish action is required"
+          ],
+          "evidence_sha256": "f2375c8d99fd04ccd41e07891f3299558d551d9a38d24b3839b469cde1fa80a7",
+          "elapsed_seconds": 5.361854142509401,
+          "turns": 2,
+          "tool_calls": 1,
+          "rejected_calls": 0,
+          "usage": [
+            {
+              "prompt_tokens": 430,
+              "completion_tokens": 28,
+              "total_tokens": 458,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            },
+            {
+              "prompt_tokens": 501,
+              "completion_tokens": 17,
+              "total_tokens": 518,
+              "prompt_tokens_details": {
+                "cached_tokens": 458
+              }
+            }
+          ],
+          "scope": "model-only in-memory tool fixture; not actual BW/Linux execution"
+        }
+      ],
+      "passed": 4,
+      "failed": 5,
+      "unavailable": 0,
+      "profile_identities": {
+        "model_contract_id": "2311dbffed1f0556aef8390d12608ff48f0204c74fd64d1dbcc26f02f61119f1",
+        "execution_profile_id": "9004abb53cf23e80e51e1fc377e0062697c7c3da65304941832290932f89f8eb"
+      },
+      "summary_file_sha256": "2b64c13d288fc91a4d8c5901ecf3b410d59382c0aa777bad2ddc19941b022943"
+    }
+  },
+  "native_build": {
+    "backend_revision": "972d2313bc0bf0a45f634f77d95c9fb03aeab12c",
+    "device_binding": "cuda-single-device-v1",
+    "attention_precision_binding": "fp32-attention-v1",
+    "state_format": "qwen35-hybrid-mrope-frontier-v2",
+    "native_binding_protocol": "qwen35-streamed-cells-mrope-v2",
+    "wen_patch_sha256": "d8b16fa8bd3457a746a37808e43e609986aafe4a4e6fc509eb798ac3ac1d402f",
+    "f32_activations_patch_sha256": "bb41e6d28d363400a2027e5f2c362f6b3fa850950ff26e680473cc682b2e9711",
+    "binary_sha256": {
+      "libqwen35ctt.so": "9a0dc89842eeb35e08780038c4c32c5a5db33b3164ea36249700d995ef4b4578",
+      "qwen35-mixed-oracle": "b0b7337221b5b971333957ac7b7d9fd10fb26b785aa539157acb3aa1e72d298a",
+      "libggml-cpu.so.0.24.0": "fcf39af40141b7c90aeb9370b6582cbc73a28043e29eeec3760835685128c517",
+      "libllama.so.0.4.1": "e4cc57830832ec3e8f1b2eba965ebeefef64703b7cd4a5b23336e424ee9655e9",
+      "libggml-cuda.so.0.24.0": "4751f95d6b5c0ced341ae6d7c79d7f35bc778f69697eb3ad4fdfc30d6c5fc348",
+      "libggml-base.so.0.24.0": "d2e5649002e81c1f59aa80dd8f143745ffda2511c5b4b26058964f7aa8d4b789",
+      "libggml.so.0.24.0": "aac2659cd57f1b0ad03ec00e305f0323226110057a5053fb4138fa7a678b7519"
+    }
+  },
+  "operational_note": "Wen 1 completed, server exited 0; immediate Wen 1.1 admission refused non-idle GPU telemetry. After a fresh idle check, only the not-yet-started Wen 1.1 ran with unchanged source, device, models, budgets and protocol. No completed case was retried."
+}

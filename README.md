@@ -59,6 +59,16 @@ candidate rather than becoming another adaptive teaching round. Candidates
 remain unpromoted. Interrupted jobs retain their original identities and are
 not blindly replayed.
 
+**First real model comparison:** Wen 1 passed **5/9** and Wen 1.1 **4/9** on the
+same bounded mock-tool suite/A100. The extra 1.1 failure was a correct read answer
+without the required finish action; shared newline failures have unresolved
+model/parser attribution. These are strict stack scores, not a general model
+ranking. [Read the case-by-case report and limits](docs/MODEL-COMPARISON.md).
+
+The completed five-skill native mixed-practice pilot preserved earlier successes
+but stayed at **14/40** held-out checks after four rounds/16 updates. No hat
+qualified. [Full learning evidence](validation/README.md).
+
 ## Try it
 
 The core uses Python 3.11+ and the standard library. It needs no model or GPU.

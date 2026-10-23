@@ -63,3 +63,11 @@ rejection, malformed model arguments, unavailable backend outcomes without retry
 and request-intent persistence before authenticated POST without key logging.
 These tests prove the harness behavior, not a model's score. Actual paired Wen
 results belong in [the model report](../docs/MODEL-COMPARISON.md).
+
+The first paired real Wen tool trial is complete: **Wen 1 5/9; Wen 1.1 4/9**,
+with zero unavailable requests. [wen-tool-pair.json](wen-tool-pair.json) retains
+the complete public-safe summary and matching manifests. Both servers exited
+zero. The extra 1.1 failure was correct read content without the required finish
+action. Two shared file-content failures have unresolved model/parser attribution
+because pre-parser XML text was not saved. Read the detailed report before
+interpreting these strict end-to-end scores as model ability.
