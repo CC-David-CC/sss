@@ -80,3 +80,7 @@ are mapped to S3 prerequisites. The operator prepares domain environments;
 new per-cell model qualifications remain separate.
 
 CPU checkpoint: [dated validation](../validation/foundations-20261023/README.md).
+
+## Preparing a guarded training pilot
+
+See [Foundation training pilot](FOUNDATION-TRAINING-PILOT.md) for the progressive-graph adapter, exact PCC rendering, private practice TXT export, measured Wen baselines and current training-capacity limit. This operator API does not replace the existing CLI adapter.

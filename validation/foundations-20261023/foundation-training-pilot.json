@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "scope": "bounded foundation-training adapter and read-only memory admission",
+  "adapter_tests": 6,
+  "guard_regression_tests": 4,
+  "launcher_tests": 7,
+  "native_cpu_self_test": "PASS",
+  "native_cpu_chain_test": "PASS",
+  "native_cpu_mixed": {
+    "examples": 18,
+    "skills": 9,
+    "settled_sessions": 4,
+    "model": "generated tiny fixture",
+    "evaluation": "controlled reference; no model inference"
+  },
+  "wen_token_admission": {
+    "examples": 108,
+    "minimum": 58,
+    "maximum": 375
+  },
+  "wen_weights_updated": false,
+  "wen_training_memory": {
+    "status": "MEMORY_ADMISSION_REFUSED",
+    "estimated_bytes": 361705465072,
+    "free_bytes": 78056128512,
+    "weights_loaded": false,
+    "graph_allocation_qualified": false
+  },
+  "formal_mastery_qualification": false,
+  "promoted": false,
+  "source_sha256": {
+    "sss/adapters/foundation_training.py": "3cd54781b6b28afe29dfc76118644ac19002a0caa8831fe84ec1a4ee5199f1eb",
+    "sss/adapters/pcc_foundation_render.py": "552afadc2dba37843ebfe145922ef95cbb6d69556d7e3994a4658d895c965b90",
+    "sss_tests/test_foundation_training.py": "14c780b17d4e8090070c88f3f51024ce5647d9f80ff813c2c7bc947d2c7e6fec"
+  }
+}
