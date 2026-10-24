@@ -329,3 +329,47 @@ answers. Its actual native HTTP/CLI run is in progress; no third score is claime
 These development measurements guide repeated improvement; they do not establish
 sealed qualification, Linux/tool-use improvement, broad retention or production
 serving throughput. No model file has been uploaded.
+
+## Reproduce the curve charts from aggregate evidence
+
+S3 now validates each measured curve point: the original-answer gains/losses
+must reconcile its net score, update counts must match practice exposure, and
+all points must bind the declared protocol. Missing checkpoints are not
+interpolated, and a complete claim requires every declared point in every arm.
+The validator is standard-library code; plotting is an optional dependency.
+
+From the S3 checkout, with an isolated Python environment:
+
+```sh
+python -m pip install '.[plots]'
+python -m sss.plot_curves \
+  --protocol validation/minicpm-native-learning-20261024/per-update-curve-protocol.json \
+  --input curve-points.json --output-prefix report/learning-curve
+```
+
+This exports PNG, SVG, CSV and a JSON provenance/coverage record. Each figure
+labels the last measured checkpoint per arm; a partial curve remains partial.
+Four validator tests pass, including a flat net score that hides lost original
+answers, missing points, changed exposure and false completion. The optional
+renderer also runs on a clearly labeled synthetic validation fixture; that
+fixture is not a model finding. The base S3 package remains importable without
+Matplotlib, BW, PCC, a GPU or a network connection.
+
+[Native AdamW LoRA and F32-merge mechanics](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-learning-curves-20261024/docs/NATIVE-PER-UPDATE-CURVES.md)
+now pass the declared small numerical gates. Actual-model merge parity remains
+a separate first-point gate, and no LoRA learning score is claimed yet.
+
+## Completed HTTP/CLI block: a tie with worse completion
+
+MixedRepair-03 has completed through the real PCC HTTP/CLI path. It retains
+**507/864 correct answers**, while natural completion falls 860 to 853. S3 keeps
+the preceding 507/860 working parent. The checkpoint is preserved privately as
+a named standalone F32 GGUF, with this result attached. This is useful machinery
+evidence, without a further learning gain.
+
+All 1,344 selected lessons were actually consumed: 46 full updates/1,932 practice
+presentations, 381 finite/nonzero gradient tensors each update, and saved-model
+reload mean-loss error 8.19e-10. The run's 301.77 training-phase seconds are part
+of the historical timed experiment that was already complete when the owner
+removed time as the organizing principle. Subsequent curve requests omit that
+training-phase cutoff entirely. [Aggregate results and next-block decision](../validation/minicpm-native-learning-20261024/native-api-repair03.json).

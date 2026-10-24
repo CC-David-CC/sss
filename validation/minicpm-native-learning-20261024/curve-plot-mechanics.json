@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Aggregate curve validation and optional rendering mechanics; not MiniCPM quality",
+  "validator_tests": 4,
+  "optional_renderer_fixture_only": true,
+  "matplotlib": "3.11.2",
+  "default_import_without_matplotlib": true,
+  "source_sha256": {
+    "sss/curves.py": "a34831f7b5d447fa550f32a7c846b45ce0d20ba054cefb1402c462b782411f4e",
+    "sss/plot_curves.py": "ade8a8a14afb176a10134dbb2b082a0944546bcd1561050e97711e28ea21def0",
+    "sss_tests/test_curves.py": "c0dad98c54cdc705f694b1c3e8f1d31e9e23172e9cf96657e5367e21dd97ce4d"
+  },
+  "model_files_published": false
+}
