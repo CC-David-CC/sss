@@ -162,3 +162,11 @@ The captured Codex loop exceeds the old 8K arithmetic profile; its measured
 planning requirement is 16K. Preflight counts are not hardware admission or
 model-quality evidence. The published positive and refusal controls preserve
 this distinction.
+
+
+Maintain the [human-readable findings log](FINDINGS.md) as results arrive.
+Capture useful surprises, negative/unchanged outcomes and actionable details,
+with the exact tested scope, why it matters, next action and evidence/limits.
+For example, the captured Codex workflow needs 16K while pi/OpenCode fit 4K;
+that is a workload-specific tokenizer finding, not a universal client minimum.
+Preserve earlier observations when adding corrections or new evidence.

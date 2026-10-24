@@ -1,5 +1,8 @@
 # Skills³ (S³)
 
+[What we are discovering](docs/FINDINGS.md): readable findings about context
+cost, tool differences, training, forgetting and practical next steps.
+
 [Four-condition harness comparisons](docs/HARNESS-COMPARISON.md) now have
 tested offline planning and evidence checks. [Real Codex/OpenCode/pi clients](docs/REAL-HARNESS-SETUP.md)
 pass isolated CPU file/tool loops with mock replies; live Wen comparisons
