@@ -33,6 +33,7 @@ class Skills(unittest.TestCase):
     def tearDown(self):self.service.close();self.temp.cleanup()
     def native(self,request,examples,path,parent,fd):
         self.count=getattr(self,'count',0)+1;self.calls.append(dict(request=request,parent=parent,examples=examples))
+        if self.behavior=='training_policy_drift':self.guard.max_rounds=1
         return dict(mode=request['mode'],candidate_sha256=digest(dict(run=self.count)),candidate_path=str(path/'candidate.gguf'),
                     receipt=dict(steps=[],example_cursor=len(examples)))
     def records(self,split,failed=()):
@@ -40,6 +41,7 @@ class Skills(unittest.TestCase):
     def evaluate(self,candidate,split,path,fd):
         self.evaluations.append((split,path.name))
         if self.behavior=='infrastructure':raise OSError('Controlled evaluator unavailable')
+        if self.behavior=='evaluation_policy_drift':self.guard.focus_fraction=.75
         if path.name=='baseline':return self.records(split,['math.ceil'])
         if split=='blind':return self.records(split,['math.floor'] if self.behavior=='blind_failure' and path.name=='blind-candidate' else [])
         if self.behavior=='never_repair' or path.name=='check-0':return self.records(split,['math.floor'])
@@ -101,6 +103,18 @@ class Skills(unittest.TestCase):
     def test_infrastructure_failure_is_not_used_as_a_model_training_failure(self):
         self.behavior='infrastructure';self.service.submit('/cow/training/jobs',self.request())
         self.assertEqual(self.wait('guarded')['state'],'failed');self.assertFalse(self.calls)
+    def test_policy_drift_during_baseline_stops_before_native_work(self):
+        self.behavior='evaluation_policy_drift'
+        self.service.submit('/cow/training/jobs',self.request())
+        self.assertEqual(self.wait('guarded')['state'],'failed')
+        self.assertEqual(self.calls,[])
+        self.assertEqual(self.evaluations,[('validation','baseline')])
+    def test_policy_drift_during_update_cannot_receive_a_verdict(self):
+        self.behavior='training_policy_drift'
+        self.service.submit('/cow/training/jobs',self.request())
+        self.assertEqual(self.wait('guarded')['state'],'failed')
+        self.assertEqual(len(self.calls),1)
+        self.assertEqual(self.evaluations,[('validation','baseline')])
     def test_ordinary_training_still_uses_exactly_the_original_request(self):
         request=self.request();request.pop('skill_guard');self.service.submit('/cow/training/jobs',request)
         self.assertEqual(self.wait('guarded')['state'],'complete');self.assertEqual(len(self.calls),1);self.assertFalse(self.evaluations)

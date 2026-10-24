@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Frozen acceptance policy and existing BW/PCC native CPU integration",
+  "initial_regression": {
+    "test_methods": 6,
+    "failed_assertions": 13,
+    "demonstrated": "caller threshold change could qualify the same failing results under the original identity"
+  },
+  "checks": {
+    "core_tests": 82,
+    "pcc_controller_tests": 14,
+    "native_cpu_runs": 4,
+    "guarded_jobs": 2
+  },
+  "fixes": [
+    "detach caller-owned nested policy data",
+    "verify tree and derived indices",
+    "bind guard revision and settings",
+    "check policy before and after evaluator/native callbacks",
+    "refuse unknown evaluation split"
+  ],
+  "guard_revision": 2,
+  "old_policy_continuation": "requires deliberate new policy and baseline",
+  "source_sha256": {
+    "sss/guard.py": "e1379e2288cb7b4954b99f36c9e662544fb1604438a3532c71291983dcac357d",
+    "sss_tests/test_guard_policy.py": "9606f06f8a7bd86e3e26e2593ccaac2dd635c77ed3e559b4ee8d9fd9d7a7ce69",
+    "sss_integration/test_pcc_guard.py": "e71134b1323a080fd446f16405e659658f4cc26d06638ef369671f2b7cc7e3fb"
+  },
+  "native_result_sha256": "56eb44e1048fd2435d8837243c24ee3cc6e363933bd455180dc7e1ebe98fa695",
+  "model_inference": false,
+  "semantic_evaluator": "controlled regression/recovery injection",
+  "gpu_used": false,
+  "base_unchanged": true,
+  "promoted": false,
+  "reproducible_commands": [
+    "python -m unittest discover -s sss_tests -v",
+    "PYTHONPATH=/owned/PCC:/owned/BW python -m unittest sss_integration.test_pcc_guard -v",
+    "PYTHONPATH=/owned/PCC:/owned/BW python -m sss_integration.skill_native_cpu --pcc-root /owned/PCC --bw-root /owned/BW --native-executable /owned/build/pcc-native-train --workdir /private/new-proof"
+  ]
+}

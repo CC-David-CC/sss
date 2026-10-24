@@ -17,6 +17,7 @@ SKILL=re.compile(r'[a-z][a-z0-9_.-]{0,95}\Z')
 class SkillTree:
     def __init__(self,document):
         self.document=copy.deepcopy(document)
+        document=self.document  # Detach caller-owned nested lists and dictionaries.
         if (set(document)!={'schema','model_contract_id','nodes'} or type(document['schema']) is not int or document['schema']!=1
                 or not re.fullmatch('[a-f0-9]{64}',str(document['model_contract_id']))):
             raise ValueError('Skill tree schema 1 requires a model contract and explicit nodes')
@@ -75,14 +76,28 @@ class SkillTree:
                     self.cases[case['id']]=dict(case,split=split);self.case_skill[case['id']]=identity;prompts.add(case['prompt'])
         if len(self.cases)>2048:raise ValueError('Skill evaluation budget exceeds 2048 frozen cases')
         self.identity=digest(self.document)
+        self._frozen_index=digest(self._index_document())
+
+    def _index_document(self):
+        return dict(nodes=self.nodes, cases=self.cases, case_skill=self.case_skill,
+                    leaves=self.leaves, children=list(self.children.items()))
+
+    def assert_frozen(self):
+        if (digest(self.document)!=self.identity
+                or digest(self._index_document())!=self._frozen_index):
+            raise ValueError('Skill tree changed after freezing')
 
     def describe(self):
+        self.assert_frozen()
         return dict(schema=1,tree_id=self.identity,model_contract_id=self.document['model_contract_id'],nodes=[
             dict(id=k,title=v['title'],parent=v['parent'],minimum_accuracy=v['minimum_accuracy'],
                  practice_examples=len(v['practice_lesson_ids']),validation_cases=len(v['validation']),blind_cases=len(v['blind']),
                  status='not_evaluated') for k,v in self.nodes.items()])
 
-    def rows(self,split):return [v for v in self.cases.values() if v['split']==split]
+    def rows(self,split):
+        self.assert_frozen()
+        if split not in ('validation','blind'):raise ValueError('Unknown evaluation split')
+        return copy.deepcopy([v for v in self.cases.values() if v['split']==split])
 
     def assess(self,records,split,protected=()):
         expected={v['id'] for v in self.rows(split)};by_id={v['id']:v for v in records}
@@ -112,17 +127,38 @@ class SkillGuardRunner:
             raise ValueError('Focus fraction must retain a substantial replay share')
         self.native=native;self.tree=tree;self.evaluate=evaluate;self.round_examples=round_examples
         self.max_rounds=max_rounds;self.focus_fraction=focus_fraction
-        self.policy_id=digest(dict(tree_id=tree.identity,round_examples=round_examples,max_rounds=max_rounds,focus_fraction=focus_fraction,
-                                   evaluator_contract=getattr(evaluate,'contract_id','controlled-test-callback')))
+        tree.assert_frozen()
+        self.policy_id=digest(self._policy_document())
+
+    def _policy_document(self):
+        return dict(guard_revision=2, tree_id=self.tree.identity,
+                    round_examples=self.round_examples, max_rounds=self.max_rounds,
+                    focus_fraction=self.focus_fraction,
+                    evaluator_contract=getattr(self.evaluate,'contract_id','controlled-test-callback'))
+
+    def assert_frozen(self):
+        self.tree.assert_frozen()
+        if digest(self._policy_document())!=self.policy_id:
+            raise ValueError('Skill guard policy changed after freezing')
+
+    def _evaluate(self,candidate,split,path,worker_fd,protected=()):
+        self.assert_frozen()
+        records=self.evaluate(candidate,split,path,worker_fd)
+        self.assert_frozen()
+        return self.tree.assess(records,split,protected)
 
     def bind(self,read_lesson,make_example,tokenize,model):
+        self.assert_frozen()
         if model!=self.tree.document['model_contract_id']:raise ValueError('Skill tree belongs to another model')
         self.read_lesson=read_lesson;self.make_example=make_example;self.tokenize=tokenize
 
-    def describe_skills(self):return dict(self.tree.describe(),policy_id=self.policy_id,
+    def describe_skills(self):
+        self.assert_frozen()
+        return dict(self.tree.describe(),policy_id=self.policy_id,
         round_examples=self.round_examples,max_rounds=self.max_rounds,focus_fraction=self.focus_fraction)
 
     def validate_request(self,request):
+        self.assert_frozen()
         guard=request['skill_guard']
         if type(guard) is not dict or guard!={'policy_id':self.policy_id}:raise ValueError('Skill policy differs; inspect current skills before a new operation')
         per_round=math.ceil(self.round_examples/request['batch_size'])
@@ -133,6 +169,7 @@ class SkillGuardRunner:
                 raise ValueError('Tag each new lesson with a registered leaf skill_id')
 
     def _materialize(self,request):
+        self.assert_frozen()
         lessons={};pools={}
         check_tokens={}
         for case in self.tree.cases.values():
@@ -142,11 +179,11 @@ class SkillGuardRunner:
         for skill,node in self.tree.leaves.items():
             pools[skill]=list(node['practice_lesson_ids'])
             for identity in pools[skill]:
-                lesson=self.read_lesson(identity)['lesson']
+                lesson=copy.deepcopy(self.read_lesson(identity)['lesson'])
                 if lesson.get('skill_id')!=skill:raise ValueError('Practice lesson has the wrong skill tag')
                 lessons[identity]=lesson
         for identity in request['lesson_ids']:
-            lesson=self.read_lesson(identity)['lesson'];lessons[identity]=lesson
+            lesson=copy.deepcopy(self.read_lesson(identity)['lesson']);lessons[identity]=lesson
             skill=lesson['skill_id']
             if identity not in pools[skill]:pools[skill].insert(0,identity)
         for identity,lesson in lessons.items():
@@ -158,6 +195,7 @@ class SkillGuardRunner:
                    for size,protected in check_tokens.items()
                    for start in range(len(tokens)-size+1)):
                 raise ValueError('Evaluation prompt/token material cannot enter training')
+        self.assert_frozen()
         return lessons,pools
 
     def _select(self,pools,focus,cursors,required):
@@ -188,13 +226,14 @@ class SkillGuardRunner:
 
     def __call__(self,request,examples,run,parent,worker_fd):
         if 'skill_guard' not in request:return self.native(request,examples,run,parent,worker_fd)
+        request=copy.deepcopy(request)
         self.validate_request(request)
         if parent and (parent.get('skill_guard',{}).get('qualified') is not True
                        or parent['skill_guard'].get('policy_id')!=self.policy_id):
             raise ValueError('Continue only a qualified hat under the same frozen skill policy')
         lessons,pools=self._materialize(request);run=Path(run);run.mkdir(mode=0o700,parents=True,exist_ok=False)
         self._write(run/'policy.json',dict(policy_id=self.policy_id,tree=self.tree.document,request=request))
-        baseline=self.tree.assess(self.evaluate(parent,'validation',run/'baseline',worker_fd), 'validation')
+        baseline=self._evaluate(parent,'validation',run/'baseline',worker_fd)
         protected=set(baseline['passed_ids'])
         if parent and not set(parent['skill_guard']['protected_pass_ids'])<=protected:raise ValueError('Parent no longer passes its protected skill checks')
         rounds=[];cursors=Counter();focus=sorted(set(baseline['weak_skills'])|{lessons[v]['skill_id'] for v in request['lesson_ids']})
@@ -205,13 +244,15 @@ class SkillGuardRunner:
                 baseline=baseline['scores'],rounds=rounds,promoted=False,**extra))
         progress('baseline_checked')
         for index in range(budget):
+            self.assert_frozen()
             selected=self._select(pools,focus,cursors,request['lesson_ids'] if index==0 else [])
             native_request=dict(request,lesson_ids=selected,steps=per_round);native_request.pop('skill_guard')
             self._write(run/('round-'+str(index)+'-selection.json'),dict(focus_skills=focus,lesson_ids=selected))
             progress('training',next_round=index+1,focus_skills=focus)
             candidate=self.native(native_request,[self.make_example(lessons[v],v) for v in selected],run/('round-'+str(index)),current,worker_fd)
+            self.assert_frozen()
             progress('evaluating',next_round=index+1)
-            last=self.tree.assess(self.evaluate(candidate,'validation',run/('check-'+str(index)),worker_fd), 'validation',protected)
+            last=self._evaluate(candidate,'validation',run/('check-'+str(index)),worker_fd,protected)
             row=dict(round=index+1,focus_skills=focus,examples=len(selected),distribution=dict(Counter(lessons[v]['skill_id'] for v in selected)),
                      candidate_sha256=candidate['candidate_sha256'],scores=last['scores'],regressed_skills=last['regressed_skills'],weak_skills=last['weak_skills'])
             rounds.append(row);progress('checkpoint_checked')
@@ -221,8 +262,8 @@ class SkillGuardRunner:
             focus=sorted(set(last['regressed_skills'])|set(last['weak_skills']))
         qualified=last['qualified'];blind=None;state='round_budget_exhausted'
         if qualified:
-            original=self.tree.assess(self.evaluate(parent,'blind',run/'blind-original',worker_fd),'blind')
-            blind=self.tree.assess(self.evaluate(candidate,'blind',run/'blind-candidate',worker_fd),'blind',original['passed_ids'])
+            original=self._evaluate(parent,'blind',run/'blind-original',worker_fd)
+            blind=self._evaluate(candidate,'blind',run/'blind-candidate',worker_fd,original['passed_ids'])
             qualified=blind['qualified'];state='qualified' if qualified else 'blind_failed'
         report=dict(schema=1,tree_id=self.tree.identity,policy_id=self.policy_id,qualified=qualified,state=state,promoted=False,
                     baseline=baseline['scores'],rounds=rounds,final_scores=last['scores'],blind_scores=blind['scores'] if blind else None,

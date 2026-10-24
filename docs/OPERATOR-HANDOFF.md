@@ -108,3 +108,10 @@ are mapped to S3 prerequisites. The operator prepares domain environments;
 new per-cell model qualifications remain separate.
 
 Training admission follow-up: The retention guard now inspects admitted tokens across complete multi-turn lessons. Protected validation or blind prompts embedded behind role prefixes or in completions are refused. Four distinguishing unit checks and the actual four-run native CPU guard integration passed.
+
+## Current learning program
+
+See [the reusable learning process](LEARNING-PROGRAM.md) for the full objective,
+acceptance evidence, current gaps and Wen/Codi distinction. The revision-2
+guard freezes its live scoring data and validates policy integrity around
+external callbacks. A new guard revision needs a new policy and baseline.
