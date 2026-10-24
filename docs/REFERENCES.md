@@ -32,3 +32,12 @@ PCC retains native backprop and resource ownership. BW retains its canonical
 workflow ledger, host checks, tools and lesson-authoring evidence. Thin imports
 preserve the earlier optional PCC study entry points. S³ is a separate package
 and repository, rather than another copy of those runtimes.
+
+## LearnHarness
+
+Reference: <https://github.com/amosblomqvist/learnharness>
+
+Inspected revision: `6cba9c8c5afe8a63f47ea4ebae6e91d8a205cebb`. The repository declares AGPL-3.0.
+Read-only design review; no upstream code or examples were imported.
+See [the graph and practice review](LEARNHARNESS-REVIEW.md) for useful concepts,
+source links and the distinction between graph structure and measured mastery.

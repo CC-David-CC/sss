@@ -12,11 +12,11 @@ import math
 import random
 from .records import digest
 
-from . import extended_math
+from . import extended_math, reasoning
 SPLITS=('practice','development','qualification')
 OPERATORS=('add','subtract','multiply','divide','remainder','equal','greater','less','minimum','maximum','absolute','power','floor','ceil','and','or','not','xor')
 SPECIAL=('place_value','round','fraction','ratio','units','area','volume','linear_equation','quadratic_roots','polynomial_value','polynomial_derivative','definite_integral','dot','matrix_product','linear_system','determinant','eigenvalues','probability','bayes','mean','median','variance','quadratic_minimum','state','deduction','proof')
-SPECIAL+=extended_math.KINDS
+SPECIAL+=extended_math.KINDS+reasoning.KINDS
 
 @dataclass(frozen=True)
 class Exercise:
@@ -124,6 +124,7 @@ def check(exercise,completion):
     if type(completion) is not str or len(completion.encode())>65536:return False
     try:
         p=exercise.payload;k=exercise.kind;t=completion.strip()
+        if k in reasoning.KINDS:return reasoning.check(exercise,completion)
         if exercise.gate=='transfer_recovery':
             item=json.loads(t)
             if type(item) is not dict or set(item)!={'previous_correct','answer'} or type(item['previous_correct']) is not bool or type(item['answer']) is not str:return False
@@ -219,6 +220,7 @@ def check_proof(problem,steps):
 def generate(kind,split,index,*,gate='independent',seed=0):
     if kind not in OPERATORS+SPECIAL or split not in SPLITS or type(index) is not int or index<0:raise ValueError('Unknown family/split/index')
     if gate not in ('independent','composition','transfer_recovery'):raise ValueError('Unknown gate')
+    if kind in reasoning.KINDS:return reasoning.generate(kind,split,index,gate,seed)
     if kind in extended_math.KINDS:return extended_math.generate(kind,split,index,gate,seed)
     # Separate generator families: new ranges, presentation and composition shapes.
     family=split+'-'+gate+'-'+kind+'-v1'
@@ -280,6 +282,7 @@ def generate(kind,split,index,*,gate='independent',seed=0):
     return Exercise('foundation.'+kind,kind,split,family,f'{seed}:{family}:{index}',gate,p,text)
 
 def reference(exercise):
+    if exercise.kind in reasoning.KINDS:return reasoning.reference(exercise)
     if exercise.gate=='transfer_recovery':
         answer=reference(replace(exercise,gate='independent'))
         return json.dumps(dict(previous_correct=answer=='0',answer=answer))

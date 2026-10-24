@@ -27,6 +27,8 @@ sss/
   graph.py              validates dependency links and detects cycles
   foundations.py        exact generators and independent graders
   extended_math.py      fraction, decimal and percentage subskills
+  reasoning.py          bounded arguments, method choice and independent checks
+  reasoning_examples.py interleaved practice and a checked delayed archive revisit
   suites/               tool and code task definitions
   adapters/             optional real runtime/environment connections
   mastery.py            frozen three-gate qualification and retention vetoes
@@ -81,3 +83,6 @@ Evaluation inputs/answers never become practice by renaming a file. Public
 examples are deliberately generated, independently checked synthetic practice.
 Bulk archives, real traces, model weights and protected evaluations stay private.
 Changing the catalog or scorer makes a different frozen evaluation version.
+
+[Reasoning connections](REASONING-CURRICULUM.md) add four bounded families. Their
+argument records are separate from the prerequisite graph and measured mastery.

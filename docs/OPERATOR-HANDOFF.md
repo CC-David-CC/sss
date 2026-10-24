@@ -115,3 +115,11 @@ See [the reusable learning process](LEARNING-PROGRAM.md) for the full objective,
 acceptance evidence, current gaps and Wen/Codi distinction. The revision-2
 guard freezes its live scoring data and validates policy integrity around
 external callbacks. A new guard revision needs a new policy and baseline.
+
+## Reasoning curriculum increment
+
+Read [the reasoning curriculum](REASONING-CURRICULUM.md) for the four bounded
+LearnHarness-inspired families and the delayed-revisit fixture. Use existing
+`sss` or `branchwrite skills` commands. A checked demonstration remains synthetic
+practice; it is not model qualification. The changed catalog/source IDs require
+a new frozen evaluation, not migration of an existing comparison.

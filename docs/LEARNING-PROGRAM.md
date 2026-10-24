@@ -78,3 +78,10 @@ counts and denominators, actual GPU allocation-hours, original failures,
 acceptance/rejection, limits and next experiment. Publish reviewed code and
 aggregate results incrementally. Generated GGUFs remain on the training host
 for this campaign; reports identify them by hash rather than uploading weights.
+
+## Reasoning practice increment
+
+[LearnHarness-inspired reasoning practice](REASONING-CURRICULUM.md) adds four
+original bounded families and a source-linked delayed-revisit example. This is
+checked curriculum machinery, not a measured Wen improvement. Keep its new
+catalog and source identities distinct from already frozen training comparisons.

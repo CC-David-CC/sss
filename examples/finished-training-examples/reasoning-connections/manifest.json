@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "origin": "owned-synthetic-practice",
+  "model_inference": false,
+  "trained": false,
+  "protected_questions_included": false,
+  "examples": [
+    {
+      "name": "joint-premises",
+      "skill_id": "logic.joint_premises",
+      "delayed_revisit": false,
+      "archive_head": "332101aeb0f4693c18d61c99b6d2da99387c8b9404def48d4c43c6c310a5ab45",
+      "sha256": "d1cc362517e3d44a9345cf333d14a4ac5a5cb334efb9cc26515eda412d0ff11d",
+      "records": 3,
+      "trained": false
+    },
+    {
+      "name": "premise-change",
+      "skill_id": "logic.premise_robustness",
+      "delayed_revisit": false,
+      "archive_head": "de7e982d09a59c76c77080a5939e7b7e05123fdd974a8bc4d94cde98237a8d98",
+      "sha256": "8f24a5d47a8f7b7918ab1ed59c9419f7f88b7b54e76ae3b832511db3619cd691",
+      "records": 3,
+      "trained": false
+    },
+    {
+      "name": "reverse-support",
+      "skill_id": "logic.reverse_support",
+      "delayed_revisit": false,
+      "archive_head": "04e2018aaa09c3748cbf2bbfba4a3cc9deb100e7bfc5d3d6a753263effb0b4ae",
+      "sha256": "bf62ef13171673d7eb30394ce1a599a3e43a4cad10268a43f93820c77d43df8a",
+      "records": 3,
+      "trained": false
+    },
+    {
+      "name": "method-choice",
+      "skill_id": "math.method_selection",
+      "delayed_revisit": false,
+      "archive_head": "41831355ef9835c9f9c97d51f31ca607674f6d483764e21cf8231f9b1d125690",
+      "sha256": "e250c89ed7fb3b33528cd7ec3f72ca6e0c7a5dc68c9eb7f98f1e4926e1416ba3",
+      "records": 3,
+      "trained": false
+    },
+    {
+      "name": "interleaved-day",
+      "skill_id": "logic.joint_premises",
+      "delayed_revisit": true,
+      "archive_head": "810d451b38f5ca799694ea599c0d26f837ecf75a644cab57a63cbb902e60bd97",
+      "sha256": "b05461b5e3aa708b6080e484e7f6bb3608f7c3a751d4ad2478595666a1689d26",
+      "records": 15,
+      "trained": false
+    }
+  ]
+}

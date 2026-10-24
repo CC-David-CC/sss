@@ -9,7 +9,9 @@
     "requires": [
       "research.experiments",
       "math.variance",
-      "memory.compaction"
+      "memory.compaction",
+      "logic.premise_robustness",
+      "logic.reverse_support"
     ],
     "bands": [
       "unmeasured"

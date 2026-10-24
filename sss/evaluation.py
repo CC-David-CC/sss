@@ -69,7 +69,7 @@ def evaluate(frozen,model,*,maximum_seconds=3600,model_inference=True):
 
 def implementation_identity():
     import hashlib
-    files=('foundations.py','extended_math.py','curriculum.py','mastery.py','evaluation.py','profiles.py','graph.py','catalogue.py','records.py')
+    files=('foundations.py','extended_math.py','reasoning.py','curriculum.py','mastery.py','evaluation.py','profiles.py','graph.py','catalogue.py','records.py')
     return digest({name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in files})
 
 def thaw(root):

@@ -11,4 +11,8 @@ The reasoning spans in the arithmetic examples are checked teaching explanations
 not captured private thoughts from a language model. Selecting target labels is
 an explicit later lesson decision. Evaluation/protected examples do not belong here.
 
-The [foundation pilot TXT](foundation-pilot/practice.txt) contains 108 checked practice question/answer pairs across 9 prerequisite-connected skills. Its separate manifest records107 distinct questions and one rehearsal repeat. Held-out questions are excluded. Eighteen occurrences exercised a tiny CPU training fixture; Wen has not been trained on this pack.
+The [foundation pilot TXT](foundation-pilot/practice.txt) contains 108 checked practice question/answer pairs across 9 prerequisite-connected skills. Its separate manifest records107 distinct questions and one rehearsal repeat. Held-out questions are excluded. The later frozen Wen pilot trained on 108 occurrences and stayed at 17/54 protected checks; see the current foundation pilot report. Artifact-time manifests do not replace later run receipts.
+
+The [reasoning connections](reasoning-connections/README.md) add five original
+checked archives, including an interleaved day and a delayed archive reread.
+These new examples have not trained Wen.

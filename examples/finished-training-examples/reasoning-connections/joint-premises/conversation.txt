@@ -1,0 +1,12 @@
+Skills cubed: completed teaching record
+Artifact complete; no model weight update is implied.
+Archive head: 332101aeb0f4693c18d61c99b6d2da99387c8b9404def48d4c43c6c310a5ab45
+
+[0 | user | question | verified=False | id=5ea7694fa079d4b3c6ab499b0e5b968cad46a055f4bc657b46672e5696d90326]
+These are assumptions of a bounded logic exercise. Every premise of one rule is required together; different rules provide alternative routes. A rule cannot be run backwards. An absent fact is unknown, not false. Problem: {"atoms": ["p146780", "p708780", "p728077", "p555187", "p592066", "p679650", "p532263", "p962299"], "facts": ["p532263", "p555187", "p708780"], "query": "p592066", "rules": [{"conclusion": "p679650", "id": "r30016", "premises": ["p532263", "p555187"]}, {"conclusion": "p728077", "id": "r42464", "premises": ["p679650"]}, {"conclusion": "p679650", "id": "r66225", "premises": ["p146780"]}, {"conclusion": "p592066", "id": "r64548", "premises": ["p728077", "p708780"]}, {"conclusion": "p962299", "id": "r63359", "premises": ["p592066"]}]}. Prove the query. Return JSON {"proof": [rule IDs in a valid execution order]}; cite only rules whose premises are already established. An earlier worker proposed {"proof": ["r30016", "r42464", "r64548"]}. Check it independently. Return {"previous_correct":true or false,"answer":the corrected original JSON response}.
+
+[1 | tool | observation | verified=True | id=b34710014bc77c52e862af7df55bf340cef7ea2bdc58537f1a39ba43bda4c733]
+Independent bounded checker passed. Evidence ba9ddd91a1fada98afc6435b260af6738f6954c77693676e0695f67ad9c1cb84
+
+[2 | assistant | answer | verified=True | id=332101aeb0f4693c18d61c99b6d2da99387c8b9404def48d4c43c6c310a5ab45]
+{"answer": {"proof": ["r30016", "r42464", "r64548"]}, "previous_correct": true}

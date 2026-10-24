@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "logic.joint_premises",
+    "title": "Joint premises and alternative proof routes",
+    "domains": [
+      "logic"
+    ],
+    "requires": [
+      "logic.proof"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "joint_premises"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Original bounded reasoning family inspired by LearnHarness teaching ideas. Independent checkers; model proficiency unmeasured. No natural-language proof or general research qualification implied."
+}

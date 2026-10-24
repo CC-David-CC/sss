@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.method_selection",
+    "title": "Choose the operation in similar-looking problems",
+    "domains": [
+      "math",
+      "grade.3",
+      "grade.5"
+    ],
+    "requires": [
+      "math.add.signed",
+      "math.subtract.signed",
+      "math.multiply",
+      "math.divide"
+    ],
+    "bands": [
+      "bounded-v1"
+    ],
+    "checker": "exact-foundations-v1",
+    "status": "implemented"
+  },
+  "exercise": {
+    "engine": "exact-foundations-v1",
+    "family": "method_selection"
+  },
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Original bounded reasoning family inspired by LearnHarness teaching ideas. Independent checkers; model proficiency unmeasured. No natural-language proof or general research qualification implied."
+}

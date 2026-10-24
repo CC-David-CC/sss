@@ -114,6 +114,12 @@ from sss.suites.tool_use import scenarios, grade
 
 ## Inspiration and provenance
 
+**Strengthened by ideas incorporated from [LearnHarness](https://github.com/amosblomqvist/learnharness).**
+Its teaching design inspired S³’s new, independently checked joint-premise,
+premise-change, reverse-support and method-selection exercises. Skill
+prerequisites, lesson arguments and measured mastery stay separate.
+[Try the reasoning curriculum and delayed archive revisit](docs/REASONING-CURRICULUM.md).
+
 [SeraphimSerapis/tool-eval-bench](https://github.com/SeraphimSerapis/tool-eval-bench)
 informed the tool-use categories: tool selection, precise arguments, dependency
 chains, read-before-write, recovery and truthful completion. Its mock-tool scope

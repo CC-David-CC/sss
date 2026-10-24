@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "reference_checks": {
+    "passed": 36,
+    "total": 36,
+    "model_inference": false,
+    "formal_model_qualification": false
+  },
+  "bw_cli_calls": 6,
+  "commands_passed": 7,
+  "public_example_archives": 5,
+  "public_example_records": 27,
+  "weights_updated": false,
+  "promoted": false,
+  "source_files": {
+    "reasoning.py": "80e98404d8c64e8754564e37ce5f1605b5810914f562ba9e441d95eff17c4631",
+    "reasoning_examples.py": "a378486dd62e7942c485aeb23ba2d52c3dfce83037a46c794611476ca65c7bb3",
+    "foundation_cli.py": "c5f02f122627d0ec4842299d48c73f4027519d9835fa425da192cc2096285126",
+    "foundations.py": "9dc764dd291c560d7fa9000341fb828663ddf9e1a185c1c2c1948b9ff48d29b5",
+    "evaluation.py": "66d27619211eea8730d4864e311be4b9b5a5bb9ac96aa45b662d39c8bf0bf3c5"
+  },
+  "core_tests": {
+    "passed": 93,
+    "failed": 0
+  },
+  "scope": "Original bounded reasoning curriculum and existing BW import; no live model inference",
+  "upstream": {
+    "repository": "https://github.com/amosblomqvist/learnharness",
+    "reviewed_revision": "6cba9c8c5afe8a63f47ea4ebae6e91d8a205cebb",
+    "use": "Design inspiration only; no upstream code or examples copied"
+  },
+  "ownership": {
+    "sss": "Definitions, generators, independent checks, practice evidence and assessment",
+    "bw": "Existing optional import; task execution, grants and canonical ledger",
+    "pcc": "Inference, contexts, native training, model identities and GPU admission"
+  },
+  "limitations": [
+    "No Wen learning claim",
+    "No arbitrary natural-language proof validation",
+    "No extended-context qualification",
+    "Existing frozen model comparisons were not changed"
+  ]
+}
