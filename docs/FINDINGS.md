@@ -368,6 +368,26 @@ incumbent and failed variants, whole-run budget differences and task verdicts
 visible. [Evidence](../validation/learning-program-20261024/minicpm-bw-shell-investigation.json),
 [readable BW investigation](https://github.com/CC-David-CC/BranchWrite/blob/feat/minicpm-shell-feedback-20261024/docs/MINICPM-SHELL-INVESTIGATION.md).
 
+## 29. A vocabulary is not a context, and output selection can change numerics
+
+The 130,560 compared values were next-token vocabulary logits for inputs of ten
+and eight tokens, not a 130K-token context. Both native paths chose the same top
+token, but that was only a sanity check. Independent actual-model FP64 checks
+put all-position training-forward errors below 4.46e-5.
+
+The remaining native-inference mismatch is isolated by output selection: the
+same binary/GPU/weights/inputs change by about 0.01019 and 0.00447 when selecting
+all positions rather than just the final one. Matching full-output selection and
+prefill schedule reduces inference-versus-training differences below 2.26e-5.
+Repeated identical fresh calls were exact in the measured modes. No tolerance
+was widened; this is not a universal cross-profile equality claim or a learning
+result. The low-level kernel algorithm has not been identified.
+
+Native AdamW/Muon now pass CPU/CUDA tiny math and completed-resume checks in PCC.
+BW does not yet expose the Muon settings, and the real MiniCPM learning campaign
+has not run. [Evidence](../validation/learning-program-20261024/native-optimizer-qualification.json),
+[PCC implementation and limits](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-muon-20261024/experimental/native_training/OPTIMIZER-QUALIFICATION.md).
+
 ## Keep this log useful
 
 For each new finding, record the exact model/client/source and tested workload,
