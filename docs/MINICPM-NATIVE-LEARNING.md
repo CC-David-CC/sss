@@ -4,8 +4,9 @@ A model can calculate an answer and still fail the task: it may add an unwanted
 explanation, ignore JSON requirements or keep generating instead of finishing.
 The first larger MiniCPM baseline now measures exact answers and natural response
 completion separately. The first full-update candidate has completed its
-learning/retention assessment: it gains strongly but fails preservation. Standard
-Muon and its two declared variants are still in progress.
+learning/retention assessment: it gains strongly but fails strict preservation.
+The four-arm optimizer comparison is complete, and the first mixed repair
+improves the working checkpoint again, from 482 to 507 exact answers.
 
 ## Standing goal and continuous loop
 
@@ -31,7 +32,10 @@ the A100 campaign ceiling; it continues until the owner stops or redirects it.
 
 The [cross-project implementation design](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-training-budget-20261024/docs/NATIVE-LEARNING-LOOP.md)
 places durable execution in PCC, curriculum/scoring in S3 and driving tools in BW.
-Proposed API/CLI features are explicitly distinguished from current experimental support.
+The [implemented native job commands](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-learning-path-20261024/docs/NATIVE-LEARNING-JOBS.md)
+now expose registered AdamW/Muon profiles and private named GGUF preservation.
+Tiny native CPU HTTP/CLI mechanics pass; full-model GPU pathway exercise is in
+progress. Durable automatic multi-round orchestration and the BW driver remain unfinished.
 
 ## What the baseline establishes
 
@@ -150,7 +154,7 @@ long-context retention.
 [CPU budget evidence](../validation/minicpm-native-learning-20261024/cpu-budget.json),
 [CUDA budget evidence](../validation/minicpm-native-learning-20261024/cuda-budget.json),
 [source/gradient checks](../validation/minicpm-native-learning-20261024/source-checks.json).
-140 standard-library core tests and three optional token-protocol tests pass.
+149 standard-library core tests and three optional token-protocol tests pass.
 
 ## Next data round: corrected lessons, checked variation, public breadth
 
@@ -205,9 +209,11 @@ optimizer resume remains a separate operation. 149 core tests pass at this point
 
 The offline integration command now accepts an explicit working-parent result and
 its source practice document for that transition. A new-data gradient check and
-actual mixed-repair training/evaluation are queued after the frozen four-arm
-comparison, so this transition is not yet claimed GPU-qualified. The durable
-PCC loop API/CLI and BW driver remain planned work in the cross-project design.
+actual mixed-repair training/evaluation have completed after the frozen four-arm
+comparison. The offline new-data transition is GPU-qualified by that run. The
+new registered native HTTP/CLI pathway is separately CPU-qualified and is now
+being exercised on the full model. Automatic durable multi-round control and
+the BW driver remain unfinished.
 
 [Quantization-retention experiment](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-training-budget-20261024/docs/MINICPM-QUANTIZATION-STUDY.md)
 will compare original and trained models in F32, F16, Q8, Q5, Q4, Q3, Q2 and Q1_0.
@@ -226,8 +232,60 @@ Native grouping uses Muon for 294 matrices and auxiliary AdamW for 87 tensors.
 [Measured timing, groups and paired losses](../validation/minicpm-native-learning-20261024/muon-standard.json).
 Different main learning rates and data exposure remain part of these declared
 regimens; the 9-answer total difference is not a controlled optimizer-only causal
-claim or a general ranking. RMS/decay and refinement results are still pending.
+claim or a general ranking. Completed RMS/decay and refinement measurements
+appear below.
 
 The prepared repair block has 944 distinct questions and 16 explicitly counted
 rehearsals across its 960 occurrences. [Finished checked practice](../examples/finished-training-examples/minicpm-mixed-repair/practice.txt)
 and its diversity manifest contain no protected test answers.
+
+## Completed optimizer comparison and second learning checkpoint
+
+The four declared regimens have all completed the same frozen 864-case
+development assessment. These are one-run measurements on the dedicated
+Blackwell, not shared A100 timing samples.
+
+| Regimen | Exact answers /864 | Natural completions /864 | Full updates | Practice presentations | Training-phase seconds | Original answers gained/lost |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| AdamW |482|864|68|1836|303.23|434 / 11|
+| Standard Muon |473|864|43|1161|305.77|437 / 23|
+| RMS/decay Muon |464|864|42|1134|300.09|428 / 23|
+| Fast-to-refine Muon |465|864|34|918|307.85|425 / 19|
+
+Fast-to-refine actually exercised its refinement schedule. Each variant remains
+preserved as a named standalone local F32 GGUF, with lineage and limitations.
+The historical strict gate rejected all four for lost previous answers. Those
+records are retained alongside the owner's working-checkpoint policy.
+
+In this implementation standard Muon's optimizer phase took about 2.72 seconds
+per update versus AdamW's 0.061 seconds; matrix projection cost outweighed the
+cheaper state representation. The time cap therefore exposed Muon to fewer
+practice presentations. This is actionable native implementation evidence, not
+a claim that Muon generally trains worse or that equal update counts would
+produce the same ranking. Main rates, scaling, decay and exposure differ between
+regimens. Effective-rank and update-geometry measurements remain pending.
+
+**MixedRepair-02 then improves AdamW's 482/864 to 507/864 (58.68%).** It gains
+51 answers and loses 26 relative to its immediate parent: net +25. Relative to
+the original it gains 458 and loses 10: net +448. Natural completion changes
+864 to 860; all four new unfinished responses occur in fraction-add composition.
+Several other composition/state groups remain weak. Report the lost cases as
+well as the higher total, and teach checked variations in their families.
+
+This block performs 62 full updates /1,860 presentations in 302.31 training-phase
+seconds on the 960-occurrence mixed curriculum described above. Every update
+again has 381 finite/nonzero gradient tensors; saved-model reload mean-loss error
+is 2.83e-9. Both parent and child store F32 weights and use the same runtime,
+checker, cases and limits, providing a cleaner learning comparison than the
+original-F16 versus first-trained-F32 contrast. No public dataset rows were used.
+
+The owner retains this improved checkpoint and carries its failures into the
+next block. The next checked selection has 1,344 lessons in 32 batches of 42:
+27 review slots cover every existing skill/gate and 15 additional slots target
+regression families. This is increased mixed repair, not training on protected
+answers. Its actual native HTTP/CLI run is in progress; no third score is claimed.
+
+[Complete aggregate measurements, all skill/gate groups, timing and repair proposal](../validation/minicpm-native-learning-20261024/comparison-and-repair.json).
+These development measurements guide repeated improvement; they do not establish
+sealed qualification, Linux/tool-use improvement, broad retention or production
+serving throughput. No model file has been uploaded.
