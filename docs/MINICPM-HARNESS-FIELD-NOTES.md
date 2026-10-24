@@ -1,0 +1,150 @@
+# Getting seven harnesses working with MiniCPM
+
+An agent told us it had repaired a function, written the requested result, and
+verified positive, negative, and zero inputs. Its checks looked good. The saved
+function was still broken.
+
+It had defined a corrected function inside a temporary Python command, used
+that function to produce the right output, and tested another temporary copy.
+The actual source file kept its original bug. A fresh checker loaded the saved
+source and rejected the task.
+
+Another agent repaired the source and produced the correct output, but changed
+the input document it had explicitly been told to preserve. Four other
+harnesses completed the same task and passed the independent checks. All used
+the same MiniCPM weights. No training update occurred.
+
+This is the story of getting the harnesses connected, and the useful failures
+that appeared as soon as we checked their work.
+
+## What actually ran
+
+We connected six real external clients to the official MiniCPM5-2B F16 GGUF
+through a native llama.cpp server. Each client kept its own prompts, tools,
+schemas, execution loop, and output format. Each ran in a fresh isolated Linux
+workspace on llm-49; the model ran on llm-60. The client could reach only the
+granted model endpoint. It received no host credentials or general network
+route.
+
+The task required reading an input document, fixing an addition function,
+writing a result derived from the input, verifying the function, and preserving
+the input. Our separate checker examined the saved source, exercised additional
+inputs, checked the written result, and compared the original input bytes.
+
+| Harness | Observed result on this task |
+| --- | --- |
+| Codex 0.164.0 | Passed. Saved repair, correct result, preserved input. |
+| OpenCode 2.1.4 | Passed. Saved repair, correct result, preserved input. |
+| pi 1.4.0 | Passed after correcting its context declaration to 8K. |
+| Hermes at revision `5894e750` | Passed after configuring a genuine 64K server slot and compatible launch settings. |
+| Qwen Code 0.26.0 | Failed. Correct result and preserved input, but the saved function remained broken. |
+| DeepSeek Harness 0.2.1-rc.2 | Failed. Correct source and result, but changed the protected input structure. |
+| BranchWrite | MiniCPM execution pending. Earlier Wen and CPU evidence does not fill this cell. |
+
+These are observations from one task under fixed sampling, with configuration
+repairs recorded separately. They establish different outcomes across these
+stacks. They do not establish a general ranking, a failure percentage, or the
+causal effect of a harness name. Prompts, schemas, protocols, context settings,
+and tool implementations all differ. The server configuration also changed
+during compatibility qualification, so these trials are unsuitable for a speed
+leaderboard.
+
+The [aggregate evidence](../validation/learning-program-20261024/minicpm-harness-discovery.json)
+records model and client identities, the original receipt digests, individual
+checks, and unsuccessful configuration attempts. Raw task material and traces
+remain private.
+
+## The fundamentals behind the difference
+
+A harness helps determine what the model sees and what its output can do. The
+same weights can receive different instructions, tool descriptions, conversation
+history, and continuation messages. A valid-looking tool call can then have a
+different effect depending on the tool implementation and its arguments.
+
+Execution introduces another boundary: writing a correct function into a Python
+command creates a function in that process. Persisting a repair requires changing
+the source file. Testing the temporary function proves that temporary function
+works. A later process importing the saved program can still encounter the old
+bug. Qwen Code's observed trajectory demonstrated exactly that distinction.
+
+Verification needs its own boundary too. Agents can misunderstand the task,
+test the wrong object, or reinterpret a forbidden edit as a helpful cleanup.
+DeepSeek's completed run described its input rewrite while also claiming the
+input was preserved. The independent checker enforced the original requirement.
+
+Context capacity has a client component as well as a model component. Pi's
+pinned client subtracts a 4,096-token safety reserve before choosing its output
+allowance. Declaring a 4K window led it to send `max_tokens: 1`; the first live
+attempt produced no useful action. An 8K declaration allowed the task to finish
+with unchanged weights. Earlier prompt-token measurements correctly showed that
+the text fit within 4K, but that was insufficient to qualify the client's output
+budget. The findings log preserves and corrects that interpretation.
+
+Hermes introduced a different requirement: this pinned version enforces a
+64,000-token minimum context for its custom-provider path. We provisioned actual
+65,536-token slots rather than merely claiming a larger number in its config.
+The task itself used much less context. That startup policy does not establish
+that this task intrinsically needs 64K.
+
+## Agent hype and our mandatory contribution to it
+
+An impressive agent demo can end with a confident summary and some green checks.
+The function may exist only in the terminal's imagination. Put a graph behind
+the summary, call the retry loop self-improvement, and apparently we have solved
+software engineering. The source file would like a word.
+
+Having made fun of that pitch, we are obliged to supply our own. Satirical launch
+copy follows:
+
+> Introducing Skills³, the revolutionary agentic intelligence platform that
+> transforms heterogeneous autonomous execution into verified capability
+> convergence. Powered by the breakthrough discovery of reopening the file.
+
+Our actual claim is smaller and useful: the machinery caught two plausible
+completion claims that were wrong, while recording the successful runs too.
+That gives us concrete behaviors to investigate and better controls for the
+learning loop.
+
+## Where BW and training fit
+
+BW is the seventh harness and our primary improvement target. It owns user
+tasks, tools, grants, and its task ledger. PCC owns native model execution,
+branching context, model versions, training, and resources. S³ owns the skill
+graph, independent scoring, practice selection, and regression evidence.
+
+BW uses PCC's native branching-context protocol. Connecting an external client
+to the llama.cpp API does not qualify that BW path. MiniCPM needs the appropriate
+dense attention layout and tool-call handling there. Wen is also dense; its
+hybrid recurrent/attention layout differs from MiniCPM's ordinary attention
+layout. Expert routing is not the obstacle in this integration.
+
+The current decision rule is practical. If at least two harnesses can complete
+the task, use them as controls and improve BW to the same independently checked
+standard if BW fails. Four external harnesses already provide passing controls
+here. We can borrow useful methods without optimizing every external harness
+for its own sake. If all qualified stacks fail a later task, first examine their
+shared inference and test foundations, then investigate training and skill
+coverage.
+
+Harness improvements come before the next full-weight skill-training phase.
+Training will use verified, varied lessons with mixed review, and separately
+measure gains and losses. Fixed-weight harness changes and changed-weight
+results remain distinct. A good anecdote earns an experiment; improvement
+claims require broader transfer and retention evidence.
+
+## Reproducible identities
+
+The model is
+[`openbmb/MiniCPM5-2B-GGUF`](https://huggingface.co/openbmb/MiniCPM5-2B-GGUF/tree/2079a22f3beaa4e306449978533478fe0522f4b3),
+`MiniCPM5-2B-F16.gguf`, 5,039,006,688 bytes, SHA-256
+`0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25`.
+The server used clean llama.cpp revision
+[`972d2313`](https://github.com/ggml-org/llama.cpp/tree/972d2313bc0bf0a45f634f77d95c9fb03aeab12c),
+including its native MiniCPM tool-call parser. Effective sampling was temperature
+zero and seed zero, reasoning disabled, with at most 512 output tokens per
+request. The broker recorded original and normalized requests separately.
+
+Source pins, dependency locks, immutable request intents, API terminal events,
+client events, isolated process settlement, and independent artifact checks
+serve different purposes. Keeping those distinctions makes a failed run useful
+instead of inconvenient.

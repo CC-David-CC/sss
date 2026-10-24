@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "evidence_kind": "synthetic_transport_real_host_tools",
+  "results": [
+    {
+      "schema": 1,
+      "app": "codex",
+      "version": "0.164.0",
+      "operation_id": "3aa2575d71a866020fc3b6e6b5524871c6635cac1071e2c76a8cae399564d5b4",
+      "manifest_sha256": "e2079223b3da2b918a0363f0847d311f14782aaa1df70727c2edad2ca40a9fdb",
+      "backend_identity": {
+        "evidence_kind": "synthetic_transport",
+        "real_model_calls": 0,
+        "pcc_source": "cfe85e05c511a7a9dc52f655f44f4e1315674087"
+      },
+      "transport_complete": true,
+      "forwarded_model_requests": 5,
+      "original_transport_operations": [
+        "3aa2575d71a866020fc3b6e6b5524871c6635cac1071e2c76a8cae399564d5b4:1",
+        "3aa2575d71a866020fc3b6e6b5524871c6635cac1071e2c76a8cae399564d5b4:2",
+        "3aa2575d71a866020fc3b6e6b5524871c6635cac1071e2c76a8cae399564d5b4:3",
+        "3aa2575d71a866020fc3b6e6b5524871c6635cac1071e2c76a8cae399564d5b4:4",
+        "3aa2575d71a866020fc3b6e6b5524871c6635cac1071e2c76a8cae399564d5b4:5"
+      ],
+      "denied_discovery_operations": [],
+      "uncertain": false,
+      "boundary_settled": true,
+      "client": {
+        "schema": 1,
+        "app": "codex",
+        "configured_model": "wen-fixture",
+        "context": 16384,
+        "client_exit_code": 0,
+        "client_timed_out": false,
+        "elapsed_seconds": 6.027528528124094,
+        "task_success_not_inferred_from_exit_code": true
+      },
+      "boundary_receipt_sha256": "a8043fb0039384bd3f5fe6c8e656e9a03f8a303ff93f8e79f10962eb090f3c51",
+      "task_success_inferred": false,
+      "promoted": false,
+      "fixture_passed": true,
+      "repair_verified": true,
+      "write_verified": true,
+      "host_secret_absent_from_world": true,
+      "delegation_tools_absent": true,
+      "actual_tools": [
+        "exec_command",
+        "exec_command",
+        "exec_command",
+        "exec_command"
+      ],
+      "failures": [],
+      "real_model_calls": 0,
+      "pcc_native_backend_tested": false
+    },
+    {
+      "schema": 1,
+      "app": "opencode",
+      "version": "2.1.4",
+      "operation_id": "b25f8d3ad8bd650c84174b66afd786b62aeccc7c9562e21726f145d0da353378",
+      "manifest_sha256": "9607e35bb43920ea3ef5f6610f0f8ab70c644232a34f48b13ef86929476b32ca",
+      "backend_identity": {
+        "evidence_kind": "synthetic_transport",
+        "real_model_calls": 0,
+        "pcc_source": "cfe85e05c511a7a9dc52f655f44f4e1315674087"
+      },
+      "transport_complete": true,
+      "forwarded_model_requests": 5,
+      "original_transport_operations": [
+        "b25f8d3ad8bd650c84174b66afd786b62aeccc7c9562e21726f145d0da353378:1",
+        "b25f8d3ad8bd650c84174b66afd786b62aeccc7c9562e21726f145d0da353378:2",
+        "b25f8d3ad8bd650c84174b66afd786b62aeccc7c9562e21726f145d0da353378:3",
+        "b25f8d3ad8bd650c84174b66afd786b62aeccc7c9562e21726f145d0da353378:4",
+        "b25f8d3ad8bd650c84174b66afd786b62aeccc7c9562e21726f145d0da353378:5"
+      ],
+      "denied_discovery_operations": [],
+      "uncertain": false,
+      "boundary_settled": true,
+      "client": {
+        "schema": 1,
+        "app": "opencode",
+        "configured_model": "wen-fixture",
+        "context": 16384,
+        "client_exit_code": 0,
+        "client_timed_out": false,
+        "elapsed_seconds": 1.0629546630661935,
+        "task_success_not_inferred_from_exit_code": true
+      },
+      "boundary_receipt_sha256": "6982d06ae60574e2a4c14ba7eec43aaa3c6a5e8fd649296d889036e37178aa94",
+      "task_success_inferred": false,
+      "promoted": false,
+      "fixture_passed": true,
+      "repair_verified": true,
+      "write_verified": true,
+      "host_secret_absent_from_world": true,
+      "delegation_tools_absent": true,
+      "actual_tools": [
+        "read",
+        "write",
+        "edit",
+        "shell"
+      ],
+      "failures": [],
+      "real_model_calls": 0,
+      "pcc_native_backend_tested": false
+    },
+    {
+      "schema": 1,
+      "app": "pi",
+      "version": "1.4.0",
+      "operation_id": "a5005a2241b6425401ff3552b308a9de2cd1a3462c89ef72d98a880d5c2ee93e",
+      "manifest_sha256": "606b0b1bbce06f10be1ad206839535d090b8b59d1c7a28ee2feee50e99da3e49",
+      "backend_identity": {
+        "evidence_kind": "synthetic_transport",
+        "real_model_calls": 0,
+        "pcc_source": "cfe85e05c511a7a9dc52f655f44f4e1315674087"
+      },
+      "transport_complete": true,
+      "forwarded_model_requests": 5,
+      "original_transport_operations": [
+        "a5005a2241b6425401ff3552b308a9de2cd1a3462c89ef72d98a880d5c2ee93e:1",
+        "a5005a2241b6425401ff3552b308a9de2cd1a3462c89ef72d98a880d5c2ee93e:2",
+        "a5005a2241b6425401ff3552b308a9de2cd1a3462c89ef72d98a880d5c2ee93e:3",
+        "a5005a2241b6425401ff3552b308a9de2cd1a3462c89ef72d98a880d5c2ee93e:4",
+        "a5005a2241b6425401ff3552b308a9de2cd1a3462c89ef72d98a880d5c2ee93e:5"
+      ],
+      "denied_discovery_operations": [],
+      "uncertain": false,
+      "boundary_settled": true,
+      "client": {
+        "schema": 1,
+        "app": "pi",
+        "configured_model": "wen-fixture",
+        "context": 16384,
+        "client_exit_code": 0,
+        "client_timed_out": false,
+        "elapsed_seconds": 1.0263449200429022,
+        "task_success_not_inferred_from_exit_code": true
+      },
+      "boundary_receipt_sha256": "22b33896568d0c5339a6b233747a24c1bc9bc526355c05bd6a68d2f76c953a3f",
+      "task_success_inferred": false,
+      "promoted": false,
+      "fixture_passed": true,
+      "repair_verified": true,
+      "write_verified": true,
+      "host_secret_absent_from_world": true,
+      "delegation_tools_absent": true,
+      "actual_tools": [
+        "read",
+        "write",
+        "edit",
+        "bash"
+      ],
+      "failures": [],
+      "real_model_calls": 0,
+      "pcc_native_backend_tested": false
+    }
+  ],
+  "all_passed": true,
+  "real_model_calls": 0,
+  "weights_updated": false,
+  "promoted": false
+}

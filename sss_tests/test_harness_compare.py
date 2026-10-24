@@ -99,6 +99,21 @@ class HarnessComparisonTests(unittest.TestCase):
         self.assertEqual(result['evidence_kind'], 'synthetic_contract')
         self.assertTrue(all(r['bounded_transfer_screen_passed'] for r in result['comparisons']))
 
+    def test_seven_hosts_keep_separate_plans_and_qualification_gaps(self):
+        spec=specification()
+        for host,revision in [('hermes','5894e750c3dba980d43b25aa29e3958149ba2c61'),('qwen','0.26.0'),('dsh','0.2.1-rc.2')]:
+            spec['harnesses'].append(dict(id=host,revision=revision,
+                base_sha256=digest([host,'own-base']),transport='fixture',adapter_revision='fixture-v1',qualification_sha256=None))
+        study=HarnessStudy(spec);plan=study.plan()
+        self.assertEqual(plan['development_executions'],28)
+        self.assertEqual(plan['followup_executions'],28)
+        self.assertEqual(plan['minimum_editor_sessions'],21)
+        self.assertEqual(len({r['execution_id'] for r in plan['executions']}),56)
+        report=compare(study,fixture(study))
+        for row in report['comparisons']:
+            self.assertTrue(row['complete'])
+            self.assertEqual(row['bounded_transfer_screen_passed'],row['harness'] not in ('hermes','qwen','dsh'))
+
     def test_spec_is_detached_and_no_mutation_thaws_a_plan(self):
         original = specification()
         study = HarnessStudy(original)

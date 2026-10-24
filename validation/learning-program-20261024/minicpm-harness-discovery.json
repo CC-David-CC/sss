@@ -1,0 +1,266 @@
+{
+  "schema": 1,
+  "date_utc": "2026-10-24",
+  "evidence_kind": "live_native_inference_actual_external_harnesses",
+  "purpose": "Initial compatibility and behavior discovery; BW is the next comparison target",
+  "model": {
+    "repository": "openbmb/MiniCPM5-2B-GGUF",
+    "revision": "2079a22f3beaa4e306449978533478fe0522f4b3",
+    "filename": "MiniCPM5-2B-F16.gguf",
+    "bytes": 5039006688,
+    "sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25"
+  },
+  "runtime": {
+    "backend": "native llama.cpp API; PCC COW not qualified by this probe",
+    "revision": "972d2313bc0bf0a45f634f77d95c9fb03aeab12c",
+    "client_host": "llm-49",
+    "model_host": "llm-60",
+    "context_slots_initial": 16384,
+    "context_slots_later": 65536,
+    "maximum_parallel_slots": 4,
+    "temperature": 0,
+    "seed": 0,
+    "reasoning": "off",
+    "maximum_output_tokens": 512
+  },
+  "results": [
+    {
+      "harness": "codex",
+      "revision": "0.164.0",
+      "context_declaration": 16384,
+      "transport_complete": true,
+      "boundary_settled": true,
+      "client_exit_code": 0,
+      "checks": {
+        "saved_function_correct": true,
+        "written_result_correct": true,
+        "input_bytes_preserved": true
+      },
+      "task_passed": true,
+      "model_calls": 5,
+      "original_operation_id": "minicpm-baseline-1024-a-codex",
+      "original_manifest_sha256": "7f509e393e7e020d3a883a9083b0a7042278c932fa9faba167c7a9e2345ff71e",
+      "original_result_sha256": "8d4b2c0c9438329422470a4a8a4cddf3a8306807a6f9580042f227868f558df0",
+      "original_boundary_receipt_sha256": "15e819de3159da37018fd3e347a27a7d27b99ca69e0da0756c3e4da727af975d",
+      "independent_check_source_sha256": "5b910a6c7aa87af7960f56dea22ef00c3a5c5b78c96c65136b5cc2f15b5c868c",
+      "independent_check_receipt_sha256": "561fcfafa2b298bb727eae9dfcaa8a4ea621bc0735790e80c64aafff93681421",
+      "artifact_sha256": "f069539e2036ad586441198c9a24e5493cebf08e1749d9946259c57b765268bc",
+      "original_adapter_source_sha256": {
+        "harness_socket.py": "b578f9b45404136eee570340c36383a7cf2463e68b98d5e5e088e45797259136",
+        "model_socket.py": "a323b95dc21c27e617361bd9bb342393c2953a67eebf96c6ec786162d1d1ef38",
+        "socket_harness_client.py": "7b0b1f39c70f1311249e71c66a94f8c6f2d5f266c1334e31847ba7a53dd573e2",
+        "external_apps_fixture.py": "5e1d9d32d44ca428eb235f136103d83be74132427f8dec44f280f0b7c1a7a5e6"
+      },
+      "denied_discovery_operations": []
+    },
+    {
+      "harness": "opencode",
+      "revision": "2.1.4",
+      "context_declaration": 4096,
+      "transport_complete": true,
+      "boundary_settled": true,
+      "client_exit_code": 0,
+      "checks": {
+        "saved_function_correct": true,
+        "written_result_correct": true,
+        "input_bytes_preserved": true
+      },
+      "task_passed": true,
+      "model_calls": 6,
+      "original_operation_id": "minicpm-baseline-1024-a-opencode",
+      "original_manifest_sha256": "d4dfa505e4eae19dacbde035d20a12a29cdefc5e44facf348f20be17d855cc17",
+      "original_result_sha256": "d9fed227ebea8224644abc3300ed60f9c14bd7ebc168fe3dcbe955fae545b2cd",
+      "original_boundary_receipt_sha256": "b206c18403a77d5f84c3424788ef4b5559e399cf3d0c3d2bce60836855727253",
+      "independent_check_source_sha256": "5b910a6c7aa87af7960f56dea22ef00c3a5c5b78c96c65136b5cc2f15b5c868c",
+      "independent_check_receipt_sha256": "3382cc8c54e45a0be61b10d8a35d05d7b4c44cb1949cd90922bb38a41b032a76",
+      "artifact_sha256": "f069539e2036ad586441198c9a24e5493cebf08e1749d9946259c57b765268bc",
+      "original_adapter_source_sha256": {
+        "harness_socket.py": "b578f9b45404136eee570340c36383a7cf2463e68b98d5e5e088e45797259136",
+        "model_socket.py": "a323b95dc21c27e617361bd9bb342393c2953a67eebf96c6ec786162d1d1ef38",
+        "socket_harness_client.py": "7b0b1f39c70f1311249e71c66a94f8c6f2d5f266c1334e31847ba7a53dd573e2",
+        "external_apps_fixture.py": "5e1d9d32d44ca428eb235f136103d83be74132427f8dec44f280f0b7c1a7a5e6"
+      },
+      "denied_discovery_operations": []
+    },
+    {
+      "harness": "pi",
+      "revision": "1.4.0",
+      "context_declaration": 8192,
+      "transport_complete": true,
+      "boundary_settled": true,
+      "client_exit_code": 0,
+      "checks": {
+        "saved_function_correct": true,
+        "written_result_correct": true,
+        "input_bytes_preserved": true
+      },
+      "task_passed": true,
+      "model_calls": 9,
+      "original_operation_id": "minicpm-context-probe-1024-b-pi",
+      "original_manifest_sha256": "9b581b7b00056f4774e82a06d1df765aa28399028b25d066a89e80ad800c7b07",
+      "original_result_sha256": "10f0d47a86709bd1961f14bd2bb85e20a35c11b2bd96234b114631ec22602cb8",
+      "original_boundary_receipt_sha256": "13cbda18d8c19b94f3e537736d5404c03854dbfce8bd6959d1b931c8741e5264",
+      "independent_check_source_sha256": "5b910a6c7aa87af7960f56dea22ef00c3a5c5b78c96c65136b5cc2f15b5c868c",
+      "independent_check_receipt_sha256": "47926897625c8f57bfec4533365fd7f513cd405e1f16487f1c8bdfab6b8439d4",
+      "artifact_sha256": "2b8d11832e54ff0a516cd07cf4a49268c76ef0ee4dbf407e92bca5340d47bd8a",
+      "original_adapter_source_sha256": {
+        "harness_socket.py": "b578f9b45404136eee570340c36383a7cf2463e68b98d5e5e088e45797259136",
+        "model_socket.py": "a323b95dc21c27e617361bd9bb342393c2953a67eebf96c6ec786162d1d1ef38",
+        "socket_harness_client.py": "7b0b1f39c70f1311249e71c66a94f8c6f2d5f266c1334e31847ba7a53dd573e2",
+        "external_apps_fixture.py": "5e1d9d32d44ca428eb235f136103d83be74132427f8dec44f280f0b7c1a7a5e6"
+      },
+      "denied_discovery_operations": []
+    },
+    {
+      "harness": "hermes",
+      "revision": "5894e750c3dba980d43b25aa29e3958149ba2c61",
+      "context_declaration": 65536,
+      "transport_complete": true,
+      "boundary_settled": true,
+      "client_exit_code": 0,
+      "checks": {
+        "saved_function_correct": true,
+        "written_result_correct": true,
+        "input_bytes_preserved": true
+      },
+      "task_passed": true,
+      "model_calls": 10,
+      "original_operation_id": "minicpm-baseline-1024-f-hermes",
+      "original_manifest_sha256": "214f876b690449de5ae5a26e67164fa73c01c03562d24e0305bbcbe406399bee",
+      "original_result_sha256": "9940badb4d3c2fed6cff52b69d7439bf8d21132ce2011a196a2cdd7e3b0aa9c7",
+      "original_boundary_receipt_sha256": "c35a39c6d39f77ddb84e59340bf68ff69fe7213df40fb02e1e4b85d483a77ec6",
+      "independent_check_source_sha256": "5b910a6c7aa87af7960f56dea22ef00c3a5c5b78c96c65136b5cc2f15b5c868c",
+      "independent_check_receipt_sha256": "3ac6a8e9ae138d5afcabd7ed6f2683fa32853bec3a21d66ee118cc430811edfc",
+      "artifact_sha256": "2b8d11832e54ff0a516cd07cf4a49268c76ef0ee4dbf407e92bca5340d47bd8a",
+      "original_adapter_source_sha256": {
+        "harness_socket.py": "6ace4abe8b81cecf720ab1408f678d7f2ad056fe0a316e1624d8191a46b80bf2",
+        "harness_pins.py": "c0a39ec2408a04ddf7b48a076ffc559913898350fb25e3e060a5f1c2010378f7",
+        "model_socket.py": "a323b95dc21c27e617361bd9bb342393c2953a67eebf96c6ec786162d1d1ef38",
+        "socket_harness_client.py": "2cd617f807e7b2de41c9f9c432f83ebe80c55f8ad6b86fa8adae4105bc5514af",
+        "external_apps_fixture.py": "a1b302601e5391192bce56f3d574dbee5091948459dab7c18a8bc640f9f13902"
+      },
+      "denied_discovery_operations": [
+        "minicpm-baseline-1024-f-hermes:1",
+        "minicpm-baseline-1024-f-hermes:2",
+        "minicpm-baseline-1024-f-hermes:3",
+        "minicpm-baseline-1024-f-hermes:4",
+        "minicpm-baseline-1024-f-hermes:5",
+        "minicpm-baseline-1024-f-hermes:8",
+        "minicpm-baseline-1024-f-hermes:9",
+        "minicpm-baseline-1024-f-hermes:10"
+      ]
+    },
+    {
+      "harness": "qwen",
+      "revision": "0.26.0",
+      "context_declaration": 16384,
+      "transport_complete": true,
+      "boundary_settled": true,
+      "client_exit_code": 0,
+      "checks": {
+        "saved_function_correct": false,
+        "written_result_correct": true,
+        "input_bytes_preserved": true
+      },
+      "task_passed": false,
+      "model_calls": 7,
+      "original_operation_id": "minicpm-baseline-1024-f-qwen",
+      "original_manifest_sha256": "d0fe390e7ddc07324f51e64bfe3a0f641ba6af65444d3d5e3fb29e0278762e06",
+      "original_result_sha256": "f6497ca20941846f3ed0da0678dc9b1a6d1a679757456a6101d9d45c539cbe70",
+      "original_boundary_receipt_sha256": "9f4b6be5d200278691f8f3c331e4946b60381b3d2b18cce5ee614b0379bd508a",
+      "independent_check_source_sha256": "5b910a6c7aa87af7960f56dea22ef00c3a5c5b78c96c65136b5cc2f15b5c868c",
+      "independent_check_receipt_sha256": "c29881f0a1826d2692dd0c3b3d1ee7e3c7609d668a6cbd2bddd54c5a70d0d20f",
+      "artifact_sha256": "c60fac7b8e17edc6cd9a9bf7feeec707e863b337505ee3bcde7be5f0099fda2d",
+      "original_adapter_source_sha256": {
+        "harness_socket.py": "6ace4abe8b81cecf720ab1408f678d7f2ad056fe0a316e1624d8191a46b80bf2",
+        "harness_pins.py": "c0a39ec2408a04ddf7b48a076ffc559913898350fb25e3e060a5f1c2010378f7",
+        "model_socket.py": "a323b95dc21c27e617361bd9bb342393c2953a67eebf96c6ec786162d1d1ef38",
+        "socket_harness_client.py": "2cd617f807e7b2de41c9f9c432f83ebe80c55f8ad6b86fa8adae4105bc5514af",
+        "external_apps_fixture.py": "a1b302601e5391192bce56f3d574dbee5091948459dab7c18a8bc640f9f13902"
+      },
+      "denied_discovery_operations": []
+    },
+    {
+      "harness": "dsh",
+      "revision": "0.2.1-rc.2",
+      "context_declaration": 16384,
+      "transport_complete": true,
+      "boundary_settled": true,
+      "client_exit_code": 0,
+      "checks": {
+        "saved_function_correct": true,
+        "written_result_correct": true,
+        "input_bytes_preserved": false
+      },
+      "task_passed": false,
+      "model_calls": 5,
+      "original_operation_id": "minicpm-baseline-1024-f-dsh",
+      "original_manifest_sha256": "4ceb52d8dd86e5c99ff60e9984daed1ff6f18154e960f0b3fe9939847b12b58e",
+      "original_result_sha256": "cb44d9b2fd9515cd5dda1a6c33f54170fc301bdf437e8d63b79a285e5bfe0185",
+      "original_boundary_receipt_sha256": "8c5c7416b08f3bf61fb1364ffa2ce3a03200bf7f3c85b314dd5fcd6671817dea",
+      "independent_check_source_sha256": "5b910a6c7aa87af7960f56dea22ef00c3a5c5b78c96c65136b5cc2f15b5c868c",
+      "independent_check_receipt_sha256": "a89615679861959fef4440b90adabfbeab5181d476fd4732adea1af4e6746498",
+      "artifact_sha256": "5990346e48cfe97d0f060100d3befb74c04b06d8d500e6306a3f2a6647269c30",
+      "original_adapter_source_sha256": {
+        "harness_socket.py": "6ace4abe8b81cecf720ab1408f678d7f2ad056fe0a316e1624d8191a46b80bf2",
+        "harness_pins.py": "c0a39ec2408a04ddf7b48a076ffc559913898350fb25e3e060a5f1c2010378f7",
+        "model_socket.py": "a323b95dc21c27e617361bd9bb342393c2953a67eebf96c6ec786162d1d1ef38",
+        "socket_harness_client.py": "2cd617f807e7b2de41c9f9c432f83ebe80c55f8ad6b86fa8adae4105bc5514af",
+        "external_apps_fixture.py": "a1b302601e5391192bce56f3d574dbee5091948459dab7c18a8bc640f9f13902"
+      },
+      "denied_discovery_operations": []
+    }
+  ],
+  "bw": {
+    "status": "not_run",
+    "reason": "Native PCC MiniCPM model/context adapter pending"
+  },
+  "configuration_attempts": [
+    {
+      "harness": "pi",
+      "context": 4096,
+      "status": "no_useful_action",
+      "observed_outgoing_max_tokens": 1,
+      "diagnosis": "Pinned client reserves 4096 tokens plus estimated input",
+      "later_context": 8192
+    },
+    {
+      "harness": "hermes",
+      "status": "launch_option_refused",
+      "reason": "run-budget relocated to agent.run_budget_seconds config",
+      "model_calls": 0
+    },
+    {
+      "harness": "hermes",
+      "context": 16384,
+      "status": "minimum_context_refused",
+      "required_minimum": 64000,
+      "model_calls": 0
+    },
+    {
+      "harness": "hermes",
+      "context": 65536,
+      "status": "task_passed_transport_incomplete",
+      "model_calls": 10,
+      "reason": "Nonstreaming auxiliary request refused; discovery GET probes recorded",
+      "subsequent_change": "Disable optional automatic title generation; configure streaming auxiliary endpoint; retain denied discovery separately"
+    }
+  ],
+  "coverage": {
+    "unique_task_objectives": 1,
+    "external_harnesses": 6,
+    "passes": 4,
+    "failures": 2,
+    "broad_skill_mastery_established": false,
+    "failure_rate_estimated": false,
+    "harness_causality_isolated": false
+  },
+  "weights_updated": false,
+  "promoted": false,
+  "limitations": [
+    "Configuration qualification used sequential repairs and differing client profiles.",
+    "Original and later server context capacities differ; not a timing leaderboard.",
+    "One task and fixed sampling do not establish a general harness ranking.",
+    "Protected task inputs, expected answers and raw client/transport traces remain private."
+  ]
+}

@@ -117,8 +117,49 @@ class Fixture:
         return (''.join('data: ' + json.dumps(p) + '\n\n' for p in packets) + 'data: [DONE]\n\n').encode()
 
 
-def configuration(app, port):
+def configuration(app, port, *, model='wen-fixture', context=8192, prompt=None, disable_delegation=False, stream_idle_ms=10000):
     base = 'http://127.0.0.1:' + str(port) + '/v1'
+    prompt = PROMPT if prompt is None else prompt
+    if app == 'hermes':
+        directory=Path('/work/hermes-home');directory.mkdir(mode=0o700)
+        config=dict(_config_version=52,model=dict(default=model,provider='custom',base_url=base,api_key='fixture-not-a-secret',
+                              context_length=context,streaming=True),
+                    auxiliary=dict(title_generation=dict(enabled=False),stream_only_base_urls=[base]),
+                    agent=dict(max_turns=12,run_budget_seconds=85),memory=dict(memory_enabled=False,user_profile_enabled=False))
+        # JSON is valid YAML. No owner home, fallback credential or auxiliary endpoint is mounted.
+        (directory/'config.yaml').write_text(json.dumps(config,indent=2)+'\n')
+        return ['/tools/bin/python','/tools/bin/hermes','chat','--query-file','/work/instruction.txt',
+                '--oneshot','--format','stream-json','--provider','custom','--base-url',base,
+                '--api-key','fixture-not-a-secret','--model',model,'--reasoning','none','--toolsets','terminal,file',
+                '--max-turns','12','--ignore-rules','--yolo','--in','/work']
+    if app == 'qwen':
+        os.environ.update(OPENAI_API_KEY='fixture-not-a-secret',OPENAI_BASE_URL=base,OPENAI_MODEL=model,
+                          QWEN_CODE_MAX_OUTPUT_TOKENS='512')
+        directory=Path('/work/.qwen');directory.mkdir(mode=0o700)
+        config=dict(security=dict(auth=dict(selectedType='openai')),telemetry=dict(enabled=False),
+            modelProviders=dict(openai=[dict(id=model,name='Pinned local model',baseUrl=base,
+                envKey='OPENAI_API_KEY',generationConfig=dict(contextWindowSize=context,maxRetries=0,
+                    samplingParams=dict(temperature=0,seed=0,max_tokens=512)))]))
+        (directory/'settings.json').write_text(json.dumps(config,indent=2)+'\n')
+        return ['/usr/bin/node','/tools/node_modules/@qwen-code/qwen-code/cli-entry.js','--bare',
+                '--model',model,'--auth-type','openai','--openai-base-url',base,
+                '--openai-api-key','fixture-not-a-secret','--advisor','off','--approval-mode','yolo',
+                '--max-session-turns','12','--max-tool-calls','12','--max-wall-time','85s',
+                '--output-format','stream-json',prompt]
+    if app == 'dsh':
+        os.environ.update(DSH_HOME='/work/dsh-home',DSH_TELEMETRY_DISABLED='1',
+                          DSH_PERMISSION_MODE='danger-full-access',SSS_MODEL_KEY='fixture-not-a-secret')
+        patches=[dict(id='llm-pi-ai',config=dict(providers={'sss-local':dict(api='openai-completions',
+            baseURL=base,apiKeyEnv='SSS_MODEL_KEY',defaultContextWindow=context,defaultMaxTokens=512,
+            retryPolicy=dict(mode='normal',maxRetries=0),compat=dict(supportsStore=False,
+                supportsDeveloperRole=False,supportsReasoningEffort=False,maxTokensField='max_tokens'),
+            models=[dict(id=model,contextWindow=context,maxTokens=512,reasoningEfforts=False)])})),
+            dict(id='agent-default-model',config=dict(provider='sss-local',model=model)),
+            *[dict(id=name,disabled=True) for name in ('session-title-llm','tool-subagent-control',
+                'tool-subagent-list-agents','tool-subagent','tool-subagent-fork')]]
+        Path('/work/dsh.patch.json').write_text(json.dumps(patches,indent=2)+'\n')
+        return ['/usr/bin/node','/tools/node_modules/@deepseek-ai/dsh/lib/bin.js',
+                '--profile','headless','--patch','/work/dsh.patch.json','--json',prompt]
     if app == 'codex':
         directory = Path('/work/.codex'); directory.mkdir(mode=0o700)
         (directory/'config.toml').write_text('''model = "wen-fixture"
@@ -138,30 +179,31 @@ supports_websockets = false
 request_max_retries = 0
 stream_max_retries = 0
 stream_idle_timeout_ms = 10000
-'''.replace('BASE', base))
+'''.replace('BASE', base).replace('"wen-fixture"', json.dumps(model)).replace('model_context_window = 8192', 'model_context_window = '+str(context)).replace('stream_idle_timeout_ms = 10000', 'stream_idle_timeout_ms = '+str(stream_idle_ms))
+            + ('\n[features]\nmulti_agent = false\ncollab = false\nmulti_agent_v2 = false\nenable_fanout = false\n' if disable_delegation else ''))
         return ['/usr/bin/node', '/tools/node_modules/@openai/codex/bin/codex.js', 'exec',
-                '--strict-config', '--skip-git-repo-check', '--ephemeral', '--json', PROMPT]
+                '--strict-config', '--skip-git-repo-check', '--ephemeral', '--json', prompt]
     if app == 'opencode':
-        config = dict(model='pccfixture/wen-fixture', small_model='pccfixture/wen-fixture',
+        config = dict(model='pccfixture/'+model, small_model='pccfixture/'+model,
             enabled_providers=['pccfixture'], permission={'*': 'deny', 'read': 'allow', 'write': 'allow', 'edit': 'allow', 'shell': 'allow'},
             provider=dict(pccfixture=dict(name='Local protocol fixture', npm='@ai-sdk/openai-compatible',
                 options=dict(baseURL=base, apiKey='fixture-not-a-secret'),
-                models={'wen-fixture': dict(name='Wen protocol fixture', limit=dict(context=8192, output=512))})))
+                models={model: dict(name='Pinned local model', limit=dict(context=context, output=512))})))
         Path('/work/opencode.json').write_text(json.dumps(config, indent=2) + '\n')
         return ['/tools/node_modules/@opencode/cli/bin/opencode.exe', 'run', '--standalone', '--format', 'json',
-                '--title', 'SSS CPU transport fixture', '--model', 'pccfixture/wen-fixture', PROMPT]
+                '--title', 'SSS bounded client check', '--model', 'pccfixture/'+model, prompt]
     directory = Path('/work/.pi/agent'); directory.mkdir(mode=0o700, parents=True)
     config = dict(providers=dict(pcc_fixture=dict(api='openai-completions', baseUrl=base,
         apiKey='fixture-not-a-secret', authHeader=True,
         compat=dict(supportsStore=False, supportsDeveloperRole=False, supportsReasoningEffort=False, maxTokensField='max_tokens'),
-        models=[dict(id='wen-fixture', name='Wen transport fixture', reasoning=False, input=['text'], contextWindow=8192,
+        models=[dict(id=model, name='Pinned local model', reasoning=False, input=['text'], contextWindow=context,
             maxTokens=512, cost=dict(input=0, output=0, cacheRead=0, cacheWrite=0),
             samplingParams=dict(temperature=0, seed=0, parallel_tool_calls=False))])))
     (directory/'models.json').write_text(json.dumps(config, indent=2) + '\n')
     return ['/usr/bin/node', '/tools/node_modules/@earendil-works/pi-coding-agent/dist/bundle/cli.js',
-        '--provider', 'pcc_fixture', '--model', 'wen-fixture', '--thinking', 'off', '--tools', 'read,write,edit,bash',
+        '--provider', 'pcc_fixture', '--model', model, '--thinking', 'off', '--tools', 'read,write,edit,bash',
         '--no-session', '--no-extensions', '--no-mcp', '--no-skills', '--no-prompt-templates', '--no-themes',
-        '--no-context-files', '--mode', 'json', '--print', PROMPT]
+        '--no-context-files', '--mode', 'json', '--print', prompt]
 
 
 def main():

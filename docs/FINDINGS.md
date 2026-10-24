@@ -22,6 +22,12 @@ capacity. OpenCode and pi's captures fit. These counts establish prompt cost
 for these versions, tools, settings and captured conversations, not universal
 minimums or a quality/speed ranking.
 
+**Correction from the later live MiniCPM probe:** these counts establish that
+the rendered text fits. They do not qualify the client's usable output budget.
+Pinned pi reserves another 4,096 tokens internally; its 4K live declaration
+sent `max_tokens: 1`. The 8K live configuration passed. See finding 18 and the
+[MiniCPM field notes](MINICPM-HARNESS-FIELD-NOTES.md).
+
 **Action:** preflight real requests, then qualify a common 16K hardware profile
 for the next live comparison. Longer live trajectories may need more. Wen's
 declared maximum remains 131,072 tokens; these CPU counts do not qualify that
@@ -225,6 +231,66 @@ verified reasoning spans rather than unexamined generated thoughts.
 separately. A “thinking off” label alone does not describe all three. Current
 Wen pilots used actions/answers targets; verified thought-target training still
 needs its own qualified examples. [Operator contract](OPERATOR-HANDOFF.md).
+
+## 18. Client context reserves can erase the answer budget
+
+With unchanged MiniCPM F16 weights, pi 1.4.0's 4K declaration sent only one output
+token and completed no useful work. Its installed `clampMaxTokensToContext`
+subtracts a 4,096-token safety reserve plus estimated input before clamping the
+output allowance. The 8K declaration passed the same independent task checks.
+
+**Action:** preflight the actual outgoing output allowance as well as rendered
+prompt length. The pinned socket adapter now refuses pi declarations at or
+below 4K. This corrects an interpretation of earlier token counts; it does not
+erase those counts. [Live evidence and context](MINICPM-HARNESS-FIELD-NOTES.md).
+
+## 19. Fixed weights produced different outcomes through different harnesses
+
+On one real file-repair task, Codex, OpenCode, pi and Hermes passed independent
+source, output and input-preservation checks. Qwen Code and DeepSeek completed
+their model/tool exchanges but failed task checks. All used the same MiniCPM
+F16 weights with fixed sampling and no update. BW's MiniCPM execution is pending.
+
+**Action:** retain passing harnesses as controls when improving BW. Different
+prompts, schemas, tools and configuration are part of these observed stacks;
+this discovery probe does not isolate one causal variable or establish a
+general ranking or failure percentage.
+[All seven statuses and aggregate evidence](MINICPM-HARNESS-FIELD-NOTES.md).
+
+## 20. Tests can pass against a temporary function while the source stays broken
+
+Qwen Code's observed MiniCPM run defined the corrected function inside temporary
+Python commands, computed the correct result and printed successful test
+outputs. It never saved the function repair. A fresh checker exercised the
+actual saved source and rejected the task despite the confident final summary.
+
+**Action:** verify the persisted artifact through a separate execution. Track
+tool success, claimed completion and independently checked completion separately.
+This is one trajectory, not proof of a general Qwen Code defect.
+[Observed behavior](MINICPM-HARNESS-FIELD-NOTES.md).
+
+## 21. A helpful rewrite can violate the task
+
+DeepSeek Harness's observed MiniCPM run repaired the function and wrote the
+correct result, but restructured the input it had been instructed to preserve.
+Its final answer described that rewrite while claiming preservation. The
+independent input-byte check caught the violation.
+
+**Action:** include preservation and scope checks alongside positive output
+checks. Codex, OpenCode, pi and Hermes preserved the original bytes in their
+qualifying discovery runs. [Exact measured scope](MINICPM-HARNESS-FIELD-NOTES.md).
+
+## 22. A harness can enforce more context than a small task consumes
+
+The pinned Hermes custom-provider path refused a 16K context declaration because
+it enforces a 64,000-token minimum. Actual 65,536-token server slots admitted it;
+the resulting task passed independent checks. This startup policy is different
+from demonstrating that the task needs 64K.
+
+**Action:** inspect actual client constraints and provision genuine server
+capacity. Keep denied discovery probes, compatibility errors, model/tool
+completion and task grading separate.
+[Versions and configuration repairs](MINICPM-HARNESS-FIELD-NOTES.md).
 
 ## Keep this log useful
 

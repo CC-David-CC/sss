@@ -2,20 +2,24 @@
 
 The objective is a reusable loop that observes a failure, verifies a correction,
 builds varied lessons, trains a candidate, measures learning and forgetting,
-and makes an evidence-based keep/repair/reject decision. Wen helps prove the
-system that will support Codi and other models. The owner requests continued
+and makes an evidence-based keep/repair/reject decision. MiniCPM5-2B is now the
+rapid-iteration model; earlier Wen results remain historical controls. Both help
+prove the system that will support Codi and other models. The owner requests continued
 hill-climbing once the loop works, with reviewed code and aggregate findings
 published as the work proceeds.
 
 **Current status:** ordinary native Wen weight updates, paired development
 assessment, CPU tool loops in actual clients and the offline four-condition
-harness auditor have been exercised. A complete interleaved, live-Wen,
-four-harness optimization cycle has not been established. This document is the
+harness auditor have been exercised. Six external clients have now completed
+live MiniCPM model/tool exchanges; four passed the independently checked task
+and two failed. BW's MiniCPM path and a complete interleaved live optimization
+cycle remain unqualified. This document is the
 implementation and experiment contract for that remaining work, not a result.
 
 ## Each harness learns its own improvements
 
-BW, Codex, OpenCode and pi start from their own pinned baselines. Each gets its
+BW, Codex, OpenCode, pi, Hermes, Qwen Code and DeepSeek Harness start from their
+own pinned baselines. Each selected improvement study gets its
 own general proposal, task proposal, separate probe executions and composed
 version, based on that harness's own earlier behavior. Their changed surfaces
 and exact content can differ. For example, one may need tool guidance, another
@@ -24,13 +28,21 @@ hypotheses, not measured conclusions.
 
 The comparison holds the model, task objective, independent checks and declared
 resource bounds fixed while preserving actual host semantics and permissions.
-Do not force the same patch onto all four clients. Compare what helped each,
+Do not force the same patch onto every client. Compare what helped each,
 what failed, and which ideas transfer in an explicitly new test. The auditor
 already binds each variant to its own harness, base and original observations;
-the distinguishing test now exercises four different edit surfaces and rejects
+the distinguishing test exercises different edit surfaces and rejects
 substituting another harness's baseline as proposal evidence.
 
 ## One coupled round
+
+**Current priority:** if at least two qualified harnesses pass a task, use them
+as controls and improve BW to the same independently checked standard if it
+fails. Four external clients already pass the initial MiniCPM discovery task.
+Other harness optimization is discretionary when it teaches something useful
+for BW or the learning loop. If all qualified stacks fail a task, inspect shared
+inference and test foundations before attributing the failure to training and
+skill coverage. Preserve negative observations and configuration repairs.
 
 1. Freeze the starting model, candidate policy, source identities, each harness
    baseline, development tasks, protected transfer/retention cases, metrics and

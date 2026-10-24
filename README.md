@@ -3,10 +3,15 @@
 [What we are discovering](docs/FINDINGS.md): readable findings about context
 cost, tool differences, training, forgetting and practical next steps.
 
-[Four-condition harness comparisons](docs/HARNESS-COMPARISON.md) now have
-tested offline planning and evidence checks. [Real Codex/OpenCode/pi clients](docs/REAL-HARNESS-SETUP.md)
-pass isolated CPU file/tool loops with mock replies; live Wen comparisons
-remain to be qualified. [Wen's full-update pilot](docs/WEN-FULL-UPDATE-PILOT.md)
+[Getting seven harnesses working with MiniCPM](docs/MINICPM-HARNESS-FIELD-NOTES.md):
+six external clients completed live model/tool exchanges with the same weights.
+Codex, OpenCode, pi and Hermes passed independent artifact checks; Qwen Code
+and DeepSeek failed different task requirements. BW is the next integration
+target. This is one discovery task, not a general harness ranking.
+
+[Four-condition harness comparisons](docs/HARNESS-COMPARISON.md) have tested
+offline planning and evidence checks. [Isolated model transport](docs/MODEL-SOCKET.md)
+keeps actual client tools and private receipts separate from task grading. [Wen's full-update pilot](docs/WEN-FULL-UPDATE-PILOT.md)
 changed the protected score from 17/54 to 19/54, with three gains and one
 regression. The candidate was rejected and was not promoted. A larger
 [paired assessment](docs/WEN-PAIRED-ASSESSMENT.md) found place value improved
@@ -14,7 +19,7 @@ from 23/96 to 29/96, with seven gains and one loss; 96 review outcomes were
 unchanged. Uncertainty and the original rejection remain explicit.
 [Joint learning and harness hill-climbing](docs/JOINT-LEARNING-LOOP.md) records
 the next live cycle, per-domain controls and conditional release gate.
-Development checkpoint: [foundations and workflow validation](validation/foundations-20261023/README.md). Live-model qualification remains pending.
+Development checkpoint: [foundations and workflow validation](validation/foundations-20261023/README.md). Broader skill qualification and BW/MiniCPM integration remain pending.
 
 
 **New foundations preview:** [Start here](docs/START-HERE.md), [on-disk skill graph](docs/ON-DISK-LAYOUT.md), [operator handoff](docs/OPERATOR-HANDOFF.md), and [implementation gates](docs/FOUNDATIONS-PLAN.md). The reference machinery and model mastery are reported separately.
