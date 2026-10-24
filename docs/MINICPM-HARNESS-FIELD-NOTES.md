@@ -148,3 +148,73 @@ Source pins, dependency locks, immutable request intents, API terminal events,
 client events, isolated process settlement, and independent artifact checks
 serve different purposes. Keeping those distinctions makes a failed run useful
 instead of inconvenient.
+
+## The next screen: correct files and a finished agent are different outcomes
+
+The next comparison used five development objectives: Python empty-input handling,
+first-match binary search, stable deduplication, shell filename quoting, and exit
+status handling. All six clients declared 65,536 tokens and used actual native
+slots of that size. Each execution had at most 12 model requests and 512 output
+tokens per request. Sampling and weights stayed fixed. The shared A100 build
+retained the previously recorded Wen naming patch; the runtime receipt includes
+the exact binary and source-diff hashes. The patch is separate from MiniCPM
+weights and is not evidence of a training change.
+
+| Harness | Baseline completed | General advice | Task advice | Composed advice |
+|---|---:|---:|---:|---:|
+| Codex | 4/5 | 4/5 | 3/5 | 4/5 |
+| OpenCode | 2/5 | 2/5 | 1/5 | 1/5 |
+| pi | 3/5 | 1/5 | 0/5 | 1/5 |
+| Hermes | 5/5 | 3/5 | 4/5 | 4/5 |
+| Qwen Code | 4/5 | 4/5 | 2/5 | 3/5 |
+| DeepSeek Harness | 4/5 | 3/5 | 3/5 | 2/5 |
+
+Three real editor sessions per harness/task proposed general guidance, task
+guidance, and a composition after observing the two probes. Editors saw redacted
+behavioral events, not source solutions or independent grades. This produced
+90 editor sessions and 90 new task executions alongside 30 baselines.
+
+The completed-pass total fell from **22/30 to 15/30** after composition. However,
+correct saved artifacts rose from **25/30 to 28/30**. Pi's task-specific probes
+left correct artifacts on all five tasks yet completed none within the request
+budget. More checking can improve a file while preventing the agent from
+finishing. A hill-climber that scores only files would miss that cost.
+
+We accepted none of these recipes. This was an exploratory test of appended
+guidance, not every configuration surface supported by each harness. Five
+objectives do not establish a general ranking. Transfer, retention and the full
+formal comparison audit remain outstanding. The editor sessions used 121,401
+input tokens and 12,179 output tokens; those are editor-only counts, not the
+whole experiment's token bill. [Aggregate receipts and results](../validation/learning-program-20261024/minicpm-harness-development-screen.json)
+preserve the distinctions.
+
+## BW: fix the foundation before blaming the student
+
+BW's native PCC integration exposed an ordinary but consequential porting bug:
+PCC used Qwen's pre-tokenizer pattern for MiniCPM. Both tokenizers could round-trip
+the same text, while producing different token IDs. MiniCPM groups digits in
+runs of up to three and has different combining-mark boundaries. Its native
+splitter applies two patterns sequentially; merging them into one expression
+also disagreed on whitespace next to numbers.
+
+The corrected Python path matched native llama.cpp on **2,438 token-ID
+comparisons and all 130,560 vocabulary pieces**. Framing checks cover one root
+BOS, appends after both native end tokens, thinking enabled/disabled, and
+control-looking user text remaining ordinary data. Earlier BW trials remain
+engineering evidence and are excluded from capability judgments.
+
+BW now offers independent opt-in choices for direct constrained tool decoding
+and compact instructions. With those choices and the corrected tokenizer, the
+same original file task completed through BW's actual ledger, file/tool grants,
+and native PCC context. The independent checker confirmed the saved function,
+written result and unchanged input. That run used six model requests, 275 output
+tokens and a 381-token initial controller prefix. Its observed wall time was
+about 13 seconds on the RTX PRO 6000; this engineering sequence is not a speed
+leaderboard.
+
+The compact-prefix trials before tokenizer qualification also illustrate why a
+host label saying verified is insufficient: the agent's chosen check passed,
+while the independent checker rejected its result file. We preserved both
+outcomes. [BW integration evidence](../validation/learning-program-20261024/minicpm-bw-native-integration.json)
+records each trial separately. No MiniCPM weights were updated, and one successful
+task does not establish broad BW mastery or justify a model release.

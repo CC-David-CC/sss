@@ -292,6 +292,37 @@ capacity. Keep denied discovery probes, compatibility errors, model/tool
 completion and task grading separate.
 [Versions and configuration repairs](MINICPM-HARNESS-FIELD-NOTES.md).
 
+## 23. Better files can coexist with worse task completion
+
+In the five-objective, six-client MiniCPM development screen, composed model-written
+guidance increased correct saved artifacts from 25/30 to 28/30 but reduced clean
+completion within the fixed request budget from 22/30 to 15/30. Pi's task advice
+produced five correct artifacts and zero clean completions. Score artifact
+correctness, termination and cost separately. No proposed recipe was accepted;
+this does not establish broad rankings or a training effect.
+[Evidence](../validation/learning-program-20261024/minicpm-harness-development-screen.json).
+
+## 24. A lossless tokenizer can still give the model the wrong input
+
+The initial native PCC MiniCPM port inherited Qwen pre-tokenization. Bytes still
+round-tripped, but native MiniCPM uses different digit and combining-mark splits.
+Its two sequential regex passes also cannot be replaced by one alternation
+without changing whitespace boundaries. Corrected token IDs now match native on
+2,438 comparisons; all 130,560 token byte pieces agree. Earlier BW trials with
+the unqualified renderer are engineering evidence, not model capability tests.
+[Integration record](../validation/learning-program-20261024/minicpm-bw-native-integration.json).
+
+## 25. Host-selected checks do not independently certify the task
+
+Two unqualified-renderer BW trials satisfied their selected-check policy while
+writing incorrect output data. Independent scoring rejected them. After fixing
+the renderer, the compact direct-tool trial passed the saved-function, result
+and input-preservation checks through actual native PCC state. One task passed;
+MiniCPM training and broad transfer/retention qualification remain outstanding.
+A learning loop must retain the host's report and the independent verdict,
+without upgrading the former into a verified training lesson.
+[Evidence](../validation/learning-program-20261024/minicpm-bw-native-integration.json).
+
 ## Keep this log useful
 
 For each new finding, record the exact model/client/source and tested workload,
