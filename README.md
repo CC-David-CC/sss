@@ -1,3 +1,7 @@
+[Fixed-compute study preparation](docs/FIXED-COMPUTE-PREPARATION.md): A100
+optimizer qualification passes, and the larger arithmetic/state dataset passes
+actual MiniCPM token/lesson admission. Learning and retention runs are next.
+
 # Skills³ (S³)
 
 [Real MiniCPM Muon/AdamW mechanics](docs/MINICPM-OPTIMIZER-PILOT.md): full-weight

@@ -1,0 +1,193 @@
+{
+  "schema": 1,
+  "date": "2026-10-24",
+  "status": "PASS",
+  "scope": "A100 native optimizer math, tiny full training/state continuation, actual MiniCPM gradients; no real-model weight update or learning acceptance",
+  "hardware": "NVIDIA A100-SXM4-80GB",
+  "physical_gpu": 1,
+  "initial_free_mib": 80727,
+  "initial_utilization": 0,
+  "compute_use_policy": "Owner waived admission utilization threshold; report shared contention",
+  "source_commit": "c179f3fba1792cbe9f89a9985d78bb2fd02f720f",
+  "native_sources": {
+    "source_sha256": "b943fb75af3c37754034290ce366d81f61465ecd6d55193d09aab68ed66ab125",
+    "optimizer_source_sha256": "163e753756be09ebc926624b2531775049f8a77c25e5f3fc7fa5e2dafaecfbdf",
+    "optimizer_state_source_sha256": "4eb5e8cd3bc39baab33d8e6f071e8992ed8f3edf8040d33387f5c0577ccd056e",
+    "dependency_core_sha256": "bb7c28f7c3506f42e5a53ec241d756d3d7f42b5ba86be9aeb1eb4d2d7c3dda2d",
+    "cuda_sha256": "1205b2a6e9ef2a714f1a849f3cc9c93e3b1c6603ca9f979c417a5fe4aef65958",
+    "cuda_source_sha256": "168f3d5c708c9f3800ec1cf25e230ba430f574a5225297c08219b39cddc12acb",
+    "pin": "972d2313bc0bf0a45f634f77d95c9fb03aeab12c"
+  },
+  "binary_sha256": "fe0ff4560e09eb9ca52c316f5f9df2fa4be9dc260384f41314059fbf574e7e69",
+  "optimizer_math": {
+    "status": "PASS",
+    "backend": "CUDA0",
+    "scope": "Native optimizer tiny-tensor mechanics only; not MiniCPM training or learning",
+    "cases": [
+      {
+        "label": "0",
+        "optimizer": "adamw",
+        "settings": {
+          "schema": 1
+        },
+        "status": "PASS",
+        "scalar_comparisons": 804,
+        "max_absolute_error": 4.7209262277192465e-08,
+        "failures": []
+      },
+      {
+        "label": "1",
+        "optimizer": "adamw",
+        "settings": {
+          "schema": 1,
+          "weight_decay": 0.1,
+          "aux_weight_decay": 0.03
+        },
+        "status": "PASS",
+        "scalar_comparisons": 804,
+        "max_absolute_error": 4.7209262277192465e-08,
+        "failures": []
+      },
+      {
+        "label": "2",
+        "optimizer": "muon",
+        "settings": {
+          "schema": 1,
+          "nesterov": false
+        },
+        "status": "PASS",
+        "scalar_comparisons": 664,
+        "max_absolute_error": 4.206798376316101e-08,
+        "failures": []
+      },
+      {
+        "label": "3",
+        "optimizer": "muon",
+        "settings": {
+          "schema": 1,
+          "nesterov": true
+        },
+        "status": "PASS",
+        "scalar_comparisons": 664,
+        "max_absolute_error": 5.5146223990054644e-08,
+        "failures": []
+      },
+      {
+        "label": "4",
+        "optimizer": "muon",
+        "settings": {
+          "schema": 1,
+          "scaling": "rms",
+          "weight_decay": 0.1,
+          "aux_weight_decay": 0.03
+        },
+        "status": "PASS",
+        "scalar_comparisons": 664,
+        "max_absolute_error": 4.309315387862611e-08,
+        "failures": []
+      },
+      {
+        "label": "5",
+        "optimizer": "muon",
+        "settings": {
+          "schema": 1,
+          "projection": "fast-refine-v1",
+          "refine_start_step": 2,
+          "refine_steps": 5,
+          "scaling": "rms",
+          "weight_decay": 0.1
+        },
+        "status": "PASS",
+        "scalar_comparisons": 664,
+        "max_absolute_error": 8.396170193825103e-08,
+        "failures": []
+      }
+    ],
+    "promoted": false
+  },
+  "optimizer_training": {
+    "status": "PASS",
+    "scope": "Generated tiny ordinary-Llama full backprop and completed optimizer continuation; not MiniCPM learning",
+    "devices": [
+      "CUDA0"
+    ],
+    "cases": [
+      {
+        "arm": "adamw",
+        "status": "PASS",
+        "weight_tensors": 21,
+        "state_tensors": 42,
+        "resumed_equals_uninterrupted_weights": true,
+        "resumed_equals_uninterrupted_moments": true,
+        "completed_steps": 3,
+        "example_cursor": 5,
+        "partial_final_batch": true,
+        "optimizer_refinement_active": false
+      },
+      {
+        "arm": "muon",
+        "status": "PASS",
+        "weight_tensors": 21,
+        "state_tensors": 28,
+        "resumed_equals_uninterrupted_weights": true,
+        "resumed_equals_uninterrupted_moments": true,
+        "completed_steps": 3,
+        "example_cursor": 5,
+        "partial_final_batch": true,
+        "optimizer_refinement_active": false
+      },
+      {
+        "arm": "muon-rms",
+        "status": "PASS",
+        "weight_tensors": 21,
+        "state_tensors": 28,
+        "resumed_equals_uninterrupted_weights": true,
+        "resumed_equals_uninterrupted_moments": true,
+        "completed_steps": 3,
+        "example_cursor": 5,
+        "partial_final_batch": true,
+        "optimizer_refinement_active": false
+      },
+      {
+        "arm": "muon-refine",
+        "status": "PASS",
+        "weight_tensors": 21,
+        "state_tensors": 28,
+        "resumed_equals_uninterrupted_weights": true,
+        "resumed_equals_uninterrupted_moments": true,
+        "completed_steps": 3,
+        "example_cursor": 5,
+        "partial_final_batch": true,
+        "optimizer_refinement_active": true
+      }
+    ],
+    "negative_cases": 14,
+    "promoted": false
+  },
+  "actual_gradient_probe": {
+    "status": "PASS",
+    "scope": "Actual-model complete ordinary backprop gradients; no update",
+    "pilot_id": "90904f23928242505b52a997b74661b73b0be7e56ace8bc879348055ad5c86d9",
+    "model_sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25",
+    "executable_sha256": "fe0ff4560e09eb9ca52c316f5f9df2fa4be9dc260384f41314059fbf574e7e69",
+    "tokens": 120,
+    "selected_targets": 14,
+    "parameter_tensors": 381,
+    "finite_gradient_tensors": 381,
+    "nonzero_gradient_tensors": 381,
+    "loss": 1.1682199239730835,
+    "weights_updated": false,
+    "promoted": false
+  },
+  "allocated_gpu_seconds": 34.79531626868993,
+  "learning_evaluation_run": false,
+  "real_model_weights_updated": false,
+  "promoted": false,
+  "limits": [
+    "Shared GPU; timings are affected by contention",
+    "Actual model gradient coverage is not an independent complete gradient-value comparison",
+    "No A100 real-model training candidate or learning result",
+    "The earlier Blackwell pilot is separate evidence"
+  ],
+  "allocated_gpu_hours": 0.009665365630191648
+}

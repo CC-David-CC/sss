@@ -22,3 +22,8 @@ three checked practice demonstrations used by the native full-update mechanics
 pilot. Its manifest pins the renderer, tokenizer and selected targets. These are
 synthetic demonstrations, not observations of model failure. Protected questions
 are excluded; later training outcomes belong to the [pilot report](../../docs/MINICPM-OPTIMIZER-PILOT.md).
+
+The [larger MiniCPM practice TXT](minicpm-fixed-budget/practice.txt) preserves
+864 independently checked demonstrations: 850 distinct questions and 14 recorded
+rehearsals. Its [preparation report](../../docs/FIXED-COMPUTE-PREPARATION.md)
+separates token admission from training and excludes protected questions.

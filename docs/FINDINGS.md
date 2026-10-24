@@ -404,6 +404,18 @@ savings. No candidate was accepted or promoted; the fixed-budget learning and
 retention comparisons remain next. [Reproduce the pilot](MINICPM-OPTIMIZER-PILOT.md),
 [complete aggregate evidence](../validation/learning-program-20261024/minicpm-optimizer-real-pilot.json).
 
+## 31. More questions can expose duplicate assessments
+
+Expanding the legacy arithmetic/state screen found seven repeated protected
+questions, including two shared between development and qualification. The
+larger pack was refused before model use. An explicit new sampling profile fixes
+the two colliding finite families without changing the legacy generator or
+redrawing questions until a set passes. The resulting nine-leaf pack has 864
+unique checks in each protected split and 850 distinct practice questions plus
+14 recorded rehearsals. All 864 lessons pass actual MiniCPM token admission;
+the longest is 379 tokens. Count occurrences and unique questions separately.
+[Preparation, A100 qualification and remaining gates](FIXED-COMPUTE-PREPARATION.md).
+
 ## Keep this log useful
 
 For each new finding, record the exact model/client/source and tested workload,

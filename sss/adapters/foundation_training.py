@@ -25,7 +25,7 @@ def _write(path, value):
         stream.write(canonical(value) + b'\n')
 
 
-def build_pack(skills, *, seed, practice_per_gate=8, checks_per_gate=2):
+def build_pack(skills, *, seed, practice_per_gate=8, checks_per_gate=2, generation_profile="legacy-v1"):
     """Freeze explicit skills plus all prerequisites; never redraw a check.
 
     Each skill has independent/composed/recovery practice and separate
@@ -35,8 +35,14 @@ def build_pack(skills, *, seed, practice_per_gate=8, checks_per_gate=2):
     """
     if (type(seed) is not int or not skills or len(set(skills)) != len(skills)
             or type(practice_per_gate) is not int or not 2 <= practice_per_gate <= 128
-            or type(checks_per_gate) is not int or not 1 <= checks_per_gate <= 16):
+            or type(checks_per_gate) is not int or not 1 <= checks_per_gate <= (32 if generation_profile == "without-replacement-v1" else 16)):
         raise ValueError('Explicit bounded seed, skills and per-gate counts required')
+    if generation_profile not in ('legacy-v1', 'without-replacement-v1'):
+        raise ValueError('Unknown frozen generator profile')
+    generator = exercise_for
+    if generation_profile == 'without-replacement-v1':
+        from sss.curriculum_unique import unique_exercise_for
+        generator = unique_exercise_for
     graph = foundation_graph()
     included = set(skills)
     for key in skills:
@@ -54,7 +60,7 @@ def build_pack(skills, *, seed, practice_per_gate=8, checks_per_gate=2):
         for gate in GATES:
             for index in range(count):
                 for skill in ordered:
-                    exercise = exercise_for(skill, split, index, gate=gate, seed=seed)
+                    exercise = generator(skill, split, index, gate=gate, seed=seed)
                     key = hashlib.sha256(exercise.prompt.encode()).hexdigest()
                     if key in seen and split != 'practice':
                         raise ValueError('Repeated frozen question; no automatic redraw')
@@ -68,6 +74,10 @@ def build_pack(skills, *, seed, practice_per_gate=8, checks_per_gate=2):
                  seed=seed, practice_per_gate=practice_per_gate, checks_per_gate=checks_per_gate,
                  exercises=rows, repeated_practice_questions=repeated_practice,
                  formal_mastery_qualification=False)
+    if generation_profile != 'legacy-v1':
+        from sss import curriculum_unique
+        value.update(generation_profile=generation_profile,
+                     generation_source_sha256=file_sha256(Path(curriculum_unique.__file__)))
     return dict(value, pack_id=digest(value))
 
 
@@ -76,7 +86,8 @@ def validate_pack(pack):
         raise ValueError('Practice pack identity differs')
     expected = build_pack(pack['requested_skills'], seed=pack['seed'],
                           practice_per_gate=pack['practice_per_gate'],
-                          checks_per_gate=pack['checks_per_gate'])
+                          checks_per_gate=pack['checks_per_gate'],
+                          generation_profile=pack.get('generation_profile', 'legacy-v1'))
     if pack != expected:
         raise ValueError('Pack differs from its frozen generator, graph or split contract')
     return [Exercise(**row) for row in pack['exercises']]

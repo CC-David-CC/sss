@@ -1,0 +1,530 @@
+{
+  "development_cases": 864,
+  "maximum_evaluation_prefix_tokens": 354,
+  "maximum_selected_targets": 26,
+  "maximum_training_input_tokens": 379,
+  "model_sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25",
+  "pack_id": "8f78a38b22a8482d30d70c2306c5954d9a26291d4966e39c2e5bf0b7e409f5e8",
+  "practice_examples": 864,
+  "practice_id": "27144da86a389860c65a39efa0e8abe29239a618db82a721bbdf982b1aa60b7c",
+  "promoted": false,
+  "qualification_cases": 864,
+  "renderer_sha256": "e2370c01d110333a91cc8b6245f2b4097390745cbe00b0613a73cc84f94a5531",
+  "repeated_practice_occurrences": 14,
+  "schema": 1,
+  "skills": [
+    "math.place_value",
+    "math.add.no_carry",
+    "math.add.carry",
+    "math.multiply",
+    "math.divide",
+    "math.fraction",
+    "math.add.signed",
+    "state.registers",
+    "math.fraction.add"
+  ],
+  "status": "PREPARED_NO_MODEL_RUN",
+  "tokenizer_sha256": "1cba25d3bd37703adba72e80e223424b845e4a59bbde30723efb1d8ab60967ee",
+  "unique_practice_questions": 850,
+  "weights_updated": false,
+  "scope": "Data preparation and actual PCC token/lesson admission; not model learning",
+  "generation_profile": "without-replacement-v1",
+  "original_duplicate_audit": {
+    "duplicates": [
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "independent",
+          "index": 3,
+          "exercise_id": "fb8aa26ba373f843c1f735edea7dced86ba4a521aca79d16219b8038624e2573"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "independent",
+          "index": 14,
+          "exercise_id": "b1cede73e9a3dfa8ed85be61844b09cbad18add339dfe1de715c880394109df4"
+        },
+        "question_sha256": "36f5da4e3fd17bf43ebfb0341bebab1c5b519b79003e9688e9d90792539f44f2"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "independent",
+          "index": 9,
+          "exercise_id": "e5f80be73f4cec5f86be4b1f0503e0d3cb15905084d698609e3bff430f0d8730"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "independent",
+          "index": 15,
+          "exercise_id": "66af1ba9f6cbcbf0e1263bdeac17891703df1bc8f72ef7b55112fbf3e91ee961"
+        },
+        "question_sha256": "257e7c053fc498f0eb74b1853bae303afca3bb214015bcfc3e1da01378a405a0"
+      },
+      {
+        "first": {
+          "skill": "math.divide",
+          "split": "practice",
+          "gate": "independent",
+          "index": 6,
+          "exercise_id": "d16f56d01d5a3268dc0fcb84d3677d1822a6c6c75e66b3836c57f168255b838a"
+        },
+        "duplicate": {
+          "skill": "math.divide",
+          "split": "practice",
+          "gate": "independent",
+          "index": 18,
+          "exercise_id": "18c3f590a2fa2a36c55fd49600c9ad2e9fc3291253099ca30ef1e185a51f5c88"
+        },
+        "question_sha256": "4cdbe3abcb1d6b21fb2d616672cc9000cf5a1b54525a1706502560c824675408"
+      },
+      {
+        "first": {
+          "skill": "math.add.no_carry",
+          "split": "practice",
+          "gate": "independent",
+          "index": 2,
+          "exercise_id": "b9c267256e1b85ed51fd2fb3457d1e5e11b3fe2ce5418fb2ee3e4180992fd90b"
+        },
+        "duplicate": {
+          "skill": "math.add.no_carry",
+          "split": "practice",
+          "gate": "independent",
+          "index": 21,
+          "exercise_id": "a396efcfb5d39daba944b762647066b0cf5f9bc0b4199d4e54e625ec945019ee"
+        },
+        "question_sha256": "9ae25567f98a3f4431ac4ef1a827c7c7b52b0824506a45d16ada6cbc1591e5dc"
+      },
+      {
+        "first": {
+          "skill": "math.add.no_carry",
+          "split": "practice",
+          "gate": "independent",
+          "index": 4,
+          "exercise_id": "25f36553f1f3a3454dc60c1bc4d8bae9c58414f21ec99e6c70f76151c75de846"
+        },
+        "duplicate": {
+          "skill": "math.add.no_carry",
+          "split": "practice",
+          "gate": "independent",
+          "index": 22,
+          "exercise_id": "e81550624b862ab6d4824fbba8d501f60f7a16fecfb239868f63e6493afaf065"
+        },
+        "question_sha256": "4b8dfec89fbc88139583d6a4a339f7faf1c7ac502cd868bf99823f96e09ce098"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "independent",
+          "index": 11,
+          "exercise_id": "765b9740d5eaed72237cb514e50a587b8460f21c5801525824b1565d739f96d0"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "independent",
+          "index": 25,
+          "exercise_id": "8bb99c9028c0a8908d1245f498af024f7d723f6d306106b1b3bf1e8248c66f97"
+        },
+        "question_sha256": "7ef7c81697d278cb020949fc0ac9a5538df164d3401335e294c329deb0a5e7da"
+      },
+      {
+        "first": {
+          "skill": "math.divide",
+          "split": "practice",
+          "gate": "independent",
+          "index": 0,
+          "exercise_id": "8440a458317cba01389b35a0518b4d920909a31621e88190a834c1dd8193b114"
+        },
+        "duplicate": {
+          "skill": "math.divide",
+          "split": "practice",
+          "gate": "independent",
+          "index": 28,
+          "exercise_id": "fceaacbeda0358cd7f0910ea4324ad334018f5ada2c4bb00945854585c852db5"
+        },
+        "question_sha256": "1c77f3d19f6bf50e0f7cb42cd430f0a01700dcb9e182e79c94a8d4d35bc4e5a2"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "independent",
+          "index": 22,
+          "exercise_id": "bb7587155d3ae29dcd63a57cc67c61895c0b88d23d9a6f17c15ebdb9399bdab7"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "independent",
+          "index": 30,
+          "exercise_id": "65a02d890c9b5a66c3cc6b1fe90c88ccd9296e9abaf01cacad479a55c9fbb7a6"
+        },
+        "question_sha256": "e95a8903bd960386d16508adf39b222401cefc32774f7563ee6b9bbc8b1d684b"
+      },
+      {
+        "first": {
+          "skill": "math.fraction",
+          "split": "practice",
+          "gate": "independent",
+          "index": 18,
+          "exercise_id": "7da6d0a7c57452f22d81dbbbd9fa154595d8c7c0d688a53aad305100dae590ce"
+        },
+        "duplicate": {
+          "skill": "math.fraction",
+          "split": "practice",
+          "gate": "independent",
+          "index": 30,
+          "exercise_id": "ac7ab5a8c91b78979ded259956f2727e9ab246012b5bd6ddec2f0c779095baa1"
+        },
+        "question_sha256": "5f4ff643cc3d758a70889aad6d5bee0aae9c2d5010aab926627a17c5a3424236"
+      },
+      {
+        "first": {
+          "skill": "math.add.no_carry",
+          "split": "practice",
+          "gate": "composition",
+          "index": 9,
+          "exercise_id": "65ee01d25a54faee321982997c4f05dc939d65c58a51da4f619e8ba06b5c73d7"
+        },
+        "duplicate": {
+          "skill": "math.add.no_carry",
+          "split": "practice",
+          "gate": "composition",
+          "index": 21,
+          "exercise_id": "b04a65910de4206079c10d1b07bf8502666c9fd913bb8b01d246c9ced7040466"
+        },
+        "question_sha256": "2f9b587a26fa764abf57d0f70a015b436d1b9aecbb9a5de307e1619750b1306f"
+      },
+      {
+        "first": {
+          "skill": "math.divide",
+          "split": "practice",
+          "gate": "composition",
+          "index": 14,
+          "exercise_id": "0a34c83c0895142e184896ba4cfddd29b9d701a34260c6d355733557d27c30ab"
+        },
+        "duplicate": {
+          "skill": "math.divide",
+          "split": "practice",
+          "gate": "composition",
+          "index": 23,
+          "exercise_id": "ec00ad33ecb792c1831f82dea1389ed1736b30253bced3d833acb34f8dbcaffb"
+        },
+        "question_sha256": "c9393dd2e0653aa15527fced739bc1f04d8f1f96b5fceceb5adf5194f3bd7270"
+      },
+      {
+        "first": {
+          "skill": "math.add.carry",
+          "split": "practice",
+          "gate": "composition",
+          "index": 12,
+          "exercise_id": "ea83e5e2087185ab0eae093b8f1a4fb69b7313f8526784446c83cf3e1c126474"
+        },
+        "duplicate": {
+          "skill": "math.add.carry",
+          "split": "practice",
+          "gate": "composition",
+          "index": 26,
+          "exercise_id": "05aeb18ac8c45ca2c217d1ed8623bfc0801be2a4c544c98a9cae8af3190c4863"
+        },
+        "question_sha256": "8b2ffafb906180a7f9a016be570af1aead4e8d507b5c728945f81fd34c2f7aaf"
+      },
+      {
+        "first": {
+          "skill": "math.add.carry",
+          "split": "practice",
+          "gate": "composition",
+          "index": 27,
+          "exercise_id": "7777010362315ae81167d08c30577137cc98fe1c5b52b033400e22d7d621ae70"
+        },
+        "duplicate": {
+          "skill": "math.add.carry",
+          "split": "practice",
+          "gate": "composition",
+          "index": 28,
+          "exercise_id": "2412de314a9d11f5ad2e0aa3419b1b0b739491cf1cedd08274977ce90df47348"
+        },
+        "question_sha256": "58d34aa5cb10a9fd7f434514779d80933df7cf7467588d09123ca8eda77f1506"
+      },
+      {
+        "first": {
+          "skill": "math.add.carry",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 8,
+          "exercise_id": "7dc975436c0f3b1544ce7175ac56b8a3376cec7248085c17a573a089da433434"
+        },
+        "duplicate": {
+          "skill": "math.add.carry",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 14,
+          "exercise_id": "84ce421a1970a28a8d81810044889e3519676a87605ed02717b2575ed64604ae"
+        },
+        "question_sha256": "cfc0c7f39b622e080823876d2f43ea6a65a0fde965ef10b2584908365b4c417e"
+      },
+      {
+        "first": {
+          "skill": "math.fraction",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 12,
+          "exercise_id": "79390027b09c5fc54aded58b6fea4738b2217fca4598a19ba5e076be14acc5e2"
+        },
+        "duplicate": {
+          "skill": "math.fraction",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 17,
+          "exercise_id": "be7354e768176fbf2c9d483aee709af4bcc25c12f3cb8ad97f2b4bf6ddcdee82"
+        },
+        "question_sha256": "260b7ba42f84e4802cab2cffb9e6b720ea17d81929b907c3619e892a278e0f31"
+      },
+      {
+        "first": {
+          "skill": "math.add.signed",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 16,
+          "exercise_id": "4a02cc4fd8ee5a9481c1be66027f76ad03e995ac4d18a6fb731ef81810383078"
+        },
+        "duplicate": {
+          "skill": "math.add.signed",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 20,
+          "exercise_id": "3ba8a6187cc16148450a99e21ecdfa5057ba217883df86564c55074e7061df9d"
+        },
+        "question_sha256": "1032e0b4d65d48a4eab5d8747a96c71025297a49440537df2d9371c09f4bd64d"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 14,
+          "exercise_id": "5b16a75598cda5abe6c1408128006c0c3cd20d201fca8ecbc0061d8e5ba6ac2b"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 21,
+          "exercise_id": "0dda19e87fbab264a2d720d1642425fe6e16e310c0bb9725acd23b472dbde7aa"
+        },
+        "question_sha256": "f76c55b88877bee48236a1582d06c5b8d064fc947f584741c92c603bd0299f9c"
+      },
+      {
+        "first": {
+          "skill": "math.add.no_carry",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 16,
+          "exercise_id": "33ff9ad3116f53e3662589b6a99a91700cf5332f5a8ac8b2c0f12ad5d8da5565"
+        },
+        "duplicate": {
+          "skill": "math.add.no_carry",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 21,
+          "exercise_id": "19ca71e673ecd5ce1cace6edef94ab43075e8647f4bfde7bd369f485e5d791d5"
+        },
+        "question_sha256": "ad1a11698f3133b143629e0c2769b92b14b8ce5f1c713db01ef8e1d3b9acff06"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 2,
+          "exercise_id": "6b5aecea7929c8bdac108bf878b2770dd7f21fae75f3a2b0412f0e9e2b9bd2d5"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 23,
+          "exercise_id": "c5a345ed3ccd167617f299fd2b3edc0512ddef355ee34a66af4bade51b48a075"
+        },
+        "question_sha256": "40ab4c42ffa1a1c9061e221582817e68e0ba29791278d00158a4e6a97b32387e"
+      },
+      {
+        "first": {
+          "skill": "math.add.carry",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 7,
+          "exercise_id": "8ab4f8de96138a947066a025ed400a4e3ec31b4f7043f6bb68ec44065eda1700"
+        },
+        "duplicate": {
+          "skill": "math.add.carry",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 24,
+          "exercise_id": "dae84115c55a2ce19187e51778d7094e84b50caec0e304e7fecc048e8f5f29bc"
+        },
+        "question_sha256": "b6d260cfa89bab32b0ec065d84b42b0d142ff40208c6dae84ee83d1341c263d2"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 2,
+          "exercise_id": "6b5aecea7929c8bdac108bf878b2770dd7f21fae75f3a2b0412f0e9e2b9bd2d5"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "practice",
+          "gate": "transfer_recovery",
+          "index": 26,
+          "exercise_id": "8997fa7590004c7d2d7201a4205aa94672f6afc88ab879df4d5ed4bd30e32fc4"
+        },
+        "question_sha256": "40ab4c42ffa1a1c9061e221582817e68e0ba29791278d00158a4e6a97b32387e"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "development",
+          "gate": "independent",
+          "index": 2,
+          "exercise_id": "a3fc6399cd02608222e814b2ad38a5c3d86bd1dc0edae93ab4fb8aa113ce963d"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "development",
+          "gate": "independent",
+          "index": 19,
+          "exercise_id": "581ae16f721cf548fb8a276de7d19f317d3529a368bc1b40f166f50f3b4d3c81"
+        },
+        "question_sha256": "14d6c23dc70f51269480801af30982062e1e82f395c432c8eb4ca78f5f5a7472"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "development",
+          "gate": "independent",
+          "index": 6,
+          "exercise_id": "cb8d0d381c437f7419f3935818441c581c4c979f194a44307fb2f253a2805dbc"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "development",
+          "gate": "independent",
+          "index": 27,
+          "exercise_id": "b7f29703a9eea5fab71371af06597a40149bb921efdfbff707cf9eb8370c5da4"
+        },
+        "question_sha256": "bd39282b74bbd42f73b728428e8a770083709db45a78b66057434b4d17789054"
+      },
+      {
+        "first": {
+          "skill": "math.multiply",
+          "split": "development",
+          "gate": "transfer_recovery",
+          "index": 3,
+          "exercise_id": "f8ea94c55f1da47473444cbd1f693e42a6aea32af2efe79a2b05d9699d6f9461"
+        },
+        "duplicate": {
+          "skill": "math.multiply",
+          "split": "development",
+          "gate": "transfer_recovery",
+          "index": 9,
+          "exercise_id": "2c40d5bdf397c6de5616d71056b8b65bd54d3ba3104ed34da8c80d1f7b21f68e"
+        },
+        "question_sha256": "b6d4145533c60bdc74090c5bb4b2230256fd0055f1a616d8dce2cfe49c1627d5"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "development",
+          "gate": "transfer_recovery",
+          "index": 4,
+          "exercise_id": "ef1f9398d1af4db322b192fbb532f039ae576cf032bc164af2e5500f2f0e7e71"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "development",
+          "gate": "transfer_recovery",
+          "index": 15,
+          "exercise_id": "0ac419e7f56e8a77936add072b27857cf4770db6353aa73eb8179a8ee09ac8eb"
+        },
+        "question_sha256": "9ad223dcf5ee04c4fe58d16c5fdae713fc906b59ca437660beadee3aec691227"
+      },
+      {
+        "first": {
+          "skill": "math.multiply",
+          "split": "development",
+          "gate": "transfer_recovery",
+          "index": 6,
+          "exercise_id": "cf9173c13a5a37593d4e6469f3355a40968bcaa3af018afa213259283207eb53"
+        },
+        "duplicate": {
+          "skill": "math.multiply",
+          "split": "development",
+          "gate": "transfer_recovery",
+          "index": 26,
+          "exercise_id": "56503942f04df2ec7281fb63994f875377032be5da8fdffd32faf734eb132990"
+        },
+        "question_sha256": "4209a2cc286d435a5116db04f9bcffb47fd6ecdc333db37a2dd024bc32aeb96e"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "development",
+          "gate": "independent",
+          "index": 25,
+          "exercise_id": "471b44c739417f3eecb03c59e4d4872ece4c2cfec1f9cc62417c3651ffc5e5e2"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "qualification",
+          "gate": "independent",
+          "index": 24,
+          "exercise_id": "325598041091914c0437e96e863469fac9ad7b0dae65c265f5d15c8f8344d59f"
+        },
+        "question_sha256": "876e3a0d2a89e25e7e31c70970046cde07c695325eb75e66c00ae76c5fcdb745"
+      },
+      {
+        "first": {
+          "skill": "math.place_value",
+          "split": "development",
+          "gate": "independent",
+          "index": 26,
+          "exercise_id": "bb3746e3560d163e37e45f378225888b43787524b779221b207e29a3de5282f6"
+        },
+        "duplicate": {
+          "skill": "math.place_value",
+          "split": "qualification",
+          "gate": "independent",
+          "index": 25,
+          "exercise_id": "f6e771aa13d90b2ddc371f2d495632dfa4be59213b892c32ce757c87e0160bd5"
+        },
+        "question_sha256": "b4aa8c1033368d834f50a219b610aba052d2d26cc2b6ece127af430f9d61011a"
+      }
+    ]
+  },
+  "core_tests_passed": 125,
+  "formal_mastery_qualification": false,
+  "total_training_input_tokens": 95066,
+  "total_selected_training_targets": 7470,
+  "per_skill_practice": {
+    "math.place_value": 96,
+    "math.add.no_carry": 96,
+    "math.add.carry": 96,
+    "math.multiply": 96,
+    "math.divide": 96,
+    "math.fraction": 96,
+    "math.add.signed": 96,
+    "state.registers": 96,
+    "math.fraction.add": 96
+  },
+  "preparer_source_sha256": "68f9d9ad9d4a007221f746162ace4d9558720b98a1af5be0a73e6c9665bcba09",
+  "sss_parent_commit": "9c80266ad8b64b20679ed5df77e090ec5c76f792",
+  "pcc_source_commit": "c179f3fba1792cbe9f89a9985d78bb2fd02f720f"
+}
