@@ -1,12 +1,52 @@
-# MiniCPM: measuring answers, instructions and stopping before training
+# MiniCPM: learning and forgetting at matched practice exposure
 
-A model can calculate an answer and still fail the task: it may add an unwanted
-explanation, ignore JSON requirements or keep generating instead of finishing.
-The first larger MiniCPM baseline now measures exact answers and natural response
-completion separately. The first full-update candidate has completed its
-learning/retention assessment: it gains strongly but fails strict preservation.
-The four-arm optimizer comparison is complete, and the first mixed repair
-improves the working checkpoint again, from 482 to 507 exact answers.
+The next comparison measures every update of AdamW, standard Muon, RMS/decay
+Muon and fast-to-refine Muon, plus an AdamW LoRA control. Training time is a
+measurement, not the organizing principle or a stopping budget. The old timed
+experiment remains below as historical evidence; it is not an equal-exposure
+comparison. Full-model training and held-out assessment are already real; the
+new finer curve and LoRA comparator are being qualified.
+
+## New per-update comparison
+
+All four full-update regimens restart from the same original MiniCPM weights.
+Every update consumes the same ordered batch of 27 checked practice examples.
+Measure every update 1 through 68 on the same full 864-case development set:
+340 post-update evaluations across five arms, with no training-phase time cap.
+Do not reset optimizer moments or the data cursor between curve points.
+The native execution deadline remains a lifecycle guard, not a scientific budget.
+
+The primary chart will show original answers gained, original answers lost,
+net exact accuracy and natural completion against update count. Additional
+views will show practice/supervised-token exposure, measured training work,
+checkpoint/evaluation overhead and GPU memory. At 42 updates each arm has seen
+1,134 presentations; at 68 it has seen 1,836. These are repeated ordered practice
+presentations, not that many distinct new questions. The 68-update curve is a
+descriptive experiment; subsequent hill-climbing is informed by its data.
+
+An unchanged-original F32 behavior control is running first, alongside the
+retained original-F16 reference. This separates learned changes from saved-weight
+precision/kernel differences. All learned full checkpoints and the LoRA merged
+evaluation model use F32. The graph's primary reference is the measured unchanged
+F32 original, with the earlier 59/864 F16 result retained explicitly.
+
+The LoRA comparator uses native AdamW, rank 16/alpha 16, all 294 hidden linear
+matrices plus the prediction head, and freezes embeddings and norm/gain weights.
+Its initial 1e-4 learning rate is a declared starting regimen, not an optimality
+claim. Tiny CPU and CUDA tests now establish exact uninterrupted-versus-resumed
+adapter weights/moments. A native F32 merge and its real-model numerical check
+still gate that arm. Full-update arms are tracked independently.
+
+The four full-update settings remain the declared rates/scaling/decay shown in
+the historical configuration table below. Different rates, decay and adaptation
+capacity are part of the regimens. Equal exposure supports an honest comparison
+of these regimens; it does not isolate every individual design choice. Repeated
+development feedback is not sealed qualification or proof of broad competence.
+
+[Predeclared curve protocol and exact settings](../validation/minicpm-native-learning-20261024/per-update-curve-protocol.json).
+Curves and aggregate points will be published as actual results arrive. No
+interpolated points or anticipated gains are measurements. Checkpoints remain
+private on fleet storage; no model upload is authorized.
 
 ## Standing goal and continuous loop
 
@@ -37,7 +77,7 @@ now expose registered AdamW/Muon profiles and private named GGUF preservation.
 Tiny native CPU HTTP/CLI mechanics pass; full-model GPU pathway exercise is in
 progress. Durable automatic multi-round orchestration and the BW driver remain unfinished.
 
-## What the baseline establishes
+## Historical baseline
 
 MiniCPM5-2B F16 completed all 864 development cases on one dedicated 96 GB RTX PRO
 6000 Blackwell. **59/864 passed the existing exact-answer checker; 415/864 sampled
@@ -63,7 +103,7 @@ to estimate production inference throughput or shared A100 costs.
 [Baseline totals, all 27 skill/gate groups and identities](../validation/minicpm-native-learning-20261024/baseline.json).
 Raw protected prompts, answers and response traces stay private.
 
-## First measured candidate: large gains, retention rejection
+## Historical timed candidate: large gains, retention rejection
 
 The unchanged-harness AdamW control improves exact answers from **59/864 to
 482/864** (6.83% to 55.79%). Natural completion improves **415/864 to 864/864**.
@@ -96,7 +136,7 @@ model calls and 1,017,029 prefill tokens instead of 35,132/4,523,170; shorter
 responses reduce this fresh-prefix oracle's repeated work. No production serving
 speedup is claimed. [Full aggregate and paired skill/gate results](../validation/minicpm-native-learning-20261024/adamw-control.json).
 
-## From preparation to the first learning comparison
+## Historical time-limited program and implementation
 
 The 379-token longest practice example passes full ordinary backpropagation:
 all 381 model parameter tensors have finite, nonzero gradients. This is gradient
@@ -239,7 +279,7 @@ The prepared repair block has 944 distinct questions and 16 explicitly counted
 rehearsals across its 960 occurrences. [Finished checked practice](../examples/finished-training-examples/minicpm-mixed-repair/practice.txt)
 and its diversity manifest contain no protected test answers.
 
-## Completed optimizer comparison and second learning checkpoint
+## Historical time-limited comparison and second learning checkpoint
 
 The four declared regimens have all completed the same frozen 864-case
 development assessment. These are one-run measurements on the dedicated
