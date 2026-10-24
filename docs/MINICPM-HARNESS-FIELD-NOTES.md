@@ -243,3 +243,15 @@ weights have been updated or accepted.
 The next optimizer comparison prioritizes Muon and defined variants on frozen
 S³ tests at a declared compute budget. Broader AdamW ablations remain stretch
 goals. Mechanism, learning, retention and acceptance are separate gates.
+
+## Shell diagnosis and follow-up
+
+BW's original quoting run never executed its unfinished command. The other shell
+run repeatedly tried writes through a read-only projection and direct execution
+without execute permission. A broad controller rewrite regressed to two passes.
+Retaining the old controller wording with clearer tool contracts/feedback gives
+five correct saved artifacts and four completed independent passes; a further
+completion-description change still does not finish the last task. All use the
+same weights. No broad harness acceptance or model training is claimed.
+[All variants](../validation/learning-program-20261024/minicpm-bw-shell-investigation.json),
+[explanation](https://github.com/CC-David-CC/BranchWrite/blob/feat/minicpm-shell-feedback-20261024/docs/MINICPM-SHELL-INVESTIGATION.md).

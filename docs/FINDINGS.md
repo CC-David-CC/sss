@@ -351,6 +351,23 @@ The priority is Muon's measured outcome at a fixed compute budget; broad AdamW
 ablations are stretch goals.
 [Evidence](../validation/learning-program-20261024/minicpm-native-training-mechanics.json).
 
+## 28. Correct repairs and completed workflows are different capabilities
+
+BW's original shell traces show an unfinished tool-command generation in one
+case and repeated misuse of a read-only shell in the other. Narrower tool-card
+and observed-error feedback changes preserve all three Python passes, complete
+the quoting task and produce independently correct repairs for both shell tasks.
+The result is five correct saved artifacts but four completed passes. The last
+workflow still fails verification/termination. A broader prompt rewrite regressed
+to two passes and was rejected. Weights never changed.
+
+**Action:** teach and test file editing, command construction, status-aware
+verification, recovery and stopping as compositional skills. A warning that
+explains an error does not establish that the agent can recover from it. Keep
+incumbent and failed variants, whole-run budget differences and task verdicts
+visible. [Evidence](../validation/learning-program-20261024/minicpm-bw-shell-investigation.json),
+[readable BW investigation](https://github.com/CC-David-CC/BranchWrite/blob/feat/minicpm-shell-feedback-20261024/docs/MINICPM-SHELL-INVESTIGATION.md).
+
 ## Keep this log useful
 
 For each new finding, record the exact model/client/source and tested workload,
