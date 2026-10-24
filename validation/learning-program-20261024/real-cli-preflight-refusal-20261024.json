@@ -1,0 +1,211 @@
+{
+  "schema": 1,
+  "preflight_sha256": "41b2a298741e7a6d35c01d4ba74d4db94da4d62bb6661feaf64d69d5cb010e52",
+  "source_pcc": "79073d4298e8fb58a85ef493fa8becc1e4d925b9",
+  "protocol_source_sha256": {
+    "serve/cow_http.py": "592031bbd9f9f6d5d126b4a53b9dec808ef55b882729bee18d0625db24614016",
+    "serve/cow_compat.py": "2bc8e041ff259f2a50a1ab999618c6bda25d2301b8703079d268f382c7f5b600",
+    "serve/frontend.py": "e5a84546300b948ed8ca79d25bb03b1af89e2ee1017e5f7ac67e2acbb1e84b5d",
+    "serve/responses.py": "5215aafab91eea1b77b4c81a1405731cd175fcbdcc9b0e56aa64db701a7100f4"
+  },
+  "profile_sha256": "bd757bb7261ab9b17404fc38d1d182941aa1b67ada030b290e987a784b52e980",
+  "model_contract_id": "2311dbffed1f0556aef8390d12608ff48f0204c74fd64d1dbcc26f02f61119f1",
+  "captured_request_sha256": {
+    "codex": "e3eb9a24166984b4a98e792bf4cffd75c00b6fc8945484e9068a5bfa83a9a6c8",
+    "opencode": "abc79e3999f034bafd4b9ddb1d62b817a8ff509b9852182e6e095185d37eb90f",
+    "pi": "03938f88564b7993150826adcaff182b56a8cacdce5fd53d0de0d7e9af466ed5"
+  },
+  "declared_model_limit": 8192,
+  "original_profile_capacity": 8192,
+  "thinking": false,
+  "model_inference": false,
+  "gpu_allocated": false,
+  "hardware_capacity_qualified": false,
+  "results": [
+    {
+      "client": "codex",
+      "request": 0,
+      "dialect": "responses",
+      "status": "REFUSED",
+      "error_type": "ValueError",
+      "error": "Rendered prompt plus output budget exceeds physical context capacity"
+    },
+    {
+      "client": "codex",
+      "request": 1,
+      "dialect": "responses",
+      "status": "REFUSED",
+      "error_type": "ValueError",
+      "error": "Rendered prompt plus output budget exceeds physical context capacity"
+    },
+    {
+      "client": "codex",
+      "request": 2,
+      "dialect": "responses",
+      "status": "REFUSED",
+      "error_type": "ValueError",
+      "error": "Rendered prompt plus output budget exceeds physical context capacity"
+    },
+    {
+      "client": "codex",
+      "request": 3,
+      "dialect": "responses",
+      "status": "REFUSED",
+      "error_type": "ValueError",
+      "error": "Rendered prompt plus output budget exceeds physical context capacity"
+    },
+    {
+      "client": "codex",
+      "request": 4,
+      "dialect": "responses",
+      "status": "REFUSED",
+      "error_type": "ValueError",
+      "error": "Rendered prompt plus output budget exceeds physical context capacity"
+    },
+    {
+      "client": "opencode",
+      "request": 0,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1655,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 4096,
+      "effective_settings": {
+        "temperature": 0.0
+      },
+      "request_seed": null
+    },
+    {
+      "client": "opencode",
+      "request": 1,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1723,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 4096,
+      "effective_settings": {
+        "temperature": 0.0
+      },
+      "request_seed": null
+    },
+    {
+      "client": "opencode",
+      "request": 2,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1792,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 4096,
+      "effective_settings": {
+        "temperature": 0.0
+      },
+      "request_seed": null
+    },
+    {
+      "client": "opencode",
+      "request": 3,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1872,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 4096,
+      "effective_settings": {
+        "temperature": 0.0
+      },
+      "request_seed": null
+    },
+    {
+      "client": "opencode",
+      "request": 4,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1987,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 4096,
+      "effective_settings": {
+        "temperature": 0.0
+      },
+      "request_seed": null
+    },
+    {
+      "client": "pi",
+      "request": 0,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1434,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 2048,
+      "effective_settings": {
+        "temperature": 0
+      },
+      "request_seed": 0
+    },
+    {
+      "client": "pi",
+      "request": 1,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1485,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 2048,
+      "effective_settings": {
+        "temperature": 0
+      },
+      "request_seed": 0
+    },
+    {
+      "client": "pi",
+      "request": 2,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1556,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 4096,
+      "effective_settings": {
+        "temperature": 0
+      },
+      "request_seed": 0
+    },
+    {
+      "client": "pi",
+      "request": 3,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1645,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 4096,
+      "effective_settings": {
+        "temperature": 0
+      },
+      "request_seed": 0
+    },
+    {
+      "client": "pi",
+      "request": 4,
+      "dialect": "chat",
+      "status": "PREPARED",
+      "prompt_tokens": 1731,
+      "output_reserve": 512,
+      "fits_original_profile": true,
+      "minimum_power_two_capacity": 4096,
+      "effective_settings": {
+        "temperature": 0
+      },
+      "request_seed": 0
+    }
+  ],
+  "limits": [
+    "Tokenization of captured requests only; no model quality, GPU capacity or throughput claim.",
+    "Captured fixture trajectories are not predictions of live model trajectory length.",
+    "Weights, actual backend sampling and runtime containment need separate qualification."
+  ]
+}

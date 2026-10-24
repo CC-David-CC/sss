@@ -154,3 +154,11 @@ cross-check old/new weights through old/new recipes, and keep hill-climbing
 accepted versions. The complete live coupled cycle is not established yet.
 Keep different-seed repeat runs outside the current campaign. Model export,
 download and HF publication require the owner's later release decision.
+
+
+Before allocating a live client test, run the native-tokenizer
+[request preflight](REAL-HARNESS-SETUP.md#preflight-wens-actual-tokenization-before-gpu-work).
+The captured Codex loop exceeds the old 8K arithmetic profile; its measured
+planning requirement is 16K. Preflight counts are not hardware admission or
+model-quality evidence. The published positive and refusal controls preserve
+this distinction.

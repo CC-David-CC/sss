@@ -109,3 +109,49 @@ actual backend identity and effective request settings. Verify tool results,
 continuation, usage and explicit error paths before running the baseline,
 general probe, task probe and composed comparison. Keep original host operation
 IDs and permissions; S³ remains the curriculum and evidence auditor.
+
+
+## Preflight Wen's actual tokenization before GPU work
+
+The CPU formatter check found different prompt costs for the captured five-turn
+fixture conversations, all with a 512-token output reserve:
+
+| Client | Prompt tokens across its requests | Smallest power-of-two context fitting this capture |
+| --- | ---: | ---: |
+| Codex | 8,271–8,840 | 16,384 |
+| OpenCode | 1,655–1,987 | 4,096 |
+| pi | 1,434–1,731 | 4,096 |
+
+PCC correctly refused all five Codex requests under the original 8,192-token
+arithmetic profile. That is a capacity refusal, not evidence of model failure.
+The [full planning record](../validation/learning-program-20261024/real-cli-preflight-final-20261024.json)
+and [8K refusal control](../validation/learning-program-20261024/real-cli-preflight-refusal-20261024.json)
+retain all 15 requests as counts/statuses without publishing their contents.
+No GPU was allocated and no inference was performed.
+
+Create another private JSON mapping client names to their original
+`requests-private.json` files, then run from the S³ checkout with PCC's Python
+dependencies and the model available on that authorized host:
+
+```sh
+python3 -m sss_integration.harness_preflight \
+  --pcc-root /your/inspected/PCC \
+  --profile /your/private/existing-profile.json \
+  --requests /your/private/captured-request-paths.json \
+  --model-limit 131072 --output-bound 512 \
+  --output /your/private/new-tokenization-preflight.json
+```
+
+`--model-limit` is the explicitly declared planning limit. It does not resize
+the original profile or qualify that capacity on hardware. The output preserves
+`original_profile_capacity`, `fits_original_profile`, source/input hashes,
+effective settings and request seeds. Exit zero means the captured requests
+prepare within the declared planning limit; inspect `fits_original_profile`
+before using the original profile. Refused requests remain in the output and
+cause a nonzero exit. Never shorten a prompt or discard a case to create a pass.
+
+A 16K profile is the next hardware-qualification candidate for this capture,
+within Wen's locked 131,072-token maximum. Live model trajectories can be longer
+and require fresh checks. The capture's effective temperature is zero in all
+three clients; Codex/OpenCode omit the request seed while pi sends zero. Pin
+and verify actual backend handling before claiming matched live sampling.
