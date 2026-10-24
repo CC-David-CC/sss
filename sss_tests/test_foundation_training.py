@@ -54,7 +54,8 @@ class FoundationTrainingTests(unittest.TestCase):
         self.assertEqual(len(self.pack['skills']), 9)
         self.assertIn('math.place_value', self.pack['requires']['math.add.no_carry'])
         self.assertEqual(len(validate_pack(self.pack)), 216)
-        self.assertEqual(self.pack['repeated_practice_questions'], 1)
+        # Place-value composition v2 no longer duplicates its direct question.
+        self.assertEqual(self.pack['repeated_practice_questions'], 0)
         self.assertFalse(self.pack['formal_mastery_qualification'])
         changed = copy.deepcopy(self.pack)
         changed['exercises'][0]['split'] = 'qualification'

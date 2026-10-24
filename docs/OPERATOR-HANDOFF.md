@@ -134,3 +134,10 @@ evidence tools. They do not launch a host or retry an uncertain operation.
 The [full-update pilot](WEN-FULL-UPDATE-PILOT.md) records a real small gain with
 one regression and rejection. Read the actual owner's private machine handoff
 before allocating resources; public reports are not live process state.
+
+## Paired failure-rate assessment
+
+See [FAILURE-RATES.md](FAILURE-RATES.md). The next study freezes 96 place-value
+cases and 12 per other skill before measuring both models. Place-value
+composition v2 fixes the old direct-question label; source identities change.
+Old frozen packs must continue to use their original source pin.

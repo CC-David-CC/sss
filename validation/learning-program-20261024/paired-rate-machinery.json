@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "core_tests": 111,
+  "new_tests": 3,
+  "previous_composition_defect_reproduced": true,
+  "model_inference": false,
+  "weights_updated": false,
+  "planned_primary_cases": 96,
+  "planned_review_cases": 96,
+  "planned_models": 2,
+  "source_files": {
+    "sss/foundations.py": "659d54f88fd2004c1a8846d917468b466a0c4e73756811c5a650b80f3806f393",
+    "sss/studies/paired_rates.py": "5a77bf767ff68fc5e9cb1ecb81c68b0c6a1e4a6c580068588c97e74217c7d170",
+    "sss_tests/test_paired_rates.py": "97dba0bd97d2a58d5a774b58554238c4fe69151a92222c8c1b8516f09d9a2980",
+    "sss_tests/test_foundation_training.py": "a15c880fea887d42d644472f40defc43444457be49da67ede83616e4fe62e6dd"
+  }
+}

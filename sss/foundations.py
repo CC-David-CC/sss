@@ -132,7 +132,9 @@ def check(exercise,completion):
             return item['previous_correct']==check(base,'0') and check(base,item['answer'])
         if k in extended_math.KINDS:return extended_math.check(k,p,number(t))
         if k in OPERATORS:return number(t)==oracle_expression(p['expression'])
-        if k=='place_value':return number(t)==abs(p['n'])//10**p['position']%10
+        if k=='place_value':
+            if 'expression' in p and oracle_expression(p['expression'])!=p['n']:return False
+            return number(t)==abs(p['n'])//10**p['position']%10
         if k=='round':
             scale=10**p['places'];x=F(p['n'],p['d'])*scale
             value=(abs(x).numerator*2+abs(x).denominator)//(2*abs(x).denominator)
@@ -223,7 +225,7 @@ def generate(kind,split,index,*,gate='independent',seed=0):
     if kind in reasoning.KINDS:return reasoning.generate(kind,split,index,gate,seed)
     if kind in extended_math.KINDS:return extended_math.generate(kind,split,index,gate,seed)
     # Separate generator families: new ranges, presentation and composition shapes.
-    family=split+'-'+gate+'-'+kind+'-v1'
+    family=split+'-'+gate+'-'+kind+('-v2' if kind=='place_value' and gate=='composition' else '-v1')
     rng=random.Random(int(hashlib.sha256(f'{seed}:{family}:{index}'.encode()).hexdigest(),16))
     low,high={'practice':(-20,20),'development':(21,80),'qualification':(-200,-21)}[split]
     nz=lambda:rng.choice([v for v in range(low,high+1) if v])
@@ -235,7 +237,14 @@ def generate(kind,split,index,*,gate='independent',seed=0):
         if kind in ('floor','ceil'):expr=[kind,['divide',a,b]]
         if gate=='composition':expr=['add',['multiply',expr,3],['subtract',7,2]]
         p={'expression':expr};text='Evaluate this exact prefix expression: '+json.dumps(expr)+'. Boolean results are 0 or 1; remainder uses floor division.'
-    elif kind=='place_value':p=dict(n=abs(a)*10007,position=rng.randrange(5));text=f"Give the base-10 digit at position {p['position']} in {p['n']}; position 0 is units."
+    elif kind=='place_value':
+        p=dict(n=abs(a)*10007,position=rng.randrange(5))
+        if gate=='composition':
+            p['expression']=['add',['multiply',abs(a),10007],['subtract',abs(b)*13,abs(c)]]
+            p['n']=int(reference_expression(p['expression']))
+            text='First evaluate this exact prefix expression: '+json.dumps(p['expression'])+'. '
+            text+=f"Then give the base-10 digit at position {p['position']} in its result; position 0 is units."
+        else:text=f"Give the base-10 digit at position {p['position']} in {p['n']}; position 0 is units."
     elif kind=='round':p=dict(n=a*10+5,d=100,places=1);text=f"Round {p['n']}/{p['d']} to {p['places']} decimal places, ties away from zero."
     elif kind=='fraction':p=dict(n=a*7,d=b*7);text=f'Give an exact number equivalent to {a*7}/{b*7}.'
     elif kind=='ratio':p=dict(a=a,b=b,c=c);text=f'If a quantity scales from {a} to {b}, what does {c} scale to by the same factor?'

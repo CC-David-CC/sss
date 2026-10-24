@@ -82,3 +82,10 @@ checks are still required before accepting a recipe. Repeated runs with other
 seeds are outside the current campaign authorization. The
 [harness comparison](HARNESS-COMPARISON.md) holds weights fixed and tests a
 different intervention; keep its results separate from this weight update.
+
+## Interpreting the one lost place-value answer
+
+The six-question place-value sample is too small to establish a broad class
+regression. [Failure-rate estimation](FAILURE-RATES.md) describes the approved
+96-question paired follow-up and a corrected composition generator. Historical
+54-case scores retain their original source; they are not regraded.
