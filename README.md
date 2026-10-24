@@ -75,9 +75,10 @@ The completed five-skill native mixed-practice pilot preserved earlier successes
 but stayed at **14/40** held-out checks after four rounds/16 updates. No hat
 qualified. [Full learning evidence](validation/README.md).
 
-The new progressive-graph pilot has also completed one real 18-example update
-across nine skills: protected checks stayed at **17/54**, with zero gains or
-regressions. The LoRA candidate was served successfully but did not qualify.
+The new progressive-graph pilot has completed 18-example/one-update and
+108-example/18-update experiments across nine skills. Both stayed at **17/54**
+protected checks, with zero gains or regressions. The larger LoRA candidate
+passed serving and native reload checks, but did not qualify.
 [Current foundation pilot and its limits](docs/FOUNDATION-TRAINING-PILOT.md).
 
 ## Try it

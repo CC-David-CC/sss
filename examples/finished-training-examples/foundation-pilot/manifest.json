@@ -24,12 +24,32 @@
     "language_quality_evaluation": false
   },
   "wen_training": {
-    "consumed_occurrences": 18,
+    "consumed_occurrences": 108,
     "available_occurrences": 108,
-    "optimizer_updates": 1,
-    "all_practice_consumed": false,
+    "optimizer_updates": 18,
+    "all_practice_consumed": true,
     "base_unchanged": true,
     "capability_gain_observed": false,
-    "candidate_sha256": "ab740f8401a7286e862bf6c37bc4e0237c5d0708a66c6edd552c7ee89573b470"
-  }
+    "candidate_sha256": "9324d370790eb84270961e08112941ef42ca0210adce96479748193581edee86"
+  },
+  "wen_training_runs": [
+    {
+      "consumed_occurrences": 18,
+      "available_occurrences": 108,
+      "optimizer_updates": 1,
+      "all_practice_consumed": false,
+      "base_unchanged": true,
+      "capability_gain_observed": false,
+      "candidate_sha256": "ab740f8401a7286e862bf6c37bc4e0237c5d0708a66c6edd552c7ee89573b470"
+    },
+    {
+      "consumed_occurrences": 108,
+      "available_occurrences": 108,
+      "optimizer_updates": 18,
+      "all_practice_consumed": true,
+      "base_unchanged": true,
+      "capability_gain_observed": false,
+      "candidate_sha256": "9324d370790eb84270961e08112941ef42ca0210adce96479748193581edee86"
+    }
+  ]
 }

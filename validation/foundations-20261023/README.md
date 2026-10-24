@@ -63,3 +63,8 @@ after, zero gains and zero regressions. Its unpromoted LoRA candidate was served
 successfully; blind qualification and native mean-loss reload remain pending.
 See [the live pilot](../../docs/FOUNDATION-TRAINING-PILOT.md) and its linked
 aggregate receipt for the bounds and remaining gates.
+
+The later full 108-example run also stayed at 17/54 after 18 updates, with no gains
+or regressions. Its independent final-batch native reload matched within 2e-8.
+See [the full-pack receipt](wen-full-pack-update.json). This is a measured
+negative learning result under the stated settings, not a model qualification.

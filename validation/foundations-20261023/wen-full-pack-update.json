@@ -1,0 +1,395 @@
+{
+  "schema": 1,
+  "status": "CANDIDATE_NOT_QUALIFIED",
+  "baseline_passes": 17,
+  "candidate_passes": 17,
+  "validation_cases": 54,
+  "regressions": 0,
+  "gains": 0,
+  "qualified": false,
+  "blind_run": false,
+  "training_steps": 18,
+  "total_examples": 108,
+  "distinct_practice_questions": 107,
+  "batch_size": 6,
+  "rank": 4,
+  "learning_rate": 0.001,
+  "distribution": {
+    "math.add.carry": 12,
+    "math.add.no_carry": 12,
+    "math.add.signed": 12,
+    "math.divide": 12,
+    "math.fraction": 12,
+    "math.fraction.add": 12,
+    "math.multiply": 12,
+    "math.place_value": 12,
+    "state.registers": 12
+  },
+  "scores_before": {
+    "math.add.carry": {
+      "meets_requirement": false,
+      "passed": 4,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.add.no_carry": {
+      "meets_requirement": false,
+      "passed": 4,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.add.signed": {
+      "meets_requirement": false,
+      "passed": 3,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.divide": {
+      "meets_requirement": false,
+      "passed": 0,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.fraction": {
+      "meets_requirement": false,
+      "passed": 0,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.fraction.add": {
+      "meets_requirement": false,
+      "passed": 0,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.multiply": {
+      "meets_requirement": false,
+      "passed": 3,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.place_value": {
+      "meets_requirement": false,
+      "passed": 3,
+      "regressions": 0,
+      "total": 6
+    },
+    "state.registers": {
+      "meets_requirement": false,
+      "passed": 0,
+      "regressions": 0,
+      "total": 6
+    }
+  },
+  "scores_after": {
+    "math.add.carry": {
+      "meets_requirement": false,
+      "passed": 4,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.add.no_carry": {
+      "meets_requirement": false,
+      "passed": 4,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.add.signed": {
+      "meets_requirement": false,
+      "passed": 3,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.divide": {
+      "meets_requirement": false,
+      "passed": 0,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.fraction": {
+      "meets_requirement": false,
+      "passed": 0,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.fraction.add": {
+      "meets_requirement": false,
+      "passed": 0,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.multiply": {
+      "meets_requirement": false,
+      "passed": 3,
+      "regressions": 0,
+      "total": 6
+    },
+    "math.place_value": {
+      "meets_requirement": false,
+      "passed": 3,
+      "regressions": 0,
+      "total": 6
+    },
+    "state.registers": {
+      "meets_requirement": false,
+      "passed": 0,
+      "regressions": 0,
+      "total": 6
+    }
+  },
+  "candidate_sha256": "9324d370790eb84270961e08112941ef42ca0210adce96479748193581edee86",
+  "candidate_bytes": 45426096,
+  "candidate_mode": "lora",
+  "base_unchanged": true,
+  "base_sha256": "49425fd802b04b400a1725e8afe527c405bb15e828d0275ff295e38396839f34",
+  "promoted": false,
+  "formal_mastery_qualification": false,
+  "native_steps": [
+    {
+      "after": 0.07538396120071411,
+      "before": 0.08045811951160431,
+      "example_cursor": 6,
+      "examples": 6,
+      "step": 0
+    },
+    {
+      "after": 0.18291713297367096,
+      "before": 0.18692681193351746,
+      "example_cursor": 12,
+      "examples": 6,
+      "step": 1
+    },
+    {
+      "after": 1.0323542356491089,
+      "before": 1.038240671157837,
+      "example_cursor": 18,
+      "examples": 6,
+      "step": 2
+    },
+    {
+      "after": 0.7611505389213562,
+      "before": 0.7674330472946167,
+      "example_cursor": 24,
+      "examples": 6,
+      "step": 3
+    },
+    {
+      "after": 0.175465390086174,
+      "before": 0.17591215670108795,
+      "example_cursor": 30,
+      "examples": 6,
+      "step": 4
+    },
+    {
+      "after": 0.5369287729263306,
+      "before": 0.5387234687805176,
+      "example_cursor": 36,
+      "examples": 6,
+      "step": 5
+    },
+    {
+      "after": 1.7841304540634155,
+      "before": 1.795622706413269,
+      "example_cursor": 42,
+      "examples": 6,
+      "step": 6
+    },
+    {
+      "after": 1.2669310569763184,
+      "before": 1.2739194631576538,
+      "example_cursor": 48,
+      "examples": 6,
+      "step": 7
+    },
+    {
+      "after": 1.2465978860855103,
+      "before": 1.256036639213562,
+      "example_cursor": 54,
+      "examples": 6,
+      "step": 8
+    },
+    {
+      "after": 1.561655879020691,
+      "before": 1.5687973499298096,
+      "example_cursor": 60,
+      "examples": 6,
+      "step": 9
+    },
+    {
+      "after": 1.4378433227539062,
+      "before": 1.4447746276855469,
+      "example_cursor": 66,
+      "examples": 6,
+      "step": 10
+    },
+    {
+      "after": 1.320173978805542,
+      "before": 1.325960636138916,
+      "example_cursor": 72,
+      "examples": 6,
+      "step": 11
+    },
+    {
+      "after": 0.51054847240448,
+      "before": 0.5153141021728516,
+      "example_cursor": 78,
+      "examples": 6,
+      "step": 12
+    },
+    {
+      "after": 0.5317232012748718,
+      "before": 0.5361899137496948,
+      "example_cursor": 84,
+      "examples": 6,
+      "step": 13
+    },
+    {
+      "after": 0.5980095863342285,
+      "before": 0.6010484099388123,
+      "example_cursor": 90,
+      "examples": 6,
+      "step": 14
+    },
+    {
+      "after": 0.5059068202972412,
+      "before": 0.5102367401123047,
+      "example_cursor": 96,
+      "examples": 6,
+      "step": 15
+    },
+    {
+      "after": 0.4908938407897949,
+      "before": 0.49974387884140015,
+      "example_cursor": 102,
+      "examples": 6,
+      "step": 16
+    },
+    {
+      "after": 0.5608031153678894,
+      "before": 0.5641724467277527,
+      "example_cursor": 108,
+      "examples": 6,
+      "step": 17
+    }
+  ],
+  "all_batch_losses_reduced": true,
+  "loss_scope": "Per-update before/after on that batch; batches differ, not a whole-pack before/after comparison",
+  "gradient_counts": [
+    {
+      "tensors": 498,
+      "nonzero": 249
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    },
+    {
+      "tensors": 498,
+      "nonzero": 498
+    }
+  ],
+  "allocation_peaks": [
+    {
+      "checked_graphs": 648,
+      "device": "CUDA0",
+      "planned_graph_buffer_bytes": 22147041024
+    },
+    {
+      "checked_graphs": 612,
+      "device": "CUDA1",
+      "planned_graph_buffer_bytes": 21610473856
+    },
+    {
+      "checked_graphs": 576,
+      "device": "CUDA2",
+      "planned_graph_buffer_bytes": 21423312768
+    }
+  ],
+  "input_tokens": 11813,
+  "selected_target_tokens": 1041,
+  "maximum_tokens": 375,
+  "same_baseline_passes_as_first_pilot": true,
+  "native_seconds_approx": 874.3799941539764,
+  "pcc_source": "79073d4298e8fb58a85ef493fa8becc1e4d925b9",
+  "sss_source": "b6e7130c1c80996e35b14cac19355e91796aacbb",
+  "native_loss_reload_qualified": true,
+  "native_reload": {
+    "status": "PASS",
+    "scope": "saved candidate reload over exact six-example final training batch",
+    "candidate_sha256": "9324d370790eb84270961e08112941ef42ca0210adce96479748193581edee86",
+    "expected_mean_loss": 0.5608031153678894,
+    "reloaded_mean_loss": 0.5608030954996744,
+    "tolerance": 1e-05,
+    "seconds": 72.96276361495256,
+    "devices": 3,
+    "base_unchanged": true,
+    "adapter_unchanged": true,
+    "weights_updated": false,
+    "candidate_written": false,
+    "promoted": false
+  },
+  "gpu_allocations_settled": true,
+  "changed_validation_answers": 1,
+  "observed_process_memory_peak_available": false,
+  "memory_observation_scope": "Published memory figures are allocator graph-buffer plans. A separate read-only process observer failed; no complete process high-water artifact is claimed."
+}

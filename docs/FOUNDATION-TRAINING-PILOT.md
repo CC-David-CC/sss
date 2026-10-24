@@ -202,3 +202,36 @@ Prepared [270/540/1,080-example practice packs](../examples/finished-training-ex
 keep all 108 protected questions unchanged and include the preceding practice.
 They contain 266/525/1,028 distinct questions; repetitions are labeled rehearsal.
 These are data preparation checkpoints, not additional executed training runs.
+
+
+## Full 108-example learning result
+
+The next run started a fresh rank-four hat from the same immutable Wen 1.1 base.
+It consumed all 108 practice occurrences (107 distinct questions), 12 per skill,
+in 18 ordinary native updates with batch size 6 and learning rate 0.001. It used
+11,813 input tokens and 1,041 selected answer/terminator targets, with thinking off.
+
+| Practice consumed | Weight updates | Protected score before | After | Gained passes | Regressions |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 18 | 1 | 17/54 | 17/54 | 0 | 0 |
+| 108 | 18 | 17/54 | 17/54 | 0 | 0 |
+
+The two hats are separate experiments; the larger run did not continue the
+unqualified first candidate. Both had exactly the same baseline passing cases.
+Each of the 18 updates reduced loss on its own six-example batch. Since those
+batches differ, these values are not a whole-pack before/after loss comparison.
+One generated validation answer changed, but its pass/fail result did not.
+There is still no measured capability gain under this configuration.
+
+The saved candidate was served by PCC and independently reloaded by the native
+trainer. Re-evaluating the exact final six-example batch reproduced its loss to
+within 2e-8 (required tolerance 1e-5). The base and saved adapter remained unchanged,
+and all owned GPU allocations and leases settled. The 45,426,096-byte LoRA GGUF
+has SHA-256 `9324d370790eb84270961e08112941ef42ca0210adce96479748193581edee86`.
+It did not qualify; blind checks were not run and no model was promoted.
+
+[Full aggregate result](../validation/foundations-20261023/wen-full-pack-update.json)
+records the per-skill scores, per-update losses and bounds without exposing
+protected questions or answers. The next prepared 270/540/1,080-example packs
+measure whether more varied practice helps. Update count, learning rate and
+retention remain separate variables; a larger example count is not a guarantee.
