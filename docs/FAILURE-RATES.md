@@ -35,9 +35,11 @@ That establishes a changed answer to a particular item. It is not enough to
 establish a broad decline in place-value ability. The strict preservation guard
 rejected adoption while retaining the candidate and its evidence for repair.
 
-## Approved expanded assessment
+## Completed expanded assessment
 
-The next paired assessment uses **96 fresh place-value questions**, 32 each for
+The [paired assessment report](WEN-PAIRED-ASSESSMENT.md) records 23/96 to 29/96
+place-value passes, seven gains and one loss, and unchanged outcomes on 96 review
+questions. The candidate remains unpromoted. The approved design used **96 fresh place-value questions**, 32 each for
 independent performance, composition and recovery. Twelve fresh checks for each
 of the other eight skills provide a smaller review screen. This is 192 questions
 per model and 384 model executions, with fixed model sampling. Twelve-case review

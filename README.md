@@ -4,7 +4,10 @@
 tested offline planning and evidence checks; live cross-harness measurements
 remain to be qualified. [Wen's full-update pilot](docs/WEN-FULL-UPDATE-PILOT.md)
 changed the protected score from 17/54 to 19/54, with three gains and one
-regression. The candidate was rejected and was not promoted.
+regression. The candidate was rejected and was not promoted. A larger
+[paired assessment](docs/WEN-PAIRED-ASSESSMENT.md) found place value improved
+from 23/96 to 29/96, with seven gains and one loss; 96 review outcomes were
+unchanged. Uncertainty and the original rejection remain explicit.
 Development checkpoint: [foundations and workflow validation](validation/foundations-20261023/README.md). Live-model qualification remains pending.
 
 

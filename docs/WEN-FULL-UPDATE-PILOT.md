@@ -89,3 +89,8 @@ The six-question place-value sample is too small to establish a broad class
 regression. [Failure-rate estimation](FAILURE-RATES.md) describes the approved
 96-question paired follow-up and a corrected composition generator. Historical
 54-case scores retain their original source; they are not regraded.
+
+The completed [larger paired assessment](WEN-PAIRED-ASSESSMENT.md) found 23/96
+to 29/96 place-value passes, seven gains and one loss, and unchanged results on
+96 review questions. It did not change the original acceptance policy or promote
+the candidate. The corrected composition suite has its own source identity.

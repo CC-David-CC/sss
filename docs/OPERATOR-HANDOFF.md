@@ -137,7 +137,10 @@ before allocating resources; public reports are not live process state.
 
 ## Paired failure-rate assessment
 
-See [FAILURE-RATES.md](FAILURE-RATES.md). The next study freezes 96 place-value
-cases and 12 per other skill before measuring both models. Place-value
+See [FAILURE-RATES.md](FAILURE-RATES.md) and the completed
+[paired assessment](WEN-PAIRED-ASSESSMENT.md): 96 place-value cases and 12 per
+other skill were frozen before measuring both models. Place-value passes rose
+23/96 to 29/96, with seven gains and one loss; all 96 review outcomes were
+unchanged. The old candidate is unpromoted; do not relaunch this settled study. Place-value
 composition v2 fixes the old direct-question label; source identities change.
 Old frozen packs must continue to use their original source pin.

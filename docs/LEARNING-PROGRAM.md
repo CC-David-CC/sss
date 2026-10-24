@@ -100,3 +100,8 @@ composed execution, followed by unseen transfer and retention checks. It keeps
 behavior-based editing separate from protected grading and fixed-weight harness
 experiments separate from training. Actual host exporters and all four live
 harness integrations remain to be qualified; no performance ranking exists yet.
+
+The [expanded paired assessment](WEN-PAIRED-ASSESSMENT.md) then tested the same
+weights on fresh frozen questions: place value 23/96 to 29/96, seven gains and
+one loss; 96 review outcomes unchanged. Its uncertainty, low absolute scores and
+unchanged rejection remain visible. No training occurred in that assessment.
