@@ -1,0 +1,35 @@
+{
+  "intent": {
+    "schema": 1,
+    "repository": "HuggingFaceTB/smoltalk",
+    "revision": "5feaf2fd3ffca7c237fc38d1861bc30365d48ffa",
+    "subset": "smol-constraints",
+    "source_split": "train",
+    "files": [
+      "README.md",
+      "data/smol-constraints/train-00000-of-00001.parquet"
+    ],
+    "planned_bytes_approx": 16910000,
+    "purpose": "Owner-approved source staging, not verified lessons",
+    "training_admitted": false,
+    "current_optimizer_program_changed": false
+  },
+  "result": {
+    "schema": 1,
+    "status": "STAGED",
+    "exit_code": 0,
+    "wall_seconds": 1.1237870189361274,
+    "files": {
+      "README.md": {
+        "bytes": 9723,
+        "sha256": "b6ff197df18e272fe15361db889638f9679b8443f299034137b5234acd8d3487"
+      },
+      "data/smol-constraints/train-00000-of-00001.parquet": {
+        "bytes": 16862908,
+        "sha256": "3369eaff911d3511ee21561a3b8607e1acfd773a6ade80f4759490ffdcce7ba4"
+      }
+    },
+    "training_admitted": false,
+    "current_optimizer_program_changed": false
+  }
+}

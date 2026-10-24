@@ -3,8 +3,9 @@
 A model can calculate an answer and still fail the task: it may add an unwanted
 explanation, ignore JSON requirements or keep generating instead of finishing.
 The first larger MiniCPM baseline now measures exact answers and natural response
-completion separately. Native candidate training has started; no candidate has
-completed its learning/retention assessment at this checkpoint.
+completion separately. The first full-update candidate has completed its
+learning/retention assessment: it gains strongly but fails preservation. Standard
+Muon and its two declared variants are still in progress.
 
 ## What the baseline establishes
 
@@ -31,6 +32,37 @@ to estimate production inference throughput or shared A100 costs.
 
 [Baseline totals, all 27 skill/gate groups and identities](../validation/minicpm-native-learning-20261024/baseline.json).
 Raw protected prompts, answers and response traces stay private.
+
+## First measured candidate: large gains, retention rejection
+
+The unchanged-harness AdamW control improves exact answers from **59/864 to
+482/864** (6.83% to 55.79%). Natural completion improves **415/864 to 864/864**.
+There are 434 gained answers and 11 lost previous successes; 48 earlier passes
+are retained. Completion gains are 449 with no losses. The frozen gate rejects
+this candidate. No sealed qualification was run and no model was promoted.
+
+Nine answer losses are fraction transfer/recovery, one is fraction composition,
+and one is independent place value. Do not teach those protected questions back
+to the model. Build independently checked practice variations in those families
+and preserve mixed review before testing a repair. Several composition/state
+families remain at zero exact passes; stopping correctly is not semantic mastery.
+
+Training completes 68 full updates and 1,836 practice-example presentations in
+303.23 training-phase seconds, including 3.23 seconds of final-update overrun.
+The 864-occurrence ordered practice set is traversed 2.125 times, not 1,836 unique
+questions. All updates cover all 381 finite/nonzero model gradient tensors; the
+candidate reload mean-loss error is 3.41e-9. Gradient/coverage takes 211.99 seconds,
+optimizer work 4.12 seconds, and post-update batch loss checks 87.10 seconds.
+The operator's full GPU allocation is 459.06 seconds including preparation,
+serialization, verification and reload. These are distinct clocks.
+
+The same evaluation ID, runtime ID, checker, source oracle, generation policy and
+original cases are used before/after. Thus this measured stack change follows
+training, not a simultaneous harness change. It does not isolate learned arithmetic
+from better formatting/stopping. The unchanged correctness path now needs 6,884
+model calls and 1,017,029 prefill tokens instead of 35,132/4,523,170; shorter
+responses reduce this fresh-prefix oracle's repeated work. No production serving
+speedup is claimed. [Full aggregate and paired skill/gate results](../validation/minicpm-native-learning-20261024/adamw-control.json).
 
 ## From preparation to the first learning comparison
 
@@ -114,7 +146,11 @@ problem/template families before training. Retain source revision, row identity,
 license/attribution, transformations, verifier result and rejected samples. The
 SmolTalk card licenses its newly generated subsets under Apache 2.0; incorporated
 third-party subsets have their own licenses. The cited Ai2 training cards identify
-ODC-BY. No public dataset was downloaded or admitted by this checkpoint.
+ODC-BY. After owner approval, the pinned SmolTalk smol-constraints **train** shard and
+card were staged: 16,862,908 parquet bytes plus 9,723 card bytes, revision
+`5feaf2fd3ffca7c237fc38d1861bc30365d48ffa`. [Checksummed staging record](../validation/minicpm-native-learning-20261024/public-data-staging.json).
+No rows have been admitted to training and the frozen optimizer comparison is
+unchanged. Staging is not label verification or decontamination.
 
 This remains work on the reusable learning loop. BW's shell verification and
 termination failures are tracked separately; these scores do not demonstrate a

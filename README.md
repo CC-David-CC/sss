@@ -167,6 +167,7 @@ outside this repository.
 separate three Python passes/two shell failures from independently checked tiny
 native full/LoRA backprop. Subsequent work qualified real MiniCPM full updates
 and completed the larger baseline: 59/864 exact-answer passes and 415/864 natural
-response completions. The fixed-budget candidate comparison is now running.
+response completions. The first AdamW candidate reaches 482/864 exact answers and 864/864 completions,
+but is rejected for 11 lost prior passes. Muon comparisons are still running.
 [Current baseline, learning plan and reproducible evidence](docs/MINICPM-NATIVE-LEARNING.md).
 Broader optimizer ablations are stretch goals.
