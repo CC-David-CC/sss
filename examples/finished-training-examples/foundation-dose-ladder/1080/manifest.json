@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "origin": "owned-checked-reference-practice",
+  "model_generated_answers": false,
+  "pack_id": "d447652040bc708ea4652c276993c191af91933daac18f5f63aeb164d14cf4e2",
+  "practice_occurrences": 1080,
+  "distinct_questions": 1028,
+  "rehearsals": 52,
+  "practice_per_gate": 40,
+  "skills": 9,
+  "gates_per_skill": 3,
+  "validation_cases": 54,
+  "blind_cases": 54,
+  "protected_checks_unchanged": true,
+  "evaluation_material_included": false,
+  "complete_pack_training_executed": false,
+  "includes_practice_from_smaller_packs": true,
+  "wen_token_admission": true,
+  "sha256": "5a0eb38bedb48d08eb023d9274ac5cda085cc8ca7f3f53903f326ac543661edd",
+  "wen_token_bounds": {
+    "minimum": 58,
+    "maximum": 376,
+    "maximum_selected_targets": 26,
+    "base_sha256": "49425fd802b04b400a1725e8afe527c405bb15e828d0275ff295e38396839f34",
+    "sequence_profile": "dense-short-v1",
+    "weights_updated": false,
+    "gpu_used": false,
+    "within_measured_375_token_gradient_probe": false
+  }
+}

@@ -37,9 +37,11 @@ a capability.
 - **Supporting reasoning:** arithmetic, units, paths, quoting and instructions.
 
 The broad map marks model proficiency **unmeasured**. Available tools are not
-proof that a model uses them well. The current executable training starter tree
-covers five integer-arithmetic skills. Linux and coding packs need their own
-model trials and owned execution fixtures; they are not silently marked passing.
+proof that a model uses them well. The legacy configured training adapter covers
+five integer-arithmetic skills. The progressive-graph training preview activates
+nine math/state skills with their prerequisites. Linux and coding packs need
+their own model trials and owned execution fixtures; they are not silently
+marked passing.
 
 ## What exists now
 

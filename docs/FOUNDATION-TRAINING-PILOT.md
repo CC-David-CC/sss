@@ -196,3 +196,9 @@ predeclared maximum-absolute 0.0002 and RMS 0.00005 limits, with the same top to
 No weights were updated in either probe, and all owned allocations settled.
 This clears the measured capacity/numerical gate for trying this bounded pack;
 it does not establish a capability gain or qualify longer Wen contexts.
+
+
+Prepared [270/540/1,080-example practice packs](../examples/finished-training-examples/foundation-dose-ladder/)
+keep all 108 protected questions unchanged and include the preceding practice.
+They contain 266/525/1,028 distinct questions; repetitions are labeled rehearsal.
+These are data preparation checkpoints, not additional executed training runs.
