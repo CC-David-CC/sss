@@ -85,3 +85,18 @@ for this campaign; reports identify them by hash rather than uploading weights.
 original bounded families and a source-linked delayed-revisit example. This is
 checked curriculum machinery, not a measured Wen improvement. Keep its new
 catalog and source identities distinct from already frozen training comparisons.
+
+## Full update and harness comparison increments
+
+The [ordinary full-update pilot](WEN-FULL-UPDATE-PILOT.md) changed independent
+behavior: 17/54 to 19/54, three gained passes and one regression. Native FP32
+save/reload passed; the preservation gate rejected the candidate. This is a
+small measured change, not a qualified model release. The original base remains
+unchanged, and generated weights remain on the training host.
+
+The [Harness²-inspired comparison](HARNESS-COMPARISON.md) adds an original
+offline four-condition contract: baseline, general probe, task probe and
+composed execution, followed by unseen transfer and retention checks. It keeps
+behavior-based editing separate from protected grading and fixed-weight harness
+experiments separate from training. Actual host exporters and all four live
+harness integrations remain to be qualified; no performance ranking exists yet.

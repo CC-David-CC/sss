@@ -235,3 +235,12 @@ records the per-skill scores, per-update losses and bounds without exposing
 protected questions or answers. The next prepared 270/540/1,080-example packs
 measure whether more varied practice helps. Update count, learning rate and
 retention remain separate variables; a larger example count is not a guarantee.
+
+## 2026-10-24 ordinary full-update pilot
+
+The next controlled practice set was the same 18 examples as the first LoRA
+pilot. One full SGD update at learning rate 0.0001 changed protected checks from
+17/54 to 19/54: three gained passes and one regression. The FP32 candidate passed
+native reload, but failed preservation and was not promoted. This pilot used a
+different learning rate from the LoRA control; it is not a strict mode-only
+ablation. See [full results, cost, size and limitations](WEN-FULL-UPDATE-PILOT.md).

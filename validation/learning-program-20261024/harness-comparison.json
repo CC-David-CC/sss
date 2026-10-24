@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "evidence_kind": "synthetic_contract",
+  "core_tests": 108,
+  "new_contract_tests": 15,
+  "live_harness_comparisons": 0,
+  "model_inference": false,
+  "weights_updated": false,
+  "promoted": false,
+  "tested": [
+    "Four development executions per task/harness, separate editor usage",
+    "Frozen model/task/files/tool/permission/budget/configuration identities",
+    "Prior behavior view without independent grades or held-out evidence",
+    "Original host operations and artifact/checker bindings",
+    "Missing probes, uncertainty, infrastructure errors and budget overruns",
+    "Gains with regressions, transfer failures and absent retention controls"
+  ],
+  "source_files": {
+    "sss/studies/harness_compare.py": "c083386b783e597355bb55bef99b7373b1b60941b440130e5013a07bec82b586",
+    "sss_tests/test_harness_compare.py": "cfa16135c4150e9db5ad4d09fb525bb6039d964c89029a247b1a8f94776002d9",
+    "sss/__main__.py": "798ee18f6e67010e7f652874ac1122d58485af30c90abda5c09876f25c3ff575"
+  },
+  "limits": [
+    "Tests exercise synthetic evidence contracts, not live host integrations.",
+    "No statistical comparison or external harness qualification is claimed.",
+    "The auditor checks bindings; trusted hosts must verify original artifacts and isolation."
+  ],
+  "cli_smoke_checks": 3
+}

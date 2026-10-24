@@ -1,4 +1,10 @@
 # Skills³ (S³)
+
+[Four-condition harness comparisons](docs/HARNESS-COMPARISON.md) now have
+tested offline planning and evidence checks; live cross-harness measurements
+remain to be qualified. [Wen's full-update pilot](docs/WEN-FULL-UPDATE-PILOT.md)
+changed the protected score from 17/54 to 19/54, with three gains and one
+regression. The candidate was rejected and was not promoted.
 Development checkpoint: [foundations and workflow validation](validation/foundations-20261023/README.md). Live-model qualification remains pending.
 
 

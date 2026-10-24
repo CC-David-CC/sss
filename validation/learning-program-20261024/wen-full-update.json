@@ -1,0 +1,252 @@
+{
+  "schema": 1,
+  "status": "MEASURABLE_GAIN_WITH_REGRESSION_NOT_QUALIFIED",
+  "promoted": false,
+  "hypothesis": "Measure whether a single ordinary full-weight update changes independent behavior on the same practice set used by a prior LoRA pilot.",
+  "source_pins": {
+    "pcc": "79073d4298e8fb58a85ef493fa8becc1e4d925b9",
+    "sss": "557192dbfd72fec11ba85951ea38b89b10564cd1"
+  },
+  "operator_sha256": "9895c126f8fb49fc773e5a894d47f0ab21fd08ca4d407ec2b54d27dc626e7f75",
+  "executable_sha256": "852e89f256206357c930a1f08264dc91e0463175749093e92adfe36ec06ef0c3",
+  "model": {
+    "name": "Wen 1.1",
+    "base_sha256": "49425fd802b04b400a1725e8afe527c405bb15e828d0275ff295e38396839f34",
+    "base_unchanged": true,
+    "candidate_sha256": "87316715f2b6d557507f904bfba0a038fc78693cddf3d4db59fa43b60e1d2af3",
+    "candidate_format": "GGUF with active tensors saved as F32",
+    "candidate_bytes": 31876841504,
+    "weights_transferred": false
+  },
+  "training": {
+    "mode": "full",
+    "backprop_mode": "standard",
+    "optimizer": "sgd",
+    "examples": 18,
+    "unique_practice_examples": 18,
+    "updates": 1,
+    "batch_size": 18,
+    "learning_rate": 0.0001,
+    "fixed_seed": 20261023,
+    "thinking": false,
+    "target_policy": "actions_answer",
+    "selected_target_tokens": 103,
+    "maximum_input_tokens": 177,
+    "exact_token_target_mask_match_prior_lora": true,
+    "practice_fingerprint": "e2637a48e4c36c1c013a0a296a7fa6510d401bb607216b6ab4c42ca8198895c3",
+    "active_gradient_tensors": 427,
+    "mean_loss_before": 0.43516218662261963,
+    "mean_loss_after": 0.26505106687545776
+  },
+  "reload": {
+    "status": "PASS",
+    "expected_mean_loss": 0.26505106687545776,
+    "reloaded_mean_loss": 0.2650510510494415,
+    "tolerance": 1e-05,
+    "examples": 18,
+    "weights_updated": false
+  },
+  "validation": {
+    "baseline_passed": 17,
+    "candidate_passed": 19,
+    "total": 54,
+    "newly_passed": 3,
+    "newly_failed": 1,
+    "unchanged_passed": 16,
+    "baseline_by_skill": {
+      "math.place_value": {
+        "passed": 3,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.add.no_carry": {
+        "passed": 4,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.add.carry": {
+        "passed": 4,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.multiply": {
+        "passed": 3,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.divide": {
+        "passed": 0,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.fraction": {
+        "passed": 0,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.add.signed": {
+        "passed": 3,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "state.registers": {
+        "passed": 0,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.fraction.add": {
+        "passed": 0,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      }
+    },
+    "candidate_by_skill": {
+      "math.place_value": {
+        "passed": 2,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 1
+      },
+      "math.add.no_carry": {
+        "passed": 4,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.add.carry": {
+        "passed": 4,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.multiply": {
+        "passed": 4,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.divide": {
+        "passed": 0,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.fraction": {
+        "passed": 1,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.add.signed": {
+        "passed": 3,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "state.registers": {
+        "passed": 0,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      },
+      "math.fraction.add": {
+        "passed": 1,
+        "total": 6,
+        "meets_requirement": false,
+        "regressions": 0
+      }
+    },
+    "gate_counts": {
+      "composition": {
+        "total": 18,
+        "baseline_passed": 1,
+        "candidate_passed": 1,
+        "newly_passed": 1,
+        "newly_failed": 1
+      },
+      "independent": {
+        "total": 18,
+        "baseline_passed": 7,
+        "candidate_passed": 8,
+        "newly_passed": 1,
+        "newly_failed": 0
+      },
+      "transfer_recovery": {
+        "total": 18,
+        "baseline_passed": 9,
+        "candidate_passed": 10,
+        "newly_passed": 1,
+        "newly_failed": 0
+      }
+    },
+    "blind_executed": false,
+    "formal_mastery_qualification": false,
+    "preservation_passed": false
+  },
+  "cost": {
+    "gpu_seconds": 2237.8012777213007,
+    "allocation_gpu_hours": 0.6216114660336947,
+    "accounting": "Conservative stage wall time times allocated card count",
+    "stages": [
+      {
+        "label": "evaluation-0",
+        "gpu_count": 1,
+        "elapsed_seconds": 201.50821949355304,
+        "gpu_seconds": 201.50821949355304,
+        "settled": true,
+        "scope": "Conservative session wall time, including preparation"
+      },
+      {
+        "label": "training",
+        "gpu_count": 4,
+        "elapsed_seconds": 321.33043918479234,
+        "gpu_seconds": 1285.3217567391694,
+        "settled": true,
+        "scope": "Conservative runner wall time, including validation and candidate registration"
+      },
+      {
+        "label": "reload",
+        "gpu_count": 4,
+        "elapsed_seconds": 116.98292813729495,
+        "gpu_seconds": 467.9317125491798,
+        "settled": true
+      },
+      {
+        "label": "evaluation-1",
+        "gpu_count": 1,
+        "elapsed_seconds": 283.0395889393985,
+        "gpu_seconds": 283.0395889393985,
+        "settled": true,
+        "scope": "Conservative session wall time, including preparation"
+      }
+    ],
+    "settled": true,
+    "owned_gpu_allocations_at_settlement": []
+  },
+  "evidence_sha256": {
+    "result-private.json": "62031f4d3ed2293634732035249c7e42b31f47b8cafde00a840f93ebe8a18fec",
+    "lessons/runs/wen-full-update-18-a/skill-report.json": "a3edddf22b1dd20ed859e2d1acbaae199515d48d5d99ae67ce22ff95b70697aa",
+    "allocation.json": "69061f809dc44f57a5170196b459caacb55360c1c30cfcce7ef0f59ec955a2b4",
+    "settlement.json": "5e9031407dba3dd0793db805411720b11e755e200cbff79589be0f7bbc5f62a8",
+    "reload/result.json": "5555ea90537af95578c99e7171d71f0d9a6b9c0035128b9214e994cd64dadb7a",
+    "lessons/runs/wen-full-update-18-a/baseline/observations-private.json": "657ff4c5edd3e12e9bdf00bad9916c97cf049af066b0e21194dcb1fc782e8b70",
+    "lessons/runs/wen-full-update-18-a/check-0/observations-private.json": "d497b3e766561a214fdba7d4c76c1bbf33d5f2a21480c9bede126b1a70a223bd"
+  },
+  "limits": [
+    "One fixed-seed pilot, no significance or broad mastery claim.",
+    "54 development checks across nine bounded arithmetic/state skills; no blind evaluation after rejection.",
+    "The prior 18-example LoRA comparison used rank 4 and learning rate 0.001; this is not a learning-rate-matched ablation.",
+    "Shared A100 contention affects timings; allocation accounting includes conservative stage overhead.",
+    "Training-loss reduction and reload agreement do not establish retention or general model improvement."
+  ],
+  "next_question": "Can separately generated mixed review and verified demonstrations retain the newly passed checks while preserving previous successes?"
+}

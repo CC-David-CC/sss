@@ -123,3 +123,14 @@ LearnHarness-inspired families and the delayed-revisit fixture. Use existing
 `sss` or `branchwrite skills` commands. A checked demonstration remains synthetic
 practice; it is not model qualification. The changed catalog/source IDs require
 a new frozen evaluation, not migration of an existing comparison.
+
+## Harness comparisons and full-update evidence
+
+Use [HARNESS-COMPARISON.md](HARNESS-COMPARISON.md) for the four-execution minimum,
+additional transfer/retention cases, behavior-only editor boundary and remaining
+live adapter work. `sss study harness plan/report/editor-view` are offline
+evidence tools. They do not launch a host or retry an uncertain operation.
+
+The [full-update pilot](WEN-FULL-UPDATE-PILOT.md) records a real small gain with
+one regression and rejection. Read the actual owner's private machine handoff
+before allocating resources; public reports are not live process state.
