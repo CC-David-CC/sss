@@ -7,6 +7,32 @@ completion separately. The first full-update candidate has completed its
 learning/retention assessment: it gains strongly but fails preservation. Standard
 Muon and its two declared variants are still in progress.
 
+## Standing goal and continuous loop
+
+Improve S3, BW and PCC into a reusable system that observes a failure, creates a
+verified lesson, trains a candidate, measures learning and forgetting, and accepts
+or rejects a change, with evidence and documentation another person or model can
+repeat. Run this as continuing work:
+
+**test → choose lessons → train → test → report → preserve a named GGUF → repeat**
+
+The owner explicitly prefers carrying a substantially improved checkpoint forward
+when a smaller number of skills regress. Those regression families become practice
+in the next mixed skill block alongside retained skills and forward learning. A
+failed strict-preservation check is recorded faithfully; it does not discard the
+working checkpoint or force a restart from the original weights. Evaluation
+answers remain protected: teach new checked variations of failure types.
+
+Preserve named standalone F32 GGUF variants, scores, training lineage, reasons to
+try them and limitations for later local experiments. The model files remain
+unpublished. Code and aggregate results continue through the authorized Git route.
+This loop is standing work within existing owner resource permissions, including
+the A100 campaign ceiling; it continues until the owner stops or redirects it.
+
+The [cross-project implementation design](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-training-budget-20261024/docs/NATIVE-LEARNING-LOOP.md)
+places durable execution in PCC, curriculum/scoring in S3 and driving tools in BW.
+Proposed API/CLI features are explicitly distinguished from current experimental support.
+
 ## What the baseline establishes
 
 MiniCPM5-2B F16 completed all 864 development cases on one dedicated 96 GB RTX PRO
@@ -38,8 +64,9 @@ Raw protected prompts, answers and response traces stay private.
 The unchanged-harness AdamW control improves exact answers from **59/864 to
 482/864** (6.83% to 55.79%). Natural completion improves **415/864 to 864/864**.
 There are 434 gained answers and 11 lost previous successes; 48 earlier passes
-are retained. Completion gains are 449 with no losses. The frozen gate rejects
-this candidate. No sealed qualification was run and no model was promoted.
+are retained. Completion gains are 449 with no losses. The frozen strict gate reports a preservation failure. The owner has retained
+this substantially improved model as a working checkpoint for mixed repair and
+continued learning. No sealed qualification was run and no model was promoted.
 
 Nine answer losses are fraction transfer/recovery, one is fraction composition,
 and one is independent place value. Do not teach those protected questions back
@@ -57,9 +84,10 @@ The operator's full GPU allocation is 459.06 seconds including preparation,
 serialization, verification and reload. These are distinct clocks.
 
 The same evaluation ID, runtime ID, checker, source oracle, generation policy and
-original cases are used before/after. Thus this measured stack change follows
-training, not a simultaneous harness change. It does not isolate learned arithmetic
-from better formatting/stopping. The unchanged correctness path now needs 6,884
+original cases are used before/after. The harness was held fixed. Original saved weights were F16 and the trained
+weights are F32, so the unchanged-original F32 behavior control is still pending
+to isolate precision effects. This does not isolate learned arithmetic from
+better formatting/stopping. The unchanged correctness path now needs 6,884
 model calls and 1,017,029 prefill tokens instead of 35,132/4,523,170; shorter
 responses reduce this fresh-prefix oracle's repeated work. No production serving
 speedup is claimed. [Full aggregate and paired skill/gate results](../validation/minicpm-native-learning-20261024/adamw-control.json).
@@ -156,3 +184,50 @@ This remains work on the reusable learning loop. BW's shell verification and
 termination failures are tracked separately; these scores do not demonstrate a
 repair to those failures. Model/harness/data changes require separately reported
 measurements so their effects remain distinguishable.
+
+
+## Continuous repair implementation checkpoint
+
+The owner has explicitly retained the improved model and requested the cycle to
+continue. `sss.learning.next_skill_block` now distinguishes a useful working
+checkpoint from the historical strict-preservation result. It records original
+baseline and immediate-parent comparisons, keeps cumulative losses visible, and
+proposes repair/review/forward-learning groups without exporting test answers.
+
+The next checked block selects 960 admitted practice occurrences from an expanded
+1,728-example pool using the same generation seed. Each 30-example update has 27
+review slots (nine skills times three gates) plus one extra lesson for fraction
+transfer/recovery, fraction composition and independent place value. The extra
+lessons have distinct admitted identities. Original protected questions remain
+identical. No public-source rows enter this block. New curriculum means explicitly
+fresh optimizer moments while keeping the improved parent weights; exact same-data
+optimizer resume remains a separate operation. 149 core tests pass at this point.
+
+The offline integration command now accepts an explicit working-parent result and
+its source practice document for that transition. A new-data gradient check and
+actual mixed-repair training/evaluation are queued after the frozen four-arm
+comparison, so this transition is not yet claimed GPU-qualified. The durable
+PCC loop API/CLI and BW driver remain planned work in the cross-project design.
+
+[Quantization-retention experiment](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-training-budget-20261024/docs/MINICPM-QUANTIZATION-STUDY.md)
+will compare original and trained models in F32, F16, Q8, Q5, Q4, Q3, Q2 and Q1_0.
+The 6.8% original score is not assumed to be an upper bound for all other formats.
+Model files stay local and unpublished; code and aggregate evidence remain public.
+
+
+## Standard Muon control
+
+Standard Muon reaches **473/864 exact answers and 864/864 completions**, with 437
+gains and 23 lost original successes. It completes 43 updates/1,161 practice
+presentations in 305.77 training-phase seconds, compared with AdamW's
+68/1,836 in 303.23 seconds. Both are retained as local experimental standalone
+F32 variants. The current AdamW checkpoint remains the planned mixed-repair parent.
+Native grouping uses Muon for 294 matrices and auxiliary AdamW for 87 tensors.
+[Measured timing, groups and paired losses](../validation/minicpm-native-learning-20261024/muon-standard.json).
+Different main learning rates and data exposure remain part of these declared
+regimens; the 9-answer total difference is not a controlled optimizer-only causal
+claim or a general ranking. RMS/decay and refinement results are still pending.
+
+The prepared repair block has 944 distinct questions and 16 explicitly counted
+rehearsals across its 960 occurrences. [Finished checked practice](../examples/finished-training-examples/minicpm-mixed-repair/practice.txt)
+and its diversity manifest contain no protected test answers.

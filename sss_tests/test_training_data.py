@@ -1,6 +1,6 @@
 import copy,unittest
 from sss.records import digest
-from sss.adapters.training_data import validate_training_document,validate_optimizer_program
+from sss.adapters.training_data import validate_training_document,validate_optimizer_program,make_review_repair_document,working_parent_binding
 
 def document(kind,key):
     d=dict(schema=1,purpose=kind,model_sha256='b'*64,model_contract_id='c'*64,
@@ -59,5 +59,27 @@ class OptimizerProgramTests(unittest.TestCase):
   with self.assertRaises(ValueError):validate_optimizer_program(p,d,'invented')
   p['arms']*=2;p['program_id']=digest({k:v for k,v in p.items() if k!='program_id'})
   with self.assertRaises(ValueError):validate_optimizer_program(p,d,'control')
+class RepairBlockTests(unittest.TestCase):
+ def test_balanced_review_with_distinct_extra_repair_lessons(self):
+  p,d=study();groups=[dict(skill_id='skill_z',gate='transfer_recovery')]
+  block=make_review_repair_document(d,groups,rounds=1)
+  self.assertEqual(len(block['examples']),7);self.assertEqual(len({e['id'] for e in block['examples']}),7)
+  self.assertEqual(sum(row['skill_id']=='skill_z' and row['gate']=='transfer_recovery' for row in block['selection']),2)
+  p.update(practice_id=block['practice_id'],ordering='round-review-repair-v1',ordered_example_ids=[e['id'] for e in block['examples']],batch_size=7,repair_groups=groups)
+  p['program_id']=digest({k:v for k,v in p.items() if k!='program_id'});self.assertEqual(len(validate_optimizer_program(p,block,'control')['examples']),7)
+ def test_short_pool_or_evaluation_material_cannot_enter_via_repair_request(self):
+  p,d=study()
+  for groups,rounds in [([dict(skill_id='skill_z',gate='transfer_recovery')],2),([dict(skill_id='skill_z',gate='transfer_recovery',answer='protected')],1),([dict(skill_id='missing',gate='independent')],1)]:
+   with self.assertRaises(ValueError):make_review_repair_document(d,groups,rounds=rounds)
+class WorkingParentTests(unittest.TestCase):
+ def test_new_block_keeps_weights_but_explicitly_starts_new_optimizer_state(self):
+  p,d=study();next_doc=make_review_repair_document(d,[dict(skill_id='skill_z',gate='independent')],rounds=1)
+  parent=dict(status='MECHANICS_COMPLETE',data_id=d['practice_id'],candidate=dict(mode='full',candidate_path='/owned/candidate.gguf',candidate_sha256='e'*64));parent['result_id']=digest(parent)
+  b=working_parent_binding(parent,d,next_doc);self.assertEqual(b['base_sha256'],'e'*64);self.assertEqual(b['optimizer_state_transition'],'fresh_for_explicit_new_block');self.assertNotIn('initial_optimizer_state',b)
+ def test_changed_parent_source_or_contract_is_refused(self):
+  p,d=study();parent=dict(status='MECHANICS_COMPLETE',data_id=d['practice_id'],candidate=dict(mode='full',candidate_path='/owned/candidate.gguf',candidate_sha256='e'*64));parent['result_id']=digest(parent)
+  wrong=copy.deepcopy(d);wrong['model_contract_id']='f'*64;wrong['practice_id']=digest({k:v for k,v in wrong.items() if k!='practice_id'})
+  with self.assertRaises(ValueError):working_parent_binding(parent,d,wrong)
+  parent['status']='FAILED'
+  with self.assertRaises(ValueError):working_parent_binding(parent,d,d)
 if __name__=='__main__':unittest.main()
-

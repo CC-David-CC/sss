@@ -1,0 +1,31 @@
+{
+  "status": "PREPARED_NOT_TRAINED",
+  "working_decision": "KEEP_AND_REPAIR",
+  "parent_sha256": "e83249ef7576e6223141bca717b0d8c8442b9f53e0b14cfea775f87be4701e42",
+  "program_id": "79336edfa4396ddf48b5434eddeecfb6fc4c48a4403f53b9a51ba7cd6f491849",
+  "practice_id": "94b10892b5769b9309217acdedbe0b5dded09a8afdc2f7fdd3fd714819314656",
+  "examples": 960,
+  "batch_size": 30,
+  "review_slots_per_update": 27,
+  "extra_repair_slots_per_update": 3,
+  "rounds": 32,
+  "repair_groups": [
+    {
+      "skill_id": "math.fraction",
+      "gate": "transfer_recovery"
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "composition"
+    },
+    {
+      "skill_id": "math.place_value",
+      "gate": "independent"
+    }
+  ],
+  "all_nine_skills_all_three_gates_each_update": true,
+  "original_protected_questions_identical": true,
+  "maximum_input_tokens": 379,
+  "native_warm_start_and_new_data_gradient_gate": "pending",
+  "weights_updated": false
+}

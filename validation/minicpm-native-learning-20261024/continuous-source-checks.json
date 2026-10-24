@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "standard_library_core_tests": 149,
+  "scope": "Working-parent policy, cumulative retention, complete interleaved review/repair, source and curriculum identity; no new GPU-path claim",
+  "repair_source_archive_sha256": "bec78a8ba047038899a26dd3c438c6c10a537e1011190d08c0535f82a1bdeb19",
+  "protected_answers_exported": false,
+  "weights_published": false
+}

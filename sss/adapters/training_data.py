@@ -56,7 +56,7 @@ def validate_optimizer_program(program, document, arm_id):
     by_id = {e['id']:e for e in data['examples']}
     if type(order) is not list or any(type(i) is not str for i in order) or len(order) != len(by_id) or len(set(order)) != len(order) or set(order) != set(by_id):
         raise ValueError('Program must order every admitted occurrence exactly once')
-    if program.get('ordering') != 'round-skill-gate-v1':
+    if program.get('ordering') not in ('round-skill-gate-v1','round-review-repair-v1'):
         raise ValueError('Explicit interleaved curriculum order required')
     rows = {row['lesson_id']:row for row in data['selection']}
     if any(type(row.get('skill_id')) is not str or not row['skill_id'] or type(row.get('gate')) is not str for row in rows.values()):
@@ -64,10 +64,16 @@ def validate_optimizer_program(program, document, arm_id):
     groups = {(row['skill_id'],row['gate']) for row in rows.values()}
     skills = {skill for skill,gate in groups}
     expected = {(skill,gate) for skill in skills for gate in ('independent','composition','transfer_recovery')}
+    repair=program.get('repair_groups',[])
+    if type(repair) is not list or any(type(row) is not dict or set(row)!={'skill_id','gate'} or type(row['skill_id']) is not str or type(row['gate']) is not str for row in repair):
+        raise ValueError('Explicit repair skill/gate pairs required')
+    repair_pairs=[(row['skill_id'],row['gate']) for row in repair]
+    if len(set(repair_pairs))!=len(repair_pairs) or not set(repair_pairs)<=expected or (program['ordering']=='round-skill-gate-v1' and repair_pairs) or (program['ordering']=='round-review-repair-v1' and not repair_pairs):
+        raise ValueError('Repair groups must be distinct covered gates in the explicit repair profile')
     batch = program.get('batch_size')
-    if not skills or any(type(s) is not str or not s for s in skills) or groups != expected or type(batch) is not int or batch != len(expected) or len(order)%batch:
+    if not skills or any(type(s) is not str or not s for s in skills) or groups != expected or type(batch) is not int or batch != len(expected)+len(repair_pairs) or len(order)%batch:
         raise ValueError('Every update must include every declared skill and mastery gate')
-    expected_order = [(skill,gate) for skill in dict.fromkeys(row['skill_id'] for row in data['selection']) for gate in ('independent','composition','transfer_recovery')]
+    expected_order = [(skill,gate) for skill in dict.fromkeys(row['skill_id'] for row in data['selection']) for gate in ('independent','composition','transfer_recovery')]+repair_pairs
     if any([(rows[i].get('skill_id'),rows[i].get('gate')) for i in order[start:start+batch]] != expected_order for start in range(0,len(order),batch)):
         raise ValueError('Declared round-skill-gate interleaving differs')
     seconds = program.get('training_budget_seconds'); cap = program.get('step_cap')
@@ -84,3 +90,55 @@ def validate_optimizer_program(program, document, arm_id):
         raise ValueError('Explicit optimizer, positive rate and settings required')
     return dict(program_id=identity,arm=copy.deepcopy(arm),batch_size=batch,steps=cap,
                 training_budget_seconds=seconds,examples=[copy.deepcopy(by_id[i]) for i in order])
+
+
+def make_review_repair_document(document, repair_groups, *, rounds):
+    """Select checked practice: every gate once plus one extra per repair group.
+
+    Inputs are already admitted practice. Evaluation answers and case IDs are
+    neither accepted nor exported by this selector. Extra lessons are distinct
+    occurrences from the checked pool, not forged duplicate lesson identities.
+    """
+    data=validate_training_document(document)
+    if data['kind']!='fixed_compute_optimizer_study_practice' or type(rounds) is not int or not 1<=rounds<=128:
+        raise ValueError('Bounded checked study practice required')
+    if type(repair_groups) is not list or not repair_groups or any(type(row) is not dict or set(row)!={'skill_id','gate'} or type(row['skill_id']) is not str or type(row['gate']) is not str for row in repair_groups):
+        raise ValueError('Repair proposals contain only skill/gate pairs')
+    repair=[(row['skill_id'],row['gate']) for row in repair_groups]
+    pools={}
+    for row in data['selection']:
+        key=(row.get('skill_id'),row.get('gate'));pools.setdefault(key,[]).append(row['lesson_id'])
+    skills=list(dict.fromkeys(row['skill_id'] for row in data['selection']))
+    review=[(skill,gate) for skill in skills for gate in ('independent','composition','transfer_recovery')]
+    if set(pools)!=set(review) or len(set(repair))!=len(repair) or not set(repair)<=set(review):raise ValueError('Repair and review must cover admitted skill/gate families')
+    if any(len(pools[key])<rounds*(2 if key in repair else 1) for key in review):raise ValueError('Insufficient distinct verified practice; no relabeling or automatic refill')
+    order=[]
+    for index in range(rounds):
+        order.extend(pools[key][index*(2 if key in repair else 1)] for key in review)
+        order.extend(pools[key][index*2+1] for key in repair)
+    examples={e['id']:e for e in data['examples']};selection={e['lesson_id']:e for e in data['selection']}
+    value=copy.deepcopy(document);value.pop('practice_id')
+    value.update(origin='Owned independently checked practice selected using aggregate failure families; no protected answers',
+                 source_practice_id=data['data_id'],source_document_id=digest(document),
+                 block_policy=dict(ordering='round-review-repair-v1',repair_groups=copy.deepcopy(repair_groups),rounds=rounds,batch_size=len(review)+len(repair),review_groups=[dict(skill_id=s,gate=g) for s,g in review]),
+                 examples=[examples[i] for i in order],selection=[selection[i] for i in order])
+    value['practice_id']=digest(value);validate_training_document(value);return value
+
+
+def working_parent_binding(parent, parent_document, document):
+    """Explicit weight continuation with fresh moments for a changed block.
+
+    The existing PCC executor still verifies the actual candidate's bytes and
+    native architecture/resources. This does not grant paths to a remote client.
+    """
+    old=validate_training_document(parent_document);new=validate_training_document(document)
+    if type(parent) is not dict or parent.get('result_id')!=digest({k:v for k,v in parent.items() if k!='result_id'}) or parent.get('status')!='MECHANICS_COMPLETE':
+        raise ValueError('Completed pinned working-parent result required')
+    if parent.get('data_id',parent.get(old['identity_field']))!=old['data_id'] or old['model_contract_id']!=new['model_contract_id'] or old['model_sha256']!=new['model_sha256']:
+        raise ValueError('Working-parent source practice or original model family differs')
+    candidate=parent.get('candidate',{})
+    if candidate.get('mode')!='full' or type(candidate.get('candidate_path')) is not str or not candidate['candidate_path'] or not re.fullmatch('[0-9a-f]{64}',str(candidate.get('candidate_sha256',''))):
+        raise ValueError('Registered standalone full-weight parent required')
+    return dict(model=candidate['candidate_path'],base_sha256=candidate['candidate_sha256'],
+                working_parent_result_id=parent['result_id'],previous_data_id=old['data_id'],next_data_id=new['data_id'],
+                optimizer_state_transition='fresh_for_explicit_new_block')
