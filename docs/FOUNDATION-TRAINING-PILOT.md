@@ -101,7 +101,7 @@ reasoning spans. Do not train truncated reasoning from a failed assessment.
   lessons. Its failure was retained. A separate 2048-context fixture completed;
   no lesson was shortened to obtain that result.
 
-## Wen baselines and the current capacity limit
+## Wen baselines and the initial capacity refusal
 
 The matched A100 probes used 27 frozen development cases per model/mode, 8192
 physical context tokens and 512 output tokens. These were small diagnostics on a
@@ -127,10 +127,11 @@ without loading weight tensors, updating a model or writing a candidate. This is
 a planner estimate, not measured peak memory, and not a claim that every possible
 training implementation needs that much memory.
 
-Wen 0.1.2 training has not started. The longest full-pack lessons still need an admitted placement and qualified
-graph allocation; the shorter introductory gradient probe below is separate. A LoRA or full
-candidate must then pass separate repair, held-out and retention checks before
-promotion or release; a GGUF file alone does not establish those properties.
+The first Wen 0.1.2 foundation candidate has now completed one introductory
+update (see below). A later three-GPU check admitted and exercised the longest full-pack lesson
+(see below). A LoRA or full candidate must pass
+separate repair, held-out and retention checks before promotion or release;
+a GGUF file alone does not establish those properties.
 
 ## Introductory GPU gradient checkpoint and inspectable practice
 
@@ -145,5 +146,53 @@ The owned [108 practice occurrences](../examples/finished-training-examples/foun
 are saved as readable question/checked-answer text, with a separate manifest.
 There are 107 distinct questions; the repeat is labeled rehearsal. These files
 contain no development or blind evaluation questions and no claim of model
-success. The actual candidate-serving factory and a guarded live update remain
-the next learning-loop gate.
+success. The actual candidate-serving factory and first guarded live update
+have now been exercised as described below.
+
+## First live learning measurement
+
+On 2026-10-23 (local operator date), Wen 1.1 received one ordinary native SGD
+update using 18 complete practice examples, two from each of the nine skills.
+This was rank-four LoRA, learning rate 0.001, batch size 18, answer/action targets
+and thinking off. The longest selected lesson had 177 consumed tokens. The
+original base model remained unchanged; the result is a separate 45,426,096-byte
+LoRA GGUF, not a released standalone Wen 0.1.2 model.
+
+| Measurement | Before | After |
+| --- | ---: | ---: |
+| Mean training loss | 0.43516219 | 0.43349394 |
+| Protected validation checks passed | 17/54 | 17/54 |
+
+There were zero gained passes and zero regressions, with exactly the same
+passing case identities. All nine skills remained below this pilot's requirement.
+The candidate was served through PCC for all 54 checks; blind checks were not run
+because validation did not qualify. Both serving sessions and native GPU
+allocations settled. Native save/reload loss equivalence for this real candidate
+is still pending; successful serving is a separate observation.
+
+The adapter SHA-256 is
+`ab740f8401a7286e862bf6c37bc4e0237c5d0708a66c6edd552c7ee89573b470`.
+The [aggregate result](../validation/foundations-20261023/wen-first-update.json)
+contains no protected questions, answers or private paths. Two earlier launcher
+failures occurred before inference or training; their fixes were tested separately
+and their original failures were retained.
+
+This establishes an actual learning loop and a small training-loss change. It
+has not established an improvement in tested capability. Eighteen examples in
+one batch are one weight update, not eighteen updates. Useful next measurements
+are progressively larger, interleaved practice sets with multiple updates and
+unchanged development checks, followed by fresh blind assessment after a
+candidate meets the frozen policy. Checkpoints around 100, 250, 500 and 1,000
+examples are experiment sizes, not promises about when a skill will appear.
+
+## Full-pack memory and numerical follow-up
+
+The earlier conservative refusal was retained. A later opt-in PCC allocator
+check measured the actual tensor-buffer plan before each allocation. The
+375-token/26-target maximum lesson passed ordinary LoRA gradient calculation on
+three shared A100s, with 498 finite tensors and 249 initially nonzero. Its forward
+logits also matched fresh strict FP32 PCC at 350/363/375-token prefixes within the
+predeclared maximum-absolute 0.0002 and RMS 0.00005 limits, with the same top token.
+No weights were updated in either probe, and all owned allocations settled.
+This clears the measured capacity/numerical gate for trying this bounded pack;
+it does not establish a capability gain or qualify longer Wen contexts.

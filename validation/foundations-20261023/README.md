@@ -54,3 +54,12 @@ The simple qualification CLI does not construct whole-model preservation packs;
 explicit critical/retention composition through the Python API is required.
 No reference pass, historical demonstration or planned graph node authorizes
 training or qualifies Wen.
+
+## Later live learning checkpoint
+
+The initial CPU checkpoint above remains distinct. A later actual Wen run
+completed 18 mixed examples in one update: 17/54 protected checks before and
+after, zero gains and zero regressions. Its unpromoted LoRA candidate was served
+successfully; blind qualification and native mean-loss reload remain pending.
+See [the live pilot](../../docs/FOUNDATION-TRAINING-PILOT.md) and its linked
+aggregate receipt for the bounds and remaining gates.
