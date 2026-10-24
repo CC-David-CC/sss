@@ -6,8 +6,8 @@ cost, tool differences, training, forgetting and practical next steps.
 [Getting seven harnesses working with MiniCPM](docs/MINICPM-HARNESS-FIELD-NOTES.md):
 six external clients completed live model/tool exchanges with the same weights.
 Codex, OpenCode, pi and Hermes passed independent artifact checks; Qwen Code
-and DeepSeek failed different task requirements. BW is the next integration
-target. This is one discovery task, not a general harness ranking.
+and DeepSeek failed different task requirements. BW now passes three Python objectives; two shell objectives remain under
+investigation in the follow-up screen below. This is one discovery task, not a general harness ranking.
 
 [Four-condition harness comparisons](docs/HARNESS-COMPARISON.md) have tested
 offline planning and evidence checks. [Isolated model transport](docs/MODEL-SOCKET.md)
@@ -19,7 +19,7 @@ from 23/96 to 29/96, with seven gains and one loss; 96 review outcomes were
 unchanged. Uncertainty and the original rejection remain explicit.
 [Joint learning and harness hill-climbing](docs/JOINT-LEARNING-LOOP.md) records
 the next live cycle, per-domain controls and conditional release gate.
-Development checkpoint: [foundations and workflow validation](validation/foundations-20261023/README.md). Broader skill qualification and BW/MiniCPM integration remain pending.
+Development checkpoint: [foundations and workflow validation](validation/foundations-20261023/README.md). Broader skill qualification and MiniCPM learning/retention remain pending.
 
 
 **New foundations preview:** [Start here](docs/START-HERE.md), [on-disk skill graph](docs/ON-DISK-LAYOUT.md), [operator handoff](docs/OPERATOR-HANDOFF.md), and [implementation gates](docs/FOUNDATIONS-PLAN.md). The reference machinery and model mastery are reported separately.
@@ -151,3 +151,11 @@ The first tree/guard and arithmetic-study code was extracted from PCC and BW
 development work. Their runtime APIs stay in those projects; the curriculum and
 tests live here. Raw private traces, model weights and operational handoffs stay
 outside this repository.
+
+## Latest native development checkpoint
+
+[BW follow-up and training mechanics](docs/MINICPM-HARNESS-FIELD-NOTES.md#bws-broader-follow-up-and-native-training-mechanics)
+separate three Python passes/two shell failures from independently checked tiny
+native full/LoRA backprop. No MiniCPM weights were trained. Next: investigate BW,
+then qualify Muon and compare frozen-test performance at a fixed compute budget.
+Broader optimizer ablations are stretch goals.

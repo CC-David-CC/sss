@@ -218,3 +218,28 @@ while the independent checker rejected its result file. We preserved both
 outcomes. [BW integration evidence](../validation/learning-program-20261024/minicpm-bw-native-integration.json)
 records each trial separately. No MiniCPM weights were updated, and one successful
 task does not establish broad BW mastery or justify a model release.
+
+## BW's broader follow-up and native training mechanics
+
+BW now has a five-objective native screen: three completed independent Python
+passes, a quoted-filename timeout and a failure-status step-budget exhaustion.
+The failure-status run used 13 requests: BW's limit was per action, not the
+external screen's global 12-request cap. Do not compare these as equal-budget
+causal scores. Input sentinels remained intact, and the original pending request
+was reconciled as cancelled without replay.
+[BW evidence](../validation/learning-program-20261024/minicpm-bw-foundations.json).
+
+Codex, Hermes and Qwen passed the quoted-filename baseline; Hermes and dsh passed
+the failure-status baseline. Those same-weight controls justify investigating BW
+before assuming the model needs training. The root cause and fix are pending.
+
+Separately, PCC's new opt-in ordinary-Llama trainer passes independent tiny full
+and LoRA scalar-gradient checks, F16/F32 loading, batching and reload. Final CPU
+and earlier two-A100 revisions are identified separately; the final format guard
+still needs exact CUDA requalification. Only SGD is implemented. No real MiniCPM
+weights have been updated or accepted.
+[Mechanics evidence](../validation/learning-program-20261024/minicpm-native-training-mechanics.json).
+
+The next optimizer comparison prioritizes Muon and defined variants on frozen
+S³ tests at a declared compute budget. Broader AdamW ablations remain stretch
+goals. Mechanism, learning, retention and acceptance are separate gates.

@@ -323,6 +323,34 @@ A learning loop must retain the host's report and the independent verdict,
 without upgrading the former into a verified training lesson.
 [Evidence](../validation/learning-program-20261024/minicpm-bw-native-integration.json).
 
+## 26. BW's shell failures have passing same-weight peer controls
+
+BW completed three of five development objectives through native PCC, passing
+independent saved-artifact checks on all three Python tasks. The shell quoting
+task timed out; the failure-status task exhausted its interpreter step budget.
+At least two peer harnesses passed each shell objective with unchanged MiniCPM
+weights. The root cause is not established. Investigate BW's tool choices,
+feedback and termination before training on these failures. Preserve the passing
+Python cases when testing a harness repair. BW's per-action request limit differed
+from the external global cap, so this is not a controlled ranking.
+[Evidence](../validation/learning-program-20261024/minicpm-bw-foundations.json).
+
+## 27. Correct derivatives can still produce a harmful step
+
+The tiny ordinary-Llama full-weight fixture had independently correct scalar
+derivatives, yet SGD at .01 increased loss; independent FP64 predicted the same
+overshoot. A fixed fixture rate .001 reduces it. Neither the production default
+nor gradient tolerances changed. This is a reminder to qualify optimizer behavior
+separately from backpropagation math.
+
+Tiny complete full/LoRA graphs, genuine F16 decoding, batching and reload now
+pass on the final CPU revision. An earlier two-A100 revision passed separately;
+the final admission guard's CUDA recheck is pending. Only SGD is implemented.
+No real MiniCPM training or accepted candidate is established by these checks.
+The priority is Muon's measured outcome at a fixed compute budget; broad AdamW
+ablations are stretch goals.
+[Evidence](../validation/learning-program-20261024/minicpm-native-training-mechanics.json).
+
 ## Keep this log useful
 
 For each new finding, record the exact model/client/source and tested workload,
