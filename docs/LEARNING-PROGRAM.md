@@ -117,3 +117,8 @@ remaining coupled cycle explicit: separate per-harness optimization, larger
 varied mixed review, protected model/configuration cross-checks and continued
 hill-climbing with per-domain retention. Seed sensitivity and the future
 conditional release are distinct from current training authorization.
+
+[Actual MiniCPM optimizer mechanics](MINICPM-OPTIMIZER-PILOT.md) now pass full
+gradient coverage, native Muon/AdamW updates, reload and bit-exact completed Muon
+continuation on one RTX PRO 6000. Fixed-compute model learning/retention and the
+actual-model RMS/refinement comparisons remain pending.

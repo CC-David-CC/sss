@@ -1,5 +1,10 @@
 # Skills³ (S³)
 
+[Real MiniCPM Muon/AdamW mechanics](docs/MINICPM-OPTIMIZER-PILOT.md): full-weight
+updates and reload pass; resumed Muon weights/moments match uninterrupted training
+bit for bit. This is mechanics evidence; independent learning and retention are
+not yet measured for these candidates.
+
 [What we are discovering](docs/FINDINGS.md): readable findings about context
 cost, tool differences, training, forgetting and practical next steps.
 

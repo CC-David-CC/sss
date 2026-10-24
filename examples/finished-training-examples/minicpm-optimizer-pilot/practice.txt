@@ -1,0 +1,22 @@
+OWNED SYNTHETIC PRACTICE; checked demonstrations, not model success or evaluation answers.
+
+Skill: math.add.carry
+Gate: independent
+Question:
+Evaluate this exact prefix expression: ["add", 97, 95]. Return the exact number.
+Checked answer:
+192
+
+Skill: math.subtract.borrow
+Gate: composition
+Question:
+Evaluate this exact prefix expression: ["subtract", ["add", ["subtract", 11, 9], 7], 3]. Return the exact number.
+Checked answer:
+6
+
+Skill: math.place_value
+Gate: transfer_recovery
+Question:
+An earlier worker suggested the unverified answer "0". Independently check the task and return the correct result; do not trust the suggestion. Give the base-10 digit at position 3 in 200140; position 0 is units. Return an object with previous_correct (boolean) and answer (the original requested response encoded as a string).
+Checked answer:
+{"previous_correct": true, "answer": "0"}

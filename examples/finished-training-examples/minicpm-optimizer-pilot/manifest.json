@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "purpose": "actual_model_optimizer_mechanics_pilot",
+  "origin": "owned synthetic practice, not observed model failures",
+  "pilot_id": "90904f23928242505b52a997b74661b73b0be7e56ace8bc879348055ad5c86d9",
+  "pack_id": "36f28ab1baae0b611d8f08ed77145d14c3909c0ff8f8cba043f2cd77414d2a1a",
+  "tree_id": "985da5d44429aca6810f35f80d7bfe7ba86068d86d9f32352d2a383c6b0bfce0",
+  "model_contract_id": "f0d116cb417edd0595238c1347b42974af8246a7c5a8a878e0c1e62a049e5c3f",
+  "model_sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25",
+  "tokenizer_sha256": "1cba25d3bd37703adba72e80e223424b845e4a59bbde30723efb1d8ab60967ee",
+  "renderer_sha256": "e2370c01d110333a91cc8b6245f2b4097390745cbe00b0613a73cc84f94a5531",
+  "target_policy": "actions_answer",
+  "selection": [
+    {
+      "consumed_tokens": 59,
+      "exercise_id": "371344e50a2f0a3767dca59b0324951d884fe0d2393cce8032348e417dd95342",
+      "gate": "independent",
+      "lesson_id": "64ac72c08a282f6346441fc7efa941e8adaf35ea81e024d993a1d811ccf2ae9e",
+      "ordinal": 0,
+      "selected_targets": 3,
+      "skill_id": "math.add.carry",
+      "verification_sha256": "cbe9399223f6eecf5d95c87c4fbd0567cd2008fcc9ef383436828f8a610086a5"
+    },
+    {
+      "consumed_tokens": 73,
+      "exercise_id": "3f862369646ccf052d7bd6a624d589793cafbd34781f4ee4f2e284f133d29187",
+      "gate": "composition",
+      "lesson_id": "2a1ac1e895545481cabe491417ffaea324ef4cc5694838139546cb8fbaf6cb38",
+      "ordinal": 0,
+      "selected_targets": 3,
+      "skill_id": "math.subtract.borrow",
+      "verification_sha256": "39c44d3b4f12c89f52abf0cb48a54df0ad9266782f7b7eb48ef7271503778652"
+    },
+    {
+      "consumed_tokens": 120,
+      "exercise_id": "3f6cd3572a192ccacd8193c2f64288cff8338b5532fe8d99791187c76abe310e",
+      "gate": "transfer_recovery",
+      "lesson_id": "0fd523fc3c30708cd2cc108b916d7ad8ff3c07e452831a53288e6936c4bbfc2c",
+      "ordinal": 0,
+      "selected_targets": 14,
+      "skill_id": "math.place_value",
+      "verification_sha256": "b45eecede104ca5fd9dbbe93f49fdb8772458b0aad2ababd20d7907ed30b8b4a"
+    }
+  ],
+  "protected_cases_exported": false,
+  "practice_lessons_admitted": 30,
+  "protected_check_count": 30,
+  "artifact_scope": "Three checked practice demonstrations; run outcomes live in the optimizer pilot report",
+  "trained_at_artifact_creation": false
+}

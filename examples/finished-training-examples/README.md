@@ -16,3 +16,9 @@ The [foundation pilot TXT](foundation-pilot/practice.txt) contains 108 checked p
 The [reasoning connections](reasoning-connections/README.md) add five original
 checked archives, including an interleaved day and a delayed archive reread.
 These new examples have not trained Wen.
+
+The [MiniCPM optimizer-pilot TXT](minicpm-optimizer-pilot/practice.txt) contains
+three checked practice demonstrations used by the native full-update mechanics
+pilot. Its manifest pins the renderer, tokenizer and selected targets. These are
+synthetic demonstrations, not observations of model failure. Protected questions
+are excluded; later training outcomes belong to the [pilot report](../../docs/MINICPM-OPTIMIZER-PILOT.md).

@@ -388,6 +388,22 @@ BW does not yet expose the Muon settings, and the real MiniCPM learning campaign
 has not run. [Evidence](../validation/learning-program-20261024/native-optimizer-qualification.json),
 [PCC implementation and limits](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-muon-20261024/experimental/native_training/OPTIMIZER-QUALIFICATION.md).
 
+## 30. Real optimizer continuation can match while file hashes differ
+
+The real MiniCPM full-weight pilot passes gradient coverage, update, candidate
+reload and completed Muon continuation. Resumed versus uninterrupted runs match
+all 381 weight and 468 moment tensors bit for bit: 5,568,460,800 scalar values.
+Their candidate/state hashes differ because the lineage headers differ. Compare
+complete arrays while preserving each immutable artifact identity.
+
+Muon saves about 39.4% of optimizer-state storage here, but its update calculation
+takes about 2.63 seconds versus 0.061 seconds for AdamW on the same small batch.
+Checkpoint I/O dominates the bounded resource windows. Neither those timings
+nor improved training loss establishes better held-out behavior or compute
+savings. No candidate was accepted or promoted; the fixed-budget learning and
+retention comparisons remain next. [Reproduce the pilot](MINICPM-OPTIMIZER-PILOT.md),
+[complete aggregate evidence](../validation/learning-program-20261024/minicpm-optimizer-real-pilot.json).
+
 ## Keep this log useful
 
 For each new finding, record the exact model/client/source and tested workload,
