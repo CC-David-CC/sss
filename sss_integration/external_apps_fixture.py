@@ -1,128 +1,224 @@
-"""Exercise installed applications with a deterministic local protocol fixture.
-Run INSIDE the prepared Linux namespace. This is not model inference or mastery.
-"""
-from pathlib import Path
-from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
-import argparse,json,os,subprocess,threading,time,signal
+"""Actual pinned CLIs, deterministic protocol replies, real file/tool effects.
 
-COMMANDS=["cat app.py", "printf 'read, write, edit, verify\n' > notes.txt", "python3 -c \"from pathlib import Path;p=Path('app.py');p.write_text(p.read_text().replace('return n','return 2*n'))\"", "python3 -c 'import app; assert app.double(21)==42; print(\"checked\")'"]
-PROMPT='Read app.py. Write notes.txt describing the steps. Repair double(n) to return twice n, verify it, then report completion. Work only in this prepared project.'
+The host launcher supplies an isolated Linux namespace. No model is called.
+"""
+import argparse
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import threading
+import time
+
+
+VERSIONS = {'codex': '0.164.0', 'opencode': '2.1.4', 'pi': '1.4.0'}
+PROMPT = ('Read app.py. Write notes.txt containing exactly "read, write, edit, verify" '
+          'followed by a newline. Repair double(n) to return twice n, verify it, '
+          'then report completion. Work only in this prepared project.')
+COMMANDS = [
+    'cat /work/app.py',
+    "python3 -c \"from pathlib import Path;Path('/work/notes.txt').write_text('read, write, edit, verify\\n')\"",
+    "python3 -c \"from pathlib import Path;p=Path('/work/app.py');p.write_text(p.read_text().replace('return n','return 2*n'))\"",
+    "python3 -c \"import app;assert app.double(21)==42;assert app.double(-3)==-6;print('SSS_VERIFIED_42')\"",
+]
+
 
 class Fixture:
-    def __init__(self):self.step=0;self.requests=[];self.tool_names=[]
-    def respond(self,request):
-        self.requests.append(request)
-        tools=request.get('tools',[]);functions=[t.get('function',t) for t in tools]
-        names={f.get('name'):f for f in functions}
-        if not names:return 'S3 fixture',None
-        if self.step>=len(COMMANDS):return 'Completed the repair and verification.',None
-        name=next((n for n in ('exec_command','bash','shell_command','shell') if n in names),None)
-        if not name:raise ValueError('Application advertised no supported shell tool: '+','.join(str(n) for n in names))
-        spec=names[name].get('parameters') or names[name].get('input_schema') or {};props=spec.get('properties',{})
-        args={}
-        if 'cmd' in props:args['cmd']=COMMANDS[self.step]
-        elif 'command' in props:args['command']=COMMANDS[self.step]
-        elif 'commands' in props:args['commands']=[COMMANDS[self.step]]
-        else:raise ValueError('Unrecognized native shell schema: '+json.dumps(spec))
-        if 'description' in props:args['description']='Owned S3 protocol fixture step'
-        if 'workdir' in props:args['workdir']='/work'
-        for key in spec.get('required',[]):
-            if key not in args:raise ValueError('Unrecognized required tool argument '+key)
-        call=dict(id='call_'+str(self.step),name=name,arguments=json.dumps(args));self.step+=1;self.tool_names.append(name)
-        return '',call
+    def __init__(self, app):
+        self.app = app
+        self.requests = []
+        self.calls = []
+        self.failures = []
+        self.lock = threading.Lock()
 
-def serve(fixture):
-    class Handler(BaseHTTPRequestHandler):
-        def log_message(self,*args):pass
-        def do_GET(self):
-            raw=json.dumps(dict(object='list',data=[dict(id='sss-reference',object='model',owned_by='fixture')])).encode()
-            self.send_response(200);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw)
-        def do_POST(self):
-            request=json.loads(self.rfile.read(int(self.headers['Content-Length'])))
-            try:text,call=fixture.respond(request)
-            except Exception as error:
-                raw=json.dumps(dict(error=dict(message=str(error)))).encode();self.send_response(400);self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw);return
-            response_id='resp_'+str(len(fixture.requests));created=int(time.time());usage=dict(input_tokens=20,output_tokens=10,total_tokens=30)
-            is_responses=self.path.endswith('/responses')
-            message=dict(role='assistant',content=text)
-            if call:message['tool_calls']=[dict(id=call['id'],type='function',function=dict(name=call['name'],arguments=call['arguments']))]
-            item=(dict(id='fc_'+call['id'],type='function_call',call_id=call['id'],name=call['name'],arguments=call['arguments'],status='completed') if call else dict(id='msg_'+response_id,type='message',role='assistant',status='completed',content=[dict(type='output_text',text=text,annotations=[])]))
-            response=dict(id=response_id,object='response',created_at=created,status='completed',model='sss-reference',output=[item],usage=usage)
-            if not request.get('stream'):
-                body=response if is_responses else dict(id=response_id,object='chat.completion',created=created,model='sss-reference',choices=[dict(index=0,message=message,finish_reason='tool_calls' if call else 'stop')],usage=dict(prompt_tokens=20,completion_tokens=10,total_tokens=30))
-                raw=json.dumps(body).encode();self.send_response(200);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw);return
-            self.send_response(200);self.send_header('Content-Type','text/event-stream');self.send_header('Connection','close');self.end_headers();self.close_connection=True
-            def emit(value,event=None):
-                prefix=('event: '+event+'\n') if event else ''
-                self.wfile.write((prefix+'data: '+json.dumps(value)+'\n\n').encode());self.wfile.flush()
-            if is_responses:
-                seq=0
-                def event(kind,**data):
-                    nonlocal seq
-                    emit(dict(type=kind,sequence_number=seq,**data),kind);seq+=1
-                event('response.created',response=dict(response,status='in_progress',output=[]))
-                event('response.in_progress',response=dict(response,status='in_progress',output=[]))
-                initial=dict(item,status='in_progress')
-                if call:initial['arguments']=''
-                else:initial['content']=[]
-                event('response.output_item.added',output_index=0,item=initial)
-                if call:
-                    event('response.function_call_arguments.delta',output_index=0,item_id=item['id'],delta=call['arguments'])
-                    event('response.function_call_arguments.done',output_index=0,item_id=item['id'],arguments=call['arguments'])
-                else:
-                    part=dict(type='output_text',text='',annotations=[])
-                    event('response.content_part.added',output_index=0,item_id=item['id'],content_index=0,part=part)
-                    event('response.output_text.delta',output_index=0,item_id=item['id'],content_index=0,delta=text)
-                    event('response.output_text.done',output_index=0,item_id=item['id'],content_index=0,text=text)
-                    event('response.content_part.done',output_index=0,item_id=item['id'],content_index=0,part=dict(part,text=text))
-                event('response.output_item.done',output_index=0,item=item);event('response.completed',response=response)
+    def reply(self, path, body):
+        self.requests.append(dict(path=path, body=body))
+        assert len(self.requests) <= 5, 'Unexpected extra model request'
+        assert body['model'] == 'wen-fixture' and body['stream'] is True
+        if self.app == 'codex':
+            assert path == '/v1/responses' and body.get('store') is False
+            responses.check_request(body)
+            responses.input_messages(body)
+            tools, names, skipped = responses.request_tools(body)
+            assert not skipped, 'Hosted tool omitted by PCC'
+            results = {i.get('call_id'): i.get('output') for i in body.get('input', [])
+                       if i.get('type') in ('function_call_output', 'custom_tool_call_output')}
+        else:
+            assert path == '/v1/chat/completions'
+            tools = [t.get('function', t) for t in body.get('tools', [])]
+            names = {}
+            results = {m.get('tool_call_id'): m.get('content') for m in body['messages'] if m.get('role') == 'tool'}
+        step = len(self.calls)
+        if step:
+            previous = self.calls[-1]
+            assert previous['id'] in results, 'Original tool result missing from continuation'
+            text = json.dumps(results[previous['id']])
+            if step == 1:
+                assert 'return n' in text, 'Read result did not reach the next model request'
+            if step == 4:
+                assert 'SSS_VERIFIED_42' in text, 'Verification did not reach the next model request'
+        if step == 4:
+            return self.encode(body, names, None, 'Completed the repair and verification.')
+        assert tools, 'No executable tools advertised'
+        call = self.tool_call(tools, step)
+        self.calls.append(call)
+        return self.encode(body, names, call, '')
+
+    def tool_call(self, tools, step):
+        by_name = {t['name']: t for t in tools}
+        if self.app == 'codex':
+            name = next(n for n in by_name if n.split('.')[-1] in ('exec_command', 'shell_command'))
+            props = by_name[name]['parameters']['properties']
+            key = 'cmd' if 'cmd' in props else 'command'
+            arguments = {key: COMMANDS[step]}
+            if 'workdir' in props:
+                arguments['workdir'] = '/work'
+            if 'yield_time_ms' in props:
+                arguments['yield_time_ms'] = 1000
+        else:
+            name = ('read', 'write', 'edit', 'shell' if self.app == 'opencode' else 'bash')[step]
+            assert name in by_name, 'Required native tool missing: ' + name
+            if self.app == 'pi':
+                arguments = [dict(path='/work/app.py'),
+                    dict(path='/work/notes.txt', content='read, write, edit, verify\n'),
+                    dict(path='/work/app.py', edits=[dict(oldText='return n', newText='return 2*n')]),
+                    dict(command=COMMANDS[3])][step]
             else:
-                base=dict(id=response_id,object='chat.completion.chunk',created=created,model='sss-reference')
-                delta=dict(message)
-                if call:delta['tool_calls'][0]['index']=0
-                emit(dict(base,choices=[dict(index=0,delta=delta,finish_reason=None)]))
-                emit(dict(base,choices=[dict(index=0,delta={},finish_reason='tool_calls' if call else 'stop')],usage=dict(prompt_tokens=20,completion_tokens=10,total_tokens=30)))
-                self.wfile.write(b'data: [DONE]\n\n');self.wfile.flush()
-    server=ThreadingHTTPServer(('127.0.0.1',0),Handler);threading.Thread(target=server.serve_forever,daemon=True).start();return server
+                arguments = [dict(path='/work/app.py'),
+                    dict(path='/work/notes.txt', content='read, write, edit, verify\n'),
+                    dict(path='/work/app.py', oldString='return n', newString='return 2*n'),
+                    dict(command=COMMANDS[3], workdir='/work', timeout=10000)][step]
+        schema = by_name[name].get('parameters') or {}
+        assert set(schema.get('required', [])) <= arguments.keys(), 'Required native argument missing'
+        assert set(arguments) <= schema.get('properties', {}).keys(), 'Unexpected native tool argument'
+        return dict(id='call_sss_' + str(step), name=name, arguments=arguments)
+
+    def encode(self, body, names, call, text):
+        if self.app == 'codex':
+            assembler = responses.Assembler(body, 'wen-fixture', 23, names, True)
+            events = assembler.start()
+            event = (Event('tool_call', call=ToolCall(call['name'], call['arguments'], call['id']))
+                     if call else Event('content', text))
+            events += assembler.feed(event)
+            events += assembler.finish(dict(finish='tool_calls' if call else 'stop', prompt_tokens=23, completion_tokens=9))
+            return ''.join('event: ' + e['type'] + '\ndata: ' + json.dumps(e) + '\n\n' for e in events).encode()
+        delta = dict(role='assistant')
+        if call:
+            delta['tool_calls'] = [dict(index=0, id=call['id'], type='function',
+                function=dict(name=call['name'], arguments=json.dumps(call['arguments'])))]
+        else:
+            delta['content'] = text
+        base = dict(id='fixture-' + str(len(self.requests)), object='chat.completion.chunk', created=1, model='wen-fixture')
+        packets = [dict(base, choices=[dict(index=0, delta=delta, finish_reason=None)]),
+            dict(base, choices=[dict(index=0, delta={}, finish_reason='tool_calls' if call else 'stop')]),
+            dict(base, choices=[], usage=dict(prompt_tokens=23, completion_tokens=9, total_tokens=32))]
+        return (''.join('data: ' + json.dumps(p) + '\n\n' for p in packets) + 'data: [DONE]\n\n').encode()
+
+
+def configuration(app, port):
+    base = 'http://127.0.0.1:' + str(port) + '/v1'
+    if app == 'codex':
+        directory = Path('/work/.codex'); directory.mkdir(mode=0o700)
+        (directory/'config.toml').write_text('''model = "wen-fixture"
+model_provider = "pcc_fixture"
+model_context_window = 8192
+model_reasoning_effort = "none"
+model_reasoning_summary = "none"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+web_search = "disabled"
+[model_providers.pcc_fixture]
+name = "Local PCC protocol fixture"
+base_url = "BASE"
+wire_api = "responses"
+requires_openai_auth = false
+supports_websockets = false
+request_max_retries = 0
+stream_max_retries = 0
+stream_idle_timeout_ms = 10000
+'''.replace('BASE', base))
+        return ['/usr/bin/node', '/tools/node_modules/@openai/codex/bin/codex.js', 'exec',
+                '--strict-config', '--skip-git-repo-check', '--ephemeral', '--json', PROMPT]
+    if app == 'opencode':
+        config = dict(model='pccfixture/wen-fixture', small_model='pccfixture/wen-fixture',
+            enabled_providers=['pccfixture'], permission={'*': 'deny', 'read': 'allow', 'write': 'allow', 'edit': 'allow', 'shell': 'allow'},
+            provider=dict(pccfixture=dict(name='Local protocol fixture', npm='@ai-sdk/openai-compatible',
+                options=dict(baseURL=base, apiKey='fixture-not-a-secret'),
+                models={'wen-fixture': dict(name='Wen protocol fixture', limit=dict(context=8192, output=512))})))
+        Path('/work/opencode.json').write_text(json.dumps(config, indent=2) + '\n')
+        return ['/tools/node_modules/@opencode/cli/bin/opencode.exe', 'run', '--standalone', '--format', 'json',
+                '--title', 'SSS CPU transport fixture', '--model', 'pccfixture/wen-fixture', PROMPT]
+    directory = Path('/work/.pi/agent'); directory.mkdir(mode=0o700, parents=True)
+    config = dict(providers=dict(pcc_fixture=dict(api='openai-completions', baseUrl=base,
+        apiKey='fixture-not-a-secret', authHeader=True,
+        compat=dict(supportsStore=False, supportsDeveloperRole=False, supportsReasoningEffort=False, maxTokensField='max_tokens'),
+        models=[dict(id='wen-fixture', name='Wen transport fixture', reasoning=False, input=['text'], contextWindow=8192,
+            maxTokens=512, cost=dict(input=0, output=0, cacheRead=0, cacheWrite=0),
+            samplingParams=dict(temperature=0, seed=0, parallel_tool_calls=False))])))
+    (directory/'models.json').write_text(json.dumps(config, indent=2) + '\n')
+    return ['/usr/bin/node', '/tools/node_modules/@earendil-works/pi-coding-agent/dist/bundle/cli.js',
+        '--provider', 'pcc_fixture', '--model', 'wen-fixture', '--thinking', 'off', '--tools', 'read,write,edit,bash',
+        '--no-session', '--no-extensions', '--no-mcp', '--no-skills', '--no-prompt-templates', '--no-themes',
+        '--no-context-files', '--mode', 'json', '--print', PROMPT]
+
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('app',choices=['codex','opencode','pi']);args=p.parse_args()
-    fixture=Fixture();server=serve(fixture);base='http://127.0.0.1:'+str(server.server_port)+'/v1'
-    home=Path('/tmp/app-home');home.mkdir();env=dict(os.environ,HOME=str(home),XDG_CONFIG_HOME=str(home/'config'),XDG_DATA_HOME=str(home/'data'),XDG_CACHE_HOME=str(home/'cache'),PATH='/usr/bin:/bin:/apps/node_modules/.bin')
-    executable='/apps/node_modules/.bin/'+args.app
-    if args.app=='codex':
-        codex_home=home/'codex';codex_home.mkdir();env['CODEX_HOME']=str(codex_home)
-        (codex_home/'config.toml').write_text('model="sss-reference"\nmodel_provider="sss"\n[model_providers.sss]\nname="S3 protocol fixture"\nbase_url='+json.dumps(base)+'\nwire_api="responses"\nrequires_openai_auth=false\n')
-        cmd=[executable,'exec','--json','--ephemeral','--skip-git-repo-check','--dangerously-bypass-approvals-and-sandbox','-C','/work',PROMPT]
-    elif args.app=='opencode':
-        env['OPENCODE_CONFIG_CONTENT']=json.dumps(dict(provider=dict(sss=dict(npm='@ai-sdk/openai-compatible',name='S3 fixture',options=dict(baseURL=base,apiKey='fixture'),models={'sss-reference':dict(name='S3 reference',limit=dict(context=131072,output=2048))})),model='sss/sss-reference',permission='allow',share='disabled',autoupdate=False))
-        env['OPENCODE_DISABLE_DEFAULT_PLUGINS']='true';env['OPENCODE_DISABLE_MODELS_FETCH']='true'
-        cmd=[executable,'run','--pure','--auto','--format','json','--title','S3 fixture','--dir','/work','-m','sss/sss-reference',PROMPT]
-    else:
-        agent=home/'pi';agent.mkdir();env['PI_CODING_AGENT_DIR']=str(agent)
-        (agent/'models.json').write_text(json.dumps(dict(providers=dict(sss=dict(baseUrl=base,api='openai-completions',apiKey='fixture',models=[dict(id='sss-reference',name='S3 reference',reasoning=False,input=['text'],contextWindow=131072,maxTokens=2048)])))))
-        cmd=[executable,'--mode','rpc','--no-session','--no-extensions','--no-mcp','--no-skills','--no-prompt-templates','--no-context-files','--no-approve','--provider','sss','--model','sss-reference','--thinking','off']
-    events=[]
-    with Path('/work/application.stderr').open('wb') as stderr:
-        proc=subprocess.Popen(cmd,cwd='/work',env=env,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=stderr)
-        if args.app=='pi':proc.stdin.write((json.dumps(dict(id='sss-prompt',type='prompt',message=PROMPT))+'\n').encode());proc.stdin.flush()
-        else:proc.stdin.close()
-        def collect():
-            for raw in proc.stdout:
-                # Binary LF framing preserves U+2028/U+2029 inside JSON strings.
-                line=raw.decode('utf-8',errors='replace').rstrip('\r\n');events.append(line)
-                if args.app=='pi':
-                    try:event=json.loads(line)
-                    except ValueError:continue
-                    if event.get('type')=='agent_settled':proc.stdin.close()
-        reader=threading.Thread(target=collect,daemon=True);reader.start()
-        try:proc.wait(timeout=80)
-        except subprocess.TimeoutExpired:proc.kill();proc.wait()
-        reader.join(timeout=3)
-    server.shutdown();server.server_close()
-    Path('/work/application.events.jsonl').write_text('\n'.join(events)+'\n')
-    Path('/work/protocol-private.json').write_text(json.dumps(dict(requests=fixture.requests,tool_names=fixture.tool_names)))
-    result=dict(app=args.app,exit_code=proc.returncode,calls=fixture.step,model_inference=False,weights_updated=False)
-    print(json.dumps(result));return 0 if proc.returncode==0 and fixture.step==4 else 1
+    if os.environ.get('SSS_ISOLATED_TRANSPORT_FIXTURE') != '1' or Path.cwd() != Path('/work'):
+        raise RuntimeError('Use the host launcher and its disposable Linux boundary')
+    parser = argparse.ArgumentParser(); parser.add_argument('app', choices=VERSIONS); args = parser.parse_args()
+    global responses, Event, ToolCall
+    sys.path.insert(0, '/pcc')
+    from serve import responses
+    from serve.frontend import Event, ToolCall
+    fixture = Fixture(args.app)
 
-if __name__=='__main__':raise SystemExit(main())
+    class Handler(BaseHTTPRequestHandler):
+        def log_message(self, *args):
+            pass
+        def do_POST(self):
+            try:
+                length = int(self.headers['Content-Length']); assert 0 < length < 2**20
+                body = json.loads(self.rfile.read(length))
+                with fixture.lock:
+                    raw = fixture.reply(self.path, body)
+                self.send_response(200); self.send_header('Content-Type', 'text/event-stream')
+                self.send_header('Content-Length', str(len(raw))); self.end_headers(); self.wfile.write(raw)
+            except Exception as error:
+                fixture.failures.append(dict(type=type(error).__name__, message=str(error)))
+                self.send_error(400, 'Fixture contract failed')
+
+    server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+    argv = configuration(args.app, server.server_port)
+    started = time.monotonic(); process = None; timed_out = False
+    try:
+        process = subprocess.run(argv, capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=90)
+    except subprocess.TimeoutExpired:
+        timed_out = True
+    finally:
+        server.shutdown(); server.server_close(); thread.join(timeout=2)
+    root = Path('/work')
+    (root/'requests-private.json').write_text(json.dumps(fixture.requests, indent=2) + '\n')
+    (root/'calls-private.json').write_text(json.dumps(fixture.calls, indent=2) + '\n')
+    (root/'cli-private.jsonl').write_text(process.stdout if process else '')
+    (root/'stderr-private.txt').write_text(process.stderr if process else '')
+    repaired = (root/'app.py').read_text() == 'def double(n):\n    return 2*n\n'
+    wrote = (root/'notes.txt').is_file() and (root/'notes.txt').read_text() == 'read, write, edit, verify\n'
+    passed = bool(process and process.returncode == 0 and not fixture.failures and
+                  len(fixture.calls) == 4 and len(fixture.requests) == 5 and repaired and wrote)
+    result = dict(schema=2, app=args.app, version=VERSIONS[args.app], passed=passed,
+        evidence_kind='synthetic_transport_real_host_tools', real_model_calls=0,
+        mock_requests=len(fixture.requests), tool_calls=len(fixture.calls),
+        actual_tools=[c['name'] for c in fixture.calls], continuation_results_verified=passed,
+        repair_verified=repaired, write_verified=wrote, timed_out=timed_out,
+        exit_code=process.returncode if process else None, seconds=time.monotonic()-started,
+        failures=fixture.failures, actual_pcc_responses_serializer=args.app == 'codex',
+        pcc_native_backend_tested=False, wen_quality_measured=False, weights_updated=False, promoted=False)
+    (root/'result.json').write_text(json.dumps(result, indent=2) + '\n'); print(json.dumps(result))
+    return 0 if passed else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

@@ -33,7 +33,7 @@ def counts(calls=1):
     return dict(model_calls=calls, input_tokens=100, output_tokens=30, tool_calls=1, wall_seconds=0.5)
 
 
-def fixture(study, *, stages=4):
+def fixture(study, *, stages=4, changes_by_harness=None):
     """Synthetic host observations for testing the auditor, never model evidence."""
     data = study.document()
     evidence = dict(schema=1, study_sha256=study.identity, variants=[], runs=[], grades=[], traces=[])
@@ -52,7 +52,9 @@ def fixture(study, *, stages=4):
                     refs = [{k: r[k] for k in ('execution_id', 'receipt_sha256', 'trace_sha256')}
                             for r in evidence['runs'] if r['execution_id'] in parent_ids]
                     recipe = dict(harness=harness['id'], task=task['id'], condition=condition,
-                                  base_sha256=harness['base_sha256'], changes={'instructions': digest(condition)},
+                                  base_sha256=harness['base_sha256'],
+                                  changes=(deepcopy(changes_by_harness[harness['id']][condition]) if changes_by_harness
+                                           else {'instructions': digest([harness['id'], condition])}),
                                   evidence=refs, editor_sha256=digest(data['editor']), editor_usage=counts(),
                                   hypothesis='Synthetic fixture: inspect state, then verify the final artifact.')
                     evidence['variants'].append(recipe)
@@ -106,6 +108,29 @@ class HarnessComparisonTests(unittest.TestCase):
         study.plan()['executions'].clear()
         self.assertEqual(study.identity, identity)
         self.assertEqual(study.document()['budget']['model_calls'], 8)
+
+    def test_harnesses_optimize_different_surfaces_from_their_own_behavior(self):
+        surfaces = dict(bw='memory_instructions', opencode='skills', codex='tool_guidance', pi='instructions')
+        changes = {h: {c: {surface: digest([h, c, 'distinct-content'])} for c in CONDITIONS[1:]}
+                   for h, surface in surfaces.items()}
+        evidence = fixture(self.study, changes_by_harness=changes)
+        report = compare(self.study, evidence)
+        for row in report['comparisons']:
+            harness = row['harness']
+            self.assertTrue(row['bounded_transfer_screen_passed'])
+            self.assertEqual(row['surfaces'], {c: [surfaces[harness]] for c in CONDITIONS[1:]})
+            view = editor_view(self.study, evidence, harness=harness, task='repair', condition='composed')
+            own = {s['execution_id'] for s in self.study.plan()['executions']
+                   if s['harness'] == harness and s['phase'] == 'development'}
+            self.assertTrue(all(r['execution_id'] in own for r in view['untrusted_observations']))
+        # Another harness's valid baseline is not evidence for this harness's proposal.
+        other = next(s for s in self.study.plan()['executions']
+                     if s['harness'] == 'codex' and s['condition'] == 'baseline' and s['phase'] == 'development')
+        original = next(r for r in evidence['runs'] if r['execution_id'] == other['execution_id'])
+        variant = next(v for v in evidence['variants'] if v['harness'] == 'bw' and v['condition'] == 'general_probe')
+        variant['evidence'] = [{k: original[k] for k in ('execution_id', 'receipt_sha256', 'trace_sha256')}]
+        with self.assertRaises(ValueError):
+            compare(self.study, evidence)
 
     def test_editor_sees_only_prior_behavior_even_if_grades_are_present(self):
         view = editor_view(self.study, self.evidence, harness='bw', task='repair', condition='composed')

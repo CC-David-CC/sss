@@ -1,0 +1,170 @@
+{
+  "schema": 2,
+  "manifest": {
+    "schema": 2,
+    "source_revision": "0348af29f1d0d75cb387135e5b67ab9b23c13bd9",
+    "protocol_files": {
+      "serve/__init__.py": "7195d862b09ee0c290b6c28d5c1b6e7c5819212328ecbea7cd1422b4a5d4a3d6",
+      "serve/frontend.py": "e5a84546300b948ed8ca79d25bb03b1af89e2ee1017e5f7ac67e2acbb1e84b5d",
+      "serve/responses.py": "5215aafab91eea1b77b4c81a1405731cd175fcbdcc9b0e56aa64db701a7100f4"
+    },
+    "fixture_sha256": "b2c21d594c8fad35fef77c349f05b028d28d1bc52ed739f35313270a8e8bc288",
+    "launcher_sha256": "aaf64c6813553dfbe26c8e777ce84ac7f03e0f220fb28501346ddbf6587850d1",
+    "toolchains": {
+      "codex": {
+        "package": "@openai/codex",
+        "version": "0.164.0",
+        "package_lock_sha256": "34624bca72824cf77cda741f4826b6dd146f0a822475ffb7a843a3d385a8110c"
+      },
+      "opencode": {
+        "package": "@opencode/cli",
+        "version": "2.1.4",
+        "package_lock_sha256": "0f3b2ad42cf388bd24a8bca2249e9072f7a9b62dbbce40cce3241c3c865f9d03"
+      },
+      "pi": {
+        "package": "@earendil-works/pi-coding-agent",
+        "version": "1.4.0",
+        "package_lock_sha256": "e897eb1ec460cb7bfff0d4093d381d3f00459284cb95154362b5f4bfdf6cea60"
+      }
+    },
+    "network": "new isolated namespace; loopback mock endpoint only",
+    "home": "new disposable /work; no inherited credentials",
+    "real_model_calls": 0
+  },
+  "manifest_sha256": "7655e020f8ea98fc3685c0e6720df7139d56a7a9d978bee0d8d68caf68b37808",
+  "results": [
+    {
+      "schema": 2,
+      "app": "codex",
+      "version": "0.164.0",
+      "passed": true,
+      "evidence_kind": "synthetic_transport_real_host_tools",
+      "real_model_calls": 0,
+      "mock_requests": 5,
+      "tool_calls": 4,
+      "actual_tools": [
+        "exec_command",
+        "exec_command",
+        "exec_command",
+        "exec_command"
+      ],
+      "continuation_results_verified": true,
+      "repair_verified": true,
+      "write_verified": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "seconds": 5.981101400917396,
+      "failures": [],
+      "actual_pcc_responses_serializer": true,
+      "pcc_native_backend_tested": false,
+      "wen_quality_measured": false,
+      "weights_updated": false,
+      "promoted": false,
+      "boundary_settled": true,
+      "boundary_timed_out": false,
+      "boundary_exit_code": 0,
+      "boundary_receipt_sha256": "0c5c837739d046cdfb40da09c165f2d34abcf61e750544bc3185ad2b704b5356",
+      "evidence_sha256": "0e81bedf590a5a541c604c89b2e94431c147bdd59f6553ed6c35cbda1359646d"
+    },
+    {
+      "schema": 2,
+      "app": "opencode",
+      "version": "2.1.4",
+      "passed": true,
+      "evidence_kind": "synthetic_transport_real_host_tools",
+      "real_model_calls": 0,
+      "mock_requests": 5,
+      "tool_calls": 4,
+      "actual_tools": [
+        "read",
+        "write",
+        "edit",
+        "shell"
+      ],
+      "continuation_results_verified": true,
+      "repair_verified": true,
+      "write_verified": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "seconds": 1.0134440842084587,
+      "failures": [],
+      "actual_pcc_responses_serializer": false,
+      "pcc_native_backend_tested": false,
+      "wen_quality_measured": false,
+      "weights_updated": false,
+      "promoted": false,
+      "boundary_settled": true,
+      "boundary_timed_out": false,
+      "boundary_exit_code": 0,
+      "boundary_receipt_sha256": "9e8ffb0aeccb23b7127e084150cf7d0c08e36825b19a19a26517777db768e6aa",
+      "evidence_sha256": "d1806be74e95db82a959d68e5d44462c5e6e01e851a48c6d8c9a487e2bcb4afb"
+    },
+    {
+      "schema": 2,
+      "app": "pi",
+      "version": "1.4.0",
+      "passed": true,
+      "evidence_kind": "synthetic_transport_real_host_tools",
+      "real_model_calls": 0,
+      "mock_requests": 5,
+      "tool_calls": 4,
+      "actual_tools": [
+        "read",
+        "write",
+        "edit",
+        "bash"
+      ],
+      "continuation_results_verified": true,
+      "repair_verified": true,
+      "write_verified": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "seconds": 0.9486646808218211,
+      "failures": [],
+      "actual_pcc_responses_serializer": false,
+      "pcc_native_backend_tested": false,
+      "wen_quality_measured": false,
+      "weights_updated": false,
+      "promoted": false,
+      "boundary_settled": true,
+      "boundary_timed_out": false,
+      "boundary_exit_code": 0,
+      "boundary_receipt_sha256": "b3c726634900f9f5d2ee84c4874667b57a822f3ee111530024882385cca14f50",
+      "evidence_sha256": "ce5a40a4f0184a95d59980ffc347023240099555aac6fe8287c2f7ba8ddf10f3"
+    }
+  ],
+  "all_passed": true,
+  "real_model_calls": 0,
+  "performance_comparison": false,
+  "promoted": false,
+  "direct_invocation_guard_verified": true,
+  "host_versions": {
+    "python": "Python 3.14.4",
+    "node": "v22.22.1",
+    "bubblewrap": "bubblewrap 0.11.1"
+  },
+  "preceding_schema_probe": {
+    "codex_passed": true,
+    "opencode_passed": false,
+    "pi_passed": false,
+    "all_boundaries_settled": true,
+    "cause": "Fixture used outdated OpenCode path/shell and pi edit argument shapes; actual advertised schemas identified the mismatches.",
+    "false_passes": 0,
+    "real_model_calls": 0
+  },
+  "limits": [
+    "Replies and usage are deterministic mock data; no model inference or learning was measured.",
+    "Actual installed host tools performed read/write/edit/verification and returned results on the next request.",
+    "Codex uses PCC Responses parsing/serialization; OpenCode and pi use synthetic Chat Completions streams.",
+    "PCC native backend, effective Wen sampling, live task receipt exporters, proposer/composer and cross-harness quality remain unqualified.",
+    "Package locks and selected PCC source hashes bind the trusted operator setup; they do not independently attest an installed dependency tree.",
+    "Fixture timings do not rank harness speed or model throughput."
+  ],
+  "core_checks": {
+    "passed": 112,
+    "failed": 0,
+    "output_sha256": "85b0b60d2321b68a2cfa7200fe58caacd38a5a26b9f30266a86f70fa402b794b",
+    "includes_independent_per_harness_variants": true
+  },
+  "remaining_fixture_processes_at_audit": []
+}

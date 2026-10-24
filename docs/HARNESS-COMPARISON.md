@@ -38,8 +38,11 @@ task failure, missing retention controls and changed checker identities. These
 tests establish the comparison machinery; they do not establish that any
 harness or Wen improved.
 
-Live exporters and proposer/composer integrations for all four harnesses are
-still to be qualified. No four-harness performance result has been measured by
+[Actual Codex, OpenCode and pi CPU protocol checks](REAL-HARNESS-SETUP.md) now
+exercise four real file/tool operations and five mock requests in each client.
+Codex uses PCC's actual Responses formatter; no native model is called. Live
+exporters and proposer/composer integrations for all four harnesses are still
+to be qualified. No four-harness performance result has been measured by
 this increment. A hash in a JSON document is a binding, not proof that a host
 ran honestly or that its isolation worked. A trusted host exporter must verify
 the actual files, process receipts, model identity, effective settings and
@@ -83,6 +86,14 @@ Changing tool definitions, permissions, budgets, executables, plugins or
 delegation is outside this first matched comparison. Such changes would need
 their own explicitly qualified comparison, not an instruction that quietly
 expands the host's authority.
+
+Each harness has its own proposals, content, selected edit surfaces and composed
+recipe, based on its own behavior. The four conditions are a shared method, not
+a requirement to apply identical changes. A distinguishing contract test uses
+four different surfaces and rejects substituting another harness's baseline.
+Report strengths and weaknesses by task family, gate and difficulty coordinates,
+for both original and independently optimized configurations. A result with Wen
+fixed measures that model/harness pairing, not a universal client ranking.
 
 Each variant starts from the pinned base. Both proposals use only baseline
 behavior; composition requires both probe receipts. Follow-up runs use the
@@ -201,4 +212,11 @@ Codex requires a verified provider setup, not a guessed endpoint.
 [Official provider configuration](https://learn.chatgpt.com/docs/config-file/config-advanced#custom-model-providers)
 documents the base URL, wire API and authentication settings. The reviewed
 Harness² Codex bridge targets Vertex through LiteLLM; it is not an already
-qualified Wen/PCC bridge. No such bridge has been added by this increment.
+qualified Wen/PCC bridge. PCC already implements Responses; the
+[real-client CPU check](REAL-HARNESS-SETUP.md) now verifies its parser and
+serializer against the pinned Codex client, including tool-result continuation.
+The native Wen backend and matched inference settings remain to be qualified.
+
+The [joint learning loop](JOINT-LEARNING-LOOP.md) specifies interleaving those
+separate optimizations with mixed-review training and protected four-cell
+model/configuration comparisons. Its live joint cycle remains unqualified.

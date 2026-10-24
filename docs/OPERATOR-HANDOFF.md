@@ -66,12 +66,13 @@ Real Linux code fixtures, in prepared disposable bubblewrap namespaces:
 
 ```sh
 python -m sss_integration.foundation_linux --output /your/private/new-linux-proof
-python -m sss_integration.external_apps_cpu --output /your/private/new-app-proof --apps /your/owned/pinned-app-install
+python -m sss_integration.external_apps_cpu --output /your/private/new-app-proof --prefixes /your/private/prefixes.json --pcc-root /your/inspected/PCC
 python -m sss_integration.research_archive --output /your/private/new-archive
 ```
 
-Check `--help` before running a recipe. The external applications are pinned in
-the validation record. Their deterministic endpoint is a protocol fixture;
+Check `--help` before running a recipe. Follow [real-client preparation](REAL-HARNESS-SETUP.md)
+for the exact installed package pins and prefix mapping. The external applications
+are pinned in the validation record. Their deterministic endpoint is a protocol fixture;
 `model_inference=false` must remain visible. The archive uses a reference UTF-8
 byte tokenizer, not Wen's tokenizer. Its generated experiments measure comparison
 counts including setup cost, not wall-clock algorithm speed. The timed lane
@@ -144,3 +145,12 @@ other skill were frozen before measuring both models. Place-value passes rose
 unchanged. The old candidate is unpromoted; do not relaunch this settled study. Place-value
 composition v2 fixes the old direct-question label; source identities change.
 Old frozen packs must continue to use their original source pin.
+
+## Continue joint improvement
+
+Follow the [joint learning-loop contract](JOINT-LEARNING-LOOP.md): optimize each
+harness from its own behavior, train on larger varied mixed-review batches,
+cross-check old/new weights through old/new recipes, and keep hill-climbing
+accepted versions. The complete live coupled cycle is not established yet.
+Keep different-seed repeat runs outside the current campaign. Model export,
+download and HF publication require the owner's later release decision.

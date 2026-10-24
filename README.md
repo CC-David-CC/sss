@@ -1,13 +1,16 @@
 # Skills³ (S³)
 
 [Four-condition harness comparisons](docs/HARNESS-COMPARISON.md) now have
-tested offline planning and evidence checks; live cross-harness measurements
+tested offline planning and evidence checks. [Real Codex/OpenCode/pi clients](docs/REAL-HARNESS-SETUP.md)
+pass isolated CPU file/tool loops with mock replies; live Wen comparisons
 remain to be qualified. [Wen's full-update pilot](docs/WEN-FULL-UPDATE-PILOT.md)
 changed the protected score from 17/54 to 19/54, with three gains and one
 regression. The candidate was rejected and was not promoted. A larger
 [paired assessment](docs/WEN-PAIRED-ASSESSMENT.md) found place value improved
 from 23/96 to 29/96, with seven gains and one loss; 96 review outcomes were
 unchanged. Uncertainty and the original rejection remain explicit.
+[Joint learning and harness hill-climbing](docs/JOINT-LEARNING-LOOP.md) records
+the next live cycle, per-domain controls and conditional release gate.
 Development checkpoint: [foundations and workflow validation](validation/foundations-20261023/README.md). Live-model qualification remains pending.
 
 

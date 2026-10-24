@@ -105,3 +105,15 @@ The [expanded paired assessment](WEN-PAIRED-ASSESSMENT.md) then tested the same
 weights on fresh frozen questions: place value 23/96 to 29/96, seven gains and
 one loss; 96 review outcomes unchanged. Its uncertainty, low absolute scores and
 unchanged rejection remain visible. No training occurred in that assessment.
+
+[Real-client CPU qualification](REAL-HARNESS-SETUP.md) now exercises read, write,
+edit and verification in pinned Codex/OpenCode/pi clients. Each observed tool
+result reaches the next mock request; Codex uses PCC's actual Responses
+formatter. This establishes protocol/tool mechanics, with zero model calls.
+Native Wen execution and the full matched comparison remain separate work.
+
+The [joint learning-loop contract](JOINT-LEARNING-LOOP.md) now makes the
+remaining coupled cycle explicit: separate per-harness optimization, larger
+varied mixed review, protected model/configuration cross-checks and continued
+hill-climbing with per-domain retention. Seed sensitivity and the future
+conditional release are distinct from current training authorization.
