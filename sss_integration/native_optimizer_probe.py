@@ -25,10 +25,8 @@ def run(a):
     from tools.pcc_native_training import validate_examples
     from tools.gguf_reader import GGUFFile
     selection = json.loads(a.selection.read_text())
-    if selection.get('pilot_id') != digest({k: v for k, v in selection.items() if k != 'pilot_id'}):
-        raise ValueError('Checked practice selection identity differs')
-    if selection.get('protected_cases_exported') is not False or selection.get('target_policy') != 'actions_answer':
-        raise ValueError('Unexpected split/target policy')
+    from sss.adapters.training_data import validate_training_document
+    data = validate_training_document(selection)
     examples = validate_examples(selection['examples'], sequence_profile='dense-llama-short-v1')
     if [e['id'] for e in examples] != [r['lesson_id'] for r in selection['selection']]:
         raise ValueError('Selected examples differ from admitted lessons')
@@ -47,7 +45,7 @@ def run(a):
                    host_reserve_bytes=a.host_reserve_gib << 30, examples=[example], gradient_probe_only=True,
                    learning_rate=1e-6, batch_size=1, steps=1, deadline_seconds=a.timeout_seconds,
                    candidate=str(root / 'never-written.gguf'))
-    write(root / 'intent.json', dict(pilot_id=selection['pilot_id'], model_sha256=selection['model_sha256'],
+    write(root / 'intent.json', dict(data_id=data['data_id'], data_kind=data['kind'], model_sha256=selection['model_sha256'],
                                     selection_sha256=sha(a.selection), executable_sha256=sha(a.native_executable),
                                     source_sha256=sha(__file__), expected_parameter_tensors=len(expected),
                                     weights_updated=False))
@@ -86,11 +84,12 @@ def run(a):
             if Path(request['candidate']).exists():
                 raise ValueError('Gradient-only probe wrote a candidate')
             result = dict(status='PASS', scope='Actual-model complete ordinary backprop gradients; no update',
-                          pilot_id=selection['pilot_id'], model_sha256=selection['model_sha256'],
+                          data_id=data['data_id'], data_kind=data['kind'], model_sha256=selection['model_sha256'],
                           executable_sha256=sha(a.native_executable), tokens=len(example['tokens']),
                           selected_targets=sum(example['loss_mask']), parameter_tensors=len(expected),
                           finite_gradient_tensors=len(gradients), nonzero_gradient_tensors=len(gradients),
                           loss=receipt['loss'], weights_updated=False, promoted=False)
+            result[data['identity_field']] = data['data_id']
             write(root / 'result.json', result)
             status = 'PASS'
             print(json.dumps(result), flush=True)

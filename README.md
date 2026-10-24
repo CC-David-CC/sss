@@ -165,6 +165,8 @@ outside this repository.
 
 [BW follow-up and training mechanics](docs/MINICPM-HARNESS-FIELD-NOTES.md#bws-broader-follow-up-and-native-training-mechanics)
 separate three Python passes/two shell failures from independently checked tiny
-native full/LoRA backprop. No MiniCPM weights were trained. Next: investigate BW,
-then qualify Muon and compare frozen-test performance at a fixed compute budget.
+native full/LoRA backprop. Subsequent work qualified real MiniCPM full updates
+and completed the larger baseline: 59/864 exact-answer passes and 415/864 natural
+response completions. The fixed-budget candidate comparison is now running.
+[Current baseline, learning plan and reproducible evidence](docs/MINICPM-NATIVE-LEARNING.md).
 Broader optimizer ablations are stretch goals.
