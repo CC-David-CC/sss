@@ -32,3 +32,25 @@ continue on their frozen source snapshots. This new wiring does not waive the
 earlier failed merge-equivalence gate or certify a complete LoRA learning curve.
 
 See [PCC's owner workflow and qualification limits](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-learning-curves-20261024/docs/DENSE-LORA-COW.md).
+
+
+## Separate direct-hat learning curve
+
+The original per-update study made merged-F32 parity an entry gate for its LoRA
+arm. That gate failed and remains failed. The attached-hat curve is an explicit
+execution amendment: independently qualified direct COW inference replaces the
+merged deployment only for this separately labelled measurement. It does not
+make the original merged-deployment arm pass.
+
+Training resumes the exact saved AdamW rank-16 adapter and optimizer moments from
+update 1. It does not repeat initialization or the first update. The ordered
+practice stream, batch of 27, learning rate and 68-update endpoint remain the
+predeclared recipe. Each new update requires finite gradients, independent
+adapter reload within the unchanged loss bound, and a complete 864-case direct
+assessment. The first saved hat and F16/F32 baseline controls are assessed
+independently; a baseline still in progress cannot count as a measured result.
+
+Reports must label this series **LoRA, attached adapter**, carry its actual
+runtime/model identities, and show gains and losses. A standalone merged GGUF
+requires its own retained numerical and behavioral evidence. No model promotion,
+threshold relaxation or merged-model qualification follows from this amendment.
