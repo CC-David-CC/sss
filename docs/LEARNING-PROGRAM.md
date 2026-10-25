@@ -19,12 +19,12 @@ introduce another workflow engine or allow a model to approve its own update.
 
 | Requirement | Evidence required | Current evidence and remaining work |
 | --- | --- | --- |
-| Observe and correct a real task | BW ledger records a failed check followed by independently checked correction | Native CPU integration exercises actual BW checks and both clients; broader live Wen task evidence remains needed |
-| Verify a lesson | Source failure, correction, checker, exact render and selected target tokens remain bound | Existing schema-1/schema-2 admission and protected-material checks; worked demonstrations require their own independent checks |
-| Train and recover candidates | Ordinary native backprop, immutable base, candidate identity, reload agreement and resource settlement | Tiny CPU/CUDA LoRA/full and bounded real Wen LoRA evidence; qualify the new real Wen full-update campaign separately |
-| Measure learning and forgetting | Same frozen baseline/candidate checks, previously passed cases protected, every claimed domain covered | Nine-skill Wen pilot stayed at 17/54 after 108 practice occurrences; broad domain coverage and short/extended testing remain incomplete |
-| Accept or reject | Frozen policy, independent checks and a recorded decision; training loss alone cannot accept a model | Guarded CPU jobs exercise regression, recovery, rejection and blind gating; no automatic deployment |
-| Repeat and explain | Pinned sources, owned practice TXT, commands, original outcomes, resource cost and a human-readable conclusion | Existing guides and private receipts; unified campaign accounting and teaching report remain to complete |
+| Observe and correct a real task | BW ledger records a failed check followed by independently checked correction | Actual CPU BW failure/correction and both clients are exercised; MiniCPM model failures are captured separately; a repeated real-model lesson-to-learning cycle remains open |
+| Verify a lesson | Source failure, correction, checker, exact render and selected target tokens remain bound | Schema-1/schema-2 admission, protected-material guards and actual BW/S³ check sensitivity; new demonstrations still need independent verification |
+| Train and recover candidates | Ordinary native backprop, immutable base, candidate identity, reload agreement and resource settlement | Actual MiniCPM full AdamW/Muon variants and LoRA AdamW updates, reload and continued moments; exact artifact/milestone resolution now tested on real saved candidates |
+| Measure learning and forgetting | Same frozen baseline/candidate checks, previously passed cases protected, every claimed domain covered | Current MiniCPM curves score 864 development questions across nine skill families, tracking original and parent losses; broader domains, extended and sealed acceptance remain incomplete |
+| Accept or reject | Frozen policy, independent checks and a recorded decision; training loss alone cannot accept a model | Frozen guard tests plus actual-evidence keep/repair recommendations retain the strict rejection; no automatic deployment or release acceptance |
+| Repeat and explain | Pinned sources, owned practice TXT, commands, original outcomes, resource cost and a human-readable conclusion | Guides, current measured curves, source/cost receipts, proposal resolution and guarded CLI parents; durable multi-round orchestration, final reports, selected-model quants and cleanup remain open |
 
 A generated fixture or injected regression proves machinery, not model quality.
 A planned graph node is unmeasured. A retained small score does not establish
@@ -120,8 +120,10 @@ conditional release are distinct from current training authorization.
 
 [Actual MiniCPM optimizer mechanics](MINICPM-OPTIMIZER-PILOT.md) now pass full
 gradient coverage, native Muon/AdamW updates, reload and bit-exact completed Muon
-continuation on one RTX PRO 6000. Fixed-compute model learning/retention and the
-actual-model RMS/refinement comparisons remain pending.
+continuation on one RTX PRO 6000. [Matched-practice learning curves](COW-SHARED-ROOT-LEARNING.md) now compare those
+regimens and attached LoRA at recorded update counts. Compute is recorded alongside
+learning; fixed training time is not the scientific stopping rule. Full 68-update
+completion and broader acceptance remain pending.
 
 
 ## Evidence-bound next-block recommendation
@@ -130,3 +132,39 @@ Use [the offline next-block planner](NEXT-SKILL-BLOCK.md) to compare original,
 working-parent and candidate evaluations. Version2 names the complete measured
 base/adapter/scale identity, preserves repair and review groups, and keeps the
 strict promotion decision separate. The CLI neither trains nor allocates.
+
+
+## Resolve and submit an intended parent
+
+[Proposal resolution](RESOLVED-LEARNING-PARENT.md) recomputes the recommendation
+from frozen evaluations and uses PCC's existing artifact/identity readers. It
+can resolve an explicitly selected verified milestone after temporary-cache
+retirement, or refuse missing/mismatched moments instead of resetting them.
+BW and COW clients can pin a registered parent by its native artifact SHA before
+queuing. These are implemented boundaries, not an unattended loop or model release.
+
+Two important gaps remain explicit: an offline sweep candidate is not automatically
+a registered service job, and registered adaptive-optimizer profiles still require
+full mode. Native/offline LoRA AdamW works; the default LoRA CLI recipe is legacy
+SGD. A future registered LoRA policy must be explicit rather than changing the
+meaning of an existing full-only profile. The ongoing fixed-practice study is
+not reconfigured by these additions.
+
+
+## An equal-practice observation at update 21
+
+At 21 completed updates and 567 ordered practice presentations, the declared
+full AdamW recipe scored 424/864 and the rank-16 LoRA AdamW recipe scored
+456/864. Both naturally finished all 864 responses. The practice dataset and
+frozen evaluation IDs match; the separate full/attached numerical execution
+series retain their documented base and trained-model bridge controls.
+
+This is a comparison of the two declared recipes: full uses learning rate 1e−6
+and LoRA 1e−4. It is not an isolated capacity ablation, a universal LoRA advantage
+or a release decision. This short slice reports totals; per-case retention,
+parent-to-parent churn, the full 68-update curves and broader task coverage still
+matter. It does strengthen the practical reason to finish registered LoRA
+optimizer support in the reusable agent pathway.
+
+[Actual checkpoint/configuration/evaluation receipts](../validation/minicpm-native-learning-20261024/common-update21-ay.json)
+keep the measured counts separate from the CPU integration's controlled scores.
