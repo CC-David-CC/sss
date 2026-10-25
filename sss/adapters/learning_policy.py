@@ -34,6 +34,10 @@ class LearningPolicy:
 
     def evaluate(self,candidate,path,worker_fd):return self.evaluator(candidate,path,worker_fd)
 
+    def recover_evaluation(self,candidate,path):
+        recover=getattr(self.evaluator,'recover',None)
+        return recover(candidate,path) if callable(recover) else None
+
     def validate_evaluation(self,value,candidate):
         compare_frozen_evaluations(value,value,POLICY)
         self.evaluator.validate(value,candidate)

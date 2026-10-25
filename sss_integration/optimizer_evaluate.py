@@ -13,6 +13,31 @@ def write(path,value):
     with Path(path).open('x') as stream:json.dump(value,stream,indent=2);stream.write('\n')
 
 
+def runtime_description(a,build,tokenizer_id,profile=None,common_prefix=()):
+    """Shared exact runtime identity for execution and owner-side preflight."""
+    pins=build['sha256']
+    from sss.records import digest
+    partition_source_sha256=sha(Path(__file__).parents[1]/'sss/studies/evaluation_shards.py')
+    policy=dict(context_tokens=a.context_tokens,batch_tokens=a.batch_tokens,maximum_tokens=a.maximum_tokens,
+        stop_token_ids=a.stop_token_ids,protocol='tokens-v1',all_logits=True,greedy=True,
+        score='existing exact-foundations checker; EOS completion reported separately')
+    runtime=dict(proof_sha256=sha(a.runtime_proof),runtime_artifacts=pins,adapter_sha256=sha(Path(__file__).parents[1]/'sss/adapters/native_oracle.py'),
+        runner_sha256=sha(__file__),checker_implementation_id=a.checker_implementation_id,tokenizer_sha256=tokenizer_id,policy=policy,
+        case_partition_implementation_sha256=partition_source_sha256)
+    if profile is not None:
+        from sss.adapters.cow_evaluation import runtime_binding
+        runtime.update(execution_path='cow-consumed-request-v1',
+            cow_runtime=runtime_binding(profile),
+            cow_adapter_sha256=sha(Path(__file__).parents[1]/'sss/adapters/cow_evaluation.py'))
+        runtime['policy']=dict(policy,protocol='cow-consumed-request-v1',all_logits=False,
+            output_boundary='All sampled tokens including EOS consumed by COW',
+            counters='Actual prefix + consumed decode tokens; includes final sampled token')
+        if common_prefix:
+            runtime['policy'].update(shared_prefix=dict(policy='longest-common-rendered-input-v1',
+                tokens=len(common_prefix),tokens_sha256=digest(common_prefix)))
+    return runtime
+
+
 def run(a):
     sys.path.insert(0,str(a.pcc_root.resolve(strict=True)))
     from tools.strata_tokenizer import Tokenizer
@@ -66,24 +91,8 @@ def run(a):
         raise ValueError('COW profile requires explicit COW execution path')
     if getattr(a,'cow_shared_prefix',False) and profile is None:
         raise ValueError('Shared-prefix evaluation requires the explicit COW path')
-    policy=dict(context_tokens=a.context_tokens,batch_tokens=a.batch_tokens,maximum_tokens=a.maximum_tokens,
-        stop_token_ids=a.stop_token_ids,protocol='tokens-v1',all_logits=True,greedy=True,
-        score='existing exact-foundations checker; EOS completion reported separately')
-    runtime=dict(proof_sha256=sha(a.runtime_proof),runtime_artifacts=pins,adapter_sha256=sha(Path(__file__).parents[1]/'sss/adapters/native_oracle.py'),
-        runner_sha256=sha(__file__),checker_implementation_id=a.checker_implementation_id,tokenizer_sha256=tokenizer_id,policy=policy,
-        case_partition_implementation_sha256=partition_source_sha256)
+    runtime=runtime_description(a,build,tokenizer_id,profile,common_prefix)
     runtime_id=digest(runtime)
-    if profile is not None:
-        runtime.update(execution_path='cow-consumed-request-v1',
-            cow_runtime=runtime_binding(profile),
-            cow_adapter_sha256=sha(Path(__file__).parents[1]/'sss/adapters/cow_evaluation.py'))
-        runtime['policy']=dict(policy,protocol='cow-consumed-request-v1',all_logits=False,
-            output_boundary='All sampled tokens including EOS consumed by COW',
-            counters='Actual prefix + consumed decode tokens; includes final sampled token')
-        if common_prefix:
-            runtime['policy'].update(shared_prefix=dict(policy='longest-common-rendered-input-v1',
-                tokens=len(common_prefix),tokens_sha256=digest(common_prefix)))
-        runtime_id=digest(runtime)
     intent=dict(schema=1,evaluation_id=identity,cases_sha256=sha(a.cases),split=data['split'],pack_id=data['pack_id'],model_sha256=a.model_sha256,
         model_contract_id=data['model_contract_id'],runtime_id=runtime_id,runtime=runtime,case_count=len(assigned),gpu_uuid=a.gpu_uuid,weights_updated=False)
     candidate=candidate_binding(profile) if profile is not None else {}

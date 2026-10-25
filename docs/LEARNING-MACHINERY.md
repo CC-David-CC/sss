@@ -3,8 +3,9 @@
 This page explains the new opt-in learning-run machinery across **Skills³
 (S³), BranchWrite (BW), and Private Context COW (PCC)**. It is a development
 pathway for an owner or an agent to drive and inspect. The small CPU integration
-fixture passes; the complete unattended real-model learning loop is still being
-qualified. The existing fixed 68-update optimizer comparison keeps its original
+fixture passes, and the owner-configured actual MiniCPM COW path has completed
+two native learning rounds through both real CLI clients. This qualifies the
+measured machinery, not broad capability or release acceptance. The existing fixed 68-update optimizer comparison keeps its original
 questions, practice order, and execution snapshots.
 
 ## ELI5: give the experiment a notebook
@@ -170,18 +171,20 @@ with its report; a private export is not broad acceptance or publication.
 
 ### Current limits and next integration work
 
-The new policy registry is installed programmatically by the owner. The normal
-service JSON configuration does not yet construct a complete real-model S³
-learning policy. The integration fixture provides an actual native classifier
-evaluator; a production COW evaluator must still be qualified with exact model,
-context, case, runtime, and resource bindings.
+The owner can now install registered actual-model policies through the optional
+`learning_config` JSON setting. The [configured COW guide](CONFIGURED-COW-LEARNING.md)
+explains exact model, context, case, runtime, practice and resource bindings.
+The [two-round MiniCPM qualification](../validation/configured-cow-learning-20261025-bf/README.md)
+measured **1/15 -> 5/15 -> 5/15** correct and **3/15 -> 9/15 -> 13/15** naturally
+finished, with no baseline answer losses. These 15 cases qualify machinery;
+they do not establish broad learning or a capability ceiling.
 
 The assessment-growth module produces proposals. It does not yet generate new
 questions, qualify their checkers, or execute a transition to a larger panel.
 Learning rounds currently require explicit fresh optimizer-state recipes;
 separately qualified exact optimizer continuation remains a different path.
-Standalone LoRA merge acceptance and unattended real-model multi-round
-qualification remain open. No automatic model promotion is enabled.
+Standalone LoRA merge acceptance and broad sealed real-model acceptance
+remain open. No automatic model promotion is enabled.
 
 See also [paired next-skill-block decisions](NEXT-SKILL-BLOCK.md),
 [exact parent resolution](RESOLVED-LEARNING-PARENT.md),
