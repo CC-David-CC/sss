@@ -15,7 +15,7 @@ full assessments, not estimates from model size or a few selected examples.
 | Q4_K_M | 37/864 | 467/864 | 534/864 | 864/864 | 1,561,318,464 bytes |
 | Q3_K_M | 49/864 | 357/864 | 473/864 | 863/864 | 1,291,420,736 bytes |
 | Q2_K | 4/864 | 44/864 | 526/864 | 821/864 | 1,039,926,336 bytes |
-| Q1_0 | 0/864 | pending | 0/864 | pending | pending |
+| Q1_0 | 0/864 | 0/864 | 0/864 | 0/864 | 541,475,904 bytes |
 
 The trained FP16 model gains **one** answer and loses **two** relative to its FP32
 parent. Its net gain over the original same-format model is 422 answers, versus
@@ -93,10 +93,10 @@ Run the focused checks with:
 python -m unittest sss_tests.test_quantization sss_tests.test_paired sss_tests.test_paired_rates -v
 ```
 
-Fifteen of sixteen full assessments are complete. Only trained Q1 remains in
-progress; original Q1 completed with zero correct answers and zero natural
-completions under these limits. These are actual model outcomes, not missing
-or failed infrastructure scores. No monotonic relationship with bit count is assumed. Repeated feedback
+All sixteen full assessments are complete. Both original and trained Q1
+completed with zero correct answers and zero natural completions under these
+limits. These are actual model outcomes, not missing or failed infrastructure
+scores. No monotonic relationship with bit count is assumed. Repeated feedback
 on this development set also does not replace sealed qualification or tests of
 coding, Linux administration, tool use, research and long-context retention.
 
@@ -113,10 +113,11 @@ most of the 423-answer net improvement observed in F32. At Q3 the model finishes
 863/864 responses; at Q2 it still finishes 821 while answering only 44 correctly.
 Finishing and being correct are distinct capabilities.
 
-The table therefore does not support "quantization erases all learning" or
-"any quantization preserves learning." For this checkpoint and development
+The table shows why the actual format must be measured rather than treating
+all quantization as one intervention. For this checkpoint and development
 set, Q8 retains the total score and Q4 retains most of it; Q3 loses a substantial
-part, and Q2 loses most. The remaining Q1 result is not predicted from the others.
+part, and Q2 loses most. Q1 also scored zero after training, so this tested Q1 conversion retained none
+of the measured answer or natural-completion gains under these limits.
 Q4 scoring two answers above Q5 is a sample observation, not evidence that lower
 precision is generally better. Keep the paired gained/lost answers and each
 skill/gate breakdown when choosing future mixed practice.
