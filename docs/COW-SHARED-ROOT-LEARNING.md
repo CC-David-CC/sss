@@ -1,14 +1,14 @@
 # Native MiniCPM learning through COW
 
-The full-weight snapshot contains 25 completed A100 training assessments and the original-model
-baseline, captured 2026-10-25T08:44:52Z. All use the same frozen 864 development
+The full-weight snapshot contains 45 completed A100 training assessments and the original-model
+baseline, captured 2026-10-25T10:49:05Z. All use the same frozen 864 development
 questions, exact checker, 512-token context, greedy decoding and 64-token output
 limit. Each native update presents the next 27 examples from the fixed practice
 stream. No evaluation answers enter that stream.
 
 ![Measured shared-root learning and forgetting](images/cow-shared-learning.svg)
 
-The figure also overlays three independently completed attached-LoRA observations,
+The figure also overlays six independently completed attached-LoRA observations,
 with separate runtime identity and controlled execution bridges. It shows
 correct answers, natural stopping, previously wrong answers
 gained, and original successes lost. Every plotted point is a complete assessment;
@@ -20,12 +20,13 @@ Latest completed point in each regimen (these update counts differ):
 | Regimen | Completed updates | Correct / 864 | Naturally finished / 864 | Newly correct vs original | Original successes lost |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Original | 0 | 59 | 415 | 0 | 0 |
-| AdamW full | 9 | 389 | 858 | 345 | 15 |
-| Standard Muon full | 10 | 321 | 851 | 273 | 11 |
-| RMS/decay Muon full | 7 | 285 | 851 | 235 | 9 |
-| Fast-to-refine Muon full | 6 | 274 | 851 | 223 | 8 |
+| AdamW full | 11 | 388 | 860 | 342 | 13 |
+| Standard Muon full | 14 | 374 | 855 | 329 | 14 |
+| RMS/decay Muon full | 12 | 353 | 855 | 306 | 12 |
+| Fast-to-refine Muon full | 8 | 303 | 853 | 255 | 11 |
+| AdamW LoRA, attached | 6 | 298 | 853 | 243 | 4 |
 
-At a common six updates, every regimen has seen 162 practice presentations:
+At a common six updates, all five series have seen 162 practice presentations:
 
 | Regimen at update 6 | Correct / 864 | Naturally finished / 864 | Newly correct | Original successes lost |
 | --- | ---: | ---: | ---: | ---: |
@@ -33,14 +34,16 @@ At a common six updates, every regimen has seen 162 practice presentations:
 | Standard Muon full | 270 | 846 | 218 | 7 |
 | RMS/decay Muon full | 271 | 847 | 220 | 8 |
 | Fast-to-refine Muon full | 274 | 851 | 223 | 8 |
+| AdamW LoRA, attached | 298 | 853 | 243 | 4 |
 
 These are observations under the predeclared settings, not an optimizer ranking
 or a claim that any learning rate is optimal. A larger total does not erase the
 original successes lost. The original model's 59 successes are a small reference
 set; the separate per-skill and gate aggregates remain in the data.
 
-Earlier checkpoints are being backfilled under this exact runtime without
-replaying their native updates. Identical weight artifacts can reference one
+Earlier checkpoints have been backfilled under this exact runtime without
+replaying their native updates. Each full-weight arm now has every completed
+update from one through its latest plotted point. Identical weight artifacts can reference one
 assessment, with explicit aliases rather than being counted as independent
 trials. The artifact preserves each observed point and every skill/gate change.
 
@@ -49,8 +52,13 @@ Changing lessons for only one arm midway would change the experiment. A later
 adaptive block can use the observed failure families to generate new verified
 practice and mixed review, without copying these development answers.
 
-The separately bound LoRA hat reaches 231/864 correct after three updates, with
-173 answers gained and one original success lost. Its runtime identity differs
+At six updates, full AdamW has 51 more correct answers than attached LoRA,
+while losing eight more of the original successes. These are different observed
+learning/forgetting tradeoffs under the declared recipes, not a general verdict
+on full training versus LoRA.
+
+The separately bound LoRA hat reaches 298/864 correct after six updates, with
+243 answers gained and four original successes lost. Its runtime identity differs
 explicitly; original-model and saved trained-model bridge controls matched all
 864 sampled sequences, and the native binaries are byte-identical. The overlay
 retains these distinct declarations rather than labelling every series as one
@@ -84,7 +92,7 @@ The runs are repeatedly observed development measurements. Sealed acceptance,
 the complete 68-update curves, the matched-practice LoRA curve and broad
 administration/tool/research qualification remain unfinished.
 
-[Aggregate counts, skill/gate changes and evidence identities](../validation/minicpm-native-learning-20261024/shared-learning-block-aj.json).
+[Aggregate counts, skill/gate changes and evidence identities](../validation/minicpm-native-learning-20261024/shared-learning-block-aq.json).
 The raw private responses and model files are not published.
 
 

@@ -1,7 +1,7 @@
 # Native MiniCPM: first attached-LoRA learning
 
-The directly attached rank-16 LoRA hat reaches **231 correct answers out of 864**
-after three updates and 81 practice presentations, from the original model's 59.
+The directly attached rank-16 LoRA hat reaches **298 correct answers out of 864**
+after six updates and 162 practice presentations, from the original model's 59.
 This is the separately labelled direct-hat curve, with its original adapter and
 optimizer state continued exactly. The original merged-deployment parity gate
 remains failed at its unchanged bounds.
@@ -12,6 +12,9 @@ remains failed at its unchanged bounds.
 | 1 | 27 | 154 | 631 | 95 | 0 |
 | 2 | 54 | 209 | 762 | 151 | 1 |
 | 3 | 81 | 231 | 781 | 173 | 1 |
+| 4 | 108 | 255 | 793 | 197 | 1 |
+| 5 | 135 | 282 | 823 | 224 | 1 |
+| 6 | 162 | 298 | 853 | 243 | 4 |
 
 The [combined early graph](COW-SHARED-ROOT-LEARNING.md) shows this attached-hat
 series alongside the full-weight settings. The original and trained execution
@@ -27,6 +30,7 @@ success becomes wrong. All originally finishing responses finish again, along
 with 366 additional cases. Between updates 1 and 2, the model gains 59 answers
 and loses four; between updates 2 and 3, it gains 23 and loses one. Newly learned
 answers can therefore be lost even when they were not among the original 59.
+By update 6, the original-baseline count is 243 gains and four losses.
 The artifact includes both original-baseline and consecutive-update comparisons.
 
 These exploratory checkpoints are retained while the controlled 68-update recipe
@@ -71,14 +75,14 @@ alone do not establish independence. Exact equality checks do not prove semantic
 disjointness, broad generalization or sealed acceptance. The frozen practice
 stream has not changed.
 
-[Aggregate learning, per-skill changes, native mechanics and control identities](../validation/minicpm-native-learning-20261024/direct-lora-learning-ao.json)
+[Aggregate learning, per-skill changes, native mechanics and control identities](../validation/minicpm-native-learning-20261024/direct-lora-learning-aq.json)
 contain no private question/answer text or model files.
 
 An agent or person can reproduce the report with the existing result files:
 
 ```sh
 python3 scripts/report_direct_lora.py --input /private/collected-results --output curve.json
-python3 scripts/plot_shared_learning.py --lora-data validation/minicpm-native-learning-20261024/direct-lora-learning-ao.json
+python3 scripts/plot_shared_learning.py --lora-data validation/minicpm-native-learning-20261024/direct-lora-learning-aq.json
 ```
 
 The report input has a `baseline` directory and `update-NNN` directories, each
