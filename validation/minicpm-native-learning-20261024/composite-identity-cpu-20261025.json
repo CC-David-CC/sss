@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "CPU composite evidence identity and unchanged frozen acceptance policy, not native inference",
+  "tests": 42,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "red_control": {
+    "test_methods": 3,
+    "failures": 3,
+    "errors": 1
+  },
+  "parent_commit": "d19ca8b609bf578a3dac4de00883897ba56d350b",
+  "files_sha256": {
+    "sss/paired.py": "651596c224ce6d394e63a0fec9df3dd2ce51d220fa730d6106de007cc4f10a8a",
+    "sss/studies/evaluation_shards.py": "d4a30c1799d25df23ece16396c3e8c071f969457783a0f1510b1123a1565efc3",
+    "sss_tests/test_composite_paired.py": "f5b9c8b2e77348ddc5015a8058bc8346940a5fa81c87bccd9e14d010f488a71a"
+  },
+  "modules": [
+    "sss_tests.test_paired",
+    "sss_tests.test_composite_paired",
+    "sss_tests.test_evaluation_shards",
+    "sss_integration.test_cow_evaluation",
+    "sss_integration.test_native_optimizer_compare",
+    "sss_integration.test_native_oracle_tokens",
+    "sss_integration.test_pcc_guard"
+  ],
+  "training_calls": 0,
+  "model_calls": 0,
+  "acceptance_policy_changed": false,
+  "live_study_sources_changed": false
+}

@@ -54,3 +54,18 @@ Reports must label this series **LoRA, attached adapter**, carry its actual
 runtime/model identities, and show gains and losses. A standalone merged GGUF
 requires its own retained numerical and behavioral evidence. No model promotion,
 threshold relaxation or merged-model qualification follows from this amendment.
+
+
+## Paired learning reports keep the composite identity
+
+Paired reports carry both the baseline and candidate model contracts and adapter
+bindings. Their base-file SHA fields remain separately readable. A hat cannot be
+mistaken for its unchanged base when the learning assessment is handed to another
+agent. Partly identified or malformed comparisons fail as evidence errors.
+Legacy base-only comparisons keep their previous shape and frozen acceptance
+policy. This metadata support does not promote a candidate or relax a gate.
+
+The focused CPU selection passes 42 tests across paired reports, composite
+identity, shard collation and existing optional integrations, with no skips.
+The live native studies retain their frozen source snapshots; this report-side
+change does not alter their sampled answers or training updates.

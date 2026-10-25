@@ -5,7 +5,7 @@ An incomplete shard can never become a complete evaluation by itself.
 """
 import re
 from ..records import digest
-from ..paired import compare_frozen_evaluations, POLICY
+from ..paired import compare_frozen_evaluations, measured_candidate_binding, POLICY
 
 GATES = ('independent', 'composition', 'transfer_recovery')
 
@@ -50,19 +50,6 @@ def groups(outcomes):
     return [result[key] for key in sorted(result, key=lambda key: (key[0], GATES.index(key[1])))]
 
 
-def _candidate_binding(doc):
-    keys=('candidate_model_contract_id','candidate_adapters')
-    if not any(key in doc for key in keys):return {}
-    adapters=doc.get('candidate_adapters')
-    if (not _hash(doc.get('candidate_model_contract_id')) or type(adapters) is not list
-            or len(adapters)>1 or any(type(a) is not dict or set(a)!={'sha256','scale'}
-                or not _hash(a['sha256']) or type(a['scale']) not in (int,float)
-                or not 0<a['scale']<=16 for a in adapters)):
-        raise ValueError('Explicit immutable composite candidate binding required')
-    return dict(candidate_model_contract_id=doc['candidate_model_contract_id'],
-                candidate_adapters=[dict(a) for a in adapters])
-
-
 def merge(partition, documents):
     """Require every assigned outcome exactly once, with matching model/runtime."""
     indices(partition, 0)
@@ -80,7 +67,7 @@ def merge(partition, documents):
                 or doc.get('weights_updated') is not False or doc.get('promoted') is not False
                 or not _hash(doc.get('model_sha256')) or not _hash(doc.get('runtime_id'))):
             raise ValueError('Complete unique shards with pinned immutable identities required')
-        composite=_candidate_binding(doc)
+        composite=measured_candidate_binding(doc)
         if model is None: model, runtime, candidate = doc['model_sha256'], doc['runtime_id'], composite
         if doc['model_sha256'] != model or doc['runtime_id'] != runtime:
             raise ValueError('Shard model or numerical runtime differs')
