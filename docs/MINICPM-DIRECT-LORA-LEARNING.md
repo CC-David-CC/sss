@@ -1,5 +1,12 @@
 # Native MiniCPM: first attached-LoRA learning
 
+The current [combined learning/forgetting graph](COW-SHARED-ROOT-LEARNING.md)
+now includes 15 complete attached-LoRA checkpoints: update 15 scored 396/864,
+with 346 original wrong answers gained and nine original correct answers lost.
+This remains development evidence, without promotion or merged-deployment qualification.
+[Latest direct curve data](../validation/minicpm-native-learning-20261024/direct-lora-learning-ax.json).
+The earlier six-point snapshot below is retained.
+
 The directly attached rank-16 LoRA hat reaches **298 correct answers out of 864**
 after six updates and 162 practice presentations, from the original model's 59.
 This is the separately labelled direct-hat curve, with its original adapter and

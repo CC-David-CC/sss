@@ -86,3 +86,27 @@ curves and protected-practice guards.
 
 [The recommendation and integrity observations](../validation/minicpm-native-learning-20261024/next-block-identity-at.json)
 contain no protected question/answer text or model files.
+
+
+## Later exercise: net gain can hide substantial churn
+
+The same command on saved LoRA updates 14 and 15 recommends `KEEP_AND_REPAIR`
+with update 15's exact base, adapter and scale. Correct answers rise 395 to 396,
+but that one-answer net gain consists of 12 newly correct and 11 newly wrong
+answers against the immediate parent. Natural finishes fall by one. Nine of the
+original baseline successes are lost at both points; that unchanged count alone
+would hide the newly learned answers that were forgotten.
+
+The proposal identifies repair groups including signed-arithmetic transfer,
+fraction transfer and place-value tasks. It keeps mixed review and forward
+learning separate, without exporting protected questions or their answers.
+The strict gate remains rejected and no model is promoted. This is an offline
+exercise of existing evidence, not a curriculum change to the running fixed
+68-update study. Resolve current artifact availability and actual PCC receipts
+before executing any proposal; a saved reference is not proof a cached binary
+still exists. Automatic resolution and durable multi-round coordination remain
+unfinished integration work.
+
+[The update-15 proposal](../validation/minicpm-native-learning-20261024/next-block-lora15-ax.json)
+is available without protected task text. The [combined curve](COW-SHARED-ROOT-LEARNING.md)
+shows the separate original-answer gain/loss series.

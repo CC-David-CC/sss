@@ -1,5 +1,42 @@
 # Native MiniCPM learning through COW
 
+## Current curve snapshot: 85 completed assessments
+
+The new snapshot contains 70 full-weight and 15 attached-LoRA checkpoints. Each
+point is a complete 864-question development assessment. The full-weight data was
+captured at 2026-10-25T13:13:00Z. These are continuing fixed-update trajectories,
+not five completed 68-update studies. Gaps are left visible; no missing point is
+interpolated or treated as a pass.
+
+| Arm | Latest completed update | Correct / 864 | Naturally finished / 864 | Original wrong answers gained | Original correct answers lost |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| AdamW full | 18 | 429 | 863 | 378 | 8 |
+| Standard Muon full | 21 | 412 | 862 | 371 | 18 |
+| RMS / decay Muon full | 18 | 394 | 859 | 353 | 18 |
+| Fast-to-refine Muon full | 13 | 378 | 854 | 335 | 16 |
+| AdamW LoRA, rank 16 (attached) | 15 | 396 | 862 | 346 | 9 |
+
+This table reports progress, not an equal-update ranking: its rows have different
+update counts. The graph compares measured points at their actual update/practice
+positions. LoRA retains its separate runtime identity, with the previously checked
+base and trained-model execution bridges; this does not waive its failed merged
+GGUF deployment gate. None of these development observations promotes a model.
+The original has 59 correct and 415 naturally finished responses. Full and LoRA
+practice use the same fixed ordered stream, with 27 presentations per update.
+
+[Full-weight snapshot](../validation/minicpm-native-learning-20261024/shared-learning-block-ax.json)
+and [attached-LoRA snapshot](../validation/minicpm-native-learning-20261024/direct-lora-learning-ax.json)
+include learning, original-answer losses and evidence identities. LoRA update 7's
+native cost comes from its original completed update receipt (81.72 allocated
+seconds), not the later readonly owner's zero-new-training allocation. Native
+update 7 was not repeated. Shared-server timings include other workloads and are
+not a controlled optimizer efficiency ranking.
+
+The nine tested skill families are still a limited development slice. The full
+68-update curves, broader harness/skill acceptance, selected-model quantization
+and final report/cleanup remain unfinished. Earlier snapshots below are retained
+as historical observations.
+
 The full-weight snapshot contains 45 completed A100 training assessments and the original-model
 baseline, captured 2026-10-25T10:49:05Z. All use the same frozen 864 development
 questions, exact checker, 512-token context, greedy decoding and 64-token output
@@ -144,3 +181,8 @@ are separate from the earlier six-point LoRA curve snapshot above.
 The [eight-update matrix report](OPTIMIZER-GEOMETRY.md) joins exact saved-weight
 and accumulated-change spectra to these scored model identities. Weight rank,
 change rank, answer gains and original-answer losses are separate measurements.
+
+The [update-14 to update-15 parent comparison](NEXT-SKILL-BLOCK.md#later-exercise-net-gain-can-hide-substantial-churn)
+also records 12 newly correct and 11 newly wrong answers behind a net gain of
+one. Original-baseline retention and immediate-parent retention are different
+measurements; both matter when choosing the next mixed-practice block.
