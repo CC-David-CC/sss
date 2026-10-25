@@ -39,24 +39,60 @@ def run(a):
     if pins.get(str(a.oracle.resolve()))!=sha(a.oracle):raise ValueError('Qualified oracle binary differs')
     for path,expected in pins.items():
         if sha(path)!=expected:raise ValueError('Qualified runtime artifact changed: '+path)
+    execution_path=getattr(a,'execution_path','fresh')
+    profile=None
+    if execution_path=='cow':
+        if a.cow_profile is None:raise ValueError('Explicit pinned COW profile required')
+        profile=json.loads(a.cow_profile.read_text())
+        if pins.get(profile['bridge_library'])!=sha(profile['bridge_library']):
+            raise ValueError('COW bridge is absent from the qualified runtime proof')
+        from sss.adapters.cow_evaluation import cow_session,runtime_binding,token_completion as cow_completion
+        from tools.pcc_cow_evaluation import verify_sources
+        verify_sources(profile,a.pcc_root)
+    elif getattr(a,'cow_profile',None) is not None:
+        raise ValueError('COW profile requires explicit COW execution path')
     policy=dict(context_tokens=a.context_tokens,batch_tokens=a.batch_tokens,maximum_tokens=a.maximum_tokens,
         stop_token_ids=a.stop_token_ids,protocol='tokens-v1',all_logits=True,greedy=True,
         score='existing exact-foundations checker; EOS completion reported separately')
     runtime=dict(proof_sha256=sha(a.runtime_proof),runtime_artifacts=pins,adapter_sha256=sha(Path(__file__).parents[1]/'sss/adapters/native_oracle.py'),
         runner_sha256=sha(__file__),checker_implementation_id=a.checker_implementation_id,tokenizer_sha256=tokenizer_id,policy=policy)
     runtime_id=digest(runtime)
-    write(root/'intent.json',dict(schema=1,evaluation_id=identity,cases_sha256=sha(a.cases),split=data['split'],pack_id=data['pack_id'],model_sha256=a.model_sha256,
-        model_contract_id=data['model_contract_id'],runtime_id=runtime_id,runtime=runtime,case_count=len(exercises),gpu_uuid=a.gpu_uuid,weights_updated=False))
+    if profile is not None:
+        runtime.update(execution_path='cow-consumed-request-v1',
+            cow_runtime=runtime_binding(profile),
+            cow_adapter_sha256=sha(Path(__file__).parents[1]/'sss/adapters/cow_evaluation.py'))
+        runtime['policy']=dict(policy,protocol='cow-consumed-request-v1',all_logits=False,
+            output_boundary='All sampled tokens including EOS consumed by COW',
+            counters='Actual prefix + consumed decode tokens; includes final sampled token')
+        runtime_id=digest(runtime)
+    intent=dict(schema=1,evaluation_id=identity,cases_sha256=sha(a.cases),split=data['split'],pack_id=data['pack_id'],model_sha256=a.model_sha256,
+        model_contract_id=data['model_contract_id'],runtime_id=runtime_id,runtime=runtime,case_count=len(exercises),gpu_uuid=a.gpu_uuid,weights_updated=False)
+    if profile is not None:intent.update(cow_profile=profile,cow_profile_sha256=sha(a.cow_profile))
+    write(root/'intent.json',intent)
     results=[];start=time.monotonic();status='FAILED';total_calls=0;total_prefill=0;admitted=False;allocation_end=None
+    def cow_admitted(receipt):
+        nonlocal admitted
+        admitted=True
+        write(root/'admission.json',receipt)
     try:
-        with oracle_process(a.oracle,a.model,a.gpu_uuid,root/'oracle-private.log',context_tokens=a.context_tokens,batch_tokens=a.batch_tokens,
-                minimum_free_mib=a.minimum_free_mib,maximum_initial_utilization=a.maximum_initial_utilization,all_logits=True) as proc:
+        manager=(cow_session(a.pcc_root,profile,a.model,a.model_sha256,a.gpu_uuid,root,
+                    context_tokens=a.context_tokens,batch_tokens=a.batch_tokens,stop_token_ids=a.stop_token_ids,
+                    minimum_free_mib=a.minimum_free_mib,maximum_initial_utilization=a.maximum_initial_utilization,
+                    on_admission=cow_admitted)
+                 if profile is not None else oracle_process(a.oracle,a.model,a.gpu_uuid,root/'oracle-private.log',
+                    context_tokens=a.context_tokens,batch_tokens=a.batch_tokens,minimum_free_mib=a.minimum_free_mib,
+                    maximum_initial_utilization=a.maximum_initial_utilization,all_logits=True))
+        with manager as proc:
             admitted=True
-            write(root/'admission.json',proc.pcc_admission)
-            write(root/'native-process.json',dict(pid=proc.pid,start_ticks=Path('/proc',str(proc.pid),'stat').read_text().split()[21]))
+            if profile is None:write(root/'admission.json',proc.pcc_admission)
+            pid=__import__('os').getpid() if profile is not None else proc.pid
+            write(root/'native-process.json',dict(pid=pid,start_ticks=Path('/proc',str(pid),'stat').read_text().split()[21]))
             for index,(row,exercise) in enumerate(zip(data['cases'],exercises)):
                 case_start=time.monotonic()
-                completion=token_completion(proc,tok,row['prefix_tokens'],maximum=a.maximum_tokens,context_tokens=a.context_tokens,batch_tokens=a.batch_tokens,stop_token_ids=a.stop_token_ids)
+                completion=(cow_completion(proc,tok,row['prefix_tokens'],maximum=a.maximum_tokens,
+                                stop_token_ids=a.stop_token_ids,stream='sss-evaluation-'+str(index))
+                            if profile is not None else token_completion(proc,tok,row['prefix_tokens'],maximum=a.maximum_tokens,
+                                context_tokens=a.context_tokens,batch_tokens=a.batch_tokens,stop_token_ids=a.stop_token_ids))
                 passed=check(exercise,completion['text']);total_calls+=completion['model_calls'];total_prefill+=completion['prefill_tokens']
                 result=dict(index=index,id=exercise.identity,skill_id=exercise.skill_id,gate=exercise.gate,passed=passed,
                     finished=completion['stop_reason']=='eos',completion=completion,seconds=time.monotonic()-case_start,
@@ -68,6 +104,8 @@ def run(a):
         if sha(a.cases)!=json.loads((root/'intent.json').read_text())['cases_sha256'] or implementation_identity()!=a.checker_implementation_id:raise ValueError('Evaluation inputs/checker changed during execution')
         for path,expected in pins.items():
             if sha(path)!=expected:raise ValueError('Runtime changed during evaluation')
+        if profile is not None and sha(a.cow_profile)!=intent['cow_profile_sha256']:
+            raise ValueError('Pinned COW profile changed during evaluation')
         groups=[]
         for skill in sorted({e.skill_id for e in exercises}):
             for gate in ('independent','composition','transfer_recovery'):
@@ -90,4 +128,6 @@ if __name__=='__main__':
     p.add_argument('--context-tokens',type=int,required=True);p.add_argument('--batch-tokens',type=int,required=True)
     p.add_argument('--maximum-tokens',type=int,default=64);p.add_argument('--stop-token-ids',type=int,nargs='+',required=True)
     p.add_argument('--minimum-free-mib',type=int,required=True);p.add_argument('--maximum-initial-utilization',type=int,default=0)
+    p.add_argument('--execution-path',choices=('fresh','cow'),default='fresh')
+    p.add_argument('--cow-profile',type=Path)
     run(p.parse_args())

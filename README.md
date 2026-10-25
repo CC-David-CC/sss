@@ -4,6 +4,12 @@ actual MiniCPM token/lesson admission. Learning and retention runs are next.
 
 # Skills³ (S³)
 
+Current work uses equal update counts and ordered practice; the older fixed-compute
+preparation above is historical. S3's [shared COW evaluation path](docs/COW-EVALUATION.md)
+uses the same native request implementation as BW. PCC carries the
+[small-probe speed result](https://github.com/CC-David-CC/Private_Context_COW/tree/feat/native-learning-curves-20261024#48x-faster-on-small-forward-work-probes);
+S3 owns the test method, paired scores and learning/forgetting evidence.
+
 [Real MiniCPM Muon/AdamW mechanics](docs/MINICPM-OPTIMIZER-PILOT.md): full-weight
 updates and reload pass; resumed Muon weights/moments match uninterrupted training
 bit for bit. This is mechanics evidence; independent learning and retention are

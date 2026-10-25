@@ -408,3 +408,6 @@ selected current model and all source, scores, traces and plots. This cleanup
 does not run while the report is unfinished. The original archive verification
 records and separate retirement receipts preserve what was verified and why
 an artifact later expired. Changed files or uncertain ownership stop retirement.
+
+
+See [shared evaluation execution](COW-EVALUATION.md) for the optional common COW request path and its numerical checks.
