@@ -161,8 +161,11 @@ The owner continuation driver has been switched to the shared-root evaluator
 and launched from exact saved AdamW update 4 / Muon update 2 states. It keeps
 the same next examples and optimizer settings. Available-device admission waits
 without holding a GPU lease, then independently places training and evaluation.
-New assessments wait for the new baseline to finish. This is deployed integration,
-not a claim that all 68 updates have completed or that waiting time is eliminated.
+Candidate assessments now run independently while the new baseline completes.
+Learning/forgetting comparisons require that complete matching baseline; scheduling
+does not. Native updates and immutable optimizer state remain ordered within
+each arm. This is deployed integration, not a claim that all 68 updates have
+completed or that waiting time is eliminated.
 
 ## Next iteration
 
