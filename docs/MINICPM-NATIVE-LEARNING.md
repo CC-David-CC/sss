@@ -9,6 +9,16 @@ new finer curve and LoRA comparator are being qualified.
 
 ## New per-update comparison
 
+[Live partial chart](../validation/minicpm-native-learning-20261024/learning-curve-progress.png) ·
+[CSV](../validation/minicpm-native-learning-20261024/learning-curve-progress.csv) ·
+[Aggregate points](../validation/minicpm-native-learning-20261024/curve-points-progress.json).
+
+The first measured point is **full AdamW update 1**: 27 practice presentations
+produce 234/864 exact answers versus 59 at update 0. It gains 176 answers and
+loses 1 original success. Natural completion improves 415 to 786. Other arms are
+still at their shared baseline in this initial partial plot. These are actual
+held-out outcomes, not a training-loss prediction.
+
 All four full-update regimens restart from the same original MiniCPM weights.
 Every update consumes the same ordered batch of 27 checked practice examples.
 Measure every update 1 through 68 on the same full 864-case development set:
@@ -24,8 +34,9 @@ checkpoint/evaluation overhead and GPU memory. At 42 updates each arm has seen
 presentations, not that many distinct new questions. The 68-update curve is a
 descriptive experiment; subsequent hill-climbing is informed by its data.
 
-An unchanged-original F32 behavior control is running first, alongside the
-retained original-F16 reference. This separates learned changes from saved-weight
+The unchanged-original F32 behavior control is complete: 59/864 correct and
+415/864 naturally finished, with every case outcome equal to the original-F16
+reference. [Measured control](../validation/minicpm-native-learning-20261024/original-F32-control.json). This separates learned changes from saved-weight
 precision/kernel differences. All learned full checkpoints and the LoRA merged
 evaluation model use F32. The graph's primary reference is the measured unchanged
 F32 original, with the earlier 59/864 F16 result retained explicitly.
@@ -129,8 +140,9 @@ serialization, verification and reload. These are distinct clocks.
 
 The same evaluation ID, runtime ID, checker, source oracle, generation policy and
 original cases are used before/after. The harness was held fixed. Original saved weights were F16 and the trained
-weights are F32, so the unchanged-original F32 behavior control is still pending
-to isolate precision effects. This does not isolate learned arithmetic from
+weights are F32. The subsequently completed unchanged-original F32 control
+reproduces all 864 original pass/completion outcomes, so the measured gain is
+not explained merely by that saved-weight conversion. This does not isolate learned arithmetic from
 better formatting/stopping. The unchanged correctness path now needs 6,884
 model calls and 1,017,029 prefill tokens instead of 35,132/4,523,170; shorter
 responses reduce this fresh-prefix oracle's repeated work. No production serving
@@ -373,3 +385,19 @@ reload mean-loss error 8.19e-10. The run's 301.77 training-phase seconds are par
 of the historical timed experiment that was already complete when the owner
 removed time as the organizing principle. Subsequent curve requests omit that
 training-phase cutoff entirely. [Aggregate results and next-block decision](../validation/minicpm-native-learning-20261024/native-api-repair03.json).
+
+## Checkpoint retention during and after this report
+
+The owner selected milestone models and optimizer states, about 1 TB for this
+study. Keep updates 1, 2, 4, 8, 16, 32, 42, 64, 68, plus each arm's live parent and best
+checkpoint so far while the study runs. All scores and response evidence remain.
+S3 selects retained checkpoint identities; PCC validates the owned archived
+artifacts and retires superseded model/state files only after a verified later
+checkpoint exists. Named hardlinks are retired with their expired binaries.
+
+After the completed report is identified and published, delete superseded
+study binaries, including milestone optimizer states. Retain the original base,
+selected current model and all source, scores, traces and plots. This cleanup
+does not run while the report is unfinished. The original archive verification
+records and separate retirement receipts preserve what was verified and why
+an artifact later expired. Changed files or uncertain ownership stop retirement.

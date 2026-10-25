@@ -40,3 +40,18 @@ def measured_curves(protocol,document):
         if document.get('status')=='COMPLETE' and [p['update'] for p in points]!=protocol['checkpoint_updates']:
             raise ValueError('Complete claim requires every declared checkpoint in every arm')
     return result
+
+
+def retention_checkpoints(points,milestones):
+    """Keep declared milestones, the latest resumable point and the best so far.
+
+    This selects identities only. PCC owns artifact validation and retirement.
+    """
+    if not points:return set()
+    for p in points:
+        if any(type(p.get(k)) is not int or p[k]<0 for k in ('update','passed','finished')):
+            raise ValueError('Measured nonnegative integer checkpoint scores required')
+    if len({p['update'] for p in points})!=len(points):raise ValueError('Unique checkpoint identities required')
+    latest=max(points,key=lambda p:p['update'])
+    best=max(points,key=lambda p:(p['passed'],p['finished'],-p['update']))
+    return {p['update'] for p in points if p['update'] in milestones}|{latest['update'],best['update']}

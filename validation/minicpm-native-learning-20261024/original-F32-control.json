@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "CONTROL_MATCHES_ORIGINAL_BEHAVIOR",
+  "scope": "Unchanged original saved as F32 versus original F16; all864 frozen development cases",
+  "original_F16_sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25",
+  "unchanged_F32_sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "runtime_id": "0c970a91fd7c9975fde1a4aa4503f75d9a0c502567f71f4b2b9cffe14b57a892",
+  "cases": 864,
+  "exact_answer_passes": 59,
+  "naturally_finished": 415,
+  "model_calls": 35132,
+  "prefill_tokens": 4523170,
+  "all_case_pass_and_completion_outcomes_equal": true,
+  "answer_gains": 0,
+  "answer_losses": 0,
+  "completion_gains": 0,
+  "completion_losses": 0,
+  "baseline_evidence_sha256": "69999adf0f100dc98769aefb98a049fd2dafa6328f8ac43e9afd512ecbfba634",
+  "control_evidence_sha256": "c177cff3b8b5f6c906e5a635118f585e732c9a6897a0e47f19c3eb292ed1e4c3",
+  "conclusion": "The measured first training gain is not explained by saved-weight F16-to-F32 conversion under this frozen stack",
+  "limitations": [
+    "This does not isolate arithmetic from instruction/format/stopping improvement",
+    "No claim of identical raw logits or general hardware equivalence"
+  ],
+  "model_files_published": false,
+  "promoted": false
+}

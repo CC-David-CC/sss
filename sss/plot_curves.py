@@ -27,8 +27,9 @@ def plot(protocol_path,input_path,prefix):
             axis.plot([p['update'] for p in points],[p[field] for p in points],**style)
         rows.extend(points)
     cases=protocol['cases_per_evaluation'];reference=document['reference_passed']
+    observed=max((p['update'] for values in curves.values() for p in values),default=0)
     for axis,(field,title) in zip(axes.flat,panels):
-        axis.set_title(title);axis.grid(alpha=.25);axis.set_xlim(0,max(protocol['checkpoint_updates']))
+        axis.set_title(title);axis.grid(alpha=.25);axis.set_xlim(0,max(1,observed));axis.xaxis.set_major_locator(MaxNLocator(integer=True))
         axis.set_ylim(bottom=0);axis.set_ylabel('Questions / '+str(cases));axis.yaxis.set_major_locator(MaxNLocator(integer=True))
         if field=='original_answers_gained':axis.set_ylim(0,max(1,max((p[field] for values in curves.values() for p in values),default=0)+1))
         if field=='original_answers_lost':axis.set_ylim(0,max(1,reference));axis.set_ylabel('Lost / '+str(reference)+' original passes')

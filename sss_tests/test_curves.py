@@ -21,4 +21,15 @@ class MeasuredCurves(unittest.TestCase):
   with self.assertRaises(ValueError):measured_curves(value,self.d)
   self.d['points'].pop()
   with self.assertRaises(ValueError):measured_curves(self.p,self.d)
+class CurveRetentionSelection(unittest.TestCase):
+ def test_retains_milestones_latest_and_stronger_earlier_checkpoint(self):
+  from sss.curves import retention_checkpoints
+  points=[dict(update=u,passed=p,finished=4) for u,p in [(1,2),(2,3),(3,4),(4,3),(5,2)]]
+  self.assertEqual(retention_checkpoints(points,[1,2,4,8]),{1,2,3,4,5})
+  points.append(dict(update=6,passed=5,finished=4))
+  self.assertEqual(retention_checkpoints(points,[1,2,4,8]),{1,2,4,6})
+ def test_tied_scores_keep_earlier_lower_exposure_checkpoint(self):
+  from sss.curves import retention_checkpoints
+  self.assertEqual(retention_checkpoints([dict(update=u,passed=3,finished=4) for u in [3,5]],[]),{3,5})
+
 if __name__=='__main__':unittest.main()
