@@ -271,12 +271,11 @@ the BW driver remain unfinished.
 
 [Quantization-retention experiment](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-training-budget-20261024/docs/MINICPM-QUANTIZATION-STUDY.md)
 compares original and trained models in F32, F16, Q8, Q5, Q4, Q3, Q2 and Q1_0.
-The first four full assessments are complete: the trained FP16 model retains
-481/864 exact answers versus its FP32 parent's 482/864; both finish all 864
-responses. The original scores 59/864 and finishes 415 in both precisions.
-FP16 gains one answer and loses two relative to the trained FP32 model; the
-net one-answer change does not mean only one case changed. Lower-bit tests are
-still running. [Precision results and repeatable report command](MINICPM-QUANTIZATION-RESULTS.md).
+Eight full assessments are complete. The trained variants score FP32 482/864,
+FP16 481, Q8 482 and Q4 467; all finish every response. Original same-format
+scores are 59, 59, 41 and 37. Q8's unchanged total includes two gains and two
+losses versus trained FP32; Q4 gains 19 and loses 34. Its 1.56 GB artifact keeps
+most of the measured improvement. Q5/Q3/Q2/Q1 tests are still running. [Precision results and repeatable report command](MINICPM-QUANTIZATION-RESULTS.md).
 The 6.8% original score is not assumed to be an upper bound for other formats.
 Model files stay local and unpublished; code and aggregate evidence remain public.
 

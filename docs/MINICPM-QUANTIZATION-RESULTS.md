@@ -1,18 +1,18 @@
 # Does the learned behavior survive smaller model files?
 
-The first completed precision comparison says **yes for FP16** on this frozen
-math/state development set. The trained FP32 checkpoint scores 482/864; its
-FP16 conversion scores 481/864. Both finish every response naturally. The
-original model scores 59/864 in both formats. These are measured full assessments,
-not estimates from model size or a few selected examples.
+The completed FP16, Q8 and Q4 comparisons retain most or all of the trained
+model's aggregate score on this frozen math/state development set. The trained
+FP32 checkpoint scores 482/864; FP16 scores 481, Q8 scores 482 and Q4 scores 467.
+All four trained variants finish every response naturally. These are measured
+full assessments, not estimates from model size or a few selected examples.
 
 | Stored precision | Original correct | Trained correct | Original finished | Trained finished | Trained file size |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | FP32 | 59/864 | 482/864 | 415/864 | 864/864 | 10,072,171,584 bytes |
 | FP16 | 59/864 | 481/864 | 415/864 | 864/864 | 5,039,006,784 bytes |
-| Q8_0 | unmeasured | unmeasured | unmeasured | unmeasured | not reported yet |
+| Q8_0 | 41/864 | 482/864 | 392/864 | 864/864 | 2,679,710,784 bytes |
 | Q5_K_M | unmeasured | unmeasured | unmeasured | unmeasured | not reported yet |
-| Q4_K_M | running | unmeasured | running | unmeasured | not reported yet |
+| Q4_K_M | 37/864 | 467/864 | 534/864 | 864/864 | 1,561,318,464 bytes |
 | Q3_K_M | unmeasured | unmeasured | unmeasured | unmeasured | not reported yet |
 | Q2_K | unmeasured | unmeasured | unmeasured | unmeasured | not reported yet |
 | Q1_0 | unmeasured | unmeasured | unmeasured | unmeasured | not reported yet |
@@ -24,6 +24,15 @@ while roughly halving file size. This is a ratio on this development set, not a
 claim that 99.8% of general intelligence survives conversion. FP16 also loses
 12 original successes while gaining 434 previously wrong answers; those losses
 remain visible for later mixed practice.
+
+Q8 keeps the FP32 total of 482, but it gains two answers and loses two other
+answers relative to FP32. Equal totals do not mean identical behavior. Q4 gains
+19 and loses 34 relative to FP32, a net loss of 15 answers; it retains about
+96.9% of the FP32 correct-answer total in about 15.5% of its file size. Against
+the original Q4 artifact, trained Q4 gains 435 answers and loses five, with 330
+additional natural completions and no lost completions. Its score is 467 versus
+37 on the same quant format. Smaller formats are not assumed to monotonically
+reduce quality. These paired changes are observations on this sample.
 
 Original FP16 and FP32 have identical Boolean correctness/completion outcomes
 on every case. The trained FP32 score on this RTX 4090 also reproduces the
@@ -49,7 +58,7 @@ existing model tooling. No new quantization engine or training framework is
 introduced. All model binaries remain private on fleet machines.
 
 The trained FP32 run's maximum sampled process memory was 9,288 MiB; FP16's was
-6,016 MiB. These are one-second `nvidia-smi` process samples, not guaranteed
+6,016 MiB, Q8's 3,036 MiB and Q4's 2,100 MiB. These are one-second `nvidia-smi` process samples, not guaranteed
 instantaneous peaks or training VRAM estimates. Model format, runtime buffers
 and execution shape all contribute to memory use.
 
@@ -84,7 +93,7 @@ Run the focused checks with:
 python -m unittest sss_tests.test_quantization sss_tests.test_paired sss_tests.test_paired_rates -v
 ```
 
-The lower-bit comparisons remain unfinished. Their behavior may improve or
+Q5, Q3, Q2 and Q1 comparisons remain unfinished. Their behavior may improve or
 degrade; no monotonic relationship with bit count is assumed. Repeated feedback
 on this development set also does not replace sealed qualification or tests of
 coding, Linux administration, tool use, research and long-context retention.
