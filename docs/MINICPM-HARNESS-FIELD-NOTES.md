@@ -255,3 +255,15 @@ completion-description change still does not finish the last task. All use the
 same weights. No broad harness acceptance or model training is claimed.
 [All variants](../validation/learning-program-20261024/minicpm-bw-shell-investigation.json),
 [explanation](https://github.com/CC-David-CC/BranchWrite/blob/feat/minicpm-shell-feedback-20261024/docs/MINICPM-SHELL-INVESTIGATION.md).
+
+
+## Check-readiness follow-up
+
+Four same-weight five-objective BW probes returned 4/5, 4/5, 3/5 and 2/5
+independently completed workflows. No proposed setting improved the default.
+Some model-selected checks passed while the independently graded program was
+wrong. [The BW experiment report](https://github.com/CC-David-CC/BranchWrite/blob/feat/native-learning-path-20261024/docs/MINICPM-CHECK-PROGRESS-EXPERIMENT.md)
+separates actual check readiness, explicit completion and task correctness.
+[The evidence](../validation/learning-program-20261024/minicpm-bw-check-progress-20261025.json)
+retains runtime/source identities, bounds and individual outcomes. These five
+discovery objectives are not a broad failure-rate study.
