@@ -23,8 +23,11 @@ malformed or different binding is an infrastructure failure, even when all base
 GGUF hashes agree. Old base-only evidence without these additional fields remains
 readable, but cannot be mixed with partially identified new shards.
 
-CPU identity, collation and adapter tests pass. Real native numerical qualification
-for the new attached-hat COW path is pending. The existing full-weight controllers
+CPU identity, collation and adapter tests pass. The new attached-hat path also
+passed a bounded shared-A100 qualification: eight full-vocabulary frontiers
+matched the independent fresh oracle exactly, both state restores were exact,
+and two shared-root greedy requests matched their references. Full 864-case
+F16/F32 baselines and the already-trained first hat are being assessed separately. The existing full-weight controllers
 continue on their frozen source snapshots. This new wiring does not waive the
 earlier failed merge-equivalence gate or certify a complete LoRA learning curve.
 
