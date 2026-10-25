@@ -15,9 +15,11 @@ new finer curve and LoRA comparator are being qualified.
 
 The first measured point is **full AdamW update 1**: 27 practice presentations
 produce 234/864 exact answers versus 59 at update 0. It gains 176 answers and
-loses 1 original success. Natural completion improves 415 to 786. Other arms are
-still at their shared baseline in this initial partial plot. These are actual
-held-out outcomes, not a training-loss prediction.
+loses 1 original success. Natural completion improves 415 to 786. Standard Muon update 1 has now also completed: 109/864 correct, 587 finished,
+51 answers gained and 1 original success lost after the same 27 presentations.
+The other three arms remain at their shared baseline in this partial plot.
+These are actual held-out outcomes, not a training-loss prediction. One update
+does not establish the eventual ordering of these declared regimens.
 
 All four full-update regimens restart from the same original MiniCPM weights.
 Every update consumes the same ordered batch of 27 checked practice examples.

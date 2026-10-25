@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Repeated rendering of the same seven measured points produces identical PNG/SVG/CSV/provenance bytes",
+  "sha256_by_extension": {
+    ".png": "fc2346e44789b2884ba3dbefa2e97ea518681b6523d1140468d645c271cd3e13",
+    ".svg": "cc0a4321127ae287dbbbc7a173a47bc31625c9837b170df8a5e092d9ff998af1",
+    ".csv": "e091bf15cabc4ce870e682dd7f73db42ef85387c7fef3643f0f579b7b8871eb4",
+    ".json": "c51124b66a442a68456d92221ad6cc56652d6f154a6c67739a3c429b82c339f5"
+  },
+  "plotting_source_sha256": "fd1bb918fa486f37664c60be26d5ee6f1d23e55494638f2782b47f09ff21d65d",
+  "matplotlib": "3.11.2",
+  "measured_points": 7,
+  "weights_published": false
+}

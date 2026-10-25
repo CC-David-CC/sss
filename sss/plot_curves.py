@@ -8,6 +8,7 @@ def plot(protocol_path,input_path,prefix):
     curves=measured_curves(protocol,document)
     import matplotlib
     matplotlib.use('Agg')
+    matplotlib.rcParams['svg.hashsalt']=protocol['protocol_id']
     import matplotlib.pyplot as plt
     from matplotlib.ticker import MaxNLocator
     prefix=Path(prefix);prefix.parent.mkdir(parents=True,exist_ok=True)
@@ -40,13 +41,16 @@ def plot(protocol_path,input_path,prefix):
     coverage=', '.join(labels.get(name,name)+': '+str(max((p['update'] for p in values),default='none')) for name,values in curves.items())
     fig.text(.5,.915,'Measured through update '+coverage,ha='center',fontsize=8)
     fig.tight_layout(rect=(0,.09,1,.92))
-    fig.savefig(str(prefix)+'.png',dpi=160);fig.savefig(str(prefix)+'.svg');plt.close(fig)
+    fig.savefig(str(prefix)+'.png',dpi=160);fig.savefig(str(prefix)+'.svg',metadata={'Date':None});plt.close(fig)
+    # Keep regenerated source artifacts stable and suitable for Git diffs.
+    svg=Path(str(prefix)+'.svg');svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     fields=['arm','update','presentations','original_answers_gained','original_answers_lost','passed','finished','model_sha256']
     with Path(str(prefix)+'.csv').open('w',newline='') as out:
-        writer=csv.DictWriter(out,fieldnames=fields,extrasaction='ignore');writer.writeheader();writer.writerows(rows)
+        writer=csv.DictWriter(out,fieldnames=fields,extrasaction='ignore',lineterminator='\n');writer.writeheader();writer.writerows(rows)
     record=dict(schema=1,status='RENDERED_MEASUREMENTS',protocol_id=protocol['protocol_id'],
         measured_points=len(rows),maximum_update_by_arm={name:max((p['update'] for p in points),default=None) for name,points in curves.items()},
         source_data_sha256=hashlib.sha256(Path(input_path).read_bytes()).hexdigest(),
+        plotting_source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         protocol_file_sha256=hashlib.sha256(Path(protocol_path).read_bytes()).hexdigest(),matplotlib=matplotlib.__version__,
         complete=document.get('status')=='COMPLETE',weights_published=False)
     Path(str(prefix)+'.json').write_text(json.dumps(record,indent=2)+'\n');return record
