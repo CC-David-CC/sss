@@ -8,6 +8,19 @@ from sss.adapters.cow_evaluation import validate_profile, token_completion, runt
 
 
 class CowEvaluationTests(unittest.TestCase):
+    def test_adapter_versions_are_candidates_not_different_runtime_implementations(self):
+        import copy
+        first=self.profile()
+        first.update(backend='llama-dense-llama.cpp',native_build=dict(lora_binding='llama-adapter-per-lease-v1'))
+        first['execution'].update(environment={},adapter=dict(sha256='b'*64,scale=1.))
+        second=copy.deepcopy(first)
+        second['execution']['adapter']=dict(sha256='c'*64,scale=.5)
+        self.assertEqual(runtime_binding(first),runtime_binding(second))
+        second['execution'].pop('adapter')
+        self.assertEqual(runtime_binding(first),runtime_binding(second))
+        second['execution']['kv_dtype']='FP16'
+        self.assertNotEqual(runtime_binding(first),runtime_binding(second))
+
     def test_common_input_prefix_is_exact_detached_and_never_includes_a_question_suffix(self):
         inputs = [[1, 2, 3], [1, 2, 4, 5], [1, 2]]
         prefix = shared_input_prefix(inputs)

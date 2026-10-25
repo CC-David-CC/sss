@@ -53,7 +53,7 @@ def run(a):
         profile=json.loads(a.cow_profile.read_text())
         if pins.get(profile['bridge_library'])!=sha(profile['bridge_library']):
             raise ValueError('COW bridge is absent from the qualified runtime proof')
-        from sss.adapters.cow_evaluation import cow_session,runtime_binding,shared_input_prefix,token_completion as cow_completion
+        from sss.adapters.cow_evaluation import cow_session,runtime_binding,candidate_binding,shared_input_prefix,token_completion as cow_completion
         from tools.pcc_cow_evaluation import verify_sources
         verify_sources(profile,a.pcc_root)
         if getattr(a,'cow_shared_prefix',False):
@@ -86,7 +86,8 @@ def run(a):
         runtime_id=digest(runtime)
     intent=dict(schema=1,evaluation_id=identity,cases_sha256=sha(a.cases),split=data['split'],pack_id=data['pack_id'],model_sha256=a.model_sha256,
         model_contract_id=data['model_contract_id'],runtime_id=runtime_id,runtime=runtime,case_count=len(assigned),gpu_uuid=a.gpu_uuid,weights_updated=False)
-    if profile is not None:intent.update(cow_profile=profile,cow_profile_sha256=sha(a.cow_profile))
+    candidate=candidate_binding(profile) if profile is not None else {}
+    if profile is not None:intent.update(cow_profile=profile,cow_profile_sha256=sha(a.cow_profile),**candidate)
     if shard is not None:intent.update(shard=shard,assigned_indices=assigned,partition=partition)
     write(root/'intent.json',intent)
     results=[];start=time.monotonic();status='FAILED';total_calls=0;total_prefill=0;admitted=False;allocation_end=None;setup=None
@@ -121,7 +122,7 @@ def run(a):
                 passed=check(exercise,completion['text']);total_calls+=completion['model_calls'];total_prefill+=completion['prefill_tokens']
                 result=dict(index=index,id=exercise.identity,skill_id=exercise.skill_id,gate=exercise.gate,passed=passed,
                     finished=completion['stop_reason']=='eos',completion=completion,seconds=time.monotonic()-case_start,
-                    model_sha256=a.model_sha256,runtime_id=runtime_id,evaluation_id=identity)
+                    model_sha256=a.model_sha256,runtime_id=runtime_id,evaluation_id=identity,**candidate)
                 write(root/(str(index).zfill(4)+'-private.json'),result);results.append(result)
                 print(json.dumps(dict(completed=len(results),total=len(assigned),passed=sum(r['passed'] for r in results),calls=total_calls)),flush=True)
         allocation_end=time.monotonic()
@@ -140,7 +141,7 @@ def run(a):
         summary=dict(schema=1,status='COMPLETE',scope='Frozen direct-answer behavior, no learning or model promotion',
             evaluation_id=identity,model_sha256=a.model_sha256,runtime_id=runtime_id,cases=len(results),passed=sum(r['passed'] for r in results),
             finished=sum(r['finished'] for r in results),groups=groups,model_calls=total_calls,prefill_tokens=total_prefill,
-            outcomes=[{k:r[k] for k in ['id','skill_id','gate','passed','finished']} for r in results],weights_updated=False,promoted=False)
+            outcomes=[{k:r[k] for k in ['id','skill_id','gate','passed','finished']} for r in results],weights_updated=False,promoted=False,**candidate)
         if setup is not None:
             summary.update(shared_prefix_setup=setup,setup_model_calls=setup['counters']['forward_calls'],
                            setup_prefill_tokens=setup['counters']['consumed_tokens'])

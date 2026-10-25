@@ -1,5 +1,6 @@
 """Optional S³ adapter to PCC/COW's existing BW execution path."""
 from contextlib import contextmanager
+from copy import deepcopy
 from pathlib import Path
 import json
 import os
@@ -31,11 +32,28 @@ def runtime_binding(profile):
     Equal-runtime curves can then compare different candidates without erasing
     the exact per-request model, execution-profile and physical GPU identities.
     """
-    execution = {k: v for k, v in profile['execution'].items() if k not in ('GPU', 'environment')}
+    attached=profile['execution'].get('adapter') is not None
+    per_lease=profile['native_build'].get('lora_binding')=='llama-adapter-per-lease-v1'
+    if attached and not per_lease:
+        raise ValueError('Attached candidate requires the pinned per-lease native adapter binding')
+    execution = {k: v for k, v in profile['execution'].items() if k not in ('GPU', 'environment', 'adapter')}
     execution['environment'] = {k: v for k, v in profile['execution']['environment'].items()
                                 if k != 'CUDA_VISIBLE_DEVICES'}
-    return dict(backend=profile['backend'], native_build=profile['native_build'],
+    value=dict(backend=profile['backend'], native_build=profile['native_build'],
                 execution=execution, worker_layout='one-pinned-physical-GPU-per-process')
+    if per_lease:value['candidate_adapter_binding']='optional-immutable-per-lease-lora-v1'
+    return value
+
+
+def candidate_binding(profile):
+    """Carry PCC's model contract, including the hat, without inventing an ID.
+
+    The existing model_sha256 field continues to identify the base GGUF file.
+    PCC separately validates and loads the composite immutable model.
+    """
+    adapter=profile['execution'].get('adapter')
+    return dict(candidate_model_contract_id=profile['model_contract_id'],
+                candidate_adapters=[] if adapter is None else [deepcopy(adapter)])
 
 
 def validate_profile(profile, *, model, model_sha256, gpu_uuid, context_tokens,

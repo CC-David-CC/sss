@@ -19,6 +19,24 @@ def fixture():
 
 
 class EvaluationShardTests(unittest.TestCase):
+    def test_same_base_with_different_hat_or_missing_composite_binding_cannot_merge(self):
+        for defect in ('other-hat','missing','malformed'):
+            p,docs=fixture()
+            for doc in docs:doc.update(candidate_model_contract_id='d'*64,candidate_adapters=[dict(sha256='e'*64,scale=1.)])
+            if defect=='other-hat':docs[1].update(candidate_model_contract_id='f'*64,candidate_adapters=[dict(sha256='0'*64,scale=1.)])
+            if defect=='missing':docs[1].pop('candidate_model_contract_id')
+            if defect=='malformed':docs[1]['candidate_model_contract_id']='bad'
+            with self.subTest(defect=defect),self.assertRaises(ValueError):merge(p,docs)
+
+    def test_composite_binding_survives_a_complete_merge(self):
+        p,docs=fixture()
+        for doc in docs:doc.update(candidate_model_contract_id='d'*64,candidate_adapters=[dict(sha256='e'*64,scale=1.)])
+        result=merge(p,docs)
+        self.assertEqual(result['candidate_model_contract_id'],'d'*64)
+        self.assertEqual(result['candidate_adapters'],[dict(sha256='e'*64,scale=1.)])
+        docs[0]['candidate_adapters'][0]['scale']=.5
+        self.assertEqual(result['candidate_adapters'][0]['scale'],1.)
+
     def test_partition_covers_original_indices_once_and_keeps_order(self):
         p, _ = fixture()
         self.assertEqual(p['assignments'], [[0, 3, 6], [1, 4], [2, 5]])
