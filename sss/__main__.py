@@ -7,6 +7,9 @@ from .guard import SkillTree
 def main(argv=None):
     import sys
     argv=sys.argv[1:] if argv is None else argv
+    if argv and argv[0]=='machinery':
+        from .machinery import main as machinery_main
+        return machinery_main(argv[1:])
     if argv and argv[0]=='workflows':
         from .workflows import main as workflows_main
         return workflows_main(argv[1:])
@@ -25,6 +28,9 @@ def main(argv=None):
     if argv[:2]==['study','harness']:
         from .studies.harness_compare import main as compare_harnesses
         return compare_harnesses(argv[2:])
+    if argv[:2]==['study','assessment-growth']:
+        from .assessment_growth import main as assessment_growth_main
+        return assessment_growth_main(argv[2:])
     if argv[:2]==['study','next-block']:
         from .learning import main as next_block
         return next_block(argv[2:])
@@ -39,6 +45,7 @@ def main(argv=None):
     sub.add_parser('init-pcc',help='Prepare owned arithmetic replay in an optional PCC store; see init-pcc --help')
     sub.add_parser('study',help='Study commands; see study harness --help, study ceiling --help or study next-block --help')
     sub.add_parser('workflows',help='Existing BW domain recipes; see workflows --help')
+    sub.add_parser('machinery',help='Software integration checks, separate from model capability scores; see machinery list')
     sub.add_parser('explore',help='Guided foundations checks; see explore --help')
     sub.add_parser('graph',help='Show the prerequisite graph; see graph --help')
     sub.add_parser('report',help='Write an offline report; see report --help')

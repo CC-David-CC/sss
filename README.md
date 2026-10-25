@@ -1,5 +1,8 @@
 # Skills³ (S³)
 
+[The durable learning loop: ELI5, master's, PhD, and applied guide](docs/LEARNING-MACHINERY.md) explains ownership, recovery, paired learning/forgetting, expanding assessments, commands, and current qualification limits. The new machinery checks are separate from the fixed 68-update comparison.
+
+
 [Eight-update optimizer geometry](docs/OPTIMIZER-GEOMETRY.md) compares saved
 weight spectra with matched learning and forgetting. [Check sensitivity](docs/CHECK-SENSITIVITY.md)
 uses actual BW execution to distinguish a passing command from a check that

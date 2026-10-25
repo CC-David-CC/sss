@@ -1,0 +1,147 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Actual tiny CPU classification and three durable rounds through both actual CLIs and authenticated PCC HTTP, not language-model quality",
+  "policy_id": "92f2405961c5d27745eb885b72277008b901f41ad9a1e3345b99e2fe20ef87c6",
+  "real_native_updates": 48,
+  "both_actual_cli_clients": true,
+  "accepted_improvement_and_retained_parent_on_no_gain": true,
+  "actual_native_evaluation": true,
+  "controlled_scores_injected": false,
+  "training_and_evaluation_prefixes_disjoint": true,
+  "original_native_process_identities_recorded": true,
+  "reopened_between_rounds": true,
+  "duplicate_steps_not_retrained": true,
+  "untrusted_scores_and_stale_revision_refused": true,
+  "base_unchanged": true,
+  "creation_intent_recovered_on_startup_without_model_calls": true,
+  "original_start_replay_did_not_reset_progress": true,
+  "retired_policy_history_remains_readable": true,
+  "interrupted_after_evaluation_file_recovered_without_new_model_calls": true,
+  "lost_acceptance_and_before_dispatch_gap_recovered_once": true,
+  "lost_acceptance_after_native_job_submitted_did_not_train_twice": true,
+  "machinery_assessment_does_not_expand_or_claim_model_ceiling": true,
+  "next_actions_discoverable_and_enforced": true,
+  "stale_dispatch_did_not_rewind_newer_phase": true,
+  "historical_reports_reread_through_both_clients": true,
+  "changed_historical_report_refused": true,
+  "promoted": false,
+  "observed_curve": [
+    {
+      "stage": "baseline",
+      "correct": 0,
+      "cases": 4
+    },
+    {
+      "stage": "round-1",
+      "correct": 2,
+      "cases": 4,
+      "working_decision": "KEEP_AND_ADVANCE",
+      "parent_delta": 2,
+      "parent_losses": 0
+    },
+    {
+      "stage": "round-2",
+      "correct": 4,
+      "cases": 4,
+      "working_decision": "KEEP_AND_ADVANCE",
+      "parent_delta": 2,
+      "parent_losses": 0
+    },
+    {
+      "stage": "round-3",
+      "correct": 4,
+      "cases": 4,
+      "working_decision": "RETAIN_PARENT",
+      "parent_delta": 0,
+      "parent_losses": 0
+    }
+  ],
+  "scope_caveats": [
+    "Tiny generated classifier, not MiniCPM or general language quality",
+    "Finished is a bounded classification, not natural EOS",
+    "Fault injection at declared Python boundaries, not power-cut qualification",
+    "Fixed 68-update comparison unchanged; this fixture counts toward no model mastery"
+  ],
+  "checks": [
+    {
+      "name": "pcc-regression",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f47ea7c83bc44035d6713bef7ea7023e01e9d8fa7cb06ffb1ce204f3675ada73"
+    },
+    {
+      "name": "bw-regression",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ab813af3c232254acecbd4dcce59122afad4fc5f6e36197486202fd6eeb80067"
+    },
+    {
+      "name": "sss-regression",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "610692835c3422b057283194bca0a3dd7e6401e789796982c8c641d0b2c502ab"
+    },
+    {
+      "name": "durable-rounds",
+      "exit_code": 0,
+      "stdout_sha256": "0972395587e81097d875df0ac2d760d57178f12eefd4d17ba7e7b59ed9d81cf3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "legacy-full-native",
+      "exit_code": 0,
+      "stdout_sha256": "a6e7ba98619f832e51ab4f0d7172d906f87163a42750ffe5274de3963c386fe1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "lora-client-native",
+      "exit_code": 0,
+      "stdout_sha256": "8d86b1f412393c751f2a97361d4a62494b432006b6e79c84c843fd1f30b867d1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "parent-binding-native",
+      "exit_code": 0,
+      "stdout_sha256": "5f9ef8f7f28b2d1588702938ef44ea3484342727c348d8b8e98584d033476a39",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "machinery-import-boundary",
+      "exit_code": 0,
+      "stdout_sha256": "4c36aa522c642bbecfbd43649b2fd5800e813ce0f832ae3a8a6744ce3dd15c9d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "bw-regression-qualified",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3b363ed3733d2b8c0b617874723b69b5bfc67cd8a5e6ea83da0d94e4d3f7549e"
+    },
+    {
+      "name": "pcc-regression-qualified",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3f33eb897410f1882d2d93bd0b2ad26843b4b7486b31575d03d03893ef5a3c13"
+    }
+  ],
+  "check_environment_note": "BW first invocation omitted its optional S3 fixture dependency from PYTHONPATH and failed import before tests; qualified rerun passed all nine tests. Initial failure retained. Initial PCC invocation skipped the optional context fixture; adding its qualified source path passed all 39 tests without skips.",
+  "native_executable_sha256": "4115c0cebe16e6f648655281f931b9f72848946fde930bd48e3ec97aff93421f",
+  "python_sources_sha256": {
+    "sss/sss/__main__.py": "9034827eebecf1694ac51370110322daf7283a5c966117d3180f721843470141",
+    "sss/sss/adapters/learning_policy.py": "9f0bf20b96cf2508622202d7e3d0502ad49a99c10f8f288ea989d0031615e0aa",
+    "sss/sss/assessment_growth.py": "459215e9fbbdb97d45f3f15898807d21acf2a3b680d86b20f62e10c1db4dde0d",
+    "sss/sss/machinery.py": "ca211e206e71bdeb1446edce223ea884eb83de04977123aeeefe59866a027eac",
+    "sss/sss_integration/learning_rounds_cpu.py": "b1fe5e78e0ff96ad06a8461619ac2319182d11e207ce6e4c79793b1b18b219c6",
+    "sss/sss_tests/test_assessment_growth.py": "4b96290a45107766231682641000060584e985e66b2d3cde4d813932eeb85ec3",
+    "PCC/serve/cow_http.py": "e4d79a265eb12b21794d2e782849bd061243d160a54ecd7ff09b36113c193251",
+    "PCC/tools/cow_cli.py": "5b877274d8290d7946afb474725469bf0d334cbcd6b6ff3760ebb3b083eea16d",
+    "PCC/tools/pcc_learning_loop.py": "c14f9b59d6dff9f97f076cd760cb9a359b3e65edd5c1d64f170fa101485f4627",
+    "PCC/tools/pcc_learning_runs.py": "5ef9eae842332ab72e32ef6a3cabbaa41340f8424f54a855a189053431a99220",
+    "PCC/tools/pcc_lessons.py": "8da1c6d8c2b27859760b3e0f09c1574ac1487acf658b2e9d88b94a9daea75d56",
+    "PCC/tools/pcc_native_training.py": "bd61979eb039d10329d90f68ed2f47c01c40a9f9863bacefd41b53c930a7b41d",
+    "BW/branchwrite/__main__.py": "d3e2203967eb10c913fccfd9fab4535e892bff02518dfc1336bfb16fb1859751",
+    "BW/branchwrite/cow_client.py": "78cf834e1d784ba14f93013b6c9bece35d646253f39e09a854dc7656920e7177",
+    "BW/branchwrite/learning_cli.py": "5d31c1258137c5f11c71bd8fc7db36cdb3fee8dc49ed8a52d3f875099257b2c6"
+  }
+}
