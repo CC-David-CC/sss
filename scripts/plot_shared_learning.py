@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 r=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--data',type=Path,default=r/'validation/minicpm-native-learning-20261024/shared-learning-block-ax.json')
+parser.add_argument('--data',type=Path,default=r/'validation/minicpm-native-learning-20261024/shared-learning-block-az.json')
 parser.add_argument('--lora-data',type=Path)
 a=parser.parse_args();v=json.loads(a.data.read_text())
 assert v['status']=='PARTIAL_CURVE' and v['cases']==864 and v['optimizer_ranking_established'] is False

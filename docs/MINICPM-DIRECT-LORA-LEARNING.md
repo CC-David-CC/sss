@@ -82,14 +82,14 @@ alone do not establish independence. Exact equality checks do not prove semantic
 disjointness, broad generalization or sealed acceptance. The frozen practice
 stream has not changed.
 
-[Aggregate learning, per-skill changes, native mechanics and control identities](../validation/minicpm-native-learning-20261024/direct-lora-learning-aq.json)
+[Aggregate learning, per-skill changes, native mechanics and control identities](../validation/minicpm-native-learning-20261024/direct-lora-learning-az.json)
 contain no private question/answer text or model files.
 
 An agent or person can reproduce the report with the existing result files:
 
 ```sh
 python3 scripts/report_direct_lora.py --input /private/collected-results --output curve.json
-python3 scripts/plot_shared_learning.py --lora-data validation/minicpm-native-learning-20261024/direct-lora-learning-aq.json
+python3 scripts/plot_shared_learning.py --lora-data validation/minicpm-native-learning-20261024/direct-lora-learning-az.json
 ```
 
 The report input has a `baseline` directory and `update-NNN` directories, each
