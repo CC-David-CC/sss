@@ -116,3 +116,25 @@ allowed to finish and its complete result reused with zero duplicate allocation.
 
 [Placement observations and overlap control](../validation/minicpm-native-learning-20261024/evaluation-placement-ap.json)
 keep the model/runtime identities, counts and timing limits alongside the data.
+
+
+### Attached-LoRA placement control
+
+The same problem later affected the directly attached hat at update 7. Its
+original assessment completed 246 questions in 59.6 minutes on a heavily shared
+card. After preserving the completed native update and moments, a new readonly
+assessment completed all 864 in 12.3 minutes on another card. All 246 overlapping
+sampled sequences and case outcomes matched exactly; this checkpoint scored
+320 correct and 853 naturally finished responses. Native update 7 was not
+repeated, and its original partial evidence remains available.
+
+The new LoRA owner samples utilization three times and admits readonly
+evaluation only when the peak observed utilization is at most 50%, alongside the
+existing memory and lease checks. This is an admission observation; workloads
+can change after launch. The four full-weight owners still use their earlier
+utilization-first preference. This does not establish maximal fleet efficiency.
+Different shared loads and unequal partial/full panels prevent treating these
+wall times as a kernel or training-efficiency comparison.
+
+[Same-hat overlap control and placement data](../validation/minicpm-native-learning-20261024/direct-placement-as.json)
+are separate from the earlier six-point LoRA curve snapshot above.
