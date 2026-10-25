@@ -1,9 +1,12 @@
 # Native MiniCPM learning through COW
 
-## Current curve snapshot: 85 completed assessments
+## Current curve snapshot: 85 scored checkpoints
 
 The new snapshot contains 70 full-weight and 15 attached-LoRA checkpoints. Each
-point is a complete 864-question development assessment. The full-weight data was
+point is backed by a complete 864-question development assessment. Exact-weight
+aliases can share one qualified assessment; 85 counts checkpoint positions, not
+85 distinct runs or independent repetitions. The data preserves those aliases.
+The full-weight data was
 captured at 2026-10-25T13:13:00Z. These are continuing fixed-update trajectories,
 not five completed 68-update studies. Gaps are left visible; no missing point is
 interpolated or treated as a pass.
