@@ -37,8 +37,9 @@ An operator must inspect domain changes, lesson provenance and resource admissio
 before creating the next PCC job. This command supplies no artifact paths or
 execution authority. Resolve the selected identity against the existing PCC
 candidate/evaluation receipts and verify the actual base, adapter and scale
-before constructing a training request. Automatic identity resolution and
-multi-round execution remain separate integration work.
+before constructing a training request. [Owner-side identity resolution](RESOLVED-LEARNING-PARENT.md) now checks the
+proposal against actual PCC artifacts. Durable multi-round execution remains
+separate integration work.
 
 ## Version 2 identifies the entire candidate
 
@@ -104,8 +105,8 @@ The strict gate remains rejected and no model is promoted. This is an offline
 exercise of existing evidence, not a curriculum change to the running fixed
 68-update study. Resolve current artifact availability and actual PCC receipts
 before executing any proposal; a saved reference is not proof a cached binary
-still exists. Automatic resolution and durable multi-round coordination remain
-unfinished integration work.
+still exists. [Owner-side resolution](RESOLVED-LEARNING-PARENT.md) is now supported; automatic
+registration/import and durable multi-round coordination remain unfinished.
 
 [The update-15 proposal](../validation/minicpm-native-learning-20261024/next-block-lora15-ax.json)
 is available without protected task text. The [combined curve](COW-SHARED-ROOT-LEARNING.md)

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Real CPU native/PCC HTTP/BW and COW CLI binding mechanics with explicitly injected S3 semantic scores; no learning or GPU qualification",
+  "conditions": [
+    {
+      "mode": "full",
+      "status": "PASS",
+      "actual_native_jobs": 3,
+      "both_cli_guards_enforced": true,
+      "wrong_parent_refused_before_queue": true,
+      "operation_retry_not_retrained": true,
+      "recomputed_proposal_resolved": true,
+      "actual_resolver_cli_private_and_exclusive": true,
+      "forged_proposal_refused": true,
+      "controlled_scores": true,
+      "promoted": false
+    },
+    {
+      "mode": "lora",
+      "status": "PASS",
+      "actual_native_jobs": 3,
+      "both_cli_guards_enforced": true,
+      "wrong_parent_refused_before_queue": true,
+      "operation_retry_not_retrained": true,
+      "recomputed_proposal_resolved": true,
+      "actual_resolver_cli_private_and_exclusive": true,
+      "forged_proposal_refused": true,
+      "controlled_scores": true,
+      "promoted": false
+    }
+  ],
+  "base_unchanged": true,
+  "executable_sha256": "4115c0cebe16e6f648655281f931b9f72848946fde930bd48e3ec97aff93421f",
+  "gpu_used": false,
+  "promoted": false
+}

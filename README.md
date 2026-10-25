@@ -198,3 +198,7 @@ separate from BW tool-workflow qualification.
 [Earlier fixed-compute preparation](docs/FIXED-COMPUTE-PREPARATION.md) is retained
 as history. Update counts and practice exposure organize the current comparison;
 wall time is a measured cost.
+
+[Resolve a recommended parent](docs/RESOLVED-LEARNING-PARENT.md) against actual
+PCC artifacts before another update. The optional bridge recomputes the saved
+S³ proposal and preserves exact identities without dispatching training.

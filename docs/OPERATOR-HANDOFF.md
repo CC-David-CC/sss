@@ -181,3 +181,8 @@ as a verified lesson control. A check must pass a correct reference and detect
 declared faults; timeouts and environment failures are unavailable evidence.
 For optimizer investigation, [saved-matrix geometry](OPTIMIZER-GEOMETRY.md)
 uses PCC’s checked offline reader with exact checkpoint/score identity joins.
+
+Before dispatching a new update, use [proposal resolution](RESOLVED-LEARNING-PARENT.md)
+and the registered parent hash guard. Fresh moments for new practice and exact
+same-stream optimizer resume are deliberate different choices. A resolved
+reference is not resource admission, lesson approval or release acceptance.
