@@ -175,3 +175,9 @@ Preserve earlier observations when adding corrections or new evidence.
 Before selecting the next training parent, read [the next-block identity contract](NEXT-SKILL-BLOCK.md).
 Use the complete version2 next_parent reference; a base GGUF hash alone cannot
 identify a LoRA hat. Resolve it from actual PCC receipts before another job.
+
+Use [check sensitivity](CHECK-SENSITIVITY.md) before treating a proposed check
+as a verified lesson control. A check must pass a correct reference and detect
+declared faults; timeouts and environment failures are unavailable evidence.
+For optimizer investigation, [saved-matrix geometry](OPTIMIZER-GEOMETRY.md)
+uses PCC’s checked offline reader with exact checkpoint/score identity joins.

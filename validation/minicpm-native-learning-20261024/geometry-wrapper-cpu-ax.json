@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "scope": "Optional CPU integration against PCC tiny saved GGUF matrices; no inference or model-quality claims",
+  "tests_passed": 4,
+  "exit_code": 0,
+  "evidence_sha256": "0146a85f8a729734e6de0295114ff2da5f4981f48eba536a6496141695fbfeaf",
+  "report_implementation_sha256": "8c98d12614849f77b1b0c4e3d48e6ca02400083d9e0b21fb68822e7e8b617317",
+  "test_implementation_sha256": "d807c10a12bfd6c85163d5365968508e9ab6a115333fb968457f0b727a17cfc8",
+  "gpu_used": false,
+  "weights_updated": false,
+  "promoted": false
+}

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "amendment": {
+    "kind": "Operational reservation guard amendment",
+    "old_ceiling_gpu_seconds": 1080000,
+    "new_ceiling_gpu_seconds": 3240000,
+    "recorded_utc": "2026-10-25T13:01:15Z",
+    "authorization": "Owner authorized as much time as needed to finish all reports and removed fixed training time as organizing principle",
+    "scope": "Existing declared 68-update/practice study, native controls and selected-model quantization/acceptance only; no new seed campaigns, model publication, or model transfers",
+    "reason": "Prevent conservative historical upper-bound accounting from blocking already authorized fixed-update completion; not a scientific stopping rule or measured usage"
+  },
+  "before_sha256": "3dcfaeb1e78e86f1d88641e051ec6b174570956e5f5b56d523d058e878917cbf",
+  "after_sha256": "a533f4c3843776a5ad57106387d62b7b2074b8e69f4ae080e7aec7ae88ddc126",
+  "prior_upper_bound_gpu_hours": 209.34404925187428,
+  "measured_charged_gpu_hours": 53.93817630709175,
+  "active_operations": 5,
+  "settled_operations": 128,
+  "prior_usage_history_and_active_reservations_unchanged": true,
+  "native_or_evaluation_settings_changed": false
+}

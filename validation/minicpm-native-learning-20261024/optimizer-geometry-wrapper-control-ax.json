@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "matrix_measurements": 45,
+  "scalar_values_compared": 720,
+  "maximum_absolute_difference": 0,
+  "report_implementation_sha256": "8c98d12614849f77b1b0c4e3d48e6ca02400083d9e0b21fb68822e7e8b617317",
+  "pcc_implementation_sha256": "398f7261f92c28b1718be44740a2a8b3bb1aa4190834a8c6a1dfd073d800ef3f",
+  "reference_sha256": "4fa0d5b4299f908109a5027ce6d3b9644e0e16779ef8bf4c22690fc37175b100",
+  "wrapper_result_sha256": "9265a733962e1e0b4cc3a6e9caec1d50d0c898e38ca3314845b2712afe868a1a",
+  "cpu_workers": 5,
+  "blas_threads_per_worker": 2,
+  "wrapper_wall_seconds": 89.73409728053957,
+  "gpu_used": false,
+  "native_updates_repeated": false,
+  "scope": "Same PCC diagnostic on the same saved matrices through the reusable S3 wrapper; not an independent oracle or a controlled speed test"
+}

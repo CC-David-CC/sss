@@ -142,9 +142,16 @@ establish a gain for Wen or make seed repetition a substitute for varied lessons
 Independent restarts measure robustness and produce separate candidates; their
 learning does not automatically accumulate in one model.
 
-The current campaign remains capped at 300 A100 allocation GPU-hours, charged
-as stage wall time times allocated cards, including shared contention. Repeat
-model runs with different seeds remain outside its authorization. Source,
+The original 300 A100 allocation GPU-hour preparation guard is historical.
+The owner subsequently authorized completing the declared study and reports
+without a fixed training-time stopping rule. The scientific comparison uses
+68 updates and ordered practice. The operational reservation guard is now 900
+allocation GPU-hours; this is headroom for bounded phases, not a target spend,
+usage measurement or permission for new experiments. The amendment preserves
+all active reservations, measured charges and the separately labelled historical
+upper bound. Time remains stage wall time times allocated cards, including shared
+contention. Repeat model runs with different seeds remain outside authorization.
+[Audited guard amendment](../validation/minicpm-native-learning-20261024/allocation-guard-amendment-ax.json). Source,
 aggregate outcomes, failures and costs should be published incrementally;
 private traces, protected answers and machine handoffs stay private. Actual
 host ledgers and PCC resource owners retain execution and settlement authority.

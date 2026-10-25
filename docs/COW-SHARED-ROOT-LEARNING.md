@@ -138,3 +138,9 @@ wall times as a kernel or training-efficiency comparison.
 
 [Same-hat overlap control and placement data](../validation/minicpm-native-learning-20261024/direct-placement-as.json)
 are separate from the earlier six-point LoRA curve snapshot above.
+
+## Saved-matrix geometry at equal practice
+
+The [eight-update matrix report](OPTIMIZER-GEOMETRY.md) joins exact saved-weight
+and accumulated-change spectra to these scored model identities. Weight rank,
+change rank, answer gains and original-answer losses are separate measurements.

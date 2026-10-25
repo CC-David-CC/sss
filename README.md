@@ -1,5 +1,10 @@
 # Skills³ (S³)
 
+[Eight-update optimizer geometry](docs/OPTIMIZER-GEOMETRY.md) compares saved
+weight spectra with matched learning and forgetting. [Check sensitivity](docs/CHECK-SENSITIVITY.md)
+uses actual BW execution to distinguish a passing command from a check that
+detects declared bugs. Both preserve negative controls and unfinished acceptance.
+
 Current work uses equal update counts and ordered practice; the older fixed-compute
 preparation above is historical. S3's [shared COW evaluation path](docs/COW-EVALUATION.md)
 uses the same native request implementation as BW. PCC carries the
