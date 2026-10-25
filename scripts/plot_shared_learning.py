@@ -8,11 +8,25 @@ import matplotlib.pyplot as plt
 r=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--data',type=Path,default=r/'validation/minicpm-native-learning-20261024/shared-learning-block-aj.json')
+parser.add_argument('--lora-data',type=Path)
 a=parser.parse_args();v=json.loads(a.data.read_text())
 assert v['status']=='PARTIAL_CURVE' and v['cases']==864 and v['optimizer_ranking_established'] is False
 arms=['adamw-full','muon-standard-full','muon-rms-decay-full','muon-fast-refine-full']
 labels=['AdamW','Standard Muon','RMS / decay Muon','Fast-to-refine Muon']
 colors=['#245fa4','#d27724','#278768','#9458a5'];markers=['^','o','s','x']
+if a.lora_data is not None:
+    lora=json.loads(a.lora_data.read_text());bridge=lora['trained_runtime_bridge']
+    if (lora['evaluation_id']!=v['evaluation_id'] or lora['cases']!=v['cases']
+            or any(lora['baseline'][key]!=v['baseline'][key] for key in ('passed','finished'))
+            or bridge['old_runtime_id']!=v['runtime_id'] or bridge['new_runtime_id']!=lora['runtime_id']
+            or bridge['different_sampled_sequences'] or bridge['answer_gains'] or bridge['answer_losses']
+            or bridge['completion_differences']
+            or not any(p['model_sha256']==bridge['model_sha256'] and p['evaluation_evidence_sha256']==bridge['old_result_sha256'] for p in v['points'])
+            or not all(lora['baseline_controls']['native_artifacts'].values())
+            or any(c['different_sampled_sequences'] or c['answer_gains'] or c['answer_losses'] or c['completion_differences'] for c in lora['baseline_controls']['controls'])):
+        raise ValueError('Matching cases, observed original/trained runtime bridges and identical native artifacts required')
+    v['points'] += [dict(p,arm='adamw-lora-attached') for p in lora['points']]
+    arms.append('adamw-lora-attached');labels.append('AdamW LoRA (attached)');colors.append('#8a4c2e');markers.append('P')
 last=max(p['update'] for p in v['points']);spacing=max(1,(last+9)//10)
 panels=[('passed','Correct answers / 864',864),('finished','Naturally finished / 864',864),
         ('answer_gains',f"Previously wrong answers gained / {864-v['baseline']['passed']}",864-v['baseline']['passed']),
@@ -36,9 +50,12 @@ for ax,(key,title,maximum) in zip(axes.flat,panels):
     ax.set_title(title);ax.grid(alpha=.18)
 for ax in axes[1]:ax.set_xlabel('Completed updates · 27 practice presentations each')
 handles,legend_labels=axes[0,0].get_legend_handles_labels()
-fig.legend(handles,legend_labels,loc='upper center',bbox_to_anchor=(.5,.945),ncol=5,fontsize=10,frameon=False)
-fig.suptitle('Shared-root A100: measured learning and forgetting',fontsize=16,y=.985)
-fig.text(.5,.018,'Only completed 864-case assessments. Gaps are unmeasured, not interpolated.\nDifferent predeclared regimens; no optimizer ranking or sealed acceptance. Direct LoRA is a separate runtime series.',ha='center',fontsize=9)
+fig.legend(handles,legend_labels,loc='upper center',bbox_to_anchor=(.5,.945),ncol=len(arms)+1,fontsize=9,frameon=False)
+fig.suptitle('Native MiniCPM: measured learning and forgetting',fontsize=16,y=.985)
+note='Only complete 864-case development assessments. Gaps are unmeasured; different predeclared settings, no optimizer ranking.\n'
+note+=('Attached LoRA has its own runtime identity; original + trained execution bridges matched. Merged deployment remains unqualified.'
+       if a.lora_data is not None else 'Direct LoRA is a separate runtime series. Sealed acceptance remains unfinished.')
+fig.text(.5,.018,note,ha='center',fontsize=9)
 fig.tight_layout(rect=(0,.065,1,.90))
 out=r/'docs/images'
 for ext in ['svg','png']:fig.savefig(out/('cow-shared-learning.'+ext),dpi=165,metadata={'Creator':'S³ public aggregate report'})

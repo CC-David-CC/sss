@@ -1,7 +1,3 @@
-[Fixed-compute study preparation](docs/FIXED-COMPUTE-PREPARATION.md): A100
-optimizer qualification passes, and the larger arithmetic/state dataset passes
-actual MiniCPM token/lesson admission. Learning and retention runs are next.
-
 # Skills³ (S³)
 
 Current work uses equal update counts and ordered practice; the older fixed-compute
@@ -10,10 +6,10 @@ uses the same native request implementation as BW. PCC carries the
 [small-probe speed result](https://github.com/CC-David-CC/Private_Context_COW/tree/feat/native-learning-curves-20261024#48x-faster-on-small-forward-work-probes);
 S3 owns the test method, paired scores and learning/forgetting evidence.
 
-[Real MiniCPM Muon/AdamW mechanics](docs/MINICPM-OPTIMIZER-PILOT.md): full-weight
+[Earlier MiniCPM Muon/AdamW mechanics](docs/MINICPM-OPTIMIZER-PILOT.md): full-weight
 updates and reload pass; resumed Muon weights/moments match uninterrupted training
-bit for bit. This is mechanics evidence; independent learning and retention are
-not yet measured for these candidates.
+bit for bit. That pilot is mechanics evidence; the later matched-practice learning
+and forgetting measurements are linked below.
 
 [What we are discovering](docs/FINDINGS.md): readable findings about context
 cost, tool differences, training, forgetting and practical next steps.
@@ -21,8 +17,9 @@ cost, tool differences, training, forgetting and practical next steps.
 [Getting seven harnesses working with MiniCPM](docs/MINICPM-HARNESS-FIELD-NOTES.md):
 six external clients completed live model/tool exchanges with the same weights.
 Codex, OpenCode, pi and Hermes passed independent artifact checks; Qwen Code
-and DeepSeek failed different task requirements. BW now passes three Python objectives; two shell objectives remain under
-investigation in the follow-up screen below. This is one discovery task, not a general harness ranking.
+and DeepSeek failed different task requirements. BW's shell-contract follow-up reaches 5/5 correct saved artifacts and 4/5 completed
+workflows; one verification/termination failure remains. See [BW's measured
+investigation](https://github.com/CC-David-CC/BranchWrite/blob/feat/native-learning-path-20261024/docs/MINICPM-SHELL-INVESTIGATION.md). This is one discovery task, not a general harness ranking.
 
 [Four-condition harness comparisons](docs/HARNESS-COMPARISON.md) have tested
 offline planning and evidence checks. [Isolated model transport](docs/MODEL-SOCKET.md)
@@ -167,16 +164,32 @@ development work. Their runtime APIs stay in those projects; the curriculum and
 tests live here. Raw private traces, model weights and operational handoffs stay
 outside this repository.
 
-## Latest native development checkpoint
+## Current learning evidence
 
-[BW follow-up and training mechanics](docs/MINICPM-HARNESS-FIELD-NOTES.md#bws-broader-follow-up-and-native-training-mechanics)
-separate three Python passes/two shell failures from independently checked tiny
-native full/LoRA backprop. Subsequent work qualified real MiniCPM full updates
-and completed the larger baseline: 59/864 exact-answer passes and 415/864 natural
-response completions. The first AdamW candidate reaches 482/864 exact answers and 864/864 completions,
-but is rejected for 11 lost prior passes. Muon comparisons are still running.
-[Current baseline, learning plan and reproducible evidence](docs/MINICPM-NATIVE-LEARNING.md).
-Broader optimizer ablations are stretch goals.
+[Learning and forgetting graphs](docs/COW-SHARED-ROOT-LEARNING.md) plot measured
+correct answers, stopping, answers gained and original successes lost against
+update count. Four full-weight regimens continue toward 68 updates with the same
+ordered practice stream. A separate [attached-LoRA series](docs/MINICPM-DIRECT-LORA-LEARNING.md)
+reaches **231/864 correct and 781/864 naturally finished after three updates**,
+from 59/415 originally: 173 answers gained and one original success lost.
+Native adapter reload and bounded independent-oracle checks pass; merged-model
+parity remains a separately retained failure. These are repeated development
+measurements, with sealed acceptance and broader skills still unfinished.
 
+Earlier adaptive checkpoints and their results remain separate from this
+original-model control study. The first AnswerStop candidate reached 482/864;
+later mixed-review work reached 507/864. Regressions are recorded, promising
+exploratory checkpoints are preserved, and a score alone does not authorize
+promotion. See [the full learning record and native HTTP/CLI block](docs/MINICPM-NATIVE-LEARNING.md).
+Broader optimizer ablations remain stretch goals.
 
-[First complete original-model data block](docs/COW-FIRST-DATA-BLOCK.md): 864 identical token sequences and outcomes; 116.5 to 19.1 minutes on shared A100 cards. The trained-model comparison is still running.
+[Original/trained execution comparisons](docs/COW-FIRST-DATA-BLOCK.md) matched
+all 864 sampled sequences in each pair. Observed evaluation ratios were 6.1x
+(original A100), 2.7x (trained A100), 5.3x (original llm-60) and 2.2x (trained
+llm-60), with shared-load and scope limits. S3 uses PCC's existing consumed COW
+request, the same underlying request BW uses; these direct-answer panels are
+separate from BW tool-workflow qualification.
+
+[Earlier fixed-compute preparation](docs/FIXED-COMPUTE-PREPARATION.md) is retained
+as history. Update counts and practice exposure organize the current comparison;
+wall time is a measured cost.

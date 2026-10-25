@@ -69,3 +69,7 @@ The focused CPU selection passes 42 tests across paired reports, composite
 identity, shard collation and existing optional integrations, with no skips.
 The live native studies retain their frozen source snapshots; this report-side
 change does not alter their sampled answers or training updates.
+
+
+The [first three complete learning observations and execution controls](MINICPM-DIRECT-LORA-LEARNING.md)
+are published, together with a reusable metadata-only report command.

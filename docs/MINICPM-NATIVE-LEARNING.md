@@ -5,11 +5,14 @@ Muon and fast-to-refine Muon, plus an AdamW LoRA control. Training time is a
 measurement, not the organizing principle or a stopping budget. The old timed
 experiment remains below as historical evidence; it is not an equal-exposure
 comparison. Full-model training and held-out assessment are already real; the
-new finer curve and LoRA comparator are being qualified.
+new finer curves are running. The [current combined graph](COW-SHARED-ROOT-LEARNING.md)
+shows measured learning and forgetting. The separately qualified
+[attached-LoRA curve](MINICPM-DIRECT-LORA-LEARNING.md) reaches 231/864 correct
+after three updates; the original merged-deployment gate remains failed.
 
-## New per-update comparison
+## Initial per-update snapshot (earlier execution path)
 
-[Live partial chart](../validation/minicpm-native-learning-20261024/learning-curve-progress.png) ·
+[Saved initial partial chart](../validation/minicpm-native-learning-20261024/learning-curve-progress.png) ·
 [CSV](../validation/minicpm-native-learning-20261024/learning-curve-progress.csv) ·
 [Aggregate points](../validation/minicpm-native-learning-20261024/curve-points-progress.json).
 
@@ -39,9 +42,11 @@ descriptive experiment; subsequent hill-climbing is informed by its data.
 The unchanged-original F32 behavior control is complete: 59/864 correct and
 415/864 naturally finished, with every case outcome equal to the original-F16
 reference. [Measured control](../validation/minicpm-native-learning-20261024/original-F32-control.json). This separates learned changes from saved-weight
-precision/kernel differences. All learned full checkpoints and the LoRA merged
-evaluation model use F32. The graph's primary reference is the measured unchanged
-F32 original, with the earlier 59/864 F16 result retained explicitly.
+precision/kernel differences. Full-weight checkpoints use F32. The original
+merged-LoRA deployment remains gated. The separate attached-hat series keeps
+the original F16 base and its immutable adapter, with actual runtime identities
+and original/trained execution controls retained. The new F16 and F32 COW
+baselines match every sampled token on all 864 cases.
 
 The LoRA comparator uses native AdamW, rank 16/alpha 16, all 294 hidden linear
 matrices plus the prediction head, and freezes embeddings and norm/gain weights.
@@ -376,7 +381,9 @@ Matplotlib, BW, PCC, a GPU or a network connection.
 
 [Native AdamW LoRA and F32-merge mechanics](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-learning-curves-20261024/docs/NATIVE-PER-UPDATE-CURVES.md)
 now pass the declared small numerical gates. Actual-model merge parity remains
-a separate first-point gate, and no LoRA learning score is claimed yet.
+a separate first-point gate in that original snapshot. The later
+[attached-hat study](MINICPM-DIRECT-LORA-LEARNING.md) now has measured learning
+scores, without waiving the failed merged-deployment gate.
 
 ## Completed HTTP/CLI block: a tie with worse completion
 

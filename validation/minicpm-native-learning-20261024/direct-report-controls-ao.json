@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Actual collected metadata replay and five adversarial metadata refusals; no model execution",
+  "report_source_sha256": "d3ade88d977eb690010a68f2fd48e53e083561f4eec8790860a53db2b4511433",
+  "positive_complete_points": 3,
+  "rejected_mutations": [
+    "adapter identity",
+    "native practice cursor",
+    "incomplete settlement",
+    "foreign runtime bridge",
+    "foreign evaluation audit"
+  ],
+  "model_calls": 0,
+  "training_calls": 0,
+  "acceptance_policy_changed": false
+}

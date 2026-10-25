@@ -1,6 +1,6 @@
-# Learning through the shared-root COW evaluator
+# Native MiniCPM learning through COW
 
-This snapshot contains 25 completed A100 training assessments and the original-model
+The full-weight snapshot contains 25 completed A100 training assessments and the original-model
 baseline, captured 2026-10-25T08:44:52Z. All use the same frozen 864 development
 questions, exact checker, 512-token context, greedy decoding and 64-token output
 limit. Each native update presents the next 27 examples from the fixed practice
@@ -8,7 +8,9 @@ stream. No evaluation answers enter that stream.
 
 ![Measured shared-root learning and forgetting](images/cow-shared-learning.svg)
 
-The graph now shows correct answers, natural stopping, previously wrong answers
+The figure also overlays three independently completed attached-LoRA observations,
+with separate runtime identity and controlled execution bridges. It shows
+correct answers, natural stopping, previously wrong answers
 gained, and original successes lost. Every plotted point is a complete assessment;
 gaps are not interpolated. The loss panel is out of the original model's 59
 successes, rather than all 864 questions.
@@ -47,11 +49,13 @@ Changing lessons for only one arm midway would change the experiment. A later
 adaptive block can use the observed failure families to generate new verified
 practice and mixed review, without copying these development answers.
 
-The separately bound LoRA hat has passed a bounded direct-COW native check.
-Its full assessments and continued training have their own execution amendment;
-the original merge-equivalence failure is retained. LoRA scores are not silently
-joined into this full-weight runtime series. See [the direct-hat study and
-limits](COW-LORA-EVALUATION.md).
+The separately bound LoRA hat reaches 231/864 correct after three updates, with
+173 answers gained and one original success lost. Its runtime identity differs
+explicitly; original-model and saved trained-model bridge controls matched all
+864 sampled sequences, and the native binaries are byte-identical. The overlay
+retains these distinct declarations rather than labelling every series as one
+runtime. The original merge-equivalence failure remains unchanged. See [the
+learning data, controls and repeatable report command](MINICPM-DIRECT-LORA-LEARNING.md).
 
 ## Execution and timing
 
