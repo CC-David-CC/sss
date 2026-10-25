@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "14 quantization report, frozen pairing and descriptive-rate tests; completed FP32/FP16 native evaluations reported separately",
+  "test_command": "python3 -m unittest sss_tests.test_quantization sss_tests.test_paired sss_tests.test_paired_rates -v",
+  "tests": 14,
+  "log_sha256": "d76274f4577eeb78712894c494948e4aa1dcea791b24dfe666e050bea7159c26",
+  "public_model_bytes": false,
+  "model_weights_updated": false
+}
