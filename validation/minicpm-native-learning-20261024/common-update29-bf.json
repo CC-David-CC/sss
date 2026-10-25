@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "status": "PARTIAL_COMPARISON",
+  "full_points": 138,
+  "lora_points": 38,
+  "common_update": 29,
+  "presentations": 783,
+  "full_snapshot_sha256": "68fe28790ad3b905912adb04c46ec78cca4cbffe9cf1152671309b9c513296f3",
+  "lora_snapshot_sha256": "f73b65668fac39ea8ded924c0df329aed732d2629ed3158f651034e77ee66b4e",
+  "points": [
+    {
+      "arm": "adamw-full",
+      "update": 29,
+      "passed": 479,
+      "finished": 864,
+      "answer_gains": 428,
+      "answer_losses": 8
+    },
+    {
+      "arm": "muon-fast-refine-full",
+      "update": 29,
+      "passed": 455,
+      "finished": 863,
+      "answer_gains": 411,
+      "answer_losses": 15
+    },
+    {
+      "arm": "muon-rms-decay-full",
+      "update": 29,
+      "passed": 452,
+      "finished": 863,
+      "answer_gains": 408,
+      "answer_losses": 15
+    },
+    {
+      "arm": "muon-standard-full",
+      "update": 29,
+      "passed": 450,
+      "finished": 863,
+      "answer_gains": 406,
+      "answer_losses": 15
+    },
+    {
+      "arm": "adamw-lora-r16-attached",
+      "update": 29,
+      "passed": 477,
+      "finished": 864,
+      "answer_gains": 431,
+      "answer_losses": 13
+    }
+  ],
+  "optimizer_ranking_established": false,
+  "promoted": false
+}
