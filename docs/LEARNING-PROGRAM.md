@@ -143,12 +143,14 @@ retirement, or refuse missing/mismatched moments instead of resetting them.
 BW and COW clients can pin a registered parent by its native artifact SHA before
 queuing. These are implemented boundaries, not an unattended loop or model release.
 
-Two important gaps remain explicit: an offline sweep candidate is not automatically
-a registered service job, and registered adaptive-optimizer profiles still require
-full mode. Native/offline LoRA AdamW works; the default LoRA CLI recipe is legacy
-SGD. A future registered LoRA policy must be explicit rather than changing the
-meaning of an existing full-only profile. The ongoing fixed-practice study is
-not reconfigured by these additions.
+An offline sweep candidate is still not automatically a registered service job.
+[Explicit schema-2 LoRA AdamW policies](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-learning-curves-20261024/docs/REGISTERED-LORA-ADAMW.md)
+now work through BW and COW, with fixed updates and a pinned rank. Schema-1
+policies remain full-only, and the default LoRA CLI recipe remains legacy SGD.
+The actual CPU integration checks exact continued weights/moments, fresh new
+blocks, partial batches and frozen retries. It does not establish model learning
+or an unattended loop. The ongoing fixed-practice study is not reconfigured
+by these additions.
 
 
 ## An equal-practice observation at update 21
@@ -163,8 +165,8 @@ This is a comparison of the two declared recipes: full uses learning rate 1e−6
 and LoRA 1e−4. It is not an isolated capacity ablation, a universal LoRA advantage
 or a release decision. This short slice reports totals; per-case retention,
 parent-to-parent churn, the full 68-update curves and broader task coverage still
-matter. It does strengthen the practical reason to finish registered LoRA
-optimizer support in the reusable agent pathway.
+matter. It motivates the explicit registered LoRA optimizer path now tested
+through both clients; it does not itself qualify that service path on a GPU.
 
 [Actual checkpoint/configuration/evaluation receipts](../validation/minicpm-native-learning-20261024/common-update21-ay.json)
 keep the measured counts separate from the CPU integration's controlled scores.
