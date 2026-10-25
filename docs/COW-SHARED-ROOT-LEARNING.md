@@ -86,3 +86,25 @@ administration/tool/research qualification remain unfinished.
 
 [Aggregate counts, skill/gate changes and evidence identities](../validation/minicpm-native-learning-20261024/shared-learning-block-aj.json).
 The raw private responses and model files are not published.
+
+
+## Placement on the shared server
+
+A later owner audit found an AdamW update-10 assessment getting roughly 9-11%
+process SM activity while another workload used 88-98%, with two suitable cards
+idle. The placement preference put memory fragmentation ahead of utilization.
+The corrected owner preference considers observed utilization first, retaining
+the same memory admission and PCC GPU leases. All four A100 full-weight arms
+were handed off independently after their native checkpoints were verified.
+
+The old assessment completed **543 questions in 127.3 minutes**. Reassessing that
+same saved model completed **all 864 in 9.3 minutes** on a less contended card.
+Every overlapping sampled sequence and case outcome matched exactly. Original
+partial evidence was retained, native update 10 was not repeated, and the
+numerical runtime/checker/policy stayed fixed. This is an operational placement
+observation across different shared loads and panel lengths. It does not isolate
+an algorithm throughput gain. A nearly finished fast-to-refine assessment was
+allowed to finish and its complete result reused with zero duplicate allocation.
+
+[Placement observations and overlap control](../validation/minicpm-native-learning-20261024/evaluation-placement-ap.json)
+keep the model/runtime identities, counts and timing limits alongside the data.
