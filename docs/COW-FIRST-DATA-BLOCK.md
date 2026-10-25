@@ -49,6 +49,34 @@ For an evaluation fraction `f` and evaluation speedup `s`, whole-work speedup is
 and 90% imply approximately **1.6x, 2.0x and 2.3x** overall. These fractions are
 illustrations; we have not measured a complete 68-update loop on the new path.
 
+## llm-60 now runs the cached path too
+
+The RTX PRO 6000 on llm-60 has now completed the same original and trained
+model comparisons through its existing native build and the COW evaluator.
+Each pair used the same weights and all 864 generated token sequences and
+answer/completion outcomes matched exactly.
+
+| Model on llm-60 | Fresh evaluation | COW shared-root evaluation | Observed ratio |
+| --- | ---: | ---: | ---: |
+| Original F32 | 41.5 minutes | 7.8 minutes | 5.3x |
+| AdamW update 5 F32 | 9.7 minutes | 4.5 minutes | 2.2x |
+
+The original scored 59 correct / 415 naturally finished; AdamW update 5 scored
+327 / 854 in both paths. No training occurred within either execution comparison.
+Wall time includes model startup and final checks, with initial preflight hashing
+excluded. These are measured runs, not isolated hardware benchmarks or universal
+speedup guarantees. Response length and workload affect how much evaluation time
+is saved. The native update time itself is a separate measurement.
+
+The old producer was stopped after a completed native update while its last
+read-only reference assessment finished. Exact weights, moments and example
+cursors were retained. The new study continues from AdamW update 5 and the other
+full-weight arms at update 4, without replaying their updates. Its completed
+baseline has its own runtime identity; host/runtime curves remain distinguishable.
+Both the A100 and llm-60 learning evaluators now use the shared COW request path.
+
+[llm-60 paired counts, identities and timing evidence](../validation/minicpm-native-learning-20261024/cow-execution-llm60-ac.json).
+
 ## What improved
 
 S3's old correctness evaluator repeatedly recomputed the full prefix in a new

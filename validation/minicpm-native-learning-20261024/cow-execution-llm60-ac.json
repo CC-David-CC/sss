@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "scope": "Same weights and frozen questions on llm-60 RTX PRO 6000; execution change, no training in comparisons",
+  "comparisons": [
+    {
+      "model": "original",
+      "model_sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "cases": 864,
+      "passed": 59,
+      "finished": 415,
+      "different_sampled_sequences": 0,
+      "answer_gains": 0,
+      "answer_losses": 0,
+      "completion_gains": 0,
+      "completion_losses": 0,
+      "fresh_runtime_id": "0c970a91fd7c9975fde1a4aa4503f75d9a0c502567f71f4b2b9cffe14b57a892",
+      "cow_runtime_id": "1d222d36424ce64b1989b5ed8750b2eda6e9030020de45f7adddb615a1168bdc",
+      "fresh_wall_seconds": 2491.4789014251437,
+      "cow_wall_seconds": 470.19281210401095,
+      "observed_wall_ratio": 5.298845148815261,
+      "result_sha256": {
+        "fresh": "c177cff3b8b5f6c906e5a635118f585e732c9a6897a0e47f19c3eb292ed1e4c3",
+        "cow": "dad861bfcb9aea68f0d99a5b8e717b14d7f6142007106b57089dd8205c809096"
+      }
+    },
+    {
+      "model": "adamw-update-005",
+      "model_sha256": "34e35709b7fdcab77336c14184887f455193da2bfaf0ad2d3227b6b9269837ba",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "cases": 864,
+      "passed": 327,
+      "finished": 854,
+      "different_sampled_sequences": 0,
+      "answer_gains": 0,
+      "answer_losses": 0,
+      "completion_gains": 0,
+      "completion_losses": 0,
+      "fresh_runtime_id": "0c970a91fd7c9975fde1a4aa4503f75d9a0c502567f71f4b2b9cffe14b57a892",
+      "cow_runtime_id": "1d222d36424ce64b1989b5ed8750b2eda6e9030020de45f7adddb615a1168bdc",
+      "fresh_wall_seconds": 584.7629172299057,
+      "cow_wall_seconds": 271.4077075808309,
+      "observed_wall_ratio": 2.1545553088456453,
+      "result_sha256": {
+        "fresh": "feab15cab3da658e461afd1454f331b1106da8fdc6412581683bd585dfe0e749",
+        "cow": "31b6592ca49ca84e70f8f5dfafa1e6181dd72147b201535a77036c9289488021"
+      }
+    }
+  ],
+  "weights_published": false,
+  "timing_caveat": "Observed whole evaluation wall times include model startup and final checks, exclude initial preflight hashing; no isolated hardware benchmark or universal speedup guarantee"
+}
