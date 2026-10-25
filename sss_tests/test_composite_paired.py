@@ -34,6 +34,15 @@ class CompositePairedTests(unittest.TestCase):
             if defect=='unbound':b.pop('candidate_model_contract_id')
             with self.subTest(defect=defect),self.assertRaises(ValueError):compare_frozen_evaluations(a,b,POLICY)
 
+    def test_one_contract_cannot_name_different_weights_hat_or_scale(self):
+        a=self.bound([(False,False)],'d'*64,[dict(sha256='e'*64,scale=1.)])
+        for defect in ('base','hat','scale'):
+            b=copy.deepcopy(a)
+            if defect=='base':b['model_sha256']='f'*64
+            if defect=='hat':b['candidate_adapters'][0]['sha256']='0'*64
+            if defect=='scale':b['candidate_adapters'][0]['scale']=.5
+            with self.subTest(defect=defect),self.assertRaises(ValueError):compare_frozen_evaluations(a,b,POLICY)
+
     def test_legacy_base_only_comparisons_keep_their_existing_shape_and_policy(self):
         a=evidence([(True,True),(False,False)]);b=evidence([(False,True),(True,True)])
         result=compare_frozen_evaluations(a,b,POLICY)

@@ -30,6 +30,10 @@ def compare_frozen_evaluations(baseline,candidate,policy):
     bindings=[measured_candidate_binding(value) for value in (baseline,candidate)]
     if bool(bindings[0])!=bool(bindings[1]):
         raise ValueError('Both evaluations need complete composite identity, or both must be legacy base-only evidence')
+    if (bindings[0] and bindings[0]['candidate_model_contract_id']==bindings[1]['candidate_model_contract_id']
+            and (baseline.get('model_sha256')!=candidate.get('model_sha256')
+                 or bindings[0]['candidate_adapters']!=bindings[1]['candidate_adapters'])):
+        raise ValueError('One composite candidate identity cannot name different base weights or adapters')
     indexed=[]
     for result in (baseline,candidate):
         if result.get('status') != 'COMPLETE' or result.get('weights_updated') is not False or result.get('promoted') is not False:

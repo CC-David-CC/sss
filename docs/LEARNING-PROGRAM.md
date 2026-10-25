@@ -122,3 +122,11 @@ conditional release are distinct from current training authorization.
 gradient coverage, native Muon/AdamW updates, reload and bit-exact completed Muon
 continuation on one RTX PRO 6000. Fixed-compute model learning/retention and the
 actual-model RMS/refinement comparisons remain pending.
+
+
+## Evidence-bound next-block recommendation
+
+Use [the offline next-block planner](NEXT-SKILL-BLOCK.md) to compare original,
+working-parent and candidate evaluations. Version2 names the complete measured
+base/adapter/scale identity, preserves repair and review groups, and keeps the
+strict promotion decision separate. The CLI neither trains nor allocates.

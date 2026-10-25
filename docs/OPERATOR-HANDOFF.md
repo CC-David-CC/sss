@@ -170,3 +170,8 @@ with the exact tested scope, why it matters, next action and evidence/limits.
 For example, the captured Codex workflow needs 16K while pi/OpenCode fit 4K;
 that is a workload-specific tokenizer finding, not a universal client minimum.
 Preserve earlier observations when adding corrections or new evidence.
+
+
+Before selecting the next training parent, read [the next-block identity contract](NEXT-SKILL-BLOCK.md).
+Use the complete version2 next_parent reference; a base GGUF hash alone cannot
+identify a LoRA hat. Resolve it from actual PCC receipts before another job.
