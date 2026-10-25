@@ -1,0 +1,1182 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "assessments": [
+    {
+      "assessment": "adamw-full-u001",
+      "evidence_id": "6d61ea41ef13136f7f7a3b19b5d17e675f9abc54fa706fa3bf8e3360ce6f59ab",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "model_sha256": "1e901a49ee699f1aa98910aafb66f8472b0c66b0cdd10c3fac1ad4e41308bed5",
+      "cases": 864,
+      "passed": 234,
+      "finished": 786,
+      "case_seconds": 2401.1199658522382,
+      "case_distribution": {
+        "minimum": 0.18068318907171488,
+        "median": 0.47778020426630974,
+        "p95": 15.261525542475283,
+        "maximum": 24.76358454208821
+      },
+      "allocated_seconds": 2408.633417483419,
+      "execution_wall_seconds": 2416.7024955330417,
+      "cow_cases": 0,
+      "cow_request_seconds": 0,
+      "cow_generation_seconds": 0,
+      "checkpoint_export_bytes": 0,
+      "checkpoint_import_bytes": 0,
+      "forward_tokens": 1923516,
+      "forward_calls": 11620,
+      "groups": [
+        {
+          "skill_id": "math.add.carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 8.468316910788417
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 11.252124471589923
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 58.14566143788397
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 7.740821884013712
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 7.115443902090192
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 55.570194309577346
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 9.672164634801447
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 8.136015543714166
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 55.69002476520836
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 9.22162504028529
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 8.207262456417084
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 66.82871377561241
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 43.586788315325975
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 30.100021079182625
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 71.89863229822367
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 68.11195821780711
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 149.8226654585451
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 139.1243174439296
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 9.084076354280114
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 12.830343366600573
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 67.30692647211254
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 11.211636886000633
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 11.156598621979356
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 65.00744032952935
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 768.291228636168
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 485.77477713208646
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 161.76418610848486
+        }
+      ]
+    },
+    {
+      "assessment": "adamw-full-u002",
+      "evidence_id": "6018f216675c1a9bf0342bca4698be25f6d96a152af8ad2e988768a745581989",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "model_sha256": "bb61830bbf565806e2e9ed0c19f702805b10662f13376a09da15c275924b67df",
+      "cases": 864,
+      "passed": 283,
+      "finished": 795,
+      "case_seconds": 2394.206988938153,
+      "case_distribution": {
+        "minimum": 0.20730570703744888,
+        "median": 0.5053049274720252,
+        "p95": 15.14274461939931,
+        "maximum": 26.492872298695147
+      },
+      "allocated_seconds": 2395.271228581667,
+      "execution_wall_seconds": 2403.5798990214244,
+      "cow_cases": 0,
+      "cow_request_seconds": 0,
+      "cow_generation_seconds": 0,
+      "checkpoint_export_bytes": 0,
+      "checkpoint_import_bytes": 0,
+      "forward_tokens": 1879330,
+      "forward_calls": 11128,
+      "groups": [
+        {
+          "skill_id": "math.add.carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 9.88452812563628
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 10.646904249675572
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 60.94107293151319
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 8.31220871862024
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 7.267844034358859
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 56.33413685020059
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 9.485902674496174
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 8.16847006417811
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 57.287402365356684
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 9.799567570909858
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 8.415464909747243
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 69.79637621250004
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 35.167151984758675
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 26.753832764923573
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 73.4320129295811
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 98.14920629560947
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 112.09856993239373
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 118.89618987869471
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 9.564784220419824
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 11.902589476667345
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 73.28687955625355
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 11.665189479477704
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 11.778196557424963
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 67.18963510077447
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 798.438561918214
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 427.2905993470922
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 202.25371078867465
+        }
+      ]
+    },
+    {
+      "assessment": "cow-original",
+      "evidence_id": "fc2d9da10d31b31655decc0bcb0fb7dfb39a88af42df80d4fa0ec12d254c4442",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "b076146acda40cc60bb212ebfabb6d1a798b1e752f9e8e0d55b5962b6bfec528",
+      "model_sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764",
+      "cases": 864,
+      "passed": 59,
+      "finished": 415,
+      "case_seconds": 1109.2139892745763,
+      "case_distribution": {
+        "minimum": 0.8191314050927758,
+        "median": 1.4049559240229428,
+        "p95": 1.7416150914505124,
+        "maximum": 2.8067906154319644
+      },
+      "allocated_seconds": 1136.115291829221,
+      "execution_wall_seconds": 1144.4627978941426,
+      "cow_cases": 864,
+      "cow_request_seconds": 801.0567986182868,
+      "cow_generation_seconds": 332.81773844361305,
+      "checkpoint_export_bytes": 19148215176,
+      "checkpoint_import_bytes": 8062939740,
+      "forward_tokens": 123601,
+      "forward_calls": 35996,
+      "groups": [
+        {
+          "skill_id": "math.add.carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 48.21275586914271
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 45.314715097658336
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 46.46091403532773
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 47.6299430783838
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 47.431454167701304
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 46.914245618507266
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 47.94935978855938
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 46.157321624457836
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 47.189422567375004
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 31.482619447633624
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 29.686371472664177
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 46.80608060769737
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 34.64686705637723
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 34.337820544838905
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 32.64191636350006
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 47.60749765019864
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 44.29431312158704
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 38.832139706239104
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 31.91085017938167
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 30.060114050284028
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 47.03846625611186
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 30.464920725673437
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 30.333481227979064
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 36.00600567087531
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 52.38573492504656
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 48.51217474322766
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 38.9064836781472
+        }
+      ]
+    },
+    {
+      "assessment": "muon-fast-refine-full-u001",
+      "evidence_id": "d15a6eb914fb04775fc342cfc4a58cc2ffe359f01ecdf31efd53c439d9cfb763",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "model_sha256": "49a04e1968d768da625dca75883d4208c35cc485911e2a29b547eb9f0dd9e9a7",
+      "cases": 864,
+      "passed": 109,
+      "finished": 587,
+      "case_seconds": 4747.819400900975,
+      "case_distribution": {
+        "minimum": 0.20482423808425665,
+        "median": 2.369516792707145,
+        "p95": 15.547302026301622,
+        "maximum": 26.797960978001356
+      },
+      "allocated_seconds": 4755.032972180285,
+      "execution_wall_seconds": 4762.90046574641,
+      "cow_cases": 0,
+      "cow_request_seconds": 0,
+      "cow_generation_seconds": 0,
+      "checkpoint_export_bytes": 0,
+      "checkpoint_import_bytes": 0,
+      "forward_tokens": 3433065,
+      "forward_calls": 26044,
+      "groups": [
+        {
+          "skill_id": "math.add.carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 313.29888736177236
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 244.6148859495297
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 61.806527874432504
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 311.7659641811624
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 263.2279210817069
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 59.520537729375064
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 311.5549955070019
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 246.27485822793096
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 68.38231922220439
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 14.179141708649695
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 8.259613929316401
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 75.57823001220822
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 68.88968575000763
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 102.72018202394247
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 77.8046899875626
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 313.2082932991907
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 195.6753331720829
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 157.84993688575923
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 24.705497881397605
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 14.207614350132644
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 73.05865975562483
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 30.034667083993554
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 11.947728339582682
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 68.80285469535738
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 805.552515309304
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 490.66511364653707
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 334.2327459352091
+        }
+      ]
+    },
+    {
+      "assessment": "muon-rms-decay-full-u001",
+      "evidence_id": "d15a6eb914fb04775fc342cfc4a58cc2ffe359f01ecdf31efd53c439d9cfb763",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "model_sha256": "49a04e1968d768da625dca75883d4208c35cc485911e2a29b547eb9f0dd9e9a7",
+      "cases": 864,
+      "passed": 109,
+      "finished": 587,
+      "case_seconds": 4612.872773132287,
+      "case_distribution": {
+        "minimum": 0.20777033362537622,
+        "median": 2.22783244214952,
+        "p95": 15.400253820233047,
+        "maximum": 26.57049605809152
+      },
+      "allocated_seconds": 4620.104379455559,
+      "execution_wall_seconds": 4628.117460618727,
+      "cow_cases": 0,
+      "cow_request_seconds": 0,
+      "cow_generation_seconds": 0,
+      "checkpoint_export_bytes": 0,
+      "checkpoint_import_bytes": 0,
+      "forward_tokens": 3433065,
+      "forward_calls": 26044,
+      "groups": [
+        {
+          "skill_id": "math.add.carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 303.379997799173
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 237.55374713707715
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 59.744887517765164
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 303.9932323312387
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 254.69379223231226
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 57.206848616711795
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 302.1874963771552
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 239.80262672435492
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 65.81845438107848
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 13.89049066323787
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 8.04202273208648
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 72.46498597227037
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 66.89160250872374
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 99.29024039953947
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 73.16678357124329
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 303.0967551069334
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 190.02899705059826
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 153.80401207413524
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 23.937072434462607
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 13.935579204931855
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 70.60302365478128
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 29.148287013173103
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 11.23959278408438
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 66.73469497356564
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 784.512071675621
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 485.7984600625932
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 321.9070181334391
+        }
+      ]
+    },
+    {
+      "assessment": "muon-standard-full-u001",
+      "evidence_id": "c2f0fabfb38e74c85ffa1e4be6a1bb18c2871a25819e9ad961c5e5174d273340",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "model_sha256": "c6827033c82541417b3ba0ff1fffebc58aecad73434c5d7e151a33ca1b457399",
+      "cases": 864,
+      "passed": 109,
+      "finished": 587,
+      "case_seconds": 5211.084132269956,
+      "case_distribution": {
+        "minimum": 0.19954619463533163,
+        "median": 2.4652430918067694,
+        "p95": 17.675554395653307,
+        "maximum": 28.603018095716834
+      },
+      "allocated_seconds": 5218.9945833627135,
+      "execution_wall_seconds": 5227.329178142361,
+      "cow_cases": 0,
+      "cow_request_seconds": 0,
+      "cow_generation_seconds": 0,
+      "checkpoint_export_bytes": 0,
+      "checkpoint_import_bytes": 0,
+      "forward_tokens": 3433915,
+      "forward_calls": 26053,
+      "groups": [
+        {
+          "skill_id": "math.add.carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 348.4538071192801
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 275.74241535086185
+        },
+        {
+          "skill_id": "math.add.carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 65.14092493150383
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 351.34594956506044
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 296.03136456478387
+        },
+        {
+          "skill_id": "math.add.no_carry",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 60.90436314512044
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 348.8354293368757
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 279.5983238257468
+        },
+        {
+          "skill_id": "math.add.signed",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 71.18894323986024
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 16.56627157703042
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 9.270848842337728
+        },
+        {
+          "skill_id": "math.divide",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 75.79027997981757
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 77.77065623924136
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 115.72258278168738
+        },
+        {
+          "skill_id": "math.fraction",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 80.12382543738931
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 346.680377737619
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 220.08287593815476
+        },
+        {
+          "skill_id": "math.fraction.add",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 161.53310487233102
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 26.798085127025843
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 16.663214604370296
+        },
+        {
+          "skill_id": "math.multiply",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 75.48585998266935
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 33.48967406898737
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 12.98662721272558
+        },
+        {
+          "skill_id": "math.place_value",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 71.46325770765543
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "composition",
+          "cases": 32,
+          "seconds": 889.0782024860382
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "independent",
+          "cases": 32,
+          "seconds": 537.6140228435397
+        },
+        {
+          "skill_id": "state.registers",
+          "gate": "transfer_recovery",
+          "cases": 32,
+          "seconds": 346.7228437522426
+        }
+      ]
+    }
+  ],
+  "report_id": "68582923361ebb759486e4710fa122534076fb8acd3513993486051f79c47020",
+  "timings": [
+    {
+      "workers": 1,
+      "wall_seconds": 6.196810374036431,
+      "method": "Independent CPU processes; deterministic merge by assessment label"
+    },
+    {
+      "workers": 4,
+      "wall_seconds": 0.3044533897191286,
+      "method": "Independent CPU processes; deterministic merge by assessment label"
+    },
+    {
+      "workers": 4,
+      "wall_seconds": 0.2126790713518858,
+      "method": "Independent CPU processes; deterministic merge by assessment label"
+    },
+    {
+      "workers": 1,
+      "wall_seconds": 0.3737740144133568,
+      "method": "Independent CPU processes; deterministic merge by assessment label"
+    }
+  ],
+  "serial_parallel_content_identical": true,
+  "available_cpu_cores": 256,
+  "source_sha256": {
+    "sha256": "abe85fe32be791b40839ff529a093bff4033e140851b5c65a665e5ff3591bce6",
+    "files_sha256": {
+      "sss/studies/execution_analysis.py": "cc3b039323b678fa384d802cbe169254fb903f3c90820b20c37d9056c6ecbf3e",
+      "sss_integration/execution_analysis.py": "cfe1a1d28979d5f772aa64d17bccf1484e92e57a392ea33cec953af65419f7ff",
+      "sss_tests/test_execution_analysis.py": "5353b555afab5f3664a238d8a452c0b5609d65fb734d740c734f81068a0e7b5f"
+    }
+  },
+  "weights_updated": false,
+  "gpu_used": false,
+  "timing_scope": "CPU analysis of completed artifacts, cached/shared storage; not inference or training speedup"
+}

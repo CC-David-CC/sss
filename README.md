@@ -177,3 +177,6 @@ response completions. The first AdamW candidate reaches 482/864 exact answers an
 but is rejected for 11 lost prior passes. Muon comparisons are still running.
 [Current baseline, learning plan and reproducible evidence](docs/MINICPM-NATIVE-LEARNING.md).
 Broader optimizer ablations are stretch goals.
+
+
+[First complete original-model data block](docs/COW-FIRST-DATA-BLOCK.md): 864 identical token sequences and outcomes; 116.5 to 19.1 minutes on shared A100 cards. The trained-model comparison is still running.

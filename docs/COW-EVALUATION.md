@@ -112,3 +112,6 @@ evaluators and other harnesses have not all been migrated by this change.
 
 PCC's implementation and numerical evidence are described in
 [COW-EVALUATION.md](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-learning-curves-20261024/docs/COW-EVALUATION.md).
+
+
+[First complete original-model data block](COW-FIRST-DATA-BLOCK.md): 864 identical token sequences and outcomes; 116.5 to 19.1 minutes on shared A100 cards. The trained-model comparison is still running.

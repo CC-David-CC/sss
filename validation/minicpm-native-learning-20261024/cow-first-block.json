@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "status": "COMPLETE_FIRST_ORIGINAL_MODEL_BLOCK",
+  "scope": "Same original MiniCPM F32, cases, exact checker and greedy limits; different evaluation execution paths",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "model_sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764",
+  "cases": 864,
+  "fresh": {
+    "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+    "passed": 59,
+    "finished": 415,
+    "status": "COMPLETE",
+    "allocated_seconds": 6979.196530860849,
+    "execution_wall_seconds": 6987.255383333191,
+    "physical_gpus": 1,
+    "completed_cases": 864,
+    "model_calls": 35132,
+    "prefill_tokens": 4523170,
+    "weights_updated": false
+  },
+  "cow": {
+    "runtime_id": "b076146acda40cc60bb212ebfabb6d1a798b1e752f9e8e0d55b5962b6bfec528",
+    "passed": 59,
+    "finished": 415,
+    "status": "COMPLETE",
+    "allocated_seconds": 1136.115291829221,
+    "execution_wall_seconds": 1144.4627978941426,
+    "physical_gpus": 1,
+    "completed_cases": 864,
+    "model_calls": 35996,
+    "prefill_tokens": 123601,
+    "weights_updated": false
+  },
+  "identical_sampled_sequences": 864,
+  "identical_answer_outcomes": 864,
+  "identical_completion_outcomes": 864,
+  "evaluation_wall_speedup": 6.1052708713555575,
+  "evaluation_wall_seconds_saved": 5842.792585439049,
+  "allocated_gpu_seconds_saved": 5843.081239031628,
+  "timing_scope": "Different shared A100 cards; other users active, loads uncontrolled. Evaluation wall includes model startup and final checks; preflight input hashing before the evaluator timer is excluded. This is not whole-training-loop speedup or an isolated hardware benchmark.",
+  "result_sha256": {
+    "fresh": "1bf154d4c3749d8547161bfb0e62a6fd4a987dd4ff63d7acd01c19c811a55fc0",
+    "cow": "281a409940769dcd966550bf5434c6ccf874ea75beaad577c7bf65e3a93644e1"
+  },
+  "weights_updated": false,
+  "promoted": false,
+  "report_id": "e8ea1d8af8b0cf20bb540b7064fbc4e586a06abf4f9e93a65504c6b47f7836a8"
+}
