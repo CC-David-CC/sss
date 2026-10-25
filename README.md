@@ -1,5 +1,7 @@
 # Skills³ (S³)
 
+[LoRA rank extension: 1, 2, 3, 4, 8 alongside 16](docs/LORA-RANK-EXTENSION.md) adds five independent 68-update arms with the same frozen practice and questions. First results are pending.
+
 [The durable learning loop: ELI5, master's, PhD, and applied guide](docs/LEARNING-MACHINERY.md) explains ownership, recovery, paired learning/forgetting, expanding assessments, commands, and current qualification limits. The new machinery checks are separate from the fixed 68-update comparison.
 
 
