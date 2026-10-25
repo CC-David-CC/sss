@@ -1,39 +1,57 @@
 # Learning through the shared-root COW evaluator
 
-The new A100 runtime has a complete original-model baseline and six completed
-training assessments in this snapshot. All use the same frozen 864 development
+This snapshot contains 25 completed A100 training assessments and the original-model
+baseline, captured 2026-10-25T08:44:52Z. All use the same frozen 864 development
 questions, exact checker, 512-token context, greedy decoding and 64-token output
 limit. Each native update presents the next 27 examples from the fixed practice
 stream. No evaluation answers enter that stream.
 
-![Completed shared-root learning observations](images/cow-shared-learning.svg)
+![Measured shared-root learning and forgetting](images/cow-shared-learning.svg)
+
+The graph now shows correct answers, natural stopping, previously wrong answers
+gained, and original successes lost. Every plotted point is a complete assessment;
+gaps are not interpolated. The loss panel is out of the original model's 59
+successes, rather than all 864 questions.
+
+Latest completed point in each regimen (these update counts differ):
 
 | Regimen | Completed updates | Correct / 864 | Naturally finished / 864 | Newly correct vs original | Original successes lost |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Original | 0 | 59 | 415 | 0 | 0 |
-| AdamW full | 5 | 327 | 854 | 277 | 9 |
-| AdamW full | 6 | 349 | 855 | 302 | 12 |
-| Standard Muon full | 3 | 216 | 698 | 160 | 3 |
-| Standard Muon full | 4 | 247 | 804 | 191 | 3 |
-| RMS/decay Muon full | 3 | 219 | 700 | 163 | 3 |
-| Fast-to-refine Muon full | 3 | 219 | 700 | 163 | 3 |
+| AdamW full | 9 | 389 | 858 | 345 | 15 |
+| Standard Muon full | 10 | 321 | 851 | 273 | 11 |
+| RMS/decay Muon full | 7 | 285 | 851 | 235 | 9 |
+| Fast-to-refine Muon full | 6 | 274 | 851 | 223 | 8 |
 
-AdamW update 6 gains 302 previously wrong answers and loses 12 original
-successes: a net gain of 290 over the original's 59. The losses remain visible
-by skill and gate in the aggregate evidence. A larger total is useful progress,
-but it does not erase forgetting or establish broad model quality.
+At a common six updates, every regimen has seen 162 practice presentations:
 
-This is an incomplete learning curve, not an optimizer ranking. The rates and
-regimens differ, and these rows have different update counts. The earlier
-checkpoints still need assessments under this exact runtime; an independent
-backfill job is doing that without replaying their native updates. Identical
-weight artifacts can reference one assessment, with explicit aliases rather
-than being represented as independent trials.
+| Regimen at update 6 | Correct / 864 | Naturally finished / 864 | Newly correct | Original successes lost |
+| --- | ---: | ---: | ---: | ---: |
+| AdamW full | 349 | 855 | 302 | 12 |
+| Standard Muon full | 270 | 846 | 218 | 7 |
+| RMS/decay Muon full | 271 | 847 | 220 | 8 |
+| Fast-to-refine Muon full | 274 | 851 | 223 | 8 |
+
+These are observations under the predeclared settings, not an optimizer ranking
+or a claim that any learning rate is optimal. A larger total does not erase the
+original successes lost. The original model's 59 successes are a small reference
+set; the separate per-skill and gate aggregates remain in the data.
+
+Earlier checkpoints are being backfilled under this exact runtime without
+replaying their native updates. Identical weight artifacts can reference one
+assessment, with explicit aliases rather than being counted as independent
+trials. The artifact preserves each observed point and every skill/gate change.
 
 The controlled 68-update comparison keeps its declared practice stream fixed.
 Changing lessons for only one arm midway would change the experiment. A later
 adaptive block can use the observed failure families to generate new verified
 practice and mixed review, without copying these development answers.
+
+The separately bound LoRA hat has passed a bounded direct-COW native check.
+Its full assessments and continued training have their own execution amendment;
+the original merge-equivalence failure is retained. LoRA scores are not silently
+joined into this full-weight runtime series. See [the direct-hat study and
+limits](COW-LORA-EVALUATION.md).
 
 ## Execution and timing
 
@@ -62,5 +80,5 @@ The runs are repeatedly observed development measurements. Sealed acceptance,
 the complete 68-update curves, the matched-practice LoRA curve and broad
 administration/tool/research qualification remain unfinished.
 
-[Aggregate counts, skill/gate changes and evidence identities](../validation/minicpm-native-learning-20261024/shared-learning-block-z.json).
+[Aggregate counts, skill/gate changes and evidence identities](../validation/minicpm-native-learning-20261024/shared-learning-block-aj.json).
 The raw private responses and model files are not published.
