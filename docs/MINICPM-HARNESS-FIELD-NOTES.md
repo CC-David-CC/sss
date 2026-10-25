@@ -328,3 +328,36 @@ This result belongs to fixed-weight harness development. The separate
 weights, learning and forgetting. Neither experiment should take credit for the
 other's improvements. Fresh transfer and reliable explicit completion are still
 required before adopting compact feedback as a default.
+
+
+## A valid partial action can still fail to become a tool call
+
+An opt-in one-sentence BW instruction change clarified that finish requests the
+host's final verification rather than requiring that verification beforehand.
+Its fresh paired probe produced **two graded failures, one ungraded timeout and
+thirteen unrun workflows**. Both completed attempts failed before editing or
+named checks, so this probe did not reach the check-ready finalization state.
+It provides no isolated wording benefit or general failure rate.
+
+The timeout spent six 512-token chunks on one still-unclosed shell-action JSON.
+That proposed command never became an admitted shell invocation. Earlier reads
+and one earlier shell had executed, but no edit or named check was reached.
+The guard stopped before grading the timed-out workspace and launching later
+tasks. The original coordinator reported cancellation with durable=false and
+coordinator-process scope. The pending client journal was retained as abandoned,
+not rewritten as complete or replayed. The owned server was then released.
+
+The completed receipts contain 3,144 output tokens, of which 3,072 belonged to
+that unfinished action. The cancelled request's additional output and cost are
+unknown. These counts describe action-completion failure; they do not identify
+context exhaustion, prove a model-training remedy, or explain the separate
+ready-but-unfinished diagnostic. A constrained action prefix and successful task
+completion are distinct observations.
+
+[Exact partial results and provenance](../validation/learning-program-20261024/minicpm-bw-finish-request-20261025-bi.json)
+and [BW's mechanism, bounds and limits](https://github.com/CC-David-CC/BranchWrite/blob/feat/native-learning-path-20261024/docs/FINISH-REQUEST-CONTRACT.md)
+retain the distinction. The combined BW source passed 166 focused CPU mechanics
+checks after integrating the separate discovery-fixture repair. No model learned
+from this experiment and no behavior default was promoted. A training lesson
+still needs an independently verified correction; a stopped failure alone is
+not a verified target.
