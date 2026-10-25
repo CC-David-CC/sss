@@ -7,6 +7,23 @@ import subprocess
 import sys
 
 
+def shared_input_prefix(prefixes):
+    """Exact common rendered input only; no answer or lesson information."""
+    if (type(prefixes) is not list or not prefixes
+            or any(type(row) is not list or not row
+                or any(type(token) is not int or token < 0 for token in row) for row in prefixes)):
+        raise ValueError('Explicit nonempty rendered token prefixes required')
+    shared = list(prefixes[0])
+    for row in prefixes[1:]:
+        length = 0
+        for left, right in zip(shared, row):
+            if left != right: break
+            length += 1
+        del shared[length:]
+        if not shared: break
+    return shared
+
+
 def runtime_binding(profile):
     """Identify execution independently of candidate weights and GPU placement.
 

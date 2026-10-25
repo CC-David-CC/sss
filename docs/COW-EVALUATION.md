@@ -97,9 +97,11 @@ canonical COW requests returned identical token sequences.
 The small forward-work timing included a COW restore/append check: fresh
 contexts took 4.65/3.36 seconds; COW took 0.66/0.70 seconds. This is not the
 end-to-end training-loop speedup. Other users were active on the shared GPU.
-Full 864-case assessments of the original model and AdamW update 1 are being
-measured separately, with per-case token and score comparisons. No aggregate
-answer equivalence or full-run speedup is claimed from the small probe alone.
+Full 864-case assessments of the original model and AdamW update 1 are complete:
+all sampled token sequences and outcomes matched for both models. Observed
+evaluation wall ratios were 6.1x and 2.7x respectively, on different shared
+A100 cards with uncontrolled other loads. These are separate full measurements,
+not a universal lower bound or a whole-training-loop speedup.
 
 The first source-only full-assessment package omitted the curriculum catalog
 and failed before inference. Its failure is retained; the corrected package
@@ -114,4 +116,24 @@ PCC's implementation and numerical evidence are described in
 [COW-EVALUATION.md](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-learning-curves-20261024/docs/COW-EVALUATION.md).
 
 
-[First complete original-model data block](COW-FIRST-DATA-BLOCK.md): 864 identical token sequences and outcomes; 116.5 to 19.1 minutes on shared A100 cards. The trained-model comparison is still running.
+[First complete original-model data block](COW-FIRST-DATA-BLOCK.md): 864 identical token sequences and outcomes; 116.5 to 19.1 minutes on shared A100 cards. The trained-model comparison also matched all 864 sequences, with 40.3 to 15.1 minutes observed.
+
+## Reuse a shared input root
+
+Add `--cow-shared-prefix` to the explicit COW command. S3 computes the exact
+longest common prefix of all frozen rendered inputs, without using answers.
+PCC prepares that root once with the existing `create_with_reuse`; each question
+uses the existing `run_greedy_request` from that root plus its own input suffix.
+Only the immutable common root is retained between questions. Case-tail RAM
+materializations are evicted, and durable response evidence is kept.
+
+The flag requires a nonempty common input and a compatible PCC adapter. Setup
+work is recorded in `shared-prefix-setup.json`, included once in model-work
+totals, and reported separately from per-case suffix/decode work. The policy,
+prefix length and token digest enter the runtime identity. Establish a new
+baseline for this declared execution schedule; do not merge old and new runtime
+curves silently. The actual full shared-root baseline is currently running.
+
+[Independent case shards and checked CPU merges](COW-EVALUATION-SHARDS.md)
+can be composed with this option. Each worker prepares its own root and records
+that setup; this does not share native contexts between processes or GPUs.

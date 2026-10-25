@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "status": "PARTIAL_CURVE",
+  "scope": "Frozen earlier fresh A100 runtime; do not silently join new shared-root runtime",
+  "points": [
+    {
+      "arm": "adamw-full",
+      "update": 2,
+      "presentations": 54,
+      "passed": 283,
+      "finished": 795,
+      "model_sha256": "bb61830bbf565806e2e9ed0c19f702805b10662f13376a09da15c275924b67df",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "parent_scientific_protocol_id": "667eaafe5dfc24bcc48a93e17350351c6080a5985f196761fe7503ad7f08ee9b"
+    },
+    {
+      "arm": "adamw-full",
+      "update": 3,
+      "presentations": 81,
+      "passed": 295,
+      "finished": 851,
+      "model_sha256": "80531356d6b9ae7db37646cec1718eddbe9d186461881181498978ef28b7dbfc",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "parent_scientific_protocol_id": "667eaafe5dfc24bcc48a93e17350351c6080a5985f196761fe7503ad7f08ee9b"
+    },
+    {
+      "arm": "adamw-full",
+      "update": 4,
+      "presentations": 108,
+      "passed": 309,
+      "finished": 857,
+      "model_sha256": "f5e40545e9dc4a5af2edd16aba62d58d24da880b0c7b511b967f8c5c42702f4a",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "parent_scientific_protocol_id": "667eaafe5dfc24bcc48a93e17350351c6080a5985f196761fe7503ad7f08ee9b"
+    },
+    {
+      "arm": "muon-standard-full",
+      "update": 2,
+      "presentations": 54,
+      "passed": 164,
+      "finished": 614,
+      "model_sha256": "a77102dbfd551b8111538a6c28a21b15d8445a6fcd0dbeb574f7a39a8bc34f63",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "parent_scientific_protocol_id": "667eaafe5dfc24bcc48a93e17350351c6080a5985f196761fe7503ad7f08ee9b"
+    },
+    {
+      "arm": "muon-rms-decay-full",
+      "update": 2,
+      "presentations": 54,
+      "passed": 165,
+      "finished": 615,
+      "model_sha256": "b3a4cc05ca8a6976a161afee182c80defa2fcbb3cd0cbd73682545578eae452c",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "parent_scientific_protocol_id": "667eaafe5dfc24bcc48a93e17350351c6080a5985f196761fe7503ad7f08ee9b"
+    },
+    {
+      "arm": "muon-fast-refine-full",
+      "update": 2,
+      "presentations": 54,
+      "passed": 165,
+      "finished": 615,
+      "model_sha256": "b3a4cc05ca8a6976a161afee182c80defa2fcbb3cd0cbd73682545578eae452c",
+      "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+      "parent_scientific_protocol_id": "667eaafe5dfc24bcc48a93e17350351c6080a5985f196761fe7503ad7f08ee9b"
+    }
+  ]
+}

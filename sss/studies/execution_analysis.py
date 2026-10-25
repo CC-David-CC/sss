@@ -66,6 +66,8 @@ def _analyze_one(item):
             import_bytes += _number(receipt['counters']['checkpoint_import_bytes'])
     if seen != expected.keys() or len(indices) != result['cases']:
         raise ValueError('Missing or duplicated response evidence')
+    setup_calls=_number(result.get('setup_model_calls',0))
+    setup_tokens=_number(result.get('setup_prefill_tokens',0))
     if (directory/'result.json').read_bytes() != raw:
         raise ValueError('Assessment changed during CPU analysis')
     ordered = sorted(seconds)
@@ -78,7 +80,8 @@ def _analyze_one(item):
         execution_wall_seconds=_number(settlement['execution_wall_seconds']),
         cow_cases=len(request_seconds), cow_request_seconds=sum(request_seconds),
         cow_generation_seconds=sum(generation_seconds), checkpoint_export_bytes=export_bytes,
-        checkpoint_import_bytes=import_bytes, forward_tokens=consumed_tokens, forward_calls=calls,
+        checkpoint_import_bytes=import_bytes, forward_tokens=consumed_tokens+setup_tokens, forward_calls=calls+setup_calls,
+        setup_forward_tokens=setup_tokens,setup_forward_calls=setup_calls,
         groups=[dict(skill_id=k[0], gate=k[1], **v) for k, v in sorted(groups.items())])
 
 

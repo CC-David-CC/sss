@@ -4,10 +4,20 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock
 
-from sss.adapters.cow_evaluation import validate_profile, token_completion, runtime_binding
+from sss.adapters.cow_evaluation import validate_profile, token_completion, runtime_binding, shared_input_prefix
 
 
 class CowEvaluationTests(unittest.TestCase):
+    def test_common_input_prefix_is_exact_detached_and_never_includes_a_question_suffix(self):
+        inputs = [[1, 2, 3], [1, 2, 4, 5], [1, 2]]
+        prefix = shared_input_prefix(inputs)
+        self.assertEqual(prefix, [1, 2])
+        prefix.append(9)
+        self.assertEqual(inputs[0], [1, 2, 3])
+        self.assertEqual(shared_input_prefix([[1], [2]]), [])
+        with self.assertRaises(ValueError): shared_input_prefix([[True], [1]])
+        with self.assertRaises(ValueError): shared_input_prefix([[]])
+
     def profile(self):
         return dict(model_path='/tmp/model.gguf', model_weights_sha256='a'*64,
                     execution=dict(capacity=512, prefill_chunk=512,
