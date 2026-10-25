@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "numeric-byte-contract",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da"
+    },
+    {
+      "name": "sss-policy-regression",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "947fef0c2f07194e89e248e468b7335957ac462db96a1ac3dfc0f28ae8719d2d"
+    },
+    {
+      "name": "optional-import-boundary",
+      "exit_code": 0,
+      "stdout_sha256": "7ce6863d84e03b8af62d162f447ac978a1490e09d801e90fe0099493386a8a90",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "unit_tests": 2,
+  "policy_regression_tests": 13,
+  "optional_module_import_requires_numpy_bw_pcc": false,
+  "scope": "CPU validation of the released comparison helper; actual GPU run and stored-artifact recheck have separate receipts"
+}

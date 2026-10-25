@@ -148,8 +148,10 @@ An offline sweep candidate is still not automatically a registered service job.
 now work through BW and COW, with fixed updates and a pinned rank. Schema-1
 policies remain full-only, and the default LoRA CLI recipe remains legacy SGD.
 The actual CPU integration checks exact continued weights/moments, fresh new
-blocks, partial batches and frozen retries. It does not establish model learning
-or an unattended loop. The ongoing fixed-practice study is not reconfigured
+blocks, partial batches and frozen retries. A separate MiniCPM A100 probe now
+qualifies the registered route through both clients: whole adapter and optimizer
+files match after resumed versus uninterrupted updates. Its short checked
+practice example does not establish held-out learning or an unattended loop. The ongoing fixed-practice study is not reconfigured
 by these additions.
 
 
@@ -166,7 +168,13 @@ and LoRA 1e−4. It is not an isolated capacity ablation, a universal LoRA advan
 or a release decision. This short slice reports totals; per-case retention,
 parent-to-parent churn, the full 68-update curves and broader task coverage still
 matter. It motivates the explicit registered LoRA optimizer path now tested
-through both clients; it does not itself qualify that service path on a GPU.
+through both clients. The separate short real-model GPU probe below qualifies
+that integration case, without turning this development observation into acceptance.
 
 [Actual checkpoint/configuration/evaluation receipts](../validation/minicpm-native-learning-20261024/common-update21-ay.json)
 keep the measured counts separate from the CPU integration's controlled scores.
+
+
+## Registered LoRA: actual-model integration checkpoint
+
+The [repeatable owner probe](REGISTERED-LORA-MODEL-PROBE.md) now joins checked S3 practice, the actual MiniCPM renderer, both CLIs and PCC native training on an A100. It verifies exact saved-state continuation and retry behavior. The durable multi-round coordinator and learning/forgetting acceptance remain separate unfinished requirements.

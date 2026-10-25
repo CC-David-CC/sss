@@ -203,6 +203,6 @@ wall time is a measured cost.
 PCC artifacts before another update. The optional bridge recomputes the saved
 S³ proposal and preserves exact identities without dispatching training.
 
-[Registered LoRA AdamW through BW and COW](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-learning-curves-20261024/docs/REGISTERED-LORA-ADAMW.md) now has real tiny CPU checks for exact continuation, new lesson blocks and retry safety. It is explicit and optional; existing default training recipes are unchanged.
+[Registered LoRA AdamW through BW and COW](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/native-learning-curves-20261024/docs/REGISTERED-LORA-ADAMW.md) now has real CPU checks and a short MiniCPM A100 qualification through both actual clients. Resumed and uninterrupted GPU updates produced identical adapter and optimizer-state file hashes. It is explicit and optional; existing default training recipes are unchanged.
 
 The [current learning and forgetting graph](docs/COW-SHARED-ROOT-LEARNING.md) contains 118 scored checkpoint positions, including an equal-practice comparison at update 19 and the observed LoRA setback at update 24. These are continuing development trajectories, not a completed optimizer ranking or accepted model release.
