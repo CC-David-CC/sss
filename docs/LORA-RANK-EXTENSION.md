@@ -130,3 +130,12 @@ The earlier broader matrix-gradient numerical failures remain unresolved.
 
 [Full snapshot and continuation receipts](../validation/lora-rank-extension-20261025-bh/README.md)
 were captured at 2026-10-25T20:32:01Z. The original five-series graph stays separate.
+
+### Rank 1, update 2
+
+The later [completed assessment](../validation/lora-rank-extension-20261025-bh/rank1-update2.json)
+scored 61/864 correct and 452 naturally finished after 54 presentations. Against
+the original, answers gained/lost were 2/0 and completions gained/lost were 46/9.
+The strict no-prior-completion-loss promotion check rejects this candidate;
+its evidence is retained and the fixed-update study continues. An improving
+net score and a failed retention gate can both be true.
