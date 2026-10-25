@@ -1,5 +1,8 @@
 # First COW evaluation data block
 
+[New shared-root learning observations and graphs](COW-SHARED-ROOT-LEARNING.md)
+are reported separately under their own matching runtime and baseline.
+
 The original MiniCPM5-2B F32 completed the same 864 questions with **identical
 sampled token sequences, answer outcomes and completion outcomes** through
 both execution paths. Both scored **59 correct and 415 naturally finished**.
