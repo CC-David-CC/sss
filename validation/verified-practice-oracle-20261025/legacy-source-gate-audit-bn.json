@@ -1,0 +1,131 @@
+{
+  "conclusion": "No inspected historical passed Python artifact uses the audited alias/default/shadow/callback mechanisms; the weak gate still requires hardening.",
+  "counts": {
+    "flagged_alias_pattern_artifacts": 0,
+    "legacy_helper_verdicts": 255,
+    "legacy_non_python_verdicts": 108,
+    "missing_python_source_copies": 0,
+    "published_report_references": 175,
+    "published_report_references_matched": 175,
+    "python_artifact_observations": 147,
+    "python_failed": 4,
+    "python_passed": 143,
+    "raw_verdict_checksums_verified": 257,
+    "unique_failed_sources": 4,
+    "unique_passed_sources": 17,
+    "unique_python_sources": 21
+  },
+  "helper_sha256": "c9d3e5406ba5720c005712fc751129308dda037239a8d2850839d997819f1f2c",
+  "kind": "sss.legacy-source-gate-retrospective.v1",
+  "limitations": [
+    "This is a targeted retrospective AST review, not a security certification or complete Python data-flow proof.",
+    "The legacy pure_function gate remains structurally weak; absence of observed exploitation does not make it safe for future untrusted lessons.",
+    "Scope covers archived BW/native/external harness outputs supporting the five named published reports, not every unpublished history or other machine.",
+    "Traversal excludes dependency/install/store/cache directories, descends at most eight relative directory levels, and reads JSON files no larger than500000bytes. Oversized grade-like files found are recorded separately.",
+    "No student source, checker, model, native engine, test or build was executed or imported; behavior was not regraded.",
+    "Pattern scan does not resolve arbitrary alias chains or prove absence of every possible exploit. Sources are matched to historical verdicts by exact recorded file SHA.",
+    "108 legacy-helper shell verdicts do not exercise pure_function and were not subjected to a Python alias scan.",
+    "Fresh finish-family references and actual shell verdicts are separately scoped; no conclusion is drawn about new unpublished oracle work."
+  ],
+  "methods": {
+    "ast_only": true,
+    "file_hash": "SHA256 of exact file bytes",
+    "gpu_calls": 0,
+    "model_calls": 0,
+    "product_or_frozen_edits": 0,
+    "scanned_patterns": [
+      "explicit dangerous callable Name references",
+      "function defaults",
+      "allowed-call/function-name parameter shadowing",
+      "allowed-call/function-name Store assignments",
+      "nested functions",
+      "key callbacks"
+    ],
+    "source_list_digest": "SHA256 of lexicographically sorted unique source SHA256 strings joined by LF plus one final LF",
+    "student_executions": 0,
+    "student_imports": 0,
+    "verdict_checksum": "SHA256 of UTF-8 json.dumps(record_without_evidence_sha256, sort_keys=True, separators=(',', ':'), ensure_ascii=False, allow_nan=False)"
+  },
+  "passed_python_families": {
+    "locate": 46,
+    "total": 54,
+    "unique": 43
+  },
+  "raw_protected_source_included": false,
+  "recorded_utc": "2026-10-25T23:55:23.930010+00:00",
+  "reports": [
+    {
+      "file_sha256": "44bcf88b4e27ca04f9bb95eeafccfe62c75c0ae368913a5324d3281adc841339",
+      "matched_count": 5,
+      "python_reference_count": 3,
+      "reference_count": 5,
+      "report_id": "minicpm-bw-foundations.json"
+    },
+    {
+      "file_sha256": "1148ba5e57b0fc9a2c219aa838b5633fa5c3791644796f742809548993ebefed",
+      "matched_count": 20,
+      "python_reference_count": 12,
+      "reference_count": 20,
+      "report_id": "minicpm-bw-shell-investigation.json"
+    },
+    {
+      "file_sha256": "1d02b0eb6323fe8a28a463e504ae5e09576b535dea468e1ee46fce15ea3e6d3c",
+      "matched_count": 20,
+      "python_reference_count": 12,
+      "reference_count": 20,
+      "report_id": "minicpm-bw-check-progress-20261025.json"
+    },
+    {
+      "file_sha256": "609992aef4d894998159d2ad0f29250871067a15be3f06ea5ee0a3e2cca96668",
+      "matched_count": 120,
+      "python_reference_count": 72,
+      "reference_count": 120,
+      "report_id": "minicpm-harness-development-screen.json"
+    },
+    {
+      "file_sha256": "68fee2d04f0d2ff3f79cc5d9d76734b506915baa2fece3592734e80d8747dfcf",
+      "matched_count": 10,
+      "python_reference_count": 6,
+      "reference_count": 10,
+      "report_id": "minicpm-bw-compact-feedback-20261025-bh.json"
+    }
+  ],
+  "schema": 1,
+  "security_certification": false,
+  "source_sha256_list_digest": "cd3e4a0a72074f150cb944c13bacf050244d1f613c5663843d48206ffcd9a651",
+  "source_sha256s": [
+    "019ca6f60a4703cc0f8c4071c5108adf06ed5cac5ea51131b55db436e36a8a89",
+    "06ee4bfec9afdf2576fb001d57bebcdcea84632cedb1b2d78f965e456714b0af",
+    "0fb2d3ef6d5f298dca47cbc77a9a5b80db1a95cc9ddd2249e4a83b83e28540d0",
+    "2e6d964f8c7abe5ee6cf0f33d990451a5f7b7975833eb77bee9802765909637c",
+    "3251dbf18617cd67c47707cb9bd1611dbac212ff0ee9814a75b8ce1f34b85aad",
+    "3981401ac47d12128733f73e09f318afc3f43155132a0a4f75d969f25f56633f",
+    "3bcb3038ccc9f43cb0bdbb0181ed034bc49da2a9a0de9e926663a2010cf110a7",
+    "3df43b4bfecee33ac8291f15368bc6ab4c576c45cf7697f812520fd325454930",
+    "42006f6369e0eb470b912ada425d2164185590b12e745d8f14047a6590da87de",
+    "4abb93e97afc7dd1399ee0c7cc56216aa37c20133854cf30714bf60636d18a3b",
+    "65f32e99be4c9ff8a15ce60b4ea0f35aef5d6dca0caa33c0ab1f048f23affa80",
+    "71857c56a64eb6cf76d27f3b979acb0d4a64198b5cee36b56b661c3089bb9aeb",
+    "9060b376393f10d420c5cbe4f5c8cd48cddc440f61eabc393a1406e5c7d29d9b",
+    "9a9a1a8835b22e72b817293ed1d4fd1c35ab0f86844bd8d0a2089867da8918f4",
+    "a40ea2dd68ee7739d4736ffae76c1dc6a852de498d59ce8f5f438f38423c0a29",
+    "af1c4f93f14744e626d391dbe9945ecc6488a4896bc35fcb8e302026c0f50fef",
+    "c2da0f52f0259e4833580ef684c8ad43f20d844487d9f7fcef731bbb02a0178e",
+    "c73703b64a2b7ede5f36f7864b273557a1f10f9fc5cd41d212bce851ad542b61",
+    "c7eebcbe2b41e24d1331009f00d85616b83cf244d26dc097bcd7d9b2b16b8d93",
+    "dacd02dbdfbdb71195e97e97cd9592bc02b21c444d455c544e86530a9dd64e8a",
+    "f937e411a9baface1eea4a204ab5bc72874cf7d675d2ff38d3430fded38f790e"
+  ],
+  "transitive_fresh_checker": {
+    "actual_model_python_verdicts_found": 0,
+    "actual_model_shell_passes": 0,
+    "actual_model_shell_verdicts_found": 2,
+    "additional_python_families": [
+      "multiply",
+      "last_match"
+    ],
+    "checker_sha256": "ac9c9d62a7cdbb5df91734121e348473451a84013961d4258bf1f77a5f4dfd4a",
+    "host_controlled_python_source_files_inspected": 6,
+    "observed_alias_patterns": 0
+  }
+}

@@ -92,3 +92,17 @@ A later provider may supply an immutable BW capture artifact's exact source byte
 and pinned hash. This API does not claim that capture registration, artifact
 authentication, exact target derivation or approval is integrated. No provider
 stub or alternate workflow runtime is introduced.
+
+
+## Retrospective check of the earlier source gate
+
+Review found callable-alias/default/shadow/callback loopholes in the legacy
+pure-function helper. The new adapter closes those paths before execution; the
+legacy helper remains unchanged. A targeted read-only audit matched 147 earlier
+Python artifacts (143 passed, four failed; 21 unique sources) to their exact saved
+hashes and found none of the inspected mechanisms. All 175 checker references in
+five named published reports matched their saved evidence. This supports retaining
+those inspected observations for this specific issue. It is neither a security
+certification nor coverage of every unpublished history; behavior was not rerun.
+
+[Audit scope, counts, source hashes and limitations](../validation/verified-practice-oracle-20261025/legacy-source-gate-audit-bn.json).
