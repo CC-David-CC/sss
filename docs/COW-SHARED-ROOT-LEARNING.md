@@ -109,6 +109,8 @@ The nine tested skill families are a limited development slice. Full curves,
 broader skill/harness acceptance, selected-model quantization, standalone LoRA
 merge qualification and final report/cleanup remain unfinished.
 
+A later [compatibility dependency audit](MINICPM-HARNESS-FIELD-NOTES.md#which-earlier-results-depend-on-the-compatibility-defect) verified that the affected Python tool-history/parser layer is outside this frozen training and COW assessment path. The existing results retain their original scope and caveats.
+
 ## Earlier snapshots (historical)
 
 The previous 2026-10-25T13:13:00Z snapshot had 70 full-weight and 15 attached-LoRA

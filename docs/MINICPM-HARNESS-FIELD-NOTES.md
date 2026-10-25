@@ -361,3 +361,41 @@ checks after integrating the separate discovery-fixture repair. No model learned
 from this experiment and no behavior default was promoted. A training lesson
 still needs an independently verified correction; a stopped failure alone is
 not a verified target.
+
+
+## Which earlier results depend on the compatibility defect?
+
+The Python MiniCPM compatibility parser/history defect triggered a dependency
+audit before deciding whether to discard training. The audit checked original
+routes, manifests, request data and frozen source bindings; it did not rerun a
+model or infer correctness from current helper code.
+
+| Work inspected | Actual boundary | Decision for this specific defect |
+| --- | --- | --- |
+| 126 archived external harness executions, 21 each for six clients | Native C++ llama-server/Minja; Codex Responses, other clients Chat Completions | Retain the original results and their caveats |
+| 778 native BW journals across 13 evidence roots | Direct COW text API, with JSON actions inside text | Keep each record's existing qualification; early wrong-tokenizer trials stay engineering-only |
+| Fixed-update training requests on A100 and llm-60 | Integer token/target arrays and Boolean masks sent to the native trainer | Inspected requests match the frozen 864-example practice; no rollback is justified by this codec defect |
+| Frozen learning assessments | Integer prefixes consumed directly by COW | This compatibility parser is outside their execution path |
+| PCC Python MiniCPM compatibility tool output/history | The affected parser and typed-history conversion | Correct and qualify this interface before relying on it |
+
+Original external result hashes and manifest digests matched all 126 archived
+records. The practice renderer supplies system/user text and assistant answer
+strings with tools=None. Actual A100 AdamW update 38, Muon update 41 and rank-one
+update 2, plus llm-60 AdamW update 21, match canonical ordered practice SHA
+`4c21029544f77cbc2a9904b50b4d21d50caacb06087caf694685b52dd683d2cf`,
+including targets, masks, next-token alignment, batch size and resume cursors.
+The source practice's per-ID examples match; the difference in list order is
+the original declared interleaving, not a serialization change.
+
+The frozen preparation's tokenizer source exactly matches its saved qualification:
+2,438 native token-ID comparisons and all 130,560 vocabulary pieces, with no
+mismatches. The earlier MiniCPM tokenizer fix was already in that preparation.
+Evaluation uses frozen token prefixes through the native COW path, rather than
+sending typed tool history through this Python compatibility frontend.
+
+[Audit scope, per-route decisions and evidence hashes](../validation/learning-program-20261024/minicpm-compatibility-dependency-audit-20261025-bm.json)
+record the verified boundary. Model weights and optimizer binaries were not read
+or changed; no new inference, training, deletion or protected-answer export
+occurred. This narrow retain decision does not remove the separate numerical,
+LoRA-merge, generalization or release gates. Rebuilding the affected adapter does
+not turn its CPU tests into a new model-quality result.
