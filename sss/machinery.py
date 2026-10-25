@@ -2,6 +2,9 @@
 import argparse,json,runpy,sys
 
 SUITES={
+    'cow-learning-audit':dict(module='sss_integration.cow_learning_audit',gpu_required=False,
+        description='Read-only original-evidence audit of completed configured COW learning rounds; no inference or training',
+        score_scope='Validates saved mechanics and paired decisions; not a new model score'),
     'learning-rounds-cpu':dict(module='sss_integration.learning_rounds_cpu',gpu_required=False,
         description='Real tiny native training/evaluation over durable rounds, both CLIs, restart, no-gain parent selection and private preservation',
         score_scope='Synthetic classifier integration fixture; not a model capability score'),

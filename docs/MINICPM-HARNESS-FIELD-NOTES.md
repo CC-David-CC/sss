@@ -39,7 +39,7 @@ inputs, checked the written result, and compared the original input bytes.
 | Hermes at revision `5894e750` | Passed after configuring a genuine 64K server slot and compatible launch settings. |
 | Qwen Code 0.26.0 | Failed. Correct result and preserved input, but the saved function remained broken. |
 | DeepSeek Harness 0.2.1-rc.2 | Failed. Correct source and result, but changed the protected input structure. |
-| BranchWrite | MiniCPM execution pending. Earlier Wen and CPU evidence does not fill this cell. |
+| BranchWrite | Pending at this initial checkpoint; native integration and subsequent five-objective results appear below. |
 
 These are observations from one task under fixed sampling, with configuration
 repairs recorded separately. They establish different outcomes across these
@@ -233,16 +233,19 @@ Codex, Hermes and Qwen passed the quoted-filename baseline; Hermes and dsh passe
 the failure-status baseline. Those same-weight controls justify investigating BW
 before assuming the model needs training. The root cause and fix are pending.
 
-Separately, PCC's new opt-in ordinary-Llama trainer passes independent tiny full
-and LoRA scalar-gradient checks, F16/F32 loading, batching and reload. Final CPU
-and earlier two-A100 revisions are identified separately; the final format guard
-still needs exact CUDA requalification. Only SGD is implemented. No real MiniCPM
-weights have been updated or accepted.
-[Mechanics evidence](../validation/learning-program-20261024/minicpm-native-training-mechanics.json).
+At that earlier mechanics checkpoint, PCC's opt-in ordinary-Llama trainer had
+passed tiny full and LoRA scalar-gradient checks, F16/F32 loading, batching and
+reload. Only SGD was implemented at that point, the final format guard still
+needed exact CUDA requalification, and no real MiniCPM updates had yet occurred.
+Those are historical facts, not the current implementation or learning status.
+[The original mechanics evidence](../validation/learning-program-20261024/minicpm-native-training-mechanics.json)
+is retained. Subsequent native AdamW/Muon work and measured MiniCPM learning are
+reported in [the current native-learning report](MINICPM-NATIVE-LEARNING.md).
 
-The next optimizer comparison prioritizes Muon and defined variants on frozen
-S³ tests at a declared compute budget. Broader AdamW ablations remain stretch
-goals. Mechanism, learning, retention and acceptance are separate gates.
+The early time-budget comparison is also historical. The current frozen study
+compares equal practice exposure and records time as a measurement. Broader
+AdamW ablations remain stretch goals. Mechanism, learning, retention and
+acceptance remain separate gates.
 
 ## Shell diagnosis and follow-up
 
@@ -267,3 +270,61 @@ separates actual check readiness, explicit completion and task correctness.
 [The evidence](../validation/learning-program-20261024/minicpm-bw-check-progress-20261025.json)
 retains runtime/source identities, bounds and individual outcomes. These five
 discovery objectives are not a broad failure-rate study.
+
+
+## October 25: compact receipts recover a repair, not a finished workflow
+
+A new explicitly opt-in BW `compact-v1` tool-feedback presentation was compared
+against omission of the option on the **same new BW source**. It removes repeated
+model-visible plan/output hash renderings while preserving raw canonical
+receipts, output/status/truncation, permission guidance, verification and
+explicit-finish requirements. Both conditions kept the original MiniCPM5-2B F16
+weights, one qualified native PCC profile, greedy sampling, 64K context and fresh
+states. Paired instructions and independent checker commitments were identical.
+No training or model update occurred in this probe.
+
+| Measurement | Baseline | Compact |
+| --- | ---: | ---: |
+| Correct saved artifacts | 4/5 | 5/5 |
+| Completed independent passes | 4/5 | 4/5 |
+| Whole-workflow model calls | 36 | 39 |
+| Generated output tokens | 1,857 | 2,231 |
+| Newly supplied tool-feedback tokens | 16,399 | 11,522 |
+| Native forward tokens | 30,811 | 26,347 |
+
+The first four objectives passed both gates in both conditions. On the remaining
+failure-status objective, baseline repeated one exploratory shell call ten times
+without editing, checking or finishing. Compact saved a correct repair and
+reached four named checks, then kept checking instead of requesting finish.
+Both exhausted 256 interpreter steps after 13 model calls. Compact remains
+experimental and opt-in; this is not an accepted termination fix.
+
+Live feedback tokens fell 29.7%, but calls and generated output increased. The
+14.5% lower native forward-token count comes from different trajectories and
+does not establish a speedup or lower overall compute cost. A separate CPU
+measurement rendered the same 12 saved messages both ways and found 38.1% fewer
+tokens; that measures presentation directly rather than autonomous behavior.
+
+The new-source baseline did not reproduce the historical control's correct
+saved repair. Source-bound operation IDs and hash-bearing feedback can change
+when BW source changes, so earlier source trials are not interchangeable causal
+controls. These are five original development objectives, one run per condition,
+not a general failure-rate, mastery or unseen-transfer study. The 12-request
+limit remains per model action, not global; the 120-second task guard, 512 output
+tokens per request and 256-step limit were identical across this pair.
+
+[Aggregate evidence and definitions](../validation/learning-program-20261024/minicpm-bw-compact-feedback-20261025-bh.json)
+include model/native/code/grader hashes, independent artifacts and actual
+explicit-finish outcomes. [BW's report and reproduction protocol](https://github.com/CC-David-CC/BranchWrite/blob/feat/compact-tool-feedback-20261025/docs/COMPACT-TOOL-FEEDBACK.md)
+describe fresh-state construction, independent grading and uncertain-operation
+handling without exposing raw tasks or solutions. A post-run full manifest audit
+recorded three concurrent S³ Markdown edits; runtime and grading source, native
+dependencies and weights were unchanged. The original manifest was preserved.
+All 105 native journals settled; the owned inference server and child stopped,
+its port closed and the GPU lease was released.
+
+This result belongs to fixed-weight harness development. The separate
+[native-learning comparison](MINICPM-NATIVE-LEARNING.md) measures changed model
+weights, learning and forgetting. Neither experiment should take credit for the
+other's improvements. Fresh transfer and reliable explicit completion are still
+required before adopting compact feedback as a default.

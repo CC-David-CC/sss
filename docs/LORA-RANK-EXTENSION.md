@@ -1,10 +1,10 @@
 # LoRA ranks 1, 2, 3, 4, 8, and 16: additive 68-update study
 
-Status: the five added rank workers have started. The first native update and reload check passed for ranks 2, 3, 4, and 8.
-Rank 1 exposed a CUDA outer-product leading-dimension error before a registered
-update; its failure is retained for investigation. No new held-out rank result
-is claimed by this preparation note. The existing rank-16 worker continues
-from its original state. The four full-weight optimizer arms also continue.
+Status: all six ranks now have a completed first-update native/COW assessment.
+Rank 1's CUDA error is repaired in an isolated build; its exact saved adapter and
+optimizer state also continued through native update 2 with independent reload.
+The full 68-update curves are still running. The original five-arm study keeps
+its existing questions, practice and execution snapshots.
 
 ## ELI5
 
@@ -83,8 +83,8 @@ Initial independent reload-loss errors for ranks 2, 3, 4, and 8 were approximate
 2e-4 bound. Each completed native update consumed 27 practice presentations.
 These are numerical reload checks, not model-quality scores. The rank-1 error
 was SGEMM argument 10 (`ldb`) in the ggml CUDA outer-product path. Rank one is
-mathematically valid; diagnosis and a separately qualified backend repair are
-pending. No original library is patched underneath running workers.
+mathematically valid; a separately qualified backend repair has now passed native training,
+reload and actual COW scoring. No original library is patched underneath running workers.
 
 Follow-up: the already-open [llama.cpp PR #30142](https://github.com/ggml-org/llama.cpp/pull/30142)
 by **edenfunf**, commit `fdb4a0553f6ecb00450f04cc8da5b2b38dd9146d`,
@@ -92,7 +92,41 @@ addresses the singleton `OUT_PROD` leading-dimension mechanism. We reproduced
 the crash without that patch on llm-49, then passed 103/103 upstream operator
 cases against the CPU reference after applying it. The broader matrix-gradient
 suite still has numerical comparison failures under investigation; it is not
-reported as passing. Actual A100 rank-one model training remains unqualified.
+reported as passing. Actual A100 rank-one native training, reload, first COW assessment and
+recorded-state continuation now pass the stated checks below.
 PCC keeps the original patch author and commit in its dependency patch provenance.
 
 [Our operator qualification checkpoint](../validation/cuda-outprod-20261025-be/README.md) retains the passing target and unresolved broader checks separately.
+
+## First matched update: early observations
+
+Original: 59/864 correct, 415/864 naturally finished. Each row below has the same
+27 practice presentations, AdamW rate 1e-4 and alpha/rank 1.
+
+| LoRA rank | Correct / 864 | Naturally finished / 864 | Original answers gained / lost | Original completions gained / lost |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 | 60 | 418 | 1 / 0 | 8 / 5 |
+| 2 | 61 | 455 | 2 / 0 | 49 / 9 |
+| 3 | 63 | 478 | 4 / 0 | 72 / 9 |
+| 4 | 66 | 487 | 7 / 0 | 84 / 12 |
+| 8 | 100 | 582 | 41 / 0 | 181 / 14 |
+| 16 | 154 | 631 | 95 / 0 | 228 / 12 |
+
+These are early recipe observations, not a tuned capacity ranking. Equal rate,
+practice and alpha/rank do not guarantee equal update magnitude or equivalent
+optimization difficulty across factor shapes. The first rank 1 update makes
+one additional answer correct; its completion total rises by 3 while 8 cases
+start finishing and 5 previously finishing cases stop. Net improvement does not
+erase those losses. Rank 16 has a larger first-step gain under these settings;
+we still need the full trajectories and later independently generated practice.
+
+Rank 1 uses the repaired native training executable, while the other rank arms
+retain their original native hashes. The shared inference runtime and frozen
+cases match; backend provenance remains explicit. The fix is credited to
+**edenfunf's [llama.cpp PR #30142](https://github.com/ggml-org/llama.cpp/pull/30142)**,
+commit fdb4a0553f6ecb00450f04cc8da5b2b38dd9146d, and the
+[PCC draft integration](https://github.com/CC-David-CC/Private_Context_COW/pull/1).
+The earlier broader matrix-gradient numerical failures remain unresolved.
+
+[Full snapshot and continuation receipts](../validation/lora-rank-extension-20261025-bh/README.md)
+were captured at 2026-10-25T20:32:01Z. The original five-series graph stays separate.

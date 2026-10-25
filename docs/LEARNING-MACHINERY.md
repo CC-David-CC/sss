@@ -190,3 +190,8 @@ See also [paired next-skill-block decisions](NEXT-SKILL-BLOCK.md),
 [exact parent resolution](RESOLVED-LEARNING-PARENT.md),
 [the actual-model LoRA mechanics probe](REGISTERED-LORA-MODEL-PROBE.md), and
 [the fixed comparison and charts](COW-SHARED-ROOT-LEARNING.md).
+
+The supported [saved-run audit](COW-LEARNING-AUDIT.md) rechecks completed actual-model
+rounds, exact trained lessons, native states and paired decisions without another
+model call. Its [qualification](../validation/cow-learning-audit-20261025-bh/README.md)
+uses the original two-round MiniCPM evidence and refuses conflicting live work.

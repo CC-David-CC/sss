@@ -131,3 +131,9 @@ path. Automatic panel generation/transitions, sealed broad acceptance,
 standalone LoRA merge acceptance and named merged-GGUF preservation remain
 incomplete. Preserve useful private candidates and their evidence; do not call
 this path an automatically improving or automatically promoted model.
+
+## Audit an already completed run
+
+Use the supported [original-evidence audit](COW-LEARNING-AUDIT.md) after a round
+settles and before retiring required artifacts. It checks the saved chain without
+starting inference or training. Queued/running or ambiguous work is refused.
