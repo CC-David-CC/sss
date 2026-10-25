@@ -8,14 +8,14 @@ full assessments, not estimates from model size or a few selected examples.
 
 | Stored precision | Original correct | Trained correct | Original finished | Trained finished | Trained file size |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| FP32 | 59/864 | 482/864 | 415/864 | 864/864 | 10,072,171,584 bytes |
-| FP16 | 59/864 | 481/864 | 415/864 | 864/864 | 5,039,006,784 bytes |
+| F32 | 59/864 | 482/864 | 415/864 | 864/864 | 10,072,171,584 bytes |
+| F16 | 59/864 | 481/864 | 415/864 | 864/864 | 5,039,006,784 bytes |
 | Q8_0 | 41/864 | 482/864 | 392/864 | 864/864 | 2,679,710,784 bytes |
-| Q5_K_M | unmeasured | unmeasured | unmeasured | unmeasured | not reported yet |
+| Q5_K_M | 55/864 | 465/864 | 386/864 | 864/864 | 1,808,061,504 bytes |
 | Q4_K_M | 37/864 | 467/864 | 534/864 | 864/864 | 1,561,318,464 bytes |
-| Q3_K_M | unmeasured | unmeasured | unmeasured | unmeasured | not reported yet |
-| Q2_K | unmeasured | unmeasured | unmeasured | unmeasured | not reported yet |
-| Q1_0 | unmeasured | unmeasured | unmeasured | unmeasured | not reported yet |
+| Q3_K_M | 49/864 | 357/864 | 473/864 | 863/864 | 1,291,420,736 bytes |
+| Q2_K | 4/864 | 44/864 | 526/864 | 821/864 | 1,039,926,336 bytes |
+| Q1_0 | 0/864 | pending | 0/864 | pending | pending |
 
 The trained FP16 model gains **one** answer and loses **two** relative to its FP32
 parent. Its net gain over the original same-format model is 422 answers, versus
@@ -93,7 +93,39 @@ Run the focused checks with:
 python -m unittest sss_tests.test_quantization sss_tests.test_paired sss_tests.test_paired_rates -v
 ```
 
-Q5, Q3, Q2 and Q1 comparisons remain unfinished. Their behavior may improve or
-degrade; no monotonic relationship with bit count is assumed. Repeated feedback
+Fifteen of sixteen full assessments are complete. Only trained Q1 remains in
+progress; original Q1 completed with zero correct answers and zero natural
+completions under these limits. These are actual model outcomes, not missing
+or failed infrastructure scores. No monotonic relationship with bit count is assumed. Repeated feedback
 on this development set also does not replace sealed qualification or tests of
 coding, Linux administration, tool use, research and long-context retention.
+
+
+## Where the measured precision loss becomes large
+
+![Original and trained scores and completion counts at each precision](images/minicpm-quantization-behavior.svg)
+
+The trained model remains at **465–482 correct** through Q4 and the higher
+precisions in this table. Q3 falls to **357**, and Q2 to **44**. Relative to its
+own same-format original, Q3 still gains 308 answers net and Q2 gains 40 net.
+Those are useful improvements over their quantized baselines, but Q2 has lost
+most of the 423-answer net improvement observed in F32. At Q3 the model finishes
+863/864 responses; at Q2 it still finishes 821 while answering only 44 correctly.
+Finishing and being correct are distinct capabilities.
+
+The table therefore does not support "quantization erases all learning" or
+"any quantization preserves learning." For this checkpoint and development
+set, Q8 retains the total score and Q4 retains most of it; Q3 loses a substantial
+part, and Q2 loses most. The remaining Q1 result is not predicted from the others.
+Q4 scoring two answers above Q5 is a sample observation, not evidence that lower
+precision is generally better. Keep the paired gained/lost answers and each
+skill/gate breakdown when choosing future mixed practice.
+
+These are within-host comparisons on the RTX 4090. An A100 Q4 control produced
+34 correct / 522 finished, versus 37 / 534 here, despite byte-identical Q4
+artifacts and the same test data and limits. The native builds/hardware differ;
+the numerical cause has not been established. That result is not silently
+substituted into this table or attributed to training.
+
+Rebuild the figure from the checked public aggregate with optional matplotlib:
+`python scripts/plot_quantization_progress.py`.
