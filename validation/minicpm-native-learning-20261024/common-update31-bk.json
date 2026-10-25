@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "status": "COMPLETE_COMMON_UPDATE_DEVELOPMENT_COMPARISON",
+  "captured_utc": "2026-10-25T21:22:31Z",
+  "common_update": 31,
+  "presentations": 837,
+  "cases": 864,
+  "original_baseline": {
+    "passed": 59,
+    "finished": 415
+  },
+  "points": [
+    {
+      "arm": "adamw-full",
+      "update": 31,
+      "presentations": 837,
+      "passed": 488,
+      "finished": 864,
+      "answer_gains": 440,
+      "answer_losses": 11,
+      "completion_gains": 449,
+      "completion_losses": 0,
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+      "evaluation_evidence_sha256": "cdc9502d813b379e460f5730f3d8d2dbcaa37a59bfc8de167ae58fee958152c8"
+    },
+    {
+      "arm": "muon-fast-refine-full",
+      "update": 31,
+      "presentations": 837,
+      "passed": 466,
+      "finished": 863,
+      "answer_gains": 423,
+      "answer_losses": 16,
+      "completion_gains": 448,
+      "completion_losses": 0,
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+      "evaluation_evidence_sha256": "e750bc795b1f3ca7a1d3fc4b9fe20e29e2793a4b5ad12b0a290d31ea96624e61"
+    },
+    {
+      "arm": "muon-rms-decay-full",
+      "update": 31,
+      "presentations": 837,
+      "passed": 460,
+      "finished": 861,
+      "answer_gains": 417,
+      "answer_losses": 16,
+      "completion_gains": 446,
+      "completion_losses": 0,
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+      "evaluation_evidence_sha256": "319f8b47749b9d6df548cb0e6de9a414fa7deb8ccaec2bf64254483a37519e49"
+    },
+    {
+      "arm": "muon-standard-full",
+      "update": 31,
+      "presentations": 837,
+      "passed": 461,
+      "finished": 861,
+      "answer_gains": 417,
+      "answer_losses": 15,
+      "completion_gains": 446,
+      "completion_losses": 0,
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+      "evaluation_evidence_sha256": "53967079d3971bd321edef006f5a412c5a51ac0db2443740699ac9889b8850f5"
+    },
+    {
+      "arm": "adamw-lora-r16",
+      "update": 31,
+      "presentations": 837,
+      "passed": 475,
+      "finished": 864,
+      "answer_gains": 432,
+      "answer_losses": 16,
+      "completion_gains": 449,
+      "completion_losses": 0,
+      "runtime_id": "7960ca4a3a3a4dbadd8ff66e83b56e6e6cdff57076c4cab19b62205a1d221c0d",
+      "evaluation_evidence_sha256": "84043eb4978b1ba70dc1fe03b514a3db6eca0ec32e00c07fc7e138b6b79f4274"
+    }
+  ],
+  "limitations": [
+    "Full-weight and directly attached LoRA execution runtimes remain distinct; original/trained bridge controls retained",
+    "Recipe-specific rates/capacity and repeated development data; no universal optimizer ranking or model promotion"
+  ]
+}

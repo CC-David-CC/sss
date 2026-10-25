@@ -1,82 +1,113 @@
 # Native MiniCPM learning through COW
 
-## Current curve snapshot: 176 scored checkpoint positions
+## Current curve snapshot: 186 scored checkpoint positions
 
-The snapshot contains **138 full-weight and 38 attached-LoRA checkpoint positions**,
-backed by complete 864-question development assessments. The full-weight export
-was captured at 2026-10-25T19:41:54Z. The 138 full-weight positions reference
-135 distinct result hashes; exact-weight aliases are explicit and are not
-independent repetitions. These remain continuing trajectories toward 68 updates
-per arm, with unchanged ordered practice and 27 presentations per update.
+The **2026-10-25T21:22:31Z** snapshot contains **145 full-weight and 41
+attached-LoRA checkpoint positions**, each backed by a complete 864-question
+development assessment. The full-weight series references 142 distinct result
+hashes and model/runtime pairs; three exact-weight aliases are explicit rather
+than independent repetitions. All five curves contain every earlier update.
+These are continuing trajectories toward 68 updates per arm, with unchanged
+ordered practice and 27 presentations per update.
 
 ![Measured shared-root learning and forgetting](images/cow-shared-learning.svg)
 
-| Arm | Latest completed update | Correct / 864 | Naturally finished / 864 | Original wrong answers gained | Original correct answers lost |
+| Arm | Completed updates | Correct / 864 | Naturally finished / 864 | Original wrong answers gained | Original correct answers lost |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| AdamW full | 37 | 487 | 864 | 440 | 12 |
-| Standard Muon full | 39 | 465 | 864 | 427 | 21 |
-| RMS / decay Muon full | 33 | 465 | 863 | 422 | 16 |
-| Fast-to-refine Muon full | 29 | 455 | 863 | 411 | 15 |
-| AdamW LoRA, rank 16 (attached) | 38 | 465 | 864 | 426 | 20 |
+| AdamW full | 38 | 489 | 864 | 443 | 13 |
+| Standard Muon full | 41 | 462 | 864 | 426 | 23 |
+| RMS / decay Muon full | 35 | 458 | 863 | 418 | 19 |
+| Fast-to-refine Muon full | 31 | 466 | 863 | 423 | 16 |
+| AdamW LoRA, rank 16 (attached) | 41 | 453 | 864 | 414 | 20 |
 
-This progress table uses different update counts; it is not an equal-update
-ranking. The original has 59 correct and 415 naturally finished responses.
-Every plotted point is complete. Missing observations are not interpolated or
-counted as passes. The attached series keeps its distinct runtime identity and
-its original/trained-model execution bridges. Its failed merged-GGUF deployment
-gate remains unchanged. The added low-rank arms are separate continuing
-experiments and are not silently inserted into these original five series.
+The latest points have different update counts; this table is not an equal-
+practice ranking. The original has 59 correct and 415 naturally finished
+responses. The directly attached series retains its separate runtime identity
+and its original/trained-model execution bridges. Its failed merged-GGUF gate
+remains unchanged. Added low-rank arms stay in their [separate study](LORA-RANK-EXTENSION.md).
 
-At the latest common **29 updates / 783 practice presentations**, the comparison is:
+At the latest common **31 updates / 837 practice presentations**:
 
-| Arm at update 29 | Correct / 864 | Naturally finished / 864 | Original wrong answers gained | Original correct answers lost |
-| --- | ---: | ---: | ---: | ---: |
-| AdamW full | 479 | 864 | 428 | 8 |
-| Standard Muon full | 450 | 863 | 406 | 15 |
-| RMS / decay Muon full | 452 | 863 | 408 | 15 |
-| Fast-to-refine Muon full | 455 | 863 | 411 | 15 |
-| AdamW LoRA, rank 16 (attached) | 477 | 864 | 431 | 13 |
+| Arm at update 31 | Completed updates | Correct / 864 | Naturally finished / 864 | Original wrong answers gained | Original correct answers lost |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| AdamW full | 31 | 488 | 864 | 440 | 11 |
+| Standard Muon full | 31 | 461 | 861 | 417 | 15 |
+| RMS / decay Muon full | 31 | 460 | 861 | 417 | 16 |
+| Fast-to-refine Muon full | 31 | 466 | 863 | 423 | 16 |
+| AdamW LoRA, rank 16 (attached) | 31 | 475 | 864 | 432 | 16 |
 
-Full AdamW and rank-16 LoRA are close in total score at this point: 479 versus 477.
-Their forgetting differs: 8 versus 13 of the original 59 successes are lost.
-The LoRA also gains three more originally wrong answers. A similar total can
-therefore conceal a different set of capabilities. These are repeated
-observations on one development panel, not independent randomized trials.
+AdamW full has 13 more correct answers than rank-16 LoRA at this matched point.
+Against the original, its gained-answer count is eight higher and its lost-
+original-answer count is five lower. Those counts explain the total difference;
+they do not establish which individual successes overlap between arms.
 
 These compare declared recipes, not optimizer names alone. Full AdamW uses
-1e-6; standard Muon's hidden matrices use 5e-5; the RMS/decay and fast-to-refine
-variants use 5e-6, with auxiliary AdamW at 1e-6. LoRA uses rank 16 and 1e-4.
-Scaling, decay and projection also differ; see the
-[exact geometry/settings record](OPTIMIZER-GEOMETRY.md). No optimal-rate,
-isolated capacity or universal optimizer ranking is established.
+1e-6; standard Muon's hidden matrices use 5e-5; RMS/decay and fast-to-refine use
+5e-6, with auxiliary AdamW at 1e-6. LoRA uses rank 16 and 1e-4. Scaling, decay
+and projection also differ; see [exact geometry/settings](OPTIMIZER-GEOMETRY.md).
+No optimal-rate, isolated-capacity or universal optimizer ranking is established.
 
-**Learning is not monotonic.** Attached LoRA scores 477/864 at update 29 and 465/864
-at update 38, while both naturally finish all 864 responses. Original successes
-lost rise from 13 to 20. That decline remains visible instead of being erased
-by reporting only the peak. The fixed-practice comparison continues unchanged;
-a later adaptive block can practice independently generated failure-class
-variants with mixed review, without copying protected development answers.
+## ELI5
 
-[Full-weight snapshot](../validation/minicpm-native-learning-20261024/shared-learning-block-bf.json),
-[attached-LoRA snapshot](../validation/minicpm-native-learning-20261024/direct-lora-learning-bf.json)
-and [equal-update receipt](../validation/minicpm-native-learning-20261024/common-update 29-bf.json)
-include paired counts, per-skill/gate changes and exact evidence identities.
-Shared-server timings include other workloads and are not a controlled
-optimizer-efficiency ranking. Complete assessments copied from earlier owners
-are explicitly reused; no native update is replayed to refresh this report.
+The model is learning much more than it knew at the start, but more practice
+does not always improve it. The rank-16 learning hat reaches **479/864 at update
+30**, then falls to **453/864 at update 41**. Both finish all 864 responses, so
+this decline is in answer correctness, not an increase in unfinished responses.
+We keep that decline visible instead of showing only the best checkpoint.
 
-Reproduce the figure from these public aggregates with the optional plotting
+## Graduate and research interpretation
+
+The LoRA decline is 26 net answers on the same repeatedly observed panel.
+Between those snapshots, originally wrong answers now answered correctly fall
+from 434 to 414, while original successes lost rise from 14 to 20. Baseline-
+relative counts do not identify all immediate-parent churn; neither observation
+isolates capacity, optimization geometry, forgetting mechanisms or curriculum
+order. The full trajectories, per-skill/gate changes, exact recipes and execution
+bridges are evidence for deciding what to test next, rather than proof of a
+universal LoRA or optimizer limit. The effective-rank investigation remains a
+separate later experiment.
+
+The 864 outcomes are repeated development measurements with heterogeneous tasks,
+not independent randomized trials or a sealed generalization test. Looking at
+these curves does not authorize changing one arm's practice halfway through the
+comparison. A saved peak is a candidate worth preserving, not automatic mastery
+or a release decision. Original-baseline retention and immediate-parent
+retention answer different questions.
+
+## Applied next step
+
+Finish the fixed 68-update comparison and retain measured best/milestone models.
+Then use failure **classes** to generate independently checked practice variants
+with mixed review, and evaluate new transfer panels. Do not copy protected
+assessment answers into lessons or silently replace this panel. The reusable
+[S3/PCC learning path](CONFIGURED-COW-LEARNING.md) and its
+[saved-evidence auditor](COW-LEARNING-AUDIT.md) keep lesson admission, native
+updates, learning/forgetting decisions and promotion separate. Broader BW tool
+workflows are a different capability from these direct-answer cases.
+
+[Full-weight snapshot](../validation/minicpm-native-learning-20261024/shared-learning-block-bk.json),
+[attached-LoRA snapshot](../validation/minicpm-native-learning-20261024/direct-lora-learning-bk.json)
+and [equal-update receipt](../validation/minicpm-native-learning-20261024/common-update31-bk.json)
+include paired counts and exact evidence identities. Historical early aliases
+and the standalone baseline/first-hat and preserved update-7-to-15 metadata
+exceptions remain explicit; modern receipt triplets were rechecked. This data-
+only report ran no new model inference or training and replayed no native update.
+Raw responses and model/state binaries remain private.
+
+Shared-A100 timings include other workloads and are not a controlled optimizer-
+efficiency comparison. Complete observations are plotted; no missing point is
+interpolated or counted as a pass. Reproduce the figure with the optional plotting
 environment installed:
 
 ```bash
 python3 scripts/plot_shared_learning.py \
-  --data validation/minicpm-native-learning-20261024/shared-learning-block-bf.json \
-  --lora-data validation/minicpm-native-learning-20261024/direct-lora-learning-bf.json
+  --data validation/minicpm-native-learning-20261024/shared-learning-block-bk.json \
+  --lora-data validation/minicpm-native-learning-20261024/direct-lora-learning-bk.json
 ```
 
-The nine tested skill families are a limited development slice. Full 68-update
-curves, broader harness/skill acceptance, selected-model quantization and final
-report/cleanup remain unfinished. No checkpoint is automatically promoted.
+The nine tested skill families are a limited development slice. Full curves,
+broader skill/harness acceptance, selected-model quantization, standalone LoRA
+merge qualification and final report/cleanup remain unfinished.
 
 ## Earlier snapshots (historical)
 
@@ -84,7 +115,7 @@ The previous 2026-10-25T13:13:00Z snapshot had 70 full-weight and 15 attached-Lo
 positions (85 total). Its [full-weight](../validation/minicpm-native-learning-20261024/shared-learning-block-ax.json)
 and [attached-LoRA](../validation/minicpm-native-learning-20261024/direct-lora-learning-ax.json)
 artifacts remain available. The 118-position snapshot is also retained in the az artifacts; the current
-figure uses the newer 176-position snapshot. Earlier observations below keep their original scope and counts.
+figure uses the newer 186-position snapshot. The 176-position data remain in the bf artifacts. Earlier observations below keep their original scope and counts.
 
 The full-weight snapshot contains 45 completed A100 training assessments and the original-model
 baseline, captured 2026-10-25T10:49:05Z. All use the same frozen 864 development
