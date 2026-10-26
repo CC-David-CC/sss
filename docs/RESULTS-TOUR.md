@@ -67,6 +67,10 @@ improving the workflow score, so the working parent stayed unchanged. No trained
 These are results from an active development project, not a finished product
 benchmark or a claim of general autonomous competence.
 
+The [audited joined learning round](https://github.com/CC-David-CC/sss/blob/feat/learning-stack-20261026/docs/JOINED-NATIVE-ROUND.md)
+records the actual train/test/decision/preserve path, including the rejected
+candidate, 21 answers gained, 41 lost, and the independent saved-model check.
+
 For the software itself: [PCC](https://github.com/CC-David-CC/Private_Context_COW/tree/feat/learning-runtime-unified-20261026)
 and [BW](https://github.com/CC-David-CC/BranchWrite/tree/fix/terminal-failure-observation-20261026).
 These links deliberately select the published development branches containing
