@@ -36,7 +36,7 @@ def native_server(panel,profile,output):
         coordinator=ContextCoordinator(store,PoolConfig(gpus=(cfg['gpu_index'],),
             ram_bytes=8*1024**3,disk_bytes=16*1024**3,min_available_bytes=4*1024**3),
             lambda gpu:BranchingModel(store,LlamaDenseBackend(profile,gpu_id=gpu),profile))
-        server=thread=catalog=None;old_key=os.environ.get('BW_COW_API_KEY')
+        server=thread=catalog=connection=None;old_key=os.environ.get('BW_COW_API_KEY')
         key=secrets.token_hex(24);os.environ['BW_COW_API_KEY']=key
         try:
             coordinator.ready();adapter=CowAdapter(coordinator)
@@ -62,7 +62,10 @@ def native_server(panel,profile,output):
             if catalog is not None:catalog.close()
             if old_key is None:os.environ.pop('BW_COW_API_KEY',None)
             else:os.environ['BW_COW_API_KEY']=old_key
-    write_once(output/'server-private.json',dict(status='RETIRED',connection=connection))
+            if thread is not None and thread.is_alive():
+                raise RuntimeError('Original workflow server thread has not retired')
+            if connection is not None:
+                write_once(output/'server-private.json',dict(status='RETIRED',connection=connection))
 
 
 def run(owner_config,profile_path,candidate_path,output):

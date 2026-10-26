@@ -1,6 +1,10 @@
 """Actual BW tools/COW grammar/OS, scripted proposals only; no model training."""
 from pathlib import Path
+from contextlib import contextmanager
+import json
+import socket
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -11,6 +15,44 @@ from sss_integration.bw_verified_practice_cpu import BAD,GOOD,ROWS,captured_pair
 
 
 class WorkflowAssessmentTests(unittest.TestCase):
+    def test_exception_retires_actual_http_service_model_and_original_lease(self):
+        from test_thinking_grammar import ThinkingTokenizer
+        from serve.test_cow_grammar_canonical_flow import GrammarCPUBackend,_render,_encode
+        from sss_integration.workflow_evaluate import native_server
+        tokenizer=ThinkingTokenizer();closed=[];released=[]
+        profile=dict(model_contract_id='a'*64,execution_profile_id='b'*64,model_weights_sha256='c'*64,
+            model_path='/not-loaded-scripted-model',execution=dict(GPU=[0],
+                resume_contract='identical-native-operators-v1',generated_operator='normal-verifier-decode',
+                selected_token_protocol='consumed-selected-receipt-v1',sampling_protocol='full-vocab-min-p-u53-v2',
+                native_request_protocol='consumed-greedy-ack-v1',prefill_chunk=16,capacity=131072,eos_tokens=[256]))
+        class Scripted(GrammarCPUBackend):
+            def close(self):closed.append(True);super().close()
+        components=dict(tokenizer=tokenizer,render=_render,
+            encode_rendered=lambda messages,rendered,add_generation_prompt:_encode(tokenizer,messages,rendered,add_generation_prompt),
+            append_initial_user_suffix=lambda canonical,controller,content:tuple(tokenizer.encode('\nuser:'+content+'\nassistant:',parse_special=False)),
+            append_user_suffix=lambda canonical,controller,content:tuple(tokenizer.encode('\nuser:'+content+'\nassistant:',parse_special=False)),
+            initial_root_mode=lambda canonical,controller:'context_only' if controller=={'status':'idle'} else 'unsupported',
+            renderer_id='d'*64)
+        @contextmanager
+        def scripted_lease(*args,**kwargs):
+            try:yield {}
+            finally:released.append(True)
+        panel=SimpleNamespace(identity='e'*64,pcc=Path('/scripted-runtime'),config=dict(gpu_index=0,
+            gpu_uuid='GPU-scripted',context_tokens=131072,batch_tokens=16,stop_token_ids=[256],
+            minimum_free_mib=1,maximum_initial_utilization=100))
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            with (patch('sss_integration.workflow_evaluate.cow_gpu_admission',scripted_lease),
+                  patch('context_time_travel.llama_dense_backend.LlamaDenseBackend',lambda *a,**k:Scripted(profile,tokenizer)),
+                  patch('serve.cow_http.model_text_components',lambda *a,**k:components)):
+                with self.assertRaisesRegex(RuntimeError,'injected body failure'):
+                    with native_server(panel,profile,root) as connection:
+                        raise RuntimeError('injected body failure')
+            self.assertTrue(closed);self.assertEqual(released,[True])
+            self.assertEqual(json.loads((root/'server-private.json').read_bytes()),dict(status='RETIRED',connection=connection))
+            port=int(connection['endpoint_url'].rsplit(':',1)[1])
+            with self.assertRaises(OSError):socket.create_connection(('127.0.0.1',port),timeout=1)
+
     def test_real_failed_and_finished_workflow_capture_and_no_dispatch_replay(self):
         from branchwrite.coding_cli import read_launch
         from branchwrite.lesson_capture import capture_assessment,capture_failure
