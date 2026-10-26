@@ -1,6 +1,6 @@
 # MiniCPM update-curve progress snapshot
 
-## Current chart: all ten trajectories, receipts through 05:03 UTC
+## Current chart: all ten trajectories, receipts collected at 07:51 UTC
 
 ![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
 
@@ -8,28 +8,42 @@ The chart now includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
 Muon, and all six AdamW LoRA ranks. Full updates use FP32 weights; LoRA uses
 the F16 base with its attached adapter. The recorded execution paths differ;
 all rows use the same 864 frozen questions. Checkpoints have different update
-counts and are still in progress. This is not a final optimizer/rank ranking.
+counts; rank 16 has now reached all 68 updates. The other trajectories remain
+in progress. This is not a final optimizer/rank ranking. The chart contains 404
+completed scored checkpoints, 56 more than the preceding snapshot.
 
 | Arm | Latest update / 68 | Correct / 864 | Natural finishes / 864 |
 | --- | ---: | ---: | ---: |
-| Full AdamW | 47 | 477 | 864 |
+| Full AdamW | 48 | 479 | 864 |
 | Full standard Muon | 47 | 480 | 864 |
-| Full RMS/decay Muon | 45 | 483 | 864 |
-| Full fast/refine Muon | 43 | 476 | 864 |
-| AdamW LoRA rank 1 | 18 | 250 | 774 |
-| AdamW LoRA rank 2 | 24 | 361 | 849 |
-| AdamW LoRA rank 3 | 21 | 364 | 854 |
-| AdamW LoRA rank 4 | 22 | 394 | 860 |
-| AdamW LoRA rank 8 | 26 | 412 | 863 |
-| AdamW LoRA rank 16 | 62 | 496 | 864 |
+| Full RMS/decay Muon | 47 | 477 | 864 |
+| Full fast/refine Muon | 45 | 485 | 864 |
+| AdamW LoRA rank 1 | 27 | 299 | 847 |
+| AdamW LoRA rank 2 | 33 | 397 | 859 |
+| AdamW LoRA rank 3 | 31 | 397 | 861 |
+| AdamW LoRA rank 4 | 32 | 413 | 864 |
+| AdamW LoRA rank 8 | 33 | 415 | 864 |
+| AdamW LoRA rank 16 | 68 | 494 | 864 |
 
-The original baseline was 59 correct and 415 natural finishes. At the 05:03 UTC
-ownership audit, all ten primary A100 controllers matched their recorded PID
-and process-start identities. They were not restarted. The complete scored
+The original baseline was 59 correct and 415 natural finishes. The new collection
+checked 296 complete points from the current controller directories against their
+original result/settlement receipts; older preserved history remains in the CSV.
+Overlapping score/count/runtime/evidence fields were checked before merging.
+The [validation receipt](results/minicpm-20261026/training-curves-validation-0751.json)
+retains the exact point/result/settlement hashes. No training or inference was
+repeated to update these graphs. The complete scored
 points are in the [CSV](results/minicpm-20261026/intermediate-training-curves.csv).
 Earlier RMS/decay and fast/refine points come from the preserved aggregate
 history export; their exact completion timestamps were not included there and
 remain blank in the CSV. Later points retain their result-receipt timestamps.
+
+Four superseded model/state pairs were preserved and byte-verified on the A100's
+own persistent disk before their RAM copies were retired, reclaiming about
+83 GiB. No latest parent or active checkpoint was removed, resource limits were
+unchanged, and the original controllers continued. Subsequent completed points
+include AdamW 48, RMS/decay 47 and fast/refine 45. Runtime elapsed time remains
+an operational observation, not a fixed training-time budget or a reliable
+shared-GPU throughput comparison.
 
 ### Which S³ skills are actually being measured?
 
@@ -39,19 +53,20 @@ Each cell is correct answers out of 96 questions. This panel covers eight
 arithmetic skills and register-state tracking. The
 [skill CSV](results/minicpm-20261026/latest-skill-scores.csv) and
 [plot script](results/minicpm-20261026/plot_skill_scores.py) retain exact counts.
-Register-state scores are currently zero throughout, and fraction addition is
-also weak. The cause of each failure family still needs investigation; zero on
+Register-state scores are zero in nine rows; rank 16 at update 68 scored
+1/96. Fraction addition also remains weak. The cause of each failure family still needs investigation; zero on
 this panel does not establish that a model cannot learn state tracking.
 These measurements do not qualify BW shell tasks, tool use, or research agency.
 Those require their own workflow panels in the reusable learning policy.
 
 ### Trained quantization is now measured too
 
-The separate [AdamW update-43 precision panel](MINICPM-TRAINED-QUANTIZATION.md)
-is complete for all seven formats: FP16/Q8 score 476, Q4 465, Q5 460, Q3 345,
-Q2 38 and Q1 0, each out of 864. Its existing local FP32 reference scored 476.
-It reused an already trained checkpoint, without new training or A100 model
-transfer. It is separate from the ten primary trajectories above.
+The separate [four-checkpoint precision report](MINICPM-TRAINED-QUANTIZATION.md)
+now contains all seven formats for intermediate AdamW, standard Muon, RMS/decay
+and fast/refine checkpoints: 28 completed quantized evaluations, 864 questions
+each. It includes total scores, natural finishes and paired gains/losses. Existing
+trained artifacts were reused without new training or A100 model transfer. These
+unequal intermediate checkpoints are separate from the ten trajectories above.
 
 Older timestamped snapshots below remain historical records. The current
 tables and linked precision reports supersede their status statements.
@@ -60,7 +75,8 @@ tables and linked precision reports supersede their status statements.
 completed the 864-question panel](MINICPM-QUANTIZATION-PROGRESS.md), with a chart,
 aggregate CSV and explicit measurement limits. Earlier statements below that
 the entire quantization matrix had not started were wrong for the original-model
-half. The selected trained-model quantization comparison is still pending.
+half. Precision testing of the final selected 68-update checkpoints is still
+pending; the four intermediate trained precision panels are complete.
 
 Initial capture: 2026-10-26 01:53-01:54 UTC. This is an interim results note, not an acceptance report. Time-stamped refreshes below update the saved progress as work continues.
 
