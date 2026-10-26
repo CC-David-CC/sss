@@ -180,3 +180,46 @@ The original comparison is still unfinished, no arm is accepted, and no export h
 - A separate **rank-1 update-15 training step** was also active under the native out-product qualification build. It uses the `lora-rank1-cuda-bf02` run directory; keep it separate from the original rank-extension curve until its run manifest and evaluation protocol are checked for equivalence.
 
 No candidate has been promoted. The fixed 68-update comparison and the reusable failure-to-lesson training pathway remain incomplete.
+
+## Live status refresh - 2026-10-26 04:21 UTC
+
+This refresh replaces older progress snapshots above for the current arm scores. It uses completed aggregate evaluation receipts only; no held-out questions or model responses are included.
+
+### Intermediate graph
+
+The [intermediate graph](results/minicpm-20261026/intermediate-training-curves.png) shows all six AdamW LoRA ranks against full-update AdamW and standard full-update Muon. The x-axis is cumulative training presentations (27 per update); each point is a completed evaluation of the same 864 held-out cases. The dotted horizontal lines show the original MiniCPM baseline, and the vertical marker is the 68-update target. The graph now includes completed receipts through 04:20 UTC. Five LoRA arms advanced; rank 16 moved from 496 to 495 correct, a small regression that remains visible in the curve.
+
+The [sanitized per-update CSV](results/minicpm-20261026/intermediate-training-curves.csv) and [plot script](results/minicpm-20261026/plot_curves.py) are included so the graph can be regenerated. The chart is explicitly interim and is not an acceptance decision.
+
+### Latest completed A100 checkpoints
+
+| Arm | Updates / 68 | Presentations | Correct / 864 | Naturally finished / 864 |
+| --- | ---: | ---: | ---: | ---: |
+| Full AdamW | 46 | 1,242 | 477 | 864 |
+| Full standard Muon | 47 | 1,269 | 480 | 864 |
+| Full RMS/decay Muon | 45 | 1,215 | 483 | 864 |
+| Full fast/refine Muon | 42 | 1,134 | 465 | 864 |
+| AdamW LoRA rank 1 | 18 | 486 | 250 | 774 |
+| AdamW LoRA rank 2 | 23 | 621 | 349 | 850 |
+| AdamW LoRA rank 3 | 19 | 513 | 336 | 852 |
+| AdamW LoRA rank 4 | 21 | 567 | 394 | 859 |
+| AdamW LoRA rank 8 | 25 | 675 | 411 | 863 |
+| AdamW LoRA rank 16 | 61 | 1,647 | 495 | 864 |
+
+The historical original-model baseline is 59/864 correct and 415/864 naturally finished. These curves show progress at different update counts; they are not a final rank leaderboard. Each candidate still needs to reach update 68 and pass the learning/retention review.
+
+### Arm ownership and repeat control
+
+- The last full controller census (04:14 UTC) found one controller for each of the ten unique arms listed above. At 04:21 UTC A100 was reachable; I observed a COW evaluation for RMS/decay Muon update 46 and a training step for fast/refine Muon update 43. I have not repeated the full ten-controller census since 04:14.
+- Four full-update optimizer arms were also started on llm-60 before the duplicate-work audit. That runner has been stopped. Its partial records are preserved for audit but excluded from the primary curves and are not treated as seed repeats.
+- The rank-1 curve now runs from the PCC size-one fix. Its earlier failed attempt used a stale pre-fix executable and is not counted. PCC PR #1 contains the fix and credits llama.cpp PR #30142.
+- No candidate is accepted or promoted. No GGUF was exported.
+
+### Remaining work and timing
+
+1. Finish all ten single trajectories through 68 updates, saving and evaluating each checkpoint once.
+2. Review per-case gains and losses, then run the larger 96-case peak checks and regression review before accepting a candidate.
+3. Compare the original and best trained candidate at FP16 and Q1/Q2/Q3/Q4/Q5/Q8. This quantization matrix has not started; the current ETA does not include it.
+4. Preserve a named GGUF only if the final measured result improves and survives the quantized checks.
+
+Using the median duration of the last four completed update intervals for each arm gives a rough 20-22 hours for all ten 68-update curves to finish, assuming the controllers keep advancing and shared A100 load stays similar. Estimated remaining time by arm: full AdamW 17.7h; standard Muon 20.7h; RMS/decay Muon 16.0h; fast/refine Muon 13.4h; LoRA ranks 1/2/3/4/8/16 about 19.3/16.3/17.4/16.4/14.7/2.8h. Standard Muon currently sets the finish estimate. This is a rough forecast for the fixed comparison only; the 96-case peak checks, quantization matrix, and final acceptance review remain additional work.
