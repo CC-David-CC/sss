@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "kind": "sss.trained-precision-paired-validation.v1",
+  "status": "PASS",
+  "captured_utc": "2026-10-26T06:50:45.004990+00:00",
+  "checkpoint": "llm60-muon-fast-refine-update041",
+  "reference_model_sha256": "7595aacdb280c90e9d7bdf2ba6bfd0f16b537e5b59cc81e7c969a4e74dcc452f",
+  "reference_result_sha256": "76bb993ad732043e96b6d97f31470518dac47e3624c9befc6050ce15229b57a9",
+  "reference_settlement_sha256": "959e44f98959586822d3ad963603530d0e1818a91da746c9c86d81a41108d793",
+  "reference_runtime_id": "1d222d36424ce64b1989b5ed8750b2eda6e9030020de45f7adddb615a1168bdc",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "validator_source_sha256": "fba1da94c5c16bf6ae24bc13c84d5c7ee50afe53cd9d31d802cbd0b8693780a7",
+  "collector_source_sha256": "b493e254ef46004841800e431fae9556281b0aac5d6e8d25d20890d502f9389f",
+  "formats": [
+    {
+      "format": "F16",
+      "result_sha256": "c9eb9ee0a088fc742f2be193f65f9879822cf7d4f09ea2b4999befe22835f711",
+      "settlement_sha256": "3fb5ff042b02260136c28a31ef6c85e7a98f7d21bcfa67e00a75b88d9c0a7a48",
+      "summary_sha256": "efb917f017487917957b2ea888f0d923edacbbb4e3a13424fc2c33b57c98f6f2",
+      "cases": 864,
+      "passed": 464,
+      "finished": 864,
+      "answer_gains": 0,
+      "answer_losses": 0
+    },
+    {
+      "format": "Q8_0",
+      "result_sha256": "f9930d810b7bb653a176f5c1cd95b012c5b4d53546a1524708548ed4f8bf02a6",
+      "settlement_sha256": "b8aa26843689c627771fa253c5df940db497f2511d93f52de9bcdc053cff0c99",
+      "summary_sha256": "1278fa979069ee73334b0c64eaed64f3d5811d76c11df9cd630c363aefb1460f",
+      "cases": 864,
+      "passed": 465,
+      "finished": 864,
+      "answer_gains": 5,
+      "answer_losses": 4
+    },
+    {
+      "format": "Q5_K_M",
+      "result_sha256": "455b95b8bd92e03041a6b43e12a332ef791f6e2485bdde5c4dd48dd6dcc5936f",
+      "settlement_sha256": "6ed0e0fddc0fc4a81a05944ea341cea3edd2d9e0b0e60f30b576bd11fd957d3b",
+      "summary_sha256": "70e0337fb8f21cb74b8815d3b209ed15ef155427852282eba777d33d2421f251",
+      "cases": 864,
+      "passed": 448,
+      "finished": 864,
+      "answer_gains": 10,
+      "answer_losses": 26
+    },
+    {
+      "format": "Q4_K_M",
+      "result_sha256": "7b5ba0a2e891528c5715902b5dfb16136a608c64ccabd78d342863cdfc78f29f",
+      "settlement_sha256": "633456c08a57e1ff2f2ef20feae801b32bbaa32bd90d62ec6b5f7c704929b5d7",
+      "summary_sha256": "a4e3adb0a99c96bafb78ce81094eedaadcf476a012ce5daedd0186f9245378fd",
+      "cases": 864,
+      "passed": 443,
+      "finished": 864,
+      "answer_gains": 30,
+      "answer_losses": 51
+    },
+    {
+      "format": "Q3_K_M",
+      "result_sha256": "4e9255f931488e4c0f51a69832b0f19b67e5827ad107e40fcfc13758346f7a25",
+      "settlement_sha256": "a5b2e6a8d7030fb1a48b55f20f0229ed380004b347de16e0a363d2b1bdcdff55",
+      "summary_sha256": "dd380bba20aae54ad823cbf220cdbcc8ba7149be0de1c0e4def364295255f8c9",
+      "cases": 864,
+      "passed": 266,
+      "finished": 864,
+      "answer_gains": 9,
+      "answer_losses": 207
+    },
+    {
+      "format": "Q2_K",
+      "result_sha256": "32265b26f5f2c6b8f9b9116abb90a710b85dcf5a01ca2bd06499b7229ddb28f7",
+      "settlement_sha256": "6649af9431147e76aea97278af8a1d560d380c07c846474535b888c0c295066d",
+      "summary_sha256": "337e66f1e0089ae4bd6a5196de6948658bcf3c5cea721ced0acd45060b2b2023",
+      "cases": 864,
+      "passed": 15,
+      "finished": 824,
+      "answer_gains": 6,
+      "answer_losses": 455
+    },
+    {
+      "format": "Q1_0",
+      "result_sha256": "3ea5acc46114d121d76c425461ba1809edc58eb13eec3302d0882d31f75488fb",
+      "settlement_sha256": "5d634646e61ca2918409f17eb8d00e36fa64bd293fbf8c3778569f9bf99647cb",
+      "summary_sha256": "edabdabafc4f147f21c97e20887295e3bbd239aea1ab2a24eb85d0171ba9cf02",
+      "cases": 864,
+      "passed": 0,
+      "finished": 0,
+      "answer_gains": 0,
+      "answer_losses": 464
+    }
+  ]
+}

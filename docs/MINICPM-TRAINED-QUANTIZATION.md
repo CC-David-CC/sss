@@ -1,4 +1,81 @@
-# Trained MiniCPM5-2B: the first complete precision panel
+# Trained MiniCPM5-2B: four complete precision panels
+
+**All four intermediate checkpoints completed all seven formats: 28 quantized
+evaluations and 24,192 question attempts.** Each format faced the same 864-case
+frozen panel with a 64-token response allowance through PCC/COW. FP32 references
+are included separately; existing completed references were reused. The standard
+Muon checkpoint received its required local FP32 reference on llm-49. No new
+training or seed repetitions were performed for these precision sweeps.
+
+![Four completed trained precision panels](results/minicpm-20261026/trained-precision-panels.png)
+
+| Intermediate checkpoint | FP32 | FP16 | Q8 | Q5 | Q4 | Q3 | Q2 | Q1 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| AdamW full, update 43, llm-60 | 476 | 476 | 476 | 460 | 465 | 345 | 38 | 0 |
+| Standard Muon, update 42, llm-49 | 465 | 463 | 463 | 443 | 439 | 269 | 18 | 0 |
+| RMS/decay Muon, update 41, llm-60 | 461 | 461 | 462 | 451 | 440 | 271 | 23 | 0 |
+| Fast/refine Muon, update 41, llm-60 | 464 | 464 | 465 | 448 | 443 | 266 | 15 | 0 |
+
+Entries are correct answers out of 864, not percentages. Compare precision
+**within a row**: these are different intermediate updates, training exposures
+and runtimes, not a matched optimizer ranking. The A100 equal-exposure study is
+separate and still unfinished.
+
+![Paired answers gained and lost](results/minicpm-20261026/trained-precision-gains-losses.png)
+
+The [32-row aggregate CSV](results/minicpm-20261026/trained-precision-panels.csv)
+contains all four FP32 references, all 28 quantized measurements, natural
+finishes, individual-answer gains/losses and exact model/runtime identities.
+The [plot source](results/minicpm-20261026/plot_trained_precision_panels.py) and
+[read-only collector](results/minicpm-20261026/collect_completed_panel.py)
+are included. The original evidence was rechecked using S³'s paired validator;
+the validation receipts retain original result, settlement and summary hashes:
+[AdamW](results/minicpm-20261026/trained-quantization-validation.json),
+[standard Muon](results/minicpm-20261026/trained-precision-muon42-validation.json),
+[RMS/decay](results/minicpm-20261026/trained-precision-rms41-validation.json),
+[fast/refine](results/minicpm-20261026/trained-precision-fast41-validation.json).
+The three newly collected panels were validated on 2026-10-26 UTC. No protected
+questions, responses or model files are published.
+
+## What the new results mean
+
+In plain language, shrinking these trained checkpoints to FP16 or Q8 kept nearly
+the same total score. Q4/Q5 kept much of it. Q3 lost substantially more, and
+Q2/Q1 performed poorly on this panel. This establishes a useful precision-retention
+observation for these artifacts; it does not establish why a particular answer
+changed or qualify a final model.
+
+At a master's level, count paired transitions rather than only comparing totals.
+For each precision, let G be questions that become correct relative to that
+checkpoint's FP32 reference, and L be FP32 successes that become wrong. The net
+score difference is G − L. For example, RMS/decay Q8 gains five and loses four;
+its +1 total is a quantization-associated decoding change, not another training
+improvement. Standard Muon FP16 loses two successes with no gains. Equal totals
+can still conceal substantial changes in which questions succeed.
+
+For research interpretation, parameter rounding changes the complete autoregressive
+trajectory, including stopping. These are deterministic, single-run observations
+under one frozen test panel and response bound, not an estimate of general model
+capability or a controlled optimizer effect. No independent high-precision oracle
+has isolated quantizer versus kernel versus decoding contributions. Q1's zero
+natural finishes under the 64-token allowance must not be diagnosed as a specific
+kernel defect from the score alone.
+
+In practice, FP16/Q8 are the least disruptive tested storage choices for these
+intermediate artifacts. Q4/Q5 offer a size/score tradeoff that still needs the
+actual intended workflow tests. We retain the paired losses for later independent
+practice-family design; the protected evaluation answers do not become lessons.
+
+The native checkpoint histories remain separately labelled: AdamW 43 has 1,161
+practice presentations, standard Muon 42 has 1,134, and the two update-41 variants
+have 1,107 each. These are exposures, not that many distinct demonstrations.
+The standard Muon inference runtime on llm-49 is
+`08764412fc6f633b4b14b18a8f4f19bac7add741dcfa318266bd2f8986cbbe61`;
+the other three use the llm-60 runtime documented below. A trained model moved
+only over the home LAN for the llm-49 panel; no large model moved between home
+and A100. Timing is not the organizing principle or the optimizer comparison.
+
+## Original AdamW checkpoint detail
 
 **All seven formats completed 864 frozen questions each.** This panel uses an
 existing native full-weight AdamW checkpoint at update 43, with 1,161 practice
@@ -85,16 +162,16 @@ The earlier extra llm-60 full-training trajectories were stopped and remain
 excluded from the primary A100 training curves. Reusing their existing completed
 artifacts for this new precision question avoids additional backpropagation.
 
-At the next verified dispatch, llm-60 was running a distinct RMS/decay Muon
-update-41 precision panel. llm-49 was running a distinct standard Muon update-42
-panel, including a local FP32 inference reference. Its trained source artifact
+The subsequently completed studies were the distinct RMS/decay Muon update-41
+and fast/refine update-41 panels on llm-60, and standard Muon update-42 on llm-49,
+including its local FP32 inference reference. The latter's trained source artifact
 was copied directly over the LAN and hash-verified; no full model was transferred
 between A100 and either home host. The different update counts/runtimes make
 these exploratory precision-retention panels, not a matched optimizer ranking.
 
 ## Remaining work
 
-Finish the other active precision panels, the ten A100 trajectories, retention
+Finish the remaining A100 trajectories, retention
 and sealed review, then the final selected-checkpoint precision/export decision.
 The reusable verified BW lesson provider and native recovery path are published;
 the production policy joining target skill, actual BW workflow and retention
