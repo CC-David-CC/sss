@@ -13,7 +13,7 @@ panels=[('adamw43','AdamW full · update 43 · llm-60'),
 formats=['F32','F16','Q8_0','Q5_K_M','Q4_K_M','Q3_K_M','Q2_K','Q1_0']
 labels=['FP32','FP16','Q8','Q5','Q4','Q3','Q2','Q1']
 fig,axes=plt.subplots(2,2,figsize=(13,9),sharey=True)
-fig.subplots_adjust(left=.075,right=.98,top=.85,bottom=.14,hspace=.45,wspace=.16)
+fig.subplots_adjust(left=.075,right=.98,top=.80,bottom=.14,hspace=.45,wspace=.16)
 for ax,(key,title) in zip(axes.flat,panels):
     data={r['format']:r for r in rows if r['panel']==key}
     correct=[int(data[f]['passed']) for f in formats]
@@ -35,7 +35,7 @@ fig.text(.5,.025,'Same 64-token response allowance. S³ scoring through PCC/COW.
 fig.savefig(ROOT/'trained-precision-panels.png',dpi=180,facecolor='white')
 
 fig,axes=plt.subplots(2,2,figsize=(13,9),sharex=True)
-fig.subplots_adjust(left=.09,right=.98,top=.84,bottom=.13,hspace=.43,wspace=.27)
+fig.subplots_adjust(left=.09,right=.98,top=.79,bottom=.13,hspace=.43,wspace=.27)
 for ax,(key,title) in zip(axes.flat,panels):
     data={r['format']:r for r in rows if r['panel']==key}
     gains=[int(data[f]['answer_gains']) for f in formats[1:]]
