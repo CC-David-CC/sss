@@ -42,7 +42,7 @@ and its attached adapter.
 ![Rank-16 precision sweep](results/minicpm-20261026/rank16-final-precision.png)
 
 For the completed rank-16 checkpoint, F32/F16 scored **494/864**, Q8 **491**,
-Q5 **482**, Q4 **492**, Q3 **401**, and Q2 **36**. Q1 remains in progress.
+Q5 **482**, Q4 **492**, Q3 **401**, Q2 **36**, and Q1 **0**. All eight formats are complete.
 The observed steep drop starts below Q4, with a nonmonotonic dip at Q5.
 These are the same 864 questions through the same standalone evaluation path.
 
@@ -54,9 +54,10 @@ unchanged behavior. This is a measured development result, not a release decisio
 
 ## What remains unfinished
 
-The other training arms, Q1, broader workflow and research skills, and final
-acceptance remain open. A new joined BW/PCC/S³ native training round is being
-assessed separately. No trained GGUF has been uploaded or accepted for release.
+The other training arms, broader workflow and research skills, and final
+acceptance remain open. A separate joined BW/PCC/S³ native round completed its
+train/test/decision/preserve cycle. Its candidate lost 20 review passes without
+improving the workflow score, so the working parent stayed unchanged. No trained GGUF has been uploaded or accepted for release.
 These are results from an active development project, not a finished product
 benchmark or a claim of general autonomous competence.
 

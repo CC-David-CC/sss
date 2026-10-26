@@ -1,9 +1,9 @@
 # How much learned behavior survives a smaller GGUF?
 
-This is an interim precision sweep of the completed **AdamW LoRA rank-16,
+This is a completed precision sweep of the completed **AdamW LoRA rank-16,
 update-68** checkpoint. It is separate from the unfinished optimizer/rank
 comparison. The same 864 frozen arithmetic/state questions are used throughout.
-7 of the eight formats, including the F32 reference, are complete.
+All eight formats, including the F32 reference, are complete (26 October 2026).
 
 ![Rank-16 precision sweep](results/minicpm-20261026/rank16-final-precision.png)
 
@@ -16,9 +16,9 @@ comparison. The same 864 frozen arithmetic/state questions are used throughout.
 | Q4_K_M | 1.454 | 492 | 864 | 20 | 22 |
 | Q3_K_M | 1.203 | 401 | 863 | 20 | 113 |
 | Q2_K | 0.969 | 36 | 817 | 8 | 466 |
-| Q1_0 | pending | pending | pending | pending | pending |
+| Q1_0 | 0.504 | 0 | 0 | 0 | 494 |
 
-Pending formats are not zero scores and are not extrapolated. The
+Every row comes from a complete 864-case assessment. Q1's zeros are measured results, not placeholders. The
 [CSV](results/minicpm-20261026/rank16-final-precision.csv),
 [receipt hashes and skill/gate counts](results/minicpm-20261026/rank16-final-precision.json)
 and [plot source](results/minicpm-20261026/plot_rank16_precision.py) are retained.
@@ -30,7 +30,7 @@ We packed the same trained model into smaller files and asked it the same
 questions. F16 kept every F32 answer/finish verdict. Q4's total is almost the
 same as F32, but it gained 20 correct answers and lost 22 others. A similar total
 does not mean it remembered exactly the same things. Q3 fell to 401/864, so the observed sharp drop starts below Q4 in this
-sweep. Q2 scored 36/864 and naturally finished 817 responses. Q1 is still being measured. The curve has a dip at Q5 and a
+sweep. Q2 scored 36/864 and naturally finished 817 responses. Q1 scored zero and none of its responses reached a natural finish within the 64-output-token limit. The curve has a dip at Q5 and a
 recovery at Q4.
 
 ## Master's level
@@ -67,7 +67,7 @@ these development measurements establish. No seed-repeat experiment ran.
 The earlier failed attached-versus-merged all-position logit gate remains in its
 original record. Saved-weight arithmetic, per-case behavioral retention and
 release qualification answer different questions. These results neither erase
-that failure nor promote any model. The remaining formats, complete 68-update
+that failure nor promote any model. The complete 68-update
 comparison, broader skill/workflow coverage and sealed acceptance remain open.
 
 ## Applied reading
@@ -75,9 +75,9 @@ comparison, broader skill/workflow coverage and sealed acceptance remain open.
 The current Q4 file is about 1.454 GiB, compared with about 9.380 GiB for F32.
 It retains nearly the same total score here while changing which questions pass.
 Inspect the per-domain losses before choosing a format for a particular job.
-F32 through Q4 naturally finished all 864 responses; Q3 finished 863. Q2 naturally finished 817 responses; Q1 is still pending. Later QAT experiments remain separate.
+F32 through Q4 naturally finished all 864 responses; Q3 finished 863. Q2 naturally finished 817 responses; Q1 finished none within the configured output limit. Later QAT experiments remain separate.
 
 These measurements ran on shared A100 GPUs. Recorded allocation times include
 contention and storage work, so they are not isolated inference speed benchmarks.
 No training was repeated to produce this sweep. No GGUF has been uploaded or
-accepted for release. The sweep continues independently of the other arms.
+accepted for release. This completed sweep is separate from the other arms, which remain in progress.
