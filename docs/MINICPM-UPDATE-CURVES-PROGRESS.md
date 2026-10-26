@@ -1,10 +1,10 @@
 # MiniCPM update-curve progress snapshot
 
-## Current chart: all ten trajectories, receipts collected at 11:40 UTC
+## Current chart: all ten trajectories, receipts collected at 12:52 UTC
 
 ![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
 
-The chart contains 487 completed scored checkpoints, 50 more than the preceding
+The chart contains 515 completed scored checkpoints, 28 more than the preceding
 snapshot. It includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
 Muon, and all six AdamW LoRA ranks. Full updates use FP32 weights; LoRA uses
 the F16 base with its attached adapter. All rows use the same 864 frozen
@@ -22,27 +22,35 @@ The [rank-chart source](results/minicpm-20261026/plot_rank_comparison.py) and
 
 | Arm | Latest update / 68 | Correct / 864 | Natural finishes / 864 |
 | --- | ---: | ---: | ---: |
-| Full AdamW | 55 | 474 | 864 |
-| Full standard Muon | 54 | 491 | 864 |
+| Full AdamW | 56 | 481 | 864 |
+| Full standard Muon | 56 | 488 | 864 |
 | Full RMS/decay Muon | 50 | 487 | 864 |
-| Full fast/refine Muon | 51 | 499 | 864 |
-| AdamW LoRA rank 1 | 40 | 379 | 854 |
-| AdamW LoRA rank 2 | 45 | 436 | 863 |
-| AdamW LoRA rank 3 | 44 | 431 | 864 |
-| AdamW LoRA rank 4 | 43 | 454 | 864 |
-| AdamW LoRA rank 8 | 44 | 457 | 864 |
+| Full fast/refine Muon | 53 | 489 | 864 |
+| AdamW LoRA rank 1 | 45 | 391 | 857 |
+| AdamW LoRA rank 2 | 49 | 443 | 863 |
+| AdamW LoRA rank 3 | 48 | 432 | 863 |
+| AdamW LoRA rank 4 | 48 | 463 | 864 |
+| AdamW LoRA rank 8 | 49 | 480 | 864 |
 | AdamW LoRA rank 16 | 68 | 494 | 864 |
 
 The original baseline was 59 correct and 415 natural finishes. This collection
-checked 347 current saved points against complete result and settlement
+checked 407 current saved points against complete result and settlement
 receipts; older preserved history remains in the CSV. Overlapping counts,
 runtime identities and result hashes were checked before merging.
-The [validation receipt](results/minicpm-20261026/training-curves-validation-1140.json)
+The [validation receipt](results/minicpm-20261026/training-curves-validation-1252.json)
 retains point/result/settlement hashes. Rank 8 update 34 uses the explicit,
 previously validated recovery reduction: 227 preserved completed cases plus
 637 missing cases, with disjoint coverage of all 864. Its original assessment
 failed with CUDA out of memory; no completed case or training update was repeated.
-The resumed arm has completed updates 35 through 44. Recovery is not a seed repeat.
+The resumed arm has completed updates 35 through 49. Recovery is not a seed repeat.
+
+Four rank workers (1, 2, 3, 4) voluntarily stopped after a complete checkpoint,
+then resumed at its successor with exact saved optimizer state and exposure cursor.
+Their previous 50-percent utilization filter is removed. GPU placement now depends
+on free VRAM and the existing ownership locks; evaluation retains additional VRAM
+headroom against shared-load spikes. Numerical profiles and the 864 questions are
+unchanged. Five copied checkpoint references were verified against the original
+receipts and not counted as new measurements or assigned new score timestamps.
 
 No training or inference was repeated to make these charts. Earlier RMS/decay
 and fast/refine completion timestamps absent from preserved history remain blank.
@@ -59,9 +67,8 @@ Each cell is correct answers out of 96 questions. This panel covers eight
 arithmetic skills and register-state tracking. The
 [skill CSV](results/minicpm-20261026/latest-skill-scores.csv) and
 [plot script](results/minicpm-20261026/plot_skill_scores.py) retain exact counts.
-Register-state scores are zero in six rows. Rank 16 at update 68, standard Muon
-at update 54, RMS/decay Muon at update 50 and fast/refine Muon at update 51 each
-scored 1/96. The cause of each failure family still needs investigation; zero on
+Register-state scores are zero in 6 of ten rows; the latest values range
+from 0 to 1 correct answers out of 96. The cause of each failure family still needs investigation; zero on
 this panel does not establish that a model cannot learn state tracking.
 These measurements do not qualify BW shell tasks, tool use, or research agency.
 Those require their own workflow panels in the reusable learning policy.
