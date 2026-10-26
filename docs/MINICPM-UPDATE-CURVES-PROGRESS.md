@@ -128,3 +128,38 @@ The hash-pinned per-run receipts and private machine/process inventory are retai
 - **Still outstanding:** all fixed-comparison arms must reach update 68; LoRA ranks need more matched presentations; then the full per-update learning/forgetting graph and acceptance report can be finalized. The approved RoPE/YaRN position-extension branch has not started. No quantized release model or GGUF has been accepted.
 
 This is a partial checkpoint, not an acceptance report. GPU utilization and timing are shared-host observations, not optimizer comparisons.
+
+## Live status refresh — 2026-10-26 02:49 UTC
+
+This refresh combines the llm-60 supervisor's saved score records with live A100 process and GPU snapshots through 02:48 UTC. No experiment crash is confirmed. A slow A100 process/filesystem inventory was interrupted after it stopped returning output; the run processes and jobs were not interrupted.
+
+### Latest verified fixed-comparison results
+
+| Host | Arm | Latest scored update / 68 | Presentations | Correct / 864 | Gained / lost vs. original |
+| --- | --- | ---: | ---: | ---: | ---: |
+| A100 | Full AdamW | 45 | 1,215 | 473 (54.7%) | latest per-case delta not refreshed |
+| A100 | Full standard Muon | 46 | 1,242 | 489 (56.6%) | latest per-case delta not refreshed |
+| A100 | Full RMS/decay Muon | 44 | 1,188 | 482 (55.8%) | latest per-case delta not refreshed |
+| A100 | Full fast/refine Muon | 41 | 1,107 | 464 (53.7%) | latest per-case delta not refreshed |
+| A100 | AdamW LoRA rank 16 | 55 | 1,485 | 498 (57.6%) | latest per-case delta not refreshed |
+| llm-60 | Full AdamW | 41 | 1,107 | 479 (55.4%) | 434 / 14 |
+| llm-60 | Full standard Muon | 40 | 1,080 | 464 (53.7%) | 427 / 22 |
+| llm-60 | Full RMS/decay Muon | 39 | 1,053 | 465 (53.8%) | 427 / 21 |
+| llm-60 | Full fast/refine Muon | 39 | 1,053 | 464 (53.7%) | 428 / 23 |
+
+The llm-60 results are newer than the prior 02:37 table. AdamW moved from 483 at update 40 to 479 at update 41; standard Muon moved from 465 at update 39 to 464 at update 40; fast/refine Muon advanced from update 38 to 39 and scored 464. These are measured changes on the same 864-case set, not process failures. Scores are still at different update counts, so this is not a final optimizer ranking. No candidate was promoted.
+
+### In flight and waiting
+
+- **llm-60:** the study controller was alive at 02:48 UTC. RMS/decay Muon update 40's native training command exited with code 0 and left a candidate GGUF and optimizer state. Its held-out score had not appeared in the supervisor log by 02:48, and the GPU was idle at that instant. This is a completed training step awaiting evaluation/controller follow-through, not a confirmed crash.
+- **A100:** the host was reachable at 02:48 UTC. Six study evaluation processes were visible: standard Muon update 47, RMS/decay Muon update 45, and LoRA ranks 2/19, 3/16, 4/17 and 8/21. Their result files were not yet present in the checked output locations at that snapshot, so the completed-score table above remains the latest verified one. No active rank-1 evaluator was visible; its last verified point remains update 12 (207/864). The absence of a visible evaluator does not establish that its controller crashed.
+- At the same A100 snapshot, approved GPUs 0, 1, 2, 4, 5 and 7 showed 97%, 16%, 4%, 31%, 13% and 12% utilization respectively. GPUs 3 and 6 were at 100% and 97% and were not assigned to this study. This is shared-host telemetry, not a study-only utilization measurement.
+
+### Extended work and remaining gates
+
+- The rank sweep's last verified completed points remain rank 1: update 12, 207/864; rank 2: update 16, 285/864; rank 3: update 14, 289/864; rank 4: update 15, 327/864; rank 8: update 19, 383/864. Newer evaluations for ranks 2, 3, 4 and 8 were in flight, so do not treat those unequal practice counts as a rank leaderboard.
+- The fixed five-arm comparison remains incomplete: every arm must reach update 68 and its held-out evaluation must settle. The per-update answer-level gain/loss graph and acceptance report are still outstanding.
+- The approved RoPE/YaRN extension has not started. No quantized candidate has been accepted or exported.
+- The CPU capture-to-oracle bridge remains a limited qualification: it verifies one captured failure/correction pair and issues a receipt, but it does not yet create an approved lesson or dispatch training. The complete reusable failure → verified lesson → train → learning/forgetting gate → accept/reject loop, and the BW shell-failure diagnosis, remain unfinished.
+
+This is an interim progress record. The hosts, resource availability and pending evaluations must be checked again before interpreting any later result.
