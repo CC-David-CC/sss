@@ -1,5 +1,7 @@
 # A short tour of the measured results
 
+[Compare the completed rank-3/rank-4/rank-16 checkpoint precision measurements](FINAL-CHECKPOINT-PRECISION.md) (rank-3 Q5 still pending).
+
 Three questions organize this work: can we test faster, how do training methods
 change learning and forgetting, and how much survives compression? These are
 separate measurements. This page links the evidence and current graphs.

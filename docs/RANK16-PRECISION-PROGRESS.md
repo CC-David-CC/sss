@@ -1,5 +1,7 @@
 # How much learned behavior survives a smaller GGUF?
 
+[Compare the completed rank-3/rank-4/rank-16 checkpoint precision measurements](FINAL-CHECKPOINT-PRECISION.md) (rank-3 Q5 still pending).
+
 This is a completed precision sweep of the completed **AdamW LoRA rank-16,
 update-68** checkpoint. It is separate from the unfinished optimizer/rank
 comparison. The same 864 frozen arithmetic/state questions are used throughout.
