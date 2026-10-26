@@ -1,49 +1,55 @@
 # MiniCPM update-curve progress snapshot
 
-## Current chart: all ten trajectories, receipts collected at 07:51 UTC
+## Current chart: all ten trajectories, receipts collected at 09:21 UTC
 
 ![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
 
-The chart now includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
+The chart contains 437 completed scored checkpoints, 33 more than the preceding
+snapshot. It includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
 Muon, and all six AdamW LoRA ranks. Full updates use FP32 weights; LoRA uses
-the F16 base with its attached adapter. The recorded execution paths differ;
-all rows use the same 864 frozen questions. Checkpoints have different update
-counts; rank 16 has now reached all 68 updates. The other trajectories remain
-in progress. This is not a final optimizer/rank ranking. The chart contains 404
-completed scored checkpoints, 56 more than the preceding snapshot.
+the F16 base with its attached adapter. All rows use the same 864 frozen
+questions; recorded execution paths differ. Only rank 16 has finished 68 updates.
+This remains an interim comparison, not a final optimizer or rank ranking.
+
+### Requested comparison: standard optimizers and six LoRA ranks
+
+![Standard AdamW and Muon versus six AdamW LoRA ranks](results/minicpm-20261026/rank-comparison.png)
+
+Both charts use completed measurements only. Lines end where assessment has
+actually finished; unfinished arms are not extrapolated to update 68.
+The [rank-chart source](results/minicpm-20261026/plot_rank_comparison.py) and
+[all-point CSV](results/minicpm-20261026/intermediate-training-curves.csv) are included.
 
 | Arm | Latest update / 68 | Correct / 864 | Natural finishes / 864 |
 | --- | ---: | ---: | ---: |
-| Full AdamW | 48 | 479 | 864 |
-| Full standard Muon | 47 | 480 | 864 |
-| Full RMS/decay Muon | 47 | 477 | 864 |
-| Full fast/refine Muon | 45 | 485 | 864 |
-| AdamW LoRA rank 1 | 27 | 299 | 847 |
-| AdamW LoRA rank 2 | 33 | 397 | 859 |
-| AdamW LoRA rank 3 | 31 | 397 | 861 |
-| AdamW LoRA rank 4 | 32 | 413 | 864 |
-| AdamW LoRA rank 8 | 33 | 415 | 864 |
+| Full AdamW | 50 | 475 | 864 |
+| Full standard Muon | 50 | 486 | 864 |
+| Full RMS/decay Muon | 49 | 477 | 864 |
+| Full fast/refine Muon | 48 | 482 | 864 |
+| AdamW LoRA rank 1 | 33 | 338 | 848 |
+| AdamW LoRA rank 2 | 38 | 409 | 861 |
+| AdamW LoRA rank 3 | 36 | 410 | 864 |
+| AdamW LoRA rank 4 | 36 | 422 | 864 |
+| AdamW LoRA rank 8 | 36 | 429 | 864 |
 | AdamW LoRA rank 16 | 68 | 494 | 864 |
 
-The original baseline was 59 correct and 415 natural finishes. The new collection
-checked 296 complete points from the current controller directories against their
-original result/settlement receipts; older preserved history remains in the CSV.
-Overlapping score/count/runtime/evidence fields were checked before merging.
-The [validation receipt](results/minicpm-20261026/training-curves-validation-0751.json)
-retains the exact point/result/settlement hashes. No training or inference was
-repeated to update these graphs. The complete scored
-points are in the [CSV](results/minicpm-20261026/intermediate-training-curves.csv).
-Earlier RMS/decay and fast/refine points come from the preserved aggregate
-history export; their exact completion timestamps were not included there and
-remain blank in the CSV. Later points retain their result-receipt timestamps.
+The original baseline was 59 correct and 415 natural finishes. This collection
+checked 297 current saved points against complete result and settlement
+receipts; older preserved history remains in the CSV. Overlapping counts,
+runtime identities and result hashes were checked before merging.
+The [validation receipt](results/minicpm-20261026/training-curves-validation-0921.json)
+retains point/result/settlement hashes. Rank 8 update 34 uses the explicit,
+previously validated recovery reduction: 227 preserved completed cases plus
+637 missing cases, with disjoint coverage of all 864. Its original assessment
+failed with CUDA out of memory; no completed case or training update was repeated.
+The resumed arm has completed updates 35 and 36. Recovery is not a seed repeat.
 
-Four superseded model/state pairs were preserved and byte-verified on the A100's
-own persistent disk before their RAM copies were retired, reclaiming about
-83 GiB. No latest parent or active checkpoint was removed, resource limits were
-unchanged, and the original controllers continued. Subsequent completed points
-include AdamW 48, RMS/decay 47 and fast/refine 45. Runtime elapsed time remains
-an operational observation, not a fixed training-time budget or a reliable
-shared-GPU throughput comparison.
+No training or inference was repeated to make these charts. Earlier RMS/decay
+and fast/refine completion timestamps absent from preserved history remain blank.
+Shared A100 wall-clock timings are not reliable isolated throughput comparisons;
+training presentations and updates organize this study. Four superseded model/state
+pairs were preserved and byte-verified on the A100's persistent disk before their
+RAM copies were retired, reclaiming about 83 GiB.
 
 ### Which S³ skills are actually being measured?
 
@@ -53,8 +59,8 @@ Each cell is correct answers out of 96 questions. This panel covers eight
 arithmetic skills and register-state tracking. The
 [skill CSV](results/minicpm-20261026/latest-skill-scores.csv) and
 [plot script](results/minicpm-20261026/plot_skill_scores.py) retain exact counts.
-Register-state scores are zero in nine rows; rank 16 at update 68 scored
-1/96. Fraction addition also remains weak. The cause of each failure family still needs investigation; zero on
+Register-state scores are zero in eight rows; rank 16 at update 68 and standard
+Muon at update 50 each scored 1/96. Fraction addition also remains weak. The cause of each failure family still needs investigation; zero on
 this panel does not establish that a model cannot learn state tracking.
 These measurements do not qualify BW shell tasks, tool use, or research agency.
 Those require their own workflow panels in the reusable learning policy.
