@@ -176,3 +176,7 @@ workflow parent/child constructions then produced identical evaluator identities
 using the separate API and qualified-execution installations, with zero model
 calls. This preflight proves installation equivalence, not a completed native
 learning round. See the [sanitized receipt](../validation/learning-program-20261024/child-installation-20261026.json).
+
+A subsequent independent native mixed block executed and preserved its diagnostic
+GGUF. See [the measured result and unresolved joined assessment](NATIVE-MIXED-BLOCK.md).
+The native job is complete; the full reusable learning loop is still unqualified.
