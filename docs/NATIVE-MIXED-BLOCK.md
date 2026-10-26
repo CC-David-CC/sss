@@ -127,3 +127,40 @@ rate for plain AdamW; its serialized auxiliary-rate default is not by itself an
 explanation. S3's paired retention comparator rejected this candidate. The full
 PCC learning-run decision remains incomplete because its BW panel failed; a
 standalone comparison must not be rewritten as a completed joined round.
+
+## Why the next check is step size
+
+PCC's new [read-only step audit](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/training-step-audit-20261026/docs/TRAINING-STEP-AUDIT.md)
+checked all 2,516,756,480 parameter components and the saved first moment.
+There were no nonfinite weights and no violations of the first fresh zero-decay
+AdamW component bound. The reconstructed gradient norms matched the native
+record within 1.09e-7 relative error. Forward-only loss on the original model
+also matched the backward-graph starting loss within 2.60e-8.
+
+The recorded gradient dot actual update was -4.48896, while starting loss was
+0.419726. That local linear prediction would drive the loss below zero; it is
+not a reliable prediction over the full step. A controlled forward-only probe
+then measured fractions of the same observed weight change, without another
+backprop pass or held-out question evaluation:
+
+| Fraction of update | Loss on the exact owned 28-example block |
+| --- | ---: |
+| 0 | 0.419726 |
+| 0.01 | 0.379416 |
+| 0.10 | 0.281242 |
+| 1 | 1.212776 |
+
+Along this update path, the full step passes lower-loss points and ends worse.
+This supports an overshoot explanation for this block. It does not establish
+that either smaller file improves retention, that every gradient is independently
+correct, or that AdamW is generally inferior. The smaller files are temporary
+interpolated diagnostics, not registered native training candidates or new
+points on the frozen optimizer/rank comparison.
+
+The mixed block contained 310 supervised tokens; 75 belonged to its one code
+lesson. Native training averages selected-token loss within each example, then
+averages examples. Token counts alone do not measure objective weight or gradient
+influence. Even 27 review lessons alongside one code lesson did not make this
+particular full update safe. A next candidate still needs the same behavioral
+and forgetting checks. The original base and named rejected candidate remain
+unchanged; no learning-run acceptance record was fabricated.
