@@ -16,8 +16,10 @@ read/edit/check/finish task with independent verification, a separate proven
 the campaign. The passing task used explicit recovery and an additional
 interpreter-step allowance; it is not a same-bound two-case panel score.
 S³ now settles proven budget failures and continues its panel, with archived
-read-only evidence. Generic CLI native qualification and a complete joined
-learning round remain open. Neither candidate is promoted.
+read-only evidence. The generic recovery CLI now also passed an owned native SIGKILL/reopen check,
+including preserved completed operations and explicit replay of the original
+unsettled generation. That task remained unfinished. A complete joined learning
+round remains open. Neither candidate is promoted.
 
 ## Plain-language reading
 
