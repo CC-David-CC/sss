@@ -1,6 +1,6 @@
 # MiniCPM update-curve progress snapshot
 
-Captured 2026-10-26 01:24-01:29 UTC. This is an interim results note, not an acceptance report. The fixed comparison and the rank sweep are still running.
+Captured 2026-10-26 01:47-01:50 UTC. This is an interim results note, not an acceptance report. The fixed comparison and the rank sweep are still running.
 
 ## What was measured
 
@@ -16,22 +16,22 @@ The original comparison has five arms, each planned for 68 updates: full-weight 
 | --- | ---: | ---: | ---: |
 | Full AdamW | 43 / 68 | 1,161 | 476 (55.1%) |
 | Full standard Muon | 46 / 68 | 1,242 | 489 (56.6%) |
-| Full RMS/decay Muon | 42 / 68 | 1,134 | 464 (53.7%) |
-| Full fast/refine Muon | 39 / 68 | 1,053 | 464 (53.7%) |
-| AdamW LoRA rank 16 | 53 / 68 | 1,431 | 498 (57.6%) |
+| Full RMS/decay Muon | 43 / 68 | 1,161 | 472 (54.6%) |
+| Full fast/refine Muon | 40 / 68 | 1,080 | 466 (53.9%) |
+| AdamW LoRA rank 16 | 54 / 68 | 1,458 | 501 (58.0%) |
 
 ### llm-60
 
 | Arm | Latest complete update / 68 | Example presentations | Correct / 864 |
 | --- | ---: | ---: | ---: |
-| Full AdamW | 38 / 68 | 1,026 | 489 (56.6%) |
-| Full standard Muon | 37 / 68 | 999 | 465 (53.8%) |
-| Full RMS/decay Muon | 37 / 68 | 999 | 466 (53.9%) |
+| Full AdamW | 39 / 68 | 1,053 | 488 (56.5%) |
+| Full standard Muon | 38 / 68 | 1,026 | 466 (53.9%) |
+| Full RMS/decay Muon | 38 / 68 | 1,026 | 464 (53.7%) |
 | Full fast/refine Muon | 37 / 68 | 999 | 478 (55.3%) |
 
 These are intermediate checkpoints at unequal update counts, so they do not identify a winning optimizer. In particular, the A100 and llm-60 scores are not pooled as if they were repeats of one identical run. No candidate has been promoted.
 
-At 01:29:37 UTC, llm-60 AdamW update 39 had completed native training and candidate reload; its held-out evaluation was still running. It is not yet a scored checkpoint.
+At 01:49 UTC, llm-60 AdamW update 39 had a complete held-out score. A Muon fast/refine update 38 native training step was active in the live process check. The other llm-60 arms remain below update 39; their controllers are separate from the A100 jobs.
 
 ## Extended LoRA-rank sweep on A100
 
@@ -39,37 +39,37 @@ These rank arms were added after the original five-arm plan. Each point below is
 
 | LoRA rank | Latest complete update | Example presentations | Correct / 864 | Naturally finished / 864 |
 | ---: | ---: | ---: | ---: | ---: |
-| 1 | 10 | 270 | 177 (20.5%) | 650 |
-| 2 | 14 | 378 | 272 (31.5%) | 788 |
-| 3 | 12 | 324 | 276 (31.9%) | 790 |
-| 4 | 13 | 351 | 303 (35.1%) | 849 |
-| 8 | 16 | 432 | 379 (43.9%) | 860 |
+| 1 | 11 | 297 | 194 (22.5%) | 697 |
+| 2 | 15 | 405 | 279 (32.3%) | 790 |
+| 3 | 13 | 351 | 284 (32.9%) | 798 |
+| 4 | 14 | 378 | 317 (36.7%) | 855 |
+| 8 | 17 | 459 | 378 (43.8%) | 863 |
 
 Rank 1 and 2 had substantially more non-finishing answers at these early checkpoints. More updates and matched-presentation comparisons are needed before drawing a capacity conclusion.
 
 ## What is running and resource limits
 
-At the 01:27 UTC A100 process census, all ten registered study owners matched their exact process identities and seven evaluators were active. The other three controllers were alive but had no evaluator child at that instant, so they were not doing evaluation work; no failure was reported. Follow-up rank and optimizer evaluations continue independently.
+The 01:47 UTC census found all ten A100 study owners alive. At 01:49 UTC, four evaluators were active: standard Muon update 47, AdamW update 44, RMS/decay Muon update 44, and LoRA rank 2 update 16. No arm failure or lost owner was reported. This is a live-process snapshot; an arm between evaluations may be waiting for its next admitted step.
 
-A100 GPU utilization and free VRAM in one shared-load sample at 01:27 UTC:
+A100 GPU utilization and free VRAM in one shared-load sample at 01:49 UTC:
 
 | GPU | Utilization | Free VRAM |
 | ---: | ---: | ---: |
-| 0 | 98% | 61.3 GiB |
-| 1 | 85% | 31.7 GiB |
-| 2 | 17% | 64.3 GiB |
-| 3 | 100% | 27.8 GiB |
-| 4 | 43% | 12.9 GiB |
-| 5 | 37% | 55.6 GiB |
-| 6 | 55% | 24.1 GiB |
-| 7 | 17% | 60.0 GiB |
+| 0 | 51% | 59.1 GiB |
+| 1 | 7% | 38.6 GiB |
+| 2 | 0% | 73.9 GiB |
+| 3 | 100% | 28.7 GiB |
+| 4 | 28% | 13.7 GiB |
+| 5 | 11% | 52.6 GiB |
+| 6 | 32% | 24.6 GiB |
+| 7 | 26% | 58.2 GiB |
 
-This is a point-in-time shared-server observation. GPU timings are not used to rank the arms and may be affected by other users' jobs.
+This is a point-in-time shared-server observation at 01:49 UTC. GPU timings are not used to rank the arms and may be affected by other users' jobs. The A100 host reported about 215 GiB free in its shared-memory filesystem and about 2.3 TiB free in the study home mount. llm-60 reported about 126 GiB free in its home filesystem and about 10% utilization on its single GPU during the active Muon fast/refine training step. These are capacity observations, not proof that every arm can claim those resources.
 
 ## Current interpretation and next gates
 
-- The 68-update comparison is incomplete on both hosts. A100 is between updates 39 and 53 across its five arms; llm-60 is at updates 37-38, with AdamW 39 evaluation underway.
-- The rank sweep is incomplete and currently has unequal practice counts. Continue it, then compare ranks at matched presentations.
+- The 68-update comparison is incomplete on both hosts. A100's latest complete points are updates 40-54 across the five arms; llm-60 is at updates 37-39. Four A100 evaluators and one llm-60 training step were active at the 01:49 UTC process check.
+- The rank sweep is incomplete and currently has unequal practice counts. Its latest complete points are updates 11-17, with rank 2 update 16 under evaluation in the latest A100 process check. Continue it, then compare ranks at matched presentations.
 - Preserve the answer-level gains and losses at every update. A higher aggregate score alone is not enough to accept a candidate if it forgets protected skills.
 - Finish evaluation, settlement, and exact artifact checks before making a model-acceptance or export decision.
 
