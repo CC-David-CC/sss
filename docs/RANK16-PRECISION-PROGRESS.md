@@ -3,7 +3,7 @@
 This is an interim precision sweep of the completed **AdamW LoRA rank-16,
 update-68** checkpoint. It is separate from the unfinished optimizer/rank
 comparison. The same 864 frozen arithmetic/state questions are used throughout.
-Six of the eight formats, including the F32 reference, are complete.
+7 of the eight formats, including the F32 reference, are complete.
 
 ![Rank-16 precision sweep](results/minicpm-20261026/rank16-final-precision.png)
 
@@ -15,7 +15,7 @@ Six of the eight formats, including the F32 reference, are complete.
 | Q5_K_M | 1.684 | 482 | 864 | 10 | 22 |
 | Q4_K_M | 1.454 | 492 | 864 | 20 | 22 |
 | Q3_K_M | 1.203 | 401 | 863 | 20 | 113 |
-| Q2_K | pending | pending | pending | pending | pending |
+| Q2_K | 0.969 | 36 | 817 | 8 | 466 |
 | Q1_0 | pending | pending | pending | pending | pending |
 
 Pending formats are not zero scores and are not extrapolated. The
@@ -30,7 +30,7 @@ We packed the same trained model into smaller files and asked it the same
 questions. F16 kept every F32 answer/finish verdict. Q4's total is almost the
 same as F32, but it gained 20 correct answers and lost 22 others. A similar total
 does not mean it remembered exactly the same things. Q3 fell to 401/864, so the observed sharp drop starts below Q4 in this
-sweep. Q2 and Q1 are still being measured. The curve has a dip at Q5 and a
+sweep. Q2 scored 36/864 and naturally finished 817 responses. Q1 is still being measured. The curve has a dip at Q5 and a
 recovery at Q4.
 
 ## Master's level
@@ -75,8 +75,7 @@ comparison, broader skill/workflow coverage and sealed acceptance remain open.
 The current Q4 file is about 1.454 GiB, compared with about 9.380 GiB for F32.
 It retains nearly the same total score here while changing which questions pass.
 Inspect the per-domain losses before choosing a format for a particular job.
-F32 through Q4 naturally finished all 864 responses; Q3 finished 863. The
-pending lower formats may behave differently. Later QAT experiments remain separate.
+F32 through Q4 naturally finished all 864 responses; Q3 finished 863. Q2 naturally finished 817 responses; Q1 is still pending. Later QAT experiments remain separate.
 
 These measurements ran on shared A100 GPUs. Recorded allocation times include
 contention and storage work, so they are not isolated inference speed benchmarks.

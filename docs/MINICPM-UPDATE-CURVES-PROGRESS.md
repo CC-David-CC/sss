@@ -1,12 +1,12 @@
 # MiniCPM update-curve progress snapshot
 
-[The final rank-16 precision sweep](RANK16-PRECISION-PROGRESS.md) now has six completed formats: F32/F16 494, Q8 491, Q5 482, Q4 492 and Q3 401 correct out of 864. Q2 and Q1 remain in progress.
+[The final rank-16 precision sweep](RANK16-PRECISION-PROGRESS.md) has completed F32 through Q2; Q1 is completing separately.
 
-## Current chart: all ten trajectories, receipts collected at 17:27 UTC
+## Current chart: all ten trajectories, receipts collected at 18:14 UTC
 
 ![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
 
-The chart contains 594 completed scored checkpoints, 6 more than the preceding
+The chart contains 602 completed scored checkpoints, 8 more than the preceding
 snapshot. It includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
 Muon, and all six AdamW LoRA ranks. Full updates use FP32 weights; LoRA uses
 the F16 base with its attached adapter. All rows use the same 864 frozen
@@ -24,22 +24,22 @@ The [rank-chart source](results/minicpm-20261026/plot_rank_comparison.py) and
 
 | Arm | Latest update / 68 | Correct / 864 | Natural finishes / 864 |
 | --- | ---: | ---: | ---: |
-| Full AdamW | 59 | 486 | 864 |
+| Full AdamW | 61 | 482 | 864 |
 | Full standard Muon | 59 | 490 | 864 |
 | Full RMS/decay Muon | 55 | 490 | 864 |
 | Full fast/refine Muon | 57 | 487 | 864 |
-| AdamW LoRA rank 1 | 58 | 431 | 861 |
+| AdamW LoRA rank 1 | 60 | 440 | 862 |
 | AdamW LoRA rank 2 | 61 | 473 | 864 |
-| AdamW LoRA rank 3 | 62 | 485 | 864 |
-| AdamW LoRA rank 4 | 62 | 500 | 864 |
+| AdamW LoRA rank 3 | 64 | 490 | 864 |
+| AdamW LoRA rank 4 | 64 | 494 | 864 |
 | AdamW LoRA rank 8 | 60 | 478 | 864 |
 | AdamW LoRA rank 16 | 68 | 494 | 864 |
 
 The original baseline was 59 correct and 415 natural finishes. This collection
-checked 486 current saved points against complete result and settlement
+checked 494 current saved points against complete result and settlement
 receipts; older preserved history remains in the CSV. Overlapping counts,
 runtime identities and result hashes were checked before merging.
-The [validation receipt](results/minicpm-20261026/training-curves-validation-1727.json)
+The [validation receipt](results/minicpm-20261026/training-curves-validation-1814.json)
 retains point/result/settlement hashes. Rank 8 update 34 uses the explicit,
 previously validated recovery reduction: 227 preserved completed cases plus
 637 missing cases, with disjoint coverage of all 864. Its original assessment
@@ -79,9 +79,9 @@ The worker does not delete models, optimizer states, response evidence or scores
 
 ![Paired answer gains and losses at each update](results/minicpm-20261026/paired-update-turnover.png)
 
-Four CPU analysis processes compared 476 adjacent completed checkpoint pairs,
+Four CPU analysis processes compared 484 adjacent completed checkpoint pairs,
 requiring the same 864 case identities and runtime within each pair. Of those,
-426 both gained correct answers and lost previously correct answers. For example,
+432 both gained correct answers and lost previously correct answers. For example,
 full AdamW stayed at **481/864 from update 56 to 57**, while gaining 11 answers
 and losing 11 others. A flat total did not mean unchanged behavior.
 
@@ -107,7 +107,7 @@ Each cell is correct answers out of 96 questions. This panel covers eight
 arithmetic skills and register-state tracking. The
 [skill CSV](results/minicpm-20261026/latest-skill-scores.csv) and
 [plot script](results/minicpm-20261026/plot_skill_scores.py) retain exact counts.
-Register-state scores are zero in 6 of ten rows; the latest values range
+Register-state scores are zero in 7 of ten rows; the latest values range
 from 0 to 1 correct answers out of 96. The cause of each failure family still needs investigation; zero on
 this panel does not establish that a model cannot learn state tracking.
 These measurements do not qualify BW shell tasks, tool use, or research agency.
