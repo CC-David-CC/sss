@@ -1,0 +1,156 @@
+{
+  "accepted_for_use": false,
+  "artifact": {
+    "after": 2,
+    "before": 2,
+    "cases": 2,
+    "finished": 2
+  },
+  "backprop": "ordinary native dense",
+  "base_sha256": "050e75d6cca444068e77e88132e2a93f8e1d4e653472ee3c7e905382309cb5d9",
+  "baseline_reused_without_dispatch": true,
+  "candidate_sha256": "ce673b360122f1be1bda4c1de2903efbd72d031e910d64e817e83362b20791fb",
+  "caveats": [
+    "Different question set from the frozen ten-arm 68-update study.",
+    "Net gain is descriptive, not a demonstrated population-level improvement.",
+    "Six answer losses and missing workflow coverage are retained explicitly.",
+    "No protected questions or answers have been exported as lessons.",
+    "These are two independent one-step settings from the same parent, not a two-step trajectory."
+  ],
+  "continuation_of_candidate01": false,
+  "dataset_sha256": "4630227fb3ef877fa1d3d895e9784ea89cd211bc096533f985f5cb80eb48572d",
+  "evidence_sha256": {
+    "native-independent02-save-reload02-exit-private.json": "ad78f2cd8354e7638c033fb7f37dbfcc6c47111a4183ff302c94a8092c89a66c",
+    "native-mixed-block02.json": "0349096030a5135a11de043f7020e3e08cb611776b49353ca72291fc3a8d76aa",
+    "panel-comparison-private.json": "f548350332e2089c629f84f69bd9b5f2309860c9784a2f45c8cb645d2da19ecc",
+    "retention-candidate-complete-private.json": "63d07885c4d00a5e4b38265d4784e5361ae4e356fdd520348daa79c7e0422f11",
+    "reused-retention-baseline-private.json": "90e1087165af8682db500d212a4f7e9387acad527df29f23fa70fe2cd0f25c29"
+  },
+  "joined_round_complete": false,
+  "kind": "Second native mixed-block candidate; lower fresh learning rate",
+  "learning_rate": 1e-06,
+  "mode": "full",
+  "native_job": "native-mixed-block02",
+  "native_status": "MECHANICS_EXECUTED",
+  "native_updates": 1,
+  "optimizer": "adamw",
+  "optimizer_state_policy": "fresh",
+  "optimizer_state_sha256": "2488ee04524d1b0eebfc349d6eb3d76a7b6cde1350d6e9d544bfe03468795358",
+  "original_native_save_reload_qualified": false,
+  "practice_loss_after": 0.2812422513961792,
+  "practice_loss_before": 0.41972559690475464,
+  "presentations": 28,
+  "private_export": {
+    "export_id": "a7fbfee92c8a43650f6b6fab2187722f676bbc9d54b3ebeed941225494ab1efc",
+    "file": "MiniCPM-S3-mixed-native02-full-F32.gguf",
+    "model_sha256": "ce673b360122f1be1bda4c1de2903efbd72d031e910d64e817e83362b20791fb",
+    "name": "MiniCPM-S3-mixed-native02-full-F32",
+    "operation_id": "native-mixed-preserve02",
+    "request_sha256": "cfd55c957a1f70df754e5c11bf81e25ffa6baf2c276faf94c4a7b22a79325bdf",
+    "schema": 1,
+    "weights_published": false
+  },
+  "promoted": false,
+  "reload": {
+    "absolute_error": 9.111577770060109e-09,
+    "bound": 0.0002,
+    "examples": 28,
+    "model_sha256": "ce673b360122f1be1bda4c1de2903efbd72d031e910d64e817e83362b20791fb",
+    "original_after": 0.2812422513961792,
+    "reloaded_loss": 0.28124224228460143,
+    "repeated_training_updates": 0,
+    "status": "PASS"
+  },
+  "research_candidate_preserved": true,
+  "retention": {
+    "after": 446,
+    "before": 438,
+    "cases": 864,
+    "evaluation_id": "5a52139d44f8f7637e96038c2a989bb6537c149d165f47b8d48f5ea5892cd9b1",
+    "finished_after": 864,
+    "finished_before": 864,
+    "gained": 14,
+    "lost": 6,
+    "runtime_id": "86520d380e5d12562a3707b3c4200c374ba4080b92e58696d6cabe82db8cae46"
+  },
+  "same_original_base_and_batch_as_candidate01": true,
+  "schema": 1,
+  "scope": "Paired development-panel measurements; incomplete BW workflow coverage",
+  "seed_repeat": false,
+  "skills": [
+    {
+      "after": 82,
+      "before": 80,
+      "cases": 96,
+      "gained": 2,
+      "lost": 0,
+      "skill_id": "math.add.carry"
+    },
+    {
+      "after": 95,
+      "before": 95,
+      "cases": 96,
+      "gained": 0,
+      "lost": 0,
+      "skill_id": "math.add.no_carry"
+    },
+    {
+      "after": 78,
+      "before": 75,
+      "cases": 96,
+      "gained": 5,
+      "lost": 2,
+      "skill_id": "math.add.signed"
+    },
+    {
+      "after": 59,
+      "before": 60,
+      "cases": 96,
+      "gained": 0,
+      "lost": 1,
+      "skill_id": "math.divide"
+    },
+    {
+      "after": 29,
+      "before": 32,
+      "cases": 96,
+      "gained": 0,
+      "lost": 3,
+      "skill_id": "math.fraction"
+    },
+    {
+      "after": 11,
+      "before": 10,
+      "cases": 96,
+      "gained": 1,
+      "lost": 0,
+      "skill_id": "math.fraction.add"
+    },
+    {
+      "after": 59,
+      "before": 59,
+      "cases": 96,
+      "gained": 0,
+      "lost": 0,
+      "skill_id": "math.multiply"
+    },
+    {
+      "after": 32,
+      "before": 26,
+      "cases": 96,
+      "gained": 6,
+      "lost": 0,
+      "skill_id": "math.place_value"
+    },
+    {
+      "after": 1,
+      "before": 1,
+      "cases": 96,
+      "gained": 0,
+      "lost": 0,
+      "skill_id": "state.registers"
+    }
+  ],
+  "strict_retention_comparator_status": "REJECTED",
+  "weights_published": false
+}
