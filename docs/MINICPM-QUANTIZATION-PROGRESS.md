@@ -51,10 +51,11 @@ That ordering describes these questions and these response limits. It does not
 establish that Q3 is generally better than Q4 or Q5 generally better than Q8.
 Q1 and Q2 performed poorly on correct answers under this setup.
 
-These are the original model's results. The separate training curves have much
-higher scores, but the seven-format comparison of a selected trained model is
-still outstanding. This chart does not yet show how much of a training gain
-survives quantization.
+These are the original model's results. A separate
+[seven-format trained-checkpoint panel is now complete](MINICPM-TRAINED-QUANTIZATION.md).
+It measures precision retention for an intermediate AdamW update-43 artifact.
+The final selected-checkpoint comparison after the 68-update study remains
+outstanding. The two precision panels retain different runtime identities.
 
 ## Technical reading and limits
 
@@ -83,11 +84,12 @@ checkpoint and base/adapter/merge provenance and their own execution receipts.
 
 ## Remaining work
 
-The original seven-format panel is complete. The fixed 68-update training
-comparison continues separately. The trained-model precision matrix, retention
-review, final candidate selection and qualified named GGUF preservation remain
-unfinished. Final cleanup of study checkpoints follows the report and retention
-decision; these results do not authorize deleting required milestone state.
+The original seven-format panel and the first intermediate trained seven-format
+panel are complete. The fixed 68-update training comparison and additional
+trained precision panels continue. Final candidate selection, retention review
+and qualified named GGUF preservation remain unfinished. Final cleanup of study
+checkpoints follows the report and retention decision; these results do not
+authorize deleting required milestone state.
 
 ## Reporting correction
 

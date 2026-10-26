@@ -21,12 +21,14 @@ for row in rows:
 for points in by_arm.values():
     points.sort(key=lambda row: int(row["training_presentations"]))
 
-as_of = max(datetime.fromisoformat(row["scored_at_utc"]) for row in rows)
+as_of = max(datetime.fromisoformat(row["scored_at_utc"]) for row in rows if row["scored_at_utc"])
 as_of = as_of.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
 labels = {
     "adamw-full": "AdamW - full update",
     "muon-standard-full": "Muon - standard full update",
+    "muon-rms-decay-full": "Muon - RMS/decay full update",
+    "muon-fast-refine-full": "Muon - fast/refine full update",
     "adamw-lora-r1": "AdamW LoRA - rank 1",
     "adamw-lora-r2": "AdamW LoRA - rank 2",
     "adamw-lora-r3": "AdamW LoRA - rank 3",
@@ -36,9 +38,9 @@ labels = {
 }
 order = list(labels)
 colors = plt.get_cmap("tab10").colors
-markers = ["o", "s", "^", "D", "v", "P", "X", "*"]
+markers = ["o", "s", "+", "x", "^", "D", "v", "P", "X", "*"]
 
-fig, axes = plt.subplots(2, 1, figsize=(12.8, 8.4), sharex=True)
+fig, axes = plt.subplots(2, 1, figsize=(12.8, 9.0), sharex=True)
 fig.subplots_adjust(left=0.09, right=0.98, top=0.86, bottom=0.24, hspace=0.15)
 
 panels = [
@@ -95,7 +97,7 @@ fig.suptitle("MiniCPM5-2B: intermediate training comparison", fontsize=16, fontw
 fig.text(
     0.5,
     0.91,
-    f"One completed held-out evaluation per point | 864 cases | data through {as_of}",
+    f"864 frozen cases per scored checkpoint | interim data through {as_of}",
     ha="center",
     fontsize=10,
 )
@@ -114,8 +116,9 @@ fig.legend(
 fig.text(
     0.5,
     0.025,
-    "Baseline: 59 correct / 415 naturally finished. Target: 68 updates = 1,836 presentations. "
-    "Shared A100 load; this chart tracks learning, not hardware speed.",
+    "Baseline: 59 correct / 415 naturally finished. Target: 68 updates = 1,836 presentations.\n"
+    "Full updates: FP32 weights. LoRA: F16 base plus adapters. Recorded execution paths differ; "
+    "same frozen cases. Shared A100 load.",
     ha="center",
     fontsize=8.5,
     color="#555555",

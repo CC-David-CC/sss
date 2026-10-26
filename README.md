@@ -1,6 +1,10 @@
+[MiniCPM trained quantization results](docs/MINICPM-TRAINED-QUANTIZATION.md):
+all seven formats measured on the same trained checkpoint. FP16/Q8 match its
+476/864 FP32 total, with individual gains and losses recorded.
+
 [MiniCPM original-model quantization results](docs/MINICPM-QUANTIZATION-PROGRESS.md):
 all seven formats completed 864 questions each, with accuracy, natural stopping,
-and per-question gains/losses. Trained-model quantization comparisons are pending.
+and per-question gains/losses. Additional trained panels are in progress.
 
 [MiniCPM update-curve progress](docs/MINICPM-UPDATE-CURVES-PROGRESS.md):
 interim fixed-68 comparison and separate LoRA-rank sweep. Scores are incomplete

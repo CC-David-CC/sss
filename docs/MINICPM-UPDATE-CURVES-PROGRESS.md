@@ -1,5 +1,61 @@
 # MiniCPM update-curve progress snapshot
 
+## Current chart: all ten trajectories, receipts through 05:03 UTC
+
+![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
+
+The chart now includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
+Muon, and all six AdamW LoRA ranks. Full updates use FP32 weights; LoRA uses
+the F16 base with its attached adapter. The recorded execution paths differ;
+all rows use the same 864 frozen questions. Checkpoints have different update
+counts and are still in progress. This is not a final optimizer/rank ranking.
+
+| Arm | Latest update / 68 | Correct / 864 | Natural finishes / 864 |
+| --- | ---: | ---: | ---: |
+| Full AdamW | 47 | 477 | 864 |
+| Full standard Muon | 47 | 480 | 864 |
+| Full RMS/decay Muon | 45 | 483 | 864 |
+| Full fast/refine Muon | 43 | 476 | 864 |
+| AdamW LoRA rank 1 | 18 | 250 | 774 |
+| AdamW LoRA rank 2 | 24 | 361 | 849 |
+| AdamW LoRA rank 3 | 21 | 364 | 854 |
+| AdamW LoRA rank 4 | 22 | 394 | 860 |
+| AdamW LoRA rank 8 | 26 | 412 | 863 |
+| AdamW LoRA rank 16 | 62 | 496 | 864 |
+
+The original baseline was 59 correct and 415 natural finishes. At the 05:03 UTC
+ownership audit, all ten primary A100 controllers matched their recorded PID
+and process-start identities. They were not restarted. The complete scored
+points are in the [CSV](results/minicpm-20261026/intermediate-training-curves.csv).
+Earlier RMS/decay and fast/refine points come from the preserved aggregate
+history export; their exact completion timestamps were not included there and
+remain blank in the CSV. Later points retain their result-receipt timestamps.
+
+### Which S³ skills are actually being measured?
+
+![Latest per-skill scores](results/minicpm-20261026/latest-skill-scores.png)
+
+Each cell is correct answers out of 96 questions. This panel covers eight
+arithmetic skills and register-state tracking. The
+[skill CSV](results/minicpm-20261026/latest-skill-scores.csv) and
+[plot script](results/minicpm-20261026/plot_skill_scores.py) retain exact counts.
+Register-state scores are currently zero throughout, and fraction addition is
+also weak. The cause of each failure family still needs investigation; zero on
+this panel does not establish that a model cannot learn state tracking.
+These measurements do not qualify BW shell tasks, tool use, or research agency.
+Those require their own workflow panels in the reusable learning policy.
+
+### Trained quantization is now measured too
+
+The separate [AdamW update-43 precision panel](MINICPM-TRAINED-QUANTIZATION.md)
+is complete for all seven formats: FP16/Q8 score 476, Q4 465, Q5 460, Q3 345,
+Q2 38 and Q1 0, each out of 864. Its existing local FP32 reference scored 476.
+It reused an already trained checkpoint, without new training or A100 model
+transfer. It is separate from the ten primary trajectories above.
+
+Older timestamped snapshots below remain historical records. The current
+tables and linked precision reports supersede their status statements.
+
 **Precision results are now reconciled:** [all seven original-model formats
 completed the 864-question panel](MINICPM-QUANTIZATION-PROGRESS.md), with a chart,
 aggregate CSV and explicit measurement limits. Earlier statements below that
