@@ -171,3 +171,12 @@ This is an interim progress record. The hosts, resource availability and pending
 - llm-60 advanced from successful RMS/decay update-40 training into the COW held-out evaluator. The evaluator was live at 02:51 UTC; its score had not yet been saved. This confirms the earlier candidate was not stranded after training.
 
 The original comparison is still unfinished, no arm is accepted, and no export has been made.
+
+## New saved results — 2026-10-26 02:54 UTC
+
+- **llm-60 RMS/decay Muon update 40** completed its COW held-out evaluation: 461/864 correct (53.4%), with 424 original answers gained and 22 lost. That is four fewer correct answers than update 39 (465/864), a measured score change rather than a crash. The study controller then started training fast/refine Muon update 40; its native training process was live at 02:53 UTC.
+- **A100 AdamW LoRA rank 8 update 21** completed at 390/864 correct (45.1%) with 863/864 natural finishes. Compared with its last saved update 19 (383 correct, 863 finished), it gained seven correct answers and held natural finishes steady.
+- At 02:53 UTC, A100 result files were still pending for full standard Muon update 47, full RMS/decay Muon update 45, LoRA rank 2 update 19, rank 4 update 17 and LoRA rank 16 update 58. Rank 3 update 16 and rank 8 update 21 now have completed scores.
+- A separate **rank-1 update-15 training step** was also active under the native out-product qualification build. It uses the `lora-rank1-cuda-bf02` run directory; keep it separate from the original rank-extension curve until its run manifest and evaluation protocol are checked for equivalence.
+
+No candidate has been promoted. The fixed 68-update comparison and the reusable failure-to-lesson training pathway remain incomplete.
