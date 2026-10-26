@@ -219,3 +219,6 @@ observations to suggest useful GPU windows. PCC retains its existing leases and
 allocation checks; forecasts add no workflow runtime or permission prompt.
 
 The optional [BW action-practice export](BW-ACTION-PRACTICE.md) teaches recorded read/edit/check/finish turns through the real PCC append rules. CPU export and registry checks pass; native training on these longer contexts remains unqualified.
+
+
+[Teach a different student from verified BW actions](BW-ACTION-TEACHER-TRANSFER.md) preserves the original source identity and explicitly declares teacher provenance. CPU export, audit and exact registry controls pass; actual student training and acceptance remain separate gates.

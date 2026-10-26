@@ -158,3 +158,6 @@ merge was reused; no training or inference was repeated for that repair. Read th
 [audit report](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/dense-llama-actions-20261026/docs/RANK1-MERGE-AUDIT.md).
 Saved-weight correctness and completed behavioral/retention acceptance remain
 separate gates. Neither this audit nor the tiny two-GPU proof approves a model.
+
+
+[Teach a different student from verified BW actions](BW-ACTION-TEACHER-TRANSFER.md) preserves the original source identity and explicitly declares teacher provenance. CPU export, audit and exact registry controls pass; actual student training and acceptance remain separate gates.

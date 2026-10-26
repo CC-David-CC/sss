@@ -7,6 +7,7 @@ inference, approves membership or trains from this module.
 import copy
 import hashlib
 from pathlib import Path
+from dataclasses import dataclass
 
 from sss.records import canonical, digest, file_sha256
 from sss.profiles import TARGET_POLICIES
@@ -18,6 +19,71 @@ from sss.adapters.bw_verified_practice import (
 
 REPRESENTATION = 'bw-captured-tool-actions-v1'
 KIND = 'sss.bw-verified-action-export.v1'
+
+TRANSFER_KIND = 'sss.bw-owner-declared-teacher-transfer.v1'
+TRANSFER_EXPORT_KIND = 'sss.bw-verified-action-teacher-export.v1'
+
+
+@dataclass(frozen=True)
+class BWActionTeacherTransfer:
+    """Owner-declared teaching origin, bound to exact source and student identities.
+
+    This declaration does not prove who authored a demonstration. Original BW
+    captures and independent artifact checks prove what actually executed. It
+    never relabels the source backend as the student or claims model generation.
+    """
+    source_owner_sha256: str
+    source_model_contract_id: str
+    student_model_contract_id: str
+    failure_capture_id: str
+    correction_capture_id: str
+    teacher_kind: str
+    teacher_identifier: str
+
+    def __post_init__(self):
+        for value in (self.source_owner_sha256,self.source_model_contract_id,
+                      self.student_model_contract_id,self.failure_capture_id,self.correction_capture_id):
+            _hex(value)
+        if (self.source_model_contract_id == self.student_model_contract_id
+                or self.teacher_kind not in ('human','agent','owner-scripted')
+                or type(self.teacher_identifier) is not str
+                or not self.teacher_identifier.strip() or len(self.teacher_identifier.encode('utf8')) > 512
+                or any(ord(c)<32 for c in self.teacher_identifier)):
+            raise PracticeExportRefused('explicit distinct student and bounded owner-declared teacher required')
+
+    def descriptor(self):
+        self.__post_init__()
+        return dict(schema=1,kind=TRANSFER_KIND,**self.__dict__)
+
+    @classmethod
+    def from_descriptor(cls,value):
+        fields={'source_owner_sha256','source_model_contract_id','student_model_contract_id',
+                'failure_capture_id','correction_capture_id','teacher_kind','teacher_identifier'}
+        if (type(value) is not dict or set(value) != fields|{'schema','kind'}
+                or type(value['schema']) is not int or value['schema'] != 1 or value['kind'] != TRANSFER_KIND):
+            raise PracticeExportRefused('closed owner-declared teacher transfer required')
+        return cls(**{k:value[k] for k in fields})
+
+    def verify(self,owner,renderer,correction_id,failure_id):
+        self.__post_init__()
+        if (digest(owner.binding()) != self.source_owner_sha256
+                or owner.model_contract_id != self.source_model_contract_id
+                or renderer.model != self.student_model_contract_id
+                or correction_id != self.correction_capture_id or failure_id != self.failure_capture_id):
+            raise PracticeExportRefused('teacher transfer source, student or capture pins differ')
+
+
+def _teaching_identity(owner,renderer,correction_id,failure_id,teacher_transfer):
+    if type(owner) is not BWArtifactPractice or type(renderer) is not PCCActionRenderer:
+        raise PracticeExportRefused('installed source owner and actual student action renderer required')
+    if teacher_transfer is None:
+        if renderer.model != owner.model_contract_id:
+            raise PracticeExportRefused('different source/student requires explicit owner teacher transfer')
+    elif type(teacher_transfer) is BWActionTeacherTransfer:
+        teacher_transfer.verify(owner,renderer,correction_id,failure_id)
+    else:
+        raise PracticeExportRefused('typed owner teacher transfer required')
+
 
 
 class PCCActionRenderer:
@@ -146,7 +212,8 @@ def _turns(owner, capture, renderer):
     return value
 
 
-def _derive(owner, root, renderer, correction_id, failure_id, target_policy):
+def _derive(owner, root, renderer, correction_id, failure_id, target_policy, teacher_transfer=None):
+    _teaching_identity(owner,renderer,correction_id,failure_id,teacher_transfer)
     failed, corrected, bad, good = _captures(owner,root/'capture',correction_id,failure_id)
     left = _oracle(owner.case,bad,root/'failed-oracle','fail')
     right = _oracle(owner.case,good,root/'corrected-oracle','pass')
@@ -169,7 +236,11 @@ def _derive(owner, root, renderer, correction_id, failure_id, target_policy):
         sources=dict(artifact=_sources(),adapter=file_sha256(__file__),bw_action_reader_sha256=turns['source_sha256']),
         render=[r[2] for r in rendered],exact_artifact_independently_checked=True,
         owner_registered=False,training_approved=False,weights_updated=False)
-    lessons = [pcc_lesson('Verified BW tool action '+str(i+1),owner.model_contract_id,spans,
+    if teacher_transfer is not None:
+        proof['teacher_transfer'] = teacher_transfer.descriptor()
+        proof['teacher_origin_basis'] = 'owner-declaration; original-capture-and-independent-checks-verified'
+        proof['source_backend_relabelled'] = False
+    lessons = [pcc_lesson('Verified BW tool action '+str(i+1),renderer.model,spans,
         archive_sha256=archive.head,verification_sha256=digest(proof),renderer_sha256=renderer.binding()['renderer_sha256'],
         tokenizer_sha256=renderer.tokenizer_id,skill_id='agency.bw.checked_file_repair',target_policy=target_policy)
         for i,(spans,_,_) in enumerate(rendered)]
@@ -188,13 +259,12 @@ class VerifiedBWActionExport:
     def tokens(self): return strict_json(self._data)['tokens']
     def binding(self):
         value=strict_json(self._data)
-        return dict(kind=KIND,export_id=self.export_id,lesson_ids=self.lesson_ids,
+        return dict(kind=value['kind'],export_id=self.export_id,lesson_ids=self.lesson_ids,
             proof_sha256=digest(value['proof']),representation=REPRESENTATION,owner_registered=False,training_approved=False)
 
 
-def export_action_correction(owner, correction_capture, *, correction_capture_id, failure_capture_id, renderer, output, target_policy='actions_answer'):
-    if type(owner) is not BWArtifactPractice or type(renderer) is not PCCActionRenderer or renderer.model != owner.model_contract_id:
-        raise PracticeExportRefused('installed owner and actual model action renderer required')
+def export_action_correction(owner, correction_capture, *, correction_capture_id, failure_capture_id, renderer, output, target_policy='actions_answer', teacher_transfer=None):
+    _teaching_identity(owner,renderer,correction_capture_id,failure_capture_id,teacher_transfer)
     failed, corrected, bad, good = _captures(owner,correction_capture,correction_capture_id,failure_capture_id)
     # Prove representation/split/context before copying or running an oracle.
     turns = _turns(owner,corrected,renderer); renderer.render(turns,target_policy=target_policy)
@@ -213,24 +283,27 @@ def export_action_correction(owner, correction_capture, *, correction_capture_id
         archive.append('assistant','answer' if index == len(turns['turns'])-1 else 'action',turn['assistant_text'],verified=True,scope='practice')
     (root/'finished-training-examples').mkdir(mode=0o700)
     export_text(archive,root/'finished-training-examples/example.txt',public=False)
-    proof, lessons, tokens = _derive(owner,root,renderer,correction_capture_id,failure_capture_id,target_policy)
-    record=dict(schema=1,kind=KIND,owner=owner.binding(),renderer=renderer.binding(),
+    proof, lessons, tokens = _derive(owner,root,renderer,correction_capture_id,failure_capture_id,target_policy,teacher_transfer)
+    record=dict(schema=2 if teacher_transfer else 1,kind=TRANSFER_EXPORT_KIND if teacher_transfer else KIND,owner=owner.binding(),renderer=renderer.binding(),
         correction_capture_id=correction_capture_id,failure_capture_id=failure_capture_id,target_policy=target_policy,
         proof=proof,lessons=lessons,tokens=tokens,files=_inventory(root),owner_registered=False,training_approved=False)
+    if teacher_transfer is not None: record['teacher_transfer']=teacher_transfer.descriptor()
     record['export_id']=digest(record); _write(root/'export-private.json',record)
     return read_action_export(root,owner=owner,expected_export_id=record['export_id'],correction_capture_id=correction_capture_id,
-        failure_capture_id=failure_capture_id,renderer=renderer)
+        failure_capture_id=failure_capture_id,renderer=renderer,teacher_transfer=teacher_transfer)
 
 
-def read_action_export(directory, *, owner, expected_export_id, correction_capture_id, failure_capture_id, renderer):
+def read_action_export(directory, *, owner, expected_export_id, correction_capture_id, failure_capture_id, renderer, teacher_transfer=None):
     """Recompute original evidence, rendered tokens and masks; no tool/model calls."""
-    if type(owner) is not BWArtifactPractice or type(renderer) is not PCCActionRenderer or renderer.model != owner.model_contract_id:
-        raise PracticeExportRefused('installed owner and actual model action renderer required')
+    _teaching_identity(owner,renderer,correction_capture_id,failure_capture_id,teacher_transfer)
     _hex(expected_export_id); root=Path(directory).absolute(); record=strict_json(_read(root/'export-private.json'))
     keys={'schema','kind','owner','renderer','correction_capture_id','failure_capture_id','target_policy',
           'proof','lessons','tokens','files','owner_registered','training_approved','export_id'}
-    if (type(record) is not dict or set(record) != keys or type(record['schema']) is not int or record['schema'] != 1
-            or record['kind'] != KIND or record['export_id'] != expected_export_id
+    if teacher_transfer is not None: keys.add('teacher_transfer')
+    if (type(record) is not dict or set(record) != keys or type(record['schema']) is not int
+            or record['schema'] != (2 if teacher_transfer else 1)
+            or record['kind'] != (TRANSFER_EXPORT_KIND if teacher_transfer else KIND)
+            or (teacher_transfer is not None and record['teacher_transfer'] != teacher_transfer.descriptor()) or record['export_id'] != expected_export_id
             or expected_export_id != digest({k:v for k,v in record.items() if k != 'export_id'})
             or record['owner'] != owner.binding() or record['renderer'] != renderer.binding()
             or record['correction_capture_id'] != correction_capture_id or record['failure_capture_id'] != failure_capture_id
@@ -238,7 +311,7 @@ def read_action_export(directory, *, owner, expected_export_id, correction_captu
         raise PracticeExportRefused('action export differs from exact installed owner inputs')
     if [row for row in _inventory(root) if row['path'] != 'export-private.json'] != record['files']:
         raise PracticeExportRefused('original action export files changed or are incomplete')
-    proof,lessons,tokens = _derive(owner,root,renderer,correction_capture_id,failure_capture_id,record['target_policy'])
+    proof,lessons,tokens = _derive(owner,root,renderer,correction_capture_id,failure_capture_id,record['target_policy'],teacher_transfer)
     if record['proof'] != proof or record['lessons'] != lessons or record['tokens'] != tokens:
         raise PracticeExportRefused('exact action proof, lessons, tokens or masks differ')
     return VerifiedBWActionExport(root,record)
@@ -253,6 +326,7 @@ def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('operation',choices=('export','audit'))
     parser.add_argument('--owner',type=Path,required=True,help='Private BWArtifactPractice descriptor')
+    parser.add_argument('--teacher-transfer',type=Path,help='Private owner-declared source-to-student transfer; source captures stay unchanged')
     parser.add_argument('--model',type=Path,required=True,help='Local GGUF for tokenizer/template metadata only')
     parser.add_argument('--correction-capture',type=Path)
     parser.add_argument('--correction-capture-id',required=True)
@@ -269,11 +343,16 @@ def main(argv=None):
         parser.error('audit requires the original export identity and reads its embedded capture')
     _,_,descriptor=read_private_json(args.owner,maximum_bytes=16*1024**2)
     owner=BWArtifactPractice.from_descriptor(descriptor)
-    components=model_text_components(args.model,dict(enable_thinking=False),model_contract_id=owner.model_contract_id)
-    renderer=PCCActionRenderer(components,model_contract_id=owner.model_contract_id,
+    transfer=None
+    if args.teacher_transfer is not None:
+        _,_,declared=read_private_json(args.teacher_transfer,maximum_bytes=16384)
+        transfer=BWActionTeacherTransfer.from_descriptor(declared)
+    student=transfer.student_model_contract_id if transfer else owner.model_contract_id
+    components=model_text_components(args.model,dict(enable_thinking=False),model_contract_id=student)
+    renderer=PCCActionRenderer(components,model_contract_id=student,
         tokenizer_sha256=PCCArtifactRenderer.tokenizer_identity(components),maximum_tokens=args.maximum_tokens,
         stop_token_ids=args.stop_token_ids)
-    kwargs=dict(owner=owner,renderer=renderer,correction_capture_id=args.correction_capture_id,failure_capture_id=args.failure_capture_id)
+    kwargs=dict(owner=owner,renderer=renderer,correction_capture_id=args.correction_capture_id,failure_capture_id=args.failure_capture_id,teacher_transfer=transfer)
     if args.operation=='export':
         exported=export_action_correction(correction_capture=args.correction_capture,output=args.directory,
             target_policy=args.target_policy,**kwargs)

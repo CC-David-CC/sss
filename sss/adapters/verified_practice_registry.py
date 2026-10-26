@@ -37,10 +37,16 @@ def _private_config(path):
     # before any export is opened or an optional runtime is imported.
     json.dumps(config, allow_nan=False)
     for row in config['registrations']:
-        if type(row) is not dict or set(row) not in (_ROW, _ROW|{'turn_index'}):
+        if type(row) is not dict or set(row) not in (_ROW, _ROW|{'turn_index'}, _ROW|{'turn_index','teacher_transfer'}):
             raise ValueError('Exact installed export registration required')
         if type(row['owner']) is not dict or row['owner'].get('kind') != 'bw-artifact-practice-v1':
             raise ValueError('Unknown practice provider; arbitrary modules are unsupported')
+        if 'teacher_transfer' in row:
+            from sss.adapters.bw_action_practice import BWActionTeacherTransfer
+            transfer = BWActionTeacherTransfer.from_descriptor(row['teacher_transfer'])
+            if (transfer.failure_capture_id != row['failure_capture_id']
+                    or transfer.correction_capture_id != row['correction_capture_id']):
+                raise ValueError('Teacher transfer capture pins differ from installed row')
         renderer = row['renderer']
         action = 'turn_index' in row
         if action and (type(row['turn_index']) is not int or not 0 <= row['turn_index'] < 128):
@@ -77,7 +83,7 @@ def _load_registration(row, components, model_contract_id):
     # the owner schema. No request can import a module or choose a checker.
     from sss.adapters.bw_verified_practice import BWArtifactPractice, PCCArtifactRenderer, read_export
     owner = BWArtifactPractice.from_descriptor(row['owner'])
-    if owner.model_contract_id != model_contract_id:
+    if 'teacher_transfer' not in row and owner.model_contract_id != model_contract_id:
         raise ValueError('Installed practice belongs to another model contract')
     bound = row['renderer']
     action = 'turn_index' in row
@@ -91,9 +97,13 @@ def _load_registration(row, components, model_contract_id):
         stop_token_ids=bound['stop_token_ids'])
     if renderer.binding() != bound:
         raise ValueError('Installed renderer differs from actual model rendering')
+    transfer_args = {}
+    if 'teacher_transfer' in row:
+        from sss.adapters.bw_action_practice import BWActionTeacherTransfer
+        transfer_args['teacher_transfer'] = BWActionTeacherTransfer.from_descriptor(row['teacher_transfer'])
     exported = reader(row['export_directory'], owner=owner,
         expected_export_id=row['export_id'], correction_capture_id=row['correction_capture_id'],
-        failure_capture_id=row['failure_capture_id'], renderer=renderer)
+        failure_capture_id=row['failure_capture_id'], renderer=renderer, **transfer_args)
     if action:
         if row['turn_index'] >= len(exported.lessons):
             raise ValueError('Installed action turn is absent from original export')
@@ -108,6 +118,7 @@ def _load_registration(row, components, model_contract_id):
     entry = dict(export_id=exported.export_id, lesson_id=lesson_id,
                  owner=owner.binding(), renderer=renderer.binding(), export=exported.binding())
     if action: entry['turn_index'] = row['turn_index']
+    if 'teacher_transfer' in row: entry['teacher_transfer'] = transfer_args['teacher_transfer'].descriptor()
     return entry, lesson
 
 

@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "CPU qualification of explicit teacher-to-student transfer, not model learning",
+  "checks": {
+    "tests-private.log": {
+      "passed": 30,
+      "sha256": "4db93ba50c6ffc1ab6196bab366bb21cd847fe799e64f1ec95939ad0cb6e26d0"
+    },
+    "artifact-compat-private.log": {
+      "passed": 14,
+      "sha256": "073b120efe51d923f85145c72ffba5cea8f82e6053179cc719f8c0bb017a494e"
+    }
+  },
+  "passed_tests": 44,
+  "retained_fixture": {
+    "capture_ids": {
+      "correction": "871d838855b05f5ee694698312e8bd501721edadb3a8936f3173df5575b23e68",
+      "failure": "9995c1c076bbf3c028562a22ae4042740cfc87336002d18458328adeb16d7f64"
+    },
+    "context_lengths": [
+      3029,
+      3658,
+      4261,
+      4862
+    ],
+    "examples": 4,
+    "export_id": "71f2626e987623159f27451447ce3852f03099fe89328801a9aa98f9bb064844",
+    "export_receipt_sha256": "6580541f759223a932299c59c7e687b8a3a935b3a9819c581e7803110cd07517",
+    "finished_example_sha256": "365be3c7c024bb2242439efbed9f459cc26c24cbe9d6ffbffb815fc21e477363",
+    "gpu_used": false,
+    "lesson_ids": [
+      "69f0f38a21d3d8daaf83bfdd3c696afc7fcb4c9185551ffaac19438b1aa151f9",
+      "8e03d9e172b7012b8aed77b9ac0d82e528812c9c8196f6d477a972175939323b",
+      "e03c6f0245aa7046e9b9548e1e855c74d60901b242779a54dd71928c3ddf3479",
+      "820d3b150404a3f92ee8ea01aa4b3fdc7a601ed72313fcb52c2f6675d04b8c2b"
+    ],
+    "model_forward_calls": 0,
+    "native_capacity_qualified": false,
+    "original_workspaces_required_for_readback": false,
+    "owner_registered_in_cpu_fixture_only": true,
+    "production_training_approved": false,
+    "renderer": {
+      "adapter_sha256": "8b751d4ad0b466b2858a49ce23f2d2e3b05141b702bcc676cd4a04b3afa67dea",
+      "kind": "pcc-bw-action-through-eos-renderer-v1",
+      "maximum_tokens": 16384,
+      "model_contract_id": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "pcc_sources_sha256": {
+        "base": "ccfdebd6114ff22aee39671325f57c0bbd40b5198c4db786cdc2ed43c84c06dc",
+        "encoder": "19366e9444631d03af9cf88471bc5e580b9fd4cebab9299c4ac56d295e7d9ee6",
+        "lesson": "5e35873ed82113288b1fb673b231e9f355e570e616e19677504e9775dea9b2f3",
+        "service": "c8186d7d185773beeff013e0e77f5d6d88a8017b60696de64620ece4c87b6143"
+      },
+      "renderer_sha256": "e1ea92227d89bb0261bf59a87ac461a61eb235d2b92ead34a52c66e61ce12e25",
+      "representation": "bw-captured-tool-actions-v1",
+      "schema": 1,
+      "stop_token_ids": [
+        1,
+        130073
+      ],
+      "tokenizer_sha256": "45706ffc25acd3b33e94b6423c76d4ff33a7df93667a199074742a22d88dd7ed"
+    },
+    "schema": 1,
+    "scope": "Scripted CPU machinery, real BW/COW/OS and real MiniCPM tokenizer/template; not model learning",
+    "selected_tokens": [
+      14,
+      108,
+      88,
+      19
+    ],
+    "serving_model_identity": false,
+    "source_backend_relabelled": false,
+    "source_sha256": {
+      "runner": "64ce6f0bc50bd707964decbc992335e2160e17709e9b06bc2b2d31af9d266a38"
+    },
+    "status": "PASS",
+    "student_model_contract_id": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "teacher_origin_basis": "owner-declaration",
+    "teacher_transfer": {
+      "correction_capture_id": "871d838855b05f5ee694698312e8bd501721edadb3a8936f3173df5575b23e68",
+      "failure_capture_id": "9995c1c076bbf3c028562a22ae4042740cfc87336002d18458328adeb16d7f64",
+      "kind": "sss.bw-owner-declared-teacher-transfer.v1",
+      "schema": 1,
+      "source_model_contract_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "source_owner_sha256": "7935f3bec4d5af20813aca50acc8804d189243a132e25e200e99fbdf2bb73990",
+      "student_model_contract_id": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "teacher_identifier": "sss.bw_action_practice_cpu",
+      "teacher_kind": "owner-scripted"
+    },
+    "training_updates": 0
+  },
+  "sources": {
+    "sss/adapters/bw_action_practice.py": "8b751d4ad0b466b2858a49ce23f2d2e3b05141b702bcc676cd4a04b3afa67dea",
+    "sss/adapters/verified_practice_registry.py": "97b9531466b494cc596053416a9783ecfe88899984259b9d69d9a346cb8f8dde",
+    "sss_integration/bw_action_practice_cpu.py": "64ce6f0bc50bd707964decbc992335e2160e17709e9b06bc2b2d31af9d266a38",
+    "sss_tests/test_bw_action_teacher_transfer.py": "d3c7f7b2a696b945061dea2a4af84c4b3aa25109286b0f46d2849203bb77a831"
+  },
+  "dependencies": {
+    "pcc": "49560783d2e535c5a3f1c303747cbb7c4bc99da4",
+    "bw": "d804baace592775cddaa092fca8324b1dc76b553"
+  },
+  "fixed_68_study_modified": false,
+  "training_updates": 0,
+  "model_forward_calls": 0,
+  "serving_model_identity_qualified": false,
+  "production_training_approved": false
+}
