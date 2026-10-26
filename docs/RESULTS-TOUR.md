@@ -10,7 +10,7 @@ modified Strata core, owns model execution, COW context reuse and native trainin
 
 ## 1. Faster evaluation with the same answers
 
-![Fresh versus COW evaluation timings](https://raw.githubusercontent.com/CC-David-CC/sss/db79c96e96c88553eca3bb1dac762148ac867ac2/docs/images/cow-evaluation-timings.svg)
+![Fresh versus COW evaluation timings](images/cow-evaluation-timings.svg)
 
 The trained-model assessment fell from **40.3 to 15.1 minutes: 2.7×**. Both paths
 used the same weights and produced identical token sequences and answer/finish
