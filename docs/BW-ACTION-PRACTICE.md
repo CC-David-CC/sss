@@ -110,9 +110,11 @@ with saved-model completion recovery enabled. PCC now provides
 [`dense-llama-action-8k-v1`](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/dense-llama-actions-20261026/docs/DENSE-LLAMA-ACTION-TRAINING.md),
 with actual 8,192-token tiny CPU/CUDA forward/backward qualification, independent
 gradient checks and actual longer-context HTTP job/reload/continuation tests.
-Its engine source is `49042ec9400b48c760e3281539ccdf8d5e199402`. That establishes
-the optional native mechanism, not real MiniCPM learning or fit. The fixed
-68-update comparison stays unchanged.
+The initial profile was added in `49042ec9400b48c760e3281539ccdf8d5e199402`.
+Deep ordinary-Llama graphs also require the arena correction in
+`a323af12d0154b9b559a1b5719524bade697ad67`; the earlier source alone still refuses
+deep examples beyond 512 tokens. These establish native mechanisms, not real
+MiniCPM learning or fit. The fixed 68-update comparison stays unchanged.
 
 No improved BW model score, successful native action training, production
 acceptance, thinking trajectory, image trajectory, retry/fork flattening or
@@ -135,3 +137,24 @@ state and resource refusals. These are current implementation costs, not intrins
 minimum memory requirements for all ways of training a small model. The next
 learning round needs qualified placement for its whole lesson block; summing free
 VRAM or passing persistent admission alone does not prove that the graph fits.
+
+## Multi-GPU mechanics and export readiness
+
+PCC's generated tiny-model standard-backprop check now passes on two A100s.
+The existing independent FP64 full/LoRA controls and update/reload checks passed,
+and all 381 gradient-tensor norms in a 42-layer, 1,024-token graph agreed with the
+saved single-GPU reference within 4.77e-7. This measures tensor norms, not every
+component, and it is not real MiniCPM learning. The
+[PCC two-GPU qualification](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/dense-llama-actions-20261026/docs/DENSE-LLAMA-ACTION-TRAINING.md#two-gpu-standard-backprop-qualification)
+records its exact scope and reproduction command. Actual real-model placement
+and optimizer-state residency still need their own evidence before the next
+action-learning round starts.
+
+PCC also repaired the independent rank-one GGUF weight auditor: a valid singleton
+A dimension had been omitted in serialization. The already-written real rank-one
+F32 merge then passed a complete independent FP64 audit of 2,516,756,480 weights,
+with maximum error 7.28e-8 under the unchanged 2e-7 bound. The successful native
+merge was reused; no training or inference was repeated for that repair. Read the
+[audit report](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/dense-llama-actions-20261026/docs/RANK1-MERGE-AUDIT.md).
+Saved-weight correctness and completed behavioral/retention acceptance remain
+separate gates. Neither this audit nor the tiny two-GPU proof approves a model.
