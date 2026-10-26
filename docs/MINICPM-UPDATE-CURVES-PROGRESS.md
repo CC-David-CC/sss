@@ -1,10 +1,10 @@
 # MiniCPM update-curve progress snapshot
 
-## Current chart: all ten trajectories, receipts collected at 15:11 UTC
+## Current chart: all ten trajectories, receipts collected at 16:06 UTC
 
 ![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
 
-The chart contains 556 completed scored checkpoints, 41 more than the preceding
+The chart contains 568 completed scored checkpoints, 12 more than the preceding
 snapshot. It includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
 Muon, and all six AdamW LoRA ranks. Full updates use FP32 weights; LoRA uses
 the F16 base with its attached adapter. All rows use the same 864 frozen
@@ -25,24 +25,24 @@ The [rank-chart source](results/minicpm-20261026/plot_rank_comparison.py) and
 | Full AdamW | 58 | 480 | 864 |
 | Full standard Muon | 58 | 486 | 864 |
 | Full RMS/decay Muon | 52 | 491 | 864 |
-| Full fast/refine Muon | 54 | 487 | 864 |
-| AdamW LoRA rank 1 | 52 | 408 | 858 |
-| AdamW LoRA rank 2 | 55 | 478 | 864 |
-| AdamW LoRA rank 3 | 55 | 484 | 864 |
-| AdamW LoRA rank 4 | 56 | 476 | 864 |
-| AdamW LoRA rank 8 | 55 | 462 | 864 |
+| Full fast/refine Muon | 55 | 481 | 864 |
+| AdamW LoRA rank 1 | 54 | 414 | 858 |
+| AdamW LoRA rank 2 | 57 | 479 | 864 |
+| AdamW LoRA rank 3 | 58 | 477 | 864 |
+| AdamW LoRA rank 4 | 58 | 490 | 864 |
+| AdamW LoRA rank 8 | 57 | 472 | 864 |
 | AdamW LoRA rank 16 | 68 | 494 | 864 |
 
 The original baseline was 59 correct and 415 natural finishes. This collection
-checked 448 current saved points against complete result and settlement
+checked 460 current saved points against complete result and settlement
 receipts; older preserved history remains in the CSV. Overlapping counts,
 runtime identities and result hashes were checked before merging.
-The [validation receipt](results/minicpm-20261026/training-curves-validation-1511.json)
+The [validation receipt](results/minicpm-20261026/training-curves-validation-1606.json)
 retains point/result/settlement hashes. Rank 8 update 34 uses the explicit,
 previously validated recovery reduction: 227 preserved completed cases plus
 637 missing cases, with disjoint coverage of all 864. Its original assessment
 failed with CUDA out of memory; no completed case or training update was repeated.
-The resumed arm has completed updates 35 through 55. Recovery is not a seed repeat.
+The resumed arm has completed updates 35 through 57. Recovery is not a seed repeat.
 
 Four rank workers (1, 2, 3, 4) voluntarily stopped after a complete checkpoint,
 then resumed at its successor with exact saved optimizer state and exposure cursor.
@@ -58,6 +58,16 @@ Shared A100 wall-clock timings are not reliable isolated throughput comparisons;
 training presentations and updates organize this study. Four superseded model/state
 pairs were preserved and byte-verified on the A100's persistent disk before their
 RAM copies were retired, reclaiming about 83 GiB.
+
+At the next storage check, the server still had about 2 TB of ordinary disk
+space free, while its shared RAM workspace was short of unreserved headroom.
+Old completed COW stores had accumulated beyond the existing model/state
+cleanup. Two verified maintenance passes retired 248 closed stores from that
+RAM workspace, reclaiming 172,450,432,845 bytes (about 160.6 GiB). Each store's
+disk archive and individual file hashes were checked before retirement. Models,
+optimizer states, raw case responses and evaluation scores were preserved.
+The existing controllers continued; no completed training or inference was
+repeated for cleanup. Automatic lifecycle cleanup remains engineering work.
 
 ### Which S³ skills are actually being measured?
 
