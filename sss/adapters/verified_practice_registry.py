@@ -12,6 +12,7 @@ import re
 import stat
 
 from sss.records import digest
+from sss.adapters.owner_configuration import read_private_json
 
 _KIND = 'sss.verified-bw-practice-registry.v1'
 _ROW = {'owner', 'renderer', 'export_directory', 'export_id', 'lesson_id',
@@ -26,58 +27,7 @@ def _sha(path):
 
 
 def _private_config(path):
-    path = Path(path)
-    if not path.is_absolute():
-        raise ValueError('Absolute owner registry path required')
-    path = Path(os.path.abspath(path))
-    required = ('O_NOFOLLOW','O_DIRECTORY','O_CLOEXEC','O_NONBLOCK')
-    if any(not hasattr(os,key) for key in required) or os.name != 'posix':
-        raise ValueError('Owner registry needs the POSIX no-follow file boundary')
-    descriptors = []
-    chain = []
-    key = lambda row: (row.st_dev,row.st_ino,row.st_size,row.st_mtime_ns,row.st_ctime_ns,row.st_mode,row.st_nlink,row.st_uid)
-    try:
-        parent = os.open(path.anchor,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW|os.O_CLOEXEC)
-        descriptors.append(parent)
-        for name in path.parts[1:-1]:
-            child = os.open(name,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW|os.O_CLOEXEC,dir_fd=parent)
-            descriptors.append(child);chain.append((parent,name,child));parent=child
-        descriptor=os.open(path.name,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK|os.O_CLOEXEC,dir_fd=parent)
-        descriptors.append(descriptor);info=os.fstat(descriptor)
-        if (not stat.S_ISREG(info.st_mode) or info.st_uid!=os.getuid()
-                or info.st_nlink!=1 or info.st_mode&0o077 or not 0<info.st_size<=_MAX_BYTES):
-            raise ValueError('Bounded private owned registry file required')
-        chunks=[];count=0
-        while True:
-            data=os.read(descriptor,min(65536,_MAX_BYTES+1-count))
-            if not data:break
-            chunks.append(data);count+=len(data)
-            if count>_MAX_BYTES:raise ValueError('Owner registry exceeds byte bound')
-        raw=b''.join(chunks);after=os.fstat(descriptor)
-        current=os.stat(path.name,dir_fd=parent,follow_symlinks=False)
-        if key(info)!=key(after) or key(after)!=key(current) or len(raw)!=info.st_size:
-            raise ValueError('Owner registry changed during descriptor read')
-        for base,name,child in chain:
-            held=os.fstat(child);current=os.stat(name,dir_fd=base,follow_symlinks=False)
-            if not stat.S_ISDIR(current.st_mode) or (held.st_dev,held.st_ino)!=(current.st_dev,current.st_ino):
-                raise ValueError('Owner registry ancestor changed during descriptor read')
-    except OSError as error:
-        raise ValueError('Owner registry descriptor or ancestor is unavailable') from error
-    finally:
-        for descriptor in reversed(descriptors):os.close(descriptor)
-    def pairs(items):
-        result = {}
-        for name, value in items:
-            if name in result:
-                raise ValueError('Duplicate registry field')
-            result[name] = value
-        return result
-    def reject(value):
-        raise ValueError('Nonfinite registry value')
-    try:
-        config = json.loads(raw, object_pairs_hook=pairs, parse_constant=reject)
-    except (UnicodeError, RecursionError) as error:
-        raise ValueError('Invalid bounded owner registry JSON') from error
+    path, raw, config = read_private_json(path, maximum_bytes=_MAX_BYTES)
     if (type(config) is not dict or set(config) != {'schema', 'kind', 'registrations'}
             or type(config['schema']) is not int or config['schema'] != 1
             or config['kind'] != _KIND or type(config['registrations']) is not list
@@ -152,10 +102,12 @@ class InstalledBWPractice:
         self._components = components
         self._model = model_contract_id
         self._source = _sha(__file__)
+        self._reader_source = _sha(read_private_json.__code__.co_filename)
         self._registrations, self._lessons = self._materialize()
         self._binding = dict(schema=1, kind=_KIND, model_contract_id=model_contract_id,
             config_sha256=hashlib.sha256(self._raw).hexdigest(),
             registry_implementation_sha256=self._source,
+            configuration_reader_sha256=self._reader_source,
             registrations=copy.deepcopy(self._registrations),
             checked_practice_lesson_ids=sorted(self._lessons))
 
@@ -182,7 +134,8 @@ class InstalledBWPractice:
 
     def verify(self):
         path, raw, config = _private_config(self._path)
-        if path != self._path or raw != self._raw or config != self._config or _sha(__file__) != self._source:
+        if (path != self._path or raw != self._raw or config != self._config or _sha(__file__) != self._source
+                or _sha(read_private_json.__code__.co_filename) != self._reader_source):
             raise ValueError('Installed registry or implementation changed; create a new policy/baseline')
         registrations, lessons = self._materialize()
         if registrations != self._registrations or lessons != self._lessons:

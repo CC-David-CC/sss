@@ -79,6 +79,8 @@ class CowArtifactEvaluator(CowLearningEvaluator):
         from serve.cow_http import model_text_components
         from sss.adapters.bw_verified_practice import PCCArtifactRenderer
         components=model_text_components(self.model,dict(enable_thinking=False),model_contract_id=self.model_contract)
+        from sss.adapters.runtime_sources import rendering_sources
+        rendering_paths=rendering_sources(components,model_text_components)
         self.decoder=components['tokenizer'];self.encoder=components['render'].__self__
         self.renderer=PCCArtifactRenderer(components,model_contract_id=self.model_contract,
             tokenizer_sha256=PCCArtifactRenderer.tokenizer_identity(components),
@@ -98,7 +100,8 @@ class CowArtifactEvaluator(CowLearningEvaluator):
             self.sss/'sss/adapters/bw_verified_practice.py',self.sss/'sss/adapters/bw_practice_oracle.py',
             self.sss/'sss/practice_oracle.py',self.sss/'sss/adapters/code_check.py',
             self.sss/'sss/paired.py',self.sss/'sss/records.py',
-            *sorted((self.bw/'branchwrite').glob('*.py')),*self._extra_source_paths()]
+            *sorted((self.bw/'branchwrite').glob('*.py')),*self._extra_source_paths(),
+            self.sss/'sss/adapters/runtime_sources.py',*rendering_paths]
         self.pins={str(p):file_sha256(p) for p in files};self.pins.update(self.build['sha256'])
         self.pins[str(self.configuration)]=configuration_sha256
         self.pins[str(Path(config['cases']))]=hashlib.sha256(cases_raw).hexdigest()

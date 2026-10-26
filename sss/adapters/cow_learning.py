@@ -49,8 +49,10 @@ class CowLearningEvaluator:
         self.pcc = Path(config['pcc_root']).resolve(strict=True)
         self.sss = Path(__file__).resolve().parents[2]
         from tools import pcc_lessons
-        if Path(pcc_lessons.__file__).resolve().parents[1] != self.pcc:
-            raise ValueError('Learning evaluator must use this installed PCC source')
+        self.host_pcc = Path(pcc_lessons.__file__).resolve().parents[1]
+        from tools.pcc_cow_profile import bind_dense_profile
+        if file_sha256(bind_dense_profile.__code__.co_filename) != file_sha256(self.pcc/'tools/pcc_cow_profile.py'):
+            raise ValueError('Owner and execution PCC profile binders differ')
         for key in ('gpu_index', 'context_tokens', 'batch_tokens', 'maximum_tokens',
                     'minimum_free_mib', 'maximum_initial_utilization', 'timeout_seconds'):
             if type(config[key]) is not int:
@@ -115,6 +117,8 @@ class CowLearningEvaluator:
             raise ValueError('Frozen development cases and checked practice pack must match; sealed panels are not development')
         components = model_text_components(self.model, dict(enable_thinking=False),
                                           model_contract_id=self.model_contract, tokenizer=tokenizer)
+        from sss.adapters.runtime_sources import rendering_sources
+        rendering_paths=rendering_sources(components,model_text_components,Service.encode_prompt)
         renderer = PCCFoundationRenderer(components)
         if self.data.get('renderer_sha256') != renderer.renderer_sha256:
             raise ValueError('Frozen assessment renderer differs from actual serving renderer')
@@ -159,7 +163,10 @@ class CowLearningEvaluator:
                         self.sss / 'sss/adapters/pcc_foundation_render.py',
                         self.sss / 'sss/curriculum_unique.py',
                         self.pcc / 'tools/pcc_cow_profile.py', self.pcc / 'tools/pcc_lessons.py',
-                        self.pcc / 'tools/pcc_native_training.py']
+                        self.pcc / 'tools/pcc_native_training.py',
+                        self.host_pcc / 'tools/pcc_lessons.py', self.host_pcc / 'tools/pcc_native_training.py',
+                        self.host_pcc / 'tools/pcc_cow_profile.py',
+                        self.sss / 'sss/adapters/runtime_sources.py',*rendering_paths]
         self.pins = {str(p): file_sha256(p) for p in [*self.paths.values(), *source_paths]}
         self.pins.update(build['sha256'])
         self._binding = dict(schema=1, kind='sss.cow-learning-evaluator.v1', config=self.config,
@@ -340,6 +347,9 @@ class CowLearningEvaluator:
 def configured_policies(path, native, serving_profile, tokenizer):
     from sss.adapters.learning_policy import LearningPolicy
     config = json.loads(Path(path).read_bytes())
+    if type(config) is dict and config.get('kind')=='sss.learning-stack.v1':
+        from sss.adapters.learning_stack import configured_learning_stack
+        return configured_learning_stack(path,native,serving_profile,tokenizer)
     if (type(config) is not dict or set(config) != {'schema', 'evaluator', 'policies'}
             or type(config['schema']) is not int or config['schema'] != 1
             or type(config['policies']) is not list or not 1 <= len(config['policies']) <= 8):

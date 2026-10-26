@@ -50,7 +50,7 @@ class LearningPanelEvaluator:
     student request. At least one panel of every role is mandatory. Multiple
     harness panels are permitted and retain separate measurements.
     """
-    def __init__(self, panels, providers, *, model_contract_id):
+    def __init__(self, panels, providers, *, model_contract_id, installation_files=None):
         if not _hash(model_contract_id):
             raise ValueError('Exact original model contract required')
         if (type(panels) not in (list, tuple) or not 3 <= len(panels) <= 32
@@ -96,6 +96,14 @@ class LearningPanelEvaluator:
                          for p in (__file__, write_once.__code__.co_filename,
                                    compare_frozen_evaluations.__code__.co_filename,
                                    canonical.__code__.co_filename)}
+        if installation_files is not None:
+            if type(installation_files) is not dict or not 1<=len(installation_files)<=128:
+                raise ValueError('Bounded owner installation source/input pins required')
+            for name,expected in installation_files.items():
+                if (type(name) is not str or not Path(name).is_absolute() or not _hash(expected)
+                        or name in self._sources and self._sources[name]!=expected):
+                    raise ValueError('Exact absolute installation file/hash required')
+            self._sources.update(installation_files)
         self._binding = dict(schema=1, kind='sss.learning-panels.v1',
             model_contract_id=self.model, sources_sha256=copy.deepcopy(self._sources),
             panels=[dict(panel_id=n, role=r, evaluator=b) for n, r, _, b in self._panels],

@@ -26,7 +26,7 @@ ROWS = [dict(values=[-4,0,2,9],scale=3,offset=-2,low=-5,high=8),
 
 
 @contextmanager
-def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_sentinel=None):
+def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_sentinel=None, model_contract_id='a'*64, baseline_source=BAD):
     from branchwrite.coding_cli import build_launch,save_launch,run_saved
     from branchwrite.lesson_capture import capture_failure,capture_correction
     from test_thinking_grammar import ThinkingTokenizer
@@ -39,11 +39,11 @@ def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_se
     from serve.cow_grammar_disk import DurableGrammarCatalog
     from serve.cow_http import make_server
     root=Path(root);root.mkdir(mode=0o700,parents=True,exist_ok=False)
-    project=root/'project';project.mkdir(mode=0o700);(project/'task.py').write_bytes(BAD);(project/'task.py').chmod(0o644)
+    project=root/'project';project.mkdir(mode=0o700);(project/'task.py').write_bytes(baseline_source);(project/'task.py').chmod(0o644)
     if project_sentinel is not None:
         (project/'preserve-input.txt').write_bytes(project_sentinel);(project/'preserve-input.txt').chmod(0o644)
     owner=BWArtifactPractice(AffineClampFoldCase.install('owned-affine-join-01','practice.join-01',ROWS),
-        'a'*64,hashlib.sha256(BAD).hexdigest())
+        model_contract_id,hashlib.sha256(baseline_source).hexdigest())
     actions=[];tokenizer=ThinkingTokenizer()
     profile=dict(model_contract_id=owner.model_contract_id,execution_profile_id='b'*64,model_weights_sha256='c'*64,
         execution=dict(GPU=[0],resume_contract='identical-native-operators-v1',generated_operator='normal-verifier-decode',
@@ -86,7 +86,7 @@ def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_se
             backend=coordinator._workers[0]['model'].backend;backend.index=backend.cursor=0
             actions[:]=[dict(tool='read_file',arguments=dict(path='task.py'))]
             if fix:
-                actions.extend([dict(tool='replace',arguments=dict(path='task.py',before=BAD.decode(),after=corrected_source.decode())),
+                actions.extend([dict(tool='replace',arguments=dict(path='task.py',before=baseline_source.decode(),after=corrected_source.decode())),
                     dict(tool='run_check',arguments=dict(name='syntax',command='python3 -B -c \'import ast; ast.parse(open("task.py").read())\'')),
                     dict(tool='finish',arguments=dict(answer='Scripted host correction; independent grading remains separate'))])
             state=root/name;launch=build_launch(project,task_override or owner.task_prompt,connection,
@@ -101,7 +101,7 @@ def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_se
         if failed_result['verified'] or not corrected_result['verified']:raise AssertionError('actual scripted BW host boundaries disagree')
         correction=capture_correction(corrected,root/'correction-capture',failure.directory)
         yield dict(owner=owner,failure=failure,correction=correction,failed_state=failed,corrected_state=corrected,
-            project=project,source_failed=BAD,source_corrected=corrected_source,
+            project=project,source_failed=baseline_source,source_corrected=corrected_source,
             scope='Scripted CPU machinery through actual BW/COW/OS; not model-generated proposals or model learning')
     finally:
         if server is not None:server.shutdown();server.server_close()

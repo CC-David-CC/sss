@@ -90,8 +90,7 @@ immutable dispatch intent and recovery method. Install it as the `workflow`
 role of `LearningPanelEvaluator`, with separate real `target` and `retention`
 panels and independently approved practice providers. Cases are development
 assessment inputs; they must never be exported as practice lessons. The
-complete configured training-policy factory and native joined learning round
-are still outstanding. This panel alone does not establish the entire loop.
+owner-configured [learning-stack factory](LEARNING-STACK.md) is implemented and installation-tested. A genuine joined native learning round remains unqualified. This panel alone does not establish the entire loop.
 
 ## Evidence and recovery
 
