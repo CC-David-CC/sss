@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "checks": 9,
+  "scope": "Pure CPU owned-question generation; no model or training calls",
+  "original_refusal": {
+    "profile": "without-replacement-v2",
+    "seed": 2026102603,
+    "skill": "math.divide",
+    "split": "development",
+    "collisions": [
+      {
+        "gate": "composition",
+        "indices": [
+          1,
+          20
+        ]
+      },
+      {
+        "gate": "transfer_recovery",
+        "indices": [
+          14,
+          25
+        ]
+      }
+    ],
+    "kept_refused": true
+  },
+  "new_profile": "without-replacement-v3",
+  "source_sha256": {
+    "sss/curriculum_unique_v3.py": "30f430f09598ff3fbd309feb850041bc2e40679116ecd7be7112e7c1b45b4474",
+    "sss/adapters/foundation_training.py": "ff80617c8ff4cdeadfe13927ff6df22d94a9c1c1a3d95447c808d022a1c00e72",
+    "sss_tests/test_division_unique_v3.py": "3f54b18493aafc0eb54c98c0b3a3a51190ff2668dae72b8047192a21c9de6711"
+  },
+  "evidence": {
+    "log_sha256": "346f01f68bcaeef60d6ab39b75f2528850185b45010b5bc87a863d3943407d68",
+    "all_division_ordinals_checked": 384,
+    "split_operand_domains_disjoint": true,
+    "nine_skill_development_cases": 864,
+    "all_pack_cases": 1782,
+    "independent_references_checked": true,
+    "nondivision_questions_preserved": true,
+    "legacy_profiles_preserved": true
+  },
+  "no_automatic_redraw": true,
+  "no_seed_search": true,
+  "fixed_68_study_changed": false,
+  "current_running_round_changed": false,
+  "limitations": [
+    "Only the division family gains a new injective mapping; other v2 families retain existing behavior and the global duplicate guard.",
+    "Finite generator coverage is not independent model mastery."
+  ]
+}

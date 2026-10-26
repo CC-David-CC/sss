@@ -180,3 +180,26 @@ learning round. See the [sanitized receipt](../validation/learning-program-20261
 A subsequent independent native mixed block executed and preserved its diagnostic
 GGUF. See [the measured result and unresolved joined assessment](NATIVE-MIXED-BLOCK.md).
 The native job is complete; the full reusable learning loop is still unqualified.
+
+## Division questions in new input packs
+
+A later preparation using `without-replacement-v2`, seed 2026102603, was refused
+before any model call: one division question repeated at two composition indices,
+and another repeated at two transfer/recovery indices. The original refusal
+and its seed are preserved; no automatic redraw or seed search was used.
+
+New installations may explicitly choose `without-replacement-v3`. Division
+operands now come from a finite Cartesian product under a coprime permutation.
+All 384 supported gate/ordinal pairs use distinct nonzero operand pairs, and
+practice, development and qualification operand domains remain separate.
+Composition still requires nested arithmetic; reference answers are checked
+independently. Nondivision questions retain v2 behavior. The global duplicate
+guard remains active for every family; v3 does not promise that every other
+randomly generated family is injective for every seed.
+
+[The nine CPU checks](../validation/learning-program-20261024/division-unique-v3-20261026.json)
+include the original v2 refusal, the same-seed v3 nine-skill panel with 864
+questions, all 384 division ordinals in every split, independent answer checks,
+source-pin tampering, finite bounds and preserved older pack identities.
+This opt-in generator neither regenerates the fixed 68-update study nor changes
+an already installed running policy. No model behavior or training is measured.
