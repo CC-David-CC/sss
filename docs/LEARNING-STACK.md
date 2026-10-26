@@ -131,3 +131,25 @@ The optional `sss_integration.test_learning_stack_cpu` requires explicit owner
 model/profile/execution/build/BW paths and the real PCC implementation fixtures.
 Its output is private and its runner deliberately refuses training. Keep raw
 lesson/case/capture files outside Git; publish sanitized source/evidence receipts.
+
+## Generating a fresh review panel
+
+The first joined native-round launch was refused before any model call or update:
+`without-replacement-v1` produced the same fraction question at development
+composition indices 0 and 31 for seed 2026102601. The duplicate guard was correct.
+The original attempted inputs and refusal remain private, unchanged.
+
+For new packs, `without-replacement-v2` adds a fraction operand permutation with
+no replacement, retries, seed search, or filtering by answers. Its composition
+questions require evaluating a nested division/multiplication expression. Both
+operand magnitudes and question text remain separated across practice,
+development and qualification. Other families retain v1 generation and the
+pack-wide duplicate check still refuses any collision: this is not a claim that
+every implemented family has an injective generator for every possible seed.
+
+The new pack records both generator source hashes. Existing legacy/v1 packs and
+the fixed 68-update comparison are not migrated or regenerated. Eleven CPU
+checks passed, including the original refusal, the exact nine-skill/864-question
+new development panel, split separation, reference correctness, finite bounds,
+legacy pack identity and tampered source rejection. No model learning result
+follows from these generator checks.
