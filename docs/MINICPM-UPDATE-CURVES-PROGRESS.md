@@ -1,10 +1,10 @@
 # MiniCPM update-curve progress snapshot
 
-## Current chart: all ten trajectories, receipts collected at 12:52 UTC
+## Current chart: all ten trajectories, receipts collected at 15:11 UTC
 
 ![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
 
-The chart contains 515 completed scored checkpoints, 28 more than the preceding
+The chart contains 556 completed scored checkpoints, 41 more than the preceding
 snapshot. It includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
 Muon, and all six AdamW LoRA ranks. Full updates use FP32 weights; LoRA uses
 the F16 base with its attached adapter. All rows use the same 864 frozen
@@ -22,27 +22,27 @@ The [rank-chart source](results/minicpm-20261026/plot_rank_comparison.py) and
 
 | Arm | Latest update / 68 | Correct / 864 | Natural finishes / 864 |
 | --- | ---: | ---: | ---: |
-| Full AdamW | 56 | 481 | 864 |
-| Full standard Muon | 56 | 488 | 864 |
-| Full RMS/decay Muon | 50 | 487 | 864 |
-| Full fast/refine Muon | 53 | 489 | 864 |
-| AdamW LoRA rank 1 | 45 | 391 | 857 |
-| AdamW LoRA rank 2 | 49 | 443 | 863 |
-| AdamW LoRA rank 3 | 48 | 432 | 863 |
-| AdamW LoRA rank 4 | 48 | 463 | 864 |
-| AdamW LoRA rank 8 | 49 | 480 | 864 |
+| Full AdamW | 58 | 480 | 864 |
+| Full standard Muon | 58 | 486 | 864 |
+| Full RMS/decay Muon | 52 | 491 | 864 |
+| Full fast/refine Muon | 54 | 487 | 864 |
+| AdamW LoRA rank 1 | 52 | 408 | 858 |
+| AdamW LoRA rank 2 | 55 | 478 | 864 |
+| AdamW LoRA rank 3 | 55 | 484 | 864 |
+| AdamW LoRA rank 4 | 56 | 476 | 864 |
+| AdamW LoRA rank 8 | 55 | 462 | 864 |
 | AdamW LoRA rank 16 | 68 | 494 | 864 |
 
 The original baseline was 59 correct and 415 natural finishes. This collection
-checked 407 current saved points against complete result and settlement
+checked 448 current saved points against complete result and settlement
 receipts; older preserved history remains in the CSV. Overlapping counts,
 runtime identities and result hashes were checked before merging.
-The [validation receipt](results/minicpm-20261026/training-curves-validation-1252.json)
+The [validation receipt](results/minicpm-20261026/training-curves-validation-1511.json)
 retains point/result/settlement hashes. Rank 8 update 34 uses the explicit,
 previously validated recovery reduction: 227 preserved completed cases plus
 637 missing cases, with disjoint coverage of all 864. Its original assessment
 failed with CUDA out of memory; no completed case or training update was repeated.
-The resumed arm has completed updates 35 through 49. Recovery is not a seed repeat.
+The resumed arm has completed updates 35 through 55. Recovery is not a seed repeat.
 
 Four rank workers (1, 2, 3, 4) voluntarily stopped after a complete checkpoint,
 then resumed at its successor with exact saved optimizer state and exposure cursor.
