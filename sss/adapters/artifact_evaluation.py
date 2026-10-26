@@ -19,6 +19,19 @@ from sss.records import canonical,digest,file_sha256
 
 
 class CowArtifactEvaluator(CowLearningEvaluator):
+    panel_kind='sss.cow-artifact-evaluator.v1'
+    child_module='sss_integration.artifact_evaluate'
+    finished_means='native EOS; independently checked artifact correctness reported separately'
+
+    def _configuration_fields(self):
+        return set()
+
+    def _validate_configuration(self,config):
+        pass
+
+    def _extra_source_paths(self):
+        return []
+
     def __init__(self,configuration):
         self.configuration=Path(configuration).absolute()
         if self.configuration.is_symlink() or not self.configuration.is_file():
@@ -28,6 +41,7 @@ class CowArtifactEvaluator(CowLearningEvaluator):
         required={'schema','pcc_root','bw_root','cow_profile','runtime_proof','cases',
             'gpu_index','gpu_uuid','maximum_tokens','minimum_free_mib',
             'maximum_initial_utilization','timeout_seconds'}
+        required |= self._configuration_fields()
         if (type(config) is not dict or set(config)!=required or type(config['schema']) is not int
                 or config['schema']!=1):raise ValueError('Closed owner artifact evaluator configuration required')
         for key in ('pcc_root','bw_root','cow_profile','runtime_proof','cases'):
@@ -40,6 +54,7 @@ class CowArtifactEvaluator(CowLearningEvaluator):
                 or not 1<=config['timeout_seconds']<=14400 or type(config['gpu_uuid']) is not str
                 or not config['gpu_uuid'].startswith('GPU-')):
             raise ValueError('Bounded explicit owner limits and physical GPU required')
+        self._validate_configuration(config)
         self.pcc=Path(config['pcc_root']).resolve(strict=True)
         self.bw=Path(config['bw_root']).resolve(strict=True)
         self.sss=Path(__file__).resolve().parents[2]
@@ -62,8 +77,7 @@ class CowArtifactEvaluator(CowLearningEvaluator):
         if file_sha256(bind_dense_profile.__code__.co_filename)!=file_sha256(self.pcc/'tools/pcc_cow_profile.py'):
             raise ValueError('Installed PCC profile binding differs from execution runtime')
         from serve.cow_http import model_text_components
-        from serve.server import Service
-        from sss.adapters.bw_verified_practice import SYSTEM,PCCArtifactRenderer
+        from sss.adapters.bw_verified_practice import PCCArtifactRenderer
         components=model_text_components(self.model,dict(enable_thinking=False),model_contract_id=self.model_contract)
         self.decoder=components['tokenizer'];self.encoder=components['render'].__self__
         self.renderer=PCCArtifactRenderer(components,model_contract_id=self.model_contract,
@@ -71,38 +85,43 @@ class CowArtifactEvaluator(CowLearningEvaluator):
             maximum_tokens=self.config['context_tokens'],stop_token_ids=self.config['stop_token_ids'])
         cases_raw=Path(config['cases']).read_bytes()
         self.cases=installed_cases(json.loads(cases_raw))
-        self.prefixes=[Service.encode_prompt(self.encoder,[dict(role='system',content=SYSTEM),
-            dict(role='user',content=artifact_question(case))],None,
-            dict(enable_thinking=False,add_generation_prompt=True)) for case in self.cases]
-        if any(len(p)+config['maximum_tokens']>self.config['context_tokens'] for p in self.prefixes):
-            raise ValueError('Original artifact assessment and full output allowance must fit context')
-        self.prefix=shared_input_prefix(self.prefixes)
-        if not self.prefix:raise ValueError('Artifact panel needs a real shared input prefix')
         self.case_index={case.identity:(case.skill_id,case.gate) for case in self.cases}
-        self.evaluation_id=digest(dict(kind='sss.artifact-assessment.v1',
-            cases=[c.descriptor() for c in self.cases],prefixes=self.prefixes))
+        self._prepare_inputs()
         build_path=Path(config['runtime_proof']);self.build=json.loads(build_path.read_bytes())
         if (type(self.build.get('sha256')) is not dict
                 or self.template['bridge_library'] not in self.build['sha256']):
             raise ValueError('Existing qualified native bridge proof required')
         files=[self.configuration,Path(config['cow_profile']),build_path,Path(config['cases']),
             Path(__file__),self.sss/'sss/artifact_assessment.py',
-            self.sss/'sss_integration/artifact_evaluate.py',
+            self.sss/(self.child_module.replace('.','/')+'.py'),
             self.sss/'sss/adapters/cow_evaluation.py',self.sss/'sss/adapters/cow_learning.py',
             self.sss/'sss/adapters/bw_verified_practice.py',self.sss/'sss/adapters/bw_practice_oracle.py',
             self.sss/'sss/practice_oracle.py',self.sss/'sss/adapters/code_check.py',
             self.sss/'sss/paired.py',self.sss/'sss/records.py',
-            *sorted((self.bw/'branchwrite').glob('*.py'))]
+            *sorted((self.bw/'branchwrite').glob('*.py')),*self._extra_source_paths()]
         self.pins={str(p):file_sha256(p) for p in files};self.pins.update(self.build['sha256'])
         self.pins[str(self.configuration)]=configuration_sha256
         self.pins[str(Path(config['cases']))]=hashlib.sha256(cases_raw).hexdigest()
-        self._binding=dict(schema=1,kind='sss.cow-artifact-evaluator.v1',
+        self._binding=dict(schema=1,kind=self.panel_kind,
             model_contract_id=self.model_contract,evaluation_id=self.evaluation_id,
             configuration=copy.deepcopy(config),sources_and_inputs_sha256=copy.deepcopy(self.pins),
             renderer=self.renderer.binding(),checked_practice_lesson_ids=[],
-            finished_means='native EOS; independently checked artifact correctness reported separately',
+            finished_means=self.finished_means,
             shared_prefix_tokens=len(self.prefix),no_implicit_retry=True)
         self.identity=digest(self._binding);self.verify()
+
+    def _prepare_inputs(self):
+        from serve.server import Service
+        from sss.adapters.bw_verified_practice import SYSTEM
+        self.prefixes=[Service.encode_prompt(self.encoder,[dict(role='system',content=SYSTEM),
+            dict(role='user',content=artifact_question(case))],None,
+            dict(enable_thinking=False,add_generation_prompt=True)) for case in self.cases]
+        if any(len(p)+self.config['maximum_tokens']>self.config['context_tokens'] for p in self.prefixes):
+            raise ValueError('Original artifact assessment and full output allowance must fit context')
+        self.prefix=shared_input_prefix(self.prefixes)
+        if not self.prefix:raise ValueError('Artifact panel needs a real shared input prefix')
+        self.evaluation_id=digest(dict(kind='sss.artifact-assessment.v1',
+            cases=[c.descriptor() for c in self.cases],prefixes=self.prefixes))
 
     def verify(self):
         from tools.pcc_cow_evaluation import verify_sources
@@ -122,7 +141,7 @@ class CowArtifactEvaluator(CowLearningEvaluator):
             output_representation='canonical-final-artifact-v1',finished='native-eos',greedy=True)
 
     def _command(self,directory,profile):
-        return [sys.executable,'-m','sss_integration.artifact_evaluate',
+        return [sys.executable,'-m',self.child_module,
             '--owner-config',str(self.configuration),'--profile',str(directory/'candidate-profile.json'),
             '--candidate',str(directory/'candidate-selection-private.json'),'--output',str(directory/'evaluation')]
 

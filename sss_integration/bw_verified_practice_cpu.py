@@ -26,7 +26,7 @@ ROWS = [dict(values=[-4,0,2,9],scale=3,offset=-2,low=-5,high=8),
 
 
 @contextmanager
-def captured_pair(root, *, task_override=None, corrected_source=GOOD):
+def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_sentinel=None):
     from branchwrite.coding_cli import build_launch,save_launch,run_saved
     from branchwrite.lesson_capture import capture_failure,capture_correction
     from test_thinking_grammar import ThinkingTokenizer
@@ -40,6 +40,8 @@ def captured_pair(root, *, task_override=None, corrected_source=GOOD):
     from serve.cow_http import make_server
     root=Path(root);root.mkdir(mode=0o700,parents=True,exist_ok=False)
     project=root/'project';project.mkdir(mode=0o700);(project/'task.py').write_bytes(BAD);(project/'task.py').chmod(0o644)
+    if project_sentinel is not None:
+        (project/'preserve-input.txt').write_bytes(project_sentinel);(project/'preserve-input.txt').chmod(0o644)
     owner=BWArtifactPractice(AffineClampFoldCase.install('owned-affine-join-01','practice.join-01',ROWS),
         'a'*64,hashlib.sha256(BAD).hexdigest())
     actions=[];tokenizer=ThinkingTokenizer()

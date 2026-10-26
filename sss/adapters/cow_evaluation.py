@@ -70,10 +70,10 @@ def validate_profile(profile, *, model, model_sha256, gpu_uuid, context_tokens,
 
 
 @contextmanager
-def cow_session(pcc_root, profile, model, model_sha256, gpu_uuid, directory, *,
+def cow_gpu_admission(pcc_root, profile, model, model_sha256, gpu_uuid, *,
                 context_tokens, batch_tokens, stop_token_ids,
                 minimum_free_mib, maximum_initial_utilization, on_admission=None):
-    """Use the existing COW GPU lock and request owner, with explicit headroom."""
+    """Hold the existing COW GPU lock and exact execution environment."""
     if (type(minimum_free_mib) is not int or minimum_free_mib < 1
             or type(maximum_initial_utilization) is not int
             or not 0 <= maximum_initial_utilization <= 100):
@@ -81,7 +81,6 @@ def cow_session(pcc_root, profile, model, model_sha256, gpu_uuid, directory, *,
     sys.path[:0] = [str(Path(pcc_root).resolve()),
                    str(Path(pcc_root).resolve()/'experimental/branching_context/src')]
     from tools.cow_server import gpu_locks
-    from tools.pcc_cow_evaluation import CowEvaluationSession
     def observe():
         raw = subprocess.check_output(['nvidia-smi',
             '--query-gpu=index,uuid,memory.free,utilization.gpu',
@@ -105,18 +104,30 @@ def cow_session(pcc_root, profile, model, model_sha256, gpu_uuid, directory, *,
         if on_admission is not None: on_admission(admission)
         previous = {k: os.environ.get(k) for k in profile['execution']['environment']}
         os.environ.update(profile['execution']['environment'])
-        session = None
         try:
-            session = CowEvaluationSession(profile, Path(directory)/'cow-store', pcc_root)
-            session.pcc_admission = admission
+            yield admission
+        finally:
+            for k, value in previous.items():
+                if value is None: os.environ.pop(k, None)
+                else: os.environ[k] = value
+
+
+@contextmanager
+def cow_session(pcc_root, profile, model, model_sha256, gpu_uuid, directory, *,
+                context_tokens, batch_tokens, stop_token_ids,
+                minimum_free_mib, maximum_initial_utilization, on_admission=None):
+    """Use the existing COW GPU lock and request owner, with explicit headroom."""
+    with cow_gpu_admission(pcc_root,profile,model,model_sha256,gpu_uuid,
+            context_tokens=context_tokens,batch_tokens=batch_tokens,stop_token_ids=stop_token_ids,
+            minimum_free_mib=minimum_free_mib,maximum_initial_utilization=maximum_initial_utilization,
+            on_admission=on_admission) as admission:
+        from tools.pcc_cow_evaluation import CowEvaluationSession
+        session=CowEvaluationSession(profile,Path(directory)/'cow-store',pcc_root)
+        try:
+            session.pcc_admission=admission
             yield session
         finally:
-            try:
-                if session is not None: session.close()
-            finally:
-                for k, value in previous.items():
-                    if value is None: os.environ.pop(k, None)
-                    else: os.environ[k] = value
+            session.close()
 
 
 def token_completion(session, tok, prefix, *, maximum, stop_token_ids, stream):
