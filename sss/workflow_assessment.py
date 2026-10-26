@@ -62,8 +62,11 @@ def observe_capture(case,capture,expected_launch):
     if value['evidence']['baseline_inventory']!=_inventory(baseline,[]):
         raise ValueError('Workflow baseline differs from frozen task')
     files={row['path']:row for row in value['files']}
-    if set(files)!={'task.py','preserve-input.txt'} or value['directories']:
-        raise ValueError('Unexpected workflow artifact inventory')
+    if not {'task.py','preserve-input.txt'}<=set(files):
+        raise ValueError('Required workflow artifacts are missing')
+    # Project grants allow helper tests/files. BW already validates every archived
+    # file/directory and the current-check inventory. Grade task.py separately;
+    # an otherwise valid helper file is neither a pass nor infrastructure failure.
     source=checked.file_bytes('task.py')
     preserved=(checked.file_bytes('preserve-input.txt')==SENTINEL
                and files['preserve-input.txt']['mode']==0o644

@@ -60,7 +60,7 @@ class WorkflowAssessmentTests(unittest.TestCase):
             BAD,'code.repair.affine','composition')
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
-            with captured_pair(root/'bw',task_override=workflow_question(case),project_sentinel=SENTINEL) as pair:
+            with captured_pair(root/'bw',task_override=workflow_question(case),project_sentinel=SENTINEL,extra_check_file=True) as pair:
                 failed=capture_assessment(pair['failed_state'],root/'failed-archive')
                 fixed=capture_assessment(pair['corrected_state'],root/'fixed-archive')
                 failed_launch=read_launch(pair['failed_state']);fixed_launch=read_launch(pair['corrected_state'])
@@ -69,6 +69,9 @@ class WorkflowAssessmentTests(unittest.TestCase):
                 self.assertFalse(left['finished']);self.assertEqual(left_source,BAD)
                 self.assertTrue(right['finished']);self.assertTrue(right['read_edit_check_finish'])
                 self.assertEqual(right_source,GOOD);self.assertGreater(right['native_receipts'],0)
+                self.assertIn('create_text_file',right['tools'])
+                self.assertIn('set_mode',right['tools'])
+                self.assertEqual(fixed.file_bytes('check_notes.py'),b'# Owned helper; independent artifact grading remains separate.\n')
                 pair['project'].rename(root/'retired-project')
             with patch('subprocess.Popen',side_effect=AssertionError('no dispatch')):
                 self.assertEqual(observe_capture(case,fixed,fixed_launch),(right,GOOD))

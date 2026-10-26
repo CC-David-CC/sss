@@ -31,6 +31,9 @@ The evaluator requires archived evidence of all of the following:
 `finished` measures the first four requirements. `passed` additionally requires
 the independent oracle. A model can finish a workflow whose program is wrong.
 Natural EOS alone is neither workflow completion nor program correctness.
+Additional helper files/directories permitted by the actual BW grant are archived
+and allowed; they do not replace the independent check of task.py. Mode-changing
+tools still require their own explicit readable-path and permission-mask grant.
 All model generations and tool effects must have supported, settled original
 BW/COW receipts. A partial or unsupported attempt is unavailable, not a zero
 that can silently enter a learning/forgetting report.

@@ -26,7 +26,7 @@ ROWS = [dict(values=[-4,0,2,9],scale=3,offset=-2,low=-5,high=8),
 
 
 @contextmanager
-def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_sentinel=None, model_contract_id='a'*64, baseline_source=BAD):
+def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_sentinel=None, model_contract_id='a'*64, baseline_source=BAD, extra_check_file=False):
     from branchwrite.coding_cli import build_launch,save_launch,run_saved
     from branchwrite.lesson_capture import capture_failure,capture_correction
     from test_thinking_grammar import ThinkingTokenizer
@@ -89,8 +89,16 @@ def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_se
                 actions.extend([dict(tool='replace',arguments=dict(path='task.py',before=baseline_source.decode(),after=corrected_source.decode())),
                     dict(tool='run_check',arguments=dict(name='syntax',command='python3 -B -c \'import ast; ast.parse(open("task.py").read())\'')),
                     dict(tool='finish',arguments=dict(answer='Scripted host correction; independent grading remains separate'))])
+            if fix and extra_check_file:
+                actions.insert(2,dict(tool='create_text_file',arguments=dict(path='check_notes.py',line_ending='LF',
+                    final_newline=True,lines=['# Owned helper; independent artifact grading remains separate.'])))
+                actions.insert(3,dict(tool='set_mode',arguments=dict(path='check_notes.py',mode='0644')))
             state=root/name;launch=build_launch(project,task_override or owner.task_prompt,connection,
                 branch=name,project_files=True,thinking_mode='off',instruction_style='compact-finish-request',shell_timeout=3)
+            if fix and extra_check_file:
+                launch['config']['grant']['read_paths']=['check_notes.py']
+                launch['config']['grant']['mode_paths']=['check_notes.py']
+                launch['config']['grant']['mode_mask']=0o777
             save_launch(state,launch);returned=[]
             _,result=run_saved(state,max_steps=1024,progress=lambda event:returned.append(event) if event=='tool_returned' else None,
                 control=None if fix else lambda:len(returned)>=1)
