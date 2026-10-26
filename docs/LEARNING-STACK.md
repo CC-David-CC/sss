@@ -213,3 +213,7 @@ an already installed running policy. No model behavior or training is measured.
 The optional division generator and the joined-report auditor are integrated in
 this learning-stack branch. [Seventy-one CPU controls passed together](../validation/learning-program-20261024/joined-audit-v3-integration-20261026.json).
 Existing frozen installations and the fixed 68-update study were not modified.
+
+[Observed-memory placement](OBSERVED-MEMORY-PLACEMENT.md) uses matching PCC execution
+observations to suggest useful GPU windows. PCC retains its existing leases and
+allocation checks; forecasts add no workflow runtime or permission prompt.

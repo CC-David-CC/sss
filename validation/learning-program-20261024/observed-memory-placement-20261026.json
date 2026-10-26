@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "status": "QUALIFIED_OBSERVATION_DERIVATION",
+  "scope": "Observed inference-memory placement forecasts; not an allocation upper bound, throughput benchmark or training-memory qualification",
+  "pure_cpu_checks": 11,
+  "test_command": "python3 -B -m unittest -v sss_tests.test_memory_forecast",
+  "forecast_source_sha256": "71d609206c63fd85148df5ad24592873bdc32c95d553460b116c87fbdb7c375e",
+  "rows": [
+    {
+      "format": "F32",
+      "samples": 42,
+      "peak_observed_mib": 9326,
+      "source_model_sha256": "76f88c1788411f0cc2fc0aa9c9c27c32bcdec64b7ee064e88c70262f1872ae10",
+      "descriptor": {
+        "phase": "cow-inference",
+        "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+        "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+        "layout_id": "3f93a3f377bdb8bb0531b23a9a0cdcc5c643da0897426f7d9121cf20b0848971",
+        "device_class": "NVIDIA A100-SXM4-80GB",
+        "format": "F32",
+        "context_tokens": 512,
+        "batch_tokens": 512,
+        "maximum_tokens": 64
+      },
+      "forecast_id": "50b4f179cb3181ea6ef80b40de0d126d5c591b14e0ab00f6d58cf19b7fa63e14"
+    },
+    {
+      "format": "F16",
+      "samples": 50,
+      "peak_observed_mib": 6056,
+      "source_model_sha256": "24afcc7acb4ca9054dc516790cc3b8f51530ece1ced720b3d0f2ab38b12db471",
+      "descriptor": {
+        "phase": "cow-inference",
+        "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+        "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+        "layout_id": "509a373efa6c6113bfb986b701d3fdb7b645281a63d4417c1e725b8739b13f85",
+        "device_class": "NVIDIA A100-SXM4-80GB",
+        "format": "F16",
+        "context_tokens": 512,
+        "batch_tokens": 512,
+        "maximum_tokens": 64
+      },
+      "forecast_id": "c10c8b78c606d4809d662f21a1edcf86543883634c08cfde71b895a76554db35"
+    },
+    {
+      "format": "Q8_0",
+      "samples": 37,
+      "peak_observed_mib": 3080,
+      "source_model_sha256": "59fca240ffd4b758401fd108e054a58e04695cc70b33f30277a4f2b3710f0311",
+      "descriptor": {
+        "phase": "cow-inference",
+        "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+        "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+        "layout_id": "cee87a52e06b7826549f77f18dfae849e74370a9e1799fce73d982faac5b6e98",
+        "device_class": "NVIDIA A100-SXM4-80GB",
+        "format": "Q8_0",
+        "context_tokens": 512,
+        "batch_tokens": 512,
+        "maximum_tokens": 64
+      },
+      "forecast_id": "94035de51d0f3ffe717528bd695377c104fc447afa2b91560dcc034632624429"
+    },
+    {
+      "format": "Q5_K_M",
+      "samples": 39,
+      "peak_observed_mib": 2350,
+      "source_model_sha256": "c391294b7a3f37c0a590acfd772eac05fe62897fc00a628f51355356c39cf1d5",
+      "descriptor": {
+        "phase": "cow-inference",
+        "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+        "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+        "layout_id": "b17a884160cc22b91ac1eb3243e7c99e78471678d2079bb4df1c12e318a0822f",
+        "device_class": "NVIDIA A100-SXM4-80GB",
+        "format": "Q5_K_M",
+        "context_tokens": 512,
+        "batch_tokens": 512,
+        "maximum_tokens": 64
+      },
+      "forecast_id": "6038da7c0f825dee3e0b30ad7416c527200d111f4624fdd306b8ced146fde2dc"
+    },
+    {
+      "format": "Q4_K_M",
+      "samples": 39,
+      "peak_observed_mib": 2144,
+      "source_model_sha256": "95a85275e537d39e4a749602979ded7f98151afa3d48f53d8c5f298e8015e98d",
+      "descriptor": {
+        "phase": "cow-inference",
+        "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+        "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+        "layout_id": "cd0324bcec19587f033a3243ac121545ab50704f3e4b43be5a9c7ea8441193c6",
+        "device_class": "NVIDIA A100-SXM4-80GB",
+        "format": "Q4_K_M",
+        "context_tokens": 512,
+        "batch_tokens": 512,
+        "maximum_tokens": 64
+      },
+      "forecast_id": "046be5e2bb1a8a8fa21506f22ec54aa523978f00d676f8dedc0d83626507ddd5"
+    },
+    {
+      "format": "Q3_K_M",
+      "samples": 46,
+      "peak_observed_mib": 1922,
+      "source_model_sha256": "0b73696701ceb6393cff6185ade5228095ac8d26305b66d81d8ab4da9483235d",
+      "descriptor": {
+        "phase": "cow-inference",
+        "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+        "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+        "layout_id": "ff6b2cf4fb222ba4f5b3b5b9701c7f9913378c6d70640eeda7414307965c20f6",
+        "device_class": "NVIDIA A100-SXM4-80GB",
+        "format": "Q3_K_M",
+        "context_tokens": 512,
+        "batch_tokens": 512,
+        "maximum_tokens": 64
+      },
+      "forecast_id": "6baff5a177490074417174cedcb81c418989385700edcb21ad4cf1cc12cde87c"
+    },
+    {
+      "format": "Q2_K",
+      "samples": 50,
+      "peak_observed_mib": 1708,
+      "source_model_sha256": "62b58a7153877cabc24df28a57bf1ee3e9adcd8200d6e0d33ff0ad4c9ee0cda9",
+      "descriptor": {
+        "phase": "cow-inference",
+        "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+        "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+        "layout_id": "4c24617aa33e4231734db6fbd099e7dee67f18e82201a6368fcbf45d2b88ff44",
+        "device_class": "NVIDIA A100-SXM4-80GB",
+        "format": "Q2_K",
+        "context_tokens": 512,
+        "batch_tokens": 512,
+        "maximum_tokens": 64
+      },
+      "forecast_id": "60e608dcac27321ae3f2c4badb1a9052aebee47d0b39cddc2f9dab4856a73394"
+    },
+    {
+      "format": "Q1_0",
+      "samples": 95,
+      "peak_observed_mib": 1278,
+      "source_model_sha256": "775dc54f98642a7053d11ea481e103dba02e71fddf23592d27f1ca3d516b0d91",
+      "descriptor": {
+        "phase": "cow-inference",
+        "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+        "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+        "layout_id": "f867a75c7fed6fe0506b1608e4e0b310d3f9c4c5b7687364dabec256f01b4fa2",
+        "device_class": "NVIDIA A100-SXM4-80GB",
+        "format": "Q1_0",
+        "context_tokens": 512,
+        "batch_tokens": 512,
+        "maximum_tokens": 64
+      },
+      "forecast_id": "ebb13762e09f33f9cbfe6f10e7620a48d632a36be4377c4044afc40a1db5b253"
+    }
+  ],
+  "observations_collected_without_new_model_calls": true,
+  "installed_preflight": {
+    "formats": 8,
+    "new_model_calls": 0,
+    "source_runtime_and_tensor_layouts_matched": true,
+    "corrected_driver_sha256": "0ef26f43f66cc1104843d3d6798ff6271dcd330fdde05fa4904762d0f7103cd9",
+    "memory_helper_sha256": "5b37a1bb37b0bed04e45dfeece3ac31411e8e6c92877f613cd57b4503b8dfe9a",
+    "completed_conversions_repeated": false,
+    "old_evaluations_started": false,
+    "original_failures_preserved": true
+  },
+  "native_gpu_leases_retained": true,
+  "compute_utilization_exclusion": false,
+  "placements": [
+    {
+      "format": "F32",
+      "gpu": 1,
+      "free_mib": 21974,
+      "forecast_mib": 9326
+    },
+    {
+      "format": "F16",
+      "gpu": 2,
+      "free_mib": 14659,
+      "forecast_mib": 6056
+    },
+    {
+      "format": "Q8_0",
+      "gpu": 4,
+      "free_mib": 13260,
+      "forecast_mib": 3080
+    }
+  ],
+  "legacy_evaluators_changed": false,
+  "trained_weights_published": false
+}
