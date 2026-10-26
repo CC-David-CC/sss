@@ -163,3 +163,11 @@ The llm-60 results are newer than the prior 02:37 table. AdamW moved from 483 at
 - The CPU capture-to-oracle bridge remains a limited qualification: it verifies one captured failure/correction pair and issues a receipt, but it does not yet create an approved lesson or dispatch training. The complete reusable failure → verified lesson → train → learning/forgetting gate → accept/reject loop, and the BW shell-failure diagnosis, remain unfinished.
 
 This is an interim progress record. The hosts, resource availability and pending evaluations must be checked again before interpreting any later result.
+
+## Incremental result — 2026-10-26 02:52 UTC
+
+- The A100 LoRA rank-3 arm completed update 16: **304/864 correct (35.2%)** and **854/864 naturally finished** after 432 presentations. At update 14 it had 289 correct and 825 naturally finished, so this checkpoint gained 15 correct answers and 29 natural completions. This is one within-run improvement, not a matched rank comparison.
+- At 02:51 UTC, A100 held-out evaluations were still active for full standard Muon update 47, full RMS/decay Muon update 45, AdamW LoRA rank 16 update 58, and LoRA ranks 2/19, 4/17 and 8/21. Their result files were pending in the checked locations. Rank 3 update 16 is now complete; the other completed A100 fixed-comparison scores remain as listed above.
+- llm-60 advanced from successful RMS/decay update-40 training into the COW held-out evaluator. The evaluator was live at 02:51 UTC; its score had not yet been saved. This confirms the earlier candidate was not stranded after training.
+
+The original comparison is still unfinished, no arm is accepted, and no export has been made.
