@@ -16,10 +16,15 @@ class BWWorkflowEvaluator(CowArtifactEvaluator):
     def _configuration_fields(self):
         return {'maximum_steps','maximum_requests'}
 
+    def _optional_configuration_fields(self):
+        return {'grammar_syntax'}
+
     def _validate_configuration(self,config):
         if (type(config['maximum_steps']) is not int or not 1<=config['maximum_steps']<=1024
                 or type(config['maximum_requests']) is not int or not 1<=config['maximum_requests']<=32):
             raise ValueError('Explicit bounded BW interpreter and per-action request limits required')
+        if 'grammar_syntax' in config and (type(config['grammar_syntax']) is not str or config['grammar_syntax'] not in ('gbnf','lark')):
+            raise ValueError('Explicit BW grammar syntax must be gbnf or lark')
 
     def _extra_source_paths(self):
         return [Path(__file__),self.sss/'sss/workflow_assessment.py',
@@ -35,11 +40,13 @@ class BWWorkflowEvaluator(CowArtifactEvaluator):
             cases=[c.descriptor() for c in self.cases],recipe=RECIPE))
 
     def expected_runtime(self,profile):
-        return dict(kind='sss.bw-workflow-runtime.v1',sources_and_inputs_sha256=self.pins,
+        value=dict(kind='sss.bw-workflow-runtime.v1',sources_and_inputs_sha256=self.pins,
             cow_runtime=runtime_binding(profile),recipe=RECIPE,
             maximum_steps=self.config['maximum_steps'],maximum_tokens=self.config['maximum_tokens'],
             maximum_requests_per_action=self.config['maximum_requests'],
             checker='fixed BW isolated affine-clamp-fold oracle',finished=self.finished_means,greedy=True)
+        if 'grammar_syntax' in self.config:value['grammar_syntax']=self.config['grammar_syntax']
+        return value
 
     def _evidence(self,candidate,directory):
         from branchwrite.lesson_capture import read_capture

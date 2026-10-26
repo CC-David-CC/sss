@@ -26,7 +26,7 @@ ROWS = [dict(values=[-4,0,2,9],scale=3,offset=-2,low=-5,high=8),
 
 
 @contextmanager
-def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_sentinel=None, model_contract_id='a'*64, baseline_source=BAD, extra_check_file=False):
+def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_sentinel=None, model_contract_id='a'*64, baseline_source=BAD, extra_check_file=False, grammar_syntax='gbnf'):
     from branchwrite.coding_cli import build_launch,save_launch,run_saved
     from branchwrite.lesson_capture import capture_failure,capture_correction
     from test_thinking_grammar import ThinkingTokenizer
@@ -99,6 +99,7 @@ def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_se
                 launch['config']['grant']['read_paths']=['check_notes.py']
                 launch['config']['grant']['mode_paths']=['check_notes.py']
                 launch['config']['grant']['mode_mask']=0o777
+            if grammar_syntax!='gbnf':launch['config']['cow']['grammar_syntax']=grammar_syntax
             save_launch(state,launch);returned=[]
             _,result=run_saved(state,max_steps=1024,progress=lambda event:returned.append(event) if event=='tool_returned' else None,
                 control=None if fix else lambda:len(returned)>=1)

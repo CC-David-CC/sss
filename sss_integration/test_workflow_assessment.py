@@ -54,13 +54,19 @@ class WorkflowAssessmentTests(unittest.TestCase):
             with self.assertRaises(OSError):socket.create_connection(('127.0.0.1',port),timeout=1)
 
     def test_real_failed_and_finished_workflow_capture_and_no_dispatch_replay(self):
+        self._capture_replay('gbnf')
+
+    def test_lark_failed_and_finished_capture_and_no_dispatch_replay(self):
+        self._capture_replay('lark')
+
+    def _capture_replay(self,grammar_syntax):
         from branchwrite.coding_cli import read_launch
         from branchwrite.lesson_capture import capture_assessment,capture_failure
         case=ArtifactAssessmentCase(AffineClampFoldCase.install('workflow-cpu-01','assessment.workflow-cpu',ROWS),
             BAD,'code.repair.affine','composition')
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
-            with captured_pair(root/'bw',task_override=workflow_question(case),project_sentinel=SENTINEL,extra_check_file=True) as pair:
+            with captured_pair(root/'bw',task_override=workflow_question(case),project_sentinel=SENTINEL,extra_check_file=True,grammar_syntax=grammar_syntax) as pair:
                 failed=capture_assessment(pair['failed_state'],root/'failed-archive')
                 fixed=capture_assessment(pair['corrected_state'],root/'fixed-archive')
                 failed_launch=read_launch(pair['failed_state']);fixed_launch=read_launch(pair['corrected_state'])

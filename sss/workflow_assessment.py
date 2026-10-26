@@ -38,10 +38,13 @@ def original_project(case,directory):
 
 
 def make_launch(case,project,connection,limits):
+    if 'grammar_syntax' in limits and (type(limits['grammar_syntax']) is not str or limits['grammar_syntax'] not in ('gbnf','lark')):
+        raise ValueError('Explicit BW grammar syntax must be gbnf or lark')
     from branchwrite.coding_cli import build_launch
     launch=build_launch(project,workflow_question(case),connection,
         branch='sss-workflow-'+case.identity,project_files=True,thinking_mode='off',
         instruction_style=RECIPE['instruction_style'],shell_timeout=RECIPE['shell_timeout'])
+    if 'grammar_syntax' in limits:launch['config']['cow']['grammar_syntax']=limits['grammar_syntax']
     launch['config']['profiles']['control'].update(request_tokens=limits['maximum_tokens'],
         max_requests=limits['maximum_requests'],
         max_output_tokens=limits['maximum_tokens']*limits['maximum_requests'])

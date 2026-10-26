@@ -254,3 +254,39 @@ The next engineering work is to isolate the grammar expansion and provide an
 explicit recovery route for parser failure. Repeated text is still useful model
 failure evidence; infrastructure exhaustion is not a model-score result, and
 simply increasing parser limits would not qualify recovery.
+
+
+## Supported optional grammar selection in the S³ workflow panel
+
+The BW workflow panel now accepts an optional `"grammar_syntax": "lark"` field
+in its **workflow panel owner configuration**. This reaches the actual BW host
+launch and is included in runtime identity. Other panel kinds do not acquire
+that option. Omitting it retains the previous GBNF launch and request bounds.
+Install the matching [PCC](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/lark-grammar-20261026/docs/LARK-GRAMMARS.md)
+and [BW](https://github.com/CC-David-CC/BranchWrite/blob/feat/lark-grammar-20261026/docs/LARK-GRAMMARS.md)
+feature branches and provide a newly bound, qualified runtime before a native
+model assessment; existing live sources and frozen comparison arms are unchanged.
+
+The optional path preserves action and array parser rules while keeping string
+lexemes. With the real MiniCPM tokenizer, **all 512 token masks in the observed
+prefix matched the old grammar exactly**, with zero differing bits. The new
+matcher then accepted that prefix plus 4,096 synthetic tokens without changing
+resource limits. The old matcher exhausted its lexer-state allowance at 706
+on the constructed continuation. This does not recover the missing original
+suffix or prove the precise original-crash cause.
+
+The S³ CPU integration exercised actual BW read/edit/check/finish, failure and
+correction captures, preserved-input checks and read-only evidence replay using
+the new syntax. A scripted CPU backend supplied the proposals. Native model
+forward calls and training updates were zero. Launch tests also show that the
+explicit syntax reaches BW without changing grants, task bindings or request
+budgets, and unsupported values fail before dispatch. See the
+[selection and replay receipt](../validation/learning-program-20261024/lark-workflow-selection-20261026.json).
+
+Fourteen checks passed in the first selection, alongside one test-module naming
+error in the invocation. The correctly named child-installation selection then
+passed three checks; completed workflow cases were not rerun to fix that loader
+error. These are component/integration controls, not a completed native joined
+learning round. The old unknown operation remains preserved. Next, qualify the
+new source/profile installation and test real model workflows as new recorded
+work rather than relabelling that original operation.

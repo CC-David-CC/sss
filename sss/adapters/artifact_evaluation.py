@@ -26,6 +26,9 @@ class CowArtifactEvaluator(CowLearningEvaluator):
     def _configuration_fields(self):
         return set()
 
+    def _optional_configuration_fields(self):
+        return set()
+
     def _validate_configuration(self,config):
         pass
 
@@ -42,7 +45,7 @@ class CowArtifactEvaluator(CowLearningEvaluator):
             'gpu_index','gpu_uuid','maximum_tokens','minimum_free_mib',
             'maximum_initial_utilization','timeout_seconds'}
         required |= self._configuration_fields()
-        if (type(config) is not dict or set(config)!=required or type(config['schema']) is not int
+        if (type(config) is not dict or not required<=set(config) or set(config)-required-self._optional_configuration_fields() or type(config['schema']) is not int
                 or config['schema']!=1):raise ValueError('Closed owner artifact evaluator configuration required')
         for key in ('pcc_root','bw_root','cow_profile','runtime_proof','cases'):
             if type(config[key]) is not str or not Path(config[key]).is_absolute():
