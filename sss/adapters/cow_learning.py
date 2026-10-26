@@ -167,6 +167,8 @@ class CowLearningEvaluator:
                         self.host_pcc / 'tools/pcc_lessons.py', self.host_pcc / 'tools/pcc_native_training.py',
                         self.host_pcc / 'tools/pcc_cow_profile.py',
                         self.sss / 'sss/adapters/runtime_sources.py',*rendering_paths]
+        if self.pack.get('generation_profile')=='without-replacement-v2':
+            source_paths.append(self.sss/'sss/curriculum_unique_v2.py')
         self.pins = {str(p): file_sha256(p) for p in [*self.paths.values(), *source_paths]}
         self.pins.update(build['sha256'])
         self._binding = dict(schema=1, kind='sss.cow-learning-evaluator.v1', config=self.config,
@@ -295,7 +297,7 @@ class CowLearningEvaluator:
 
     def _environment(self):
         return dict(os.environ, PYTHONPATH=os.pathsep.join([
-            str(self.sss), str(self.pcc), str(self.pcc / 'experimental/branching_context/src')]))
+            str(self.sss), str(self.host_pcc), str(self.pcc), str(self.pcc / 'experimental/branching_context/src')]))
 
     def __call__(self, candidate, directory, worker_fd):
         directory = Path(directory).absolute()

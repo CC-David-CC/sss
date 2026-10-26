@@ -153,3 +153,26 @@ checks passed, including the original refusal, the exact nine-skill/864-question
 new development panel, split separation, reference correctness, finite bounds,
 legacy pack identity and tampered source rejection. No model learning result
 follows from these generator checks.
+
+## Split API and native-execution installations
+
+When the PCC API and the qualified native worker use separate source trees,
+children must import the same API/rendering files as their parent and the
+qualified experimental backend from the execution tree. The child environment
+now preserves both roots. Artifact and BW workflow children also require the
+parent evaluator identity before reading candidate inputs or entering GPU work.
+A mismatch is an installation failure, not a model failure or an excuse to relax
+the evidence comparison.
+
+The first joined baseline completed two artifact cases (one correct, both
+naturally finished), but its parent rejected their different child evaluator
+identity. Those raw outcomes remain private diagnostics. They are not an
+accepted joined baseline, and no training update had occurred. The corrected
+joined run uses fresh protected visible bug variants; completed questions are
+not redispatched. The fixed 68-update study remains separate and unchanged.
+
+The correction passed 33 CPU/control checks. On llm-60, actual artifact and
+workflow parent/child constructions then produced identical evaluator identities
+using the separate API and qualified-execution installations, with zero model
+calls. This preflight proves installation equivalence, not a completed native
+learning round. See the [sanitized receipt](../validation/learning-program-20261024/child-installation-20261026.json).

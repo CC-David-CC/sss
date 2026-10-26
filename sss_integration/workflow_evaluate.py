@@ -68,11 +68,13 @@ def native_server(panel,profile,output):
                 write_once(output/'server-private.json',dict(status='RETIRED',connection=connection))
 
 
-def run(owner_config,profile_path,candidate_path,output):
+def run(owner_config,profile_path,candidate_path,output,*,expected_evaluator_id):
     from branchwrite.coding_cli import save_launch,run_saved
     from branchwrite.lesson_capture import capture_assessment
     from sss.adapters.bw_practice_oracle import observe
     panel=BWWorkflowEvaluator(owner_config)
+    from sss.adapters.runtime_sources import require_child_identity
+    require_child_identity(panel,expected_evaluator_id)
     read=lambda p:json.loads(Path(p).read_bytes())
     candidate=read(candidate_path);profile=read(profile_path)
     if canonical(panel.profile(candidate))!=canonical(profile):
@@ -113,6 +115,7 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ('owner-config','profile','candidate','output'):
         parser.add_argument('--'+name,type=Path,required=True)
+    parser.add_argument('--expected-evaluator-id',required=True)
     args=parser.parse_args()
-    value=run(args.owner_config,args.profile,args.candidate,args.output)
+    value=run(args.owner_config,args.profile,args.candidate,args.output,expected_evaluator_id=args.expected_evaluator_id)
     print(json.dumps({k:value[k] for k in ('status','cases','passed','finished')}))

@@ -77,6 +77,7 @@ class CowArtifactEvaluator(CowLearningEvaluator):
         if file_sha256(bind_dense_profile.__code__.co_filename)!=file_sha256(self.pcc/'tools/pcc_cow_profile.py'):
             raise ValueError('Installed PCC profile binding differs from execution runtime')
         from serve.cow_http import model_text_components
+        self.host_pcc=Path(model_text_components.__code__.co_filename).resolve(strict=True).parents[1]
         from sss.adapters.bw_verified_practice import PCCArtifactRenderer
         components=model_text_components(self.model,dict(enable_thinking=False),model_contract_id=self.model_contract)
         from sss.adapters.runtime_sources import rendering_sources
@@ -145,11 +146,12 @@ class CowArtifactEvaluator(CowLearningEvaluator):
 
     def _command(self,directory,profile):
         return [sys.executable,'-m',self.child_module,
-            '--owner-config',str(self.configuration),'--profile',str(directory/'candidate-profile.json'),
+            '--owner-config',str(self.configuration),'--expected-evaluator-id',self.identity,
+            '--profile',str(directory/'candidate-profile.json'),
             '--candidate',str(directory/'candidate-selection-private.json'),'--output',str(directory/'evaluation')]
 
     def _environment(self):
-        return dict(os.environ,PYTHONPATH=os.pathsep.join(map(str,[self.sss,self.pcc,
+        return dict(os.environ,PYTHONPATH=os.pathsep.join(map(str,[self.sss,self.host_pcc,self.pcc,
             self.pcc/'experimental/branching_context/src',self.bw])),PYTHONDONTWRITEBYTECODE='1')
 
     def __call__(self,candidate,directory,worker_fd):
