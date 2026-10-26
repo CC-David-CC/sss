@@ -1,5 +1,7 @@
 # Skills³ (S³)
 
+[A checked BW repair can become an exact practice lesson](docs/BW-VERIFIED-PRACTICE.md): S³ joins BW's immutable failed/corrected artifacts to an independent checker, preserves the exact taught file and EOS masks, and lets the owner register only that verified lesson. [CPU validation](validation/learning-program-20261024/bw-verified-practice-cpu-20261026.json) passed 235 core checks and 14 separate optional integration cases against current BW/PCC sources. Proposals were scripted; no model inference or training ran. Production configured learning-policy integration remains pending.
+
 [LoRA rank extension: 1, 2, 3, 4, 8 alongside 16](docs/LORA-RANK-EXTENSION.md) adds five independent 68-update arms with the same frozen practice and questions. First results are pending.
 
 [The durable learning loop: ELI5, master's, PhD, and applied guide](docs/LEARNING-MACHINERY.md) explains ownership, recovery, paired learning/forgetting, expanding assessments, commands, and current qualification limits. The new machinery checks are separate from the fixed 68-update comparison.

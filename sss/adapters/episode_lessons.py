@@ -1,5 +1,5 @@
 """Export approved practice spans to PCC's opt-in lesson schema, without training."""
-from sss.profiles import target_segments
+from sss.lesson_targets import target_segments
 from sss.records import digest
 
 def pcc_lesson(title,model_contract_id,segments,*,archive_sha256,verification_sha256,renderer_sha256,tokenizer_sha256,skill_id=None,target_policy='verified_thinking_actions_answer'):

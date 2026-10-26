@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "kind": "sss.bw-verified-practice-cpu-validation.v1",
+  "status": "PASS",
+  "scope": "Staged verified lesson intake and exact owner membership; scripted CPU machinery, not model learning",
+  "measurement": {
+    "core": {
+      "tests": 235,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "python": "system Python 3.14",
+      "BW_available": false,
+      "PCC_available": false,
+      "numpy_available": false
+    },
+    "focused_prior": {
+      "tests": 42,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "includes_optional_integration": 14,
+      "overlaps_core": true
+    },
+    "final_combined_optional": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "overlaps_prior_optional": true
+    }
+  },
+  "source_identity": {
+    "sss_base_commit": "1691bf501faaabbf91a0282f04c68e5ece9c7f58",
+    "qualified_source_files": {
+      "adapter": "4718297ab237c6c399f4aa16fc0431125bcef2b059db5ef31d356876612e6e01",
+      "episode_lessons": "32e148581ade47b33455cafc2eb2a3f5271934c2d4a925c3550227ec25b64547",
+      "episodes": "832f6531404f3a583012cd87d2438cbf60dfe6c470d3271489ddc81848c295d3",
+      "lesson_targets": "9a1420e74fb74cfe89afeab7bcfe7afb52d833eb2a5112a3b35272e9503f447f",
+      "oracle": {
+        "adapter_implementation_sha256": "057c43776edb26800f515670d3a0381bceae10018dbaaabc4eb078e7f5053395",
+        "checker_implementation_sha256": "320bd185898052e93cb08221b24e03d67b82516061c1c93f66f10a5f8bf9df36",
+        "driver_sha256": "3c469517035b3d4a611372ea026118add531f3f39745051f881b5ca1768c9f1a",
+        "source_gate_implementation_sha256": "c9d3e5406ba5720c005712fc751129308dda037239a8d2850839d997819f1f2c"
+      },
+      "pcc_lesson_segments": "5e35873ed82113288b1fb673b231e9f355e570e616e19677504e9775dea9b2f3",
+      "profiles": "caa784142c363260b2e6feedf363b710ac2b64657d581cab4281b2fb23b62988",
+      "records": "ffc339b779f5cf4071184a6339b8823f9bfb29ca4d952c9ad4bd854d13d38abc"
+    },
+    "registry_implementation_sha256": "5790bf39388848bc88c079bedd44e9108e06de01d8834cdbba5c4311e70bc6d9",
+    "BW_commit": "d43f6b8019651273f1f3362fb88c9cdc8d4f05ac",
+    "PCC_commit": "4a536ab6e26a7d97f200452479a201b414ce55fb",
+    "BW_helper_closure_sha256": "af664424678521670504f77e76a7cafb54328cd81bf01e07176f5b4b0c5ac054",
+    "BW_cow_client_sha256": "6e38a16ee6da04f9306e7fe6013c1fbce7cd7fa0a212c4963730fb67b0d74af2",
+    "BW_lesson_cli_sha256": "b12606938e2461f83dd4dc874513672c85c944c25debab2e3003e08cb481cf4a",
+    "renderer_sha256": "72e4c75796f680700e70d2b92cf78f3b7cc67dd3021a22c0f77929e31f8d2408",
+    "tokenizer_sha256": "45706ffc25acd3b33e94b6423c76d4ff33a7df93667a199074742a22d88dd7ed",
+    "legacy_profiles_exact_base": true,
+    "legacy_expected_manifest_changed": false
+  },
+  "joined_checks": {
+    "genuine_BW_read_edit_check_finish": true,
+    "failed_attempt_had_no_self_check": true,
+    "independently_observed_failed_status": "fail",
+    "independently_observed_corrected_status": "pass",
+    "original_operational_paths_unavailable_during_export_read": true,
+    "model_visible_targets_roundtrip_exact_checked_artifact": true,
+    "targets_end_at_native_EOS": true,
+    "post_EOS_template_framing_masked": true,
+    "both_target_policies_checked": true,
+    "exact_registry_membership": true,
+    "actual_PCC_schema2_lesson_admission": true,
+    "repeated_submit_idempotent": true,
+    "changed_target_refused": true,
+    "finished_question_answer_text_saved": true
+  },
+  "identities": {
+    "export_id": "b6f2f8d1cb76d834a83df5d79f6fc157dcc716d71b62dffb750421890dfca585",
+    "lesson_id": "f159ec7efcbe68d7a4cc1e665ab8a626de53cdef94d8e6e1474bd9fcc6f08025",
+    "proof_sha256": "b1cebed9f0b0781198d202faa0ff74fc951ca1957d8fb2257641daad52967e6b",
+    "failure_capture_id": "de1af407bd384cc357dcd6942bf07d70caac7e34f9626699331e3805d01e6d66",
+    "correction_capture_id": "9d697d43be1d79b00b9e710c2eb434596fad4c217a1b0c921a4a658aabacb414"
+  },
+  "private_receipt_sha256": {
+    "combined_preflight": "40e9b1622821563caeb7daefeefbe0247ac66196acba554b6e0859d07615167a",
+    "combined_tests_terminal": "02d4fd183a8af4c7f1e110d3c95ddd485e3b44ca22d8a3e9562ab270ce6ce2c7",
+    "combined_probe_terminal": "e82fb402d0dac03daf060337644ddeb64c9170570939a34bd6e6249a3c6ceae7",
+    "actual_registry_admission": "bdd0d657f17c376ee2f6a8f70d69f4826151c484b6a364a6fba4e529a31d69b9"
+  },
+  "execution": {
+    "proposals": "deterministically scripted; not model-generated",
+    "runtime_model_contract": "synthetic CPU fixture identity",
+    "model_asset": "MiniCPM5-2B F16 GGUF metadata, actual template and tokenizer only",
+    "model_forward_passes": 0,
+    "native_dispatches": 0,
+    "gpu_jobs": 0,
+    "training_started": false,
+    "weights_updated": false,
+    "full_configured_learning_policy_integrated": false,
+    "model_promoted": false
+  },
+  "limitations": [
+    "One fixed affine-clamp-fold Python practice family; not a general arbitrary-code oracle.",
+    "No verified thinking or tool trajectory is taught by this final-artifact-only representation.",
+    "Actual production learning policy still needs independent target, workflow and retention panels.",
+    "The test counts overlap; they are not additive independent skill trials.",
+    "Protected text/token and case separation checks do not establish all semantic held-out independence.",
+    "Earlier source-specific private evidence remains historical; this receipt does not relabel old captures."
+  ]
+}

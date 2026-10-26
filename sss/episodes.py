@@ -6,10 +6,10 @@ import json
 import os
 import re
 from .records import canonical,digest
-from .profiles import target_segments
+from .lesson_targets import target_segments
 
 ROLES=('system','user','assistant','tool')
-KINDS=('instruction','question','observation','thinking','action','answer','summary')
+KINDS=('instruction','question','observation','thinking','action','answer','summary','framing')
 SCOPES=('practice','development','qualification','private')
 
 class EpisodeArchive:
@@ -43,6 +43,7 @@ class EpisodeArchive:
         if row['role'] not in ROLES or row['kind'] not in KINDS or row['scope'] not in SCOPES:raise ValueError('Unknown episode segment')
         if type(row['text']) is not str or len(row['text'].encode())>4*1024*1024:raise ValueError('Invalid episode text')
         if type(row['verified']) is not bool:raise ValueError('Explicit verification flag required')
+        if row['kind']=='framing' and (row['role']!='assistant' or row['verified'] is not False):raise ValueError('Framing must be unverified assistant template bytes')
         if any(type(row[k]) is not str for k in ('topic','question_id','resolves')):raise ValueError('Invalid topic/question identity')
         if type(row['refs']) is not list or any(type(v) is not str for v in row['refs']):raise ValueError('Invalid source references')
         visible={e['id'] for e in self._events}
@@ -126,7 +127,8 @@ renderer. Masking targets does not detach earlier activations from backprop.
     return dict(tokens=tokens[:-1],targets=tokens[1:],loss_mask=labels[1:],target_policy=policy,
                 text_sha256=hashlib.sha256(raw.encode()).hexdigest(),weights_updated=False)
 
-def export_text(archive,path,*,public=False):
+def render_text(archive,*,public=False):
+    """The existing completed-record bytes, without writing or another authority."""
     rows=archive.records()
     if public and (archive.metadata['metadata'].get('origin')!='synthetic' or any(r['scope']!='practice' for r in rows)):
         raise ValueError('Public examples must be owned synthetic practice')
@@ -134,5 +136,10 @@ def export_text(archive,path,*,public=False):
     text=['Skills cubed: completed teaching record','Artifact complete; no model weight update is implied.','Archive head: '+archive.head,'']
     for row in rows:
         text += [f"[{row['seq']} | {row['role']} | {row['kind']} | verified={row['verified']} | id={row['id']}]",row['text'],'']
-    EpisodeArchive._exclusive(Path(path),'\n'.join(text).encode())
+    return '\n'.join(text).encode()
+
+def export_text(archive,path,*,public=False):
+    raw=render_text(archive,public=public)
+    EpisodeArchive._exclusive(Path(path),raw)
+    rows=archive.records()
     return dict(archive_head=archive.head,sha256=hashlib.sha256(Path(path).read_bytes()).hexdigest(),records=len(rows),trained=False)
