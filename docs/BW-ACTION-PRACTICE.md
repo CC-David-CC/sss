@@ -119,3 +119,19 @@ acceptance, thinking trajectory, image trajectory, retry/fork flattening or
 arbitrary-task support is established by the CPU result. Original captures also
 remain pinned to their original BW implementation; this feature does not silently
 reinterpret an older capture under a different validator.
+
+## Real-model memory observations
+
+PCC has now completed a read-only 3,663-token full-gradient probe on the learned
+MiniCPM parent: all 381 gradient tensors were finite and nonzero, with a sampled
+process peak of about 83 GiB on the dedicated RTX PRO 6000. The longer 4,873-token
+full and rank-16 LoRA graphs, and an allocation-only 8k extension, exceeded that
+one GPU's budget and were refused before graph-buffer allocation. No real model
+weights were updated in these checks.
+
+The [PCC memory report and graph](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/dense-llama-actions-20261026/docs/MINICPM-ACTION-MEMORY.md)
+separate sampled resident memory, planned graph buffers, persistent optimizer
+state and resource refusals. These are current implementation costs, not intrinsic
+minimum memory requirements for all ways of training a small model. The next
+learning round needs qualified placement for its whole lesson block; summing free
+VRAM or passing persistent admission alone does not prove that the graph fits.

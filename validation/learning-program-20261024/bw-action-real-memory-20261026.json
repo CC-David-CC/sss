@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "status": "PARTIAL_REAL_MODEL_QUALIFICATION",
+  "pcc_report_source_commit": "a3c222cfecb4c34f143192d88586f7482a4e67fc",
+  "pcc_cpp_source_commit": "a323af12d0154b9b559a1b5719524bade697ad67",
+  "model_sha256": "ce673b360122f1be1bda4c1de2903efbd72d031e910d64e817e83362b20791fb",
+  "completed_full_gradient_context_tokens": 3663,
+  "finite_nonzero_gradient_tensors": 381,
+  "sampled_process_peak_mib": 84946,
+  "full_4873_single_gpu_resource_refused": true,
+  "lora16_4873_single_gpu_resource_refused": true,
+  "synthetic_8192_single_gpu_resource_refused": true,
+  "real_weight_updates": 0,
+  "new_bw_score_measured": false,
+  "production_training_membership_installed": false,
+  "promoted": false
+}
