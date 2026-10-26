@@ -1,3 +1,7 @@
+[MiniCPM update-curve progress](docs/MINICPM-UPDATE-CURVES-PROGRESS.md):
+interim fixed-68 comparison and separate LoRA-rank sweep. Scores are incomplete
+and no candidate has been accepted.
+
 [Fixed-compute study preparation](docs/FIXED-COMPUTE-PREPARATION.md): A100
 optimizer qualification passes, and the larger arithmetic/state dataset passes
 actual MiniCPM token/lesson admission. Learning and retention runs are next.
