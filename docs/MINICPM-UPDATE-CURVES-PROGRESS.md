@@ -2,6 +2,12 @@
 
 Captured 2026-10-26 01:53-01:54 UTC. This is an interim results note, not an acceptance report. The fixed comparison and the rank sweep are still running.
 
+## Live status refresh — 2026-10-26 02:03 UTC
+
+- **A100 is reachable.** An 8-GPU `nvidia-smi` snapshot returned at 02:03:50 UTC. The exact per-arm score table below remains the latest verified A100 completion table; no newer A100 evaluation receipt was confirmed during this refresh. A100 resource records at 01:57 show several jobs waiting for GPU admission. The snapshot also showed heavy shared load on GPUs 3, 4 and 5 (100%, 98% and 97% utilization), so waiting is consistent with contention. No A100 study crash was confirmed.
+- **llm-60 is still working.** At 02:02 UTC, its COW evaluator was evaluating AdamW full update 40. The latest completed receipts remain AdamW update 39 (488/864) and standard Muon, RMS/decay Muon and fast/refine Muon at update 38. The RTX PRO 6000 showed about 90% utilization with 9.7 GiB occupied in that snapshot. This is active evaluation, not a stuck training process.
+- **No model has been accepted or promoted.** Both the fixed comparison and rank sweep are incomplete. This refresh adds machine/process observations, not new model scores.
+
 ## What was measured
 
 The model is MiniCPM5-2B. Each score below is the number of correct cases out of the same 864-case held-out set. Training progress is reported in updates and example presentations, not wall-clock time. Each update contains 27 presentations. The historical starting model scored 59/864 (6.8%) and naturally finished 415/864 responses on this suite.
