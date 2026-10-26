@@ -52,10 +52,23 @@ class PolicyFixture:
             assessment=growth_plan(candidate,purpose='machinery',minimum_skill_cases=96))
 
 
+class PanelReportFixture(PolicyFixture):
+    """Controlled report shape only; real installed panels are tested separately."""
+    def analyze(self,baseline,parent,candidate):
+        decision=super().analyze(baseline,parent,candidate)
+        aggregate=decision['report']
+        report=dict(schema=1,kind='sss.panel-learning-report.v1',aggregate=aggregate,
+            panels=[dict(panel_id='controlled-report',role='retention',
+                         report=copy.deepcopy(aggregate),assessment=decision['assessment'])],
+            working_parent=decision['working_parent'],promoted=False)
+        report['report_id']=digest(report)
+        return dict(decision,report=report)
+
+
 class OriginalAuditTests(unittest.TestCase):
     def setUp(self):self.build()
     def tearDown(self):self.temp.cleanup()
-    def build(self,*,mode='full',initial=False,timed=False):
+    def build(self,*,mode='full',initial=False,timed=False,panels=False):
         self.temp=tempfile.TemporaryDirectory(prefix='sss-controlled-audit-');self.root=Path(self.temp.name)
         self.mode=mode;self.timed=timed;self.rank=4
         self.service=LessonService.__new__(LessonService)
@@ -78,7 +91,7 @@ class OriginalAuditTests(unittest.TestCase):
         self.service.audit_optimizer_profiles=profiles({self.profile_id:profile},
             sequence_profile=self.service.sequence_profile,deadline=3600)
         self.profile=self.service.audit_optimizer_profiles[self.profile_id]
-        self.policy=PolicyFixture(dict(mode=mode,rank=self.rank,batch_size=1,steps=3 if timed else 1,
+        self.policy=(PanelReportFixture if panels else PolicyFixture)(dict(mode=mode,rank=self.rank,batch_size=1,steps=3 if timed else 1,
             learning_rate=.001,optimizer_profile_id=self.profile_id))
         self.policy_id=digest(self.policy.describe())
         self.base=self.make_evidence([(True,True),(False,False),(False,False)])
@@ -230,6 +243,28 @@ class OriginalAuditTests(unittest.TestCase):
         self.add_round(2,[(True,True),(True,True),(False,False)])
         value=self.audit();self.assertEqual(value['distinct_referenced_native_jobs'],2)
         self.assertEqual(value['rounds'][-1]['working_decision'],'RETAIN_PARENT')
+    def test_wrapped_reports_audit_multiple_rounds_without_dispatch_or_source_changes(self):
+        self.reconfigure(panels=True)
+        self.add_round(2,[(True,True),(False,True),(False,False)])
+        before={str(p):p.read_bytes() for p in self.root.rglob('*') if p.is_file()}
+        with patch('subprocess.Popen',side_effect=AssertionError('Audit attempted dispatch')):
+            value=self.audit()
+        self.assertEqual(value['distinct_referenced_native_jobs'],2)
+        self.assertEqual(value['rounds'][1]['working_decision'],'RETAIN_PARENT')
+        self.assertEqual(value['rounds'][1]['parent_answer_delta'],-1)
+        self.assertEqual(value['rounds'][1]['panels'][0]['parent_answer_delta'],-1)
+        self.assertEqual(before,{str(p):p.read_bytes() for p in self.root.rglob('*') if p.is_file()})
+    def test_wrapped_panel_analysis_is_recomputed_in_full(self):
+        self.reconfigure(panels=True)
+        path=self.directory/'round-000001.json';record=json.loads(path.read_text());record.pop('record_sha256')
+        record['report']['panels'][0]['report']['parent_answer_delta']=99
+        record['report_sha256']=digest(record['report'])
+        self.save(self.directory/'report-000001.json',record['report']);self.save(path,record,checksum=True)
+        with self.assertRaisesRegex(ValueError,'Recomputed learning'):self.audit()
+    def test_wrapped_report_cannot_replace_missing_original_backend(self):
+        self.reconfigure(panels=True)
+        (self.directory/'candidate-000001-backend/original.json').unlink()
+        with self.assertRaises(FileNotFoundError):self.audit()
     def test_initial_sgd_parent_without_optimizer_state_is_supported(self):
         for mode in ('full','lora'):
             self.reconfigure(mode=mode,initial=True)

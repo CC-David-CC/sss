@@ -180,3 +180,9 @@ learning round. See the [sanitized receipt](../validation/learning-program-20261
 A subsequent independent native mixed block executed and preserved its diagnostic
 GGUF. See [the measured result and unresolved joined assessment](NATIVE-MIXED-BLOCK.md).
 The native job is complete; the full reusable learning loop is still unqualified.
+
+A later [joined native round](JOINED-NATIVE-ROUND.md) completed all three
+measurement panels, one counted update, the parent decision and private named
+preservation. It lost 20 review passes overall; its working parent did not
+advance. This supplies bounded integration evidence while repeatable operation,
+tool-trajectory lessons and broader qualification remain unfinished.

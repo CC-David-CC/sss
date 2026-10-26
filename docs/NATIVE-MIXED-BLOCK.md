@@ -1,5 +1,10 @@
 # Mixed native learning through BW and PCC
 
+The later [joined target/workflow/retention round](JOINED-NATIVE-ROUND.md)
+completed its native train/test/decision/preserve cycle and retained the parent
+after a net review loss. The two earlier experiments below remain separate
+original records.
+
 Two real full-model AdamW candidates now passed through BW's client, PCC's
 authenticated native job API and S³-verified lesson inputs. Both started from
 the same original model and practiced the same 28-example block once. A step
@@ -16,10 +21,8 @@ read/edit/check/finish task with independent verification, a separate proven
 the campaign. The passing task used explicit recovery and an additional
 interpreter-step allowance; it is not a same-bound two-case panel score.
 S³ now settles proven budget failures and continues its panel, with archived
-read-only evidence. The generic recovery CLI now also passed an owned native SIGKILL/reopen check,
-including preserved completed operations and explicit replay of the original
-unsettled generation. That task remained unfinished. A complete joined learning
-round remains open. Neither candidate is promoted.
+read-only evidence. Generic CLI native qualification and a complete joined
+learning round remain open. Neither candidate is promoted.
 
 ## Plain-language reading
 

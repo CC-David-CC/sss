@@ -48,6 +48,23 @@ def checked_record(service, path):
     return {k: v for k, v in value.items() if k != 'record_sha256'}
 
 
+def report_summary(report):
+    """Summarize only after the entire report matched fresh policy analysis.
+
+    A panel policy wraps the ordinary proposal rather than duplicating its
+    fields at the top level. Keep that distinction and every panel visible;
+    never replace the report used for policy verification or parent selection.
+    """
+    proposal = report['aggregate'] if report.get('kind') == 'sss.panel-learning-report.v1' else report
+    result = {key: proposal[key] for key in (
+        'baseline_answer_delta', 'parent_answer_delta',
+        'baseline_answer_losses', 'working_decision')}
+    if report.get('kind') == 'sss.panel-learning-report.v1':
+        result['panels'] = [dict(panel_id=p['panel_id'], role=p['role'],
+            **report_summary(p['report'])) for p in report['panels']]
+    return result
+
+
 def audit_rounds(service, policy, run_id):
     """Read only a settled round boundary. Caller holds the existing worker lease."""
     from tools.pcc_lessons import OP, HEX
@@ -263,10 +280,7 @@ def audit_rounds(service, policy, run_id):
             optimizer_state_sha256=candidate['optimizer_state_sha256'],
             native_updates=len(steps), presentations=candidate['receipt']['example_cursor'],
             optimizer_state_policy=candidate['optimizer_state_policy'],
-            baseline_answer_delta=report['baseline_answer_delta'],
-            parent_answer_delta=report['parent_answer_delta'],
-            baseline_answer_losses=report['baseline_answer_losses'],
-            working_decision=report['working_decision'], evaluation_sha256=digest(value),
+            **report_summary(report), evaluation_sha256=digest(value),
             report_sha256=digest(report)))
         if decision['working_parent'] == 'candidate':
             parent, parent_candidate = value, candidate
