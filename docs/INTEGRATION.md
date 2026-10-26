@@ -100,6 +100,45 @@ regression and recovery; it is not fresh language-model inference. A separate
 `sss_integration.lesson_native_cpu` harness covers the earlier one-example,
 batch, LoRA/full continuation and reload workflow. Both refuse old output paths.
 
+## Audit native completion recovery separately
+
+PCC owns recovery of the original native job, and BW provides the person/agent
+owner commands. S³ has a small optional auditor for their saved qualification
+records. It reads the private receipts and local artifacts, then writes only a
+sanitized summary. It never starts PCC, BW, training, inference, or recovery.
+
+```sh
+python -m sss_integration.native_completion_recovery \
+  --qualification-root /private/new-native-recovery-qualification \
+  --output /private/new-native-recovery-qualification/sss-receipt.json
+```
+
+The root must contain the exact qualification layout emitted by the PCC/BW
+recovery harness, including its private event record, native/reload exit
+receipts, completion gate, job store, base fixture, deliberate-fault receipt,
+and recovery-dispatch guard receipt. The output must be a new file; overwrite
+is refused. `PASS` means the saved records agree on one original full-AdamW
+CPU update, successful reload, deliberate service exit, same-job adoption and
+reconciliation to `candidate_pending`, with no second training dispatch or
+promotion. It does not prove that the host records are independently attested,
+that MiniCPM/Wen learned anything, or that a candidate should be accepted.
+
+Missing evidence returns `HOLD` (exit 2). Inconsistent, altered or malformed
+evidence returns `FAIL` (exit 1). Neither result is a model-quality judgment.
+Raw event logs, operation IDs, service credentials and model files remain
+private. The [published S³ receipt](../validation/learning-program-20261024/native-completion-recovery-machinery.json)
+is the sanitized result from one tiny synthetic CPU qualification. This audit
+is independent of the frozen 68-update optimizer comparison.
+
+Run its synthetic contract tests without BW, PCC, NumPy, a model or a GPU:
+
+```sh
+python -m unittest sss_integration.test_native_completion_recovery
+```
+
+These tests verify the receipt checks and tamper refusals. They are not another
+native model run.
+
 ## Host-trace grading
 
 `sss.suites.tool_use.grade` checks completed host observations and actual final

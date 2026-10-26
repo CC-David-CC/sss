@@ -91,6 +91,10 @@ marked passing.
 - Optional PCC and BW integration fixtures using real tool boundaries, HTTP
   requests and native CPU updates. Their injected skill outcomes prove wiring,
   not model competence.
+- A separate PCC/BW recovery-receipt audit that checks the original job,
+  successful reload, deliberate interruption, no second training dispatch and
+  final `candidate_pending` state. Its saved-evidence tests are not part of the
+  fixed 68-update optimizer comparison and do not measure model quality.
 
 Guarded jobs have a frozen policy, explicit step budget and maximum round count.
 Blind evaluation runs after validation qualifies; a blind failure rejects the
@@ -130,6 +134,8 @@ python -m unittest discover -s sss_tests -p 'test_*.py'
 The native/BW integration tests are separate and require matching host checkouts.
 See [integration and ownership](docs/INTEGRATION.md),
 [the skill map](docs/SKILL-MAP.md), and [measured status](validation/README.md).
+The private recovery-receipt audit and its standalone tests are described in
+the integration guide.
 
 For the complete explanation of the tree, scores, teaching loop and limitations,
 read [the S³ user guide](docs/USER-GUIDE.md). Model comparisons and historical

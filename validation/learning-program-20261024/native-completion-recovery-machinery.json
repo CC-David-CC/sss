@@ -1,0 +1,37 @@
+{
+  "artifacts": {
+    "base_sha256": "9676647d4c4ed448d5f0119499d5498d8baaefb3d858a4560fd071309a99670b",
+    "candidate_sha256": "16331ccd17a8aec4f01a534d263161f666ff48d3b7407cbc428995e9184f97f2"
+  },
+  "bw_commit": "29078a1a914b828f4f3f8e82bf43ece75670a466",
+  "kind": "pcc_bw_native_completion_recovery_machinery",
+  "limits": [
+    "This is a tiny synthetic CPU mechanics qualification, not MiniCPM/Wen learning evidence.",
+    "A PASS verifies saved receipts and local artifacts; it does not independently attest the host or prove model quality.",
+    "Candidate acceptance, retention, GPU behavior and export are outside this receipt."
+  ],
+  "pcc_commit": "4a536ab6e26a7d97f200452479a201b414ce55fb",
+  "qualification_driver_sha256": "0ae81b875fe67f3c56f62143853c91b2cecd0c032ae2ff92621569fad65b63dd",
+  "qualification_service_sha256": "b4a68ffcbbac699bd08c89eb9c0578a27d131fa3dfb2b0a06e5df985d4fea95a",
+  "recovery": {
+    "fault_injection_exit_code": 73,
+    "final_job_state": "complete",
+    "final_learning_phase": "candidate_pending",
+    "promoted": false,
+    "recovery_dispatch_attempts": 0,
+    "same_original_job_recovered": true,
+    "training_dispatches": 1
+  },
+  "schema": 1,
+  "status": "PASS",
+  "training": {
+    "batch_size": 1,
+    "cpu_budget_bytes": 4294967296,
+    "device": "CPU",
+    "mode": "full",
+    "native_exit_code": 0,
+    "optimizer": "AdamW",
+    "reload_exit_code": 0,
+    "steps": 1
+  }
+}
