@@ -171,6 +171,42 @@ these exploratory precision-retention panels, not a matched optimizer ranking.
 
 ## Remaining work
 
+### Planned follow-up: quantization-aware training for Q4 and below
+
+The owner requested a later QAT study targeting **Q4, Q3, Q2 and Q1**. It is a
+separate follow-up; this note does not change the frozen 68-update optimizer/rank
+comparison or claim that a QAT run has started. The current sweeps quantize
+already-trained weights afterward. They do not train with simulated quantization
+error, and their poor low-bit scores do not establish that lack of QAT is the
+sole cause.
+
+The intended question is whether adapting to a particular deployment quantizer
+recovers low-bit correctness, instruction following and natural stopping while
+preserving previously learned skills. QAT must match the actual target format's
+rounding, grouping/scales, tensor treatment and clipping behavior; success with
+an unrelated generic low-bit simulation would not qualify these GGUF formats.
+Support and numerical checks belong in PCC's native engine; S³ owns separate
+practice, frozen measurements and learning/forgetting reports. BW exercises the
+actual workflow and drives the existing service API. No PyTorch training path
+is implied.
+
+Start each comparison from the same preserved checkpoint. Compare QAT with an
+ordinary-training control receiving the same additional practice presentations
+and update count, then quantize both to the same target format. Retain a direct
+post-training-quantized reference as well. Measure FP32/FP16/Q8 behavior after
+the extra training to detect effects hidden by the low-bit score. Keep test
+questions out of calibration and practice, record per-question gains/losses,
+natural finishes, per-domain retention and intended BW workflow outcomes, and
+report bytes and compute as measurements rather than a fixed training-time
+stopping rule. The initial focus is Q4 and below; whether any particular format
+can be recovered remains an experimental question.
+
+[LLM-QAT](https://arxiv.org/abs/2305.17888) provides evidence that QAT can improve
+low-precision LLM results. [QuIP](https://arxiv.org/abs/2307.13304) also demonstrates
+viable two-bit post-training quantization with a different method. These support
+testing QAT and quantizer choices; neither proves that QAT will rescue this
+MiniCPM checkpoint in the specific formats measured here.
+
 Finish the remaining A100 trajectories, retention
 and sealed review, then the final selected-checkpoint precision/export decision.
 The reusable verified BW lesson provider and native recovery path are published;
