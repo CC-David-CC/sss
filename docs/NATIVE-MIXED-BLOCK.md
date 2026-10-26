@@ -3,16 +3,18 @@
 The learning machinery now executed one real full-model update through BW's
 client, PCC's authenticated native job API and S³-verified lesson inputs.
 It also preserved a named F32 GGUF privately. This proves a native job can consume
-the verified mixed batch and save its candidate. It does not prove improvement:
-the complete joined assessment still has an unresolved BW grammar-stream error.
+the verified mixed batch and save its candidate. The candidate regressed from 438 to 26 correct answers on a new 864-question
+review panel. The complete joined assessment also still has an unresolved BW
+grammar-stream error; this candidate is not accepted for use.
 
 ## Plain-language reading
 
 The machine practiced one code lesson and 27 arithmetic/state review lessons.
 It changed the model and saved that version. Its loss on that very practice
 batch rose, which is a reason to investigate, not to announce a better model.
-The candidate is undergoing separate answer and retention measurements. Nothing
-has been promoted or uploaded as model weights.
+Separate answer and retention measurements are now complete: the artifact panel
+stayed at 2/2, but review answers fell from 438/864 to 26/864. Nothing has been
+promoted or uploaded as model weights.
 
 ## Recorded measurements
 
@@ -27,7 +29,8 @@ has been promoted or uploaded as model weights.
 | Finite nonzero gradient tensors | 381 |
 | Mean training loss before / after | 0.4197256 / 1.2127761 |
 | Native terminal receipt | `MECHANICS_EXECUTED`, exit 0 |
-| Native receipt's save/reload qualification flag | `false`; independent check queued separately |
+| Native receipt's save/reload qualification flag | Original `false` retained unchanged |
+| Independent saved-model reload loss check | PASS: absolute difference 6.98e-8, bound 0.0002 |
 | Preserved private file | `MiniCPM-S3-mixed-native01-full-F32.gguf` |
 | Acceptance / publication of weights | Neither |
 
@@ -72,13 +75,55 @@ the failed learning run was not rewritten into a success.
 S³ owns lesson validation, frozen panels and comparisons. PCC owns model
 identity, backprop, leases, jobs and immutable artifacts. BW supplies its actual
 client journal and file/tool workflow. The 864-question new review before/after
-panel and candidate artifact measurement are in flight at this snapshot. Its
+panel and candidate artifact measurement are complete. Their
 completed baseline artifact responses are recovered from original evidence,
-not generated again. An independent save/reload loss check waits for that
-assessment owner to retire before acquiring the same worker/GPU leases.
+not generated again. An independent save/reload loss check passed after the
+assessment owner retired and the same worker/GPU leases were acquired.
 
 The fixed ten-arm, 68-update optimizer/rank study is unchanged. This mixed block
 is separate learning-loop qualification work, not an additional point on those
 curves. No seed repeat, model transfer from A100, model upload or promotion was
 performed. The joined observe/lesson/train/assess/decide/preserve pathway still
 needs its workflow failure and complete acceptance/report behavior resolved.
+
+## Completed paired result
+
+The frozen new review panel measured **438 -> 26 correct out of 864**, with
+**5 answers gained and 417 lost**. All 864 responses naturally finished both
+before and after. The artifact panel stayed at 2/2. This is a bad candidate,
+not an improvement hidden by a formatting or stopping failure. It remains a
+private diagnostic; no working parent or published model was advanced.
+
+| Skill (96 questions each) | Before | After | Gained | Lost |
+| --- | ---: | ---: | ---: | ---: |
+| math.place_value | 26 | 8 | 5 | 23 |
+| math.add.no_carry | 95 | 1 | 0 | 94 |
+| math.add.carry | 80 | 0 | 0 | 80 |
+| math.multiply | 59 | 0 | 0 | 59 |
+| math.divide | 60 | 7 | 0 | 53 |
+| math.fraction | 32 | 3 | 0 | 29 |
+| math.add.signed | 75 | 4 | 0 | 71 |
+| state.registers | 1 | 0 | 0 | 1 |
+| math.fraction.add | 10 | 3 | 0 | 7 |
+
+The [paired assessment and reload receipt](../validation/learning-program-20261024/native-mixed-block-assessment-20261026.json)
+retains result and report hashes. This is a different frozen question set from
+the ten-arm comparison; 438 must not be compared directly to that study's
+59-answer original baseline. Within this new panel, questions, runtime and
+bounds match before and after, and no completed question was generated again.
+
+The first independent reload request was refused before inference because the
+operator-side request retained an adaptive-state output field. The corrected
+evaluate-only request stripped output/state fields and passed: original loss
+1.2127760649, reloaded mean loss 1.2127761347, difference 6.98e-8. No training
+update was repeated. That check supports save/reload consistency on these exact
+28 masked examples; it is not a proof of universal inference equivalence or a
+new gradient finite-difference test.
+
+The native mechanics succeeded while this learning update failed. The loss
+increase and paired behavioral losses require investigation before choosing
+another update. The current installed optimizer source selects the main learning
+rate for plain AdamW; its serialized auxiliary-rate default is not by itself an
+explanation. S3's paired retention comparator rejected this candidate. The full
+PCC learning-run decision remains incomplete because its BW panel failed; a
+standalone comparison must not be rewritten as a completed joined round.
