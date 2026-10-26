@@ -110,3 +110,16 @@ def observe_budget(case,archive,expected_launch):
     row=dict(id=case.identity,skill_id=case.skill_id,gate=case.gate,passed=False,finished=False)
     return dict(outcome=row,budget_archive_id=value['archive_id'],
         budget=value['observation'],oracle_status='not_run_unfinished_model_turn')
+
+
+def observe_terminal_failure(case,archive,expected_launch):
+    """A proven closed false workflow verdict; never an artifact grade or lesson."""
+    from pathlib import Path
+    from branchwrite.coding_cli import read_launch
+    from branchwrite.coding_terminal_observation import read_unverified_archive
+    archive=Path(archive);value=read_unverified_archive(archive)
+    if canonical(read_launch(archive/'state'))!=canonical(expected_launch):
+        raise ValueError('Original terminal-failure launch changed')
+    row=dict(id=case.identity,skill_id=case.skill_id,gate=case.gate,passed=False,finished=False)
+    return dict(outcome=row,terminal_archive_id=value['archive_id'],
+        terminal=value['observation'],oracle_status='not_run_unverified_workflow')

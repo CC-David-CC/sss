@@ -10,7 +10,7 @@ import threading
 from sss.adapters.workflow_evaluation import BWWorkflowEvaluator
 from sss.adapters.cow_evaluation import cow_gpu_admission,candidate_binding
 from sss.adapters.cow_learning import write_once
-from sss.workflow_assessment import create_project,make_launch,observe_capture,observe_budget
+from sss.workflow_assessment import create_project,make_launch,observe_capture,observe_budget,observe_terminal_failure
 from sss.records import canonical,digest,file_sha256
 
 
@@ -81,6 +81,11 @@ def assess_case(case,folder,launch,returned):
             and returned[1].get('status')=='model_budget_exhausted'):
         archive_model_budget(folder/'state',folder/'budget')
         observed=observe_budget(case,folder/'budget',launch)
+    elif (type(returned)in(list,tuple)and len(returned)==2 and type(returned[1])is dict
+            and returned[1].get('status')=='complete'and returned[1].get('verified')is False):
+        from branchwrite.coding_terminal_observation import archive_unverified_workflow
+        archive_unverified_workflow(folder/'state',folder/'terminal')
+        observed=observe_terminal_failure(case,folder/'terminal',launch)
     else:
         capture=capture_assessment(folder/'state',folder/'capture')
         workflow,source=observe_capture(case,capture,launch)

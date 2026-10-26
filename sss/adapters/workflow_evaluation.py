@@ -4,7 +4,7 @@ import json
 
 from sss.adapters.artifact_evaluation import CowArtifactEvaluator
 from sss.adapters.cow_evaluation import runtime_binding
-from sss.workflow_assessment import RECIPE,make_launch,original_project,observe_capture,observe_budget
+from sss.workflow_assessment import RECIPE,make_launch,original_project,observe_capture,observe_budget,observe_terminal_failure
 from sss.records import canonical,digest,file_sha256
 
 
@@ -89,6 +89,13 @@ class BWWorkflowEvaluator(CowArtifactEvaluator):
                     raise ValueError('Original frozen-budget failure changed')
                 if (folder/'capture').exists()or(folder/'oracle').exists():
                     raise ValueError('Budget failure cannot claim a completed artifact assessment')
+                continue
+            if 'terminal_archive_id' in observed:
+                expected_observation=observe_terminal_failure(case,folder/'terminal',expected_launch)
+                if canonical(observed)!=canonical(expected_observation)or canonical(row)!=canonical(expected_observation['outcome']):
+                    raise ValueError('Original terminal workflow failure changed')
+                if (folder/'capture').exists()or(folder/'oracle').exists():
+                    raise ValueError('Unverified workflow cannot claim a completed artifact grade')
                 continue
             capture=read_capture(folder/'capture',expected_capture_id=observed['workflow']['capture_id'])
             workflow,source=observe_capture(case,capture,expected_launch)

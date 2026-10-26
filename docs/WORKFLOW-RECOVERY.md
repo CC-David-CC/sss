@@ -174,3 +174,22 @@ Recovery also supports an actually exhausted model budget: it archives the
 proven failed boundary and returns failed/unfinished without admitting a partial
 turn as a lesson. Fifteen CPU checks cover assessment, original-request recovery,
 crash adoption/refusal, occupied endpoints and bounded-failure settlement.
+
+## Closed unverified attempts
+
+A supported workflow can terminate with a recorded false verdict after changing
+files but never establishing a current checked finish. S3 now consumes BW's
+separate terminal-failure archive for this boundary in ordinary panels and the
+explicit recovery helper. It records passed=false and finished=false, with
+artifact correctness unassessed. It neither fabricates an oracle result nor
+turns this failure into a verified lesson. Model-budget exhaustion remains a
+separate proven boundary; unsettled or unsupported effects remain unavailable.
+
+The [qualification](../validation/learning-program-20261024/terminal-workflow-failure-20261026.json)
+records the actual native read-only observation and 39 CPU controls across BW
+and S3. A two-case scripted CPU panel continues after both terminal failures,
+and revalidates their archives without the original world or server. These are
+machinery checks, not a measured model improvement. The original joined native
+baseline remains stopped and unchanged; complete joined train/assess/decision
+qualification is still open. A changed source installation needs its own bound
+policy and evidence, rather than relabelling an old failed evaluator as passed.

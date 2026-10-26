@@ -212,6 +212,14 @@ def resume_case(panel,profile,candidate,evaluation,index,recovery,*,producer_ide
             observed=observe_budget(panel.cases[index],recovery/'budget',launch)
             workflow=dict(observed['budget'],budget_archive_id=observed['budget_archive_id'],finished=False)
             oracle_status=observed['oracle_status'];passed=False
+        elif (type(returned)in(list,tuple)and len(returned)==2 and type(returned[1])is dict
+                and returned[1].get('status')=='complete'and returned[1].get('verified')is False):
+            from branchwrite.coding_terminal_observation import archive_unverified_workflow
+            from sss.workflow_assessment import observe_terminal_failure
+            archive_unverified_workflow(state,recovery/'terminal')
+            observed=observe_terminal_failure(panel.cases[index],recovery/'terminal',launch)
+            workflow=dict(observed['terminal'],terminal_archive_id=observed['terminal_archive_id'],finished=False)
+            oracle_status=observed['oracle_status'];passed=False
         else:
             capture=capture_assessment(state,recovery/'capture')
             workflow,source=observe_capture(panel.cases[index],capture,launch)
