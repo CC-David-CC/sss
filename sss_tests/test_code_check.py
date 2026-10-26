@@ -9,8 +9,9 @@ class CodeCheckTests(unittest.TestCase):
     def test_real_references_fit_explicit_pure_contract(self):
         for case in cases():
             if case.language=='python':
-                names={'python.sum_empty':'total','python.binary_search':'locate','python.stable_unique':'unique'}
-                self.assertTrue(pure_function(case.reference['task.py'],names[case.id]))
+                names={'python.sum_empty':'total','python.binary_search':'locate','python.stable_unique':'unique','python.double':'double'}
+                source_name='app.py' if case.id=='python.double' else 'task.py'
+                self.assertTrue(pure_function(case.reference[source_name],names[case.id]))
     def test_process_zero_exit_is_not_checker_success(self):
         case=cases()[0]
         self.assertEqual(grade(case,[dict(settled=True,exit_code=0)],case.reference)['status'],'unavailable')

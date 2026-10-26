@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "recorded_at_utc": "2026-10-26T02:33:47Z",
+  "scope": "Controlled BW failure/correction captures checked by the registered S3 oracle on a Linux CPU host",
+  "test_host": "authorized CPU-only Linux host (llm-49)",
+  "model_inference": false,
+  "gpu_used": false,
+  "spontaneous_model_failure": false,
+  "training_dispatches": 0,
+  "training_approved": false,
+  "lesson_created": false,
+  "qualifications": [
+    {
+      "name": "sss_integration.test_bw_capture_verify",
+      "status": "PASS",
+      "tests": 1,
+      "coverage": "BW failure/correction capture integrity, independent failure/pass checks, CLI receipt, capture ID and registry refusal"
+    },
+    {
+      "name": "sss_tests.test_code_check",
+      "status": "PASS",
+      "tests": 3
+    },
+    {
+      "name": "sss_integration.foundation_linux",
+      "status": "PASS",
+      "cases": 6
+    }
+  ],
+  "source_revisions": {
+    "sss_base": "e3df7e1",
+    "bw": "df06e43"
+  },
+  "sanitized_receipt": {
+    "path": "bw-capture-oracle-receipt.json",
+    "receipt_sha256": "9384d0ee275e20209929c6880782246e21e8edba5f7c1abfdb2c7aa398b6261f",
+    "file_sha256": "8b7407a3ea89515eafbe10ae70a00f9e357367769594f406170f932e0364fbf4"
+  },
+  "limits": [
+    "The task was a controlled integer doubling fixture, not a model-generated failure.",
+    "The BW archives and raw task text remain private; the published receipt contains hashes and verdict metadata only.",
+    "A verified receipt does not approve a lesson or authorize training."
+  ]
+}

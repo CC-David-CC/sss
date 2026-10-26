@@ -43,6 +43,11 @@ def cases():
                  'import subprocess,pathlib\np=pathlib.Path\nfor text,success in [("READY\\n",True),("not ready\\n",False)]:\n p("input file").write_text(text)\n result=subprocess.run(["/bin/sh","check.sh","input file"],capture_output=True)\n assert (result.returncode==0)==success\n',
                  {'check.sh':'#!/bin/sh\nset -eu\ngrep -q READY "$1"\necho checked\n'},
                  ('code.shell.errors','tools.finish')),
+        CodeCase('python.double','python','Repair double(n) so it returns exactly twice any integer input. Preserve the function name.',
+                 {'app.py':'def double(n):\n    return n\n'},
+                 'import app\nfor n in (-1000000,-7,-1,0,1,7,1000000):\n assert app.double(n)==2*n,(n,app.double(n))\n',
+                 {'app.py':'def double(n):\n    return 2*n\n'},
+                 ('code.python.tests','code.python.debug')),
     )
 
 def grade(case,observations,final_files):

@@ -20,7 +20,7 @@ introduce another workflow engine or allow a model to approve its own update.
 | Requirement | Evidence required | Current evidence and remaining work |
 | --- | --- | --- |
 | Observe and correct a real task | BW ledger records a failed check followed by independently checked correction | Native CPU integration exercises actual BW checks and both clients; broader live Wen task evidence remains needed |
-| Verify a lesson | Source failure, correction, checker, exact render and selected target tokens remain bound | Existing schema-1/schema-2 admission and protected-material checks; worked demonstrations require their own independent checks |
+| Verify a lesson | Source failure, correction, checker, exact render and selected target tokens remain bound | Existing schema-1/schema-2 admission and protected-material checks; an optional S³ adapter now re-checks exact BW-captured source bytes against a registered oracle. The paired BW/S³ proof is a controlled fixture; a live model-generated failure/correction and approved practice conversion remain outstanding |
 | Train and recover candidates | Ordinary native backprop, immutable base, candidate identity, reload agreement and resource settlement | Tiny CPU/CUDA LoRA/full and bounded real Wen LoRA evidence; qualify the new real Wen full-update campaign separately |
 | Measure learning and forgetting | Same frozen baseline/candidate checks, previously passed cases protected, every claimed domain covered | Nine-skill Wen pilot stayed at 17/54 after 108 practice occurrences; broad domain coverage and short/extended testing remain incomplete |
 | Accept or reject | Frozen policy, independent checks and a recorded decision; training loss alone cannot accept a model | Guarded CPU jobs exercise regression, recovery, rejection and blind gating; no automatic deployment |
@@ -29,6 +29,16 @@ introduce another workflow engine or allow a model to approve its own update.
 A generated fixture or injected regression proves machinery, not model quality.
 A planned graph node is unmeasured. A retained small score does not establish
 preservation of code, administration, writing or other untested domains.
+
+The BW/S³ capture bridge validates provenance and independently reproduces one
+registered check over immutable captured source bytes. It returns a sanitized
+receipt with `training_approved=false` and creates no lesson. The next learning
+gate is to run a real task through BW, retain the original failure and checked
+correction, obtain a matching S³ oracle receipt, have an owner select a separate
+practice example, and then train and recheck it through PCC. The bridge does not
+turn evaluation answers into practice data. The [controlled CPU qualification](../validation/learning-program-20261024/bw-capture-oracle-machinery.json)
+and [sanitized oracle receipt](../validation/learning-program-20261024/bw-capture-oracle-receipt.json)
+record the exact scope and limits.
 
 ## Experiment progression
 

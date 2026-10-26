@@ -25,9 +25,13 @@ def task(root,connection,*,corrected,factor=2,name='double',include_failed_check
     save_launch(state,launch)
     ex=Executor.create(project,state/'world',shell=ShellConfig(timeout=30));registry=ToolRegistry(ex,Grant(**launch['config']['grant']))
     with RuntimeLog(state/'ledger') as log:
-        kernel=FrameKernel(log);definition=log.put_artifact(b'controlled-lesson-harness-v1')
+        from branchwrite.language import parse,render
+        from branchwrite.project_baseline import BINDING, capture as capture_baseline, reference_text
+        kernel=FrameKernel(log);definition=log.put_artifact(render(parse(launch['program'])).encode())
         config_hash=hashlib.sha256(json.dumps(launch['config'],sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()).hexdigest()
-        inputs=log.put_artifact(encode(dict(bindings={'host-config-sha256':('Text',config_hash)})))
+        baseline=capture_baseline(log,registry)
+        inputs=log.put_artifact(encode(dict(bindings={'host-config-sha256':('Text',config_hash),
+            'world':('World',registry.world),BINDING:('Text',reference_text(baseline))})))
         kernel.create_root('program','controlled-attempt',definition,inputs,ResultContract('ProgramResult','record'))
         epoch=0;observations=[]
         def act(tool,arguments):
@@ -51,5 +55,6 @@ def task(root,connection,*,corrected,factor=2,name='double',include_failed_check
         if checked.disposition!='exited':raise AssertionError('Harness infrastructure failed: '+checked.disposition)
         passed=checked.exit_code==0
         assert passed is corrected,'Controlled expected task outcome differs from actual isolated checks'
+        if passed:act('finish',dict(answer='The independently checked fixture repair is complete.'))
         kernel.finish('program',dict(verified=passed))
     return state

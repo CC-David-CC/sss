@@ -29,12 +29,15 @@ def pure_function(source,name):
 
 def run_check(case,boundary):
     work=boundary.workspace;observations=[];passed=False;reason=''
-    source=read_owned(work,'task.py' if case.language=='python' else 'copy.sh' if case.id=='shell.quoted_filename' else 'check.sh').decode()
+    source_name='app.py' if case.id=='python.double' else 'task.py' if case.language=='python' else 'copy.sh' if case.id=='shell.quoted_filename' else 'check.sh'
+    module_name='app' if case.id=='python.double' else 'task'
+    source=read_owned(work,source_name).decode()
     if case.language=='python':
-        name={'python.sum_empty':'total','python.binary_search':'locate','python.stable_unique':'unique'}[case.id]
+        name={'python.sum_empty':'total','python.binary_search':'locate','python.stable_unique':'unique','python.double':'double'}[case.id]
         if not pure_function(source,name):reason='This foundation task requires one pure function; unsupported source was not executed'
         else:
-            if case.id=='python.sum_empty':inputs=[[v] for v in ([],[0],[-3,4,12],list(range(-30,31)))];expected=[sum(v[0]) for v in inputs]
+            if case.id=='python.double':inputs=[[-1000000],[-7],[-1],[0],[1],[7],[1000000]];expected=[2*v[0] for v in inputs]
+            elif case.id=='python.sum_empty':inputs=[[v] for v in ([],[0],[-3,4,12],list(range(-30,31)))];expected=[sum(v[0]) for v in inputs]
             elif case.id=='python.binary_search':
                 inputs=[[xs,target] for xs in ([],[1],[1,1,2,4,4],list(range(-30,31))) for target in range(-32,33)]
                 expected=[xs.index(target) if target in xs else -1 for xs,target in inputs]
@@ -42,7 +45,7 @@ def run_check(case,boundary):
                 inputs=[[xs] for xs in ([],[3,1,3,2,1],[0,-1,0,-1,4])]
                 expected=[[v for i,v in enumerate(xs) if v not in xs[:i]] for [xs] in inputs]
             # Only inputs enter the student process. Expected results stay here.
-            driver='import json,task\ninputs=json.loads('+repr(json.dumps(inputs))+')\nresults=[]\nfor args in inputs:\n results.append(task.'+name+'(*args))\nprint(json.dumps(dict(results=results,inputs_after=inputs)))\n'
+            driver='import json,'+module_name+'\ninputs=json.loads('+repr(json.dumps(inputs))+')\nresults=[]\nfor args in inputs:\n results.append('+module_name+'.'+name+'(*args))\nprint(json.dumps(dict(results=results,inputs_after=inputs)))\n'
             observation=boundary.run(['/usr/bin/python3','-c',driver]);observations.append(observation)
             try:
                 actual=json.loads(observation['stdout'])

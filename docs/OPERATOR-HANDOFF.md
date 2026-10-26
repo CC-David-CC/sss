@@ -42,6 +42,16 @@ PCC schema-2 lessons can select verified thinking + actions + answers, or action
 labels does not detach the context's gradients. Do not invent verification for
 thoughts, replace a failed answer, or call a generated demonstration a model run.
 
+## Re-check a BW capture before proposing practice
+
+Keep BW's failure and correction archives private. With the matching BW source
+available, run the [S³ capture oracle](INTEGRATION.md#independently-re-check-a-bw-failurecorrection-pair)
+using both capture IDs and a registered case. Only `verified` means the original
+source fails and the correction passes that independent S³ check. A verified
+receipt still does not create a lesson or approve training. A person or agent
+must choose a separate practice example, run the existing lesson checks, and
+use the owner-approved BW/PCC path for any update.
+
 ## Stop and preserve evidence
 
 | Observation | Required action |

@@ -100,6 +100,48 @@ regression and recovery; it is not fresh language-model inference. A separate
 `sss_integration.lesson_native_cpu` harness covers the earlier one-example,
 batch, LoRA/full continuation and reload workflow. Both refuse old output paths.
 
+## Independently re-check a BW failure/correction pair
+
+BW's `capture-failure` and `capture-correction` commands preserve the private
+workflow evidence and exact files. Their receipt explicitly does not claim S³
+verification or training approval. The optional S³ adapter below validates both
+capture IDs and the correction's link to that failure, then runs an S³-owned
+registered checker over the exact captured source bytes in a disposable Linux
+namespace. Its first paired fixture is `python.double`.
+
+Run from the S³ checkout, with the matching BW checkout importable:
+
+```sh
+PYTHONPATH=/path/to/BW python -m sss_integration.bw_capture_verify \
+  --failure /private/captures/failure \
+  --failure-capture-id SHA256_FROM_BW_FAILURE_RECEIPT \
+  --correction /private/captures/correction \
+  --correction-capture-id SHA256_FROM_BW_CORRECTION_RECEIPT \
+  --case python.double
+```
+
+The command prints a sanitized JSON receipt. `verified` means the captured
+failure fails and the captured correction passes the independent S³ checker.
+`mismatch`, `unavailable` and `refused` are separate outcomes; none authorizes
+training. The receipt contains capture IDs, source hashes, checker identity and
+verdict hashes, but no captured prompt, completion or file contents. Keep BW
+archives private. This proof creates no lesson and dispatches no training job;
+an owner or authorized agent must still choose a separate practice example and
+submit it through the established BW/PCC learning path.
+
+Qualify the controlled BW/S³ handoff on an authorized Linux host with bubblewrap:
+
+```sh
+BW_ROOT=/path/to/BW PYTHONPATH=/path/to/BW python -m unittest \
+  sss_integration.test_bw_capture_verify
+```
+
+The test creates a controlled failed check and correction through BW's real
+ledger and capture code. It proves the cross-project mechanics, not a model's
+spontaneous failure, lesson quality or learning. The [sanitized test record](../validation/learning-program-20261024/bw-capture-oracle-machinery.json)
+and [oracle receipt](../validation/learning-program-20261024/bw-capture-oracle-receipt.json)
+contain only hashes and verdict metadata; the private BW archives are not included.
+
 ## Audit native completion recovery separately
 
 PCC owns recovery of the original native job, and BW provides the person/agent
