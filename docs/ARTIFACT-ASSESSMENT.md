@@ -130,9 +130,9 @@ probe wall time includes real inference, independent checks, and multiple comple
 validation/recovery passes; it is not an inference-throughput measurement. Avoid
 claiming the earlier COW forward-probe speedup for this whole path.
 
-This concrete target panel is one required part of the production loop. The
-actual BW workflow assessment, joined retention/practice configuration, partial
-assessment continuation and a complete real-model train/test/acceptance round
-still need integration and qualification. A target artifact pass does not prove
+This concrete target panel is one required part of the production loop. The [actual BW workflow panel](WORKFLOW-ASSESSMENT.md) now has an implementation and
+scripted machinery checks; its native evidence is reported separately. Joined
+retention/practice configuration, partial assessment continuation and a complete
+real-model train/test/acceptance round still require integration and qualification. A target artifact pass does not prove
 that BW chose and verified the right tool actions or that a model retained its
 other skills. The learning loop remains in development.

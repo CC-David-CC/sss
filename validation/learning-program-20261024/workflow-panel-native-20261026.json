@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Real base FP32 model-driven BW workflow plus original-evidence recovery; not learning or a capability estimate",
+  "model": {
+    "description": "Existing MiniCPM standard-Muon update-42 FP32 checkpoint",
+    "sha256": "a9c527ad30ffca8ed639286ddf07a6fb6af42fdfbf1706e387d1302f4a5f367d",
+    "native_context_metadata": 131072
+  },
+  "source_revisions": {
+    "pcc": "98a46fc37f5d06a0d3e92829c020356089a00671",
+    "bw": "756fa74ff6a41913cdb01549de85eb3cb2648810",
+    "sss_execution": "b17cdc7e22112e5520d6e236f350cd164dc9b8cd"
+  },
+  "source_files_sha256": {
+    "sss/workflow_assessment.py": "445d62faafc57a66448dd044c99c38e469bfc60a0ea8cf1d53fa9bf1a4f07530",
+    "sss/adapters/workflow_evaluation.py": "2a69dd3bd45e78d7f71565eecf501c9bbd0d05e7e7aa211f7112a6648bb33d2a",
+    "sss/adapters/artifact_evaluation.py": "a65448eee46bbb9c8ec9089f07ed524df75e5afeef3557cacb5b11b6265d5504",
+    "sss/adapters/cow_evaluation.py": "f7702501232c69f15389ac4d346c38b201a398875670258e3fc38ee2169ce518",
+    "sss_integration/workflow_evaluate.py": "71c92e0f51f7aeeaaef7551aba1531b09b521bccf168caa7a2d8e44566eaaab4"
+  },
+  "bw_files_sha256": {
+    "branchwrite/lesson_capture.py": "1873d81b6559289699f3b7fe9ed68362dab0b95321f91159693bd0d10e6a189b",
+    "branchwrite/lesson_cli.py": "8a9f69949e486c29c0f93e502d5e7557819e4b1e490aa8f9eeb18c137a61ca08"
+  },
+  "source_gpu": "RTX 4090 with 300 W cap",
+  "attempts": [
+    {
+      "context_tokens": 8192,
+      "case_role": "distinct protected development case",
+      "status": "HOLD",
+      "reason": "Pinned execution context exceeded; original pending operation retained; no complete grade",
+      "automatic_retry": false,
+      "weights_updated": false
+    },
+    {
+      "context_tokens": 32768,
+      "case_role": "different protected development case",
+      "status": "COMPLETE",
+      "cases": 1,
+      "finished": 1,
+      "passed": 0,
+      "host_verified": true,
+      "read_edit_check_finish": true,
+      "input_preserved": true,
+      "oracle_executed": true,
+      "oracle_status": "fail",
+      "native_generation_requests": 8,
+      "native_output_tokens": 373,
+      "native_receipts": 8,
+      "unresolved_journals": 0,
+      "server_retired": true,
+      "profile_position_scaling_changed": false,
+      "wall_seconds_including_inference_and_repeated_hash_validation": 95.54048075200262,
+      "evaluation_id": "278bf3076bc631a7e4c121a359955c9bb7411b1010a9b0ede5bc60638c7340f4",
+      "runtime_id": "b2d9cf228e110be62fb749190efb9717c534e2fb1bdc71619521c1fcd52b6de8",
+      "original_evidence_sha256": {
+        "result.json": "614c92a0e4d82caae34d97c4db74b570f4aa44206c3f593ea41c7909517ef40f",
+        "settlement.json": "74439aa169301fb943bf1760f6674a82c8d6c2c31387cf0cb00f7ce157dc5f8f",
+        "0000/observation-private.json": "9537a9b31f3859a437f4551a86999790f9b413461bc8c7143ea9bb2c3864994b",
+        "0000/oracle/result-private.json": "4247abb8ec84dbccf6be7fa2385fbe56591e0057cf58618d2a94bc960e8e12b6",
+        "server-private.json": "b7607f13814b0d2ffad9099df229c562ccf8fed26027df570791365f72cae090"
+      }
+    }
+  ],
+  "verification": {
+    "unique_passing_methods": 67,
+    "skips": 0,
+    "pure_artifact_and_panel_methods": 34,
+    "legacy_capture_methods": 18,
+    "new_assessment_capture_methods": 1,
+    "scripted_workflow_methods": 2,
+    "cow_dispatch_recovery_methods": 9,
+    "actual_native_readonly_replay_methods": 3,
+    "replay_dispatched_model_or_oracle": false,
+    "controls": [
+      "Original workflow evidence recovers without dispatch",
+      "Consistent result/count/observation rewrite cannot replace independent oracle",
+      "Changed tool observation cannot replace actual archived ledger",
+      "Exceptional body exit retires actual HTTP server, scripted model and original test lease"
+    ]
+  },
+  "bounds": {
+    "weights_updated": false,
+    "promoted": false,
+    "training_started": false,
+    "attached_lora_workflow_qualified": false,
+    "full_candidate_training_round_qualified": false,
+    "complete_joined_learning_loop_qualified": false,
+    "original_frozen_study_changed": false,
+    "partial_assessment_continuation_qualified": false
+  },
+  "remaining": [
+    "Join real target, workflow and retention panels with approved mixed practice configuration",
+    "Qualify a genuine native train/test/decision/preserve round",
+    "Expose reviewed partial assessment continuation without repeated effects"
+  ]
+}
