@@ -104,9 +104,15 @@ student can assert.
 The 512-token `dense-llama-short-v1` native training profile cannot admit these
 3k–5k examples. A larger renderer limit is only an export bound; it does not
 qualify a larger native graph or grant GPU capacity. The next native work must
-qualify a separate longer-context profile, then run the target/workflow/retention
-panels through the existing joined learning driver with saved-model completion
-recovery enabled. The fixed 68-update comparison stays unchanged.
+qualify real MiniCPM allocation on a separate longer-context profile, then run
+the target/workflow/retention panels through the existing joined learning driver
+with saved-model completion recovery enabled. PCC now provides
+[`dense-llama-action-8k-v1`](https://github.com/CC-David-CC/Private_Context_COW/blob/feat/dense-llama-actions-20261026/docs/DENSE-LLAMA-ACTION-TRAINING.md),
+with actual 8,192-token tiny CPU/CUDA forward/backward qualification, independent
+gradient checks and actual longer-context HTTP job/reload/continuation tests.
+Its engine source is `49042ec9400b48c760e3281539ccdf8d5e199402`. That establishes
+the optional native mechanism, not real MiniCPM learning or fit. The fixed
+68-update comparison stays unchanged.
 
 No improved BW model score, successful native action training, production
 acceptance, thinking trajectory, image trajectory, retry/fork flattening or
