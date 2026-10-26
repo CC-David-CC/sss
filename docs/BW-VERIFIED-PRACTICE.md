@@ -130,12 +130,10 @@ lesson, artifact and token/mask proof. `lessons()`, `verify()` and
 duplicate selection or changed registry/source needs a new approval and policy
 identity. Additional verification flags cannot add membership.
 
-This provider is staged for a configured learning evaluator. The current CPU
-qualification proves actual registry membership and actual PCC schema-2 lesson
-admission, including idempotent resubmission and changed-target refusal. It does
-**not** connect a production configured learning policy or dispatch training.
-That connection must also establish independent target, BW workflow and
-retention panels; membership alone cannot measure learning or forgetting.
+This provider can now be joined to a PCC learning policy using the owner-object
+composition described below. Registry membership and actual schema-2 admission
+are verified; production model target, BW workflow and retention evaluators
+remain outstanding. Membership alone cannot measure learning or forgetting.
 
 ## What is taught
 
@@ -216,3 +214,126 @@ records source versions, test counts and limits. The full core passed without
 BW, PCC or NumPy installed; the optional integration used genuine Linux tool
 boundaries and the real MiniCPM tokenizer, with scripted proposals. These are
 machinery checks, not model skill scores.
+
+## Join target, workflow and retention measurements in a PCC policy
+
+`sss.adapters.learning_panels.LearningPanelEvaluator` composes existing,
+owner-installed evaluators and exact practice providers. It requires all three
+roles: target skill, actual workflow, and retention. Several harnesses can have
+separate workflow panels. A role label is configuration, not evidence that a
+given evaluator really exercises BW; owners must install the actual evaluators.
+
+```python
+from sss.adapters.learning_panels import LearningPanelEvaluator, PanelLearningPolicy
+from sss.records import digest
+
+evaluator = LearningPanelEvaluator(
+    panels=[
+        ("target", "target", installed_target_evaluator),
+        ("branchwrite", "workflow", installed_bw_evaluator),
+        ("review", "retention", installed_retention_evaluator),
+    ],
+    providers=[("checked-bw-artifacts", provider)],
+    model_contract_id=owner.model_contract_id,
+)
+policy = PanelLearningPolicy(
+    evaluator, registered_training_recipe,
+    title="Checked artifact learning with workflow and review",
+    max_rounds=100,
+    assessment_purpose="adaptive_learning",
+    minimum_skill_cases=96,
+)
+policy_id = digest(policy.describe())
+# Only on an owner-created PCC LessonService with no policy already configured:
+service.configure_learning({policy_id: policy})
+```
+
+The training recipe is PCC's existing closed recipe: `mode`, `rank`,
+`batch_size`, `steps`, `learning_rate`, and a registered `optimizer_profile_id`.
+PCC checks its native limits and fresh-state profile before registering the
+policy. This composition does not add an optimizer, engine, model client or
+workflow scheduler. Owner objects and paths never come from a student request.
+
+Each installed panel must implement `binding()`, `verify()`,
+`validate(result, candidate)`, `recover(candidate, directory)` and
+`__call__(candidate, directory, worker_fd)`. Its binding must include the
+original `model_contract_id` and frozen `evaluation_id`. The call receives the
+existing PCC worker lease and a fresh owned directory. Validation/recovery
+remain responsible for the panel's original raw runtime evidence and process
+ownership. A summary alone is not sufficient authority.
+
+All panels must settle complete and measure the same base weights and adapter
+identity. Case IDs are namespaced by panel; original results, skill/gate
+membership and individual runtime identities remain embedded in the aggregate.
+Missing/unavailable panels cannot become zero model scores or implicit passes.
+Changing a panel, source, provider, approved lesson or frozen identity requires a
+new policy identity and baseline.
+
+The provider union is exact and bounded. A duplicate lesson across providers is
+refused; verification flags cannot add a new lesson. Admit `provider.lessons()`
+through PCC's existing lesson endpoint, then select the returned lesson IDs
+through the existing learning-step endpoint. The adapter revalidates the actual
+stored lesson records against the original installed exports. A different lesson
+can pass PCC's owner-attestation admission and still be refused by this policy.
+
+`PanelLearningPolicy` keeps S³'s existing working-parent decision and strict
+promotion assessment. Its report also shows each panel's learning, forgetting
+and coverage-expansion proposal, so aggregate gains cannot hide retention losses.
+A useful working candidate is distinct from an accepted/promoted release;
+composition never changes model weights or promotes a model by itself.
+
+PCC still owns the ordinary durable `learning-runs` / `learning-steps` API and
+its revision and operation IDs. A person, BW or another agent uses that API;
+there is no separate S³ run ledger to coordinate. Inspect the returned phase
+and available actions before advancing. An observation timeout never authorizes
+restarting an existing job or repeating a completed panel.
+
+Recovery rechecks every original panel, including those with a saved parent
+copy. If the last panel finished but its response or aggregate was lost, the
+composition rebuilds those missing records without running a panel again. A
+live child, missing raw evidence or a panel never dispatched causes a hold.
+It does not silently continue or retry the remaining panels. Explicit supported
+continuation of a partly dispatched assessment remains outstanding.
+
+### Verified boundary and remaining integration
+
+The focused suite has 25 passing CPU tests for composition, original evidence,
+lease propagation, exact membership, source drift and visible retention losses.
+The optional joined suite has two passing CPU tests using a genuine BW
+capture/correction, independent S³ oracle, actual MiniCPM template/tokenizer,
+installed export registry and PCC LessonService/LearningRuns. It proves exact
+tokens/targets/masks, public baseline dispatch, refusal of an unregistered
+lesson, and lost-last-panel recovery after service restart with no repeated
+panel calls. The original training callback is guarded against any dispatch.
+
+The three score panels in that optional test are explicitly controlled fixtures.
+The BW proposal source is scripted. There are zero model forward passes and
+zero native training calls. These tests do not qualify production target/BW/
+retention evaluators or demonstrate model learning. The configured production
+factory and a joined real-model training/assessment/acceptance run remain to be
+implemented and exercised. The separate frozen 68-update experiment is unchanged.
+
+For the pure contracts, use an ordinary POSIX Python environment without BW,
+PCC, NumPy or a GPU:
+
+```sh
+python -B -m unittest -v sss_tests.test_learning_panels
+```
+
+For the optional joined check, add the actual BW root, PCC root,
+`PCC/experimental/branching_context/src` and
+`PCC/experimental/branching_context/tests/implementation` to `PYTHONPATH`, after
+the S³ root. Use an isolated owner environment with NumPy, Jinja2, regex,
+llguidance `1.9.1`, and BW's pinned runtime dependencies (`prompt_toolkit 3.0.52`,
+Pillow `13.0.0`, ReportLab `5.0.1`, pypdfium2 `5.14.0`, pypdf `6.21.1`).
+
+```sh
+SSS_PANEL_CPU_MODEL=/owner/model/MiniCPM5-2B-F16.gguf \
+  python -B -m unittest -v sss_integration.test_learning_panels_cpu
+```
+
+The new check respects the existing 512-token dense native profile; it does not
+relax that profile to the renderer's larger export ceiling. The
+[sanitized composition validation](../validation/learning-program-20261024/learning-panels-cpu-20261026.json)
+records the exact sources, counts, setup failures and scope. Private operational
+captures, raw questions, model files and owner configuration remain outside Git.
