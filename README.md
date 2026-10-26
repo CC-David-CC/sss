@@ -215,3 +215,8 @@ S³ proposal and preserves exact identities without dispatching training.
 The [current learning and forgetting graph](docs/COW-SHARED-ROOT-LEARNING.md) contains 118 scored checkpoint positions, including an equal-practice comparison at update 19 and the observed LoRA setback at update 24. These are continuing development trajectories, not a completed optimizer ranking or accepted model release.
 
 [Owner-configured COW learning](docs/CONFIGURED-COW-LEARNING.md) now has a two-round actual MiniCPM machinery qualification through both BW and COW clients. The 15-case panel demonstrates the workflow, with broad acceptance still separate.
+
+Owner recovery and capacity checks: [workflow recovery](docs/WORKFLOW-RECOVERY.md)
+covers explicit original-request continuation, crashed-server adoption and
+archived budget failures. Completed native recovery checks and their limits are
+recorded there; a complete joined learning round remains open.

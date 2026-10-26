@@ -15,6 +15,8 @@ def main():
     ap.add_argument('--case-index',type=int,required=True)
     ap.add_argument('--additional-steps',type=int,required=True)
     ap.add_argument('--allow-original-replay',action='store_true')
+    ap.add_argument('--adopt-crashed-server',action='store_true',
+        help='Explicitly prove producer exit and a free original endpoint when the clean server receipt is missing')
     for flag in ('cache-bytes','staging-bytes','minimum-free-bytes'):
         ap.add_argument('--'+flag,type=int,required=True)
     args=ap.parse_args();read=lambda p:json.loads(p.read_bytes())
@@ -43,6 +45,7 @@ def main():
         result=module.resume_case(panel,profile,candidate,args.evaluation,args.case_index,args.output,
             producer_identities=owners,additional_steps=args.additional_steps,
             allow_original_replay=args.allow_original_replay,
+            allow_crashed_server=args.adopt_crashed_server,
             storage=dict(cache_bytes=args.cache_bytes,staging_bytes=args.staging_bytes,
                          minimum_free_bytes=args.minimum_free_bytes))
         receipt=dict(status='COMPLETE',result_sha256=digest(result),helper_sha256=file_sha256(helper),

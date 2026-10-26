@@ -11,6 +11,7 @@ import json
 import os
 import secrets
 import shutil
+import socket
 import threading
 from urllib.parse import urlsplit
 
@@ -59,7 +60,8 @@ def storage_admission(directory,*,cache_bytes,staging_bytes,minimum_free_bytes):
         staging_bytes=staging_bytes,minimum_free_bytes=minimum_free_bytes)
 
 @contextmanager
-def reopened_server(panel,profile,evaluation,recovery,*,storage):
+def reopened_server(panel,profile,evaluation,recovery,*,storage,
+                    allow_crashed_server=False,producer_identities=()):
     """Reopen the original store, grammar catalog, endpoint and profile."""
     from sss.adapters.cow_evaluation import cow_gpu_admission
     from context_time_travel.real import BranchingModel
@@ -72,14 +74,38 @@ def reopened_server(panel,profile,evaluation,recovery,*,storage):
     from serve.cow_http import model_text_components,make_server
     from serve.cow_workspace import CowWorkspace
     cfg=panel.config;evaluation=Path(evaluation);recovery=Path(recovery)
-    original=json.loads((evaluation/'server-private.json').read_bytes())
-    if original['status']!='RETIRED':raise ValueError('Original server has no terminal receipt')
+    if type(allow_crashed_server)is not bool:raise ValueError('Explicit crashed-server adoption selection required')
+    terminal=evaluation/'server-private.json';missing=not terminal.exists()
+    if missing:
+        if not allow_crashed_server:
+            raise ValueError('Original server has no terminal receipt; explicit crashed-server adoption required')
+        require_retired(producer_identities)
+        ready=evaluation/'server-ready-private.json';original=json.loads(ready.read_bytes())
+        if type(original)is not dict or set(original)!={'connection'}:
+            raise ValueError('Original server-ready receipt is invalid')
+    else:
+        original=json.loads(terminal.read_bytes())
+        if original['status']!='RETIRED':raise ValueError('Original server has no terminal receipt')
     connection=original['connection'];parsed=urlsplit(connection['endpoint_url'])
     if (parsed.scheme!='http'or parsed.hostname!='127.0.0.1'or not parsed.port
             or parsed.path or parsed.query or parsed.fragment):raise ValueError('Original loopback endpoint required')
     for name in ('model_contract_id','execution_profile_id'):
         if connection[name]!=profile[name]:raise ValueError('Original server profile changed')
     if connection['eos_tokens']!=profile['execution']['eos_tokens']:raise ValueError('Original EOS policy changed')
+    if missing:
+        # Match the HTTP server's reuse-address policy. A live listener still
+        # prevents binding; no socket or port is taken away from another owner.
+        require_retired(producer_identities)
+        try:
+            with socket.socket()as probe:
+                probe.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+                probe.bind(('127.0.0.1',parsed.port))
+        except OSError as exc:
+            raise ValueError('Original loopback endpoint is still in use; no crashed-server adoption')from exc
+        write_once(recovery/'crashed-server-retirement-private.json',dict(schema=1,
+            original_terminal_receipt_missing=True,server_ready_sha256=file_sha256(ready),
+            original_producer_identities=producer_identities,endpoint_bind_probe_succeeded=True,
+            original_receipts_rewritten=False,scope='Explicit producer-exit and endpoint proof; not an original clean shutdown receipt'))
     admission=storage_admission(evaluation,**storage)
     write_once(recovery/'filesystem-admission-private.json',admission)
     server=thread=catalog=coordinator=None;prior_key=os.environ.get('BW_COW_API_KEY')
@@ -117,7 +143,7 @@ def reopened_server(panel,profile,evaluation,recovery,*,storage):
             if thread is not None:write_once(recovery/'server-retired-private.json',dict(status='RETIRED',connection=connection))
 
 def resume_case(panel,profile,candidate,evaluation,index,recovery,*,producer_identities,
-                additional_steps,allow_original_replay,storage):
+                additional_steps,allow_original_replay,storage,allow_crashed_server=False):
     """Explicit continuation; additional step allowance is recorded separately."""
     from branchwrite.coding_cli import read_launch,run_saved,_client
     from branchwrite.coding_reconciliation import reconcile_saved
@@ -130,6 +156,7 @@ def resume_case(panel,profile,candidate,evaluation,index,recovery,*,producer_ide
     require_retired(producer_identities);panel.verify()
     if type(additional_steps)is not int or not 1<=additional_steps<=1024:raise ValueError('Explicit additional interpreter steps required')
     if type(allow_original_replay)is not bool:raise ValueError('Explicit replay selection required')
+    if type(allow_crashed_server)is not bool:raise ValueError('Explicit crashed-server adoption selection required')
     if canonical(panel.profile(candidate))!=canonical(profile):raise ValueError('Original candidate/profile changed')
     evaluation=Path(evaluation).resolve(strict=True);folder=evaluation/('%04d'%index);state=folder/'state'
     if (folder/'observation-private.json').exists():raise ValueError('Case already has an outcome; do not rerun it')
@@ -146,9 +173,11 @@ def resume_case(panel,profile,candidate,evaluation,index,recovery,*,producer_ide
         original_operation_id=operation,original_record_sha256=record['record_sha256'],
         original_producer_identities=producer_identities,completed_operation_sha256=completed,
         additional_interpreter_steps=additional_steps,original_replay_explicitly_allowed=allow_original_replay,
+        crashed_server_adoption_explicitly_allowed=allow_crashed_server,
         original_failed_child_unchanged=True,is_original_fixed_bound_assessment=False))
     replayed=False
-    with reopened_server(panel,profile,evaluation,recovery,storage=storage)as connection:
+    with reopened_server(panel,profile,evaluation,recovery,storage=storage,
+            allow_crashed_server=allow_crashed_server,producer_identities=producer_identities)as connection:
         if canonical(make_launch(panel.cases[index],folder/'project',connection,panel.config))!=canonical(launch):
             raise ValueError('Original launch changed')
         client=_client(state,launch)
@@ -175,17 +204,27 @@ def resume_case(panel,profile,candidate,evaluation,index,recovery,*,producer_ide
                 reconcile_saved(state,operation)
         returned=run_saved(state,max_steps=additional_steps)
         write_once(recovery/'runtime-result-private.json',returned)
-        capture=capture_assessment(state,recovery/'capture')
-        workflow,source=observe_capture(panel.cases[index],capture,launch)
-        oracle=observe(panel.cases[index].case,source,workflow['source_sha256'],recovery/'oracle')
-        if oracle['status']=='unavailable':raise RuntimeError('Independent checker unavailable')
+        if (type(returned)in(list,tuple)and len(returned)==2 and type(returned[1])is dict
+                and returned[1].get('status')=='model_budget_exhausted'):
+            from branchwrite.coding_observation import archive_model_budget
+            from sss.workflow_assessment import observe_budget
+            archive_model_budget(state,recovery/'budget')
+            observed=observe_budget(panel.cases[index],recovery/'budget',launch)
+            workflow=dict(observed['budget'],budget_archive_id=observed['budget_archive_id'],finished=False)
+            oracle_status=observed['oracle_status'];passed=False
+        else:
+            capture=capture_assessment(state,recovery/'capture')
+            workflow,source=observe_capture(panel.cases[index],capture,launch)
+            oracle=observe(panel.cases[index].case,source,workflow['source_sha256'],recovery/'oracle')
+            if oracle['status']=='unavailable':raise RuntimeError('Independent checker unavailable')
+            oracle_status=oracle['status'];passed=workflow['finished']and oracle_status=='pass'
         for name,expected in completed.items():
             if file_sha256(state/'cow-operations'/name)!=expected:raise ValueError('Previously completed operation changed')
         result=dict(schema=1,kind='sss.explicit-workflow-recovery.v1',case_id=panel.cases[index].identity,
             candidate_sha256=profile['model_weights_sha256'],original_operation_id=operation,
-            finished=workflow['finished'],passed=workflow['finished']and oracle['status']=='pass',
+            finished=workflow['finished'],passed=passed,
             original_operation_replayed=replayed,completed_operations_preserved=len(completed),
-            additional_interpreter_steps=additional_steps,workflow=workflow,oracle_status=oracle['status'],
+            additional_interpreter_steps=additional_steps,workflow=workflow,oracle_status=oracle_status,
             model_weights_updated=False,promoted=False,is_original_fixed_bound_assessment=False)
         write_once(recovery/'result-private.json',result)
     return result

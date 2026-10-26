@@ -7,8 +7,8 @@ effects are preserved. It does not create a replacement workflow ledger.
 
 ## Choose the recovery action explicitly
 
-The helper first requires the original producer processes to be gone and the
-original server to have a terminal receipt. BW's existing reconciler checks the
+The helper first requires the original producer processes to be gone. Ordinary
+reopening uses the original server's terminal receipt. BW's existing reconciler checks the
 pending native frame, exact launch, source binding and journal.
 
 If PCC proves that the original generation committed, the helper recovers that
@@ -50,12 +50,23 @@ The recorded original child identity is mandatory and loaded automatically.
 action. The default does not resend an unknown generation. The output directory
 must be new; inspect a failed attempt before choosing another action.
 
+If the server was killed before it could write its clean retirement receipt,
+add `--adopt-crashed-server` explicitly. The helper requires the original
+server-ready connection/profile, verifies the recorded producers have exited,
+and probes that the original loopback endpoint can be bound. An occupied
+endpoint refuses before model loading or GPU admission. It records a separate
+crash-retirement proof and preserves the missing original shutdown receipt.
+The replacement server must still bind normally; a new competing listener
+causes refusal. This flag does not authorize replay of an unknown generation;
+`--allow-original-replay` remains a separate selection.
+
 The extra interpreter-step allowance is recorded separately. A recovered outcome
 must not be presented as the original fixed-bound assessment or as model
 promotion. The function API is `sss_integration.workflow_recovery.resume_case`.
-The CLI's help and parsing were checked; the same recovery API was exercised by
-the native operator driver. A complete native run through this exact generic CLI
-entry point has not yet been qualified.
+The exact generic CLI was subsequently exercised on a new owned native probe
+after deliberately killing its normal evaluator child. The
+[native follow-up receipt](../validation/learning-program-20261024/unified-native-recovery-20261026.json)
+records that qualification and its limited one-step continuation.
 
 ## Admit filesystem capacity before loading the model
 
@@ -108,8 +119,8 @@ covers durable and unsettled-send recovery, live-producer refusal, refusal witho
 explicit replay selection, filesystem admission before GPU lease, and actual
 BW/PCC HTTP/ledger replay using a scripted CPU backend. No claim of a complete
 joined learning round or same-bound optimizer/harness winner follows from this
-campaign. Broader recovery coverage and native qualification of the generic CLI
-remain to be completed.
+campaign. Broader recovery coverage and the complete joined native learning
+round remain open; the generic CLI's later native check is recorded below.
 
 ## A bounded unfinished turn is an assessment outcome
 
@@ -134,3 +145,32 @@ bindings and tampered journal bytes were refused. The new reader also archived
 and reverified the real native second-case failure with zero model/tool calls
 and unchanged original ledger/journal bytes. This read-only qualification does
 not claim a new native inference run through the updated generic panel or CLI.
+
+## Native recovery after a real process death
+
+The unified PCC checkout passed a bounded native COW branch smoke check using
+the unchanged qualified native libraries. Its API and execution code came from
+one source root; 19 native build files and 1,273 Python files were checked.
+
+A new owned mechanics task then used the ordinary evaluator child command.
+The operator deliberately killed only that child after its first native model
+request was recorded as pending. The normal failed dispatch and absent clean
+shutdown receipt were preserved. This is controlled infrastructure failure,
+not a model-capability regression or a frozen comparison question.
+
+The generic recovery CLI verified both producer exits and the old endpoint,
+reopened the original store/profile, and explicitly replayed the same original
+request ID. All three previously completed operations remained byte-identical.
+It restored the model-turn boundary with one additional interpreter step and
+retired its replacement server. Unsettled native work may have been recomputed;
+no completed tool effect was resent.
+
+The coding task remained unfinished and its original bad program failed the
+independent checker. That result is retained. Recovery succeeded; this probe
+does not establish a completed coding task, an improved model or a completed
+learning round. No model training or weight publication occurred.
+
+Recovery also supports an actually exhausted model budget: it archives the
+proven failed boundary and returns failed/unfinished without admitting a partial
+turn as a lesson. Fifteen CPU checks cover assessment, original-request recovery,
+crash adoption/refusal, occupied endpoints and bounded-failure settlement.
