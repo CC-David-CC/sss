@@ -1,5 +1,11 @@
 # MiniCPM update-curve progress snapshot
 
+**Precision results are now reconciled:** [all seven original-model formats
+completed the 864-question panel](MINICPM-QUANTIZATION-PROGRESS.md), with a chart,
+aggregate CSV and explicit measurement limits. Earlier statements below that
+the entire quantization matrix had not started were wrong for the original-model
+half. The selected trained-model quantization comparison is still pending.
+
 Initial capture: 2026-10-26 01:53-01:54 UTC. This is an interim results note, not an acceptance report. Time-stamped refreshes below update the saved progress as work continues.
 
 ## Live status refresh — 2026-10-26 02:03 UTC
@@ -219,7 +225,7 @@ The historical original-model baseline is 59/864 correct and 415/864 naturally f
 
 1. Finish all ten single trajectories through 68 updates, saving and evaluating each checkpoint once.
 2. Review per-case gains and losses, then run the larger 96-case peak checks and regression review before accepting a candidate.
-3. Compare the original and best trained candidate at FP16 and Q1/Q2/Q3/Q4/Q5/Q8. This quantization matrix has not started; the current ETA does not include it.
+3. Compare the selected trained candidate at FP16 and Q1/Q2/Q3/Q4/Q5/Q8 against the completed original-model results. The original seven-format half is complete; the trained half is pending and the current curve ETA does not include it.
 4. Preserve a named GGUF only if the final measured result improves and survives the quantized checks.
 
 Using the median duration of the last four completed update intervals for each arm gives a rough 20-22 hours for all ten 68-update curves to finish, assuming the controllers keep advancing and shared A100 load stays similar. Estimated remaining time by arm: full AdamW 17.7h; standard Muon 20.7h; RMS/decay Muon 16.0h; fast/refine Muon 13.4h; LoRA ranks 1/2/3/4/8/16 about 19.3/16.3/17.4/16.4/14.7/2.8h. Standard Muon currently sets the finish estimate. This is a rough forecast for the fixed comparison only; the 96-case peak checks, quantization matrix, and final acceptance review remain additional work.

@@ -1,3 +1,7 @@
+[MiniCPM original-model quantization results](docs/MINICPM-QUANTIZATION-PROGRESS.md):
+all seven formats completed 864 questions each, with accuracy, natural stopping,
+and per-question gains/losses. Trained-model quantization comparisons are pending.
+
 [MiniCPM update-curve progress](docs/MINICPM-UPDATE-CURVES-PROGRESS.md):
 interim fixed-68 comparison and separate LoRA-rank sweep. Scores are incomplete
 and no candidate has been accepted.

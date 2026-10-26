@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "kind": "sss.original-precision-paired-validation.v1",
+  "status": "PASS",
+  "reference_format": "F16",
+  "formats": [
+    {
+      "format": "F16",
+      "cases": 864,
+      "answer_gains": 0,
+      "answer_losses": 0,
+      "completion_gains": 0,
+      "completion_losses": 0
+    },
+    {
+      "format": "Q1_0",
+      "cases": 864,
+      "answer_gains": 0,
+      "answer_losses": 59,
+      "completion_gains": 0,
+      "completion_losses": 415
+    },
+    {
+      "format": "Q2_K",
+      "cases": 864,
+      "answer_gains": 2,
+      "answer_losses": 57,
+      "completion_gains": 241,
+      "completion_losses": 135
+    },
+    {
+      "format": "Q3_K_M",
+      "cases": 864,
+      "answer_gains": 7,
+      "answer_losses": 16,
+      "completion_gains": 146,
+      "completion_losses": 86
+    },
+    {
+      "format": "Q4_K_M",
+      "cases": 864,
+      "answer_gains": 8,
+      "answer_losses": 33,
+      "completion_gains": 158,
+      "completion_losses": 51
+    },
+    {
+      "format": "Q5_K_M",
+      "cases": 864,
+      "answer_gains": 9,
+      "answer_losses": 10,
+      "completion_gains": 24,
+      "completion_losses": 41
+    },
+    {
+      "format": "Q8_0",
+      "cases": 864,
+      "answer_gains": 0,
+      "answer_losses": 16,
+      "completion_gains": 15,
+      "completion_losses": 38
+    }
+  ],
+  "validator_source_sha256": "fba1da94c5c16bf6ae24bc13c84d5c7ee50afe53cd9d31d802cbd0b8693780a7",
+  "unique_complete_cases_per_format": 864,
+  "common_evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "common_runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+  "model_calls": 0,
+  "weights_updated": false,
+  "promoted": false
+}
