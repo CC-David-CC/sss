@@ -217,3 +217,5 @@ Existing frozen installations and the fixed 68-update study were not modified.
 [Observed-memory placement](OBSERVED-MEMORY-PLACEMENT.md) uses matching PCC execution
 observations to suggest useful GPU windows. PCC retains its existing leases and
 allocation checks; forecasts add no workflow runtime or permission prompt.
+
+The optional [BW action-practice export](BW-ACTION-PRACTICE.md) teaches recorded read/edit/check/finish turns through the real PCC append rules. CPU export and registry checks pass; native training on these longer contexts remains unqualified.

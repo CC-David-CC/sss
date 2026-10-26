@@ -37,24 +37,33 @@ def _private_config(path):
     # before any export is opened or an optional runtime is imported.
     json.dumps(config, allow_nan=False)
     for row in config['registrations']:
-        if type(row) is not dict or set(row) != _ROW:
+        if type(row) is not dict or set(row) not in (_ROW, _ROW|{'turn_index'}):
             raise ValueError('Exact installed export registration required')
         if type(row['owner']) is not dict or row['owner'].get('kind') != 'bw-artifact-practice-v1':
             raise ValueError('Unknown practice provider; arbitrary modules are unsupported')
         renderer = row['renderer']
+        action = 'turn_index' in row
+        if action and (type(row['turn_index']) is not int or not 0 <= row['turn_index'] < 128):
+            raise ValueError('Explicit bounded action turn selector required')
         renderer_fields = {'schema','kind','model_contract_id','renderer_sha256','tokenizer_sha256',
-            'maximum_tokens','stop_token_ids','representation','adapter_sha256','system_sha256'}
+            'maximum_tokens','stop_token_ids','representation','adapter_sha256'}
+        renderer_fields |= {'pcc_sources_sha256'} if action else {'system_sha256'}
         if (type(renderer) is not dict or set(renderer) != renderer_fields
                 or type(renderer['schema']) is not int or renderer['schema'] != 1
-                or renderer['kind'] != 'pcc-final-artifact-through-eos-renderer-v1'
-                or renderer['representation'] != 'final-artifact-v1'
+                or renderer['kind'] != ('pcc-bw-action-through-eos-renderer-v1' if action else 'pcc-final-artifact-through-eos-renderer-v1')
+                or renderer['representation'] != ('bw-captured-tool-actions-v1' if action else 'final-artifact-v1')
                 or type(renderer['maximum_tokens']) is not int or not 1 <= renderer['maximum_tokens'] <= 131072
                 or type(renderer['stop_token_ids']) is not list or not renderer['stop_token_ids']
                 or any(type(v) is not int or not 0 <= v < 2**31 for v in renderer['stop_token_ids'])
                 or sorted(set(renderer['stop_token_ids'])) != renderer['stop_token_ids']
                 or any(type(renderer[k]) is not str or not _HASH.fullmatch(renderer[k])
-                    for k in ('model_contract_id','renderer_sha256','tokenizer_sha256','adapter_sha256','system_sha256'))):
+                    for k in ('model_contract_id','renderer_sha256','tokenizer_sha256','adapter_sha256') + (() if action else ('system_sha256',)))):
             raise ValueError('Exact artifact renderer registration required')
+        if action:
+            pins = renderer['pcc_sources_sha256']
+            if (type(pins) is not dict or set(pins) != {'base','service','lesson','encoder'}
+                    or any(type(v) is not str or not _HASH.fullmatch(v) for v in pins.values())):
+                raise ValueError('Exact PCC action append/tokenization source pins required')
         for key in ('export_id', 'lesson_id', 'failure_capture_id', 'correction_capture_id'):
             if type(row[key]) is not str or not _HASH.fullmatch(row[key]):
                 raise ValueError('Owner-pinned export, lesson and capture identities required')
@@ -71,21 +80,35 @@ def _load_registration(row, components, model_contract_id):
     if owner.model_contract_id != model_contract_id:
         raise ValueError('Installed practice belongs to another model contract')
     bound = row['renderer']
-    renderer = PCCArtifactRenderer(components, model_contract_id=model_contract_id,
+    action = 'turn_index' in row
+    factory = PCCArtifactRenderer
+    reader = read_export
+    if action:
+        from sss.adapters.bw_action_practice import PCCActionRenderer, read_action_export
+        factory = PCCActionRenderer; reader = read_action_export
+    renderer = factory(components, model_contract_id=model_contract_id,
         tokenizer_sha256=bound['tokenizer_sha256'], maximum_tokens=bound['maximum_tokens'],
         stop_token_ids=bound['stop_token_ids'])
     if renderer.binding() != bound:
         raise ValueError('Installed renderer differs from actual model rendering')
-    exported = read_export(row['export_directory'], owner=owner,
+    exported = reader(row['export_directory'], owner=owner,
         expected_export_id=row['export_id'], correction_capture_id=row['correction_capture_id'],
         failure_capture_id=row['failure_capture_id'], renderer=renderer)
-    lesson = exported.lesson
-    if (exported.lesson_id != row['lesson_id'] or digest(lesson) != row['lesson_id']
+    if action:
+        if row['turn_index'] >= len(exported.lessons):
+            raise ValueError('Installed action turn is absent from original export')
+        lesson = exported.lessons[row['turn_index']]
+        lesson_id = exported.lesson_ids[row['turn_index']]
+    else:
+        lesson = exported.lesson; lesson_id = exported.lesson_id
+    if (lesson_id != row['lesson_id'] or digest(lesson) != row['lesson_id']
             or lesson.get('model_contract_id') != model_contract_id
             or lesson.get('scope') != 'owned-training'):
         raise ValueError('Installed exact lesson differs from verified export')
-    return dict(export_id=exported.export_id, lesson_id=exported.lesson_id,
-                owner=owner.binding(), renderer=renderer.binding(), export=exported.binding()), lesson
+    entry = dict(export_id=exported.export_id, lesson_id=lesson_id,
+                 owner=owner.binding(), renderer=renderer.binding(), export=exported.binding())
+    if action: entry['turn_index'] = row['turn_index']
+    return entry, lesson
 
 
 class InstalledBWPractice:
@@ -116,9 +139,12 @@ class InstalledBWPractice:
         exports, captures = set(), set()
         for row in self._config['registrations']:
             # Duplicate approval entries are refused, not silently collapsed.
-            if row['export_id'] in exports or row['correction_capture_id'] in captures:
+            selector = (row['renderer']['representation'], row.get('turn_index'))
+            export_key = (row['export_id'], selector)
+            capture_key = (row['correction_capture_id'], selector)
+            if export_key in exports or capture_key in captures:
                 raise ValueError('Duplicate installed export/correction capture')
-            exports.add(row['export_id']); captures.add(row['correction_capture_id'])
+            exports.add(export_key); captures.add(capture_key)
             entry, lesson = _load_registration(row, self._components, self._model)
             if row['lesson_id'] in lessons:
                 raise ValueError('Duplicate installed lesson identity')

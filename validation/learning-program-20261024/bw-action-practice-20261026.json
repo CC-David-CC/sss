@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Scripted CPU machinery, real BW/COW/OS and real MiniCPM tokenizer/template; not model learning",
+  "bw_source_commit": "d804baace592775cddaa092fca8324b1dc76b553",
+  "sources": {
+    "sss/adapters/bw_action_practice.py": "631a10e080424e3732489fca0293aa9b72619b246db59d22799df4bdb9dfbe53",
+    "sss/adapters/verified_practice_registry.py": "51eb401f17bc1ce08df4d091381e37975342dcadad5fdd3b966f3c45d8996f51",
+    "sss_integration/bw_verified_practice_cpu.py": "f29b45cbfedd67386a1cfa10bb23cfaa1562529f03e05b72bee2f10296c0caab",
+    "sss_integration/bw_action_practice_cpu.py": "612ce8d2c1c2fe6cfb89f8462de28801b35ebecab681719bb411e122242c44e6",
+    "sss_tests/test_bw_action_practice.py": "ebdc51330b439f63de6cb5f87becd50af552d11cd3af5ff3f7a6fd03bdd2b97f"
+  },
+  "result": {
+    "capture_ids": {
+      "correction": "4eb75a6c5964e3b04e91617f4db4680e1b0ec15dd1582e80f596e29edeb9a9ce",
+      "failure": "25a2e788f1e04067f7459657f17921c50c20ede21aef7741b50cb66475c17371"
+    },
+    "context_lengths": [
+      3029,
+      3663,
+      4278,
+      4873
+    ],
+    "examples": 4,
+    "export_id": "44bf6385c036ecfc3afcac4929676fe56cdaf12d684d14db5297205eb1fb0336",
+    "export_receipt_sha256": "772439ebcf05be24dc71254d8ae321d8d2118287c229f2bac6b9648ffacef5c2",
+    "finished_example_sha256": "2026675c30bc222f7de2f6d54ceeb50e072fe1b1516f7827666136d77a00d9e4",
+    "gpu_used": false,
+    "lesson_ids": [
+      "827081535a49f1e2631bc2fbcf94f706f87668cdf1a5b8e07da64ac4b4d6cfb1",
+      "35c2f92c2f2943000bb07ee4a4c740f31f1f0c62c189120be9f8bd1ca0eaa7bd",
+      "51d5a4890cfc5ce73eb05c4e9b2eeb0dfb9083408abb11c7871838ea063a1450",
+      "e90a491cd88ee148653ddeaa81c669b41b3288f2602fa4b9038db223ebf270b8"
+    ],
+    "model_forward_calls": 0,
+    "native_capacity_qualified": false,
+    "original_workspaces_required_for_readback": false,
+    "owner_registered_in_cpu_fixture_only": true,
+    "production_training_approved": false,
+    "renderer": {
+      "adapter_sha256": "631a10e080424e3732489fca0293aa9b72619b246db59d22799df4bdb9dfbe53",
+      "kind": "pcc-bw-action-through-eos-renderer-v1",
+      "maximum_tokens": 16384,
+      "model_contract_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pcc_sources_sha256": {
+        "base": "ccfdebd6114ff22aee39671325f57c0bbd40b5198c4db786cdc2ed43c84c06dc",
+        "encoder": "19366e9444631d03af9cf88471bc5e580b9fd4cebab9299c4ac56d295e7d9ee6",
+        "lesson": "5e35873ed82113288b1fb673b231e9f355e570e616e19677504e9775dea9b2f3",
+        "service": "c8186d7d185773beeff013e0e77f5d6d88a8017b60696de64620ece4c87b6143"
+      },
+      "renderer_sha256": "14f48833126d2c0240a5d69ea2a64acff2ba3bee3e3e2b0c378f230fdc82f8ed",
+      "representation": "bw-captured-tool-actions-v1",
+      "schema": 1,
+      "stop_token_ids": [
+        1,
+        130073
+      ],
+      "tokenizer_sha256": "45706ffc25acd3b33e94b6423c76d4ff33a7df93667a199074742a22d88dd7ed"
+    },
+    "schema": 1,
+    "scope": "Scripted CPU machinery, real BW/COW/OS and real MiniCPM tokenizer/template; not model learning",
+    "selected_tokens": [
+      14,
+      108,
+      88,
+      19
+    ],
+    "serving_model_identity": false,
+    "source_sha256": {
+      "runner": "612ce8d2c1c2fe6cfb89f8462de28801b35ebecab681719bb411e122242c44e6"
+    },
+    "status": "PASS",
+    "training_updates": 0
+  },
+  "checks": {
+    "bw_capture": {
+      "passed": 24,
+      "log_sha256": "5fd9e621f7c7c919de6eac2e2b4add3edde8b65d067899da35e07a2762d2e8ea"
+    },
+    "sss_action_registry_and_existing_artifact_export": {
+      "passed": 31,
+      "log_sha256": "ef0d90bfc919016f49808dfcdb862e33aa38a1eedc0416db45cda4eef443ce4c"
+    },
+    "actual_cli_audit": {
+      "status": "PASS",
+      "model_forward_calls": 0,
+      "training_updates": 0,
+      "output_sha256": "9ab0f74368ebd5c783418df744d580521b506a60c0f30db6c9c18053427b7a5d"
+    }
+  },
+  "fixed_68_study_modified": false,
+  "weights_published": false,
+  "production_training_approved": false,
+  "native_long_context_qualified": false
+}

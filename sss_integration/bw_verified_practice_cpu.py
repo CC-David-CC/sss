@@ -26,7 +26,7 @@ ROWS = [dict(values=[-4,0,2,9],scale=3,offset=-2,low=-5,high=8),
 
 
 @contextmanager
-def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_sentinel=None, model_contract_id='a'*64, baseline_source=BAD, extra_check_file=False, grammar_syntax='gbnf'):
+def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_sentinel=None, model_contract_id='a'*64, baseline_source=BAD, extra_check_file=False, grammar_syntax='gbnf', check_command=None, finish_answer='Scripted host correction; independent grading remains separate'):
     from branchwrite.coding_cli import build_launch,save_launch,run_saved
     from branchwrite.lesson_capture import capture_failure,capture_correction
     from test_thinking_grammar import ThinkingTokenizer
@@ -87,8 +87,8 @@ def captured_pair(root, *, task_override=None, corrected_source=GOOD, project_se
             actions[:]=[dict(tool='read_file',arguments=dict(path='task.py'))]
             if fix:
                 actions.extend([dict(tool='replace',arguments=dict(path='task.py',before=baseline_source.decode(),after=corrected_source.decode())),
-                    dict(tool='run_check',arguments=dict(name='syntax',command='python3 -B -c \'import ast; ast.parse(open("task.py").read())\'')),
-                    dict(tool='finish',arguments=dict(answer='Scripted host correction; independent grading remains separate'))])
+                    dict(tool='run_check',arguments=dict(name='syntax' if check_command is None else 'behavior',command=check_command or 'python3 -B -c \'import ast; ast.parse(open("task.py").read())\'')),
+                    dict(tool='finish',arguments=dict(answer=finish_answer))])
             if fix and extra_check_file:
                 actions.insert(2,dict(tool='create_text_file',arguments=dict(path='check_notes.py',line_ending='LF',
                     final_newline=True,lines=['# Owned helper; independent artifact grading remains separate.'])))
