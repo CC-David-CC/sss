@@ -1,5 +1,7 @@
 # MiniCPM update-curve progress snapshot
 
+[The final rank-16 precision sweep](RANK16-PRECISION-PROGRESS.md) now has six completed formats: F32/F16 494, Q8 491, Q5 482, Q4 492 and Q3 401 correct out of 864. Q2 and Q1 remain in progress.
+
 ## Current chart: all ten trajectories, receipts collected at 17:27 UTC
 
 ![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
