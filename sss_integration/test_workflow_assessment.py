@@ -39,7 +39,8 @@ class WorkflowAssessmentTests(unittest.TestCase):
             finally:released.append(True)
         panel=SimpleNamespace(identity='e'*64,pcc=Path('/scripted-runtime'),config=dict(gpu_index=0,
             gpu_uuid='GPU-scripted',context_tokens=131072,batch_tokens=16,stop_token_ids=[256],
-            minimum_free_mib=1,maximum_initial_utilization=100))
+            minimum_free_mib=1,maximum_initial_utilization=100,
+            storage=dict(cache_bytes=64<<20,staging_bytes=1<<20,minimum_free_bytes=1<<20)))
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
             with (patch('sss_integration.workflow_evaluate.cow_gpu_admission',scripted_lease),

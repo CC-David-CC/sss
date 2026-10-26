@@ -1,0 +1,84 @@
+{
+  "checks": [
+    {
+      "name": "joined-recovery-regression-cd.log",
+      "sha256": "5d2e2534c321790c2cf2cb43e2b3c6438613b15ebd083ced8f3ecbd815592d04",
+      "status": "PASS",
+      "tests": 33
+    }
+  ],
+  "constraints": {
+    "extra_recovery_steps_separate": true,
+    "filesystem_checked_before_gpu_lease": true,
+    "original_failed_receipts_preserved": true,
+    "original_generation_replay_requires_explicit_selection": true,
+    "tool_effect_replay": false,
+    "training_from_protected_questions": false
+  },
+  "outstanding": [
+    "native run through exact generic recovery CLI",
+    "broader native joined-round coverage",
+    "explicit compatibility migration for old evaluator source snapshots"
+  ],
+  "preserved_diagnostics": [
+    {
+      "name": "workflow-recovery-red01.log",
+      "sha256": "261aca2b34c803f9227eb2259a7d1913f95622a455609a4c4c00339b2d92785c",
+      "status": "preserved diagnostic",
+      "tests": null
+    },
+    {
+      "name": "workflow-recovery-green02.log",
+      "sha256": "9bbe9454f04b98585a99fda674e24ff8237dd3d7d1f6d2b58d0d7a8ca472bfb1",
+      "status": "preserved diagnostic",
+      "tests": null
+    },
+    {
+      "name": "workflow-storage-red01.log",
+      "sha256": "ecac3216a7fe8823568da878b85a3ee6adb4fc91f93f918f65d734e6b855972b",
+      "status": "preserved diagnostic",
+      "tests": null
+    },
+    {
+      "name": "workflow-storage-green01.log",
+      "sha256": "c9c1ded4de64dc104bf7beb42f1c06459f4936de899c7f398bde4942656d87b1",
+      "status": "preserved diagnostic",
+      "tests": null
+    },
+    {
+      "name": "workflow-budget-red01.log",
+      "sha256": "f894d411b9cf8698aae63764b356ecc5bfe18b3b9e29083333fd40054c7d87e3",
+      "status": "preserved diagnostic",
+      "tests": null
+    },
+    {
+      "name": "workflow-budget-green01.log",
+      "sha256": "c097052059cbfa24da18f32a1294d6c755921dd0450d46fffae4feb4cca1aac9",
+      "status": "preserved diagnostic",
+      "tests": null
+    },
+    {
+      "name": "workflow-budget-green02.log",
+      "sha256": "9ac31b260ab694ecda96f9e0fb4a3261371b1caa7048e49b3cd1cfb251f83afb",
+      "status": "preserved diagnostic",
+      "tests": null
+    }
+  ],
+  "recorded_utc": "2026-10-26T15:23:22.939387+00:00",
+  "schema": 1,
+  "scope": "11 S3 assessment/recovery/budget controls and22 BW capture controls; scripted CPU proposals through real HTTP/store/ledger/OS",
+  "source": {
+    "base_commit": "1a9b56be94174cf392ad91b5c239017bd95ba5a9",
+    "changed_python_sha256": {
+      "scripts/recover_bw_workflow.py": "6fba3917e3d684a4b2fc0f5ec90c98d66ea7f72aa7f46686289b8a1747cefc95",
+      "sss/adapters/workflow_evaluation.py": "01af1a92300260f49a35a85972c78306708164c0dda872d205d3d53273cd3168",
+      "sss/workflow_assessment.py": "d083373dbb59c05bf605139ea8f539352c30c5f9fb0bf00fdd62f615c43e1aae",
+      "sss_integration/test_workflow_assessment.py": "3606b23f1d7f5a48f8a84dad5c3f789d3e3c78d1088695cb87cfef9b2dfb9f86",
+      "sss_integration/test_workflow_budget.py": "be100ed4b17b07d747ccfe1a1837335f9b488e28fb5976749bcfd141c91a5c9f",
+      "sss_integration/test_workflow_recovery.py": "a514e682e190fac7da172b246823a5f73207fc0cf20d1a03500e938b27d335ef",
+      "sss_integration/workflow_evaluate.py": "ec2bc852a6c08974700971b19beae5891b8917bec6a1a2f3766f4fbd65a12364",
+      "sss_integration/workflow_recovery.py": "016c6a2e69123d690814ffc55b02cdb10b2fd4efd0d3920bc53ba3deecf8ccb4"
+    }
+  },
+  "status": "PASS"
+}

@@ -4,7 +4,7 @@ import json
 
 from sss.adapters.artifact_evaluation import CowArtifactEvaluator
 from sss.adapters.cow_evaluation import runtime_binding
-from sss.workflow_assessment import RECIPE,make_launch,original_project,observe_capture
+from sss.workflow_assessment import RECIPE,make_launch,original_project,observe_capture,observe_budget
 from sss.records import canonical,digest,file_sha256
 
 
@@ -17,7 +17,7 @@ class BWWorkflowEvaluator(CowArtifactEvaluator):
         return {'maximum_steps','maximum_requests'}
 
     def _optional_configuration_fields(self):
-        return {'grammar_syntax'}
+        return {'grammar_syntax','storage'}
 
     def _validate_configuration(self,config):
         if (type(config['maximum_steps']) is not int or not 1<=config['maximum_steps']<=1024
@@ -25,9 +25,12 @@ class BWWorkflowEvaluator(CowArtifactEvaluator):
             raise ValueError('Explicit bounded BW interpreter and per-action request limits required')
         if 'grammar_syntax' in config and (type(config['grammar_syntax']) is not str or config['grammar_syntax'] not in ('gbnf','lark')):
             raise ValueError('Explicit BW grammar syntax must be gbnf or lark')
+        from sss_integration.workflow_recovery import storage_policy
+        storage_policy(config)
 
     def _extra_source_paths(self):
         return [Path(__file__),self.sss/'sss/workflow_assessment.py',
+            self.sss/'sss_integration/workflow_recovery.py',
             *sorted(p for root in (self.bw/'examples',self.bw/'branchwrite/_examples')
                 if root.exists() for p in root.rglob('*')
                 if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.pyc')]
@@ -46,6 +49,8 @@ class BWWorkflowEvaluator(CowArtifactEvaluator):
             maximum_requests_per_action=self.config['maximum_requests'],
             checker='fixed BW isolated affine-clamp-fold oracle',finished=self.finished_means,greedy=True)
         if 'grammar_syntax' in self.config:value['grammar_syntax']=self.config['grammar_syntax']
+        from sss_integration.workflow_recovery import storage_policy
+        value['storage']=storage_policy(self.config)
         return value
 
     def _evidence(self,candidate,directory):
@@ -78,6 +83,13 @@ class BWWorkflowEvaluator(CowArtifactEvaluator):
             folder=root/('%04d'%index);observed=read(folder/'observation-private.json')
             original_project(case,folder/'project')
             expected_launch=make_launch(case,folder/'project',connection,self.config)
+            if 'budget_archive_id' in observed:
+                expected_observation=observe_budget(case,folder/'budget',expected_launch)
+                if canonical(observed)!=canonical(expected_observation)or canonical(row)!=canonical(expected_observation['outcome']):
+                    raise ValueError('Original frozen-budget failure changed')
+                if (folder/'capture').exists()or(folder/'oracle').exists():
+                    raise ValueError('Budget failure cannot claim a completed artifact assessment')
+                continue
             capture=read_capture(folder/'capture',expected_capture_id=observed['workflow']['capture_id'])
             workflow,source=observe_capture(case,capture,expected_launch)
             if canonical(workflow)!=canonical(observed['workflow']):

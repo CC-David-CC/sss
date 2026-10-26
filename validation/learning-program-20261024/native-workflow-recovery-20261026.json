@@ -1,0 +1,95 @@
+{
+  "acceptance": {
+    "formal_same_bound_workflow_comparison_complete": false,
+    "full_joined_round_complete": false,
+    "promoted": false,
+    "weights_published": false
+  },
+  "archival": {
+    "models_preserved": true,
+    "restore_required_before_old_job_state_use": true,
+    "retired_local_bytes": 20134145385,
+    "source_job_modified": false,
+    "state_sha256": "6404d01d6f192985c4c69209c75c03a85dc97e20968c33210edaab2020176ca2"
+  },
+  "case00": {
+    "additional_interpreter_steps": 128,
+    "capture_id": "b3175e4dc83052b9d81759b10b289e9ad80722664553b1b57c4390ada677c0a7",
+    "finished": true,
+    "input_preserved": true,
+    "model_calls_for_archival": 0,
+    "native_receipts": 16,
+    "oracle_status": "pass",
+    "original_failed_assessment_rewritten": false,
+    "original_pending_operation_id_replayed": true,
+    "passed": true,
+    "preserved_completed_operations": 18,
+    "read_edit_check_finish": true,
+    "tools": [
+      "read_file",
+      "read_file",
+      "replace",
+      "read_file",
+      "run_check",
+      "run_check",
+      "run_check",
+      "run_check",
+      "run_check",
+      "finish"
+    ],
+    "unsettled_native_work_may_have_been_recomputed": true
+  },
+  "case01": {
+    "complete_training_example_available": false,
+    "dispatched_operations_settled": true,
+    "independent_artifact_grade": null,
+    "output_token_limit": 2048,
+    "output_tokens": 2048,
+    "passed": false,
+    "requests_limit": 8,
+    "requests_used": 8,
+    "status": "model_budget_exhausted",
+    "workflow_finished": false
+  },
+  "evidence_sha256": {
+    "archive-native01-state02-exit-private.json": "a7f20ac4a9e1114245a4f7c0814f9b14ebcbb8524e20589c57651d9f6c19e8f0",
+    "native-case-recovery-final-private.json": "5ad8c28bad6c1cd45e2d1d4077f6479ab24e772e4ccc6c86a5ef4ff1619b0442",
+    "native-case01-budget-observation-private.json": "7b055ca8198c7e6c9c56cd76f5ab13f7a06d7e0d3fd6dd46fb879340a9d31fb4",
+    "workflow-exit-private.json": "c66f4a86f36d83f8ffba5f69cbf4e69a9c8fb515f1140a2376cd2b5ff7688c9a",
+    "workflow-recovery01-exit-private.json": "12baaa0b9aa46bffec3de9d0cc7368329de5abfa0429647bc74190335399b421"
+  },
+  "incident": {
+    "archive_reader": "refused complete multi-chunk model turn; later corrected using read-only archival",
+    "first_archival_attempt": "refused before copy: saved byte size differed by three bytes",
+    "first_workflow_attempt": "filesystem full: started before archival completed",
+    "original_failure_records_preserved": true
+  },
+  "kind": "Native candidate02 workflow/recovery observations; mixed recovery bounds",
+  "model_sha256": "ce673b360122f1be1bda4c1de2903efbd72d031e910d64e817e83362b20791fb",
+  "schema": 1,
+  "source_smoke": {
+    "actual_shared_prefix_reused": true,
+    "consumed_output_tokens": 4,
+    "execution_profile_id": "2076d6de64d54fa7eb9b0906a9c39a265c55884fa1a8130fc23632440b82b9f5",
+    "independent_branches_identical": true,
+    "is_capability_assessment": false,
+    "is_training": false,
+    "model_sha256": "050e75d6cca444068e77e88132e2a93f8e1d4e653472ee3c7e905382309cb5d9",
+    "native_binary_recompiled": false,
+    "promoted": false,
+    "requests": 2,
+    "schema": 1,
+    "scope": "Opt-in Lark source snapshot integration with unchanged qualified local SM120 native binary; unconstrained COW branch control",
+    "shared_prefix_tokens": 32,
+    "status": "PASS",
+    "wall_seconds": 10.444621983915567,
+    "weights_updated": false
+  },
+  "source_snapshot": {
+    "bw_execution": "182316fc051fe040fcb8822dd48f6ba01d4c7dc1",
+    "pcc_api": "4a536ab6e26a7d97f200452479a201b414ce55fb",
+    "pcc_execution": "3adc5deb82fcfd92ff767584081fda3079c2daf9",
+    "sss_execution": "1a9b56be94174cf392ad91b5c239017bd95ba5a9"
+  },
+  "training_updates_this_campaign": 0
+}

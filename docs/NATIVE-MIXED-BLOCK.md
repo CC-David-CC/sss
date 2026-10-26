@@ -8,6 +8,17 @@ instead measured 446/864: 14 answers gained and 6 lost. Both named F32 GGUFs
 remain private. BW workflow coverage is still incomplete; neither candidate
 has been promoted or accepted for use.
 
+## Workflow and recovery follow-up
+
+The [recovery guide](WORKFLOW-RECOVERY.md) records a completed native
+read/edit/check/finish task with independent verification, a separate proven
+2,048-token budget failure, and the storage/capture corrections uncovered by
+the campaign. The passing task used explicit recovery and an additional
+interpreter-step allowance; it is not a same-bound two-case panel score.
+S³ now settles proven budget failures and continues its panel, with archived
+read-only evidence. Generic CLI native qualification and a complete joined
+learning round remain open. Neither candidate is promoted.
+
 ## Plain-language reading
 
 The first version changed too much in one step. Audits found lower-loss points

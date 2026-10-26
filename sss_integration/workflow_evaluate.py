@@ -10,7 +10,7 @@ import threading
 from sss.adapters.workflow_evaluation import BWWorkflowEvaluator
 from sss.adapters.cow_evaluation import cow_gpu_admission,candidate_binding
 from sss.adapters.cow_learning import write_once
-from sss.workflow_assessment import create_project,make_launch,observe_capture
+from sss.workflow_assessment import create_project,make_launch,observe_capture,observe_budget
 from sss.records import canonical,digest,file_sha256
 
 
@@ -26,15 +26,19 @@ def native_server(panel,profile,output):
     from serve.cow_http import model_text_components,make_server
     from serve.cow_workspace import CowWorkspace
     cfg=panel.config
+    from sss_integration.workflow_recovery import storage_policy,storage_admission
+    storage=storage_policy(cfg)
+    write_once(output/'filesystem-admission-private.json',storage_admission(output,**storage))
     with cow_gpu_admission(panel.pcc,profile,Path(profile['model_path']),profile['model_weights_sha256'],
             cfg['gpu_uuid'],context_tokens=cfg['context_tokens'],batch_tokens=cfg['batch_tokens'],
             stop_token_ids=cfg['stop_token_ids'],minimum_free_mib=cfg['minimum_free_mib'],
             maximum_initial_utilization=cfg['maximum_initial_utilization'],
             on_admission=lambda value:write_once(output/'admission.json',value)):
+        storage_admission(output,**storage)
         store=output/'cow-store';components=model_text_components(profile['model_path'],
             dict(enable_thinking=False),model_contract_id=profile['model_contract_id'])
         coordinator=ContextCoordinator(store,PoolConfig(gpus=(cfg['gpu_index'],),
-            ram_bytes=8*1024**3,disk_bytes=16*1024**3,min_available_bytes=4*1024**3),
+            ram_bytes=8*1024**3,disk_bytes=storage['cache_bytes'],min_available_bytes=4*1024**3),
             lambda gpu:BranchingModel(store,LlamaDenseBackend(profile,gpu_id=gpu),profile))
         server=thread=catalog=connection=None;old_key=os.environ.get('BW_COW_API_KEY')
         key=secrets.token_hex(24);os.environ['BW_COW_API_KEY']=key
@@ -68,10 +72,30 @@ def native_server(panel,profile,output):
                 write_once(output/'server-private.json',dict(status='RETIRED',connection=connection))
 
 
+def assess_case(case,folder,launch,returned):
+    """Settle proven model bounds separately from unavailable evidence."""
+    from branchwrite.lesson_capture import capture_assessment
+    from branchwrite.coding_observation import archive_model_budget
+    from sss.adapters.bw_practice_oracle import observe
+    if (type(returned)in(list,tuple)and len(returned)==2 and type(returned[1])is dict
+            and returned[1].get('status')=='model_budget_exhausted'):
+        archive_model_budget(folder/'state',folder/'budget')
+        observed=observe_budget(case,folder/'budget',launch)
+    else:
+        capture=capture_assessment(folder/'state',folder/'capture')
+        workflow,source=observe_capture(case,capture,launch)
+        proof=observe(case.case,source,workflow['source_sha256'],folder/'oracle')
+        if proof['status']=='unavailable':
+            raise RuntimeError('Independent checker unavailable; not a model failure')
+        row=dict(id=case.identity,skill_id=case.skill_id,gate=case.gate,
+            passed=workflow['finished'] and proof['status']=='pass',finished=workflow['finished'])
+        observed=dict(outcome=row,workflow=workflow,oracle_status=proof['status'])
+    write_once(folder/'observation-private.json',observed)
+    return observed['outcome']
+
+
 def run(owner_config,profile_path,candidate_path,output,*,expected_evaluator_id):
     from branchwrite.coding_cli import save_launch,run_saved
-    from branchwrite.lesson_capture import capture_assessment
-    from sss.adapters.bw_practice_oracle import observe
     panel=BWWorkflowEvaluator(owner_config)
     from sss.adapters.runtime_sources import require_child_identity
     require_child_identity(panel,expected_evaluator_id)
@@ -90,15 +114,7 @@ def run(owner_config,profile_path,candidate_path,output,*,expected_evaluator_id)
             save_launch(folder/'state',launch)
             returned=run_saved(folder/'state',max_steps=panel.config['maximum_steps'])
             write_once(folder/'runtime-result-private.json',returned)
-            capture=capture_assessment(folder/'state',folder/'capture')
-            workflow,source=observe_capture(case,capture,launch)
-            proof=observe(case.case,source,workflow['source_sha256'],folder/'oracle')
-            if proof['status']=='unavailable':
-                raise RuntimeError('Independent checker unavailable; not a model failure')
-            row=dict(id=case.identity,skill_id=case.skill_id,gate=case.gate,
-                passed=workflow['finished'] and proof['status']=='pass',finished=workflow['finished'])
-            write_once(folder/'observation-private.json',dict(outcome=row,workflow=workflow,oracle_status=proof['status']))
-            rows.append(row)
+            rows.append(assess_case(case,folder,launch,returned))
     value=dict(schema=1,status='COMPLETE',evaluation_id=panel.evaluation_id,
         runtime_id=digest(panel.expected_runtime(profile)),model_sha256=profile['model_weights_sha256'],
         **candidate_binding(profile),cases=len(rows),passed=sum(r['passed'] for r in rows),

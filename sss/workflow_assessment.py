@@ -93,3 +93,20 @@ def observe_capture(case,capture,expected_launch):
         read_edit_check_finish=ordered,input_preserved=preserved,finished=finished,
         source_sha256=hashlib.sha256(source).hexdigest(),source_mode=files['task.py']['mode'],
         tools=[t for _,t,_ in events],native_receipts=len(value['evidence']['native'])),source
+
+
+def observe_budget(case,archive,expected_launch):
+    """An unfinished frozen-budget turn is a workflow failure, not a lesson.
+
+    No artifact grade is invented: the required explicit finish is absent.
+    Reverification uses the archived actual BW ledger and original request bytes.
+    """
+    from pathlib import Path
+    from branchwrite.coding_cli import read_launch
+    from branchwrite.coding_observation import read_budget_archive
+    archive=Path(archive);value=read_budget_archive(archive)
+    if canonical(read_launch(archive/'state'))!=canonical(expected_launch):
+        raise ValueError('Original budget-failure launch changed')
+    row=dict(id=case.identity,skill_id=case.skill_id,gate=case.gate,passed=False,finished=False)
+    return dict(outcome=row,budget_archive_id=value['archive_id'],
+        budget=value['observation'],oracle_status='not_run_unfinished_model_turn')
