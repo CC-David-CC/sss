@@ -286,6 +286,10 @@ class CowLearningEvaluator:
         self.verify()
         return value
 
+    def _environment(self):
+        return dict(os.environ, PYTHONPATH=os.pathsep.join([
+            str(self.sss), str(self.pcc), str(self.pcc / 'experimental/branching_context/src')]))
+
     def __call__(self, candidate, directory, worker_fd):
         directory = Path(directory).absolute()
         self.verify()
@@ -295,8 +299,7 @@ class CowLearningEvaluator:
         write_once(directory / 'adapter-intent-private.json', dict(schema=1,
             evaluator_id=self.identity, profile=profile, command=command, no_implicit_retry=True))
         write_once(directory / 'candidate-profile.json', profile)
-        environment = dict(os.environ, PYTHONPATH=os.pathsep.join([
-            str(self.sss), str(self.pcc), str(self.pcc / 'experimental/branching_context/src')]))
+        environment = self._environment()
         with (directory / 'stdout-private.log').open('x') as out, (directory / 'stderr-private.log').open('x') as err:
             proc = subprocess.Popen(command, stdout=out, stderr=err, env=environment,
                                     cwd=self.sss, start_new_session=True, pass_fds=(worker_fd,))

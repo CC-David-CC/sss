@@ -337,3 +337,8 @@ relax that profile to the renderer's larger export ceiling. The
 [sanitized composition validation](../validation/learning-program-20261024/learning-panels-cpu-20261026.json)
 records the exact sources, counts, setup failures and scope. Private operational
 captures, raw questions, model files and owner configuration remain outside Git.
+
+The [real artifact assessment panel](ARTIFACT-ASSESSMENT.md) now qualifies a
+concrete native model-generated target check. It complements the composition
+boundary; the actual BW workflow/retention join and full learning round still
+need qualification.
