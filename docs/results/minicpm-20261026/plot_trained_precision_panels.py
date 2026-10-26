@@ -2,6 +2,7 @@
 import csv
 from pathlib import Path
 import matplotlib.pyplot as plt
+from plot_original_reference import add_original_curve
 
 ROOT=Path(__file__).resolve().parent
 with (ROOT/'trained-precision-panels.csv').open(encoding='utf-8',newline='') as f:
@@ -18,8 +19,9 @@ for ax,(key,title) in zip(axes.flat,panels):
     data={r['format']:r for r in rows if r['panel']==key}
     correct=[int(data[f]['passed']) for f in formats]
     finished=[int(data[f]['finished']) for f in formats]
-    ax.plot(range(8),finished,'s--',color='#c3832a',label='Natural finishes',linewidth=1.6)
+    ax.plot(range(8),finished,'s--',color='#147a56',label='Trained natural finishes',linewidth=1.6)
     ax.plot(range(8),correct,'o-',color='#245b91',label='Correct answers',linewidth=2)
+    add_original_curve(ax, ROOT, formats, 'passed')
     for i,value in enumerate(correct):ax.annotate(str(value),(i,value),xytext=(0,10),textcoords='offset points',ha='center',fontsize=9)
     ax.set_title(title,loc='left',fontweight='bold',fontsize=11,pad=12)
     ax.set_xticks(range(8),labels);ax.set_ylim(-35,920);ax.set_yticks([0,216,432,648,864])
@@ -27,11 +29,11 @@ for ax,(key,title) in zip(axes.flat,panels):
     for spine in ('top','right'):ax.spines[spine].set_visible(False)
     ax.set_ylabel('Out of 864 frozen questions')
 handles,legend_labels=axes[0,0].get_legend_handles_labels()
-fig.legend(handles,legend_labels,loc='upper center',bbox_to_anchor=(.5,.89),ncol=2,fontsize=9,frameon=False)
+fig.legend(handles,legend_labels,loc='upper center',bbox_to_anchor=(.5,.89),ncol=3,fontsize=9,frameon=False)
 fig.suptitle('Trained MiniCPM5-2B: all four precision panels complete',fontsize=18,fontweight='bold',y=.97)
 fig.text(.5,.91,'28 quantized evaluations × 864 questions = 24,192 attempts; existing FP32 references retained',ha='center',fontsize=11)
 fig.text(.5,.065,'Compare precision within each panel. Updates, training exposures and runtimes differ; this is not an optimizer ranking.',ha='center',fontsize=10)
-fig.text(.5,.025,'Same 64-token response allowance. S³ scoring through PCC/COW. No new training, seed repeats or model uploads.',ha='center',fontsize=10,color='#555555')
+fig.text(.5,.025,'Original per-quant line uses prior runtime, same cases and 64-token limit; original F32 unmeasured. No new model calls.',ha='center',fontsize=9,color='#555555')
 fig.savefig(ROOT/'trained-precision-panels.png',dpi=180,facecolor='white')
 
 fig,axes=plt.subplots(2,2,figsize=(13,9),sharex=True)

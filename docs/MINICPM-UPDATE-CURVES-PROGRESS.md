@@ -6,6 +6,11 @@
 
 ![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
 
+The orange dashed reference marks the original F16 model: **59/864 correct**
+and **415/864 naturally finished**, from the published original-model receipts.
+It is a historical reference; recorded execution paths differ from some trained
+arms. Quantization charts additionally show the original score at each quant size.
+
 The chart contains 602 completed scored checkpoints, 8 more than the preceding
 snapshot. It includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
 Muon, and all six AdamW LoRA ranks. Full updates use FP32 weights; LoRA uses

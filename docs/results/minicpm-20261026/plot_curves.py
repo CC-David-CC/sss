@@ -6,6 +6,7 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
+from plot_original_reference import original_scores
 
 
 ROOT = Path(__file__).resolve().parent
@@ -43,17 +44,18 @@ markers = ["o", "s", "+", "x", "^", "D", "v", "P", "X", "*"]
 fig, axes = plt.subplots(2, 1, figsize=(12.8, 9.0), sharex=True)
 fig.subplots_adjust(left=0.09, right=0.98, top=0.86, bottom=0.24, hspace=0.15)
 
+original = original_scores(ROOT)['F16']
 panels = [
-    (axes[0], "correct_out_of_864", "Correct held-out cases (of 864)", 59),
-    (axes[1], "natural_finishes_out_of_864", "Naturally finished responses (of 864)", 415),
+    (axes[0], "correct_out_of_864", "Correct held-out cases (of 864)", int(original['passed'])),
+    (axes[1], "natural_finishes_out_of_864", "Naturally finished responses (of 864)", int(original['finished'])),
 ]
 for axis, metric, ylabel, baseline in panels:
     axis.axhline(
         baseline,
-        color="#555555",
-        linestyle=":",
-        linewidth=1.2,
-        label="Original MiniCPM baseline",
+        color="#d06b1f",
+        linestyle="--",
+        linewidth=1.8,
+        label="Original F16: 59 correct / 415 finished",
     )
     axis.axvline(
         1836,

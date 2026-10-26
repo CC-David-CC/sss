@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "kind": "sss.historical-original-overlay.v1",
+  "status": "VALIDATED_PRESENTATION_INPUTS",
+  "cases": 864,
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "runtime_matched": false,
+  "original_runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+  "trained_runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+  "rows": [
+    {
+      "format": "F32",
+      "original_correct": null,
+      "original_finished": null,
+      "trained_correct": 494,
+      "trained_finished": 864,
+      "original_measured": false
+    },
+    {
+      "format": "F16",
+      "original_correct": 59,
+      "original_finished": 415,
+      "trained_correct": 494,
+      "trained_finished": 864,
+      "original_measured": true
+    },
+    {
+      "format": "Q8_0",
+      "original_correct": 43,
+      "original_finished": 392,
+      "trained_correct": 491,
+      "trained_finished": 864,
+      "original_measured": true
+    },
+    {
+      "format": "Q5_K_M",
+      "original_correct": 58,
+      "original_finished": 398,
+      "trained_correct": 482,
+      "trained_finished": 864,
+      "original_measured": true
+    },
+    {
+      "format": "Q4_K_M",
+      "original_correct": 34,
+      "original_finished": 522,
+      "trained_correct": 492,
+      "trained_finished": 864,
+      "original_measured": true
+    },
+    {
+      "format": "Q3_K_M",
+      "original_correct": 50,
+      "original_finished": 475,
+      "trained_correct": 401,
+      "trained_finished": 863,
+      "original_measured": true
+    },
+    {
+      "format": "Q2_K",
+      "original_correct": 4,
+      "original_finished": 521,
+      "trained_correct": 36,
+      "trained_finished": 817,
+      "original_measured": true
+    },
+    {
+      "format": "Q1_0",
+      "original_correct": 0,
+      "original_finished": 0,
+      "trained_correct": 0,
+      "trained_finished": 0,
+      "original_measured": true
+    }
+  ],
+  "source_sha256": {
+    "original-quantization.csv": "a9f46a0ee1ef9ebb49840c460f22dc2f3357e0203dfb080b4910f3047305d36a",
+    "original-quantization-validation.json": "31e469c9e71a4fbb76ed85e2f79e0514b740f69f839edbc50109470f228dd878",
+    "rank16-final-precision.json": "96ef8824c45a7aec277bd1e7a86896da3abdf088d3d6d6f487f2e85846bed491"
+  },
+  "new_inference_calls": 0,
+  "new_training_updates": 0,
+  "scope": "Historical original and trained scores on the same frozen panel; not a matched-runtime causal estimate. Original F32 is unmeasured."
+}

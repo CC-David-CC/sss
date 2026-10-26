@@ -7,6 +7,28 @@ All eight formats, including the F32 reference, are complete (26 October 2026).
 
 ![Rank-16 precision sweep](results/minicpm-20261026/rank16-final-precision.png)
 
+The **orange dashed line** shows the original, untrained model's measured score
+at each quant size. The **gray dotted line** marks its F16 reference: 59 correct
+and 415 naturally finished out of 864. Original F32 was not measured in that
+sweep and is left absent. The original sweep used a different runtime; this is
+a historical comparison on the same frozen cases, not a matched-runtime estimate
+of the effect of training alone. See the [original receipts and scores](MINICPM-QUANTIZATION-PROGRESS.md).
+The [overlay validation](results/minicpm-20261026/original-overlay-validation.json)
+records both runtime identities, source hashes and the absent original F32 point.
+
+| Format | Original correct / 864 | Trained rank-16 correct / 864 | Difference in total |
+| --- | ---: | ---: | ---: |
+| F32 | not measured | 494 | not comparable |
+| F16 | 59 | 494 | +435 |
+| Q8_0 | 43 | 491 | +448 |
+| Q5_K_M | 58 | 482 | +424 |
+| Q4_K_M | 34 | 492 | +458 |
+| Q3_K_M | 50 | 401 | +351 |
+| Q2_K | 4 | 36 | +32 |
+| Q1_0 | 0 | 0 | 0 |
+
+The table below retains the within-trained-checkpoint, paired comparison to F32.
+
 | Format | GGUF GiB | Correct / 864 | Natural finishes / 864 | Newly correct vs F32 | Previously correct lost |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | F32 | 9.380 | 494 | 864 | 0 | 0 |

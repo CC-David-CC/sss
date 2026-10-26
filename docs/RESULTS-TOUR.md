@@ -46,6 +46,12 @@ Q5 **482**, Q4 **492**, Q3 **401**, Q2 **36**, and Q1 **0**. All eight formats a
 The observed steep drop starts below Q4, with a nonmonotonic dip at Q5.
 These are the same 864 questions through the same standalone evaluation path.
 
+The orange dashed line adds the original model at each quant: F16 59, Q8 43,
+Q5 58, Q4 34, Q3 50, Q2 4 and Q1 0 correct out of 864. Those original
+measurements used a prior runtime; original F32 is unmeasured. The gray dotted
+reference is the original F16 score. This makes the before/after totals visible
+without claiming that runtime differences have been isolated.
+
 Q4's approximately **1.454 GiB** file has nearly the F32 total score, but it
 gained 20 correct answers and lost 22 others. Similar totals do not mean
 unchanged behavior. This is a measured development result, not a release decision.

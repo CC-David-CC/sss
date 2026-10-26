@@ -2,18 +2,21 @@
 import json
 from pathlib import Path
 import matplotlib.pyplot as plt
+from plot_original_reference import add_original_curve
 
 root = Path(__file__).resolve().parent
 report = json.loads((root / 'rank16-final-precision.json').read_text(encoding='utf8'))
 rows = report['rows']
 fig, axes = plt.subplots(2, 1, figsize=(12, 8), sharex=True,
                          gridspec_kw={'height_ratios': [2, 1]})
-fig.subplots_adjust(top=.83, bottom=.15, left=.09, right=.97, hspace=.18)
+fig.subplots_adjust(top=.79, bottom=.17, left=.09, right=.97, hspace=.18)
 for axis, field, title, color in [(axes[0], 'correct', 'Correct answers / 864', '#2457a6'),
                                    (axes[1], 'finished', 'Naturally finished / 864', '#147a56')]:
     x = [i for i, r in enumerate(rows) if r['status'] == 'COMPLETE']
     y = [r[field] for r in rows if r['status'] == 'COMPLETE']
-    axis.plot(x, y, marker='o', color=color, lw=2.2)
+    axis.plot(x, y, marker='o', color=color, lw=2.2, label='Trained rank 16, update 68')
+    add_original_curve(axis, root, [r['format'] for r in rows],
+                       'passed' if field == 'correct' else 'finished', horizontal=True)
     for i, r in enumerate(rows):
         if r['status'] == 'COMPLETE':
             axis.annotate(str(r[field]), (i, r[field]), xytext=(0, 9),
@@ -27,15 +30,18 @@ for axis, field, title, color in [(axes[0], 'correct', 'Correct answers / 864', 
     axis.set_yticks([0, 216, 432, 648, 864])
     axis.grid(axis='y', alpha=.25)
     axis.spines[['top', 'right']].set_visible(False)
-axes[0].axhline(rows[0]['correct'], color='#888888', ls=':', lw=1)
+axes[0].axhline(rows[0]['correct'], color='#2457a6', ls=':', lw=.8, alpha=.6)
 axes[1].set_xticks(range(len(rows)), [r['format'] for r in rows])
 axes[1].set_xlabel('Requested GGUF format (K formats use mixed tensor types)')
 fig.suptitle('MiniCPM5-2B: preserving learned behavior after quantization',
              fontsize=17, fontweight='bold', y=.965)
 fig.text(.5, .895, 'AdamW LoRA rank 16, update 68 | one merged master | 864 fixed questions',
          ha='center', fontsize=11)
-fig.text(.5, .035, 'Completed receipts only; no projection or zero scores for pending formats.\n'
-         'Shared A100 loads; these are behavioral scores, not throughput measurements. No release acceptance.',
+handles, labels = axes[0].get_legend_handles_labels()
+fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5,.87), ncol=1,
+           fontsize=9, frameon=False)
+fig.text(.5, .035, 'Original sweep: prior runtime, same frozen cases; original F32 not measured.\n'
+         'Dashed orange = original per quant; gray dots = original F16 level. Shared A100 loads; no release acceptance.',
          ha='center', fontsize=10, color='#555555')
 fig.savefig(root / 'rank16-final-precision.png', dpi=160, facecolor='white')
 plt.close(fig)

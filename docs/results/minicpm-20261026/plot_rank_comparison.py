@@ -5,6 +5,7 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
+from plot_original_reference import original_scores
 
 root=Path(__file__).resolve().parent
 with (root/'intermediate-training-curves.csv').open(newline='',encoding='utf8') as f:
@@ -17,9 +18,10 @@ fig,axes=plt.subplots(2,1,figsize=(13,9),sharex=True)
 fig.subplots_adjust(left=.09,right=.98,top=.86,bottom=.22,hspace=.16)
 colors=['#111111','#7c3aed','#e66101','#d95f9d','#1b9e77','#0088bb','#b8860b','#355cbd']
 markers=['o','s','^','D','v','P','X','*']
-for axis,metric,title,baseline in [(axes[0],'correct_out_of_864','Correct answers / 864',59),
-        (axes[1],'natural_finishes_out_of_864','Naturally finished / 864',415)]:
-    axis.axhline(baseline,color='#777777',ls=':',lw=1.2,label=f'Original: {baseline}/864')
+original=original_scores(root)['F16']
+for axis,metric,title,baseline in [(axes[0],'correct_out_of_864','Correct answers / 864',int(original['passed'])),
+        (axes[1],'natural_finishes_out_of_864','Naturally finished / 864',int(original['finished']))]:
+    axis.axhline(baseline,color='#d06b1f',ls='--',lw=1.8,label=f'Original F16: {baseline}/864')
     axis.axvline(68,color='#888888',ls='--',lw=1)
     for i,(arm,label) in enumerate(labels.items()):
         points=groups[arm];last=points[-1]
