@@ -20,7 +20,7 @@ GSM8K/ARC leaderboard protocol: GSM8K requires the requested `####` numerical
 answer; ARC requires exactly the option label. Formatting failures count as wrong.
 
 [Verified counts and response hashes](results/minicpm-remix-external-20261027/verified-summary.json)
-bind all 128 saved responses. The saved response JSON files and frozen dataset payloads are included beside
+bind all 192 saved responses. Run `python verify_saved.py` in that evidence directory to independently recompute all three scores and both paired comparisons, without using a GPU. The saved response JSON files and frozen dataset payloads are included beside
 the receipt, so the scores can be checked without generating new answers. The runner is included with
 the evidence; its frozen downloaded dataset payload hashes are in the receipt.
 The owner subsequently approved adding this table and its limitations to the Hugging Face card.

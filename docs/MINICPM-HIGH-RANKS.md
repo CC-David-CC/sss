@@ -1,6 +1,12 @@
 # MiniCPM: walking the LoRA ranks
 
-**The four-arm five-update readout is complete. Only rank-4096 Muon is continuing toward update 68.**
+**The four-arm five-update readout is complete. Rank-32 AdamW and rank-4096 Muon are continuing toward update 68.**
+
+## The two continuing arms
+
+![Two continuing arms](results/minicpm-highrank-20261027/two-continuations.png)
+
+Update 6 for rank-32 AdamW and update 10 for rank-4096 Muon have trained; their new scores are pending in this snapshot. Dotted lines mark pending checkpoints, not measured scores.
 
 ## Current measured results
 
@@ -28,10 +34,10 @@ runtime. Only marked points were measured. No missing measurements are filled
 in. Rank-4096 AdamW actually scored zero at both measured endpoints; this is not a missing measurement.
 
 The original ten-arm, 68-update study and all 80 precision panels are complete.
-Both rank-32 arms and rank-4096 AdamW stopped at five updates. The owner then
-approved continuing only rank-4096 Muon to 68 updates, from the saved adapter,
+The initial comparison stopped at five updates. The owner then
+approved continuing rank-4096 Muon and, subsequently, rank-32 AdamW to 68 updates, each from its saved adapter,
 optimizer moments and practice cursor. Milestone assessments are scheduled at
-10, 20, 34, 50 and 68; they are not measured results yet. No seed repeats are scheduled.
+10, 20, 34, 50 and 68 for rank-4096 Muon; rank-32 AdamW is assessed at every new update. These future points are not measured results yet. No seed repeats are scheduled.
 
 Can a larger adapter preserve more useful learning, and how do AdamW and
 factorwise Muon differ as adapter rank grows? This extension has its own branch
@@ -61,8 +67,8 @@ No quantized high-rank results have been measured for this extension.
 ## The new arms
 
 This extension began as a short provisional comparison and completed five
-updates per arm. The owner subsequently extended **only rank-4096 Muon to 68**.
-The other three arms remain stopped at five; no further rank-4096 AdamW tests
+updates per arm. The owner subsequently extended **rank-4096 Muon and rank-32 AdamW to 68**.
+Rank-32 Muon and rank-4096 AdamW remain stopped at five; no further rank-4096 AdamW tests
 are scheduled, following the explicit stop instruction.
 The current candidates are rank 32 and rank 4096 with AdamW and factorwise Muon.
 Ranks 128 and 2048 remain unstarted options, not required work for this readout.
@@ -130,7 +136,7 @@ at update 3. This is continuing development evidence, not a release acceptance.
 
 The completed rank-32 AdamW pilot reached **290/864 correct at update 4**
 and **315/864 at update 5**, with 856 and 854 naturally finished responses,
-respectively. It is stopped at five updates (135 practice presentations).
+respectively. Its five-update pilot stopped at 135 practice presentations. A later separately owned continuation resumes at update 6, assesses each new checkpoint through the same PCC/COW path, and archives verified model/adapter/state artifacts to R730 before retiring cold local copies.
 The [update-4](results/minicpm-highrank-20261027/rank32-update004.json) and
 [update-5](results/minicpm-highrank-20261027/rank32-update005.json) receipts
 retain the paired changes and the same recorded home runtime.
@@ -144,7 +150,7 @@ runtimes prevent attributing the difference to the optimizer alone. Muon then re
 correct, 602 naturally finished**, at update 5. Relative to update 1, that is
 **60 answers gained and 1 lost**, with 150 completion gains and 9 losses.
 The [update-5 receipt](results/minicpm-highrank-20261027/rank32-muon-update005.json)
-binds the same 4090 runtime. Both rank-32 arms are stopped at update 5.
+binds the same 4090 runtime. Rank-32 Muon remains stopped at update 5. Rank-32 AdamW has an explicitly authorized continuation to update 68, with the same ordered practice, optimizer moments and example cursor.
 
 AdamW starts at the original LoRA comparator rate, 1e-4. Factorwise Muon starts
 with the standard full-Muon comparator's 5e-5 matrix rate and 1e-6 auxiliary
