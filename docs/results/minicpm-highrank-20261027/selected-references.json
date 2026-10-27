@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "source_commit": "5c992973391ff5f7652eddb7511a6f745b19dd54",
+  "source_report": "docs/results/minicpm-20261026/final-checkpoint-precision.json",
+  "selection": "Lowest and highest original AdamW LoRA F32 update68 endpoints, plus full AdamW and standard Muon controls; not a complete study",
+  "cases": 864,
+  "highrank_scores_available": false,
+  "rows": [
+    {
+      "arm": "muon-standard-full",
+      "format": "F32",
+      "correct": 494,
+      "finished": 864,
+      "source_training_updates": 68,
+      "model_sha256": "757bb8ad346eb3db9fc95fa52cce4f25cac30df012ce6dbbdce77fa7e17892f3",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "muon-standard-full",
+      "format": "Q4_K_M",
+      "correct": 471,
+      "finished": 864,
+      "source_training_updates": 68,
+      "model_sha256": "0b5fe7aac2b3b94c7c7ed62f6026c2e8771f183c298d5c04f5179dbb0dffe896",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "muon-standard-full",
+      "format": "Q2_K",
+      "correct": 28,
+      "finished": 830,
+      "source_training_updates": 68,
+      "model_sha256": "f02736023e4063faa035e80c5fb584a3796c72164b33b7932badc6ac959f7beb",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "adamw-full",
+      "format": "F32",
+      "correct": 482,
+      "finished": 864,
+      "source_training_updates": 68,
+      "model_sha256": "0d522b7e837ac5a60f8583e93a1eb370189ee2e551cd951bd5f327d055317ac3",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "adamw-full",
+      "format": "Q4_K_M",
+      "correct": 471,
+      "finished": 864,
+      "source_training_updates": 68,
+      "model_sha256": "a41071209e04adabfbe2f4eab3877ae0be123a209abea083770c0e3bf5e1869c",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "adamw-full",
+      "format": "Q2_K",
+      "correct": 35,
+      "finished": 821,
+      "source_training_updates": 68,
+      "model_sha256": "65d0b9d790dc43bcd52af07262913e2720b11536a30bf2fa382e68ceb06bcd78",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "adamw-lora-r1",
+      "format": "F32",
+      "correct": 450,
+      "finished": 863,
+      "source_training_updates": 68,
+      "model_sha256": "3eb523b31d1a494c69adb589c5ab17b8293eeeb3c7a1b3f232e9522a5058da91",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "adamw-lora-r1",
+      "format": "Q4_K_M",
+      "correct": 409,
+      "finished": 811,
+      "source_training_updates": 68,
+      "model_sha256": "e731944af6b83e41ab6ff9e321e79d8e62d8154b29222efe72b475ddc57cc847",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "adamw-lora-r1",
+      "format": "Q2_K",
+      "correct": 21,
+      "finished": 825,
+      "source_training_updates": 68,
+      "model_sha256": "dae8fa342d548d7065bb80ee8f3f066834e83c7cfacba9ba2e4c7aeffc7ff254",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "adamw-lora-r16",
+      "format": "F32",
+      "correct": 494,
+      "finished": 864,
+      "source_training_updates": 68,
+      "model_sha256": "76f88c1788411f0cc2fc0aa9c9c27c32bcdec64b7ee064e88c70262f1872ae10",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "adamw-lora-r16",
+      "format": "Q4_K_M",
+      "correct": 492,
+      "finished": 864,
+      "source_training_updates": 68,
+      "model_sha256": "95a85275e537d39e4a749602979ded7f98151afa3d48f53d8c5f298e8015e98d",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    },
+    {
+      "arm": "adamw-lora-r16",
+      "format": "Q2_K",
+      "correct": 36,
+      "finished": 817,
+      "source_training_updates": 68,
+      "model_sha256": "62b58a7153877cabc24df28a57bf1ee3e9adcd8200d6e0d33ff0ad4c9ee0cda9",
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    }
+  ]
+}
