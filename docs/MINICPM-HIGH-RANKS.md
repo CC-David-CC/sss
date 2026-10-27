@@ -36,7 +36,7 @@ cursor continue between points. There is no fixed training-time budget.
 
 | Rank | Trainable adapter parameters | AdamW | Factorwise Muon |
 |---|---:|---|---|
-| 32 | 54,476,800 | Update 2: 256/864 correct; 788/864 naturally finished | Pending |
+| 32 | 54,476,800 | Update 3: 284/864 correct; 816/864 naturally finished | Pending |
 | 128 | 217,907,200 | Pending | Pending |
 | 2048 | 3,486,515,200 | Pending | Pending |
 | 4096 | 6,973,030,400 | Update 1 saved; export and assessment pending | Update 1 saved; export and assessment pending |
@@ -73,6 +73,13 @@ includes that paired breakdown. Both assessments used the same recorded home
 runtime. The pilot stopped at its declared update-2 boundary; a longer run still
 requires the rolling artifact-retention path.
 
+Update 3 then reached **284 correct, 816 naturally finished**, after 81 practice
+presentations. Compared with update 2, **34 answers became correct and 6 became
+incorrect**; natural completion gained 31 cases and lost 3. The
+[update-3 receipt](results/minicpm-highrank-20261027/rank32-update003.json)
+binds the same frozen assessment and home runtime. The bounded pilot stopped
+at update 3. This is continuing development evidence, not a release acceptance.
+
 AdamW starts at the original LoRA comparator rate, 1e-4. Factorwise Muon starts
 with the standard full-Muon comparator's 5e-5 matrix rate and 1e-6 auxiliary
 AdamW rate. These are initial comparison settings, not claimed optima. Different
@@ -87,9 +94,13 @@ weights stay frozen. Adapter parameter count is 1,702,400 times rank.
 
 For an m-by-n matrix, rank-r factors contain r(m+n) parameters but, below
 saturation, only r(m+n-r) independent degrees of freedom. Rank 2048 already
-reaches every targeted matrix's full rank capacity. Rank 4096 adds redundant
-factor parameters rather than more representable matrix directions. It can
-still change optimization behavior; whether that helps is an experimental question.
+reaches every targeted matrix's full rank capacity. Rank 4096 does not increase the maximum rank of the merged weight matrix,
+but its additional factor dimensions change the optimization geometry. Factorwise
+Muon orthogonalizes updates to the larger A and B factors separately; AdamW
+uses coordinatewise adaptive updates without that orthogonalization. Extra factor
+dimensions can therefore affect both regimens differently even after matrix rank
+capacity saturates. Comparing these effects on learning and forgetting is a central
+purpose of the high-rank study. Better performance remains an empirical question.
 
 LoRA's bilinear factors do not make its optimizer a Hessian-based second-order
 method. Factorwise Muon orthogonalizes updates to A and B independently. It is
