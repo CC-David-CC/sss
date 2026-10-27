@@ -95,11 +95,11 @@ axes[1].set_xlim(0, 1900)
 axes[1].set_xticks(range(0, 1901, 270))
 axes[1].xaxis.set_major_formatter(mticker.StrMethodFormatter("{x:,.0f}"))
 
-fig.suptitle("MiniCPM5-2B: intermediate training comparison", fontsize=16, fontweight="bold", y=0.96)
+fig.suptitle("MiniCPM5-2B: completed 68-update comparison", fontsize=16, fontweight="bold", y=0.96)
 fig.text(
     0.5,
     0.91,
-    f"864 frozen cases per scored checkpoint | interim data through {as_of}",
+    f"673 retained scores | 864 frozen cases per checkpoint | data through {as_of}",
     ha="center",
     fontsize=10,
 )
