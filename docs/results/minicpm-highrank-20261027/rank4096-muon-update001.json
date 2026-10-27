@@ -1,0 +1,217 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "cases": 864,
+  "passed": 66,
+  "finished": 484,
+  "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "model_sha256": "b9913159504f93fcb32daa516cffa799db05904abcdce6de1198bdf01545ac14",
+  "groups": [
+    {
+      "skill_id": "math.add.carry",
+      "gate": "independent",
+      "passed": 0,
+      "finished": 8,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.add.carry",
+      "gate": "composition",
+      "passed": 0,
+      "finished": 0,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.add.carry",
+      "gate": "transfer_recovery",
+      "passed": 0,
+      "finished": 0,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "gate": "independent",
+      "passed": 0,
+      "finished": 3,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "gate": "composition",
+      "passed": 0,
+      "finished": 0,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "gate": "transfer_recovery",
+      "passed": 0,
+      "finished": 0,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.add.signed",
+      "gate": "independent",
+      "passed": 0,
+      "finished": 19,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.add.signed",
+      "gate": "composition",
+      "passed": 0,
+      "finished": 0,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.add.signed",
+      "gate": "transfer_recovery",
+      "passed": 0,
+      "finished": 0,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.divide",
+      "gate": "independent",
+      "passed": 0,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.divide",
+      "gate": "composition",
+      "passed": 0,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.divide",
+      "gate": "transfer_recovery",
+      "passed": 1,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "independent",
+      "passed": 12,
+      "finished": 24,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "composition",
+      "passed": 10,
+      "finished": 27,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "transfer_recovery",
+      "passed": 31,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "gate": "independent",
+      "passed": 0,
+      "finished": 20,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "gate": "composition",
+      "passed": 0,
+      "finished": 0,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "gate": "transfer_recovery",
+      "passed": 0,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.multiply",
+      "gate": "independent",
+      "passed": 0,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.multiply",
+      "gate": "composition",
+      "passed": 0,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.multiply",
+      "gate": "transfer_recovery",
+      "passed": 0,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.place_value",
+      "gate": "independent",
+      "passed": 11,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.place_value",
+      "gate": "composition",
+      "passed": 0,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "math.place_value",
+      "gate": "transfer_recovery",
+      "passed": 1,
+      "finished": 32,
+      "cases": 32
+    },
+    {
+      "skill_id": "state.registers",
+      "gate": "independent",
+      "passed": 0,
+      "finished": 0,
+      "cases": 32
+    },
+    {
+      "skill_id": "state.registers",
+      "gate": "composition",
+      "passed": 0,
+      "finished": 0,
+      "cases": 32
+    },
+    {
+      "skill_id": "state.registers",
+      "gate": "transfer_recovery",
+      "passed": 0,
+      "finished": 31,
+      "cases": 32
+    }
+  ],
+  "rank": 4096,
+  "optimizer": "muon",
+  "source_training_updates": 1,
+  "training_presentations": 27,
+  "adapter_sha256": "eeb57c2fcf87109c0c81dc4f8a734da5009c06eaa31d099ebd699a2b6f5198fe",
+  "optimizer_state_sha256": "47216326280e6a6cba94204a51e824e43be9c0761e374baf6687d4ee53d87a05",
+  "independent_weight_max_error": 5.9457883061497796e-08,
+  "logit_max_error": 0.00014734268188476562,
+  "loss_error": 0.0,
+  "forward_absolute_bound": 0.0002,
+  "result_sha256": "454e6db8675afce3a4218cedb7234a7dfff2fdc5c80fabfce13476490e6c2de2",
+  "settlement_sha256": "7ad53afc331bde6cfb02aa340d5c7adb54ccf55199463d64dfba4211f1643ba3",
+  "scope": "First provisional high-rank point; one original practice input parity, whole-weight audit, frozen question panel",
+  "new_model_calls": 0,
+  "new_training_updates": 0,
+  "promoted": false
+}

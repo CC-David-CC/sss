@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "status": "IN_PROGRESS",
+  "source_sha256": {
+    "rank32-muon-update001.json": "60bc6f7c27214676f807670b8327220fdfe78d7938f03247f7654c58b672bd90",
+    "rank32-muon-update005.json": "f8d7fd3b57b5f38203e177114081ba4d8cb8cd8d3ff0d508e5a838724909d59f",
+    "rank32-update001.json": "0a4ba4e5383718273f4ffc7223d82b0276e29528ed095d49e2ac61a10891eb39",
+    "rank32-update002.json": "3219e25e169d2e932771554a5a801f247a97a7337be1c1d41f048f971a446533",
+    "rank32-update003.json": "c8aab68180af31e4d760ca412d380b4fc6ce127fb5004900e60e33c0f4285a2e",
+    "rank32-update004.json": "ba8a94cb5e407c4d0000de4f19bf88ee505d54da236d661069aeffcdb54159a4",
+    "rank32-update005.json": "f38fc01e02a7bd375c98e166c8644a54d840fcce4ff400a422d14c0822b8f4a0",
+    "rank4096-adamw-update001.json": "d614a9acf044c4c8331f844447876903927b6265511a879fa6807b27d93c6cec",
+    "rank4096-muon-update001.json": "a146f867fa73d5d6b4a9491292885a6f28ef1cd8234862417a9c3e1538ce8ed8",
+    "rank4096-muon-update005.json": "701be21d261786734ff813615bf24fcf8fc860b09870ea84c851d9efd0ed0cc1"
+  },
+  "runtime_ids": {
+    "(32, 'muon')": [
+      "08764412fc6f633b4b14b18a8f4f19bac7add741dcfa318266bd2f8986cbbe61"
+    ],
+    "(32, 'adamw')": [
+      "06659b6cd862f8eeb1428eaf7cd21c7ba50b6a5db04b3ae23c8b87d23d0df879"
+    ],
+    "(4096, 'adamw')": [
+      "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    ],
+    "(4096, 'muon')": [
+      "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd"
+    ]
+  },
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "new_model_calls": 0,
+  "interpolated_measurements": 0,
+  "original_reference_kind": "historical; different recorded runtime",
+  "plot_source_sha256": "2f8f77cb3467888e462458a129204f61725fbbac5c9ab97b532377f473ef51a9"
+}

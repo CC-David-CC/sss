@@ -1,0 +1,54 @@
+{
+    "schema":  1,
+    "kind":  "sss.historical-short-rank-references.v1",
+    "source_branch":  "feat/minicpm-update-curves-20261026",
+    "source_csv_sha256":  "ab3a495f399905fbf07efcf2eee0998ff9b6731f8a94a98097b90388e64084a7",
+    "scope":  "Existing curated history at five updates, 135 presentations; source runtime identities are missing in some historical rows. Descriptive references, not a matched-runtime causal comparison.",
+    "new_model_calls":  0,
+    "rows":  [
+                 {
+                     "arm":  "adamw-full",
+                     "update":  "5",
+                     "training_presentations":  "135",
+                     "correct_out_of_864":  "327",
+                     "natural_finishes_out_of_864":  "854",
+                     "scored_at_utc":  "2026-10-25T06:16:19+00:00",
+                     "runtime_id":  "",
+                     "source_evidence_sha256":  "",
+                     "timestamp_basis":  ""
+                 },
+                 {
+                     "arm":  "adamw-lora-r1",
+                     "update":  "5",
+                     "training_presentations":  "135",
+                     "correct_out_of_864":  "77",
+                     "natural_finishes_out_of_864":  "503",
+                     "scored_at_utc":  "2026-10-25T22:57:55.429673+00:00",
+                     "runtime_id":  "7960ca4a3a3a4dbadd8ff66e83b56e6e6cdff57076c4cab19b62205a1d221c0d",
+                     "source_evidence_sha256":  "0ce5e27b924079060b13bb7e047df0441a04b63945faf97422cf3b7b803b3612",
+                     "timestamp_basis":  "original complete result receipt mtime"
+                 },
+                 {
+                     "arm":  "adamw-lora-r16",
+                     "update":  "5",
+                     "training_presentations":  "135",
+                     "correct_out_of_864":  "282",
+                     "natural_finishes_out_of_864":  "823",
+                     "scored_at_utc":  "2026-10-25T09:49:43+00:00",
+                     "runtime_id":  "",
+                     "source_evidence_sha256":  "",
+                     "timestamp_basis":  ""
+                 },
+                 {
+                     "arm":  "muon-standard-full",
+                     "update":  "5",
+                     "training_presentations":  "135",
+                     "correct_out_of_864":  "260",
+                     "natural_finishes_out_of_864":  "835",
+                     "scored_at_utc":  "2026-10-25T06:55:43+00:00",
+                     "runtime_id":  "",
+                     "source_evidence_sha256":  "",
+                     "timestamp_basis":  ""
+                 }
+             ]
+}
