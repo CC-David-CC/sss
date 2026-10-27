@@ -150,6 +150,24 @@ python -m branchwrite learning --connection /owned/cow.json \
   advance lesson-run-001 --operation-id lesson-run-001-step-001
 ```
 
+BW also provides a bounded client driver on its
+[learning-drive branch](https://github.com/CC-David-CC/BranchWrite/tree/feat/learning-drive-20261027).
+`learning drive RUN_ID --operation-prefix OWNER_PREFIX` follows the existing
+advertised actions until one round settles, owner input is needed, or its
+explicit client bounds are reached. It uses the same CowClient journal and
+PCC state; it introduces no second workflow runtime. Supplying `--lesson-id`
+selects already admitted practice. It stops at operator-review boundaries and
+never creates lessons, adopts native completion, publishes weights or starts
+the next round on its own. See the
+[human/agent driver guide](https://github.com/CC-David-CC/BranchWrite/blob/feat/learning-drive-20261027/docs/BOUNDED-LEARNING-DRIVER.md).
+
+To qualify that driver with the real tiny-model integration, append
+`--bounded-bw-driver` to the `learning-rounds-cpu` command above. The first
+two rounds retain the original interruption controls; the final round runs
+through BW's bounded driver. Reinvoking it after completion must dispatch no
+additional work. This software check is separate from the frozen 68-update
+model comparison and does not count toward model mastery.
+
 Read status after each transition. It supplies `phase`, `revision`, and
 `available_actions`. At lesson selection, `advance` takes admitted verified
 lesson IDs. For training in progress, read the original job and use

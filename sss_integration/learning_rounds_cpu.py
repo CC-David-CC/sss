@@ -7,7 +7,7 @@ from pathlib import Path
 import argparse,json,os,subprocess,sys,threading,time,hashlib
 
 
-def run(pcc_root,bw_root,executable,output):
+def run(pcc_root,bw_root,executable,output,*,bounded_bw_driver=False):
     pcc=Path(pcc_root).resolve(strict=True);bw=Path(bw_root).resolve(strict=True)
     sys.path[:0]=[str(bw),str(pcc),str(pcc/'experimental/branching_context/src')]
     import numpy as np
@@ -84,7 +84,7 @@ def run(pcc_root,bw_root,executable,output):
     environment=dict(os.environ,PYTHONPATH=os.pathsep.join([str(bw),str(pcc),str(pcc/'experimental/branching_context/src'),str(Path(__file__).resolve().parents[1])]),BW_COW_API_KEY='private-cpu-round-key',COW_API_KEY='private-cpu-round-key')
     def cli(client,arguments,name):
         prefix=([sys.executable,'-m','branchwrite','learning','--connection',str(connection),'--state-dir',str(root/'bw-journal')] if client=='bw' else [sys.executable,'-m','tools.pcc_learning_loop','--url',url,'--state-dir',str(root/'cow-journal')])
-        done=subprocess.run([*prefix,*arguments],env=environment,capture_output=True,text=True,timeout=30)
+        done=subprocess.run([*prefix,*arguments],env=environment,capture_output=True,text=True,timeout=90 if arguments[0]=='drive' else 30)
         (root/(name+'.stdout')).write_text(done.stdout);(root/(name+'.stderr')).write_text(done.stderr)
         assert done.returncode==0,(name,done.returncode,done.stdout,done.stderr)
         return json.loads(done.stdout)
@@ -178,6 +178,10 @@ def run(pcc_root,bw_root,executable,output):
         assert sha256(baseline_path)==original_baseline_sha
         assert len(list((service.root/'learning/learning-fixture/baseline-backend').glob('observed-*.json')))==original_evaluation_files==4
         faults['baseline_commit']=True
+        if bounded_bw_driver:
+            boundary=cli('bw',['drive','learning-fixture','--operation-prefix','bounded-owner'], 'drive-needs-lessons')
+            assert boundary['status']=='NEEDS_LESSONS' and boundary['submitted_transitions']==0
+            assert not list((service.root/'runs').iterdir())
         reports=[];native_jobs=[]
         for index,prompt in enumerate(('01','02','03')):
             # Independent constant-rule teacher; exact evaluation prefixes are not admitted.
@@ -188,18 +192,29 @@ def run(pcc_root,bw_root,executable,output):
                 failed_result_sha256=digest(dict(actual_baseline=service.learning._evaluation(service.learning._run('learning-fixture'),'baseline_evaluation'))),
                 corrected_result_sha256=digest(truth),verification_sha256=digest(truth)))
             accepted=call('/cow/training/lessons',dict(operation_id='lesson-'+str(index),lesson=lesson))
-            value=step(lesson_ids=[accepted['lesson_id']]);assert value['phase'] in ('training_pending','training','candidate_pending'),value
-            if value['phase']=='training_pending':value=step('reconcile')
-            deadline=time.monotonic()+60
-            while status()['training_job']['state'] in ('queued','running'):
-                if time.monotonic()>deadline:raise TimeoutError('Original native job still active')
-                time.sleep(.02)
-            value=step('reconcile') if status()['phase'] in ('training_pending','training') else status();assert value['phase']=='candidate_pending',value
+            if bounded_bw_driver and index==2:
+                arguments=['drive','learning-fixture','--operation-prefix','bounded-round-three',
+                    '--lesson-id',accepted['lesson_id'],'--maximum-transitions','16','--maximum-seconds','60']
+                driven=cli('bw',arguments,'drive-real-native-round')
+                assert driven['status']=='ROUND_COMPLETE' and driven['submitted_transitions']>=3,driven
+                value=status();assert value==driven['server_status']
+                repeated=cli('bw',arguments,'drive-repeat-settled-round')
+                assert repeated['status']=='ROUND_COMPLETE' and repeated['submitted_transitions']==0
+            else:
+                value=step(lesson_ids=[accepted['lesson_id']]);assert value['phase'] in ('training_pending','training','candidate_pending'),value
+                if value['phase']=='training_pending':value=step('reconcile')
+                deadline=time.monotonic()+60
+                while status()['training_job']['state'] in ('queued','running'):
+                    if time.monotonic()>deadline:raise TimeoutError('Original native job still active')
+                    time.sleep(.02)
+                value=step('reconcile') if status()['phase'] in ('training_pending','training') else status();assert value['phase']=='candidate_pending',value
             native_jobs.append(value['training_job_id'])
             launch=json.loads((service.root/'runs'/value['training_job_id']/'launch.json').read_text())
             assert launch['process_identity']['start_ticks']>0 and launch['process_identity']['boot_id']
-            value=step();assert value['phase']=='report_pending',value
-            value=step();assert value['phase']=='round_complete',value;reports.append(value['last_report'])
+            if not (bounded_bw_driver and index==2):
+                value=step();assert value['phase']=='report_pending',value
+                value=step();assert value['phase']=='round_complete',value
+            reports.append(value['last_report'])
             if index==0:
                 # Close/reopen the actual service store between completed rounds.
                 reopen()
@@ -250,6 +265,7 @@ def run(pcc_root,bw_root,executable,output):
             policy_id=policy_id,reports=reports,native_job_ids=native_jobs,real_native_updates=48,both_actual_cli_clients=True,accepted_improvement_and_retained_parent_on_no_gain=True,
             actual_native_evaluation=True,controlled_scores_injected=False,training_and_evaluation_prefixes_disjoint=True,
             original_native_process_identities_recorded=True,reopened_between_rounds=True,duplicate_steps_not_retrained=True,
+            bounded_bw_driver_exercised=bounded_bw_driver,
             untrusted_scores_and_stale_revision_refused=True,base_unchanged=True,
             creation_intent_recovered_on_startup_without_model_calls=faults['creation'],
             original_start_replay_did_not_reset_progress=True,retired_policy_history_remains_readable=True,
@@ -266,4 +282,5 @@ def run(pcc_root,bw_root,executable,output):
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ('pcc-root','bw-root','executable','output'):parser.add_argument('--'+name,type=Path,required=True)
-    args=parser.parse_args();run(args.pcc_root,args.bw_root,args.executable,args.output)
+    parser.add_argument('--bounded-bw-driver',action='store_true',help='Exercise BW drive on the final native round, preserving the existing recovery controls')
+    args=parser.parse_args();run(args.pcc_root,args.bw_root,args.executable,args.output,bounded_bw_driver=args.bounded_bw_driver)
