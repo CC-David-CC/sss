@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "path": "BW CowClient HTTP -> PCC LessonService",
+  "policy_id": "da9659760ded46c5593da66cf44f8d08c1d32df4c691c6d8f0ff37d9262f3567",
+  "admitted_lessons": 128,
+  "verified_action_lessons": 4,
+  "fresh_review_lessons": 124,
+  "exact_lesson_ids_sha256": "0cf71561301e1f15578ca6eb64e07e171cd8ea14eb9fe63014c582ff3613a47c",
+  "repeat_operation_returns_original_receipt": true,
+  "native_dispatch_calls": 0,
+  "model_calls": 0,
+  "training_updates": 0,
+  "learning_run_created": false,
+  "policy_installation_sha256": "2bc707bc27cac08f0ec440e3e6d2746320746171dd4dc00e8d3a28efc62ae6d7",
+  "lesson_evidence_sha256": "82ec86de6fe7e367bdba33b5aba1d48200ec2d9f5e067b57bc6ae067335e6e6c",
+  "source_sha256": "93838c0a6b40755b0b90db59808c386bab15f6994395aefb3fa02d11aa15bd5d"
+}

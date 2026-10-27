@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "assessment_panels_unchanged": 3,
+  "fresh_review_examples": 124,
+  "verified_action_examples": 4,
+  "total_verified_lessons": 128,
+  "policy_id": "da9659760ded46c5593da66cf44f8d08c1d32df4c691c6d8f0ff37d9262f3567",
+  "selected_lesson_ids_sha256": "0cf71561301e1f15578ca6eb64e07e171cd8ea14eb9fe63014c582ff3613a47c",
+  "new_training_updates": 0,
+  "model_calls": 0,
+  "base_sha256": "ce673b360122f1be1bda4c1de2903efbd72d031e910d64e817e83362b20791fb",
+  "base_is_original_retained_parent": true,
+  "frozen_training_batch_size": 128,
+  "native_training_dispatched": false
+}

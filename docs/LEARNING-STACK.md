@@ -135,6 +135,30 @@ one verified BW lesson plus one fresh review lesson. It records zero model calls
 and zero weight updates. These checks establish installation and lesson-admission
 mechanics, not model learning or retention quality.
 
+## Real 128-lesson preparation and HTTP admission
+
+A later llm-60 installation used the retained working parent and kept all three
+existing assessment bindings unchanged. It selected **124 fresh, independently
+checked foundation examples and four verified BW action lessons**. The new
+policy has a 128-lesson batch; the earlier 31-lesson policy correctly refused
+that selection. The initial configuration-permission refusal was also preserved
+and corrected before continuing. Neither refusal was treated as model failure.
+
+The [installation receipt](results/independent-review-20261027/next-block-installation.json)
+records the fixed assessment and exact selected-lesson digest. The subsequent
+[HTTP admission receipt](results/independent-review-20261027/next-block-http-admission.json)
+records all 128 lessons passing through the real **BW CowClient → PCC
+LessonService** path. Stored lesson content matched the installed selection;
+reusing the first operation ID returned its original receipt. A runner that
+raises on native dispatch recorded zero calls. No learning run was created,
+no inference occurred, and no weights changed.
+
+This proves the larger lesson-selection and API-admission path, not improved
+model behavior. Before training, install the frozen learning policy with the
+actual native runner, preserve its source closure, and use a separate explicit
+learning-run operation. The batch recipe and assessment identities belong to
+that policy; do not change an active policy or reinterpret the old 31-lesson run.
+
 ## API and inference source identities
 
 The owner-side PCC API and the qualified inference execution checkout may be
