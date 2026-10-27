@@ -86,6 +86,55 @@ when aggregate learning improves. Per-panel reports preserve those outcomes.
 working-parent decision and strict qualification remain separate, and the
 student cannot promote its own candidate.
 
+## Fresh review practice with a fixed assessment
+
+An owner can install fresh foundation practice without replacing the retention
+panel. Replace only the review entry in `practice`:
+
+```json
+{
+  "provider_id": "mixed-review",
+  "role": "review",
+  "kind": "foundation-practice-pack",
+  "panel_id": "foundations",
+  "configuration": "/owner/fresh-review.json"
+}
+```
+
+`panel_id` names the existing `cow-foundations` assessment anchor.
+`configuration` is a private owner file in the existing `CowLearningEvaluator`
+format: a checked pack, rendered development definitions, model/tokenizer,
+qualified execution profile and explicit execution limits. Its extra evaluator
+validates and renders practice; it is not added to the assessment panels and its
+development definitions do not replace the anchor's protected questions.
+
+The fresh provider exposes only its checked practice lessons. It requires the
+same immutable base, model contract, tokenizer, checker and renderer as the
+anchor. It refuses practice exercise identities or exact prompt text reused
+from the anchor's development or qualification partitions. This is an exact
+overlap guard, not a semantic paraphrase detector. Owner configuration bytes,
+practice membership and anchor bindings are rechecked before use.
+
+Install a new configuration for a new curriculum. Changing the bytes of a
+configuration used by an existing policy invalidates that policy; it does not
+silently update an active learning run. BW verified target lessons and the
+target/review batch minima continue to apply. PCC remains responsible for the
+native training job, candidate and decision.
+
+Use a Python environment containing both the declared BW tool dependencies and
+PCC tokenizer dependencies for the joined installation. An inference-only
+environment is insufficient for real BW lesson capture. The optional CPU
+installation check uses actual BW tools and PCC lesson admission with a scripted
+teacher; it explicitly prohibits model inference and native training.
+
+The fresh-review path passed 17 controlled factory checks and the real joined
+CPU installation check on source bytes matching the published Git content.
+The [sanitized qualification receipt](results/independent-review-20261027/qualification.json)
+records the source hashes, three unchanged assessment bindings and admission of
+one verified BW lesson plus one fresh review lesson. It records zero model calls
+and zero weight updates. These checks establish installation and lesson-admission
+mechanics, not model learning or retention quality.
+
 ## API and inference source identities
 
 The owner-side PCC API and the qualified inference execution checkout may be

@@ -147,10 +147,54 @@ class InstalledLearningStackCPUTests(unittest.TestCase):
             policy.validate_lessons(records,None)
             with self.assertRaisesRegex(ValueError,'target/review mix'):policy.validate_lessons(records[:1],None)
         self.assertEqual(runner.launches,0)
+        # Install fresh review practice without moving the protected assessment.
+        old_prompts={row['prompt'] for row in pack['exercises']}
+        for fresh_seed in range(2026102702,2026102802):
+            fresh_pack=build_pack(['math.add.no_carry'],seed=fresh_seed,practice_per_gate=2,
+                checks_per_gate=1,generation_profile='without-replacement-v1')
+            if not any(row['prompt'] in old_prompts for row in fresh_pack['exercises']):break
+        else:self.fail('Could not build a disjoint fresh review fixture')
+        write(root/'fresh-practice-pack.json',fresh_pack)
+        fresh_cases=[]
+        for raw in fresh_pack['exercises']:
+            if raw['split']!='development':continue
+            e=Exercise(**raw)
+            prefix=Service.encode_prompt(foundation.encoder,[dict(role='system',content=SYSTEM),
+                dict(role='user',content=e.prompt)],None,dict(enable_thinking=False,add_generation_prompt=True))
+            fresh_cases.append(dict(exercise=asdict(e),exercise_id=e.identity,prefix_tokens=list(prefix)))
+        fresh_data=dict(data,pack_id=fresh_pack['pack_id'],cases=fresh_cases)
+        fresh_data.pop('evaluation_id');fresh_data['evaluation_id']=digest(fresh_data)
+        write(root/'fresh-review-cases.json',fresh_data)
+        fresh_review=dict(review,cases=str(root/'fresh-review-cases.json'),
+            evaluation_id=fresh_data['evaluation_id'],practice_pack=str(root/'fresh-practice-pack.json'))
+        write(root/'fresh-review.json',fresh_review)
+        fresh_config=copy.deepcopy(config)
+        fresh_config['practice'][1]=dict(provider_id='mixed-review',role='review',
+            kind='foundation-practice-pack',panel_id='retention',configuration=str(root/'fresh-review.json'))
+        write(root/'fresh-stack.json',fresh_config)
+        fresh_policies=configured_policies(root/'fresh-stack.json',runner,profile,tokenizer)
+        fresh_id,fresh_policy=next(iter(fresh_policies.items()));fresh_policy.verify()
+        self.assertEqual(fresh_policy.evaluator._panels[-1][2].binding(),policy.evaluator._panels[-1][2].binding())
+        self.assertEqual(len(fresh_policy.evaluator._panels),3)
+        self.assertIn(str(root/'fresh-review.json'),fresh_policy.evaluator.binding()['sources_sha256'])
+        fresh_values=fresh_policy.evaluator.lessons()
+        fresh_lesson=next(v for v in fresh_values if digest(v)!=exported.lesson_id)
+        self.assertNotIn(digest(fresh_lesson),{digest(v) for v in values})
+        with closing(LessonService(root/'fresh-service',contract,tokenizer.encode,runner,max_tokens=512,max_steps=2,
+                sequence_profile='dense-llama-short-v1',rendered_tokenize=lambda text:tokenizer.encode(text,parse_special=True),
+                learning_policies=fresh_policies))as service:
+            records=[]
+            for index,value in enumerate([code,fresh_lesson]):
+                receipt=service.submit('/cow/training/lessons',dict(operation_id='fresh-install-'+str(index),lesson=value))
+                records.append(service.lesson(receipt['lesson_id']))
+            fresh_policy.validate_lessons(records,None)
+        self.assertEqual(runner.launches,0)
         write(root/'result-private.json',dict(schema=1,status='PASS',policy_id=policy_id,
             admitted_exact_lessons=2,actual_panel_bindings=3,development_review_cases=len(cases),
             native_or_model_calls=0,weights_updated=False,scores_exercised=False,
-            scope='Real archive/oracle/renderer/configuration/lesson-admission installation; scripted teacher, no model learning'))
+            fresh_policy_id=fresh_id,fresh_review_seed=fresh_seed,fixed_assessment_unchanged=True,
+            fresh_review_lessons_admitted=1,
+            scope='Real archive/oracle/renderer/configuration/lesson-admission installation including fresh review; scripted teacher, no model learning'))
 
 
 if __name__=='__main__':unittest.main()

@@ -55,6 +55,12 @@ def _configuration(value):
                     or row['panel_id']not in names
                     or next(r['kind']for r in value['panels']if r['panel_id']==row['panel_id'])!='cow-foundations'):
                 raise ValueError('Foundation review must name an installed foundations panel')
+        elif kind=='foundation-practice-pack':
+            if (set(row)!={'provider_id','role','kind','panel_id','configuration'}or row['role']!='review'
+                    or row['panel_id']not in names
+                    or next(r['kind']for r in value['panels']if r['panel_id']==row['panel_id'])!='cow-foundations'
+                    or type(row['configuration'])is not str or not Path(row['configuration']).is_absolute()):
+                raise ValueError('Independent foundation practice requires an owner configuration and installed assessment anchor')
         else:raise ValueError('Unknown practice provider; modules and client-supplied checkers are unsupported')
     if {r['role']for r in value['practice']}!={'target','review'}:
         raise ValueError('Target practice and mixed review must both be installed')
@@ -74,13 +80,17 @@ def _configuration(value):
 
 class FoundationPractice:
     """Read only the verified practice partition of an installed COW panel."""
-    def __init__(self,evaluator):
+    def __init__(self,evaluator,*,assessment_anchor=None):
         self.evaluator=evaluator
+        self.assessment_anchor=assessment_anchor
+        self._anchor_bound=None if assessment_anchor is None else copy.deepcopy(assessment_anchor.binding())
         self._bound=copy.deepcopy(evaluator.binding())
         self._lessons=copy.deepcopy(evaluator.allowed_lessons)
         self._binding=dict(schema=1,kind='sss.foundation-review-provider.v1',
             model_contract_id=evaluator.model_contract,evaluator=self._bound,
             checked_practice_lesson_ids=sorted(self._lessons),implementation_sha256=file_sha256(__file__))
+        if assessment_anchor is not None:
+            self._binding.update(kind='sss.independent-foundation-review-provider.v1',assessment_anchor=self._anchor_bound)
         self.verify()
 
     def binding(self):return copy.deepcopy(self._binding)
@@ -91,6 +101,24 @@ class FoundationPractice:
                 or self.evaluator.allowed_lessons!=self._lessons
                 or file_sha256(__file__)!=self._binding['implementation_sha256']):
             raise ValueError('Installed foundation review source/membership changed')
+        if self.assessment_anchor is not None:
+            anchor=self.assessment_anchor
+            anchor.verify()
+            if canonical(anchor.binding())!=canonical(self._anchor_bound):
+                raise ValueError('Independent practice assessment anchor changed')
+            for key in ('base','model','model_contract','tokenizer_id','checker'):
+                if getattr(self.evaluator,key)!=getattr(anchor,key):
+                    raise ValueError('Independent practice model/tokenizer/checker differs from assessment anchor')
+            if self.evaluator.data['renderer_sha256']!=anchor.data['renderer_sha256']:
+                raise ValueError('Independent practice renderer differs from assessment anchor')
+            # The extra evaluator validates and renders practice only. Its own
+            # development partition never replaces or adds an assessment panel.
+            protected=[row for row in anchor.pack['exercises']if row['split']!='practice']
+            protected_ids={digest(row)for row in protected}
+            protected_texts={row['prompt']for row in protected}
+            for row in self.evaluator.pack['exercises']:
+                if row['split']=='practice'and(digest(row)in protected_ids or row['prompt']in protected_texts):
+                    raise ValueError('Independent practice overlaps protected assessment or qualification prompts')
 
     def lessons(self):
         self.verify();return [copy.deepcopy(self._lessons[k])for k in sorted(self._lessons)]
@@ -176,7 +204,11 @@ def configured_learning_stack(path,native,serving_profile,tokenizer):
             for registration in provider.binding()['registrations']:
                 if registration['owner']['baseline_source_sha256']in protected:
                     raise ValueError('Protected assessment source cannot become practice')
-        else:provider=FoundationPractice(by_name[row['panel_id']])
+        elif row['kind']=='foundation-practice':provider=FoundationPractice(by_name[row['panel_id']])
+        else:
+            installed=read(row['configuration'])
+            proposed=CowLearningEvaluator(installed,native,serving_profile,tokenizer)
+            provider=FoundationPractice(proposed,assessment_anchor=by_name[row['panel_id']])
         providers.append((row['provider_id'],provider));roles[row['provider_id']]=row['role']
     evaluator=InstalledLearningPanels(panels,providers,model_contract_id=serving_profile['model_contract_id'],
         documents=documents,roles=roles,mix=config['practice_mix'])

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "kind": "sss.independent-foundation-review-installation.v1",
+  "source_sha256": {
+    "sss/adapters/learning_stack.py": "3aac3820542a4897b0288dc6f50d1d88d06362941488b889d4d0ccf8674d6158",
+    "sss_tests/test_learning_stack.py": "0b7138d92c89483fe55552e81b7c7f74d3f4f37ab863f5a95812e5ff5b9521cd",
+    "sss_integration/test_learning_stack_cpu.py": "f614771f78a7789118320e768a188c1ccd4c918a6b0e56c3ca0c0ad37a22cafc"
+  },
+  "controlled_factory_checks": 17,
+  "real_joined_installation_checks": 1,
+  "actual_panel_bindings": 3,
+  "admitted_target_lessons": 1,
+  "admitted_fresh_review_lessons": 1,
+  "fixed_assessment_unchanged": true,
+  "teacher": "Scripted synthetic BW correction; actual tools and independent oracle",
+  "native_or_model_calls": 0,
+  "weights_updated": false,
+  "scores_exercised": false,
+  "model_learning_claim": false,
+  "policy_id": "f0fc1d5b5359c1a6165703594c146efdb7f47fbc816ecabaf5627c440bb0b425",
+  "fresh_policy_id": "d17650b2da553e27fe4e5441643f36b7f8ee3e0010e368121fdc1f3d17db5243",
+  "installation_receipt_sha256": "714ae795ef07cf42e22e2b34f0e6d0c984ef25c871dcc3eee1c06963889c4341",
+  "installation_exit_sha256": "497f08fcf5c0d2d2ba9cbdc1ef65b5170c6016e73b602a040c1822d07fb52174",
+  "factory_test_log_sha256": "c10690327be388ad59bd69d37c08df56f3e0d97b6566284fe20145f54211bd0a"
+}

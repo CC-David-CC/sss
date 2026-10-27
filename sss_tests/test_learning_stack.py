@@ -155,5 +155,72 @@ class LearningStackTests(unittest.TestCase):
         self.assertIn(str(self.root/'approved.json'),bound['sources_sha256'])
         self.assertFalse(policy.describe().get('promoted',False))
 
+    def independent_review(self):
+        """Controlled factory inputs, not a real model or renderer proof."""
+        anchor=self.panels['retention']
+        anchor.tokenizer_id='tokenizer';anchor.checker='checker'
+        anchor.data=dict(renderer_sha256='renderer')
+        anchor.pack=dict(exercises=[dict(split='development',prompt='protected development'),
+            dict(split='qualification',prompt='protected qualification')])
+        fresh=ControlledFoundation('fresh-practice',self.model)
+        fresh.tokenizer_id=anchor.tokenizer_id;fresh.checker=anchor.checker
+        fresh.data=copy.deepcopy(anchor.data)
+        fresh.pack=dict(exercises=[dict(split='practice',prompt='fresh independent practice')])
+        value=lesson('fresh independent practice')
+        fresh.allowed_lessons={digest(value):value}
+        self.write(self.root/'fresh.json',dict(controlled_fresh=True))
+        self.config['practice'][1]=dict(provider_id='mixed-review',role='review',
+            kind='foundation-practice-pack',panel_id='retention',configuration=str(self.root/'fresh.json'))
+        self.save()
+        return anchor,fresh
+
+    def install_independent(self,fresh):
+        with patch('sss.adapters.cow_learning.CowLearningEvaluator',side_effect=lambda config,*args:
+                fresh if config.get('controlled_fresh') else self.panels['retention']):
+            return self.policy()
+
+    def test_fresh_practice_does_not_replace_protected_assessment_panel(self):
+        anchor,fresh=self.independent_review();policy=self.install_independent(fresh)
+        self.assertIs(policy.evaluator._panels[-1][2],anchor)
+        self.assertEqual(len(policy.evaluator._panels),3)
+        values=policy.evaluator.lessons()
+        self.assertIn(next(iter(fresh.allowed_lessons.values())),values)
+        self.assertNotIn(next(iter(anchor.allowed_lessons.values())),values)
+        policy.validate_lessons(self.records(policy),None)
+        self.assertIn(str(self.root/'fresh.json'),policy.evaluator.binding()['sources_sha256'])
+
+    def test_independent_review_cannot_use_protected_development_or_qualification_prompt(self):
+        anchor,fresh=self.independent_review()
+        for row in anchor.pack['exercises']:
+            fresh.pack['exercises'][0]['prompt']=row['prompt']
+            with self.subTest(split=row['split']),self.assertRaisesRegex(ValueError,'overlaps protected'):
+                self.install_independent(fresh)
+
+    def test_independent_review_rechecks_model_tokenizer_checker_and_renderer(self):
+        for field in ('base','model','model_contract','tokenizer_id','checker','renderer'):
+            anchor,fresh=self.independent_review();policy=self.install_independent(fresh)
+            if field=='renderer':fresh.data['renderer_sha256']='changed'
+            elif field=='model':fresh.model=self.root/'different-model'
+            else:setattr(fresh,field,'changed')
+            with self.subTest(field=field),self.assertRaises(ValueError):policy.verify()
+
+    def test_independent_review_keeps_anchor_and_configuration_immutable(self):
+        anchor,fresh=self.independent_review();policy=self.install_independent(fresh)
+        anchor.source_version+=1
+        with self.assertRaisesRegex(ValueError,'binding changed|anchor changed'):policy.verify()
+        anchor.source_version-=1;policy=self.install_independent(fresh)
+        self.write(self.root/'fresh.json',dict(controlled_fresh=True,changed=True))
+        with self.assertRaises(ValueError):policy.verify()
+
+    def test_independent_review_requires_owner_path_review_role_and_foundation_anchor(self):
+        for defect in ('path','role','anchor','extra'):
+            anchor,fresh=self.independent_review();row=self.config['practice'][1]
+            if defect=='path':row['configuration']='relative.json'
+            elif defect=='role':row['role']='target'
+            elif defect=='anchor':row['panel_id']='target'
+            else:row['module']='untrusted.module'
+            self.save()
+            with self.subTest(defect=defect),self.assertRaises(ValueError):self.install_independent(fresh)
+
 
 if __name__=='__main__':unittest.main()
