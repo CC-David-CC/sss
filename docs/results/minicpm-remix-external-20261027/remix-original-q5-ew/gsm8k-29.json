@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:29",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the cost of the boots, let's break down the information given in the problem step by step.\n\n1.  **Identify the cost of the high heels:**\n    *   One pair of heels costs $\\$33$.\n    *   The other pair costs twice as much as the first pair.\n    *   Cost of the second pair = $2 \\times 33 = \\$66$.\n\n2.  **Calculate the total cost of the two pairs of high heels:**\n    *   Total heels cost = $\\$33 + \\$66 = \\$99$.\n\n3.  **Relate the cost of the heels to the cost of the boots:**\n    *   The problem states that the two pairs of high heels cost $\\$5$ less than the boots.\n    *   Let $B$ be the cost of the boots.\n    *   The cost of the heels is $(B - 5)$.\n\n4.  **Set up the equation:**\n    *   We know the total cost of the heels is $\\$99$.\n    *   Therefore, $B - 5 = 99$.\n\n5.  **Solve for the cost of the boots ($B$):**\n    *   $B = 99 + 5$\n    *   $B = 104$\n\nThe boots cost $\\$104$.\n\n####104"
+        }
+      }
+    ],
+    "created": 1793084483,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 271,
+      "prompt_tokens": 88,
+      "total_tokens": 359,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-4tj58jiUtsf2rbEh4QdM8Oc522luOGyi",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 84,
+      "prompt_ms": 14.404,
+      "prompt_per_token_ms": 0.17147619047619048,
+      "prompt_per_second": 5831.71341294085,
+      "predicted_n": 271,
+      "predicted_ms": 1910.349,
+      "predicted_per_token_ms": 7.075366666666667,
+      "predicted_per_second": 141.3354313792925
+    }
+  },
+  "seconds": 1.9385089972056448
+}

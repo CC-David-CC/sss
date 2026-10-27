@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:24",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the original price of the book, we can set up an equation based on the information given.\n\nLet $P$ be the original price of the book.\nThe problem states that the book was sold with a 25% discount.\nThis means the sale price is equal to the original price minus 25% of the original price.\nMathematically, this can be expressed as:\n$\\text{Sale Price} = P - 0.25P$\n$\\text{Sale Price} = 0.75P$\n\nWe are given that the sale price (what Kyle paid) is $19.50.\nSo, we can set up the equation:\n$0.75P = 19.50$\n\nNow, we solve for $P$:\n$P = \\frac{19.50}{0.75}$\n\nTo make the division easier, we can multiply the numerator and the denominator by 100 to remove the decimals:\n$P = \\frac{1950}{75}$\n\nNext, we perform the division:\n$1950 \\div 75$\n\nWe can simplify this by dividing both numbers by 25:\n$1950 \\div 25 = 78$\n$75 \\div 25 = 3$\n\nSo, the equation becomes:\n$P = \\frac{78}{3}$\n$P = 26$\n\nThe original price of the book was $26.\n\n####26"
+        }
+      }
+    ],
+    "created": 1793084481,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 287,
+      "prompt_tokens": 58,
+      "total_tokens": 345,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-IBqyzPQcCF09Yf0md7e8jB9UR3yk0gXs",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 54,
+      "prompt_ms": 12.532,
+      "prompt_per_token_ms": 0.23207407407407407,
+      "prompt_per_second": 4308.969039259496,
+      "predicted_n": 287,
+      "predicted_ms": 1644.235,
+      "predicted_per_token_ms": 5.7490734265734265,
+      "predicted_per_second": 173.9410729001633
+    }
+  },
+  "seconds": 1.6728368056938052
+}

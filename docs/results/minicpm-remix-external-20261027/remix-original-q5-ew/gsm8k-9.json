@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:9",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find Eliza's total earnings for the week, we need to calculate her regular pay for the first 40 hours and her overtime pay for the remaining hours.\n\n1.  **Calculate Regular Pay:**\n    *   Regular rate: $\\$10$ per hour.\n    *   Regular hours worked: $40$ hours.\n    *   Regular earnings = $40 \\text{ hours} \\times \\$10/\\text{hour} = \\$400$.\n\n2.  **Calculate Overtime Pay:**\n    *   Total hours worked: $45$ hours.\n    *   Overtime hours: $45 - 40 = 5$ hours.\n    *   Overtime rate: $1.2$ times the regular rate.\n    *   Overtime rate per hour = $1.2 \\times \\$10 = \\$12$.\n    *   Overtime earnings = $5 \\text{ hours} \\times \\$12/\\text{hour} = \\$60$.\n\n3.  **Calculate Total Earnings:**\n    *   Total earnings = Regular earnings + Overtime earnings.\n    *   Total earnings = $\\$400 + \\$60 = \\$460$.\n\n####460"
+        }
+      }
+    ],
+    "created": 1793084477,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 243,
+      "prompt_tokens": 77,
+      "total_tokens": 320,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-JSW2SITMSfFP8HroU8xzybph8cWsRa91",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 73,
+      "prompt_ms": 13.534,
+      "prompt_per_token_ms": 0.1853972602739726,
+      "prompt_per_second": 5393.82296438599,
+      "predicted_n": 243,
+      "predicted_ms": 1371.002,
+      "predicted_per_token_ms": 5.665297520661157,
+      "predicted_per_second": 176.51323630454223
+    }
+  },
+  "seconds": 1.3952429718337953
+}

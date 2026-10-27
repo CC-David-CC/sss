@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:2",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the profit, we need to determine the final value of the house and compare it to the total amount of money Josh spent.\n\n1.  **Calculate the initial cost and total investment:**\n    *   Purchase price: $\\$80,000$\n    *   Repair cost: $\\$50,000$\n    *   Total money spent: $\\$80,000 + \\$50,000 = \\$130,000$\n\n2.  **Calculate the final value of the house:**\n    *   The problem states that the repairs increased the value of the house by $150\\%$.\n    *   This increase is calculated based on the *original* value of the house ($\\$80,000$).\n    *   Increase amount = $150\\% \\text{ of } \\$80,000 = 1.5 \\times 80,000 = \\$120,000$.\n    *   Final value of the house = Original Value + Increase Amount\n    *   Final value = $\\$80,000 + \\$120,000 = \\$200,000$.\n\n3.  **Calculate the profit:**\n    *   Profit is the Final Value minus the Total Money Spent.\n    *   Profit = $\\$200,000 - \\$130,000 = \\$70,000$.\n\n####$70,000"
+        }
+      }
+    ],
+    "created": 1793084477,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 263,
+      "prompt_tokens": 70,
+      "total_tokens": 333,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-5guLDWY7Jw2hAkbQpOZgLsDcSaSfApo8",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 70,
+      "prompt_ms": 70.688,
+      "prompt_per_token_ms": 1.0098285714285715,
+      "prompt_per_second": 990.2670891806247,
+      "predicted_n": 263,
+      "predicted_ms": 1443.081,
+      "predicted_per_token_ms": 5.507942748091603,
+      "predicted_per_second": 181.55599027358826
+    }
+  },
+  "seconds": 1.5217763339169323
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:20",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "We have 10 liters of orange drink that is two-thirds water. So the amount of water in the orange drink is:\n\n10 liters * (2/3) = 20/3 liters \u2248 6.666... liters.\n\nThe rest of the orange drink is non-water (sugars, etc.), but we only care about water.\n\nWe have 15 liters of pineapple drink that is three-fifths water. So the amount of water in the pineapple drink is:\n\n15 liters * (3/5) = 9 liters.\n\nNow, we pour the orange drink into the pineapple drink, but we spill 1 liter of the orange drink. So the amount of orange drink we actually pour is:\n\n10 liters - 1 liter = 9 liters.\n\nThe amount of water in the orange drink we pour is:\n\n(2/3) * 9 liters = 6 liters.\n\nThe amount of non-water in the orange drink we pour is:\n\n(1/3) * 9 liters = 3 liters.\n\nSo the total amount of liquid we pour is 9 liters, and the total amount of water we add is:\n\n6 liters (from orange drink) + 9 liters (from pineapple drink) = 15 liters.\n\nThe total amount of liquid in the mixture is:\n\n9 liters (from orange drink) + 15 liters (from pineapple drink) = 24 liters.\n\nSo the total amount of water in the mixture is 15 liters.\n\nThe answer is 15.\n\n#### 15"
+        }
+      }
+    ],
+    "created": 1793084481,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 322,
+      "prompt_tokens": 79,
+      "total_tokens": 401,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-KGzkSLFzu75j7VenHIFkHwJBPJyIsNUC",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 75,
+      "prompt_ms": 15.034,
+      "prompt_per_token_ms": 0.20045333333333334,
+      "prompt_per_second": 4988.6922974590925,
+      "predicted_n": 322,
+      "predicted_ms": 1830.737,
+      "predicted_per_token_ms": 5.703230529595015,
+      "predicted_per_second": 175.33922130813983
+    }
+  },
+  "seconds": 1.8561204080469906
+}

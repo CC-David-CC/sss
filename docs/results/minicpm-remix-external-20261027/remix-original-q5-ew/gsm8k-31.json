@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:31",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the average guess, we first need to determine the three numbers guessed by Gunter's friends.\n\n1.  **First guess:** The first friend says there are **80** jelly beans.\n2.  **Second guess:** The second friend says there are \"20 more than half the first one\".\n    *   Half of 80 is $80 / 2 = 40$.\n    *   20 more than 40 is $40 + 20 = 60$.\n    *   So, the second guess is **60**.\n3.  **Third guess:** The third friend says there are \"25% more than the first one\".\n    *   25% of 80 is $0.25 \\times 80 = 20$.\n    *   20 more than 80 is $80 + 20 = 100$.\n    *   So, the third guess is **100**.\n\nNow, we calculate the average of these three numbers (80, 60, and 100).\n\n*   Sum of guesses: $80 + 60 + 100 = 240$.\n*   Number of guesses: 3.\n*   Average: $240 / 3 = 80$.\n\n####80"
+        }
+      }
+    ],
+    "created": 1793084483,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 249,
+      "prompt_tokens": 81,
+      "total_tokens": 330,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-MUwcBhWIcygmsiUa0jzfvxMPlBrE0LLp",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 77,
+      "prompt_ms": 13.523,
+      "prompt_per_token_ms": 0.17562337662337663,
+      "prompt_per_second": 5694.002810027361,
+      "predicted_n": 249,
+      "predicted_ms": 1742.676,
+      "predicted_per_token_ms": 7.026919354838709,
+      "predicted_per_second": 142.30987286219585
+    }
+  },
+  "seconds": 1.7685122448019683
+}

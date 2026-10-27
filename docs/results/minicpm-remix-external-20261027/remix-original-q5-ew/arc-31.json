@@ -1,0 +1,41 @@
+{
+  "case_id": "arc:31",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "C"
+        }
+      }
+    ],
+    "created": 1793084482,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 2,
+      "prompt_tokens": 78,
+      "total_tokens": 80,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-hPJ149b4NhpkIEmdndrZom4ZbjgjkYZY",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 74,
+      "prompt_ms": 13.011,
+      "prompt_per_token_ms": 0.17582432432432432,
+      "prompt_per_second": 5687.4951963723015,
+      "predicted_n": 2,
+      "predicted_ms": 5.948,
+      "predicted_per_token_ms": 5.948,
+      "predicted_per_second": 168.12373907195695
+    }
+  },
+  "seconds": 0.031242813915014267
+}

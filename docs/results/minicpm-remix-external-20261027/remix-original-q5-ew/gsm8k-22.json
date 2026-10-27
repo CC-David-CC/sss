@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:22",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the total number of DVDs Billy sold, we can break down the sales by customer groups:\n\n1.  **First 3 customers:** Each buys 1 DVD.\n    $3 \\text{ customers} \\times 1 \\text{ DVD} = 3 \\text{ DVDs}$\n\n2.  **Next 2 customers:** Each buys 2 DVDs.\n    $2 \\text{ customers} \\times 2 \\text{ DVDs} = 4 \\text{ DVDs}$\n\n3.  **Last 3 customers:** Each buys 0 DVDs.\n    $3 \\text{ customers} \\times 0 \\text{ DVDs} = 0 \\text{ DVDs}$\n\nNow, we add the total from each group:\n$3 + 4 + 0 = 7$\n\nBilly sold 7 DVDs on Tuesday.\n\n####7"
+        }
+      }
+    ],
+    "created": 1793084480,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 179,
+      "prompt_tokens": 76,
+      "total_tokens": 255,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-0AiC7Rqw5l5uSB9vLZBIrMNYpDRnjcBt",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 72,
+      "prompt_ms": 13.613,
+      "prompt_per_token_ms": 0.18906944444444443,
+      "prompt_per_second": 5289.061926100052,
+      "predicted_n": 179,
+      "predicted_ms": 1026.093,
+      "predicted_per_token_ms": 5.764567415730338,
+      "predicted_per_second": 173.47355454135248
+    }
+  },
+  "seconds": 1.0543512031435966
+}

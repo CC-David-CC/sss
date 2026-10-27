@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:25",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the number of boxes of pizza Marie ordered, we need to calculate the total cost of the other items and subtract that from the total amount paid. Then, we divide the remaining amount by the cost of one box of pizza.\n\n**Step 1: Calculate the cost of the chicken meal.**\nMarie ordered 1 chicken meal at $12.\n$$1 \\times \\$12 = \\$12$$\n\n**Step 2: Calculate the cost of the milk.**\nMarie ordered 5 packs of milk at $3 each.\n$$5 \\times \\$3 = \\$15$$\n\n**Step 3: Calculate the cost of the apples.**\nMarie ordered 4 apples at $1.50 each.\n$$4 \\times \\$1.50 = \\$6.00$$\n\n**Step 4: Calculate the total cost of the known items.**\n$$\\$12 + \\$15 + \\$6.00 = \\$33.00$$\n\n**Step 5: Determine the remaining amount for the pizza.**\nMarie paid a total of $50.\n$$\\text{Remaining Amount} = \\text{Total Paid} - \\text{Cost of Known Items}$$\n$$\\text{Remaining Amount} = \\$50 - \\$33.00 = \\$17.00$$\n\n**Step 6: Calculate the number of pizza boxes.**\nEach box of pizza costs $8.50. Let $x$ be the number of boxes.\n$$x \\times \\$8.50 = \\$17.00$$\n$$x = \\frac{\\$17.00}{\\$8.50}$$\n$$x = 2$$\n\nMarie ordered 2 boxes of pizza.\n\n####2"
+        }
+      }
+    ],
+    "created": 1793084482,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 335,
+      "prompt_tokens": 84,
+      "total_tokens": 419,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-fXKwaI26nZyVH25i56PUTwyWva6XhFr1",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 80,
+      "prompt_ms": 13.678,
+      "prompt_per_token_ms": 0.17097500000000002,
+      "prompt_per_second": 5848.8083053077935,
+      "predicted_n": 335,
+      "predicted_ms": 2258.998,
+      "predicted_per_token_ms": 6.763467065868263,
+      "predicted_per_second": 147.85316321661196
+    }
+  },
+  "seconds": 2.2890236331149936
+}

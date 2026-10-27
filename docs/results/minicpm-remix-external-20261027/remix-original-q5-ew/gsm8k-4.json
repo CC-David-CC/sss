@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:4",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the number of cups of feed needed for the final meal, we first determine the total amount of feed required for all meals based on the number of chickens and the feed per chicken per meal.\n\n1.  **Calculate the feed required per chicken per meal:**\n    The problem states that Wendi feeds each chicken 3 cups of mixed chicken feed in each meal.\n\n2.  **Calculate the total feed required for the flock in one meal:**\n    There are 20 chickens.\n    Total feed per meal = $20 \\text{ chickens} \\times 3 \\text{ cups/chicken} = 60 \\text{ cups}$.\n\n3.  **Calculate the total feed given in the morning and afternoon:**\n    *   Morning feed given: 15 cups.\n    *   Afternoon feed given: 25 cups.\n    *   Total feed given so far = $15 + 25 = 40 \\text{ cups}$.\n\n4.  **Determine the total feed needed for the entire day:**\n    Since there are three meals in total (morning, afternoon, and final), and each meal requires 60 cups for the flock:\n    Total feed needed for the day = $60 \\text{ cups/meal} \\times 3 \\text{ meals} = 180 \\text{ cups}$.\n\n5.  **Calculate the feed needed for the final meal:**\n    Subtract the feed already given from the total feed needed.\n    Feed needed for final meal = Total feed needed - Feed given so far\n    Feed needed for final meal = $180 \\text{ cups} - 40 \\text{ cups} = 140 \\text{ cups}$.\n\n####140"
+        }
+      }
+    ],
+    "created": 1793084477,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 344,
+      "prompt_tokens": 128,
+      "total_tokens": 472,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-SiiMBixzxk5iAlrXPtVB7StoXgEGklLk",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 128,
+      "prompt_ms": 69.034,
+      "prompt_per_token_ms": 0.539328125,
+      "prompt_per_second": 1854.1588202914504,
+      "predicted_n": 344,
+      "predicted_ms": 1911.478,
+      "predicted_per_token_ms": 5.572822157434403,
+      "predicted_per_second": 179.442295438399
+    }
+  },
+  "seconds": 1.9880126579664648
+}

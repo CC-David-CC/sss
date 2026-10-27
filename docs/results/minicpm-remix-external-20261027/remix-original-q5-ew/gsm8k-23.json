@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:23",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find out how much the candle has shortened, we need to determine the total time elapsed and then multiply that by the rate of melting.\n\n1.  **Calculate the total time elapsed:**\n    The burning period is from 1:00 PM to 5:00 PM.\n    From 1:00 PM to 2:00 PM is 1 hour.\n    From 2:00 PM to 3:00 PM is 1 hour.\n    From 3:00 PM to 4:00 PM is 1 hour.\n    From 4:00 PM to 5:00 PM is 1 hour.\n    Total time = $1 + 1 + 1 + 1 = 4$ hours.\n\n2.  **Calculate the total length melted:**\n    The candle melts at a rate of 2 centimeters per hour.\n    Total melted length = Rate $\\times$ Time\n    Total melted length = $2 \\text{ cm/hour} \\times 4 \\text{ hours} = 8 \\text{ cm}$.\n\nThe candle will be 8 centimeters shorter.\n\n####8"
+        }
+      }
+    ],
+    "created": 1793084481,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 231,
+      "prompt_tokens": 57,
+      "total_tokens": 288,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-IU0ejBloz6k1fcA1CE7jIS7qU1eTy6kk",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 53,
+      "prompt_ms": 12.705,
+      "prompt_per_token_ms": 0.23971698113207549,
+      "prompt_per_second": 4171.585989767808,
+      "predicted_n": 231,
+      "predicted_ms": 1355.316,
+      "predicted_per_token_ms": 5.892678260869565,
+      "predicted_per_second": 169.70212112894703
+    }
+  },
+  "seconds": 1.3801210573874414
+}

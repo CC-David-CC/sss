@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:26",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the total amount Mishka spent, we need to calculate the cost of each type of clothing and then sum them up.\n\n**1. Calculate the cost of the shorts:**\n*   Quantity: 3 pairs\n*   Price per pair: $16.50\n*   Total cost for shorts: $3 \\times 16.50 = 49.50$\n\n**2. Calculate the cost of the pants:**\n*   Quantity: 3 pairs\n*   Price per pair: $22.50\n*   Total cost for pants: $3 \\times 22.50 = 67.50$\n\n**3. Calculate the cost of the shoes:**\n*   Quantity: 3 pairs\n*   Price per pair: $42.00\n*   Total cost for shoes: $3 \\times 42.00 = 126.00$\n\n**4. Calculate the total spending:**\n*   Total = (Cost of shorts) + (Cost of pants) + (Cost of shoes)\n*   Total = $49.50 + 67.50 + 126.00$\n*   $49.50 + 67.50 = 117.00$\n*   $117.00 + 126.00 = 243.00$\n\n####243"
+        }
+      }
+    ],
+    "created": 1793084482,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 266,
+      "prompt_tokens": 85,
+      "total_tokens": 351,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-LOvlDkGaKdCBOOc1GSCpC9PDUHy9V11A",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 81,
+      "prompt_ms": 16.674,
+      "prompt_per_token_ms": 0.20585185185185184,
+      "prompt_per_second": 4857.862540482188,
+      "predicted_n": 266,
+      "predicted_ms": 1663.077,
+      "predicted_per_token_ms": 6.275762264150943,
+      "predicted_per_second": 159.34319336988005
+    }
+  },
+  "seconds": 1.6963200168684125
+}

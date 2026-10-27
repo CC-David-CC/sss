@@ -1,0 +1,11 @@
+{
+  "status": "COMPLETE",
+  "cases": 64,
+  "correct": 47,
+  "groups": {
+    "gsm8k": 24,
+    "arc": 23
+  },
+  "finished": 60,
+  "new_training": false
+}

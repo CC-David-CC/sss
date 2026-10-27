@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:16",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the total distance covered by each train, we need to add the distances traveled on the first day and the second day.\n\n1.  **First Day:** The trains travel westward for 80 miles.\n    *   Distance = 80 miles.\n2.  **Second Day:** The trains travel northwards for 150 miles.\n    *   Distance = 150 miles.\n3.  **Total Distance:** Add the distances from both days.\n    *   Total Distance = $80 + 150 = 230$ miles.\n\nSince both trains follow the same route and travel for the same distances, each train covers the same total distance.\n\n####230"
+        }
+      }
+    ],
+    "created": 1793084479,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 136,
+      "prompt_tokens": 70,
+      "total_tokens": 206,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-93vjNj4FjveyHMKXbq1beIpC02ZRlSZw",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 66,
+      "prompt_ms": 14.957,
+      "prompt_per_token_ms": 0.22662121212121214,
+      "prompt_per_second": 4412.6495955071205,
+      "predicted_n": 136,
+      "predicted_ms": 776.89,
+      "predicted_per_token_ms": 5.754740740740741,
+      "predicted_per_second": 173.76977435673004
+    }
+  },
+  "seconds": 0.8038495159707963
+}

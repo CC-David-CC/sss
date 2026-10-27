@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:0",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find out how much money Janet makes, we need to calculate the number of eggs she has left to sell and then multiply that by the price per egg.\n\n1.  **Calculate total eggs produced per day:**\n    Janet's ducks lay 16 eggs per day.\n\n2.  **Calculate eggs consumed:**\n    *   Breakfast: She eats 3 eggs.\n    *   Muffins: She bakes 4 muffins (which implies she uses 4 eggs to make them, or the problem states she bakes them \"with four\", implying a usage of 4 eggs). Let's assume the \"four\" refers to 4 eggs used for the muffins.\n    *   Total consumed = $3 + 4 = 7$ eggs.\n\n3.  **Calculate eggs remaining for sale:**\n    *   Remaining eggs = Total eggs - Consumed eggs\n    *   Remaining eggs = $16 - 7 = 9$ eggs.\n\n4.  **Calculate revenue:**\n    *   Price per egg = $2.\n    *   Revenue = Remaining eggs $\\times$ Price per egg\n    *   Revenue = $9 \\times 2 = 18$.\n\nJanet makes $18 every day.\n\n####18"
+        }
+      }
+    ],
+    "created": 1793084477,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 257,
+      "prompt_tokens": 83,
+      "total_tokens": 340,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-T4HNzdqCPb1jwMA5iy5DwLAfeuxtswfx",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 83,
+      "prompt_ms": 70.153,
+      "prompt_per_token_ms": 0.8452168674698796,
+      "prompt_per_second": 1183.1283052756116,
+      "predicted_n": 257,
+      "predicted_ms": 1390.346,
+      "predicted_per_token_ms": 5.4310390625,
+      "predicted_per_second": 184.12682886130503
+    }
+  },
+  "seconds": 1.4690251699648798
+}

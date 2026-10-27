@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:28",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the number of miles Henry traveled between his first and second stops, let's break down the information given:\n\n1.  **Total distance of the trip:** 60 miles.\n2.  **First stop:** Occurred after traveling 20 miles.\n3.  **Second stop:** Occurred 15 miles before the end of the trip.\n\nFirst, we need to determine how far Henry had traveled when he made the second stop.\nSince the total trip is 60 miles and the second stop was 15 miles before the end, the distance traveled up to the second stop is:\n$$60 \\text{ miles} - 15 \\text{ miles} = 45 \\text{ miles}$$\n\nNow, we have the distance traveled at the first stop (20 miles) and the distance traveled at the second stop (45 miles). The distance traveled between these two stops is the difference between these two values:\n$$\\text{Distance between stops} = \\text{Distance at second stop} - \\text{Distance at first stop}$$\n$$\\text{Distance between stops} = 45 \\text{ miles} - 20 \\text{ miles}$$\n$$\\text{Distance between stops} = 25 \\text{ miles}$$\n\n####25"
+        }
+      }
+    ],
+    "created": 1793084482,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/original-Q5/model-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 254,
+      "prompt_tokens": 68,
+      "total_tokens": 322,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-V9rUnsAlfHvNZ33oNcms2SK2UJGNWCN6",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 64,
+      "prompt_ms": 14.479,
+      "prompt_per_token_ms": 0.226234375,
+      "prompt_per_second": 4420.1947648318255,
+      "predicted_n": 254,
+      "predicted_ms": 1808.216,
+      "predicted_per_token_ms": 7.147098814229248,
+      "predicted_per_second": 139.9169125812403
+    }
+  },
+  "seconds": 1.836493806913495
+}
