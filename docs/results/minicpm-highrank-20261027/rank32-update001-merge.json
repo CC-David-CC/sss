@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "training_updates": 0,
+  "source_training_update": 1,
+  "rank": 32,
+  "merged_sha256": "548a7526d72ab71ead700427ac8812daaf9b51b361872af10c475b35d8d3e9c0",
+  "independent_weight_max_error": 8.971417742031917e-08,
+  "logit_max_error": 0.00011777877807617188,
+  "loss_error": 5.4836273193359375e-06,
+  "absolute_bound": 0.0002,
+  "scope": "Every merged weight audited; forward parity on one original practice input only",
+  "assessment_score": null,
+  "promoted": false
+}

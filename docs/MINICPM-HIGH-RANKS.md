@@ -36,7 +36,7 @@ cursor continue between points. There is no fixed training-time budget.
 
 | Rank | Trainable adapter parameters | AdamW | Factorwise Muon |
 |---|---:|---|---|
-| 32 | 54,476,800 | Pending | Pending |
+| 32 | 54,476,800 | Update 1 saved; export checks passed; assessment running | Pending |
 | 128 | 217,907,200 | Pending | Pending |
 | 2048 | 3,486,515,200 | Pending | Pending |
 | 4096 | 6,973,030,400 | First update dispatched; no completed score | First update dispatched; no completed score |
@@ -49,6 +49,15 @@ memory admission. AdamW reached a native step result after actual graph
 admission; its artifact completion and assessment remain pending. Execution-graph
 allocation, saved artifacts and evaluation are separate gates; persistent
 admission alone does not establish successful training.
+
+Rank-32 AdamW completed its first update on the separate llm-60 worker. Every
+merged weight passed the independent FP64 audit (maximum error 8.98e-8).
+Adapter-versus-merged logits on one original practice input differed by
+0.000118, within the unchanged 0.0002 bound; loss differed by 0.0000055.
+The [export-check receipt](results/minicpm-highrank-20261027/rank32-update001-merge.json)
+records that limited scope. Its frozen 864-question assessment is underway
+through the existing PCC/COW shared-prefix path. No accuracy score is available
+yet. The home runtime is recorded separately from the A100 reference runtimes.
 
 AdamW starts at the original LoRA comparator rate, 1e-4. Factorwise Muon starts
 with the standard full-Muon comparator's 5e-5 matrix rate and 1e-6 auxiliary
