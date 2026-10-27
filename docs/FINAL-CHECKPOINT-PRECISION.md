@@ -1,68 +1,97 @@
-# Final-checkpoint quantization across trained LoRA ranks
+# Final-checkpoint precision: full AdamW and six LoRA ranks
 
-These are standalone GGUFs from completed 68-update rank-3, rank-4 and rank-16
-training arms. Each received 1,836 ordered practice presentations. The rank-4 and
-rank-16 precision sweeps are complete; rank 3 is waiting for its Q5 panel to
-settle. Other ranks and full-update optimizers remain outside this snapshot.
+Snapshot: 2026-10-27T00:15:23.705550+00:00. **39 completed model/format panels**,
+each containing all 864 frozen questions. Every trained arm completed 68 updates
+and 1,836 ordered practice presentations. Full AdamW and LoRA ranks 3, 4 and 16
+have complete sweeps. Rank 1 has seven completed formats; Q1 is still running.
+Ranks 2 and 8 have completed training and are performing their first merge/audit
+and precision sweeps. Muon precision measurements are outside this snapshot.
 
-![Final trained-rank precision comparison](results/minicpm-20261026/final-rank-precision.png)
+![Final-checkpoint precision comparison](results/minicpm-20261026/final-checkpoint-precision.png)
 
-Every numeric point is a complete assessment of the same 864 frozen questions.
-The original-model line is measured at each quant size, using a prior runtime:
-it is a historical reference, not a matched-runtime estimate of training alone.
-Original F32 was not measured. The gray horizontal reference is original F16,
-59 correct and 415 naturally finished responses. Pending values are not zeros.
+The original model appears at each measured format, with its F16 score also
+shown as a horizontal reference: **59 correct, 415 naturally finished**.
+Original F32 was not measured. The original sweep used a prior runtime; it is a
+historical reference, not a matched-runtime estimate of training alone. Pending
+values are gaps, never zeros.
 
-| Format | Original correct | Trained rank 3 | Trained rank 4 | Trained rank 16 |
-| --- | ---: | ---: | ---: | ---: |
-| F32 | not measured | 475 | 493 | 494 |
-| F16 | 59 | 475 | 493 | 494 |
-| Q8_0 | 43 | 474 | 493 | 491 |
-| Q5_K_M | 58 | pending | 484 | 482 |
-| Q4_K_M | 34 | 457 | 486 | 492 |
-| Q3_K_M | 50 | 297 | 364 | 401 |
-| Q2_K | 4 | 23 | 14 | 36 |
-| Q1_0 | 0 | 0 | 0 | 0 |
+## Correct answers out of 864
+
+| Format | Original | Full AdamW | LoRA r1 | LoRA r2 | LoRA r3 | LoRA r4 | LoRA r8 | LoRA r16 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| F32 | not measured | 482 | 450 | pending | 475 | 493 | pending | 494 |
+| F16 | 59 | 481 | 450 | pending | 475 | 493 | pending | 494 |
+| Q8_0 | 43 | 480 | 446 | pending | 474 | 493 | pending | 491 |
+| Q5_K_M | 58 | 468 | 438 | pending | 469 | 484 | pending | 482 |
+| Q4_K_M | 34 | 471 | 409 | pending | 457 | 486 | pending | 492 |
+| Q3_K_M | 50 | 346 | 268 | pending | 297 | 364 | pending | 401 |
+| Q2_K | 4 | 35 | 21 | pending | 23 | 14 | pending | 36 |
+| Q1_0 | 0 | 0 | pending | pending | 0 | 0 | pending | 0 |
+
+## Naturally finished responses out of 864
+
+| Format | Original | Full AdamW | LoRA r1 | LoRA r2 | LoRA r3 | LoRA r4 | LoRA r8 | LoRA r16 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| F32 | not measured | 864 | 863 | pending | 864 | 864 | pending | 864 |
+| F16 | 415 | 864 | 863 | pending | 864 | 864 | pending | 864 |
+| Q8_0 | 392 | 864 | 863 | pending | 864 | 864 | pending | 864 |
+| Q5_K_M | 398 | 864 | 863 | pending | 864 | 864 | pending | 864 |
+| Q4_K_M | 522 | 864 | 811 | pending | 864 | 864 | pending | 864 |
+| Q3_K_M | 475 | 863 | 797 | pending | 840 | 831 | pending | 863 |
+| Q2_K | 521 | 821 | 825 | pending | 815 | 778 | pending | 817 |
+| Q1_0 | 0 | 0 | pending | pending | 0 | 0 | pending | 0 |
 
 ## ELI5
 
-Training's gains largely survived F16, Q8 and Q4 on these questions. They did
-not all survive Q3, Q2 or Q1. Rank 4 scored 493 in F32, 486 in Q4 and 364 in Q3.
-Rank 16 scored 494, 492 and 401 respectively. Q5 sometimes scored below Q4, so
-the measured curve is not perfectly smooth. A similar total can hide different
-questions being gained and lost.
+Most of the trained gains survive the useful middle-sized files. Full AdamW
+scores 482 in F32 and 471 in Q4; rank 16 scores 494 and 492. Smaller files
+eventually lose much more: full AdamW falls to 346 at Q3, 35 at Q2 and zero at
+Q1. Stopping and answering correctly are separate abilities: Q2 can finish many
+responses while getting almost everything wrong.
+
+The ranks do not have identical tolerance to quantization. Rank 1 drops from
+450 to 409 correct at Q4 and loses 52 natural finishes overall. Rank 16 loses
+two correct answers overall at Q4 and keeps all 864 natural finishes. Q5 does
+not always beat Q4. The measurements decide; a smooth curve is not assumed.
 
 ## Master's and PhD level
 
-Each adapter was merged into its own F32 master through PCC's native merge path
-and independently audited against FP64 weight reconstruction before conversion.
-Each precision file was converted directly from that master. Within a rank,
-the standalone F32 and quant evaluations use the same frozen case/checker IDs,
-COW runtime family, shared-prefix path, greedy decoding, 512-token context and
-64-output-token limit. The linked evidence retains actual runtime and model IDs.
-F16 agrees with F32 on every answer/finish verdict for all three measured ranks;
-this is panel behavior, not a claim of identical logits or generated text.
+All formats originate directly from each arm's own F32 master. LoRA masters
+were produced by PCC's native merge and independently checked against FP64
+weight reconstruction before conversion. Full AdamW already produces a full
+F32 model. Its existing completed F32 assessment is reused after exact
+runtime/input verification, rather than spending another 864 calls on it.
 
-The [machine-readable report](results/minicpm-20261026/final-rank-precision.json)
-includes paired answer/completion gains and losses relative to each rank's own
-F32 reference, skill/gate aggregates and hashes of original per-format receipts.
-It does not pair different ranks or the original-runtime sweep as though those
-were identical executions. One trajectory per arm provides neither seed
-variance nor a broad generalization claim. Shared load also prevents treating
-these wall-clock times as isolated compute-efficiency measurements.
+Within each arm, saved results are paired against its own F32 reference using
+the frozen case/checker IDs and qualified COW runtime family. Shared-prefix
+evaluation uses greedy decoding, a 512-token context and a 64-token output
+limit. The evidence retains actual model/runtime IDs, receipt hashes and
+per-skill/gate transitions. This snapshot contains no seed-repeat experiment
+and does not establish broad unseen-task generalization.
+
+Totals conceal turnover. Full AdamW's F16 score of 481 combines one gained and
+two lost answers relative to its F32 score of 482. Rank 16's Q4 score of 492
+combines 20 gained and 22 lost answers relative to 494. Neither is an
+all-answer equivalence claim. F16 has identical answer/finish verdicts to F32
+for the four measured LoRA ranks; that does not imply identical logits or text.
+
+Four CPU analysis workers collated existing receipts. No inference or training
+was repeated for this report. Timing samples came from shared A100s and must
+not be read as isolated throughput measurements.
 
 ## Applied meaning
 
-F16 preserves the measured trained behavior here while halving F32 disk size.
-Q4 retains most correct answers in a smaller file, but its changed verdicts need
-the per-skill retention check before choosing a deployment model. Q3 and below
-need separate investigation. Quantization-aware training is planned follow-up;
-these results do not measure QAT. No checkpoint is promoted or uploaded by this
-analysis. Raw protected responses and all model weights remain private.
+Q4 preserves most measured gains for several arms, while rank 1 shows a larger
+behavior and stopping loss. Choose from measured skill-level results, model
+size and deployment requirements. Q3 and below need separate investigation;
+quantization-aware training remains a planned follow-up and was not used here.
+No model is promoted, uploaded or declared a universal winner by this chart.
 
-See the [full training curves](MINICPM-UPDATE-CURVES-PROGRESS.md),
-[rank-16 detailed precision report](RANK16-PRECISION-PROGRESS.md),
-[CSV](results/minicpm-20261026/final-rank-precision.csv) and
-[plot source](results/minicpm-20261026/plot_final_rank_precision.py).
-Four CPU workers collated saved receipts; no training update or model inference
-was repeated to build this report.
+The [training curves](MINICPM-UPDATE-CURVES-PROGRESS.md) compare updates and
+optimizer/rank trajectories. The [rank-16 detail](RANK16-PRECISION-PROGRESS.md)
+retains its original evidence. Download the
+[paired report](results/minicpm-20261026/final-checkpoint-precision.json),
+[CSV](results/minicpm-20261026/final-checkpoint-precision.csv) or
+[plot source](results/minicpm-20261026/plot_final_checkpoint_precision.py).
+The earlier three-rank snapshot remains available in
+[its original JSON](results/minicpm-20261026/final-rank-precision.json).

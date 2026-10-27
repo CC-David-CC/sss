@@ -1,6 +1,6 @@
 # A short tour of the measured results
 
-[Compare the completed rank-3/rank-4/rank-16 checkpoint precision measurements](FINAL-CHECKPOINT-PRECISION.md) (rank-3 Q5 still pending).
+[Compare final full-AdamW and all six LoRA-rank precision sweeps](FINAL-CHECKPOINT-PRECISION.md) (39 completed format panels; pending formats remain gaps).
 
 Three questions organize this work: can we test faster, how do training methods
 change learning and forgetting, and how much survives compression? These are
