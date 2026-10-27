@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "status": "AUDITED_ORIGINAL_EVIDENCE",
+  "scope": "Completed configured COW learning rounds; not broad skill mastery or release acceptance",
+  "policy_id": "72bd8fecdf5549d9045521438911931bbbdf79e783515d0f957cf0e2981fcdb7",
+  "baseline": {
+    "passed": 482,
+    "finished": 867,
+    "cases": 868,
+    "evaluation_sha256": "fece29d1cea4e3c0b96119dc2157898da03a507d77bc098aaf813d0efee8b9fa"
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "passed": 447,
+      "finished": 868,
+      "cases": 868,
+      "candidate_sha256": "d855d60e53bc4f953a42ab1480283a8b58eb09dfde1f5c6f3bb9d839351be170",
+      "optimizer_state_sha256": "a7824e851a10601c2854664986f288579d60c43e2e19aa1f7616d6f64467aef2",
+      "native_updates": 4,
+      "presentations": 124,
+      "optimizer_state_policy": "fresh",
+      "baseline_answer_delta": -35,
+      "parent_answer_delta": -35,
+      "baseline_answer_losses": 59,
+      "working_decision": "RETAIN_PARENT",
+      "panels": [
+        {
+          "panel_id": "target",
+          "role": "target",
+          "baseline_answer_delta": 0,
+          "parent_answer_delta": 0,
+          "baseline_answer_losses": 0,
+          "working_decision": "RETAIN_PARENT"
+        },
+        {
+          "panel_id": "workflow",
+          "role": "workflow",
+          "baseline_answer_delta": 1,
+          "parent_answer_delta": 1,
+          "baseline_answer_losses": 0,
+          "working_decision": "KEEP_AND_ADVANCE"
+        },
+        {
+          "panel_id": "retention",
+          "role": "retention",
+          "baseline_answer_delta": -36,
+          "parent_answer_delta": -36,
+          "baseline_answer_losses": 59,
+          "working_decision": "RETAIN_PARENT"
+        }
+      ],
+      "evaluation_sha256": "8cb1fe7706ca8dd5c99a40e6b9537aaedfc720ea2fd6ad1951c51372778e0c2a",
+      "report_sha256": "729d7b80de0c5f63ed884b763eb27c2bd592ee0f09db536b4689e52b98cd0935"
+    }
+  ],
+  "distinct_referenced_native_jobs": 1,
+  "untrained_stopped_tail_round": null,
+  "original_backend_case_records_revalidated": 1736,
+  "protected_answers_exported": false,
+  "model_calls_started": 0,
+  "native_jobs_started": 0,
+  "source_records_modified": false,
+  "promoted": false,
+  "auditor_sha256": "1653a2e2797959afd4dfebe6a2659f9481e32827fc87d77339e0a4a2beb19685",
+  "independent_reload_gate_passed": true,
+  "reload_absolute_error": 1.236443378238583e-08,
+  "reload_absolute_bound": 0.0002,
+  "exact_native_completion_closure_unchanged": true,
+  "named_private_gguf": "MiniCPM-S3-action-block01-full-F32",
+  "named_gguf_sha256": "d855d60e53bc4f953a42ab1480283a8b58eb09dfde1f5c6f3bb9d839351be170",
+  "named_export_shares_original_candidate_inode": true,
+  "original_working_parent_advanced": false,
+  "subprocess_launch_blocked": true
+}

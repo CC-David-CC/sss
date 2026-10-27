@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "status": "VERIFIED_PRACTICE_NOT_ADMITTED_OR_TRAINED",
+  "review_examples": 124,
+  "all_skill_gate_groups": 27,
+  "common_examples_per_group": 4,
+  "additional_fraction_transfer_examples": 16,
+  "original_hidden_partitions_identical": true,
+  "selected_review_disjoint_from_previous_practice": true,
+  "selected_review_disjoint_from_protected_prompts": true,
+  "all_reference_answers_passed_independent_grader": true,
+  "previous_pack_id": "e2cc02a3e66d41381de10a1c4ac2a622fb0cbdf05a853d74a55d6863e14056e9",
+  "new_pack_id": "1be987cdb92c5246ad550258b8743eee376098c26268415a5ad1b4026299c5be",
+  "source_generator_seed_unchanged": true,
+  "seed_repeat_study": false,
+  "new_training_updates": 0,
+  "model_calls": 0,
+  "source_sha256": "5773d19b69f23425fe752e9e647594a53704fbdef0413582096f5d23232c8774",
+  "selected_review_sha256": "6ab205392567fc7a38a1bbf0a3dbbdd1e47a65722f740d2ce54d54d7c53530c2",
+  "finished_example_txt_sha256": "57273a6b2567941963bb15f84a9b8245d0957f2c2ec26422c76fb353ffcf8f35",
+  "protected_case_text_exported": false
+}
