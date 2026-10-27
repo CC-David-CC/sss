@@ -6,9 +6,20 @@
 
 ![Two continuing arms](results/minicpm-highrank-20261027/two-continuations.png)
 
-Rank-32 AdamW update 6 scored **349/864**, with **42 answers gained and 8 lost** versus update 5; 854 responses naturally finished. Its model, adapter and optimizer state passed verified R730 archival, and the next update is progressing. Rank-4096 Muon update 10 has trained and is awaiting its assessment result in this snapshot. Dotted lines mark pending checkpoints, not measured scores.
+Latest completed points: **rank-32 AdamW update 7: 373/864** (857 naturally finished), and **rank-4096 Muon update 10: 257/864** (819 naturally finished). Both continue independently toward update 68.
 
-## Current measured results
+| Arm and measured interval | Correct before → after | Answers gained | Answers lost |
+|---|---:|---:|---:|
+| Rank-32 AdamW, update 5 → 6 | 315 → 349 | 42 | 8 |
+| Rank-32 AdamW, update 6 → 7 | 349 → 373 | 31 | 7 |
+| Rank-4096 Muon, update 5 → 10 | 199 → 257 | 66 | 8 |
+| Rank-4096 Muon, direct update 1 → 10 | 66 → 257 | 195 | 4 |
+
+Muon did lose previously correct answers by update 10. Its initial zero-loss result at update 5 did not persist. The direct first-to-tenth comparison is independently paired; it is not a sum of interval gains/losses. The [paired receipt](results/minicpm-highrank-20261027/muon4096-paired-first-to-ten.json) preserves the group breakdowns. Counts across these different intervals do not isolate an optimizer effect.
+
+Rank-32 update 6 completed its first real rolling archive cycle: model, adapter and optimizer state verified on R730 before cold local copies were retired. The latest continuation state stayed local. Rank-4096 Muon has moved to its update-10-to-20 training block.
+
+## Initial five-update comparison
 
 ![Provisional high-rank training results](results/minicpm-highrank-20261027/provisional-training.png)
 
@@ -37,7 +48,7 @@ The original ten-arm, 68-update study and all 80 precision panels are complete.
 The initial comparison stopped at five updates. The owner then
 approved continuing rank-4096 Muon and, subsequently, rank-32 AdamW to 68 updates, each from its saved adapter,
 optimizer moments and practice cursor. Milestone assessments are scheduled at
-10, 20, 34, 50 and 68 for rank-4096 Muon; rank-32 AdamW is assessed at every new update. These future points are not measured results yet. No seed repeats are scheduled.
+10, 20, 34, 50 and 68 for rank-4096 Muon; rank-32 AdamW is assessed at every new update. Later unmeasured points remain absent from the chart. No seed repeats are scheduled.
 
 Can a larger adapter preserve more useful learning, and how do AdamW and
 factorwise Muon differ as adapter rank grows? This extension has its own branch
@@ -80,10 +91,10 @@ completed 68-update comparison remains separate and unchanged.
 
 | Rank | Trainable adapter parameters | AdamW | Factorwise Muon |
 |---|---:|---|---|
-| 32 | 54,476,800 | Update 5: 315/864 correct; 854/864 naturally finished | Update 5: 120/864 correct; 602/864 naturally finished |
+| 32 | 54,476,800 | Update 7: 373/864 correct; 857/864 naturally finished | Update 5: 120/864 correct; 602/864 naturally finished |
 | 128 | 217,907,200 | Optional; not started | Optional; not started |
 | 2048 | 3,486,515,200 | Optional; not started | Optional; not started |
-| 4096 | 6,973,030,400 | Update 5: 0/864 correct; 0/864 naturally finished; stopped | Update 5: 199/864 correct; 649/864 naturally finished |
+| 4096 | 6,973,030,400 | Update 5: 0/864 correct; 0/864 naturally finished; stopped | Update 10: 257/864 correct; 819/864 naturally finished |
 
 Snapshot: 2026-10-27. This table records the last inspected state, not a live
 monitor. AdamW rank 4096 was dispatched on A100 GPUs 2 and 3; factorwise Muon
