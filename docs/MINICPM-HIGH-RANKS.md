@@ -1,6 +1,6 @@
 # MiniCPM: walking the LoRA ranks
 
-**Work in progress. Rank-32 AdamW's first update scored 215/864; the extended curves are not complete.**
+**Work in progress. Rank-32 AdamW reached 256/864 at update 2; the extended curves are not complete.**
 
 Can a larger adapter preserve more useful learning, and how do AdamW and
 factorwise Muon differ as adapter rank grows? This extension has its own branch
@@ -36,7 +36,7 @@ cursor continue between points. There is no fixed training-time budget.
 
 | Rank | Trainable adapter parameters | AdamW | Factorwise Muon |
 |---|---:|---|---|
-| 32 | 54,476,800 | Update 1: 215/864 correct; 775/864 naturally finished | Pending |
+| 32 | 54,476,800 | Update 2: 256/864 correct; 788/864 naturally finished | Pending |
 | 128 | 217,907,200 | Pending | Pending |
 | 2048 | 3,486,515,200 | Pending | Pending |
 | 4096 | 6,973,030,400 | Update 1 saved; export and assessment pending | Update 1 saved; export and assessment pending |
@@ -62,6 +62,16 @@ includes skill/gate breakdowns and provenance hashes. This is update 1 after 27
 practice presentations, not an update-68 endpoint. Its home runtime is recorded
 separately from the A100 reference runtimes; the reference table above therefore
 does not establish an optimizer-only or rank-only causal effect.
+
+The bounded continuation pilot then resumed the exact adapter, moments and
+practice cursor for update 2, exported and checked the result, and completed the
+same assessment. It scored **256 correct, 788 naturally finished**, after 54
+practice presentations. Relative to update 1, **44 answers became correct and
+3 became incorrect**: a net gain of 41, with forgetting measured rather than
+hidden by the total. The [update-2 receipt](results/minicpm-highrank-20261027/rank32-update002.json)
+includes that paired breakdown. Both assessments used the same recorded home
+runtime. The pilot stopped at its declared update-2 boundary; a longer run still
+requires the rolling artifact-retention path.
 
 AdamW starts at the original LoRA comparator rate, 1e-4. Factorwise Muon starts
 with the standard full-Muon comparator's 5e-5 matrix rate and 1e-6 auxiliary
