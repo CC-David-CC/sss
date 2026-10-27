@@ -11,16 +11,15 @@ All eight formats, including the F32 reference, are complete (26 October 2026).
 
 The **orange dashed line** shows the original, untrained model's measured score
 at each quant size. The **gray dotted line** marks its F16 reference: 59 correct
-and 415 naturally finished out of 864. Original F32 was not measured in that
-sweep and is left absent. The original sweep used a different runtime; this is
+and 415 naturally finished out of 864. Original F32 is now included after auditing all 864 existing response receipts; it also scored 59 correct and 415 naturally finished. No inference was repeated. The original sweep used a different runtime; this is
 a historical comparison on the same frozen cases, not a matched-runtime estimate
 of the effect of training alone. See the [original receipts and scores](MINICPM-QUANTIZATION-PROGRESS.md).
 The [overlay validation](results/minicpm-20261026/original-overlay-validation.json)
-records both runtime identities, source hashes and the absent original F32 point.
+records both runtime identities, source hashes and the recovered original F32 point.
 
 | Format | Original correct / 864 | Trained rank-16 correct / 864 | Difference in total |
 | --- | ---: | ---: | ---: |
-| F32 | not measured | 494 | not comparable |
+| F32 | 59 | 494 | +435 |
 | F16 | 59 | 494 | +435 |
 | Q8_0 | 43 | 491 | +448 |
 | Q5_K_M | 58 | 482 | +424 |

@@ -25,7 +25,7 @@ fig.text(.5,.92,'Final 68-update checkpoints | 1,836 training presentations | 86
 fig.text(.5,.887,'Saved receipts through '+report['captured_utc'][:16].replace('T',' ')+' UTC',ha='center',fontsize=10)
 handles,labels=axes[0].get_legend_handles_labels()
 fig.legend(handles,labels,loc='upper center',bbox_to_anchor=(.5,.865),ncol=2,frameon=False,fontsize=10)
-fig.text(.5,.055,'Rank 3 Q5 remains a gap until its full panel settles. Original F32 was not measured.\n'
+fig.text(.5,.055,'Rank 3 Q5 remains a gap until its full panel settles. Original F32: verified existing run.\n'
     'Orange = original per quant; gray = original F16 level. Original runtime differs; historical comparison only.\n'
     'Shared A100 loads. These three ranks are a subset of the unfinished study; no release acceptance.',
     ha='center',fontsize=9,color='#555555')

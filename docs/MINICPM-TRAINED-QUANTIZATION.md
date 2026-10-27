@@ -10,14 +10,13 @@ training or seed repetitions were performed for these precision sweeps.
 ![Four completed trained precision panels](results/minicpm-20261026/trained-precision-panels.png)
 
 Each panel now includes an **orange dashed original-model correctness curve**:
-F16 59, Q8 43, Q5 58, Q4 34, Q3 50, Q2 4 and Q1 0. Original F32 remains
-unmeasured. These are historical scores on the same 864 frozen cases through
+F32 59, F16 59, Q8 43, Q5 58, Q4 34, Q3 50, Q2 4 and Q1 0. Original F32 was recovered from an existing run by independently auditing all 864 saved responses; no new inference was performed. These are historical scores on the same 864 frozen cases through
 a different runtime; the overlay is not a matched-runtime causal comparison.
 The [original-model report](MINICPM-QUANTIZATION-PROGRESS.md) retains its receipts.
 
 | Intermediate checkpoint | FP32 | FP16 | Q8 | Q5 | Q4 | Q3 | Q2 | Q1 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Original model, prior runtime | not measured | 59 | 43 | 58 | 34 | 50 | 4 | 0 |
+| Original model, prior runtime | 59 | 59 | 43 | 58 | 34 | 50 | 4 | 0 |
 | AdamW full, update 43, llm-60 | 476 | 476 | 476 | 460 | 465 | 345 | 38 | 0 |
 | Standard Muon, update 42, llm-49 | 465 | 463 | 463 | 443 | 439 | 269 | 18 | 0 |
 | RMS/decay Muon, update 41, llm-60 | 461 | 461 | 462 | 451 | 440 | 271 | 23 | 0 |

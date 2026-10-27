@@ -33,7 +33,7 @@ fig.legend(handles,legend_labels,loc='upper center',bbox_to_anchor=(.5,.89),ncol
 fig.suptitle('Trained MiniCPM5-2B: all four precision panels complete',fontsize=18,fontweight='bold',y=.97)
 fig.text(.5,.91,'28 quantized evaluations × 864 questions = 24,192 attempts; existing FP32 references retained',ha='center',fontsize=11)
 fig.text(.5,.065,'Compare precision within each panel. Updates, training exposures and runtimes differ; this is not an optimizer ranking.',ha='center',fontsize=10)
-fig.text(.5,.025,'Original per-quant line uses prior runtime, same cases and 64-token limit; original F32 unmeasured. No new model calls.',ha='center',fontsize=9,color='#555555')
+fig.text(.5,.025,'Original per-quant line uses prior runtime, same cases and 64-token limit; original F32 verified from existing receipts. No new model calls.',ha='center',fontsize=9,color='#555555')
 fig.savefig(ROOT/'trained-precision-panels.png',dpi=180,facecolor='white')
 
 fig,axes=plt.subplots(2,2,figsize=(13,9),sharex=True)

@@ -1,6 +1,6 @@
 # MiniCPM update-curve progress snapshot
 
-## Current chart: all ten trajectories, receipts collected at 22:11 UTC
+## Current chart: all ten trajectories, receipts collected at 2026-10-27 00:46 UTC
 
 ![All ten training curves](results/minicpm-20261026/intermediate-training-curves.png)
 
@@ -9,12 +9,22 @@ and **415/864 naturally finished**. It is a historical reference; recorded
 execution paths differ from some trained arms. Quantization charts also show
 the original model at each measured quant size.
 
-The chart contains 646 completed scored checkpoints, 17 more than the preceding
+The chart contains 658 retained scored checkpoints, 12 more than the preceding
 snapshot. It includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
 Muon, and all six AdamW LoRA ranks. Full updates use FP32 weights; LoRA uses
 the F16 base with its attached adapter. All rows use the same 864 frozen
-questions; recorded execution paths differ. Full AdamW and LoRA ranks 1, 3, 4 and 16 have finished all 68 updates.
+questions; recorded execution paths differ. Full AdamW, standard Muon and all six LoRA ranks have finished all 68 updates.
 This remains an interim comparison, not a final optimizer or rank ranking.
+
+### Update completion and retained score coverage
+
+The latest completed update numbers sum to **665 of 680 planned updates**.
+That is different from the **658 retained score rows** plotted here.
+Seven early update positions have no retained score row: full AdamW 1–4,
+standard Muon 1–2, and LoRA rank 16 update 1. They are not plotted or counted as
+measured answers. The current collection independently checked 550 saved
+points; earlier score history remains in the CSV with its original available
+provenance. Missing raw history is not reconstructed from a later model.
 
 ### Requested comparison: standard optimizers and six LoRA ranks
 
@@ -28,26 +38,26 @@ The [rank-chart source](results/minicpm-20261026/plot_rank_comparison.py) and
 | Arm | Latest update / 68 | Correct / 864 | Natural finishes / 864 |
 | --- | ---: | ---: | ---: |
 | Full AdamW | 68 | 482 | 864 |
-| Full standard Muon | 64 | 503 | 864 |
+| Full standard Muon | 68 | 494 | 864 |
 | Full RMS/decay Muon | 60 | 496 | 864 |
 | Full fast/refine Muon | 61 | 492 | 864 |
 | AdamW LoRA rank 1 | 68 | 450 | 863 |
-| AdamW LoRA rank 2 | 64 | 471 | 864 |
+| AdamW LoRA rank 2 | 68 | 479 | 864 |
 | AdamW LoRA rank 3 | 68 | 475 | 864 |
 | AdamW LoRA rank 4 | 68 | 493 | 864 |
-| AdamW LoRA rank 8 | 64 | 492 | 864 |
+| AdamW LoRA rank 8 | 68 | 492 | 864 |
 | AdamW LoRA rank 16 | 68 | 494 | 864 |
 
 The original baseline was 59 correct and 415 natural finishes. This collection
-checked 538 current saved points against complete result and settlement
+checked 550 current saved points against complete result and settlement
 receipts; older preserved history remains in the CSV. Overlapping counts,
 runtime identities and result hashes were checked before merging.
-The [validation receipt](results/minicpm-20261026/training-curves-validation-2211.json)
+The [validation receipt](results/minicpm-20261026/training-curves-validation-20261027-0046.json)
 retains point/result/settlement hashes. Rank 8 update 34 uses the explicit,
 previously validated recovery reduction: 227 preserved completed cases plus
 637 missing cases, with disjoint coverage of all 864. Its original assessment
 failed with CUDA out of memory; no completed case or training update was repeated.
-The resumed arm has completed updates 35 through 64. Recovery is not a seed repeat.
+The resumed arm has completed updates 35 through 68. Recovery is not a seed repeat.
 
 Four rank workers (1, 2, 3, 4) voluntarily stopped after a complete checkpoint,
 then resumed at its successor with exact saved optimizer state and exposure cursor.
@@ -82,9 +92,9 @@ The worker does not delete models, optimizer states, response evidence or scores
 
 ![Paired answer gains and losses at each update](results/minicpm-20261026/paired-update-turnover.png)
 
-Four CPU analysis processes compared 528 adjacent completed checkpoint pairs,
+Four CPU analysis processes compared 540 adjacent completed checkpoint pairs,
 requiring the same 864 case identities and runtime within each pair. Of those,
-473 both gained correct answers and lost previously correct answers. For example,
+483 both gained correct answers and lost previously correct answers. For example,
 full AdamW stayed at **481/864 from update 56 to 57**, while gaining 11 answers
 and losing 11 others. A flat total did not mean unchanged behavior.
 
@@ -114,7 +124,7 @@ Their successors forecast placement from PCC's persistent/scratch/reserve
 admission estimate plus observed graph peaks. The initial forecast was about
 38.3 GiB for these requests; it is not a new universal VRAM minimum. The native
 allocator still checks the actual free memory and each graph before allocation.
-Compute utilization is not capped. Standard Muon has completed update 64 and its full panel, now included above.
+Compute utilization is not capped. Standard Muon has completed update 68 and its full panel, now included above.
 The remaining controllers continue from their own saved cursors.
 Other variants continue independently. No optimizer settings, examples, native
 binary or frozen test cases changed during this scheduling correction.

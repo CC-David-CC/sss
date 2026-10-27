@@ -5,6 +5,14 @@
   "reference_format": "F16",
   "formats": [
     {
+      "format": "F32",
+      "cases": 864,
+      "answer_gains": 0,
+      "answer_losses": 0,
+      "completion_gains": 0,
+      "completion_losses": 0
+    },
+    {
       "format": "F16",
       "cases": 864,
       "answer_gains": 0,
@@ -67,5 +75,13 @@
   "common_runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
   "model_calls": 0,
   "weights_updated": false,
-  "promoted": false
+  "promoted": false,
+  "additional_f32_verification": {
+    "receipt": "original-f32-existing-evidence.json",
+    "sha256": "f771b9edc7660f0a1d5df52a5c70a338669aec68ba065ef5e28e39e9719bda69",
+    "scope": "All864existing original F32 receipts regraded/redecoded; no new inference",
+    "previous_validator_scope": "The original validator_source_sha256 covers the seven previous format rows; this separate receipt covers recovered F32.",
+    "paired_receipt": "original-f32-f16-paired-evidence.json",
+    "paired_receipt_sha256": "722d23b85a0f752723f5655a96d74fe40c16e739b453fca05c8de7c6e2aea365"
+  }
 }

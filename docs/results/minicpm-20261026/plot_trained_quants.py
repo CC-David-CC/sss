@@ -33,7 +33,7 @@ count=sum(data[f]['status']=='COMPLETE' for f in order[1:])
 fig.suptitle('Trained MiniCPM5-2B: seven-format quantization comparison',fontsize=18,fontweight='bold',y=.96)
 fig.text(.5,.875,f'AdamW full update 43 | {count}/7 formats complete | same local PCC/COW runtime and 64-token limit',ha='center',fontsize=11)
 fig.text(.5,.09,'This intermediate checkpoint is separate from the ten A100 training curves. No additional training was performed.',ha='center',fontsize=10)
-note=('Orange line: historical original-model scores on the same cases; prior runtime, original F32 not measured.' if count==7
+note=('Orange line: historical original-model scores on the same cases; prior runtime, original F32 verified from existing receipts.' if count==7
       else 'Blank rows are unfinished measurements, not zero model scores. Individual answers can change even when totals match.')
 fig.text(.5,.035,note,ha='center',fontsize=9,color='#555555')
 fig.savefig(ROOT/'trained-quantization-progress.png',dpi=200,facecolor='white')

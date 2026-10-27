@@ -39,7 +39,7 @@ axes[0,0].set_title('Full-weight AdamW | completed precision sweep',fontweight='
 axes[0,1].set_title('Six AdamW LoRA ranks | completed points only',fontweight='bold')
 fig.suptitle('MiniCPM5-2B: which trained gains survive quantization?',fontsize=18,fontweight='bold',y=.99)
 fig.text(.5,.945,'68 updates · 1,836 ordered practice presentations · 864 fixed questions · F32 + seven inference formats',ha='center',fontsize=11)
-fig.text(.5,.018,'Snapshot '+record['captured_utc'][:19].replace('T',' ')+' UTC. Pending is a gap, never zero. Original F32 unmeasured. Shared A100 load; no isolated speed claim.',ha='center',fontsize=9)
+fig.text(.5,.018,'Snapshot '+record['captured_utc'][:19].replace('T',' ')+' UTC. Pending is a gap, never zero. Original F32 recovered from existing receipts. Shared A100 load; no isolated speed claim.',ha='center',fontsize=9)
 legend={}
 for ax in axes[0,:]:
     handles,labels=ax.get_legend_handles_labels()

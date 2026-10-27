@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Recovered existing complete original F32 assessment, not a newly run test",
+  "cases": 864,
+  "correct": 59,
+  "finished": 415,
+  "model_sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764",
+  "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "original_f16_runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+  "same_runtime_as_original_f16": true,
+  "original_f16_model_sha256": "f4c0c5a18525c54c82259526da26513c9164760da3e86bb207e39d37721a799a",
+  "original_f16_evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "source_receipts_sha256": {
+    "result.json": "1bf154d4c3749d8547161bfb0e62a6fd4a987dd4ff63d7acd01c19c811a55fc0",
+    "settlement.json": "a8702ada0487e9b59907b86f0cf397ed0554d5a8b126df28ea11cd5474aae4a3",
+    "intent.json": "47b971a87c600977b0981c419b2ce64b025a1dffd11d8020b9f6df0c242bba49"
+  },
+  "result_keys": [
+    "cases",
+    "evaluation_id",
+    "finished",
+    "groups",
+    "model_calls",
+    "model_sha256",
+    "outcomes",
+    "passed",
+    "prefill_tokens",
+    "promoted",
+    "runtime_id",
+    "schema",
+    "scope",
+    "status",
+    "weights_updated"
+  ],
+  "settlement_keys": [
+    "allocated_seconds",
+    "completed_cases",
+    "execution_wall_seconds",
+    "model_calls",
+    "physical_gpus",
+    "prefill_tokens",
+    "status",
+    "weights_updated"
+  ],
+  "paired_vs_original_f16": {
+    "answer_gains": 0,
+    "answer_losses": 0,
+    "completion_gains": 0,
+    "completion_losses": 0
+  },
+  "model_calls": 0,
+  "training_updates": 0,
+  "original_evidence_unchanged": true
+}

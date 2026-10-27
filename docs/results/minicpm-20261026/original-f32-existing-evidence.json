@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "All864existing original F32 receipts regraded/redecoded; no new inference",
+  "captured_utc": "2026-10-27T01:00:59.918436+00:00",
+  "format": "F32",
+  "cases": 864,
+  "correct": 59,
+  "finished": 415,
+  "bytes": 10072171488,
+  "model_sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764",
+  "runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "scored_at_utc": "2026-10-25T03:20:53.117519+00:00",
+  "evidence_sha256": "1bf154d4c3749d8547161bfb0e62a6fd4a987dd4ff63d7acd01c19c811a55fc0",
+  "case_receipts_sha256": "894110f58d771b7227f304deef7b78d66a10b8e93b3282f4aff262e9cda1b182",
+  "case_receipts": 864,
+  "source_receipts_sha256": {
+    "result.json": "1bf154d4c3749d8547161bfb0e62a6fd4a987dd4ff63d7acd01c19c811a55fc0",
+    "settlement.json": "a8702ada0487e9b59907b86f0cf397ed0554d5a8b126df28ea11cd5474aae4a3",
+    "intent.json": "47b971a87c600977b0981c419b2ce64b025a1dffd11d8020b9f6df0c242bba49"
+  },
+  "checker_implementation_id": "5e734a2807ed673bf27f52b60025093eb828aba7cdbd922bcfddf3e940036945",
+  "tokenizer_sha256": "1cba25d3bd37703adba72e80e223424b845e4a59bbde30723efb1d8ab60967ee",
+  "model_calls": 0,
+  "training_updates": 0,
+  "original_result_unchanged": true
+}

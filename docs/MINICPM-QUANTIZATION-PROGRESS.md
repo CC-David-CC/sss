@@ -1,10 +1,12 @@
 # MiniCPM5-2B: original-model precision results
 
-All seven original-model formats completed the same 864 frozen development
-questions: **6,048 scored attempts**. These are existing completed A100
+All eight original-model formats completed the same 864 frozen development
+questions: **6,912 scored attempts**. These are existing completed A100
 measurements recovered from the evaluation receipts, not new repeat runs.
 
-![All seven original formats](results/minicpm-20261026/original-quantization.png)
+The original F32 measurement had been omitted from the earlier chart. Its [864-response audit](results/minicpm-20261026/original-f32-existing-evidence.json) verifies the saved model identity, response decoding, independent grading and settlement; no GPU inference was rerun. F32 and F16 had identical answer and finish verdicts.
+
+![All eight original formats](results/minicpm-20261026/original-quantization.png)
 
 | Format | Correct / 864 | Correct rate | Natural finishes / 864 |
 | --- | ---: | ---: | ---: |
@@ -15,6 +17,7 @@ measurements recovered from the evaluation receipts, not new repeat runs.
 | Q5_K_M | 58 | 6.7% | 398 |
 | Q8_0 | 43 | 5.0% | 392 |
 | FP16 | 59 | 6.8% | 415 |
+| FP32 | 59 | 6.8% | 415 |
 
 The [aggregate CSV](results/minicpm-20261026/original-quantization.csv) includes
 format sizes, model hashes, evaluation/runtime identities, completion times and
@@ -24,7 +27,7 @@ included.
 
 The [paired-validation receipt](results/minicpm-20261026/original-quantization-validation.json)
 records S³'s successful unique-case, aggregate-count and matching-panel checks
-for all seven formats. It also preserves per-question gains and losses:
+for all eight formats. It also preserves per-question gains and losses:
 
 | Format | Newly correct versus FP16 | FP16 successes lost |
 | --- | ---: | ---: |
@@ -35,6 +38,7 @@ for all seven formats. It also preserves per-question gains and losses:
 | Q5_K_M | 9 | 10 |
 | Q8_0 | 0 | 16 |
 | FP16 | 0 | 0 |
+| FP32 | 0 | 0 |
 
 Q5's net loss of one answer therefore hides nine gains and ten losses. Near-equal
 total scores do not mean the formats retain exactly the same capabilities.
@@ -59,7 +63,7 @@ outstanding. The two precision panels retain different runtime identities.
 
 ## Technical reading and limits
 
-All seven receipts report `COMPLETE`, 864 unique scored cases and the same
+All eight receipts report `COMPLETE`, 864 unique scored cases and the same
 evaluation and runtime identities. Their independent settlement receipts also
 report 864 completed cases. Summary counts and model hashes match the original
 evaluation records. The shared runtime identity is

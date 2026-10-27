@@ -40,7 +40,7 @@ fig.text(.5, .895, 'AdamW LoRA rank 16, update 68 | one merged master | 864 fixe
 handles, labels = axes[0].get_legend_handles_labels()
 fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5,.87), ncol=1,
            fontsize=9, frameon=False)
-fig.text(.5, .035, 'Original sweep: prior runtime, same frozen cases; original F32 not measured.\n'
+fig.text(.5, .035, 'Original sweep: prior runtime, same frozen cases; original F32 verified from existing receipts.\n'
          'Dashed orange = original per quant; gray dots = original F16 level. Shared A100 loads; no release acceptance.',
          ha='center', fontsize=10, color='#555555')
 fig.savefig(root / 'rank16-final-precision.png', dpi=160, facecolor='white')

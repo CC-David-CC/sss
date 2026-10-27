@@ -38,7 +38,7 @@ fig.suptitle('MiniCPM5-2B: full updates versus AdamW LoRA ranks',fontsize=16,fon
 fig.text(.5,.915,f"864 frozen questions per checkpoint | saved results through {asof:%Y-%m-%d %H:%M UTC}",ha='center',fontsize=10)
 handles,names=axes[0].get_legend_handles_labels()
 fig.legend(handles,names,loc='lower center',bbox_to_anchor=(.5,.065),ncol=3,frameon=False,fontsize=9)
-fig.text(.5,.022,'Legend: (latest update: correct answers). Full AdamW and LoRA ranks 1, 3, 4 and 16 have completed update 68.\n'
+fig.text(.5,.022,'Legend: (latest update: correct answers). Full AdamW, standard Muon and all six LoRA ranks have completed update 68.\n'
     'Full updates: FP32; LoRA: F16 base + adapter. Recorded execution paths differ. Shared A100; interim results.',
     ha='center',fontsize=8.5,color='#555555')
 fig.savefig(root/'rank-comparison.png',dpi=220,facecolor='white')

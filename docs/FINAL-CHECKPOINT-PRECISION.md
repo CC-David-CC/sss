@@ -11,7 +11,7 @@ and precision sweeps. Muon precision measurements are outside this snapshot.
 
 The original model appears at each measured format, with its F16 score also
 shown as a horizontal reference: **59 correct, 415 naturally finished**.
-Original F32 was not measured. The original sweep used a prior runtime; it is a
+Original F32 was recovered from an existing completed run: all 864 saved responses were independently regraded and decoded, with no new inference. The original sweep used a prior runtime; it is a
 historical reference, not a matched-runtime estimate of training alone. Pending
 values are gaps, never zeros.
 
@@ -19,7 +19,7 @@ values are gaps, never zeros.
 
 | Format | Original | Full AdamW | LoRA r1 | LoRA r2 | LoRA r3 | LoRA r4 | LoRA r8 | LoRA r16 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| F32 | not measured | 482 | 450 | pending | 475 | 493 | pending | 494 |
+| F32 | 59 | 482 | 450 | pending | 475 | 493 | pending | 494 |
 | F16 | 59 | 481 | 450 | pending | 475 | 493 | pending | 494 |
 | Q8_0 | 43 | 480 | 446 | pending | 474 | 493 | pending | 491 |
 | Q5_K_M | 58 | 468 | 438 | pending | 469 | 484 | pending | 482 |
@@ -32,7 +32,7 @@ values are gaps, never zeros.
 
 | Format | Original | Full AdamW | LoRA r1 | LoRA r2 | LoRA r3 | LoRA r4 | LoRA r8 | LoRA r16 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| F32 | not measured | 864 | 863 | pending | 864 | 864 | pending | 864 |
+| F32 | 415 | 864 | 863 | pending | 864 | 864 | pending | 864 |
 | F16 | 415 | 864 | 863 | pending | 864 | 864 | pending | 864 |
 | Q8_0 | 392 | 864 | 863 | pending | 864 | 864 | pending | 864 |
 | Q5_K_M | 398 | 864 | 863 | pending | 864 | 864 | pending | 864 |

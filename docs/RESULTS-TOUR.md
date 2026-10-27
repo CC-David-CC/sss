@@ -31,7 +31,8 @@ The timings measure evaluation, not a complete training campaign.
 The comparison uses **68 updates and ordered practice**, not equal training
 time. The chart includes full AdamW, standard Muon, RMS/decay Muon, fast/refine
 Muon, and AdamW LoRA ranks 1, 2, 3, 4, 8 and 16. Lines end at completed
-measurements. Only rank 16 has reached update 68 in this snapshot; unequal
+measurements. Full AdamW, standard Muon and all six LoRA ranks have reached update 68;
+the two remaining Muon variants are still progressing. Unequal
 update counts and the recorded execution-path differences prevent a final
 optimizer or rank ranking. Full updates use F32 weights; LoRA uses an F16 base
 and its attached adapter.
@@ -48,9 +49,10 @@ Q5 **482**, Q4 **492**, Q3 **401**, Q2 **36**, and Q1 **0**. All eight formats a
 The observed steep drop starts below Q4, with a nonmonotonic dip at Q5.
 These are the same 864 questions through the same standalone evaluation path.
 
-The orange dashed line adds the original model at each quant: F16 59, Q8 43,
+The orange dashed line adds the original model at each quant: F32 59, F16 59, Q8 43,
 Q5 58, Q4 34, Q3 50, Q2 4 and Q1 0 correct out of 864. Those original
-measurements used a prior runtime; original F32 is unmeasured. The gray dotted
+measurements used a prior runtime. Original F32 was recovered by auditing an existing
+864-response assessment, without new inference. The gray dotted
 reference is the original F16 score. This makes the before/after totals visible
 without claiming that runtime differences have been isolated.
 

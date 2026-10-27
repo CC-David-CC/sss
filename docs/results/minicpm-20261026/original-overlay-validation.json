@@ -10,11 +10,11 @@
   "rows": [
     {
       "format": "F32",
-      "original_correct": null,
-      "original_finished": null,
+      "original_correct": 59,
+      "original_finished": 415,
       "trained_correct": 494,
       "trained_finished": 864,
-      "original_measured": false
+      "original_measured": true
     },
     {
       "format": "F16",
@@ -74,11 +74,12 @@
     }
   ],
   "source_sha256": {
-    "original-quantization.csv": "a9f46a0ee1ef9ebb49840c460f22dc2f3357e0203dfb080b4910f3047305d36a",
-    "original-quantization-validation.json": "31e469c9e71a4fbb76ed85e2f79e0514b740f69f839edbc50109470f228dd878",
-    "rank16-final-precision.json": "96ef8824c45a7aec277bd1e7a86896da3abdf088d3d6d6f487f2e85846bed491"
+    "original-quantization.csv": "901335726c73c01683b059d28b53e7344d11d33f2973ce36a6aba7aa6bb20c6a",
+    "original-quantization-validation.json": "9370a2142f98433334b48317060883b1e1371ab70556484e66a3038b2b9f2cbb",
+    "rank16-final-precision.json": "96ef8824c45a7aec277bd1e7a86896da3abdf088d3d6d6f487f2e85846bed491",
+    "original-f32-existing-evidence.json": "f771b9edc7660f0a1d5df52a5c70a338669aec68ba065ef5e28e39e9719bda69"
   },
   "new_inference_calls": 0,
   "new_training_updates": 0,
-  "scope": "Historical original and trained scores on the same frozen panel; not a matched-runtime causal estimate. Original F32 is unmeasured."
+  "scope": "Historical original and trained scores on the same frozen panel; not a matched-runtime causal estimate. Original F32 recovered from existing, independently regraded receipts, without new inference."
 }
