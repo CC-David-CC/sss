@@ -1,6 +1,6 @@
 # MiniCPM: walking the LoRA ranks
 
-**Work in progress. No high-rank capability score is available yet.**
+**Work in progress. Rank-32 AdamW's first update scored 215/864; the extended curves are not complete.**
 
 Can a larger adapter preserve more useful learning, and how do AdamW and
 factorwise Muon differ as adapter rank grows? This extension has its own branch
@@ -36,7 +36,7 @@ cursor continue between points. There is no fixed training-time budget.
 
 | Rank | Trainable adapter parameters | AdamW | Factorwise Muon |
 |---|---:|---|---|
-| 32 | 54,476,800 | Update 1 saved; export checks passed; assessment running | Pending |
+| 32 | 54,476,800 | Update 1: 215/864 correct; 775/864 naturally finished | Pending |
 | 128 | 217,907,200 | Pending | Pending |
 | 2048 | 3,486,515,200 | Pending | Pending |
 | 4096 | 6,973,030,400 | First update dispatched; no completed score | First update dispatched; no completed score |
@@ -55,9 +55,13 @@ merged weight passed the independent FP64 audit (maximum error 8.98e-8).
 Adapter-versus-merged logits on one original practice input differed by
 0.000118, within the unchanged 0.0002 bound; loss differed by 0.0000055.
 The [export-check receipt](results/minicpm-highrank-20261027/rank32-update001-merge.json)
-records that limited scope. Its frozen 864-question assessment is underway
-through the existing PCC/COW shared-prefix path. No accuracy score is available
-yet. The home runtime is recorded separately from the A100 reference runtimes.
+records that limited scope. Its frozen 864-question assessment completed through
+the existing PCC/COW shared-prefix path: **215 correct, 775 naturally finished**.
+The [assessment receipt](results/minicpm-highrank-20261027/rank32-update001.json)
+includes skill/gate breakdowns and provenance hashes. This is update 1 after 27
+practice presentations, not an update-68 endpoint. Its home runtime is recorded
+separately from the A100 reference runtimes; the reference table above therefore
+does not establish an optimizer-only or rank-only causal effect.
 
 AdamW starts at the original LoRA comparator rate, 1e-4. Factorwise Muon starts
 with the standard full-Muon comparator's 5e-5 matrix rate and 1e-6 auxiliary
