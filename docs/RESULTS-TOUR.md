@@ -1,6 +1,6 @@
 # A short tour of the measured results
 
-[Compare final full-AdamW and all six LoRA-rank precision sweeps](FINAL-CHECKPOINT-PRECISION.md) (39 completed format panels; pending formats remain gaps).
+[Compare final AdamW, standard Muon and all six LoRA-rank precision sweeps](FINAL-CHECKPOINT-PRECISION.md) (all 64 panels complete for these eight finished arms).
 
 Three questions organize this work: can we test faster, how do training methods
 change learning and forgetting, and how much survives compression? These are
