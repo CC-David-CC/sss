@@ -6,7 +6,7 @@
 
 ![Two continuing arms](results/minicpm-highrank-20261027/two-continuations.png)
 
-Update 6 for rank-32 AdamW and update 10 for rank-4096 Muon have trained; their new scores are pending in this snapshot. Dotted lines mark pending checkpoints, not measured scores.
+Rank-32 AdamW update 6 scored **349/864**, with **42 answers gained and 8 lost** versus update 5; 854 responses naturally finished. Its model, adapter and optimizer state passed verified R730 archival, and the next update is progressing. Rank-4096 Muon update 10 has trained and is awaiting its assessment result in this snapshot. Dotted lines mark pending checkpoints, not measured scores.
 
 ## Current measured results
 

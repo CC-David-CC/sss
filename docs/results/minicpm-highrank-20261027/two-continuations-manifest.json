@@ -2,6 +2,7 @@
   "schema": 1,
   "status": "PENDING_NEW_SCORES",
   "source_sha256": {
+    "rank32-update006-public.json": "17c9db6c8de94459cd88dc9df2d6404a3f6a68a7f2d7a2bbbc2979898a5748b9",
     "rank32-update002.json": "3219e25e169d2e932771554a5a801f247a97a7337be1c1d41f048f971a446533",
     "rank32-update003.json": "c8aab68180af31e4d760ca412d380b4fc6ce127fb5004900e60e33c0f4285a2e",
     "rank32-update004.json": "ba8a94cb5e407c4d0000de4f19bf88ee505d54da236d661069aeffcdb54159a4",
@@ -10,9 +11,9 @@
     "rank4096-muon-update001.json": "a146f867fa73d5d6b4a9491292885a6f28ef1cd8234862417a9c3e1538ce8ed8",
     "rank4096-muon-update005.json": "701be21d261786734ff813615bf24fcf8fc860b09870ea84c851d9efd0ed0cc1"
   },
-  "plot_source_sha256": "112bbcc94deb2d0cdeb3375093f183f64d8e85b66f75e89691b471909a5c0d1c",
+  "plot_source_sha256": "de5b935a89f040eb3488ff5c4edd4bfb66eea1c4307f90a7ea5ce9cd7329f598",
   "unmeasured_updates": {
-    "rank32_adamw": 6,
+    "rank32_adamw": null,
     "rank4096_muon": 10
   }
 }
