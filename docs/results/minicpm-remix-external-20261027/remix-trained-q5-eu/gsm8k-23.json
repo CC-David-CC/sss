@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:23",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The candle burns for 4 hours (from 1:00 PM to 5:00 PM). At a rate of 2 centimeters per hour, it will melt by \\(4 \\times 2 = 8\\) centimeters.\n\n8"
+        }
+      }
+    ],
+    "created": 1793084225,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 50,
+      "prompt_tokens": 57,
+      "total_tokens": 107,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-Zv1W5Rpa2WjxnOUQq5tARa19nPacLwh4",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 53,
+      "prompt_ms": 12.58,
+      "prompt_per_token_ms": 0.23735849056603775,
+      "prompt_per_second": 4213.036565977743,
+      "predicted_n": 50,
+      "predicted_ms": 299.921,
+      "predicted_per_token_ms": 6.120836734693877,
+      "predicted_per_second": 163.37635577368707
+    }
+  },
+  "seconds": 0.3221750878728926
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:17",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find Jill's annual salary, we need to calculate her earnings from teaching and cheerleading separately, then sum them up.\n\n1.  **Calculate weekly earnings:**\n    *   Teaching pay: $20/hour \u00d7 35 hours/week = $700/week\n    *   Coaching pay: $30/hour \u00d7 15 hours/week = $450/week\n    *   Total weekly pay: $700 + $450 = $1,150/week\n\n2.  **Calculate annual earnings:**\n    *   Total hours per week: 35 + 15 = 50 hours\n    *   Total weekly pay: $1,150\n    *   Weeks worked: 50 weeks\n    *   Annual salary: $1,150/week \u00d7 50 weeks = $57,500\n\n####57500"
+        }
+      }
+    ],
+    "created": 1793084224,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 172,
+      "prompt_tokens": 73,
+      "total_tokens": 245,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-d1vypbfu1LAm1oWpe5F2Dw4cbfuC1bfc",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 69,
+      "prompt_ms": 18.791,
+      "prompt_per_token_ms": 0.2723333333333333,
+      "prompt_per_second": 3671.9706242350057,
+      "predicted_n": 172,
+      "predicted_ms": 987.018,
+      "predicted_per_token_ms": 5.772035087719298,
+      "predicted_per_second": 173.2491200768375
+    }
+  },
+  "seconds": 1.023571123369038
+}

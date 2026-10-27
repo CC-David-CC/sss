@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:15",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To determine the maximum profit, we need to calculate the potential value of each purchase plan after a 1-month increase and compare the resulting gains.\n\n**1. Calculate the profit for the jewelry plan:**\n*   **Current Value:** $5,000\n*   **Market Increase:** 2.5%\n*   **New Value:** $5,000 $\\times$ (1 + 0.025) = $5,000 $\\times$ 1.025 = $12,625\n*   **Profit:** New Value - Current Value = $12,625 - $5,000 = $7,625\n\n**2. Calculate the profit for the electronic gadgets plan:**\n*   **Current Value:** $8,000\n*   **Market Increase:** 1.2%\n*   **New Value:** $8,000 $\\times$ (1 + 0.012) = $8,000 $\\times$ 1.012 = $8,096\n*   **Profit:** New Value - Current Value = $8,096 - $8,000 = $96\n\n**3. Compare the profits:**\n*   Jewelry Profit: $7,625\n*   Electronics Profit: $96\n\nThe merchant should choose the jewelry plan to maximize profit.\n\n#### $7,625"
+        }
+      }
+    ],
+    "created": 1793084216,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 269,
+      "prompt_tokens": 111,
+      "total_tokens": 380,
+      "prompt_tokens_details": {
+        "cached_tokens": 5
+      }
+    },
+    "id": "chatcmpl-4WVRHxsZMJFKaOIXA5kNhvVpnfaK5cjI",
+    "timings": {
+      "cache_n": 5,
+      "prompt_n": 106,
+      "prompt_ms": 24.726,
+      "prompt_per_token_ms": 0.23326415094339623,
+      "prompt_per_second": 4286.985359540565,
+      "predicted_n": 269,
+      "predicted_ms": 1748.275,
+      "predicted_per_token_ms": 6.523414179104478,
+      "predicted_per_second": 153.29396119031617
+    }
+  },
+  "seconds": 1.7978731538169086
+}

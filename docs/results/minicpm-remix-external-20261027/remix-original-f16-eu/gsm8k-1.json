@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:1",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the total number of bolts of fiber needed, let's break down the information given:\n\n1.  **Blue fiber**: The problem states that the robe takes **2 bolts** of blue fiber.\n2.  **White fiber**: The problem states it takes \"half that much\" white fiber. \"That much\" refers to the amount of blue fiber (2 bolts). Half of 2 is $2 / 2 = 1$. So, it takes **1 bolt** of white fiber.\n\nNow, we add the bolts of blue and white fiber together to get the total:\n$$ \\text{Total bolts} = 2 (\\text{blue}) + 1 (\\text{white}) = 3 $$\n\n####3"
+        }
+      }
+    ],
+    "created": 1793084212,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 152,
+      "prompt_tokens": 47,
+      "total_tokens": 199,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-BjGaTC7sb0BIftvgLHudqTfhVao3qVtf",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 47,
+      "prompt_ms": 118.884,
+      "prompt_per_token_ms": 2.5294468085106385,
+      "prompt_per_second": 395.3433599138656,
+      "predicted_n": 152,
+      "predicted_ms": 901.889,
+      "predicted_per_token_ms": 5.972774834437086,
+      "predicted_per_second": 167.42636843336595
+    }
+  },
+  "seconds": 1.0288029662333429
+}

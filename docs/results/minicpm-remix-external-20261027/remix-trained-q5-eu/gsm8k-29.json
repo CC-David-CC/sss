@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:29",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Let's break down the problem step by step.\n\n1.  **Identify the cost of the high heels:**\n    *   One pair of heels costs $33.\n    *   The other pair costs twice as much.\n    *   Cost of the second pair = $33 \\times 2 = $66.\n\n2.  **Calculate the total cost of the two pairs of heels:**\n    *   Total heels cost = $33 + $66 = $99.\n\n3.  **Set up the equation for the boots:**\n    *   The problem states that the two pairs of heels cost $5 less than the boots.\n    *   Let $B$ be the cost of the boots.\n    *   The cost of the heels ($99) is equal to $B - 5$.\n    *   Equation: $99 = B - 5$.\n\n4.  **Solve for the cost of the boots ($B$):**\n    *   $B = 99 + 5$.\n    *   $B = 104$.\n\nThe boots cost $104.\n\n104####"
+        }
+      }
+    ],
+    "created": 1793084227,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 225,
+      "prompt_tokens": 88,
+      "total_tokens": 313,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-AnS8Sk2opfGop64R4BJMwOOKCRXVqVJ5",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 84,
+      "prompt_ms": 14.437,
+      "prompt_per_token_ms": 0.17186904761904762,
+      "prompt_per_second": 5818.383320634481,
+      "predicted_n": 225,
+      "predicted_ms": 1603.52,
+      "predicted_per_token_ms": 7.158571428571428,
+      "predicted_per_second": 139.6926761125524
+    }
+  },
+  "seconds": 1.6306149852462113
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:16",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The first train travels 80 miles on the first day and 150 miles on the second day, for a total of 230 miles. The second train also travels 80 miles on the first day and 150 miles on the second day, for a total of 230 miles.\n\n####230"
+        }
+      }
+    ],
+    "created": 1793084223,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 61,
+      "prompt_tokens": 70,
+      "total_tokens": 131,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-nSEtokvqLpWKNmOjcwjcvHgIGlFLOJ1t",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 66,
+      "prompt_ms": 15.101,
+      "prompt_per_token_ms": 0.2288030303030303,
+      "prompt_per_second": 4370.571485332097,
+      "predicted_n": 61,
+      "predicted_ms": 345.979,
+      "predicted_per_token_ms": 5.7663166666666665,
+      "predicted_per_second": 173.42093017206247
+    }
+  },
+  "seconds": 0.37243418302387
+}

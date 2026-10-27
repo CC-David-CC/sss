@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:25",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the number of boxes of pizza Marie ordered, we need to calculate the total cost of the other items and subtract that from the total amount paid.\n\n**Step 1: Calculate the cost of the chicken meal.**\nMarie ordered 1 chicken meal at $12.\n$$1 \\times 12 = \\$12$$\n\n**Step 2: Calculate the cost of the milk.**\nMarie ordered 5 packs of milk at $3 each.\n$$5 \\times 3 = \\$15$$\n\n**Step 3: Calculate the cost of the apples.**\nMarie ordered 4 apples at $1.50 each.\n$$4 \\times 1.50 = \\$6.00$$\n\n**Step 4: Calculate the total cost of these items.**\n$$\\$12 + \\$15 + \\$6.00 = \\$33$$\n\n**Step 5: Determine the remaining amount spent on pizza.**\nMarie paid a total of $50.\n$$\\text{Cost of pizza} = \\text{Total paid} - \\text{Cost of other items}$$\n$$\\text{Cost of pizza} = 50 - 33 = \\$17$$\n\n**Step 6: Calculate the number of pizza boxes.**\nEach box of pizza costs $8.50.\n$$\\text{Number of boxes} = \\frac{\\text{Cost of pizza}}{\\text{Cost per box}}$$\n$$\\text{Number of boxes} = \\frac{17}{8.50}$$\n\nLet's do the division:\n$$17 \\div 8.5 = 2$$\n\nSo, Marie ordered 2 boxes of pizza.\n\n####2"
+        }
+      }
+    ],
+    "created": 1793084219,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 327,
+      "prompt_tokens": 84,
+      "total_tokens": 411,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-4zsT0Fx055sfS70kU3f5hKZdR75XIBQL",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 80,
+      "prompt_ms": 17.645,
+      "prompt_per_token_ms": 0.2205625,
+      "prompt_per_second": 4533.862283933126,
+      "predicted_n": 327,
+      "predicted_ms": 2727.885,
+      "predicted_per_token_ms": 8.367745398773007,
+      "predicted_per_second": 119.50650412315767
+    }
+  },
+  "seconds": 2.7656019614078104
+}

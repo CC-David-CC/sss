@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:4",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the number of cups of feed needed for the final meal, we first determine the total amount of feed required for all chickens in a day.\n\n1.  **Calculate the total feed needed per chicken per day:**\n    Wendi feeds each chicken 3 cups of feed.\n    Total feed per day = 3 cups/chicken \u00d7 20 chickens = 60 cups.\n\n2.  **Calculate the feed already given:**\n    *   Morning feed: 15 cups.\n    *   Afternoon feed: 25 cups.\n    *   Total feed given so far = 15 + 25 = 40 cups.\n\n3.  **Calculate the feed needed for the final meal:**\n    *   Total feed needed for the day: 60 cups.\n    *   Feed already given: 40 cups.\n    *   Feed needed for the final meal = 60 - 40 = 20 cups.\n\n####20"
+        }
+      }
+    ],
+    "created": 1793084223,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 191,
+      "prompt_tokens": 128,
+      "total_tokens": 319,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-XXX9P4ca1jeJV8e1pJSOnlBgkn9odrE7",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 128,
+      "prompt_ms": 68.961,
+      "prompt_per_token_ms": 0.5387578125,
+      "prompt_per_second": 1856.1215759632257,
+      "predicted_n": 191,
+      "predicted_ms": 1093.191,
+      "predicted_per_token_ms": 5.753636842105263,
+      "predicted_per_second": 173.803114002951
+    }
+  },
+  "seconds": 1.1692355759441853
+}

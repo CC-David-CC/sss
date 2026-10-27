@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:7",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "First, calculate the total data to download: 200 GB.\nNext, determine the amount downloaded before the interruption: 40% of 200 GB is 80 GB.\nThen, calculate the time to download the first 80 GB at 2 GB/minute: 80 / 2 = 40 minutes.\nAdd the 20 minutes forced to restart the download.\nThen, calculate the time to download the remaining 120 GB at 2 GB/minute: 120 / 2 = 60 minutes.\nAdd the time to restart and the time to download the remaining data: 40 + 20 + 60 = 120 minutes.\n####120"
+        }
+      }
+    ],
+    "created": 1793084223,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 134,
+      "prompt_tokens": 87,
+      "total_tokens": 221,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-VwfeBjLJxps1jZCpfDRI2otoMpHsmb23",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 87,
+      "prompt_ms": 68.401,
+      "prompt_per_token_ms": 0.7862183908045977,
+      "prompt_per_second": 1271.9112293679916,
+      "predicted_n": 134,
+      "predicted_ms": 777.623,
+      "predicted_per_token_ms": 5.846789473684211,
+      "predicted_per_second": 171.03403577311886
+    }
+  },
+  "seconds": 0.8523699771612883
+}

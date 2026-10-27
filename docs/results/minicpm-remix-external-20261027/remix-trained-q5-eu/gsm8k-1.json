@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:1",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "2 bolts of blue fiber and half that much white fiber means 2 + 1 = 3 bolts in total.\n\n####3"
+        }
+      }
+    ],
+    "created": 1793084222,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 28,
+      "prompt_tokens": 47,
+      "total_tokens": 75,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-wfPprTYkMn6Qa0kLCn81zrmQ1Xgh1Tsq",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 47,
+      "prompt_ms": 71.067,
+      "prompt_per_token_ms": 1.512063829787234,
+      "prompt_per_second": 661.3477422713778,
+      "predicted_n": 28,
+      "predicted_ms": 190.15,
+      "predicted_per_token_ms": 7.042592592592593,
+      "predicted_per_second": 141.99316329213778
+    }
+  },
+  "seconds": 0.26931974897161126
+}

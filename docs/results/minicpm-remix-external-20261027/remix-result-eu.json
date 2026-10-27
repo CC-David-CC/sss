@@ -1,0 +1,24 @@
+{
+  "status": "COMPLETE",
+  "summaries": [
+    {
+      "model": "original-F16",
+      "cases": 64,
+      "correct": 46,
+      "groups": {
+        "gsm8k": 22,
+        "arc": 24
+      }
+    },
+    {
+      "model": "trained-Q5",
+      "cases": 64,
+      "correct": 45,
+      "groups": {
+        "gsm8k": 20,
+        "arc": 25
+      }
+    }
+  ],
+  "new_training": false
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:2",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the profit, we need to determine the final value of the house and subtract the total amount of money Josh spent on it.\n\n1.  **Calculate the original cost:**\n    Josh bought the house for $80,000.\n\n2.  **Calculate the value increase:**\n    The problem states that the repairs increased the value of the house by 150%.\n    *   Original value = $80,000\n    *   Increase amount = $80,000 * 150% = $80,000 * 1.5 = $120,000\n    *   New value of the house = Original value + Increase amount = $80,000 + $120,000 = $200,000\n\n    *Alternative calculation for new value:*\n    New value = Original value * (1 + 150%) = $80,000 * 2.5 = $200,000.\n\n3.  **Calculate total expenses:**\n    Total spent = Purchase price + Repairs\n    Total spent = $80,000 + $50,000 = $130,000\n\n4.  **Calculate profit:**\n    Profit = New value of the house - Total expenses\n    Profit = $200,000 - $130,000 = $70,000\n\n####70000"
+        }
+      }
+    ],
+    "created": 1793084223,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 263,
+      "prompt_tokens": 70,
+      "total_tokens": 333,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-tyZveIJAZoDh2zl0Fi73nN1sxdAvPdjm",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 70,
+      "prompt_ms": 71.607,
+      "prompt_per_token_ms": 1.022957142857143,
+      "prompt_per_second": 977.5580599662045,
+      "predicted_n": 263,
+      "predicted_ms": 1521.825,
+      "predicted_per_token_ms": 5.808492366412214,
+      "predicted_per_second": 172.16171373186796
+    }
+  },
+  "seconds": 1.6012567370198667
+}

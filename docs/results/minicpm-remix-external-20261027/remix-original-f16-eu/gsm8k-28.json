@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:28",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the number of miles Henry traveled between his first and second stops, let's break down the information given:\n\n1.  **Total distance of the trip:** 60 miles.\n2.  **First stop location:** He stopped after traveling 20 miles.\n3.  **Second stop location:** He stopped 15 miles before the end of the trip.\n    *   Since the total trip is 60 miles, stopping \"15 miles before the end\" means he had already traveled $60 - 15 = 45$ miles when he made this second stop.\n\nNow, we calculate the distance traveled between the two stops:\n*   **Distance at first stop:** 20 miles.\n*   **Distance at second stop:** 45 miles.\n*   **Distance between stops:** (Distance at second stop) - (Distance at first stop).\n\n$$45 \\text{ miles} - 20 \\text{ miles} = 25 \\text{ miles}$$\n\n####25"
+        }
+      }
+    ],
+    "created": 1793084218,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 201,
+      "prompt_tokens": 68,
+      "total_tokens": 269,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-PXXyjFzXwmF9iC7ain5jLAFSJN9oczoJ",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 64,
+      "prompt_ms": 16.725,
+      "prompt_per_token_ms": 0.261328125,
+      "prompt_per_second": 3826.6068759342297,
+      "predicted_n": 201,
+      "predicted_ms": 1343.126,
+      "predicted_per_token_ms": 6.71563,
+      "predicted_per_second": 148.90635725911045
+    }
+  },
+  "seconds": 1.3763465550728142
+}

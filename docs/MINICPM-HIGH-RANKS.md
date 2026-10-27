@@ -1,6 +1,6 @@
 # MiniCPM: walking the LoRA ranks
 
-**Provisional five-update readout in progress. Rank-32 arms are complete; rank-4096 final assessments remain pending.**
+**The four-arm five-update readout is complete. Only rank-4096 Muon is continuing toward update 68.**
 
 ## Current measured results
 
@@ -13,7 +13,7 @@ actual update-1 and update-5 answers, not adjacent-step totals added together.
 |---|---:|---:|---:|---:|
 | Rank-32 AdamW | 215 | 315 | 122 | 22 |
 | Rank-32 factorwise Muon | 61 | 120 | 60 | 1 |
-| Rank-4096 AdamW | 0 | Pending | Pending | Pending |
+| Rank-4096 AdamW | 0 | 0 | 0 | 0 |
 | Rank-4096 factorwise Muon | 66 | 199 | 133 | 0 |
 
 AdamW gained more and lost more in the rank-32 comparison. At rank 4096,
@@ -25,12 +25,13 @@ the same recorded A100 evaluation runtime.
 
 The original dashed line is a historical reference from a different recorded
 runtime. Only marked points were measured. No missing measurements are filled
-in, and the final AdamW point remains pending rather than being shown as zero.
+in. Rank-4096 AdamW actually scored zero at both measured endpoints; this is not a missing measurement.
 
 The original ten-arm, 68-update study and all 80 precision panels are complete.
-This short extension stops at five updates; ten is the approved maximum, not
-a further scheduled run. Rank-32 arms and rank-4096 Muon have stopped. Only
-rank-4096 AdamW's remaining export/validation/assessment work still needs A100.
+Both rank-32 arms and rank-4096 AdamW stopped at five updates. The owner then
+approved continuing only rank-4096 Muon to 68 updates, from the saved adapter,
+optimizer moments and practice cursor. Milestone assessments are scheduled at
+10, 20, 34, 50 and 68; they are not measured results yet. No seed repeats are scheduled.
 
 Can a larger adapter preserve more useful learning, and how do AdamW and
 factorwise Muon differ as adapter rank grows? This extension has its own branch
@@ -59,9 +60,10 @@ No quantized high-rank results have been measured for this extension.
 
 ## The new arms
 
-This extension is a short provisional comparison, capped at **10 updates per
-arm**, not another full 68-update study. The owner reduced its scope to get an
-early view of high-rank optimizer behavior. Ten is a maximum, not a requirement.
+This extension began as a short provisional comparison and completed five
+updates per arm. The owner subsequently extended **only rank-4096 Muon to 68**.
+The other three arms remain stopped at five; no further rank-4096 AdamW tests
+are scheduled, following the explicit stop instruction.
 The current candidates are rank 32 and rank 4096 with AdamW and factorwise Muon.
 Ranks 128 and 2048 remain unstarted options, not required work for this readout.
 
@@ -75,7 +77,7 @@ completed 68-update comparison remains separate and unchanged.
 | 32 | 54,476,800 | Update 5: 315/864 correct; 854/864 naturally finished | Update 5: 120/864 correct; 602/864 naturally finished |
 | 128 | 217,907,200 | Optional; not started | Optional; not started |
 | 2048 | 3,486,515,200 | Optional; not started | Optional; not started |
-| 4096 | 6,973,030,400 | Update 1: 0/864 correct; update-5 checkpoint verification pending | Update 5: 199/864 correct; 649/864 naturally finished |
+| 4096 | 6,973,030,400 | Update 5: 0/864 correct; 0/864 naturally finished; stopped | Update 5: 199/864 correct; 649/864 naturally finished |
 
 Snapshot: 2026-10-27. This table records the last inspected state, not a live
 monitor. AdamW rank 4096 was dispatched on A100 GPUs 2 and 3; factorwise Muon
@@ -157,7 +159,12 @@ the 66 previously correct answers** on this panel. Natural completion gained
 The [update-5 receipt](results/minicpm-highrank-20261027/rank4096-muon-update005.json)
 records the paired skill/gate changes and unchanged A100 runtime. This is zero
 observed answer losses on these questions, not proof of no forgetting elsewhere.
-Its bounded pipeline stopped at update 5 without promotion or another round.
+Its first bounded pipeline stopped at update 5 without promotion. A separately
+owned continuation now targets update 68, with the same training regimen and
+no repeated committed updates. The [AdamW update-5 receipt](results/minicpm-highrank-20261027/rank4096-adamw-update005.json)
+confirms its independent whole-weight and strict forward checks passed before
+the completed assessment scored 0/864, with zero naturally finished responses.
+The failed behavior is retained as evidence; the AdamW arm is stopped.
 
 For the same update-1-to-5 interval, rank-32 AdamW gained **122 answers and lost
 22**, while rank-32 Muon gained **60 and lost 1**. The

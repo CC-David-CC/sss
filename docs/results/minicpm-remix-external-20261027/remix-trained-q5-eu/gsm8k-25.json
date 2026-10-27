@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:25",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the number of boxes of pizza Marie ordered, we need to calculate the total cost of the items she already bought and subtract that from the total amount she paid. Then, we divide the remaining amount by the cost of one box of pizza.\n\n**Step 1: Calculate the cost of the chicken meal.**\n1 chicken meal = $12\n\n**Step 2: Calculate the cost of the milk.**\n5 packs of milk @ $3 each = $5 \\times 3 = $15\n\n**Step 3: Calculate the cost of the apples.**\n4 apples @ $1.50 each = $4 \\times 1.50 = $6\n\n**Step 4: Calculate the total cost of these items.**\nTotal known cost = $12 + $15 + $6 = $33\n\n**Step 5: Determine the remaining amount for pizza.**\nTotal paid = $50\nRemaining amount = $50 - $33 = $17\n\n**Step 6: Calculate the number of pizza boxes.**\nCost per box = $8.50\nNumber of boxes = Remaining amount / Cost per box\nNumber of boxes = $17 / $8.50\n\nLet's do the division:\n$17 / $8.50 = 170 / 85 = 2\n\nMarie ordered 2 boxes of pizza.\n\n####2"
+        }
+      }
+    ],
+    "created": 1793084226,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 275,
+      "prompt_tokens": 84,
+      "total_tokens": 359,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-CHu1DBVMSbx9pudfv7zI6MuSIZoP2nlo",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 80,
+      "prompt_ms": 13.791,
+      "prompt_per_token_ms": 0.1723875,
+      "prompt_per_second": 5800.8846349068235,
+      "predicted_n": 275,
+      "predicted_ms": 1573.901,
+      "predicted_per_token_ms": 5.744164233576643,
+      "predicted_per_second": 174.0897299131267
+    }
+  },
+  "seconds": 1.6013400587253273
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:9",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To calculate Eliza's earnings for the week, we need to break down her work hours into regular hours and overtime hours.\n\n1.  **Identify Regular Hours and Rate:**\n    *   Regular hours allowed: 40 hours.\n    *   Regular hourly rate: $10 per hour.\n\n2.  **Identify Overtime Hours:**\n    *   Total hours worked: 45 hours.\n    *   Overtime hours = Total hours - Regular hours = $45 - 40 = 5$ hours.\n\n3.  **Calculate Earnings for Regular Hours:**\n    *   Earnings = Regular hours $\\times$ Regular rate\n    *   Earnings = $40 \\times \\$10 = \\$400$.\n\n4.  **Calculate Overtime Rate:**\n    *   Overtime rate = Regular rate $\\times$ 1.2\n    *   Overtime rate = $\\$10 \\times 1.2 = \\$12$ per hour.\n\n5.  **Calculate Earnings for Overtime Hours:**\n    *   Earnings = Overtime hours $\\times$ Overtime rate\n    *   Earnings = $5 \\times \\$12 = \\$60$.\n\n6.  **Calculate Total Weekly Earnings:**\n    *   Total Earnings = Regular Earnings + Overtime Earnings\n    *   Total Earnings = $\\$400 + \\$60 = \\$460$.\n\n####460"
+        }
+      }
+    ],
+    "created": 1793084214,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 284,
+      "prompt_tokens": 77,
+      "total_tokens": 361,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-CrJWegoo6Kdo8ahEKWgQg1FwslY0wTgD",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 73,
+      "prompt_ms": 12.916,
+      "prompt_per_token_ms": 0.17693150684931508,
+      "prompt_per_second": 5651.904614431713,
+      "predicted_n": 284,
+      "predicted_ms": 1817.887,
+      "predicted_per_token_ms": 6.423628975265017,
+      "predicted_per_second": 155.6752427406104
+    }
+  },
+  "seconds": 1.8442175099626184
+}

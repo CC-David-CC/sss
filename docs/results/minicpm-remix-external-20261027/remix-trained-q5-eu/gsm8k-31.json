@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:31",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the average guess, we first need to determine the three numbers Gunter's friends gave.\n\n1.  **First friend:** Says **80**.\n2.  **Second friend:** Says 20 more than half the first one.\n    *   Half of 80 is $80 / 2 = 40$.\n    *   20 more than 40 is $40 + 20 = 60$.\n3.  **Third friend:** Says 25% more than the first one.\n    *   25% of 80 is $0.25 \\times 80 = 20$.\n    *   80 more than 20 is $80 + 20 = 100$.\n\nNow, we calculate the average of these three numbers (80, 60, and 100).\n*   Sum: $80 + 60 + 100 = 240$.\n*   Count: There are 3 numbers.\n*   Average: $240 / 3 = 80$.\n\n####80"
+        }
+      }
+    ],
+    "created": 1793084227,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 204,
+      "prompt_tokens": 81,
+      "total_tokens": 285,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-06MgRSMJNJaKqPetpUFI18FAElWQhXAI",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 77,
+      "prompt_ms": 16.402,
+      "prompt_per_token_ms": 0.21301298701298702,
+      "prompt_per_second": 4694.549445189611,
+      "predicted_n": 204,
+      "predicted_ms": 1219.328,
+      "predicted_per_token_ms": 6.006541871921182,
+      "predicted_per_second": 166.48514591643922
+    }
+  },
+  "seconds": 1.2477048616856337
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:30",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "First, we determine the current ages of Darrell and Allen based on the given ratio and total.\n\nLet the ages be $7x$ and $11x$.\nThe sum of their ages is $7x + 11x = 18x$.\nWe are given that the total age is 162.\nSo, $18x = 162$.\nSolving for $x$:\n$x = \\frac{162}{18} = 9$.\n\nNow, we calculate their current ages:\nDarrell's age = $7x = 7 \\times 9 = 63$.\nAllen's age = $11x = 11 \\times 9 = 99$.\n\nNext, we calculate Allen's age 10 years from now.\nAllen's current age is 99.\n10 years from now, his age will be $99 + 10 = 109$.\n\n####109"
+        }
+      }
+    ],
+    "created": 1793084227,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 180,
+      "prompt_tokens": 56,
+      "total_tokens": 236,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-IbKwJlklYZsn6p2LaqAxTrOlu0hNI9mn",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 52,
+      "prompt_ms": 13.109,
+      "prompt_per_token_ms": 0.25209615384615386,
+      "prompt_per_second": 3966.7404073537264,
+      "predicted_n": 180,
+      "predicted_ms": 1341.067,
+      "predicted_per_token_ms": 7.491994413407821,
+      "predicted_per_second": 133.475806950734
+    }
+  },
+  "seconds": 1.3711409238167107
+}

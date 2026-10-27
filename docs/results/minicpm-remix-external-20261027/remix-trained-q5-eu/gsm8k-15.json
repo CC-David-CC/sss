@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:15",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To determine the profit for each plan, we need to calculate the expected value of the purchase based on the given market increases.\n\n**Plan 1: Jewelry**\n*   **Current Value:** $5,000\n*   **Market Increase:** 2.5%\n*   **Expected Future Value:** $5,000 \\times (1 + 0.025) = 5,000 \\times 1.025 = 5,125$\n*   **Profit:** $5,125 - 5,000 = \\$125$\n\n**Plan 2: Electronic Gadgets**\n*   **Current Value:** $8,000\n*   **Market Increase:** 1.2%\n*   **Expected Future Value:** $8,000 \\times (1 + 0.012) = 8,000 \\times 1.012 = 8,096$\n*   **Profit:** $8,096 - 8,000 = \\$96$\n\n**Comparison:**\n*   Profit from Jewelry: $125\n*   Profit from Electronics: $96\n\nThe merchant should choose the jewelry plan to maximize profit.\n\n125\n\n####125"
+        }
+      }
+    ],
+    "created": 1793084224,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 240,
+      "prompt_tokens": 111,
+      "total_tokens": 351,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-bSoxdxBh1o2tsQ1f2zxw20AwrQBFmyrJ",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 107,
+      "prompt_ms": 15.136,
+      "prompt_per_token_ms": 0.14145794392523364,
+      "prompt_per_second": 7069.23890063425,
+      "predicted_n": 240,
+      "predicted_ms": 1407.176,
+      "predicted_per_token_ms": 5.887765690376569,
+      "predicted_per_second": 169.84371535614594
+    }
+  },
+  "seconds": 1.4312492511235178
+}

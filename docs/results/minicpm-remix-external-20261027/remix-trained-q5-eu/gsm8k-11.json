@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:11",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the total cost, we need to calculate the cost for each type of pastry and then sum them up.\n\n1.  **Donuts:**\n    *   Quantity: 3 dozen\n    *   Price: $68 per dozen\n    *   Cost: $3 \\times 68 = 204$\n\n2.  **Mini Cupcakes:**\n    *   Quantity: 2 dozen\n    *   Price: $80 per dozen\n    *   Cost: $2 \\times 80 = 160$\n\n3.  **Mini Cheesecakes:**\n    *   Quantity: 6 dozen\n    *   Price: $55 per dozen\n    *   Cost: $6 \\times 55 = 330$\n\n4.  **Total Cost:**\n    *   $204 + 160 + 330 = 694$\n\n####694"
+        }
+      }
+    ],
+    "created": 1793084223,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 180,
+      "prompt_tokens": 82,
+      "total_tokens": 262,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-MC7pKJER2OZE14u8DiL1WVAXzVeOOUyL",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 78,
+      "prompt_ms": 15.637,
+      "prompt_per_token_ms": 0.20047435897435897,
+      "prompt_per_second": 4988.169086141843,
+      "predicted_n": 180,
+      "predicted_ms": 1004.523,
+      "predicted_per_token_ms": 5.611860335195531,
+      "predicted_per_second": 178.1940284095038
+    }
+  },
+  "seconds": 1.0297037130221725
+}

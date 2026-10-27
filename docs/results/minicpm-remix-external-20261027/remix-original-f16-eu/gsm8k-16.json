@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:16",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "#### 300 miles"
+        }
+      }
+    ],
+    "created": 1793084214,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 5,
+      "prompt_tokens": 70,
+      "total_tokens": 75,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-rmwKaWqIH49wgIC0inHzN3BF8XMA0cDL",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 66,
+      "prompt_ms": 24.983,
+      "prompt_per_token_ms": 0.37853030303030305,
+      "prompt_per_second": 2641.7964215666652,
+      "predicted_n": 5,
+      "predicted_ms": 26.619,
+      "predicted_per_token_ms": 6.65475,
+      "predicted_per_second": 150.26860513167287
+    }
+  },
+  "seconds": 0.06533140782266855
+}

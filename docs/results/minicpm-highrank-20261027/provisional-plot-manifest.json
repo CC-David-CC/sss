@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "IN_PROGRESS",
+  "status": "COMPLETE_FIVE_UPDATE_READOUT",
   "source_sha256": {
     "rank32-muon-update001.json": "60bc6f7c27214676f807670b8327220fdfe78d7938f03247f7654c58b672bd90",
     "rank32-muon-update005.json": "f8d7fd3b57b5f38203e177114081ba4d8cb8cd8d3ff0d508e5a838724909d59f",
@@ -10,6 +10,7 @@
     "rank32-update004.json": "ba8a94cb5e407c4d0000de4f19bf88ee505d54da236d661069aeffcdb54159a4",
     "rank32-update005.json": "f38fc01e02a7bd375c98e166c8644a54d840fcce4ff400a422d14c0822b8f4a0",
     "rank4096-adamw-update001.json": "d614a9acf044c4c8331f844447876903927b6265511a879fa6807b27d93c6cec",
+    "rank4096-adamw-update005.json": "1eff36514a450cfa4bd21d8b5a2ac41622772b9c12bda6a4593604e03d024c87",
     "rank4096-muon-update001.json": "a146f867fa73d5d6b4a9491292885a6f28ef1cd8234862417a9c3e1538ce8ed8",
     "rank4096-muon-update005.json": "701be21d261786734ff813615bf24fcf8fc860b09870ea84c851d9efd0ed0cc1"
   },

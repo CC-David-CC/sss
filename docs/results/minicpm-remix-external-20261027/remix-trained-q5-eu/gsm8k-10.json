@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:10",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "First month: 60 downloads.\nSecond month: 3 \u00d7 60 = 180 downloads.\nThird month: reduced by 30% from 180, so 180 \u00d7 (1 - 0.30) = 180 \u00d7 0.70 = 126 downloads.\nTotal downloads: 60 + 180 + 126 = 366.\n\n366\n\n####366"
+        }
+      }
+    ],
+    "created": 1793084222,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 79,
+      "total_tokens": 157,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-k5GpK8yfwLcJZ663SEqLJVuYYfwZYtve",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 75,
+      "prompt_ms": 13.902,
+      "prompt_per_token_ms": 0.18536,
+      "prompt_per_second": 5394.907207596029,
+      "predicted_n": 78,
+      "predicted_ms": 418.055,
+      "predicted_per_token_ms": 5.429285714285714,
+      "predicted_per_second": 184.1862912774635
+    }
+  },
+  "seconds": 0.44051190139725804
+}

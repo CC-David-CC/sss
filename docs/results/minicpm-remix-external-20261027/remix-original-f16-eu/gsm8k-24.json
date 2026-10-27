@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:24",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the original price of the book, we can set up an equation based on the information given.\n\nLet $P$ be the original price of the book.\nWe are told that the book was bought with a 25% discount, resulting in a price of $19.50.\nThis means the customer paid 75% of the original price (since $100\\% - 25\\% = 75\\%$).\n\nSo, we can write the equation:\n$$0.75 \\times P = 19.50$$\n\nNow, we solve for $P$:\n$$P = \\frac{19.50}{0.75}$$\n\nTo make the division easier, we can multiply the numerator and the denominator by 100 to remove the decimals:\n$$P = \\frac{1950}{75}$$\n\nNext, we perform the division:\n$$1950 \\div 75$$\n\nWe can simplify this by dividing both numbers by 25:\n$$1950 \\div 25 = 78$$\n$$75 \\div 25 = 3$$\nSo, the equation becomes:\n$$P = \\frac{78}{3}$$\n$$P = 26$$\n\nThe original price of the book was $26.\n\n####26"
+        }
+      }
+    ],
+    "created": 1793084218,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 252,
+      "prompt_tokens": 58,
+      "total_tokens": 310,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-dAt7afgEfyqzx0lRSyDfxwHEzHhcKaMf",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 54,
+      "prompt_ms": 13.396,
+      "prompt_per_token_ms": 0.24807407407407409,
+      "prompt_per_second": 4031.0540459838753,
+      "predicted_n": 252,
+      "predicted_ms": 1659.875,
+      "predicted_per_token_ms": 6.61304780876494,
+      "predicted_per_second": 151.21620603961142
+    }
+  },
+  "seconds": 1.6905436357483268
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:0",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Janet's ducks lay 16 eggs per day.\nShe eats 3 eggs for breakfast.\nShe bakes muffins for her friends every day with 4. (This phrasing is a bit ambiguous, but typically in these math problems, \"bakes muffins for her friends every day with four\" might mean she uses 4 eggs to make muffins, or it's a distractor. Let's re-read carefully: \"She eats three for breakfast every morning and bakes muffins for her friends every day with four.\" This likely means she uses 4 eggs to make muffins. So total eggs used = 3 + 4 = 7.)\nRemainder = 16 - 7 = 9 eggs.\nShe sells the remainder at the farmers' market daily for $2 per fresh duck egg.\nTotal money made = 9 eggs * $2/egg = $18.\n\nLet's double check the interpretation of \"bakes muffins for her friends every day with four\". If it meant she bakes 4 muffins, that doesn't involve eggs. But the context is about eggs. The most logical mathematical interpretation in this type of word problem is that she uses 4 eggs to make muffins.\nSo, eggs used = 3 (breakfast) + 4 (muffins) = 7.\nEggs remaining = 16 - 7 = 9.\nMoney made = 9 * 2 = 18.\n\n####18"
+        }
+      }
+    ],
+    "created": 1793084224,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 293,
+      "prompt_tokens": 83,
+      "total_tokens": 376,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-HJjPy8SpbZLNtHkTlF1c8dzv7WpMBk64",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 83,
+      "prompt_ms": 70.038,
+      "prompt_per_token_ms": 0.8438313253012047,
+      "prompt_per_second": 1185.0709614780549,
+      "predicted_n": 293,
+      "predicted_ms": 1741.438,
+      "predicted_per_token_ms": 5.963828767123288,
+      "predicted_per_second": 167.67751708645383
+    }
+  },
+  "seconds": 1.8198766820132732
+}

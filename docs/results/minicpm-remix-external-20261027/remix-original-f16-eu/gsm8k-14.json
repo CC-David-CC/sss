@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:14",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the percentage of students enrolled in hip-hop dance, we can break down the problem step by step.\n\n**Step 1: Calculate the number of students in each category based on the total number of students (20).**\n\n*   **Contemporary Dance:**\n    *   Percentage: 20%\n    *   Number of students: $20\\% \\text{ of } 20 = 0.20 \\times 20 = 4$ students.\n\n*   **Remaining Students:**\n    *   Total students - Contemporary students = $20 - 4 = 16$ students.\n\n*   **Jazz Dance:**\n    *   Percentage of the remaining: 25%\n    *   Number of students: $25\\% \\text{ of } 16 = 0.25 \\times 16 = 4$ students.\n\n*   **Remaining Students (for Hip-hop):**\n    *   Total remaining after Contemporary and Jazz = $16 - 4 = 12$ students.\n\n**Step 2: Calculate the percentage of the entire class that is Hip-hop.**\n\n*   Number of Hip-hop students: 12\n*   Total number of students: 20\n*   Percentage: $\\frac{12}{20} \\times 100\\%$\n\nCalculation:\n$$ \\frac{12}{20} = 0.6 $$\n$$ 0.6 \\times 100\\% = 60\\% $$\n\nAlternatively, using percentages directly:\n1.  Start with 100% of the class.\n2.  Subtract 20% (Contemporary): $100\\% - 20\\% = 80\\%$.\n3.  Subtract 25% of the *remaining* 80%: $25\\% \\text{ of } 80\\% = 0.25 \\times 80 = 20\\%$.\n4.  The rest is Hip-hop: $80\\% - 20\\% = 60\\%$.\n\n####60%"
+        }
+      }
+    ],
+    "created": 1793084216,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 404,
+      "prompt_tokens": 70,
+      "total_tokens": 474,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-4SKJ1kF3jJqQJyh0i4frYXB0MbtAWkDT",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 66,
+      "prompt_ms": 17.264,
+      "prompt_per_token_ms": 0.2615757575757576,
+      "prompt_per_second": 3822.9842446709918,
+      "predicted_n": 404,
+      "predicted_ms": 2646.585,
+      "predicted_per_token_ms": 6.567208436724566,
+      "predicted_per_second": 152.27170107893755
+    }
+  },
+  "seconds": 2.683893518988043
+}

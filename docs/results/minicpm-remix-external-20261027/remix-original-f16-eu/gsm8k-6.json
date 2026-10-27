@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:6",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "We are given:\n\n- Seattle has 20 sheep.\n- Charleston has 4 times as many sheep as Seattle.\n- Toulouse has twice as many sheep as Charleston.\n\nLet's compute step by step.\n\n**Step 1:** Charleston has $4 \\times 20 = 80$ sheep.\n\n**Step 2:** Toulouse has $2 \\times 80 = 160$ sheep.\n\n**Step 3:** Total sheep = Seattle + Charleston + Toulouse = $20 + 80 + 160 = 260$.\n\n####260"
+        }
+      }
+    ],
+    "created": 1793084212,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 113,
+      "prompt_tokens": 62,
+      "total_tokens": 175,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-azdn6ZfxB3sX9zn9yG6YbZCVc17a388K",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 62,
+      "prompt_ms": 115.738,
+      "prompt_per_token_ms": 1.866741935483871,
+      "prompt_per_second": 535.6926852027857,
+      "predicted_n": 113,
+      "predicted_ms": 649.476,
+      "predicted_per_token_ms": 5.7988928571428575,
+      "predicted_per_second": 172.4467108869304
+    }
+  },
+  "seconds": 0.7723251068964601
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:0",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find out how much money Janet makes, we need to calculate the number of eggs she has left to sell after her breakfast and baking muffins.\n\n1.  **Total eggs laid per day:** 16\n2.  **Eggs eaten for breakfast:** 3\n3.  **Eggs used for muffins:** 4\n    *   *Note: The problem states she \"bakes muffins... with four\". In the context of egg-laying problems, this implies she uses 4 eggs to make the muffins.*\n4.  **Total eggs used:** $3 + 4 = 7$\n5.  **Remaining eggs for sale:** $16 - 7 = 9$\n6.  **Price per egg:** $2\n7.  **Total earnings:** $9 \\text{ eggs} \\times \\$2/\\text{egg} = \\$18$\n\nJanet makes $18 every day.\n\n####18"
+        }
+      }
+    ],
+    "created": 1793084213,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 194,
+      "prompt_tokens": 83,
+      "total_tokens": 277,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-iOigea6wbNP1lxUiiYCf8x4EP5YIBMlZ",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 83,
+      "prompt_ms": 117.895,
+      "prompt_per_token_ms": 1.4204216867469879,
+      "prompt_per_second": 704.0162856779339,
+      "predicted_n": 194,
+      "predicted_ms": 1195.525,
+      "predicted_per_token_ms": 6.194430051813472,
+      "predicted_per_second": 161.43535266932938
+    }
+  },
+  "seconds": 1.3218815331347287
+}

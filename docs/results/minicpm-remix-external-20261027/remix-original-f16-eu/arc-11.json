@@ -1,0 +1,41 @@
+{
+  "case_id": "arc:11",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "A"
+        }
+      }
+    ],
+    "created": 1793084219,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 2,
+      "prompt_tokens": 73,
+      "total_tokens": 75,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-JANiKAYn6FXbkT0tVeN6VqsHcGuoS1ki",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 69,
+      "prompt_ms": 38.496,
+      "prompt_per_token_ms": 0.5579130434782609,
+      "prompt_per_second": 1792.3940149625935,
+      "predicted_n": 2,
+      "predicted_ms": 7.321,
+      "predicted_per_token_ms": 7.321,
+      "predicted_per_second": 136.59336156262808
+    }
+  },
+  "seconds": 0.0672368761152029
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "arc:23",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "C"
+        }
+      }
+    ],
+    "created": 1793084227,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 2,
+      "prompt_tokens": 108,
+      "total_tokens": 110,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-v5vT4uPTgh1Ou1qglNO1aQMMLPW9WvM8",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 104,
+      "prompt_ms": 28.268,
+      "prompt_per_token_ms": 0.2718076923076923,
+      "prompt_per_second": 3679.0717418989666,
+      "predicted_n": 2,
+      "predicted_ms": 6.396,
+      "predicted_per_token_ms": 6.396,
+      "predicted_per_second": 156.3477173233271
+    }
+  },
+  "seconds": 0.04868539795279503
+}

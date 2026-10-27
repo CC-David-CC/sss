@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:3",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the total distance James runs in a week, we can break down the problem into steps:\n\n1.  **Calculate the distance of one sprint:**\n    The problem states that James runs 60 meters each sprint.\n\n2.  **Calculate the distance run in one session:**\n    James runs 3 sprints in one session.\n    Distance per session = 3 sprints \u00d7 60 meters/sprint = 180 meters.\n\n3.  **Calculate the total distance per week:**\n    James runs this session 3 times a week.\n    Total weekly distance = 3 sessions/week \u00d7 180 meters/session = 540 meters.\n\nAlternatively:\nTotal sprints per week = 3 times/week \u00d7 3 sprints/time = 9 sprints.\nTotal distance = 9 sprints \u00d7 60 meters/sprint = 540 meters.\n\n####540"
+        }
+      }
+    ],
+    "created": 1793084212,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 181,
+      "prompt_tokens": 55,
+      "total_tokens": 236,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-FYD9rXuTOUrHNYeHoavqEQcrFdgENsIj",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 55,
+      "prompt_ms": 117.297,
+      "prompt_per_token_ms": 2.1326727272727273,
+      "prompt_per_second": 468.8951976606392,
+      "predicted_n": 181,
+      "predicted_ms": 1087.163,
+      "predicted_per_token_ms": 6.0397944444444445,
+      "predicted_per_second": 165.56854859850822
+    }
+  },
+  "seconds": 1.2120056310668588
+}

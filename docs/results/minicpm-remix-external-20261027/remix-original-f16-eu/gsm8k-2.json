@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:2",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the profit, we need to determine the final value of the house and compare it to the initial cost.\n\n**Step 1: Calculate the original value of the house.**\nThe problem states that Josh buys the house for $80,000.\nOriginal Value = $80,000\n\n**Step 2: Calculate the increased value.**\nThe problem states that the repairs increased the value of the house by 150%.\nIncreased Value = Original Value $\\times$ 150%\nIncreased Value = $80,000 \\times 1.50$\nIncreased Value = $120,000\n\n**Step 3: Calculate the final value of the house.**\nThe final value is the original value plus the increased value.\nFinal Value = Original Value + Increased Value\nFinal Value = $80,000 + $120,000\nFinal Value = $200,000\n\n*Alternative interpretation check:* Sometimes \"increased by 150%\" means the new value is the original plus 150% of the original.\nNew Value = $80,000 + (1.5 \\times 80,000) = 80,000 + 120,000 = 200,000$.\nThis confirms the final value is $200,000.\n\n**Step 4: Calculate the total cost.**\nTotal Cost = Purchase Price + Repair Cost\nTotal Cost = $80,000 + $50,000\nTotal Cost = $130,000\n\n**Step 5: Calculate the profit.**\nProfit = Final Value - Total Cost\nProfit = $200,000 - $130,000\nProfit = $70,000\n\n####70000"
+        }
+      }
+    ],
+    "created": 1793084213,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 327,
+      "prompt_tokens": 70,
+      "total_tokens": 397,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-hMrZx5MdfY1nCpbFBp2X1yUOXfgiCm6j",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 70,
+      "prompt_ms": 118.37,
+      "prompt_per_token_ms": 1.691,
+      "prompt_per_second": 591.3660555884092,
+      "predicted_n": 327,
+      "predicted_ms": 2032.529,
+      "predicted_per_token_ms": 6.234751533742331,
+      "predicted_per_second": 160.39131544986566
+    }
+  },
+  "seconds": 2.158666844945401
+}

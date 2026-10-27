@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:3",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "3 sprints \u00d7 3 times a week \u00d7 60 meters = 540 meters.\n\n540"
+        }
+      }
+    ],
+    "created": 1793084222,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 21,
+      "prompt_tokens": 55,
+      "total_tokens": 76,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-gitvH3vx7YfjY0dxPiHWJFIVD6imS5OG",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 55,
+      "prompt_ms": 70.568,
+      "prompt_per_token_ms": 1.2830545454545454,
+      "prompt_per_second": 779.3900918263236,
+      "predicted_n": 21,
+      "predicted_ms": 139.662,
+      "predicted_per_token_ms": 6.9831,
+      "predicted_per_second": 143.2028755137403
+    }
+  },
+  "seconds": 0.21789228869602084
+}

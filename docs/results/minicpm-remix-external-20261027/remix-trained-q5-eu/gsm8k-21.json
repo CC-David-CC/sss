@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:21",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find out how many years ago Raymond's son was born, we need to determine Raymond's current age and then calculate the time difference between his current age and the age at which he had his son.\n\n1.  **Find Samantha's age:**\n    We are told that Samantha is currently 31 years old.\n\n2.  **Find Raymond's age:**\n    Raymond was born 6 years before Samantha.\n    $$ \\text{Raymond's Age} = \\text{Samantha's Age} - 6 $$\n    $$ \\text{Raymond's Age} = 31 - 6 = 25 $$\n\n3.  **Determine when Raymond had his son:**\n    Raymond had his son at the age of 23.\n    This means the son was born when Raymond was 23 years old.\n\n4.  **Calculate how many years ago the son was born:**\n    We need to find the difference between Raymond's current age and the age he had his son.\n    $$ \\text{Years ago} = \\text{Raymond's Current Age} - \\text{Age when he had son} $$\n    $$ \\text{Years ago} = 25 - 23 = 2 $$\n\nSo, Raymond's son was born 2 years ago.\n\n####2"
+        }
+      }
+    ],
+    "created": 1793084225,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 265,
+      "prompt_tokens": 64,
+      "total_tokens": 329,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-lwx0qc8mVo4X3bxksgorB7arN9d9or0y",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 60,
+      "prompt_ms": 13.5,
+      "prompt_per_token_ms": 0.225,
+      "prompt_per_second": 4444.444444444444,
+      "predicted_n": 265,
+      "predicted_ms": 1524.145,
+      "predicted_per_token_ms": 5.773276515151515,
+      "predicted_per_second": 173.21186632505436
+    }
+  },
+  "seconds": 1.5511835413053632
+}

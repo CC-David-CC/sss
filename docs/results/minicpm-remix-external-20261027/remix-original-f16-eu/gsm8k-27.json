@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:27",
+  "correct": false,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find out how much Cynthia will spend on ice cream after 60 days, we need to calculate the total number of servings she consumes and then determine how many cartons she needs to buy.\n\n**Step 1: Calculate the total number of servings consumed.**\nCynthia eats one serving per night.\nThe number of nights in 60 days is 60.\nTotal servings = $60 \\text{ nights} \\times 1 \\text{ serving/night} = 60 \\text{ servings}$.\n\n**Step 2: Determine the number of cartons needed.**\nEach carton contains 15 servings.\nNumber of cartons needed = $\\frac{\\text{Total servings}}{\\text{Servings per carton}}$\nNumber of cartons = $\\frac{60}{15} = 4 \\text{ cartons}$.\n\n**Step 3: Calculate the total cost.**\nEach carton costs $4.00.\nTotal cost = $4 \\text{ cartons} \\times \\$4.00/\\text{carton} = \\$16.00$.\n\n####$16.00"
+        }
+      }
+    ],
+    "created": 1793084218,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 213,
+      "prompt_tokens": 74,
+      "total_tokens": 287,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-HZ5mIG4zQWBm2aT6fNZ5QlHVcWpV6UQE",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 70,
+      "prompt_ms": 16.982,
+      "prompt_per_token_ms": 0.24259999999999998,
+      "prompt_per_second": 4122.011541632317,
+      "predicted_n": 213,
+      "predicted_ms": 1364.782,
+      "predicted_per_token_ms": 6.437650943396226,
+      "predicted_per_second": 155.33616357777285
+    }
+  },
+  "seconds": 1.3975795889273286
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:4",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the number of cups of feed needed for the final meal, we first need to determine the total amount of feed required for all meals and then subtract the feed already given in the morning and afternoon.\n\n**Step 1: Calculate the total feed needed per chicken per day.**\nWendi feeds each chicken 3 cups of mixed chicken feed.\nThere are 20 chickens.\nTotal feed per day = $20 \\text{ chickens} \\times 3 \\text{ cups/chicken} = 60 \\text{ cups}$.\n\n**Step 2: Calculate the total feed given in the morning and afternoon.**\nMorning feed: 15 cups.\nAfternoon feed: 25 cups.\nTotal feed given so far = $15 + 25 = 40 \\text{ cups}$.\n\n**Step 3: Calculate the feed needed for the final meal.**\nThe total feed required for the day is 60 cups. We subtract the feed already given (40 cups) to find the remaining amount needed.\nFeed needed for final meal = $60 - 40 = 20 \\text{ cups}$.\n\n####20"
+        }
+      }
+    ],
+    "created": 1793084213,
+    "model": "/home/dflanag3/models/minicpm5-official/MiniCPM5-2B-F16.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 225,
+      "prompt_tokens": 128,
+      "total_tokens": 353,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-ZtPuINPSJArg0Hqt7uRycBzFxli1tRo0",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 128,
+      "prompt_ms": 115.217,
+      "prompt_per_token_ms": 0.9001328125,
+      "prompt_per_second": 1110.9471692545371,
+      "predicted_n": 225,
+      "predicted_ms": 1400.973,
+      "predicted_per_token_ms": 6.254343749999999,
+      "predicted_per_second": 159.8888772303249
+    }
+  },
+  "seconds": 1.5234165471047163
+}

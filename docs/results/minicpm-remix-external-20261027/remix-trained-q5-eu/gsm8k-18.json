@@ -1,0 +1,41 @@
+{
+  "case_id": "gsm8k:18",
+  "correct": true,
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To find the number of dozens of eggs Claire eats in 4 weeks, we first calculate the total number of eggs.\n\n1.  **Calculate eggs per day:** Claire makes 3 eggs of omelet every morning.\n2.  **Calculate days in 4 weeks:** There are 7 days in a week, so $4 \\times 7 = 28$ days.\n3.  **Calculate total eggs:** $3 \\text{ eggs/day} \\times 28 \\text{ days} = 84 \\text{ eggs}$.\n4.  **Convert eggs to dozens:** There are 12 eggs in a dozen. So, $84 \\div 12 = 7$ dozens.\n\n####7"
+        }
+      }
+    ],
+    "created": 1793084224,
+    "model": "/home/dflanag3/minicpm-remix-evaluation-20261027-eu/MiniCPM5-2B-SSS-Muon-Full-U068-Q5_K_M.gguf",
+    "system_fingerprint": "b11028-972d2313b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 147,
+      "prompt_tokens": 48,
+      "total_tokens": 195,
+      "prompt_tokens_details": {
+        "cached_tokens": 4
+      }
+    },
+    "id": "chatcmpl-7M5gBiA1GhJ7205YKb3UdjS08aw3JKcS",
+    "timings": {
+      "cache_n": 4,
+      "prompt_n": 44,
+      "prompt_ms": 19.403,
+      "prompt_per_token_ms": 0.4409772727272727,
+      "prompt_per_second": 2267.6905633149513,
+      "predicted_n": 147,
+      "predicted_ms": 840.458,
+      "predicted_per_token_ms": 5.756561643835616,
+      "predicted_per_second": 173.71480787856143
+    }
+  },
+  "seconds": 0.8773461673408747
+}
