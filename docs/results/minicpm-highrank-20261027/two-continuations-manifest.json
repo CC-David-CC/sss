@@ -1,30 +1,45 @@
 {
   "schema": 1,
-  "status": "MEASURED_PROGRESS",
+  "status": "MUON_COMPLETE_ADAMW_EXPORT_HOLD",
+  "captured_at_utc": "2026-10-27T15:21:34.010068+00:00",
   "source_sha256": {
     "rank32-update006-public.json": "17c9db6c8de94459cd88dc9df2d6404a3f6a68a7f2d7a2bbbc2979898a5748b9",
     "rank32-update002.json": "3219e25e169d2e932771554a5a801f247a97a7337be1c1d41f048f971a446533",
+    "rank32-update012-public.json": "6491ee686fa6eb9f118e26820f5930a40378abfaeb2ed88ed4260acc30e43a04",
     "rank32-update003.json": "c8aab68180af31e4d760ca412d380b4fc6ce127fb5004900e60e33c0f4285a2e",
     "rank32-update004.json": "ba8a94cb5e407c4d0000de4f19bf88ee505d54da236d661069aeffcdb54159a4",
     "rank32-update007-public.json": "149d169d38f0f502c6ec5273438027f81ccfc69a40d1ddd347c0101b163accee",
+    "rank32-update013-public.json": "07dcf2259371bfb898bb4f1c9e6f39bd690e2f32f31afeb3b63a813ca012587d",
+    "rank32-update010-public.json": "e0e54d0177bd6397974f1182928f62793af91431fe4d7a13669a05e5e34653d1",
+    "rank32-update011-public.json": "7e7e35c88dc60603a203835b1ff4ad90405e0d04137efc3e798e0b7dff1e88d3",
+    "rank32-update009-public.json": "d50b55c9754cf2b4c300ba41f33c87ca4ce42756bcb79826c196de88f9b4bc52",
     "rank32-update001.json": "0a4ba4e5383718273f4ffc7223d82b0276e29528ed095d49e2ac61a10891eb39",
+    "rank32-update014-public.json": "63a756cd473d4979dce6d73e187ab78ee93aa13417b4cb3362b461765c9be0ee",
     "rank32-update005.json": "f38fc01e02a7bd375c98e166c8644a54d840fcce4ff400a422d14c0822b8f4a0",
+    "rank32-update008-public.json": "18983834524b5dcee6a64620a970ddd80641bf0e6914d2e9ac97a40481948206",
+    "rank4096-muon-update050.json": "3574c8147adf81b194781ce71a81007980870dd3781c737fd8a7b62dc11ba505",
     "rank4096-muon-update001.json": "a146f867fa73d5d6b4a9491292885a6f28ef1cd8234862417a9c3e1538ce8ed8",
+    "rank4096-muon-update068.json": "e35803a7d2ece849bebc57fb76fcccf3a96512047b8e7f06f39434bb3a0c0841",
+    "rank4096-muon-update034.json": "f15929ce281f83baf2ea6ffc45a2b51c49a29b5218ee790d40ef7eaa88423a06",
     "rank4096-muon-update010.json": "724b5d39e74efd4ab87eb338044bf5f7b0c4a7f2b57550fd4e1b83df96fc443a",
-    "rank4096-muon-update005.json": "701be21d261786734ff813615bf24fcf8fc860b09870ea84c851d9efd0ed0cc1"
+    "rank4096-muon-update005.json": "701be21d261786734ff813615bf24fcf8fc860b09870ea84c851d9efd0ed0cc1",
+    "rank4096-muon-update020.json": "b402b80907c9dc8c1ec9103d7f39074e9a84198f826a42f0af8c4aa435a1c20e"
   },
-  "plot_source_sha256": "d9e39d73f3edea81edfcc44889dc10504c89764a1351ac217127b141a1ab4e7d",
+  "plot_source_sha256": "368c3c13ca7f8aff5c76034be5448a8a7218a0ea1d82a6e84af215155d03d451",
   "latest_measured": {
     "rank32_adamw": {
-      "update": 7,
-      "correct": 373,
-      "finished": 857
+      "update": 14,
+      "correct": 421,
+      "finished": 862
     },
     "rank4096_muon": {
-      "update": 10,
-      "correct": 257,
-      "finished": 819
+      "update": 68,
+      "correct": 476,
+      "finished": 863
     }
   },
-  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4"
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "unscored_update": 15,
+  "new_model_calls": 0,
+  "new_training_updates": 0
 }

@@ -1,23 +1,34 @@
 # MiniCPM: walking the LoRA ranks
 
-**The four-arm five-update readout is complete. Rank-32 AdamW and rank-4096 Muon are continuing toward update 68.**
+**Rank-4096 Muon completed 68 updates. Rank-32 AdamW trained update 15, then stopped at export parity; its last accepted score is update 14.**
 
-## The two continuing arms
+## Extended runs: completed and held
 
 ![Two continuing arms](results/minicpm-highrank-20261027/two-continuations.png)
 
-Latest completed points: **rank-32 AdamW update 7: 373/864** (857 naturally finished), and **rank-4096 Muon update 10: 257/864** (819 naturally finished). Both continue independently toward update 68.
+| Arm | Last valid scored update | Correct / 864 | Naturally finished / 864 | State |
+|---|---:|---:|---:|---|
+| AdamW LoRA rank 32, llm-60 | 14 | 421 | 862 | Update 15 trained; adapter/merged parity check failed before scoring; stopped for review |
+| Factorwise Muon LoRA rank 4096, A100 | 68 | 476 | 863 | Complete; no automatic next round |
 
-| Arm and measured interval | Correct before → after | Answers gained | Answers lost |
-|---|---:|---:|---:|
-| Rank-32 AdamW, update 5 → 6 | 315 → 349 | 42 | 8 |
-| Rank-32 AdamW, update 6 → 7 | 349 → 373 | 31 | 7 |
-| Rank-4096 Muon, update 5 → 10 | 199 → 257 | 66 | 8 |
-| Rank-4096 Muon, direct update 1 → 10 | 66 → 257 | 195 | 4 |
+The two owner processes have exited. The status check found no compute processes holding GPU memory on llm-60 and none under our A100 account. Other users continue using the shared A100 server. No training was restarted to collect this report; the broader learning goal remains paused. The follow-up 128-lesson round is prepared, not queued.
 
-Muon did lose previously correct answers by update 10. Its initial zero-loss result at update 5 did not persist. The direct first-to-tenth comparison is independently paired; it is not a sum of interval gains/losses. The [paired receipt](results/minicpm-highrank-20261027/muon4096-paired-first-to-ten.json) preserves the group breakdowns. Counts across these different intervals do not isolate an optimizer effect.
+### Muon milestone scores and paired changes
 
-Rank-32 update 6 completed its first real rolling archive cycle: model, adapter and optimizer state verified on R730 before cold local copies were retired. The latest continuation state stayed local. Rank-4096 Muon has moved to its update-10-to-20 training block.
+| Update | Correct / 864 | Naturally finished / 864 | Answers gained vs previous milestone | Answers lost vs previous milestone |
+|---|---:|---:|---:|---:|
+| 5 | 199 | 649 | 133 (vs update 1) | 0 (vs update 1) |
+| 10 | 257 | 819 | 66 | 8 |
+| 20 | 326 | 851 | 93 | 24 |
+| 34 | 406 | 858 | 101 | 21 |
+| 50 | 459 | 860 | 70 | 17 |
+| 68 | 476 | 863 | 42 | 25 |
+
+The initial zero-loss result did not persist. Interval gains and losses must not be added to infer a direct endpoint comparison. The independent [update-1-to-10 paired receipt](results/minicpm-highrank-20261027/muon4096-paired-first-to-ten.json) records 195 gains and four losses. The final update-68 receipt includes its direct comparison against update 5.
+
+AdamW rank 32 scored 349 at update 6, 373 at 7, 369 at 8, 367 at 9, 368 at 10, 371 at 11, 386 at 12, 406 at 13 and 421 at 14. Update 15 is deliberately absent from the chart: a trained checkpoint without a passing export-equivalence gate is not an accepted evaluation point. Its original adapter, state and failure evidence remain preserved. No equivalence threshold was relaxed.
+
+Each recorded point below uses the same 864 questions. Hardware runtimes, learning rates and parameterization differ across arms; the unequal stopping points do not establish an isolated optimizer ranking.
 
 ## Initial five-update comparison
 
@@ -91,10 +102,10 @@ completed 68-update comparison remains separate and unchanged.
 
 | Rank | Trainable adapter parameters | AdamW | Factorwise Muon |
 |---|---:|---|---|
-| 32 | 54,476,800 | Update 7: 373/864 correct; 857/864 naturally finished | Update 5: 120/864 correct; 602/864 naturally finished |
+| 32 | 54,476,800 | Update 14: 421/864 correct; 862/864 naturally finished; held at update 15 export | Update 5: 120/864 correct; 602/864 naturally finished |
 | 128 | 217,907,200 | Optional; not started | Optional; not started |
 | 2048 | 3,486,515,200 | Optional; not started | Optional; not started |
-| 4096 | 6,973,030,400 | Update 5: 0/864 correct; 0/864 naturally finished; stopped | Update 10: 257/864 correct; 819/864 naturally finished |
+| 4096 | 6,973,030,400 | Update 5: 0/864 correct; 0/864 naturally finished; stopped | Update 68: 476/864 correct; 863/864 naturally finished; complete |
 
 Snapshot: 2026-10-27. This table records the last inspected state, not a live
 monitor. AdamW rank 4096 was dispatched on A100 GPUs 2 and 3; factorwise Muon
