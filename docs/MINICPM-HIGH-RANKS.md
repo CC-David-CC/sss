@@ -39,16 +39,16 @@ cursor continue between points. There is no fixed training-time budget.
 | 32 | 54,476,800 | Update 1: 215/864 correct; 775/864 naturally finished | Pending |
 | 128 | 217,907,200 | Pending | Pending |
 | 2048 | 3,486,515,200 | Pending | Pending |
-| 4096 | 6,973,030,400 | First update dispatched; no completed score | First update dispatched; no completed score |
+| 4096 | 6,973,030,400 | Update 1 saved; export and assessment pending | Update 1 saved; export and assessment pending |
 
 Snapshot: 2026-10-27. This table records the last inspected state, not a live
 monitor. AdamW rank 4096 was dispatched on A100 GPUs 2 and 3; factorwise Muon
 on GPUs 0 and 7. These are separate arms, not repeated runs. Both optimizers passed
 generated tiny-model two-GPU continuation tests and actual-model persistent
-memory admission. AdamW reached a native step result after actual graph
-admission; its artifact completion and assessment remain pending. Execution-graph
-allocation, saved artifacts and evaluation are separate gates; persistent
-admission alone does not establish successful training.
+memory admission. Both completed their first native update and verified saved
+adapter and optimizer-state artifacts. Their export and assessment checks remain
+pending. Execution-graph allocation, saved artifacts and evaluation are separate
+gates; persistent admission alone does not establish successful training.
 
 Rank-32 AdamW completed its first update on the separate llm-60 worker. Every
 merged weight passed the independent FP64 audit (maximum error 8.98e-8).
