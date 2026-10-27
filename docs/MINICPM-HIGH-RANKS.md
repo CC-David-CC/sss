@@ -39,13 +39,16 @@ cursor continue between points. There is no fixed training-time budget.
 | 32 | 54,476,800 | Pending | Pending |
 | 128 | 217,907,200 | Pending | Pending |
 | 2048 | 3,486,515,200 | Pending | Pending |
-| 4096 | 6,973,030,400 | First update dispatched; no completed score | Pending |
+| 4096 | 6,973,030,400 | First update dispatched; no completed score | First update dispatched; no completed score |
 
 Snapshot: 2026-10-27. This table records the last inspected state, not a live
-monitor. AdamW rank 4096 was dispatched on two A100s. Both optimizers passed
+monitor. AdamW rank 4096 was dispatched on A100 GPUs 2 and 3; factorwise Muon
+on GPUs 0 and 7. These are separate arms, not repeated runs. Both optimizers passed
 generated tiny-model two-GPU continuation tests and actual-model persistent
-memory admission. Execution-graph allocation and the first actual update remain
-separate gates; admission does not establish successful training.
+memory admission. AdamW reached a native step result after actual graph
+admission; its artifact completion and assessment remain pending. Execution-graph
+allocation, saved artifacts and evaluation are separate gates; persistent
+admission alone does not establish successful training.
 
 AdamW starts at the original LoRA comparator rate, 1e-4. Factorwise Muon starts
 with the standard full-Muon comparator's 5e-5 matrix rate and 1e-6 auxiliary
