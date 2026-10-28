@@ -11,7 +11,7 @@ Catalog status, training exposure, test coverage and mastery are distinct.
 | Catalog nodes | 128 | Entire current catalog, including planned work |
 | Implemented generator nodes | 66 | Exact-foundation generators exist; not proof of model mastery |
 | Nodes practiced in the fixed comparison | 9 | Eight arithmetic skills plus register tracking |
-| Other implemented nodes outside that comparison | 57 | Need a baseline and training-exposure audit before selecting lessons |
+| Other implemented nodes outside that comparison | 57 | Preliminary individual baseline now measured with 8 cases each; weak subskills need redesigned/expanded tests |
 | Planned catalog nodes | 62 | Do not count as implemented training/evaluation coverage |
 
 Do not interpret these as 128 terminal graph leaves. The graph includes prerequisites,
@@ -44,9 +44,21 @@ Zero is not proof that the original model has no arithmetic knowledge.
 
 ## Other implemented foundation branches
 
-These were outside the nine-skill comparison. No trained-versus-original result
-from that comparison can be assigned to them. An implemented generator alone
-does not prove that its mathematical range or escalation has been fully qualified.
+These were outside the nine-skill comparison. Their separate preliminary screen
+used eight development questions per skill, direct-answer independent gate. Original
+FP32 scored **47/408**; Remix 2 scored **165/408**. Treat every per-skill score as a
+triage signal only: eight cases are too few for mastery or stable failure-rate claims,
+and strict answer-format checks can conflate formatting and knowledge. An implemented
+generator alone does not prove that its mathematical range or escalation has been
+fully qualified.
+
+Early Remix 2 triage examples: decimal addition 8/8, decimal multiplication 7/8,
+decimal division 7/8, subtraction without borrowing 8/8, subtraction with borrowing
+8/8; polynomial derivative 0/8, variance 0/8, linear systems 0/8, signed subtraction
+0/8. Test each with larger unseen and format-controlled panels before choosing lessons.
+The original had 8/8 on unit conversion and probability, while Remix 2 scored 8/8 and
+7/8 respectively. This suggests retention and transfer vary by skill; it does not
+establish a general causal comparison from eight examples.
 
 - Elementary arithmetic: subtraction with/without borrowing and signed subtraction;
   absolute value, equality/comparisons, min/max, remainder, powers, floor/ceil/round.
@@ -90,7 +102,10 @@ license to train directly on the test questions.
    prerequisite order and per-gate results. Keep unseen qualification separate.
 3. Prepare independently verified new practice for weak composition, place value,
    fractions and state tracking, plus untouched elementary branches and mixed review.
-4. Use separate practice/assessment variations for coding, config and tool tasks;
+4. For every weak leaf, inspect failed response/checker evidence and ask whether the
+   test isolates its named skill. Rewrite ambiguous or conflated cases, keep each
+   version pinned, and assess again on untouched variants. Do not copy test answers
+   into lessons. Use separate practice/assessment variations for coding, config and tool tasks;
    the diagnostic solutions and test questions are not themselves a new practice batch.
 5. Bind the chosen parent checkpoint and curriculum to the supported SSS/BW/PCC
    learning stack. The old prepared 128-lesson round was not dispatched and targets

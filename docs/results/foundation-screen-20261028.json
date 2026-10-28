@@ -1,0 +1,807 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "scope": "preliminary direct-answer independent development screen; 8 questions per skill; not mastery",
+  "models": {
+    "original": {
+      "51_remaining_skills": {
+        "sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764",
+        "server_sha256": "2c4364a64d8cd55cfeedeaee0594cf3661f773e57c1a369c88fb92f0c2afa97b",
+        "cases": 408,
+        "passed": 47,
+        "skills": [
+          {
+            "skill_id": "logic.and",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "logic.deduction",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "logic.joint_premises",
+            "cases": 8,
+            "passed": 5,
+            "finished": 8
+          },
+          {
+            "skill_id": "logic.not",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "logic.or",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "logic.premise_robustness",
+            "cases": 8,
+            "passed": 0,
+            "finished": 1
+          },
+          {
+            "skill_id": "logic.proof",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "logic.reverse_support",
+            "cases": 8,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "logic.xor",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "math.absolute",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.area",
+            "cases": 8,
+            "passed": 5,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.bayes",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.ceil",
+            "cases": 8,
+            "passed": 2,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.decimal.add",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.decimal.divide",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.decimal.multiply",
+            "cases": 8,
+            "passed": 0,
+            "finished": 7
+          },
+          {
+            "skill_id": "math.decimal.subtract",
+            "cases": 8,
+            "passed": 2,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.definite_integral",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.determinant",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.dot",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.eigenvalues",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.equal",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.floor",
+            "cases": 8,
+            "passed": 4,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.fraction.compare",
+            "cases": 8,
+            "passed": 2,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.fraction.divide",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.fraction.multiply",
+            "cases": 8,
+            "passed": 0,
+            "finished": 7
+          },
+          {
+            "skill_id": "math.fraction.subtract",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.greater",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.less",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.linear_equation",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.linear_system",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.matrix_product",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.maximum",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.mean",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.median",
+            "cases": 8,
+            "passed": 5,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.method_selection",
+            "cases": 8,
+            "passed": 6,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.minimum",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.percent.change",
+            "cases": 8,
+            "passed": 0,
+            "finished": 5
+          },
+          {
+            "skill_id": "math.percent.of",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.percent.reverse",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.perimeter",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.polynomial_derivative",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.polynomial_value",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.power",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.probability",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.quadratic_minimum",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.quadratic_roots",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.ratio",
+            "cases": 8,
+            "passed": 0,
+            "finished": 5
+          },
+          {
+            "skill_id": "math.remainder",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.round",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "math.subtract.borrow",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.subtract.no_borrow",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.subtract.signed",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.triangle_area",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.units",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.variance",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.volume",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          }
+        ],
+        "cases_sha256": "3ca22a07962b6db0e61ff3ed2c1122d5e71b2e7ae977f5ac71f8e7efbaea4759",
+        "scope": false
+      },
+      "six_rewritten_families": {
+        "sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764",
+        "server_sha256": "2c4364a64d8cd55cfeedeaee0594cf3661f773e57c1a369c88fb92f0c2afa97b",
+        "cases": 26,
+        "passed": 9,
+        "skills": [
+          {
+            "skill_id": "logic.and",
+            "cases": 4,
+            "passed": 0,
+            "finished": 4
+          },
+          {
+            "skill_id": "logic.deduction",
+            "cases": 4,
+            "passed": 1,
+            "finished": 4
+          },
+          {
+            "skill_id": "logic.not",
+            "cases": 2,
+            "passed": 0,
+            "finished": 2
+          },
+          {
+            "skill_id": "logic.or",
+            "cases": 4,
+            "passed": 0,
+            "finished": 4
+          },
+          {
+            "skill_id": "logic.xor",
+            "cases": 4,
+            "passed": 0,
+            "finished": 4
+          },
+          {
+            "skill_id": "math.round",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          }
+        ],
+        "cases_sha256": "03906a03811dded2e1f2f3d769355ba87be97eaba6d046f8085d95e4a60680f7",
+        "scope": false
+      }
+    },
+    "remix2": {
+      "51_remaining_skills": {
+        "sha256": "7254cd2904ff5114d50ee5b5f961482789388dae3d609723ae67b759100288be",
+        "server_sha256": "2c4364a64d8cd55cfeedeaee0594cf3661f773e57c1a369c88fb92f0c2afa97b",
+        "cases": 408,
+        "passed": 165,
+        "skills": [
+          {
+            "skill_id": "logic.and",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "logic.deduction",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "logic.joint_premises",
+            "cases": 8,
+            "passed": 6,
+            "finished": 8
+          },
+          {
+            "skill_id": "logic.not",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "logic.or",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "logic.premise_robustness",
+            "cases": 8,
+            "passed": 3,
+            "finished": 8
+          },
+          {
+            "skill_id": "logic.proof",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "logic.reverse_support",
+            "cases": 8,
+            "passed": 4,
+            "finished": 8
+          },
+          {
+            "skill_id": "logic.xor",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "math.absolute",
+            "cases": 8,
+            "passed": 7,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.area",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.bayes",
+            "cases": 8,
+            "passed": 7,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.ceil",
+            "cases": 8,
+            "passed": 3,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.decimal.add",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.decimal.divide",
+            "cases": 8,
+            "passed": 7,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.decimal.multiply",
+            "cases": 8,
+            "passed": 7,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.decimal.subtract",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.definite_integral",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.determinant",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.dot",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.eigenvalues",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.equal",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.floor",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.fraction.compare",
+            "cases": 8,
+            "passed": 3,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.fraction.divide",
+            "cases": 8,
+            "passed": 6,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.fraction.multiply",
+            "cases": 8,
+            "passed": 6,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.fraction.subtract",
+            "cases": 8,
+            "passed": 1,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.greater",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.less",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.linear_equation",
+            "cases": 8,
+            "passed": 1,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.linear_system",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.matrix_product",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.maximum",
+            "cases": 8,
+            "passed": 6,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.mean",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.median",
+            "cases": 8,
+            "passed": 4,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.method_selection",
+            "cases": 8,
+            "passed": 7,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.minimum",
+            "cases": 8,
+            "passed": 3,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.percent.change",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.percent.of",
+            "cases": 8,
+            "passed": 6,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.percent.reverse",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.perimeter",
+            "cases": 8,
+            "passed": 3,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.polynomial_derivative",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.polynomial_value",
+            "cases": 8,
+            "passed": 1,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.power",
+            "cases": 8,
+            "passed": 6,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.probability",
+            "cases": 8,
+            "passed": 7,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.quadratic_minimum",
+            "cases": 8,
+            "passed": 3,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.quadratic_roots",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.ratio",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.remainder",
+            "cases": 8,
+            "passed": 5,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.round",
+            "cases": 0,
+            "passed": 0,
+            "finished": 0
+          },
+          {
+            "skill_id": "math.subtract.borrow",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.subtract.no_borrow",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.subtract.signed",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.triangle_area",
+            "cases": 8,
+            "passed": 4,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.units",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.variance",
+            "cases": 8,
+            "passed": 0,
+            "finished": 8
+          },
+          {
+            "skill_id": "math.volume",
+            "cases": 8,
+            "passed": 1,
+            "finished": 8
+          }
+        ],
+        "cases_sha256": "3ca22a07962b6db0e61ff3ed2c1122d5e71b2e7ae977f5ac71f8e7efbaea4759",
+        "scope": false
+      },
+      "six_rewritten_families": {
+        "sha256": "7254cd2904ff5114d50ee5b5f961482789388dae3d609723ae67b759100288be",
+        "server_sha256": "2c4364a64d8cd55cfeedeaee0594cf3661f773e57c1a369c88fb92f0c2afa97b",
+        "cases": 26,
+        "passed": 22,
+        "skills": [
+          {
+            "skill_id": "logic.and",
+            "cases": 4,
+            "passed": 4,
+            "finished": 4
+          },
+          {
+            "skill_id": "logic.deduction",
+            "cases": 4,
+            "passed": 0,
+            "finished": 4
+          },
+          {
+            "skill_id": "logic.not",
+            "cases": 2,
+            "passed": 2,
+            "finished": 2
+          },
+          {
+            "skill_id": "logic.or",
+            "cases": 4,
+            "passed": 4,
+            "finished": 4
+          },
+          {
+            "skill_id": "logic.xor",
+            "cases": 4,
+            "passed": 4,
+            "finished": 4
+          },
+          {
+            "skill_id": "math.round",
+            "cases": 8,
+            "passed": 8,
+            "finished": 8
+          }
+        ],
+        "cases_sha256": "03906a03811dded2e1f2f3d769355ba87be97eaba6d046f8085d95e4a60680f7",
+        "scope": false
+      }
+    }
+  }
+}
