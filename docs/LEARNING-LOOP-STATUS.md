@@ -55,6 +55,9 @@ student failure.
   isolate skill demands, and expand unseen cases before lesson choice.
 - Boolean truth tables have finite semantic coverage; duplicate wording is not new
   coverage. Rounding uses decimal stimuli to avoid adding fraction-division skill.
+- A universal JSON answer wrapper invalidated the first structured-format screen
+  for native proof-object tasks. Raw evidence is retained and excluded from model
+  comparisons; per-task response schemas are required in the corrected design.
 
 ## Ownership and exclusion
 
