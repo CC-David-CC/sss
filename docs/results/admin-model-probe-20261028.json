@@ -1,0 +1,164 @@
+{
+  "scope": "11 custom diagnostic tasks; no BW score, no training",
+  "grading_correction": "Four saved tool observations rescored after removing unrequested exact completion wording; initial verdicts preserved; zero repeated inference",
+  "models": {
+    "original": {
+      "passed": 10,
+      "cases": 11,
+      "results": [
+        {
+          "id": "tools.read_config",
+          "status": "pass",
+          "required_events_observed": 2,
+          "required_events_total": 2,
+          "final_state_correct": true
+        },
+        {
+          "id": "tools.recover_missing",
+          "status": "pass",
+          "required_events_observed": 4,
+          "required_events_total": 4,
+          "final_state_correct": true
+        },
+        {
+          "id": "admin.repair_port",
+          "status": "pass",
+          "required_events_observed": 3,
+          "required_events_total": 3,
+          "final_state_correct": true
+        },
+        {
+          "id": "admin.diagnose_log",
+          "status": "pass",
+          "required_events_observed": 2,
+          "required_events_total": 2,
+          "final_state_correct": true
+        },
+        {
+          "id": "python.sum_empty",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "python.binary_search",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "python.stable_unique",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "shell.quoted_filename",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "shell.failure_status",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "linux.config_port",
+          "domain": "isolated_linux_config",
+          "status": "fail"
+        },
+        {
+          "id": "linux.config_logging",
+          "domain": "isolated_linux_config",
+          "status": "pass"
+        }
+      ],
+      "model_sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764",
+      "server_sha256": "2c4364a64d8cd55cfeedeaee0594cf3661f773e57c1a369c88fb92f0c2afa97b"
+    },
+    "remix2": {
+      "passed": 9,
+      "cases": 11,
+      "results": [
+        {
+          "id": "tools.read_config",
+          "status": "pass",
+          "required_events_observed": 2,
+          "required_events_total": 2,
+          "final_state_correct": true
+        },
+        {
+          "id": "tools.recover_missing",
+          "status": "pass",
+          "required_events_observed": 4,
+          "required_events_total": 4,
+          "final_state_correct": true
+        },
+        {
+          "id": "admin.repair_port",
+          "status": "pass",
+          "required_events_observed": 3,
+          "required_events_total": 3,
+          "final_state_correct": true
+        },
+        {
+          "id": "admin.diagnose_log",
+          "status": "pass",
+          "required_events_observed": 2,
+          "required_events_total": 2,
+          "final_state_correct": true
+        },
+        {
+          "id": "python.sum_empty",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "python.binary_search",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "python.stable_unique",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "shell.quoted_filename",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "shell.failure_status",
+          "domain": "isolated_linux_code",
+          "status": "pass",
+          "reasons": []
+        },
+        {
+          "id": "linux.config_port",
+          "domain": "isolated_linux_config",
+          "status": "fail"
+        },
+        {
+          "id": "linux.config_logging",
+          "domain": "isolated_linux_config",
+          "status": "fail"
+        }
+      ],
+      "model_sha256": "7254cd2904ff5114d50ee5b5f961482789388dae3d609723ae67b759100288be",
+      "server_sha256": "2c4364a64d8cd55cfeedeaee0594cf3661f773e57c1a369c88fb92f0c2afa97b"
+    }
+  },
+  "linux_config_reference_qualification": {
+    "status": "PASS",
+    "cases": 2,
+    "checks": 6,
+    "scope": "isolated configuration files; not host service control"
+  }
+}
