@@ -1,0 +1,57 @@
+{
+  "schema": "sss-bw-pcc-minicpm-integration-v1",
+  "date": "2026-10-28",
+  "case_id": "shell.failure_status",
+  "model": {
+    "name": "MiniCPM5-2B official F16",
+    "weights_sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25"
+  },
+  "pcc_change": {
+    "repository": "Private_Context_COW",
+    "branch": "feat/response-level-masks-20261028",
+    "commit": "1b09966fe961c3952ab28853763407ab48973379",
+    "change": "Preserve exact MiniCPM user content, including boundary whitespace, when checking a COW append frame.",
+    "focused_tests": {
+      "count": 31,
+      "passed": 31,
+      "failed": 0,
+      "host": "llm-60 server Python environment"
+    }
+  },
+  "observations": [
+    {
+      "stage": "before_pcc_fix",
+      "result": "infrastructure_rejection_before_inference",
+      "detail": "The supplied task ended with a newline. MiniCPM preserved it, while PCC compared against stripped text."
+    },
+    {
+      "stage": "after_pcc_fix",
+      "result": "model_and_tool_path_reached",
+      "detail": "MiniCPM read and edited the isolated BW workspace. The edited candidate passed the independent shell fixture checker."
+    },
+    {
+      "stage": "workflow_completion",
+      "result": "incomplete_unverified",
+      "detail": "BW repeatedly re-entered its workflow and exhausted bounded step budgets. A later request exceeded the pinned COW context. The host project did not receive an accepted export and no verified completion was recorded."
+    },
+    {
+      "stage": "recovery",
+      "result": "original_operation_remains_unresolved",
+      "detail": "BW recovery was invoked with the original operation identity. COW did not provide a durable completion receipt, so the operation was not replayed."
+    }
+  ],
+  "training": {
+    "performed": false,
+    "model_weights_changed": false
+  },
+  "interpretation": {
+    "pcc_prompt_compatibility_regression": "fixed_and_focused_tests_pass",
+    "bw_end_to_end_task": "not_passed",
+    "model_quality_conclusion": "none_from_this_single_incomplete_task",
+    "next_work": "Diagnose BW verification/continuation behavior and its context growth; preserve and resolve the original operation before any retry."
+  },
+  "resource_cleanup": {
+    "candidate_service_stopped": true,
+    "llm60_gpu0_after_stop": "15 MiB used, 97,235 MiB free, 0% utilization"
+  }
+}

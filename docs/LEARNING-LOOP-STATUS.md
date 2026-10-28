@@ -15,7 +15,7 @@ driver or recovery path is a tooling result, not a learned model capability.
 | Lesson verification and mixed review | Existing SSS/BW/PCC installation qualified, including prepared 128-lesson admission | Bind next curriculum to chosen current parent; old prepared policy is not a Remix 2 continuation |
 | Native training and checkpointing | Completed fixed 68-update comparisons; exports and archived states retained | Next mixed curriculum not trained yet |
 | Answering, formatting and reasoning separation | Matched scalar answer/format/composed panel and verified practice lesson builder implemented; S³ and PCC CPU tests prove separate span masks; native CPU receipt confirms five scalar masks | Extend task-native adapters beyond scalars; run model panel; measure learning and retention |
-| BW failure → S³ practice → PCC admission | Controlled BW failure/correction pair independently checked by S³; a distinct code-practice variation is checked, archived, admitted, and used for one native CPU update with the expected PCC token/loss mask | Repeat with a real model-backed BW task; measure unseen transfer and mixed-skill retention |
+| BW failure → S³ practice → PCC admission | Controlled fixture path passes; one real MiniCPM BW attempt reached tools and produced an independently checker-passing isolated edit | BW did not record verified completion; diagnose its continuation/context growth and recover the original operation before deriving a lesson or retrying |
 | Operator next-action guidance | Pure state-to-action helper and guard tests | Connect trusted component receipts; not yet an end-to-end automatic driver |
 | Learning/forgetting measurement | Per-skill results, gains/losses, quant and external checks exist | Consolidated current reports and unseen qualification before mastery claims |
 | Checkpoint preservation and cleanup | Best/final preservation and verified fleet archival exercised | Continue explicit per-cycle retention receipts and space checks |
@@ -95,6 +95,16 @@ student failure.
   new packs are checked against their own complete definition and current generator.
   This matches the documented rule that the old pack is not a continuation for the
   current parent.
+- The first real MiniCPM/BW attempt found a PCC frame-check bug: the native MiniCPM
+  template preserves leading and trailing user whitespace, but PCC compared against
+  `content.strip()`. The PCC feature branch now compares the exact content; 31 focused
+  PCC compatibility tests pass. With that correction, MiniCPM read and edited the
+  isolated shell fixture, and the independent checker passed there. BW nevertheless
+  kept re-entering its workflow, exhausted bounded steps, and then hit the pinned COW
+  context limit. The original generation remains unresolved after its prescribed
+  recovery check; it was not replayed. The model weights were untouched and no
+  verified BW completion or S³ lesson was recorded. See the sanitized
+  [MiniCPM integration result](results/bw-minicpm-integration-20261028.json).
 
 ## Ownership and exclusion
 
@@ -108,7 +118,10 @@ protected test responses, or checker internals into student examples. Any future
 lesson derived from a tooling incident must be deliberately authored, independently
 verified and admitted through the ordinary practice pathway.
 
-Next operator step: run a real model-backed BW task, obtain a new independently
-verified S³ practice example, and measure unseen transfer plus mixed-skill
-retention. Keep feature branches separate until those gates and recovery behavior
-are repeatable; merge to `main` only after the pathway is stable.
+Next operator step: diagnose BW's verification/continuation loop and context growth,
+then settle the original COW operation through its recovery path. Do not derive a
+lesson or repeat this task until that operation is resolved and a stable verified
+completion boundary exists. Afterward, run a fresh model-backed task, admit only a
+separately checked lesson, and measure unseen transfer plus mixed-skill retention.
+Keep feature branches separate; merge to `main` only after the pathway and recovery
+behavior are stable.
