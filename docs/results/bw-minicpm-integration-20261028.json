@@ -32,7 +32,7 @@
     {
       "stage": "workflow_completion",
       "result": "incomplete_unverified",
-      "detail": "BW repeatedly re-entered its workflow and exhausted bounded step budgets. A later request exceeded the pinned COW context. The host project did not receive an accepted export and no verified completion was recorded."
+      "detail": "The supplied verification command used an absolute host path that is unavailable inside BW's isolated shell. BW's command-evidence verifier requires the exact declared command; the model ran substitute shell checks, which did not satisfy that policy. The workflow retried, exhausted bounded steps, and a later request exceeded the pinned COW context. No accepted export or verified completion was recorded."
     },
     {
       "stage": "recovery",
@@ -48,7 +48,7 @@
     "pcc_prompt_compatibility_regression": "fixed_and_focused_tests_pass",
     "bw_end_to_end_task": "not_passed",
     "model_quality_conclusion": "none_from_this_single_incomplete_task",
-    "next_work": "Diagnose BW verification/continuation behavior and its context growth; preserve and resolve the original operation before any retry."
+    "next_work": "Fix the test adapter so the exact independent check is executable in the authorized BW world; then qualify continuation and recovery using a distinct task after the original operation is settled."
   },
   "resource_cleanup": {
     "candidate_service_stopped": true,
