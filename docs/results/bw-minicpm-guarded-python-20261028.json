@@ -1,0 +1,46 @@
+{
+  "schema": "sss-bw-pcc-model-qualification-v1",
+  "date": "2026-10-28",
+  "scope": "One public development Python repair task on a real MiniCPM model through BW and PCC; independent S3 source check; no training",
+  "host": "llm-60",
+  "model": "MiniCPM5-2B official F16",
+  "model_weights_sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25",
+  "pcc_source_commit": "4903927710aacfd4b7187e71bff9c8e6ec4b092b",
+  "bw_source_commit": "4cf18d8c8e01c269024568fdb63175487bfc9c65",
+  "case_id": "python.double",
+  "context": {
+    "configured_capacity_tokens": 32768,
+    "final_used_tokens": 2977,
+    "guard_enabled_in_saved_launch": true,
+    "per_request_preflight_receipts_persisted_in_bw_ledger": false,
+    "long_context_qualification": false
+  },
+  "workflow": {
+    "first_step_budget": 64,
+    "first_result": "step_budget_exhausted_without_pending_operations",
+    "continued_same_saved_run_step_budget": 256,
+    "final_state": "Closed",
+    "recorded_verified": true,
+    "pending_model_operations": 0,
+    "pending_tool_operations": 0,
+    "ledger_events": 113
+  },
+  "independent_sss_check": {
+    "status": "pass",
+    "source_sha256": "2e0c842821256da631447c14c46097d8528182b92e34bf461b6ecda1c8591b88",
+    "checker_id": "2aa2ac36805c01608cf5d4367d7563fd067e2d93fcec446987c54a0c64f60efb",
+    "checker_implementation_sha256": "137e2cf034dc3563084f366e0a6ea40d0d97cc46ab3b69306d44b487c5e21ca8",
+    "evidence_sha256": "98c8b18ca20755d96712bd0da43fde40462da552083cccd07845af1f4f044c7a"
+  },
+  "review_export": {
+    "verified_payload_matches_checked_source": true,
+    "changed_files": 1,
+    "archive_bytes": 1313,
+    "archive_sha256": "77cef5d5a9faa265739dfe75d8d827fb0c81e677a711bd9e6795a6d5dc9be986"
+  },
+  "interpretation": "The model completed one visible development task through BW and PCC and its edited source passed S3's independent registered check. This is not a held-out model score, a model-failure-derived lesson, evidence of learning, or a long-context test.",
+  "training": false,
+  "verified_failure_lesson_created": false,
+  "original_unknown_operations_resolved": false,
+  "temporary_server_stopped_after_queue_and_active_work_were_empty": true
+}

@@ -132,6 +132,15 @@ interruption before dispatch, and a pending request that must not be replayed.
 The guard does not shorten output or compact context. The [guard receipt](results/bw-context-guard-20261028.json)
 does not establish model quality or actual long-context operation.
 
+One separate real MiniCPM F16 Python repair completed through guarded BW/PCC on
+llm-60. BW recorded verification, S³ independently checked the exact edited
+source, and BW exported a payload matching that source. The first workflow step
+allowance expired with no pending operations; continuation used the same saved
+run and completed. This public development task used 2,977 tokens of a 32,768
+token profile, so it is neither a long-context test nor a held-out quality score.
+No model failure lesson or training update resulted. The original two unknown
+operations remain unresolved. See the [model qualification record](results/bw-minicpm-guarded-python-20261028.json).
+
 The follow-up adapter `sss_integration.bw_task_adapter` materializes the public
 `shell.failure_status` and `shell.quoted_filename` fixtures with workspace-relative
 inputs. Five tests passed on llm-60, including admission through BW's existing
