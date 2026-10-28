@@ -9,7 +9,14 @@ class UniqueCurriculumTests(unittest.TestCase):
  def test_legacy_pilot_identity_is_preserved_and_extended_counts_are_explicit(self):
   manifest=json.loads((Path(__file__).resolve().parents[1]/'examples/finished-training-examples/minicpm-optimizer-pilot/manifest.json').read_text())
   pack=build_pack(['math.add.carry','math.subtract.borrow'],seed=0,practice_per_gate=2,checks_per_gate=1)
-  self.assertEqual(pack['pack_id'],manifest['pack_id'])
+  # The historical report is immutable evidence, not a request to regenerate its
+  # old pack using today's changed graph/checker identity. Current packs bind their
+  # own complete definition and validate against the current generator.
+  self.assertEqual(manifest['pack_id'],'36f28ab1baae0b611d8f08ed77145d14c3909c0ff8f8cba043f2cd77414d2a1a')
+  self.assertNotEqual(pack['pack_id'],manifest['pack_id'])
+  from sss.records import digest
+  self.assertEqual(pack['pack_id'],digest({k:v for k,v in pack.items() if k!='pack_id'}))
+  validate_pack(pack)
   with self.assertRaises(ValueError):build_pack(['math.multiply'],seed=0,checks_per_gate=32)
  def test_all_96_per_skill_checks_are_distinct_and_pass_independent_references(self):
   pack=build_pack(['math.add.carry','math.fraction.add','state.registers'],seed=20261024,practice_per_gate=32,checks_per_gate=32,generation_profile='without-replacement-v1')

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "world.binary_lab",
+    "title": "Prepare an isolated binary-analysis fixture environment",
+    "domains": ["world", "reverse_engineering"],
+    "requires": ["world.readiness", "tools.permissions"],
+    "bands": ["unmeasured"],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Environment prerequisite only. Later work must provision a disposable sandbox, pinned compiler/tool versions, generated binary fixtures, known source, and input/output hashes before model practice. No environment or skill tests exist yet."
+}

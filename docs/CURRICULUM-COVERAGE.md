@@ -8,11 +8,11 @@ Catalog status, training exposure, test coverage and mastery are distinct.
 
 | State | Count | Meaning |
 |---|---:|---|
-| Catalog nodes | 128 | Entire current catalog, including planned work |
+| Catalog nodes | 137 | Entire current catalog, including newly added reverse-engineering placeholders |
 | Implemented generator nodes | 66 | Exact-foundation generators exist; not proof of model mastery |
 | Nodes practiced in the fixed comparison | 9 | Eight arithmetic skills plus register tracking |
 | Other implemented nodes outside that comparison | 57 | Preliminary individual baseline now measured with 8 cases each; weak subskills need redesigned/expanded tests |
-| Planned catalog nodes | 62 | Do not count as implemented training/evaluation coverage |
+| Planned catalog nodes | 71 | Do not count as implemented training/evaluation coverage |
 
 Do not interpret these as 128 terminal graph leaves. The graph includes prerequisites,
 branches and convergence nodes. No curriculum-wide mastery claim is established.
@@ -73,6 +73,23 @@ establish a general causal comparison from eight examples.
 - Logic: AND/OR/NOT/XOR, deduction, joint premises, proof, premise robustness and
   reverse support.
 
+## Later placeholder: binary reverse engineering
+
+Nine planned nodes now mark a future branch; none has generators, environments,
+checkers, or model scores. The dependency path starts with `world.binary_lab`, an
+isolated fixture environment, then bitwise XOR, shifts/endianness, and GF(2)
+polynomial arithmetic. Code leaves cover generating a known binary from source,
+inferring its layout, identifying CRC parameters, iterating reproducible hypotheses,
+and checking transfer across producers and versions. The eventual loop is:
+
+**inspect bytes → state a falsifiable format/checksum hypothesis → build or select
+controlled samples → run a verifier → revise and replay → report independently
+checkable evidence.**
+
+The environment and fixture skills must qualify before the model is asked to reverse
+engineer real software artifacts. A match on one CRC check vector is not sufficient;
+future qualification must use multiple messages, lengths, and known variants.
+
 The machine-readable inventory lists each ID and prerequisite in
 [curriculum-coverage-20261028.json](results/curriculum-coverage-20261028.json).
 
@@ -112,9 +129,11 @@ license to train directly on the test questions.
    a different action-study parent; do not silently reuse it for Remix 2.
 6. Train a bounded candidate batch, measure each targeted skill and retention
    domain, report gains/losses, preserve candidate/parent, then select the next batch.
-7. Expand actual BW/native-tool and Linux admin coverage before claiming those
-   catalog branches are implemented or mastered. Research and other planned branches
-   require their own environments and independent checks.
+7. Implement and qualify the binary-lab environment and known-source fixtures before
+   adding binary layout or CRC exercises. Extend actual BW/native-tool and Linux
+   admin coverage before claiming those branches are implemented or mastered.
+   Research and other planned branches require their own environments and independent
+   checks.
 
 No new post-comparison training round has run yet. The next work is coverage and
 verified practice preparation followed by the supported training/evaluation cycle.

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "code.reverse_engineering.iterate",
+    "title": "Run a reproducible inspect-hypothesize-test-revise loop on unknown binaries",
+    "domains": ["code", "research", "reverse_engineering"],
+    "requires": ["code.reverse_engineering.crc", "research.experiments", "planning.recovery"],
+    "bands": ["unmeasured"],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Placeholder for composing artifact inspection, explicit hypotheses, controlled fixture generation, experiments, error recovery, and independently replayable findings. No autonomy level is implemented."
+}

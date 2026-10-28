@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.binary.shifts",
+    "title": "Reason about bounded bit shifts, masks, and endianness",
+    "domains": ["math", "binary"],
+    "requires": ["math.binary.word_xor"],
+    "bands": ["unmeasured"],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Placeholder only. Width, overflow, signed shifts, and byte order must be explicit in future single-purpose tests."
+}

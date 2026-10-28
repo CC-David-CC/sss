@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "code.reverse_engineering.fixture",
+    "title": "Build known binary fixtures from source in a pinned language toolchain",
+    "domains": ["code", "reverse_engineering"],
+    "requires": ["world.binary_lab", "code.python.tests"],
+    "bands": ["unmeasured"],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Placeholder prerequisite for generated binaries with source, reproducible build instructions, and known field/CRC answers. No compiler environment has been qualified."
+}

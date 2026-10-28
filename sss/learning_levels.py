@@ -9,10 +9,47 @@ ANSWER_MODES = ('direct', 'reasoning')
 SUPERVISION = ('answer_only', 'reasoning_and_answer', 'format_only',
                'format_and_answer', 'reasoning_format_and_answer')
 FORMATS = ('none', 'task_native', 'declared_schema')
+RESPONSE_TARGET_POLICIES = (
+    'answer_only', 'reasoning_and_answer', 'format_only', 'answer_and_format',
+    'reasoning_answer_and_format',
+)
 
 
 class CheckerContractError(ValueError):
     """A checker returned evidence outside the declared scoring contract."""
+
+
+def response_target_segments(segments, policy):
+    """Select verified answer/format spans without changing legacy target policy."""
+    if policy not in RESPONSE_TARGET_POLICIES:
+        raise ValueError('Unknown response-level target policy')
+    allowed = {'instruction', 'question', 'observation', 'thinking', 'action',
+               'answer', 'format', 'summary'}
+    selected = []
+    for row in segments:
+        if type(row) is not dict or row.get('role') not in ('system', 'user', 'assistant', 'tool'):
+            raise ValueError('Invalid response-level segment')
+        if row.get('kind') not in allowed or type(row.get('verified')) is not bool:
+            raise ValueError('Invalid response-level span kind or verification')
+        if row.get('kind') in ('thinking', 'action', 'answer', 'format', 'summary') and row['role'] != 'assistant':
+            raise ValueError('Assistant target span has the wrong role')
+        kind = row['kind']
+        if policy == 'answer_only':
+            target = row['role'] == 'assistant' and kind == 'answer'
+        elif policy == 'reasoning_and_answer':
+            target = row['role'] == 'assistant' and kind in ('thinking', 'answer')
+        elif policy == 'format_only':
+            target = row['role'] == 'assistant' and kind == 'format'
+        elif policy == 'answer_and_format':
+            target = row['role'] == 'assistant' and kind in ('answer', 'format')
+        else:
+            target = row['role'] == 'assistant' and kind in ('thinking', 'answer', 'format')
+        if target and row['verified'] is not True:
+            raise ValueError('Unverified response span cannot receive loss')
+        selected.append(target)
+    if not selected or not any(selected):
+        raise ValueError('Response-level policy selected no verified target spans')
+    return selected
 
 
 def validate_condition(condition):
@@ -78,6 +115,17 @@ def validate_condition(condition):
         raise ValueError('Direct mode must not bind a reasoning checker')
 
     return dict(condition)
+
+
+def target_policy_for_condition(condition):
+    """Map one validated curriculum condition to its explicit native loss policy."""
+    value = validate_condition(condition)
+    if value['level'] == 'answer':
+        return 'reasoning_and_answer' if value['answer_mode'] == 'reasoning' else 'answer_only'
+    if value['level'] == 'format':
+        return 'format_only'
+    return ('reasoning_answer_and_format' if value['answer_mode'] == 'reasoning'
+            else 'answer_and_format')
 
 
 def _verdict(value, name):

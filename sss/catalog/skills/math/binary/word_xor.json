@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.binary.word_xor",
+    "title": "Apply bitwise XOR to bounded binary words",
+    "domains": ["math", "binary"],
+    "requires": ["logic.xor", "math.remainder"],
+    "bands": ["unmeasured"],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Placeholder for a distinct bitwise skill; Boolean XOR coverage is not bitwise-word mastery. Tests, width rules, and signedness policy remain to be designed."
+}

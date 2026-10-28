@@ -2,7 +2,7 @@ import unittest
 
 from sss.learning_levels import (
     score_answer, score_composed, score_format, score_reasoning_composed,
-    validate_condition,
+    response_target_segments, target_policy_for_condition, validate_condition,
 )
 
 
@@ -63,6 +63,19 @@ class LearningLevelTests(unittest.TestCase):
                 lambda _: True),
             dict(reasoning='fail', answer='pass', format='pass', joint='fail'),
         )
+
+    def test_reasoning_target_policy_is_distinct_from_direct_and_format(self):
+        base = self.condition('answer')
+        self.assertEqual(target_policy_for_condition(base), 'answer_only')
+        reasoning = self.condition(
+            'answer', answer_mode='reasoning', supervision='reasoning_and_answer',
+            reasoning_checker='verified-reasoning-v1')
+        self.assertEqual(target_policy_for_condition(reasoning), 'reasoning_and_answer')
+        spans = [dict(role='assistant', kind='thinking', verified=True),
+                 dict(role='assistant', kind='answer', verified=True),
+                 dict(role='assistant', kind='format', verified=True)]
+        self.assertEqual(response_target_segments(spans, 'reasoning_and_answer'),
+                         [True, True, False])
 
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 {
     "scope":  "catalog inventory; not model qualification",
     "implemented":  66,
-    "planned":  62,
+    "planned":  71,
     "trained_comparison_skills":  [
                                       "math.add.carry",
                                       "math.add.no_carry",
@@ -1519,6 +1519,114 @@
                        "trained_in_68_update_comparison":  false,
                        "mastery":  "not established",
                        "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.reverse_engineering.crc",
+                       "status":  "planned",
+                       "requires":  [
+                            "code.reverse_engineering.layout",
+                            "math.binary.polynomial"
+                        ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "prepare environment and implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.reverse_engineering.fixture",
+                       "status":  "planned",
+                       "requires":  [
+                            "world.binary_lab",
+                            "code.python.tests"
+                        ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "prepare environment and implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.reverse_engineering.iterate",
+                       "status":  "planned",
+                       "requires":  [
+                            "code.reverse_engineering.crc",
+                            "research.experiments",
+                            "planning.recovery"
+                        ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "prepare environment and implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.reverse_engineering.layout",
+                       "status":  "planned",
+                       "requires":  [
+                            "code.reverse_engineering.fixture",
+                            "math.binary.shifts"
+                        ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "prepare environment and implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.reverse_engineering.transfer",
+                       "status":  "planned",
+                       "requires":  [
+                            "code.reverse_engineering.iterate",
+                            "world.binary_lab"
+                        ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "prepare environment and implement and qualify before training"
+                   },
+                   {
+                       "id":  "math.binary.polynomial",
+                       "status":  "planned",
+                       "requires":  [
+                            "math.binary.word_xor",
+                            "math.binary.shifts"
+                        ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "prepare environment and implement and qualify before training"
+                   },
+                   {
+                       "id":  "math.binary.shifts",
+                       "status":  "planned",
+                       "requires":  [
+                            "math.binary.word_xor"
+                        ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "prepare environment and implement and qualify before training"
+                   },
+                   {
+                       "id":  "math.binary.word_xor",
+                       "status":  "planned",
+                       "requires":  [
+                            "logic.xor",
+                            "math.remainder"
+                        ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "prepare environment and implement and qualify before training"
+                   },
+                   {
+                       "id":  "world.binary_lab",
+                       "status":  "planned",
+                       "requires":  [
+                            "world.readiness",
+                            "tools.permissions"
+                        ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "prepare environment and implement and qualify before training"
                    }
                ]
 }

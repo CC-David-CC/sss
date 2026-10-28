@@ -7,9 +7,10 @@ import os
 import re
 from .records import canonical,digest
 from .profiles import target_segments
+from .learning_levels import RESPONSE_TARGET_POLICIES,response_target_segments
 
 ROLES=('system','user','assistant','tool')
-KINDS=('instruction','question','observation','thinking','action','answer','summary')
+KINDS=('instruction','question','observation','thinking','action','answer','format','summary')
 SCOPES=('practice','development','qualification','private')
 
 class EpisodeArchive:
@@ -48,7 +49,7 @@ class EpisodeArchive:
         visible={e['id'] for e in self._events}
         if any(ref not in visible for ref in row['refs']):raise ValueError('Reference is absent or from the future')
         if row['question_id'] and any(e['question_id']==row['question_id'] for e in self._events):raise ValueError('Duplicate question identity')
-        if row['resolves'] and (row['verified'] is not True or row['kind']!='answer' or row['resolves'] not in {e['question_id'] for e in self._events}):raise ValueError('Resolution needs a verified answer to an existing question')
+        if row['resolves'] and (row['verified'] is not True or row['kind'] not in ('answer','format') or row['resolves'] not in {e['question_id'] for e in self._events}):raise ValueError('Resolution needs a verified answer or format response to an existing question')
     def append(self,role,kind,text,*,verified=False,scope='practice',refs=(),topic='',question_id='',resolves=''):
         row=dict(seq=len(self._events),previous=self.head,role=role,kind=kind,text=text,verified=verified,scope=scope,refs=list(refs),topic=topic,question_id=question_id,resolves=resolves)
         row['id']=digest(row);self._validate(row,row['seq'],self.head)
@@ -112,7 +113,8 @@ def training_tokens(segments,*,tokenize,policy='verified_thinking_actions_answer
 The caller supplies the model's renderer/tokenizer. This is not a generic chat
 renderer. Masking targets does not detach earlier activations from backprop.
 """
-    selected=target_segments(segments,policy);raw='';tokens=[];labels=[]
+    selected=(response_target_segments(segments,policy) if policy in RESPONSE_TARGET_POLICIES
+              else target_segments(segments,policy));raw='';tokens=[];labels=[]
     for segment,train in zip(segments,selected):
         if segment.get('scope')!='practice':raise ValueError('Only approved practice may become training targets/context')
         text=segment.get('rendered')
@@ -130,7 +132,7 @@ def export_text(archive,path,*,public=False):
     rows=archive.records()
     if public and (archive.metadata['metadata'].get('origin')!='synthetic' or any(r['scope']!='practice' for r in rows)):
         raise ValueError('Public examples must be owned synthetic practice')
-    if not any(r['kind']=='answer' and r['verified'] for r in rows):raise ValueError('No verified completed answer')
+    if not any(r['kind'] in ('answer','format') and r['verified'] for r in rows):raise ValueError('No verified completed answer or format response')
     text=['Skills cubed: completed teaching record','Artifact complete; no model weight update is implied.','Archive head: '+archive.head,'']
     for row in rows:
         text += [f"[{row['seq']} | {row['role']} | {row['kind']} | verified={row['verified']} | id={row['id']}]",row['text'],'']

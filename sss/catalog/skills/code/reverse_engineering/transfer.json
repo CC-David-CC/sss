@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "code.reverse_engineering.transfer",
+    "title": "Transfer binary-format findings across software versions and implementations",
+    "domains": ["code", "research", "reverse_engineering"],
+    "requires": ["code.reverse_engineering.iterate", "world.binary_lab"],
+    "bands": ["unmeasured"],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Later placeholder. Requires separate producers/consumers, version changes, and held-out file families; never infer transfer from repeated samples of one implementation."
+}

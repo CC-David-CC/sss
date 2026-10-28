@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "code.reverse_engineering.layout",
+    "title": "Infer binary field layout from controlled samples",
+    "domains": ["code", "reverse_engineering"],
+    "requires": ["code.reverse_engineering.fixture", "math.binary.shifts"],
+    "bands": ["unmeasured"],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Placeholder. Future tests should isolate offsets, widths, byte order, version fields, and unknown/reserved bytes using independently generated variants."
+}

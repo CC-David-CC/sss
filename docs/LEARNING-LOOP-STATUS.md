@@ -8,13 +8,13 @@ driver or recovery path is a tooling result, not a learned model capability.
 
 | Component | Evidence-backed status | Remaining work |
 |---|---|---|
-| Skill catalog and coverage inventory | 128 nodes; 66 implemented generators; 62 planned | Per-gate coverage and explicit mastery evidence, not just implementation labels |
+| Skill catalog and coverage inventory | 137 nodes; 66 implemented generators; 71 planned, including a nine-node binary reverse-engineering path | Per-gate coverage and explicit mastery evidence, not just implementation labels |
 | Foundation generation and checking | Nine-skill study plus preliminary 57-skill independent screen | Qualify broader ranges, reasoning conditions, composition and transfer separately |
 | Primitive duplicate handling | Six replacement families with checked references; old results retained | Integrate versioned generators into supported curriculum installation |
 | Coding/admin diagnostic connection | Original and Remix 2 executed 11 tasks; isolated code/config checks | Actual BW/native tool pathway and broader Linux administration |
 | Lesson verification and mixed review | Existing SSS/BW/PCC installation qualified, including prepared 128-lesson admission | Bind next curriculum to chosen current parent; old prepared policy is not a Remix 2 continuation |
 | Native training and checkpointing | Completed fixed 68-update comparisons; exports and archived states retained | Next mixed curriculum not trained yet |
-| Answering, formatting and reasoning separation | Pure condition validator and separate answer/format/composed/reasoning score functions implemented and unit-tested; earlier screens still conflate answer and format | Connect task-native conditions to frozen evaluation and reports; create held-out format-only cases; verify PCC native loss masks before training |
+| Answering, formatting and reasoning separation | Matched scalar answer/format/composed panel and verified practice lesson builder implemented; S³ and PCC CPU tests prove separate span masks | Extend task-native adapters beyond scalars; run model panel; confirm masks in a native PCC training receipt; measure learning and retention |
 | Operator next-action guidance | Pure state-to-action helper and guard tests | Connect trusted component receipts; not yet an end-to-end automatic driver |
 | Learning/forgetting measurement | Per-skill results, gains/losses, quant and external checks exist | Consolidated current reports and unseen qualification before mastery claims |
 | Checkpoint preservation and cleanup | Best/final preservation and verified fleet archival exercised | Continue explicit per-cycle retention receipts and space checks |
@@ -64,9 +64,24 @@ student failure.
   [ANSWER-FORMAT-LEVELS.md](ANSWER-FORMAT-LEVELS.md); no controlled run has
   established those separate rates yet.
 - `sss/learning_levels.py` now validates explicit lesson levels and scores the
-  answer, format, reasoning and joint results independently. Five targeted unit
-  tests pass. It is not yet wired to the frozen evaluator or a data/training
-  pipeline, so it has not produced model scores or confirmed PCC supervision.
+  answer, format, reasoning and joint results independently. `sss/level_evaluation.py`
+  freezes and runs matched numeric-answer triplets, and `sss/learning_lessons.py`
+  admits reference-checked practice with separate answer and format spans. The
+  corresponding PCC feature adds masks for answer-only, format-only, composed, and
+  reasoning-plus-answer targets. S³'s 153-test suite passes on Windows and llm-79;
+  23 PCC lesson-service tests pass in WSL, and a cross-project S³-to-PCC admission
+  test passes on both Linux environments. No model panel or training run has used
+  these new conditions yet.
+- Added nine explicitly planned reverse-engineering leaves: a disposable binary
+  lab prerequisite, bitwise/XOR/shift/GF(2) foundations, controlled fixture
+  generation, layout inference, CRC identification, iterative experiment, and
+  cross-version transfer. These placeholders have no environment, generator,
+  checker, or proficiency evidence yet; the current inventory marks them planned.
+- Corrected a stale curriculum test that expected the current generator to recreate
+  the old optimizer-pilot pack ID. The historical report retains its recorded hash;
+  new packs are checked against their own complete definition and current generator.
+  This matches the documented rule that the old pack is not a continuation for the
+  current parent.
 
 ## Ownership and exclusion
 
@@ -80,9 +95,9 @@ protected test responses, or checker internals into student examples. Any future
 lesson derived from a tooling incident must be deliberately authored, independently
 verified and admitted through the ordinary practice pathway.
 
-Next operator step: connect these conditions to frozen evaluation and reports, then
-prepare matched answer-only and known-answer format-only sets with task-native
-checkers, followed by fresh composed cases. Keep direct and reasoning mode as a
-separate experimental axis. Before training, bind the examples to a specific parent,
-checker version, data split and policy, and verify PCC's actual supervised token
-spans. No training round using this three-level split has run yet.
+Next operator step: publish the paired S³/PCC code, extend format adapters to
+additional task-native structures, then run the frozen scalar panel on a pinned model
+and harness. Before training, admit examples against a specific parent, renderer,
+tokenizer, checker and split; confirm a PCC native update receipt records the intended
+loss masks, then run held-out learning and retention checks. No training round using
+this three-level split has run yet.

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "code.reverse_engineering.crc",
+    "title": "Identify and verify CRC parameters from input/output evidence",
+    "domains": ["code", "math", "reverse_engineering"],
+    "requires": ["code.reverse_engineering.layout", "math.binary.polynomial"],
+    "bands": ["unmeasured"],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Placeholder only. Future fixtures must specify width, polynomial, initial value, input/output reflection, final XOR, coverage bytes, and check vectors; scoring must distinguish a guessed match from a verified algorithm."
+}

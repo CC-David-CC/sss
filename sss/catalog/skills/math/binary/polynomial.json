@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "node": {
+    "id": "math.binary.polynomial",
+    "title": "Compute polynomial operations over GF(2)",
+    "domains": ["math", "binary"],
+    "requires": ["math.binary.word_xor", "math.binary.shifts"],
+    "bands": ["unmeasured"],
+    "checker": null,
+    "status": "planned"
+  },
+  "exercise": null,
+  "escalation_policy": "independent-axes-v1",
+  "coverage_note": "Placeholder for CRC polynomial arithmetic. It is not implemented and does not claim CRC parameter identification."
+}
