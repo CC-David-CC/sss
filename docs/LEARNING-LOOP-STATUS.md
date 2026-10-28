@@ -42,6 +42,27 @@ student failure.
 
 ## Recent tooling findings
 
+- The versioned `mixed66-v1` pack was prepared on llm-60 against the verified
+  Remix 2 update-42 F32 checkpoint, using PCC's actual renderer, tokenizer, and
+  lesson service. It contains 1,584 admitted practice entries (1,506 distinct
+  prompts), 396 development cases and 396 qualification cases. It performed no
+  training or model assessment. The longest admitted sequence was 555 tokens;
+  preparation therefore used PCC's existing `dense-llama-action-8k-v1` profile,
+  not the historical 512-token comparison profile. [Preparation receipt](results/mixed66-preparation-20261028.json).
+- `sss_integration.mixed66_prepare` checks the content identities of the saved
+  864-case study and 64-case external panel before admitting lessons, and checks
+  exact prompt overlap against those and a reconstructed 57-skill screen. All
+  three had zero exact collisions. This is not a semantic leakage check or a
+  complete inventory of every protected test. The reconstructed screen uses the
+  current generator and contains repeated prompts. The finite Boolean truth
+  tables share underlying inputs across splits despite different wording; the
+  tiny two-per-gate sets are triage, not mastery or statistically precise rates.
+  [Check receipt](results/mixed66-protected-prompt-check-20261028.json).
+- Next: qualify a native training run with this longer sequence profile and the
+  selected checkpoint, retain the parent and candidate, and measure both the
+  intended skills and independent coding/admin and retention panels. Preparation
+  alone does not prove a real-model automatic failure-to-learning cycle.
+
 - Initial tool fixture grading demanded unrequested finish wording. Corrected it,
   added regression coverage, and rescored saved trusted observations; no inference
   was repeated and original verdicts remain.

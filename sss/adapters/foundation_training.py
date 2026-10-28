@@ -35,14 +35,16 @@ def build_pack(skills, *, seed, practice_per_gate=8, checks_per_gate=2, generati
     """
     if (type(seed) is not int or not skills or len(set(skills)) != len(skills)
             or type(practice_per_gate) is not int or not 2 <= practice_per_gate <= 128
-            or type(checks_per_gate) is not int or not 1 <= checks_per_gate <= (32 if generation_profile == "without-replacement-v1" else 16)):
+            or type(checks_per_gate) is not int or not 1 <= checks_per_gate <= (32 if generation_profile in ('without-replacement-v1','mixed66-v1') else 16)):
         raise ValueError('Explicit bounded seed, skills and per-gate counts required')
-    if generation_profile not in ('legacy-v1', 'without-replacement-v1'):
+    if generation_profile not in ('legacy-v1', 'without-replacement-v1', 'mixed66-v1'):
         raise ValueError('Unknown frozen generator profile')
     generator = exercise_for
     if generation_profile == 'without-replacement-v1':
         from sss.curriculum_unique import unique_exercise_for
         generator = unique_exercise_for
+    elif generation_profile == 'mixed66-v1':
+        from sss.curriculum_mixed66 import exercise_for as generator
     graph = foundation_graph()
     included = set(skills)
     for key in skills:
@@ -74,10 +76,18 @@ def build_pack(skills, *, seed, practice_per_gate=8, checks_per_gate=2, generati
                  seed=seed, practice_per_gate=practice_per_gate, checks_per_gate=checks_per_gate,
                  exercises=rows, repeated_practice_questions=repeated_practice,
                  formal_mastery_qualification=False)
-    if generation_profile != 'legacy-v1':
+    if generation_profile == 'without-replacement-v1':
         from sss import curriculum_unique
         value.update(generation_profile=generation_profile,
                      generation_source_sha256=file_sha256(Path(curriculum_unique.__file__)))
+    elif generation_profile == 'mixed66-v1':
+        from sss import curriculum_mixed66, curriculum_unique
+        value.update(generation_profile=generation_profile,
+                     generation_source_sha256=file_sha256(Path(curriculum_mixed66.__file__)),
+                     generation_dependency_sha256=file_sha256(Path(curriculum_unique.__file__)),
+                     finite_boolean_truth_inputs_shared_across_splits=any(
+                         skill in ('logic.and','logic.or','logic.not','logic.xor') for skill in ordered),
+                     semantic_disjointness_established=False)
     return dict(value, pack_id=digest(value))
 
 

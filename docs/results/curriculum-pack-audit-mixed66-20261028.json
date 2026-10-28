@@ -1,0 +1,621 @@
+{
+  "schema": 1,
+  "scope": "bounded generator and reference/checker preflight",
+  "graph_id": "15288026ece312b4321af1a7e89ef6d020338a150ab71ea4a13cf661597e0207",
+  "seed": 20261028,
+  "generation_profile": "mixed66-v1",
+  "practice_per_gate": 8,
+  "checks_per_gate": 2,
+  "selected_skills": 66,
+  "individual_packs_ready": 66,
+  "individual_packs_not_ready": 0,
+  "combined_pack": {
+    "status": "ready_for_admission_checks",
+    "pack_id": "22f8efce82769b85009dca68e97136512e57144f5331760e31223549c613c32f",
+    "skill_count": 66,
+    "exercise_count": 2376,
+    "repeated_practice_questions": 78,
+    "finite_boolean_truth_inputs_shared_across_splits": true
+  },
+  "skills": [
+    {
+      "skill_id": "math.place_value",
+      "status": "ready_for_admission_checks",
+      "pack_id": "260a1938bcf32a7cb8b1f385f8d2c52748338a33ac940c1447315abbafd84ed9",
+      "skill_count": 1,
+      "exercise_count": 36,
+      "repeated_practice_questions": 0,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "status": "ready_for_admission_checks",
+      "pack_id": "9581052cc54fa3b8c165d841cf1d4e4de2acd2a9d34a447ec638eeef29b54760",
+      "skill_count": 2,
+      "exercise_count": 72,
+      "repeated_practice_questions": 1,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.add.carry",
+      "status": "ready_for_admission_checks",
+      "pack_id": "9aa1ce48c6504c6e15a0f5b6544fce6832bdfb2aac333f17277fbcf6cd8fcbb7",
+      "skill_count": 3,
+      "exercise_count": 108,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.multiply",
+      "status": "ready_for_admission_checks",
+      "pack_id": "d2b850c03344c39e737de1c44e38f2eb3c41558bb54166f8324e0c1a5390988c",
+      "skill_count": 4,
+      "exercise_count": 144,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.divide",
+      "status": "ready_for_admission_checks",
+      "pack_id": "a6b4969893a4ac8f1b1529ebb2967cb0e179267e5d96244bf72942dcdcbc36ce",
+      "skill_count": 5,
+      "exercise_count": 180,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.fraction",
+      "status": "ready_for_admission_checks",
+      "pack_id": "270814cb7c1ae4a18537c880f07a71296c0d68a39c28f8c8c993fda230e6686a",
+      "skill_count": 6,
+      "exercise_count": 216,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.ratio",
+      "status": "ready_for_admission_checks",
+      "pack_id": "8b5c23e6147618dbac8f360bcc21c42df97a7ddcfe2ef20208bb933cbcafbc34",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.units",
+      "status": "ready_for_admission_checks",
+      "pack_id": "679ef64d0c548db39e39fb3f3ca850efc9b159cd909894d4d97b19fdfa8a4383",
+      "skill_count": 8,
+      "exercise_count": 288,
+      "repeated_practice_questions": 11,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.add.signed",
+      "status": "ready_for_admission_checks",
+      "pack_id": "40d7acd9b090dd64da26703dc851ffba6b7cc9f6d9011c4a46840d1c695c63c1",
+      "skill_count": 4,
+      "exercise_count": 144,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "state.registers",
+      "status": "ready_for_admission_checks",
+      "pack_id": "cd19920b672888eb0c5e29a993a42524524094baf0b67afd8b59acc863cf7e67",
+      "skill_count": 5,
+      "exercise_count": 180,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.dot",
+      "status": "ready_for_admission_checks",
+      "pack_id": "129c3c313ff3af48e05fa877f97b1d8663942c9e2615a6b7e068480d58764959",
+      "skill_count": 6,
+      "exercise_count": 216,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.matrix_product",
+      "status": "ready_for_admission_checks",
+      "pack_id": "67c606f16346a59c2f750575a3868eb53d3a47bf7c00082ab14d237f05ea8f70",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "logic.and",
+      "status": "ready_for_admission_checks",
+      "pack_id": "4c2c24e70a3a77786633438e411da70d7ce9153055a234f87bfbe74d051bf6b6",
+      "skill_count": 1,
+      "exercise_count": 36,
+      "repeated_practice_questions": 12,
+      "finite_boolean_truth_inputs_shared_across_splits": true
+    },
+    {
+      "skill_id": "logic.or",
+      "status": "ready_for_admission_checks",
+      "pack_id": "3a55a5b7827431aeb0f6ff268b348cfa19e2da3b3c7463c4f65c48f177b51115",
+      "skill_count": 1,
+      "exercise_count": 36,
+      "repeated_practice_questions": 12,
+      "finite_boolean_truth_inputs_shared_across_splits": true
+    },
+    {
+      "skill_id": "logic.not",
+      "status": "ready_for_admission_checks",
+      "pack_id": "8d8b30272a12accd037e175b0f82f834560227bfbba0a60bfa96de9d4dc7731f",
+      "skill_count": 1,
+      "exercise_count": 36,
+      "repeated_practice_questions": 18,
+      "finite_boolean_truth_inputs_shared_across_splits": true
+    },
+    {
+      "skill_id": "logic.deduction",
+      "status": "ready_for_admission_checks",
+      "pack_id": "497b93e6ccbe9ede8de70295057ecb326dc2ec14e86da57a86beef3575e3a8e7",
+      "skill_count": 4,
+      "exercise_count": 144,
+      "repeated_practice_questions": 42,
+      "finite_boolean_truth_inputs_shared_across_splits": true
+    },
+    {
+      "skill_id": "math.area",
+      "status": "ready_for_admission_checks",
+      "pack_id": "968ba375e1c0ef6b9e3de280580993b03b4774e549b1b0b4e7a420ec75b4175b",
+      "skill_count": 5,
+      "exercise_count": 180,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.volume",
+      "status": "ready_for_admission_checks",
+      "pack_id": "15d84ec811af768c1d099060573167b766e8ee99b1f416d617b48032cb241191",
+      "skill_count": 6,
+      "exercise_count": 216,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "logic.xor",
+      "status": "ready_for_admission_checks",
+      "pack_id": "701a77d5cee4ffb6d35bd81d123af3f6f17c472e3eab3632daa20e335359cf70",
+      "skill_count": 4,
+      "exercise_count": 144,
+      "repeated_practice_questions": 54,
+      "finite_boolean_truth_inputs_shared_across_splits": true
+    },
+    {
+      "skill_id": "math.subtract.no_borrow",
+      "status": "ready_for_admission_checks",
+      "pack_id": "fdc303ec56010f32552762bb54466f06e3730679f7572ffa6ca2691f76f53cdc",
+      "skill_count": 3,
+      "exercise_count": 108,
+      "repeated_practice_questions": 1,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.subtract.borrow",
+      "status": "ready_for_admission_checks",
+      "pack_id": "0ab422223c114073e026f74696f1ad271bb8f7fb6d19a96b500330a8406e24fb",
+      "skill_count": 4,
+      "exercise_count": 144,
+      "repeated_practice_questions": 4,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.subtract.signed",
+      "status": "ready_for_admission_checks",
+      "pack_id": "978a1fc57cc613d360a68970488e72ffe9ec9da3ad073b0f981d4c3f2beea17b",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 5,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.remainder",
+      "status": "ready_for_admission_checks",
+      "pack_id": "a114fbfcb5e318d739f26d0fadea9921b553a8b8d43c531e29148085722ec554",
+      "skill_count": 10,
+      "exercise_count": 360,
+      "repeated_practice_questions": 5,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.probability",
+      "status": "ready_for_admission_checks",
+      "pack_id": "1b8b963f4e85a07a1a5abf62781ea21806c6c755c3a509566a15285ead6da8c1",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 4,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "logic.proof",
+      "status": "ready_for_admission_checks",
+      "pack_id": "26f398ebbe2c8c1ee26e45f26219010b64ffccf4753ad3430c52e7d13c9ea857",
+      "skill_count": 5,
+      "exercise_count": 180,
+      "repeated_practice_questions": 42,
+      "finite_boolean_truth_inputs_shared_across_splits": true
+    },
+    {
+      "skill_id": "logic.joint_premises",
+      "status": "ready_for_admission_checks",
+      "pack_id": "d0ca9f305e6ce905c9e15f08dbab3c5e40fb4b8e0ad402107e557605b92958a9",
+      "skill_count": 6,
+      "exercise_count": 216,
+      "repeated_practice_questions": 42,
+      "finite_boolean_truth_inputs_shared_across_splits": true
+    },
+    {
+      "skill_id": "logic.premise_robustness",
+      "status": "ready_for_admission_checks",
+      "pack_id": "fe945c9bb1a22b9d7e5f5f2120eebab120348ad33cab937b23774b98469aabf7",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 42,
+      "finite_boolean_truth_inputs_shared_across_splits": true
+    },
+    {
+      "skill_id": "logic.reverse_support",
+      "status": "ready_for_admission_checks",
+      "pack_id": "e9313ca6968de9280d8badb7612a129c3230f8e43f182bc95fbbf769dbecc655",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 42,
+      "finite_boolean_truth_inputs_shared_across_splits": true
+    },
+    {
+      "skill_id": "math.absolute",
+      "status": "ready_for_admission_checks",
+      "pack_id": "6ccdcaa9458adcd3d4651c0b2d56e4a39d654d0c09849355a3959dce9412136a",
+      "skill_count": 8,
+      "exercise_count": 288,
+      "repeated_practice_questions": 8,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.bayes",
+      "status": "ready_for_admission_checks",
+      "pack_id": "6da018975b0366b932cd67cf11ee4e50439bc29106fe7cce4725192928d64d1c",
+      "skill_count": 9,
+      "exercise_count": 324,
+      "repeated_practice_questions": 4,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.equal",
+      "status": "ready_for_admission_checks",
+      "pack_id": "6442545b782426e7ae7be63420c777d351b89e4cef4c6c4cceb767da13a25d5d",
+      "skill_count": 1,
+      "exercise_count": 36,
+      "repeated_practice_questions": 0,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.greater",
+      "status": "ready_for_admission_checks",
+      "pack_id": "784a2229c27c9409384a5b70f9eb309524ff6265f5ab8e392d18c35d8fd24e17",
+      "skill_count": 2,
+      "exercise_count": 72,
+      "repeated_practice_questions": 0,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.ceil",
+      "status": "ready_for_admission_checks",
+      "pack_id": "3b6ebb18ba0ed792420c7a7bf9bd604d7042dd043336bd09dcb89266eee2220a",
+      "skill_count": 8,
+      "exercise_count": 288,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.decimal.add",
+      "status": "ready_for_admission_checks",
+      "pack_id": "07d92c87f59c101c12d379bd3ce809830e695cb66028d8d8cd144341e0f6e1b6",
+      "skill_count": 8,
+      "exercise_count": 288,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.decimal.divide",
+      "status": "ready_for_admission_checks",
+      "pack_id": "37d233963ecc4f413e277a11fc31dc345b4c921fcd8373b0fdd59e4581628d0b",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.decimal.multiply",
+      "status": "ready_for_admission_checks",
+      "pack_id": "1b3e7d8c2cc5000476127107f515a76c1527e805369c2338e73b83c74da1f209",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.decimal.subtract",
+      "status": "ready_for_admission_checks",
+      "pack_id": "639c0b81f7270f542429e091b00c42ed31951e6b80e5aa281d77b26d229b46bb",
+      "skill_count": 11,
+      "exercise_count": 396,
+      "repeated_practice_questions": 7,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.power",
+      "status": "ready_for_admission_checks",
+      "pack_id": "98255ab0ed38032c0dbfa14d9643c8d2dd7907ddf5ba90d2e815b808aaa27ed7",
+      "skill_count": 5,
+      "exercise_count": 180,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.polynomial_value",
+      "status": "ready_for_admission_checks",
+      "pack_id": "49372b9a5209e707ccf60f4829c1b051d2f0a18ae53f2c41c3a806717f9b1102",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.polynomial_derivative",
+      "status": "ready_for_admission_checks",
+      "pack_id": "09938426502a59e389e13089168a6f93a5904663a0ff5bb6e57c7def7e2d2bfb",
+      "skill_count": 8,
+      "exercise_count": 288,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.definite_integral",
+      "status": "ready_for_admission_checks",
+      "pack_id": "5bd5a5ca6ed537b4b1b6047e1ccc5d86a3eaf17de5eb71268fed5ab9339abf6b",
+      "skill_count": 11,
+      "exercise_count": 396,
+      "repeated_practice_questions": 4,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.determinant",
+      "status": "ready_for_admission_checks",
+      "pack_id": "254ff5f5fbbde07dc82daa59e6eae44d6d57de20706a41f55cf5655ee08ce9ba",
+      "skill_count": 11,
+      "exercise_count": 396,
+      "repeated_practice_questions": 5,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.linear_equation",
+      "status": "ready_for_admission_checks",
+      "pack_id": "97fcb8febf98ede7c6797f2b995d3d65a3b1337429e31d3fa662b570a2d354ca",
+      "skill_count": 10,
+      "exercise_count": 360,
+      "repeated_practice_questions": 5,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.quadratic_roots",
+      "status": "ready_for_admission_checks",
+      "pack_id": "94c18768b7c648f67c93cd90fead039f30f86a6b2f771802b82155932fc2adb3",
+      "skill_count": 12,
+      "exercise_count": 432,
+      "repeated_practice_questions": 6,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.eigenvalues",
+      "status": "ready_for_admission_checks",
+      "pack_id": "8c42e281b25dc029647af6e2ef31c3be3f5e7b277a2f787577f18e3a90961b8d",
+      "skill_count": 16,
+      "exercise_count": 576,
+      "repeated_practice_questions": 6,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.less",
+      "status": "ready_for_admission_checks",
+      "pack_id": "cf9a6a7cb2a78892622cf47b93c5ae4a95d4808794984f246443b42e5e944ad5",
+      "skill_count": 2,
+      "exercise_count": 72,
+      "repeated_practice_questions": 0,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.floor",
+      "status": "ready_for_admission_checks",
+      "pack_id": "4af72ef32dab79eabe91750d7789169ba4e59161cab917c9bf77a652e2fdd3a6",
+      "skill_count": 8,
+      "exercise_count": 288,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "status": "ready_for_admission_checks",
+      "pack_id": "4525e1e4b18219690f80d55c50d03f73483c742fdcb82294df1bf359efbd53dd",
+      "skill_count": 8,
+      "exercise_count": 288,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.fraction.compare",
+      "status": "ready_for_admission_checks",
+      "pack_id": "b999df579ffe14a817cb51e70a17888a2aaa732ca2a30246c3c665fd8b5d6df2",
+      "skill_count": 9,
+      "exercise_count": 324,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.fraction.divide",
+      "status": "ready_for_admission_checks",
+      "pack_id": "54b97b2fee211f3d34ca2370a9b67063cb7c97c7fc94c13e4ae868cb7d0c1032",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.fraction.multiply",
+      "status": "ready_for_admission_checks",
+      "pack_id": "318ffeeb0a7aab440aa7c2a57daa05783b07d442dc16eb521da072db4a467c51",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.fraction.subtract",
+      "status": "ready_for_admission_checks",
+      "pack_id": "fdcfae1c77451a62ab5f76543c8e0563ab2c8ee160d3ef4ac76d13ca33ad951c",
+      "skill_count": 11,
+      "exercise_count": 396,
+      "repeated_practice_questions": 6,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.linear_system",
+      "status": "ready_for_admission_checks",
+      "pack_id": "8ef6666ab9335c0b26f5bf49bc15c5e21f958043cb55fbe1aec83b94e9e0058d",
+      "skill_count": 13,
+      "exercise_count": 468,
+      "repeated_practice_questions": 5,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.maximum",
+      "status": "ready_for_admission_checks",
+      "pack_id": "c1623800c63f177111c132f8eb0f6fe19cdbc5ef4d193fec99fc19aad14c2d16",
+      "skill_count": 3,
+      "exercise_count": 108,
+      "repeated_practice_questions": 0,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.mean",
+      "status": "ready_for_admission_checks",
+      "pack_id": "419a65c023d2bb2c5b1702b2030c46950e23adb27dac5810bd64fde9a0c77312",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.median",
+      "status": "ready_for_admission_checks",
+      "pack_id": "2e6d028bc7d295cb9a323cd61273d1952d4af60a12f78039b086e77b5e2adb9e",
+      "skill_count": 3,
+      "exercise_count": 108,
+      "repeated_practice_questions": 0,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.method_selection",
+      "status": "ready_for_admission_checks",
+      "pack_id": "db6bde76ab785cc35317bf403b7e23761c43e60094e0481b4ad8084352215ef1",
+      "skill_count": 10,
+      "exercise_count": 360,
+      "repeated_practice_questions": 5,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.minimum",
+      "status": "ready_for_admission_checks",
+      "pack_id": "f3f509972e35c1ea7bd0438d2e6c1d974b190bde1ccbf20e60b201954bef8233",
+      "skill_count": 3,
+      "exercise_count": 108,
+      "repeated_practice_questions": 0,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.percent.of",
+      "status": "ready_for_admission_checks",
+      "pack_id": "5efa314e8988c4987145161c21970dd8ffa79fdb6aff40a8c969d688df15c000",
+      "skill_count": 8,
+      "exercise_count": 288,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.percent.change",
+      "status": "ready_for_admission_checks",
+      "pack_id": "5f274ee5ea6308af928c6559bc679bfc8e34d5f105250e00b8bf8ad2d7f1def0",
+      "skill_count": 13,
+      "exercise_count": 468,
+      "repeated_practice_questions": 6,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.percent.reverse",
+      "status": "ready_for_admission_checks",
+      "pack_id": "3ad0efb76eeca27522412dd6a7c08710338a862b5247575ebf0183285832031d",
+      "skill_count": 14,
+      "exercise_count": 504,
+      "repeated_practice_questions": 6,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.perimeter",
+      "status": "ready_for_admission_checks",
+      "pack_id": "65d5c4bbb31c8a855029373ae8231f6d0fde3d3fbf6201b31a2ea7334e492b29",
+      "skill_count": 5,
+      "exercise_count": 180,
+      "repeated_practice_questions": 2,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.quadratic_minimum",
+      "status": "ready_for_admission_checks",
+      "pack_id": "b64df681f5b2e88396a82257553b274e2c5394574060cb5a938c21151e477893",
+      "skill_count": 14,
+      "exercise_count": 504,
+      "repeated_practice_questions": 6,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.round",
+      "status": "ready_for_admission_checks",
+      "pack_id": "f33ef3c767a5c97c40cf46b8c86a7f425bae00bc2588575c146c55c7de57515b",
+      "skill_count": 6,
+      "exercise_count": 216,
+      "repeated_practice_questions": 5,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.triangle_area",
+      "status": "ready_for_admission_checks",
+      "pack_id": "37e037bb2f91436b19f6ad990895370b74e703da3e3d136028785c0f31dbf5ad",
+      "skill_count": 7,
+      "exercise_count": 252,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    },
+    {
+      "skill_id": "math.variance",
+      "status": "ready_for_admission_checks",
+      "pack_id": "3866002cf0c95d3341e2bbaa11d66e8187cf7f586debae704204ed8fbbf0369a",
+      "skill_count": 9,
+      "exercise_count": 324,
+      "repeated_practice_questions": 3,
+      "finite_boolean_truth_inputs_shared_across_splits": false
+    }
+  ],
+  "training_admission_granted": false,
+  "model_evaluated": false,
+  "mastery_established": false,
+  "semantic_disjointness_established": false,
+  "interpretation": "Passing this small generator check is not lesson admission, model evaluation, semantic split qualification, or approval to train."
+}

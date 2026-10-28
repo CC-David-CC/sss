@@ -30,9 +30,12 @@ def prepare(a):
                                source_sha256=file_sha256(pcc / 'tools/strata_tokenizer.py')))
     def no_training(*args):
         raise RuntimeError('Preparation grants no model update authority')
+    sequence_profile = ('dense-llama-action-8k-v1' if a.generation_profile == 'mixed66-v1'
+                        else 'dense-llama-short-v1')
+    token_limit = 8192 if a.generation_profile == 'mixed66-v1' else 512
     service = LessonService(root / 'lesson-service', a.model_contract_id,
         lambda text:tokenizer.encode(text, parse_special=False), no_training,
-        max_tokens=512, max_steps=1000, sequence_profile='dense-llama-short-v1',
+        max_tokens=token_limit, max_steps=1000, sequence_profile=sequence_profile,
         rendered_tokenize=lambda text:tokenizer.encode(text, parse_special=True))
     def write(path, value):
         with path.open('xb') as stream:
@@ -64,7 +67,9 @@ def prepare(a):
                     dict(enable_thinking=False, add_generation_prompt=True))
                 protected[exercise.split].append(dict(exercise_id=exercise.identity,
                     prefix_tokens=tokens, exercise=exercise_rows[exercise.identity]))
-        practice = dict(schema=1, purpose='fixed_compute_optimizer_study_practice',
+        purpose = ('mixed_66_curriculum_practice' if a.generation_profile == 'mixed66-v1'
+                   else 'fixed_compute_optimizer_study_practice')
+        practice = dict(schema=1, purpose=purpose,
             origin='owned synthetic checked demonstrations; not observed model failures',
             model_contract_id=a.model_contract_id, model_sha256=file_sha256(a.model),
             pack_id=pack['pack_id'], tree_id=tree.identity, renderer_sha256=renderer.renderer_sha256,
@@ -89,6 +94,11 @@ def prepare(a):
             maximum_evaluation_prefix_tokens=max(len(c['prefix_tokens']) for rows in protected.values() for c in rows),
             model_sha256=practice['model_sha256'], tokenizer_sha256=tokenizer_id,
             renderer_sha256=renderer.renderer_sha256, weights_updated=False, promoted=False)
+        if a.generation_profile == 'mixed66-v1':
+            summary.update(generation_profile=a.generation_profile,
+                sequence_profile=sequence_profile, token_limit=token_limit,
+                finite_boolean_truth_inputs_shared_across_splits=pack['finite_boolean_truth_inputs_shared_across_splits'],
+                semantic_disjointness_established=pack['semantic_disjointness_established'])
         write(root / 'preparation-result.json', summary)
         print(json.dumps(summary), flush=True)
         return summary

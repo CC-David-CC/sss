@@ -1,0 +1,26 @@
+{
+  "external_sha256": "b8928cb4b6142daf465e71e644c5c462c941b664b3794062197955cf2813dffe",
+  "pack_id": "22f8efce82769b85009dca68e97136512e57144f5331760e31223549c613c32f",
+  "panels": {
+    "external64": {
+      "cases": 64,
+      "distinct_prompts": 64,
+      "exact_prompt_collisions": 0
+    },
+    "reconstructed_foundation_screen": {
+      "cases": 456,
+      "distinct_prompts": 431,
+      "exact_prompt_collisions": 0
+    },
+    "study864": {
+      "cases": 864,
+      "distinct_prompts": 864,
+      "exact_prompt_collisions": 0
+    }
+  },
+  "schema": 1,
+  "scope": "Known panels only; reconstructed screen uses current generator; no semantic leakage check",
+  "semantic_disjointness_established": false,
+  "status": "EXACT_PROMPT_CHECK_PASSED",
+  "study_sha256": "4e57fa1aa640b054a02905b263cff4dca9aec439f8cb5f5f8fc8511a683e54b5"
+}
