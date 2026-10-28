@@ -125,6 +125,13 @@ compact history. Controlled CPU checks passed 16 PCC and 34 BW tests. These do
 not qualify actual long-context model behavior, multimodal inputs, or recovery of
 the prior unknown operations. See the [preflight receipt](results/bw-pcc-text-preflight-20261028.json).
 
+BW also offers an opt-in guard for new text runs. It checks each exact request
+before model dispatch and stops when the requested input and output cannot fit.
+The controlled COW/BW CPU suite passed 72 tests, including continuation, an
+interruption before dispatch, and a pending request that must not be replayed.
+The guard does not shorten output or compact context. The [guard receipt](results/bw-context-guard-20261028.json)
+does not establish model quality or actual long-context operation.
+
 The follow-up adapter `sss_integration.bw_task_adapter` materializes the public
 `shell.failure_status` and `shell.quoted_filename` fixtures with workspace-relative
 inputs. Five tests passed on llm-60, including admission through BW's existing

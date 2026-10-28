@@ -1,0 +1,22 @@
+{
+  "schema": "sss-bw-context-guard-qualification-v1",
+  "date": "2026-10-28",
+  "status": "PASS",
+  "scope": "Controlled CPU COW/BW fixtures; no language-model inference or training",
+  "pcc_commit": "4903927710aacfd4b7187e71bff9c8e6ec4b092b",
+  "bw_commit": "4cf18d8c8e01c269024568fdb63175487bfc9c65",
+  "tests_passed": 72,
+  "guard": {
+    "opt_in_new_runs": true,
+    "checks_exact_text_input_and_output_bound": true,
+    "insufficient_space_stops_before_model_dispatch": true,
+    "undispatched_child_rechecks_after_interruption": true,
+    "pending_dispatched_operation_is_not_replayed": true,
+    "silently_reduces_output_budget": false,
+    "compacts_context": false,
+    "supports_image_input": false
+  },
+  "model_quality_claim": false,
+  "long_context_model_qualification": false,
+  "original_unknown_operations_resolved": false
+}
