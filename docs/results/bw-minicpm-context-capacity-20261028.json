@@ -1,0 +1,29 @@
+{
+  "schema": "sss-context-capacity-investigation-v1",
+  "date": "2026-10-28",
+  "model": "MiniCPM5-2B official F16",
+  "capacity_tokens": 8192,
+  "requests": [
+    {
+      "case_id": "shell.failure_status",
+      "source_tokens": 5882,
+      "input_tokens": 592,
+      "requested_output_tokens": 2048,
+      "total_reserved_tokens": 8522,
+      "source_controller": "stopped"
+    },
+    {
+      "case_id": "shell.quoted_filename",
+      "source_tokens": 8015,
+      "input_tokens": 0,
+      "requested_output_tokens": 2048,
+      "total_reserved_tokens": 10063,
+      "source_controller": "active"
+    }
+  ],
+  "evidence": "Counts were read from the retained COW operation intents and their original source snapshots; capacity came from the retained execution profile. The candidate PCC generation code checks history length plus input length plus max_steps against execution capacity and raises Pinned execution context exceeded when the sum is greater.",
+  "interpretation": "Both saved requests exceed the capacity under that generation guard. This explains a plausible failure mechanism, but the original error responses were not retained, so the exact causes are not independently established.",
+  "operation_status": "Both original BW operations remain unresolved; neither was replayed.",
+  "model_quality_claim": false,
+  "training": false
+}

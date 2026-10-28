@@ -111,6 +111,13 @@ student failure.
   verified BW completion or S³ lesson was recorded. See the sanitized
   [MiniCPM integration result](results/bw-minicpm-integration-20261028.json).
 
+The saved COW profile has an 8,192-token capacity. The first pending request had
+5,882 source tokens, 592 input tokens and a 2,048-token output request; the
+second had 8,015 source tokens and requested another 2,048. Both sums exceed the
+capacity checked by PCC's generation code. The original error receipts are not
+available, so this is a supported failure mechanism rather than a proven error
+for either request. See the [context investigation](results/bw-minicpm-context-capacity-20261028.json).
+
 The follow-up adapter `sss_integration.bw_task_adapter` materializes the public
 `shell.failure_status` and `shell.quoted_filename` fixtures with workspace-relative
 inputs. Five tests passed on llm-60, including admission through BW's existing
