@@ -77,6 +77,14 @@ class LearningLevelTests(unittest.TestCase):
         self.assertEqual(response_target_segments(spans, 'reasoning_and_answer'),
                          [True, True, False])
 
+    def test_response_policy_masks_unverified_template_framing(self):
+        spans = [dict(role='assistant', kind='framing', verified=False),
+                 dict(role='assistant', kind='answer', verified=True)]
+        self.assertEqual(response_target_segments(spans, 'answer_only'), [False, True])
+        spans[0]['verified'] = True
+        with self.assertRaises(ValueError):
+            response_target_segments(spans, 'answer_only')
+
 
 if __name__ == '__main__':
     unittest.main()
