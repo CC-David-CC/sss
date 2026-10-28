@@ -1,41 +1,58 @@
-# Score skill answers and answer formatting as separate skills
+# Answering and formatting are separate skills
 
-The current direct screen demands both a correct answer and the requested output
-format. Its JSON condition reports `format_valid` and `answer_correct` separately,
-but correct-answer scoring only occurs when valid JSON is present. That condition
-therefore does not yet isolate the two capabilities.
+The curriculum must teach and measure three levels. A model can know the answer
+but express it in the wrong shape; it can also produce perfect JSON containing a
+wrong answer. Those are different failures and must not share one score.
 
-Use three matched levels for each task family:
+| Level | What the model must do | What the checker scores | Training target |
+|---|---|---|---|
+| 1. Answering | Solve the skill task and give its answer without an added format demand | Semantic correctness under the task's own checker | The skill answer; no special output-schema lesson |
+| 2. Formatting | Receive the correct content and encode it in a requested format | Syntax/schema validity and preservation of the supplied content, as separate fields | Formatting behavior using known answers; no hidden skill task to solve |
+| 3. Answer + format | Solve a fresh skill task and encode the answer in the requested format | Answer correctness, format validity, and joint success, all reported separately | A composed lesson only after the first two levels; use fresh values and examples |
 
-1. **Skill answer:** direct unstructured response; a task-specific independent
-   semantic checker extracts and scores the answer. Record extraction confidence
-   and ambiguity separately. Never turn an ambiguous parse into a pass.
-2. **Format only:** provide the known correct answer and ask the model to encode it
-   in the required schema. The checker measures syntax, required keys/types and
-   exact value preservation. No underlying math or reasoning is needed.
-3. **Skill plus format:** solve a fresh task and return the answer under the same
-   schema. Score semantic answer correctness and format validity as two fields;
-   report joint success only when both pass.
+## Measurement rules
 
-Train answer skill and format protocol as separate lesson groups. Then use a third
-composed group with new values to measure whether the model can do both. A formatting
-lesson may teach delimiters, JSON keys or value types, but must not contain the hidden
-answer to an assessed skill task. A skill lesson may teach the operation without
-teaching the format when that factor is being isolated. Mixed review measures whether
-format lessons interfere with skill answers and vice versa.
+1. **Keep checkers independent.** The answer grader applies the skill's semantic
+   rules. The format grader applies that task's declared response schema. Do not
+   make semantic correctness conditional on passing a JSON parser. When a malformed
+   response still contains a recoverable answer, score the answer with a
+   task-specific tolerant extractor and record format failure separately. If the
+   answer cannot be recovered, mark that answer score unscorable; do not silently
+   turn a formatting failure into a knowledge failure.
+2. **Use native task contracts.** A proof task may require a proof object; a numeric
+   task may require a number or a specific numeric object. Do not wrap every task in
+   a universal `{"answer": ...}` envelope. Check both schema validity and, where
+   relevant, whether formatting preserved the known or computed answer.
+3. **Keep the three levels' data separate.** Format-only examples disclose the
+   correct content by design and must not be counted as skill practice. Composition
+   evaluation uses new skill inputs, not the examples used to teach the format.
+   Hold out cases across all three levels.
+4. **Report denominators and failures by level.** At level 3, report answer accuracy,
+   format-valid rate, answer-preservation rate, and joint pass rate. A single
+   all-or-nothing percentage hides which capability needs practice.
 
-For reasoning mode, add a parallel axis: final answer validity and each checkable
-reasoning step. This yields skill answer, reasoning validity, format validity and
-joint execution as separate observations. Long explanations are not rewarded unless
-their steps can be checked; concise direct-answer behavior is its own condition.
+## Reasoning is a crossed mode, not a substitute for these levels
 
-Training metadata must bind each example's `lesson_kind` (`skill`, `format`, or
-`composed`), `answer_mode` (`direct` or `reasoning`), supervised token spans, checker
-identity and split. Native masks must prove which spans receive loss. A trainer must
-not infer supervision from JSON shape or free-text tags. This metadata and the
-currently added mode validator do not yet qualify real mixed-format native updates.
+Direct-answer and reasoning behaviors are a separate axis. Measure them alongside
+the levels above rather than merging them into “formatting” or “answering.” A
+reasoning condition needs its own checkable reasoning target and final-answer score;
+verbosity alone is not evidence of valid reasoning. The curriculum can therefore
+compare direct and reasoning examples at the answering level, format-only level,
+and composed level when suitable checkers exist.
 
-The first JSON screen was intended as condition 3, but a universal envelope broke
-native proof-task schemas. Its aggregates are invalid for capability comparison;
-see [the audit](FORMAT-SCREEN-AUDIT.md). It is not the three-level ablation or
-mastery qualification.
+## Training and current implementation status
+
+Author and train separate lesson groups for answering and formatting, then introduce
+composition as its own group. Preserve mixed review across earlier levels to detect
+interference. Bind every example to its level, answer mode, checker, data split, and
+supervised token spans. PCC's native loss masks must confirm which spans actually
+receive loss; metadata labels alone do not establish that the intended training
+occurred.
+
+S³ currently has direct skill checkers and answer/reasoning-mode metadata, but the
+recent foundation screens combined semantic answering with strict output expectations.
+They cannot isolate a formatting weakness from a skill weakness. The first generic
+JSON screen is invalid for broad comparison because it replaced task-native proof
+schemas; see [the audit](FORMAT-SCREEN-AUDIT.md). Its aggregate scores are excluded.
+The three-level split is the next measurement and training design; it has not yet
+been run as a controlled study, and no model improvement is claimed from it.
