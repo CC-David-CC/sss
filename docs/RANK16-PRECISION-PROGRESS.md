@@ -1,6 +1,6 @@
 # How much learned behavior survives a smaller GGUF?
 
-[Compare final AdamW, standard Muon and all six LoRA-rank precision sweeps](FINAL-CHECKPOINT-PRECISION.md) (all 64 panels complete for these eight finished arms).
+[Compare all ten original endpoint precision sweeps](FINAL-CHECKPOINT-PRECISION.md) (all 80 panels complete).
 
 This is a completed precision sweep of the completed **AdamW LoRA rank-16,
 update-68** checkpoint. It is separate from the unfinished optimizer/rank

@@ -22,7 +22,7 @@ for axis,(arm,name)in zip(axes.flat,labels.items()):
 for a in axes[-1,:]:a.set_xlabel('New checkpoint update (compared with preceding update)')
 for a in axes[:,0]:a.set_ylabel('Answers gained / lost')
 fig.suptitle('A flat total score can hide substantial answer turnover',fontsize=18,fontweight='bold',y=.973)
-fig.text(.5,.936,f"MiniCPM5-2B | 864 fixed questions | {len(report['transitions'])} observed adjacent transitions | interim data",ha='center',fontsize=11)
+fig.text(.5,.936,f"MiniCPM5-2B | 864 fixed questions | {len(report['transitions'])} observed adjacent transitions | fixed training horizon complete",ha='center',fontsize=11)
 fig.legend(handles=[Patch(color='#18865b',label='Newly correct'),Patch(color='#c23d47',label='Previously correct, now wrong'),Line2D([0],[0],color='#202020',label='Net score change')],loc='lower center',bbox_to_anchor=(.5,.047),ncol=3,frameon=False)
 fig.text(.5,.018,'Same frozen cases and runtime within each pair. Missing early checkpoints are not inferred.\nFull updates: FP32; LoRA: F16 base + attached adapter. Panel y scales differ. No optimizer ranking or release acceptance.',ha='center',va='bottom',fontsize=10,color='#555555')
 fig.savefig(root/'paired-update-turnover.png',dpi=160,facecolor='white')
