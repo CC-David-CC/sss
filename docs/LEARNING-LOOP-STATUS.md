@@ -1,5 +1,11 @@
 # Learning-loop tooling status
 
+![MiniCPM early learning and retention comparison](results/mixed66-progress-20261028.png)
+
+The candidate gained 40 answers and lost 26 compared with its parent on the
+396-case development panel. The 11-case diagnostic is small; its score did not
+improve over the parent. These are early measurements, not release acceptance.
+
 This is the operator's meta-environment record. It is not student curriculum,
 training text, assessment prompts, or a model skill score. Improving a checker,
 driver or recovery path is a tooling result, not a learned model capability.

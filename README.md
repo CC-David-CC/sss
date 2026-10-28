@@ -16,6 +16,10 @@ actual MiniCPM token/lesson admission. Learning and retention runs are next.
 
 # Skills³ (S³)
 
+[See the latest learning-loop chart and status](docs/LEARNING-LOOP-STATUS.md):
+compare the original MiniCPM, its parent and the new candidate, including
+answers gained and lost and the small tool-and-code diagnostic.
+
 [Real MiniCPM Muon/AdamW mechanics](docs/MINICPM-OPTIMIZER-PILOT.md): full-weight
 updates and reload pass; resumed Muon weights/moments match uninterrupted training
 bit for bit. This is mechanics evidence; independent learning and retention are
