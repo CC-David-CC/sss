@@ -12,11 +12,13 @@ sys.path[:0]=[str(bw),str(pcc)]
 from serve.cow_http import make_server
 from tools.pcc_lessons import LessonService,NativeRunner
 from sss.adapters.bw_fixtures import task
+from sss.curriculum import exercise_for
+from sss.learning_lessons import build_scalar_pcc_lesson
 from branchwrite.lesson_cli import digest
 
 root=args.workdir.absolute();root.mkdir(mode=0o700,parents=True,exist_ok=False)
 from experimental.native_training.make_cpu_fixture import make_fixture
-model=make_fixture(root/'tiny-byte-fixture.gguf');binary=args.native_executable.resolve(strict=True)
+model=make_fixture(root/'tiny-byte-fixture.gguf',context_length=1024);binary=args.native_executable.resolve(strict=True)
 base_hash=hashlib.sha256(model.read_bytes()).hexdigest();contract=hashlib.sha256(b'pcc-byte-fixture-v1'+model.read_bytes()).hexdigest()
 service=None;server=None;thread=None
 def phase(name,**extra):
@@ -30,7 +32,7 @@ try:
  phase('native-cpu-service')
  runner=NativeRunner(dict(model=str(model),base_sha256=base_hash,executable=str(binary),devices=['CPU'],gpu_uuids=[],
    device_budget_bytes={'CPU':1024**3},reserve_bytes=16*1024**2))
- service=LessonService(root/'service',contract,lambda text:list(text.encode()),runner,max_tokens=32,max_steps=16)
+ service=LessonService(root/'service',contract,lambda text:list(text.encode()),runner,max_tokens=512,max_steps=16)
  key='cpu-proof-'+os.urandom(16).hex()
  server=make_server(object(),api_key=key,training_service=service,connection_info=dict(model_contract_id=contract,execution_profile_id=digest({'cpu':'fixture'}),eos_tokens=[0]))
  thread=threading.Thread(target=server.serve_forever);thread.start();url='http://127.0.0.1:'+str(server.server_port)
@@ -116,11 +118,52 @@ try:
  assert v2single['steps'][0]['examples']==1 and v2batch['steps'][0]['examples']==2
  assert sum(service.lesson(v2ids[0])['example']['loss_mask'])>sum(service.lesson(v2ids[1])['example']['loss_mask'])
  assert hashlib.sha256(model.read_bytes()).hexdigest()==base_hash
+ phase('s3-response-level-and-reasoning-lessons-through-real-bw-pcc-native-path')
+ def render_scalar(rows):
+  return [dict(role=row['role'],kind=row['kind'],
+      rendered=('U:' if row['role']=='user' else 'A:')+row['content'],
+      verified=row['verified'],scope=row['scope']) for row in rows]
+ exercise=exercise_for('math.add.no_carry','practice',41,gate='independent',seed=20261028)
+ response_cases=[('answer','direct','answer_only'),
+     ('answer','reasoning','reasoning_and_answer'),
+     ('format','direct','format_only'),
+     ('composed','direct','answer_and_format'),
+     ('composed','reasoning','reasoning_answer_and_format')]
+ response_results=[]
+ for index,(level,answer_mode,policy) in enumerate(response_cases):
+  key=level+'-'+answer_mode
+  prepared=build_scalar_pcc_lesson(exercise,level,render_scalar,
+      archive_path=root/('s3-archive-'+key),model_contract_id=contract,
+      renderer_sha256=digest('cpu-s3-renderer-v1'),tokenizer_sha256=digest('utf8-byte-v1'),
+      tokenize=lambda text:list(text.encode()),maximum=8192,answer_mode=answer_mode)
+  assert prepared['lesson']['target_policy']==policy
+  lesson_file=root/('s3-lesson-'+key+'.json')
+  lesson_file.write_text(json.dumps(prepared['lesson'])+'\n')
+  accepted=bwcli(['submit',lesson_file,'--operation-id','s3-'+key],'s3-submit-'+key)
+  saved=service.lesson(accepted['lesson_id'])
+  expected=prepared['expected_example'];actual=saved['example']
+  assert actual['tokens']==expected['tokens'] and actual['targets']==expected['targets']
+  assert actual['loss_mask']==expected['loss_mask']
+  assert sum(actual['loss_mask'])>0
+  operation='s3-train-'+key
+  trained=bwcli(['train',accepted['lesson_id'],'--operation-id',operation,
+      '--mode','full','--batch-size','1','--steps','1','--learning-rate','.001'],
+      's3-train-submit-'+key)
+  completed=wait(trained['job_id'])
+  request=json.loads((root/'service/runs'/operation/'request-private.json').read_text())
+  assert request['examples'][0]['loss_mask']==expected['loss_mask']
+  assert completed['promoted'] is False and len(completed['steps'])==1
+  response_results.append(dict(level=level,answer_mode=answer_mode,target_policy=policy,
+      supervised_tokens=sum(expected['loss_mask']),job_id=operation,
+      loss_before=completed['steps'][0]['before'],loss_after=completed['steps'][0]['after'],
+      native_mask_equal=True))
+ assert hashlib.sha256(model.read_bytes()).hexdigest()==base_hash
  result=dict(status='PASS',scope='real native CPU single/batch/update/reload wiring through both CLIs and real BW tool boundaries',
     fixture='generated tiny hybrid GGUF with byte vocabulary; not a language-quality test',spontaneous_model_failure=False,
     gpu_used=False,promoted=False,base_unchanged=True,model_sha256=base_hash,executable_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
     single=single,batch=batch,full=full,full_continued=continued,lora_reload=reload_lora,full_reload=reload_full,
     multi_turn_v2=dict(single=v2single,batch=v2batch,thinking_targets_optional=True,context_gradients_preserved=True),
+    s3_response_level_native_updates=response_results,
     duplicate_update_prevented=True,selected_batch_frozen=True,partial_final_batch=True,same_task_failure_and_repair=True)
  (root/'result.json').write_text(json.dumps(result,indent=2)+'\n');phase('complete',status='PASS');(root/'command.exit').write_text('0\n')
 except BaseException as error:

@@ -56,18 +56,28 @@ JSON screen is invalid for broad comparison because it replaced task-native proo
 schemas; see [the audit](FORMAT-SCREEN-AUDIT.md). Its aggregate scores are excluded.
 
 `sss/learning_levels.py` validates lesson/evaluation conditions and keeps answer,
-format-only, composed, and reasoning verdicts separate. The first frozen integration
-is `sss/level_evaluation.py`: it makes matched triplets, calls the same model callback
-shape as the existing evaluator, and records per-level answer, format, preservation
-and joint rates. It currently supports only declared exact-scalar skill families.
+format-only, composed, and reasoning verdicts separate. The frozen integration is
+`sss/level_evaluation.py`: it makes matched answer/direct and answer/reasoning cases,
+a format-only case, and composed direct/reasoning cases. It calls the existing model
+callback shape and records separate answer, reasoning, format, preservation, and joint
+rates. A reasoning result is scored only when the harness supplies a normalized
+separate reasoning field; otherwise the condition is reported unavailable, not wrong.
+Direct mode remains the default. Callers can request both modes with
+`answer_modes=('direct', 'reasoning')`; this currently succeeds only for exact
+integer-addition cases, where an independent checker exists. The panel supports only
+declared exact-scalar skill families.
 Its `math.exact-scalar.answer-object.v1` schema is never applied to proof, array,
 tool, or other task types. Cases are frozen and bound to profile, catalog, generator,
 and checker source hashes; evaluation is diagnostic and cannot qualify or promote.
 
 `sss/learning_lessons.py` creates verified synthetic practice lessons for those same
 three levels. It accepts practice cases only, checks the reference with the task
-checker, keeps answer and format output spans separately labeled, and requires a
-model-specific renderer. `build_scalar_pcc_lesson` writes an immutable S³ episode
+checker, keeps reasoning, answer, and format output spans separately labeled, and
+requires a model-specific renderer. The initial independently checked reasoning
+adapter is deliberately limited to exact integer addition: it verifies the operands
+and arithmetic in one equation. It does not treat arbitrary prose from a model as
+verified reasoning. Format-only lessons remain direct and disclose the correct answer.
+`build_scalar_pcc_lesson` writes an immutable S³ episode
 archive and emits PCC schema 2 with checker, renderer, tokenizer and archive hashes.
 `admit_scalar_pcc_lesson` submits once, rereads the saved lesson, and compares PCC's
 persisted tokens, targets and mask with S³'s expected tokenization before returning
@@ -76,16 +86,20 @@ an admission receipt. The native PCC policy names distinguish `answer_only`,
 `reasoning_answer_and_format`. PCC consumes the resulting mask at its token-level
 cross-entropy loop.
 
-The S³ full unit suite passes on Windows and on llm-79's Linux CPU (153 tests on
-llm-79). The PCC lesson and segment suites pass in WSL (23 tests); the response-level
-mask cases also passed on llm-79. A cross-project integration test passed on both
-Linux environments, creating each lesson through S³, admitting it to PCC, then
-reading back and comparing the exact tokens, targets and loss mask. These checks
-prove lesson admission and mask persistence, not that a native optimizer update
-trained the intended spans. No model training run has used these new lesson types,
-and no model improvement is claimed. Reasoning lesson generation still needs
-independently checkable reasoning spans; the reasoning mask policy exists, but the
-direct scalar lesson builder does not manufacture reasoning traces.
+Validation on 2026-10-28: the S³ suite passed on Windows (155 passed, 12 skipped)
+and on llm-79 Linux CPU (155 passed). PCC lesson/segment tests passed (23); BW
+learning and lesson tests passed (22); the S³-to-PCC admission test passed. The
+native CPU integration then sent five S³ lessons through BW and PCC: direct answer,
+checked-reasoning answer, format-only, direct composed, and checked-reasoning
+composed. PCC's saved token IDs, targets, and loss mask matched S³'s expected values;
+the native request contained the same mask; and one full-weight CPU update completed
+for each policy. The base fixture stayed unchanged and no candidate was promoted.
+The generated tiny GGUF is a wiring fixture, not a language model. Lower training
+loss on this fixture proves the update path executed; it does not establish that a
+model learned arithmetic or improved. The machine-readable evidence is in
+[`validation/response-level-native-cpu-20261028/result.json`](../validation/response-level-native-cpu-20261028/result.json).
+Build pins, source hashes and binary identity are recorded in the accompanying
+[`provenance.json`](../validation/response-level-native-cpu-20261028/provenance.json).
 
 The numeric panel is currently programmatic and limited to exact scalar families.
 Its score contract does not replace the existing qualification policy. A larger

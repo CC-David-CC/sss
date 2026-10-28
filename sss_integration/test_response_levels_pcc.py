@@ -27,18 +27,24 @@ class ResponseLevelPCCIntegration(unittest.TestCase):
                                  verified=row['verified'], scope=row['scope'])
                             for row in rows]
 
-                for level, policy in [('answer', 'answer_only'),
-                                      ('format', 'format_only'),
-                                      ('composed', 'answer_and_format')]:
+                cases = [
+                    ('answer', 'direct', 'answer_only'),
+                    ('answer', 'reasoning', 'reasoning_and_answer'),
+                    ('format', 'direct', 'format_only'),
+                    ('composed', 'direct', 'answer_and_format'),
+                    ('composed', 'reasoning', 'reasoning_answer_and_format'),
+                ]
+                for level, answer_mode, policy in cases:
+                    key = level + '-' + answer_mode
                     prepared = build_scalar_pcc_lesson(
                         exercise, level, render,
-                        archive_path=root / ('archive-' + level),
+                        archive_path=root / ('archive-' + key),
                         model_contract_id=contract, renderer_sha256='b' * 64,
                         tokenizer_sha256='c' * 64, tokenize=tokenizer,
-                        maximum=8192)
+                        maximum=8192, answer_mode=answer_mode)
                     self.assertEqual(prepared['lesson']['target_policy'], policy)
                     receipt = admit_scalar_pcc_lesson(
-                        service, 'response-level-' + level, prepared)
+                        service, 'response-level-' + key, prepared)
                     self.assertTrue(receipt['pcc_admission_confirmed'])
                     self.assertFalse(receipt['native_update_run'])
                     saved = service.lesson(receipt['lesson_id'])

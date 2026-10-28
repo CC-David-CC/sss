@@ -96,9 +96,15 @@ python -m sss_integration.skill_native_cpu \
 
 The harness uses real BW checks, both clients, authenticated HTTP, native CPU
 updates, saved hats and continuation. The evaluator deliberately injects a
-regression and recovery; it is not fresh language-model inference. A separate
-`sss_integration.lesson_native_cpu` harness covers the earlier one-example,
-batch, LoRA/full continuation and reload workflow. Both refuse old output paths.
+regression and recovery; it is not fresh language-model inference. The
+`sss_integration.lesson_native_cpu` harness covers one-example and batch updates,
+LoRA/full continuation and reload, plus five S³ response lessons through BW and PCC:
+direct answer, checked-reasoning answer, format-only, direct composed, and
+checked-reasoning composed. It verifies PCC's stored tokens, targets and loss mask,
+then checks the exact same mask in the native request before running one CPU update
+per policy. It uses a generated tiny fixture, keeps the base unchanged, promotes no
+candidate, and says nothing about language quality. Both harnesses refuse old output
+paths.
 
 ## Independently re-check a BW failure/correction pair
 

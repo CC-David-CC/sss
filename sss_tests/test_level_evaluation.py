@@ -8,7 +8,7 @@ from sss.curriculum import exercise_for
 from sss.learning_lessons import (
     admit_scalar_pcc_lesson, build_scalar_lesson, build_scalar_pcc_lesson,
 )
-from sss.learning_levels import response_target_segments
+from sss.learning_levels import checked_addition_reasoning, response_target_segments
 from sss.episodes import training_tokens
 from sss.profiles import ModelProfile
 from sss.records import digest
@@ -20,7 +20,8 @@ class LevelEvaluationTests(unittest.TestCase):
 
     def freeze(self, root, skill='math.add.no_carry'):
         return freeze_level_panel(Path(root) / 'panel', self.profile(), [skill],
-                                  cases_per_skill=2, seed=11)
+                                  cases_per_skill=2, seed=11,
+                                  answer_modes=('direct', 'reasoning'))
 
     def test_three_matched_levels_keep_answer_and_format_scores_separate(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -34,13 +35,19 @@ class LevelEvaluationTests(unittest.TestCase):
                     content = row['expected_answer']
                 else:
                     content = json.dumps({'answer': row['expected_answer']})
-                return dict(content=content), {}
+                message = dict(content=content)
+                if row['answer_mode'] == 'reasoning':
+                    message['reasoning'] = checked_addition_reasoning(
+                        row['exercise'], row['expected_answer'])
+                return message, {}
 
             result = evaluate_level_panel(frozen, model)
             self.assertEqual({row['level'] for row in result['assessments']},
                              {'answer', 'format', 'composed'})
             for row in result['assessments']:
                 self.assertEqual(row['qualification'], 'not_attempted')
+                if row['answer_mode'] == 'reasoning':
+                    self.assertEqual(row['metrics']['reasoning']['passed'], 2)
                 for metric in row['metrics'].values():
                     self.assertEqual(metric['passed'], 2)
                     self.assertEqual(metric['failed'], 0)
@@ -54,13 +61,21 @@ class LevelEvaluationTests(unittest.TestCase):
                 row = expected_by_prompt[messages[-1]['content']]
                 intent.write_text('fixture inference')
                 if row['level'] == 'composed':
-                    return dict(content=row['expected_answer']), {}
-                if row['level'] == 'answer':
-                    return dict(content=row['expected_answer']), {}
-                return dict(content=json.dumps({'answer': row['expected_answer']})), {}
+                    content = (row['expected_answer'] if row['answer_mode'] == 'direct'
+                               else json.dumps({'answer': row['expected_answer']}))
+                elif row['level'] == 'answer':
+                    content = row['expected_answer']
+                else:
+                    content = json.dumps({'answer': row['expected_answer']})
+                message = dict(content=content)
+                if row['answer_mode'] == 'reasoning':
+                    message['reasoning'] = checked_addition_reasoning(
+                        row['exercise'], row['expected_answer'])
+                return message, {}
 
             result = evaluate_level_panel(frozen, model)
-            composed = next(row for row in result['assessments'] if row['level'] == 'composed')
+            composed = next(row for row in result['assessments']
+                            if row['level'] == 'composed' and row['answer_mode'] == 'direct')
             self.assertEqual(composed['metrics']['answer']['passed'], 2)
             self.assertEqual(composed['metrics']['format']['failed'], 2)
             self.assertEqual(composed['metrics']['joint']['failed'], 2)
@@ -101,6 +116,42 @@ class LevelEvaluationTests(unittest.TestCase):
         self.assertTrue(all(lesson['verification']['reference_passed'] for lesson in lessons.values()))
         self.assertTrue(all(not lesson['verification']['actual_token_masks_confirmed']
                             for lesson in lessons.values()))
+
+    def test_reasoning_is_a_crossed_mode_with_its_own_checked_target(self):
+        exercise = exercise_for('math.add.no_carry', 'practice', 2,
+                                gate='independent', seed=12)
+
+        def renderer(rows):
+            return [dict(role=row['role'], kind=row['kind'],
+                         rendered=('U:' if row['role'] == 'user' else 'A:') + row['content'],
+                         verified=row['verified'], scope=row['scope']) for row in rows]
+
+        direct = build_scalar_lesson(exercise, 'answer', renderer)
+        reasoning = build_scalar_lesson(exercise, 'answer', renderer,
+                                        answer_mode='reasoning')
+        composed = build_scalar_lesson(exercise, 'composed', renderer,
+                                       answer_mode='reasoning')
+        self.assertEqual(direct['target_policy'], 'answer_only')
+        self.assertEqual(reasoning['target_policy'], 'reasoning_and_answer')
+        self.assertEqual(composed['target_policy'], 'reasoning_answer_and_format')
+        self.assertEqual(response_target_segments(reasoning['segments'], reasoning['target_policy']),
+                         [False, True, True])
+        self.assertEqual(response_target_segments(composed['segments'], composed['target_policy']),
+                         [False, True, True, True, True])
+        self.assertEqual(reasoning['segments'][1]['kind'], 'thinking')
+        self.assertTrue(reasoning['verification']['reasoning_passed'])
+        self.assertIsNotNone(reasoning['verification']['reasoning_checker'])
+        for lesson in (reasoning, composed):
+            example = training_tokens(lesson['segments'], tokenize=lambda text: list(text.encode()),
+                                      policy=lesson['target_policy'], maximum=8192)
+            self.assertGreater(sum(example['loss_mask']), 0)
+
+    def test_reasoning_lesson_refuses_task_without_independent_reasoning_checker(self):
+        exercise = exercise_for('math.multiply', 'practice', 0,
+                                gate='independent', seed=12)
+        with self.assertRaisesRegex(ValueError, 'integer-addition exercise'):
+            build_scalar_lesson(exercise, 'answer', lambda rows: [],
+                                answer_mode='reasoning')
 
     def test_lessons_cannot_be_built_from_assessment_items_or_transfer_tasks(self):
         assessment = exercise_for('math.add.no_carry', 'development', 0,

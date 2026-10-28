@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-28",
+  "execution": "CPU only; no GPU used",
+  "fixture_scope": "Generated tiny hybrid GGUF with a byte vocabulary; not a language model.",
+  "generated_fixture_sha256": "6b361d75c73c29d7db3b9892bef1def081944c111fd5c35c916fcc16b5895dea",
+  "ggml_dependency_core_sha256": "bb7c28f7c3506f42e5a53ec241d756d3d7f42b5ba86be9aeb1eb4d2d7c3dda2d",
+  "ggml_dependency_patch": "materialize-strided-noninplace-scale-v1+concat-adjoint-v1+bounded-assigned-allocator-v1",
+  "host_alias": "llm-79",
+  "llama_cpp_revision": "972d2313bc0bf0a45f634f77d95c9fb03aeab12c",
+  "native_executable_sha256": "76b165958f59187796c3c9d5bb277ad4fe51ac6659bc876dc0b1f37910c8be9a",
+  "native_optimizer_source_sha256": "4a5698a75f4b2d06099396d494fcfe226be824dc40662f7ba436a46bba3b73be",
+  "native_training_source_sha256": "be832c6d3cb6cf599c6f3a00962b8dde69ebbbd287d778b270ad3a4da8001d03",
+  "physical_host": "xtx7900",
+  "qualification": "Wiring and mask equivalence only; not language quality or mastery.",
+  "result_sha256": "0e61fb12d6442310a4297453810f78a818d46c8ef8870a8cb53775e38321648c",
+  "schema": 1,
+  "source_hashes": {
+    "bw.lesson_cli.py": "580955d8f803d5fd741d78edca25b483ad10f693731ac0e02a4d90812f958ec7",
+    "pcc.native_train.cpp": "be832c6d3cb6cf599c6f3a00962b8dde69ebbbd287d778b270ad3a4da8001d03",
+    "pcc.pcc_lessons.py": "889ee0548d72f9a8bd918f3f1f3f97c54316fefe202fe89759a759407d0d0c80",
+    "sss.learning_lessons.py": "f5fb20fa438dd9ff52b8ef10f7aecc9ec2a753ab2e489b83f8b1fa286b67b730",
+    "sss.learning_levels.py": "24e8adfe2890959ddeaae80487b2c672285463bf97a01c9e76c94574e3f27bfa",
+    "sss.lesson_native_cpu.py": "f5dcb656556507ac6c5f49c281f5bc858845f6c3f4fa3b635ae8dbee52c852f1",
+    "sss.level_evaluation.py": "c24693a7805c6628090b12d5fdcc86f7d0e41e1dbf6dfb3d0ebbba07bf79aaf3"
+  }
+}

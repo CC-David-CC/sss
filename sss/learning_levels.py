@@ -1,8 +1,9 @@
-"""Separate answer, formatting, and composed learning/evaluation conditions.
+"""Separate answer, reasoning, formatting, and composed conditions.
 
 This module defines evidence semantics only. It does not call a model, create a
 dataset, construct PCC loss masks, train weights, or promote a candidate.
 """
+import re
 
 LEVELS = ('answer', 'format', 'composed')
 ANSWER_MODES = ('direct', 'reasoning')
@@ -13,6 +14,39 @@ RESPONSE_TARGET_POLICIES = (
     'answer_only', 'reasoning_and_answer', 'format_only', 'answer_and_format',
     'reasoning_answer_and_format',
 )
+ADDITION_REASONING_CHECKER = 'sss.exact-integer-add-equation.v1'
+_ADDITION_EQUATION = re.compile(r'(-?[0-9]+) \+ (-?[0-9]+) = (-?[0-9]+)\Z')
+
+
+def checked_addition_reasoning(exercise, answer):
+    """Return a short, independently checked equation for a scalar add case."""
+    expression = getattr(exercise, 'payload', {}).get('expression')
+    if (getattr(exercise, 'kind', None) != 'add' or type(expression) is not list
+            or len(expression) != 3 or expression[0] != 'add'
+            or type(expression[1]) is not int or type(expression[2]) is not int):
+        raise ValueError('Reasoning adapter requires an exact integer-addition exercise')
+    left, right = expression[1:]
+    result = str(answer)
+    candidate = f'{left} + {right} = {result}'
+    if not check_addition_reasoning(exercise, answer, candidate):
+        raise ValueError('Generated arithmetic equation failed its independent checker')
+    return candidate
+
+
+def check_addition_reasoning(exercise, answer, candidate):
+    """Check operands and arithmetic, not exact wording or a reference string."""
+    expression = getattr(exercise, 'payload', {}).get('expression')
+    if (getattr(exercise, 'kind', None) != 'add' or type(expression) is not list
+            or len(expression) != 3 or expression[0] != 'add'
+            or type(expression[1]) is not int or type(expression[2]) is not int
+            or type(candidate) is not str):
+        return False
+    match = _ADDITION_EQUATION.fullmatch(candidate)
+    if match is None:
+        return False
+    left, right, result = map(int, match.groups())
+    return (left == expression[1] and right == expression[2]
+            and left + right == result and str(result) == str(answer))
 
 
 class CheckerContractError(ValueError):
@@ -158,6 +192,19 @@ def score_reasoning(completion, checker):
     return dict(reasoning=reasoning)
 
 
+def _joint(statuses):
+    return ('pass' if all(value == 'pass' for value in statuses) else
+            'fail' if 'fail' in statuses else 'unscorable')
+
+
+def score_reasoning_answer(completion, reasoning, reasoning_checker, answer_checker):
+    """Score an independently exposed reasoning field and final answer."""
+    reasoning_status = score_reasoning(reasoning, reasoning_checker)['reasoning']
+    answer_status = score_answer(completion, answer_checker)['answer']
+    return dict(reasoning=reasoning_status, answer=answer_status,
+                joint=_joint((reasoning_status, answer_status)))
+
+
 def score_format(completion, provided_answer, checker):
     """Score a format-only response against content supplied in the prompt.
 
@@ -204,12 +251,13 @@ def score_composed(completion, answer_checker, format_checker):
     return dict(answer=answer, format=format_status, joint=joint)
 
 
-def score_reasoning_composed(completion, reasoning_checker, answer_checker, format_checker):
+def score_reasoning_composed(completion, reasoning_checker, answer_checker, format_checker,
+                            *, reasoning_output=None):
     """Score a reasoning-mode composed response without hiding component failures."""
-    reasoning = score_reasoning(completion, reasoning_checker)['reasoning']
+    reasoning = score_reasoning(completion if reasoning_output is None else reasoning_output,
+                                reasoning_checker)['reasoning']
     answer = score_answer(completion, answer_checker)['answer']
     format_status = score_composed(completion, lambda _: True, format_checker)['format']
     statuses = (reasoning, answer, format_status)
-    joint = ('pass' if all(value == 'pass' for value in statuses) else
-             'fail' if 'fail' in statuses else 'unscorable')
-    return dict(reasoning=reasoning, answer=answer, format=format_status, joint=joint)
+    return dict(reasoning=reasoning, answer=answer, format=format_status,
+                joint=_joint(statuses))

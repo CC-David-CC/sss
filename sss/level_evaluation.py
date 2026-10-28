@@ -15,7 +15,11 @@ import time
 from .catalogue import catalog_identity
 from .curriculum import exercise_for
 from .foundations import Exercise, check, number, reference
-from .learning_levels import score_answer, score_composed, score_format, validate_condition
+from .learning_levels import (
+    ADDITION_REASONING_CHECKER, check_addition_reasoning,
+    score_answer, score_composed, score_format, score_reasoning_answer,
+    score_reasoning_composed, validate_condition,
+)
 from .profiles import ContextPolicy, ModelProfile
 from .records import canonical, digest, file_sha256
 
@@ -70,13 +74,14 @@ def _extract_scalar(completion):
     return str(candidate)
 
 
-def _condition(level, split):
+def _condition(level, split, answer_mode='direct'):
     common = dict(
-        level=level, answer_mode='direct', split=split,
-        reasoning_checker=None,
+        level=level, answer_mode=answer_mode, split=split,
+        reasoning_checker=(ADDITION_REASONING_CHECKER if answer_mode == 'reasoning' else None),
     )
     if level == 'answer':
-        common.update(supervision='answer_only', format_policy='none',
+        common.update(supervision=('reasoning_and_answer' if answer_mode == 'reasoning'
+                                   else 'answer_only'), format_policy='none',
                       answer_source='skill_task', answer_checker=ANSWER_CHECKER,
                       format_checker=None)
     elif level == 'format':
@@ -84,7 +89,8 @@ def _condition(level, split):
                       answer_source='provided_answer', answer_checker=None,
                       format_checker=FORMAT_CHECKER)
     elif level == 'composed':
-        common.update(supervision='format_and_answer', format_policy='task_native',
+        common.update(supervision=('reasoning_format_and_answer' if answer_mode == 'reasoning'
+                                   else 'format_and_answer'), format_policy='task_native',
                       answer_source='skill_task', answer_checker=ANSWER_CHECKER,
                       format_checker=FORMAT_CHECKER)
     else:
@@ -131,12 +137,26 @@ def _format_result(completion, expected):
     return dict(format_valid=valid, content_preserved=preserved)
 
 
-def _score(level, exercise, expected, completion):
+def _score(level, exercise, expected, completion, *, answer_mode='direct', reasoning=None):
     if level == 'answer':
+        if answer_mode == 'reasoning':
+            return score_reasoning_answer(
+                completion, reasoning,
+                lambda text: check_addition_reasoning(exercise, expected, text),
+                lambda text: _semantic(exercise, text),
+            )
         return score_answer(completion, lambda text: _semantic(exercise, text))
     if level == 'format':
         return score_format(completion, expected,
                             lambda text, gold: _format_result(text, gold))
+    if answer_mode == 'reasoning':
+        return score_reasoning_composed(
+            completion,
+            lambda text: check_addition_reasoning(exercise, expected, text),
+            lambda text: _semantic(exercise, text),
+            lambda text: _format_result(text, expected)['format_valid'],
+            reasoning_output=reasoning,
+        )
     return score_composed(
         completion,
         lambda text: _semantic(exercise, text),
@@ -152,8 +172,8 @@ def _semantic(exercise, completion):
 
 
 def freeze_level_panel(root, profile, skills, *, cases_per_skill=32, seed=0,
-                       split='development'):
-    """Create a private matched triplet panel for explicitly supported skills."""
+                       split='development', answer_modes=('direct',)):
+    """Freeze matched response-level cases across answer modes and format."""
     root = Path(root)
     root.mkdir(mode=0o700, parents=True, exist_ok=False)
     if type(cases_per_skill) is not int or not 1 <= cases_per_skill <= 4096:
@@ -162,6 +182,10 @@ def freeze_level_panel(root, profile, skills, *, cases_per_skill=32, seed=0,
         raise ValueError('Only held-out development or qualification cases are allowed')
     if not skills or len(set(skills)) != len(skills):
         raise ValueError('Distinct explicit skills required')
+    if (type(answer_modes) not in (tuple, list) or not answer_modes
+            or len(set(answer_modes)) != len(answer_modes)
+            or any(mode not in ('direct', 'reasoning') for mode in answer_modes)):
+        raise ValueError('Explicit unique direct/reasoning answer modes required')
     graph = __import__('sss.curriculum', fromlist=['foundation_graph']).foundation_graph()
     all_cases = []
     for skill in skills:
@@ -175,20 +199,29 @@ def freeze_level_panel(root, profile, skills, *, cases_per_skill=32, seed=0,
             if not check(exercise, expected):
                 raise ValueError('Reference answer did not pass the independent skill checker')
             for level in LEVELS:
-                condition = _condition(level, split)
-                prompt = (exercise.prompt if level == 'answer' else
-                          _format_prompt(expected) if level == 'format' else
-                          _composed_prompt(exercise))
-                binding = dict(
-                    exercise_id=exercise.identity, skill_id=skill, level=level,
-                    format_schema=FORMAT_SCHEMA if level != 'answer' else None,
-                    condition=condition,
-                )
-                case_id = digest(binding)
-                all_cases.append(dict(
-                    id=case_id, **binding, prompt=prompt,
-                    expected_answer=expected, exercise=asdict(exercise),
-                ))
+                modes = answer_modes if level in ('answer', 'composed') else ('direct',)
+                for answer_mode in modes:
+                    if answer_mode == 'reasoning' and not (
+                            exercise.kind == 'add' and type(exercise.payload.get('expression')) is list):
+                        raise ValueError('No independently checked reasoning adapter for ' + skill)
+                    condition = _condition(level, split, answer_mode)
+                    prompt = (exercise.prompt if level == 'answer' else
+                              _format_prompt(expected) if level == 'format' else
+                              _composed_prompt(exercise))
+                    if answer_mode == 'reasoning':
+                        prompt += (' Place a brief checkable arithmetic equation in the separate '
+                                   'reasoning field. Keep the final answer in the normal response.')
+                    binding = dict(
+                        exercise_id=exercise.identity, skill_id=skill, level=level,
+                        answer_mode=answer_mode,
+                        format_schema=FORMAT_SCHEMA if level != 'answer' else None,
+                        condition=condition,
+                    )
+                    case_id = digest(binding)
+                    all_cases.append(dict(
+                        id=case_id, **binding, prompt=prompt,
+                        expected_answer=expected, exercise=asdict(exercise),
+                    ))
     source_files = ('foundations.py', 'reasoning.py', 'extended_math.py',
                     'learning_levels.py', 'level_evaluation.py', 'curriculum.py',
                     'catalogue.py', 'graph.py', 'records.py')
@@ -198,8 +231,9 @@ def freeze_level_panel(root, profile, skills, *, cases_per_skill=32, seed=0,
         schema=1, profile=asdict(profile), profile_id=profile.identity,
         catalog_id=catalog_identity(), split=split, seed=seed,
         cases_per_skill=cases_per_skill, cases=all_cases,
-        levels=list(LEVELS), format_schema=FORMAT_SCHEMA,
-        checker_ids=dict(answer=ANSWER_CHECKER, format=FORMAT_CHECKER),
+        levels=list(LEVELS), answer_modes=list(answer_modes), format_schema=FORMAT_SCHEMA,
+        checker_ids=dict(answer=ANSWER_CHECKER, format=FORMAT_CHECKER,
+                         reasoning=ADDITION_REASONING_CHECKER),
         source_hashes=source_hashes,
         evaluation_scope='exact scalar skill families only; diagnostic panel, not mastery qualification',
         weights_updated=False,
@@ -232,9 +266,10 @@ def thaw_level_panel(root):
         exercise = Exercise(**row['exercise'])
         if exercise.identity != row['exercise_id'] or row['id'] in cases:
             raise ValueError('Frozen exercise or level identity mismatch')
-        if row['level'] not in LEVELS or row['skill_id'] != exercise.skill_id:
+        if (row['level'] not in LEVELS or row['skill_id'] != exercise.skill_id
+                or row.get('answer_mode') not in ('direct', 'reasoning')):
             raise ValueError('Invalid frozen level case')
-        if _condition(row['level'], manifest['split']) != row['condition']:
+        if _condition(row['level'], manifest['split'], row['answer_mode']) != row['condition']:
             raise ValueError('Frozen condition mismatch')
         cases[row['id']] = dict(row, exercise=exercise)
     return root, cases, manifest
@@ -262,34 +297,48 @@ def evaluate_level_panel(frozen, model, *, maximum_seconds=3600):
             grouped.setdefault(key, []).append(record)
             continue
         try:
+            mode = case['answer_mode']
+            system = ('Use the separate reasoning field for one brief checkable equation; '
+                      'put only the final response in content.' if mode == 'reasoning' else
+                      'Answer the task directly. Follow its declared response contract.')
             message, usage = model([
-                dict(role='system', content='Answer the task directly. Follow its declared response contract.'),
+                dict(role='system', content=system),
                 dict(role='user', content=case['prompt']),
             ], [], intent)
             if type(message) is not dict or type(message.get('content')) is not str or message.get('tool_calls'):
                 raise ValueError('Unsupported endpoint response shape')
             completion = message['content']
-            score = _score(case['level'], case['exercise'], case['expected_answer'], completion)
-            record = dict(status='scored', score=score, completion=completion,
-                          usage=usage, called=True)
+            reasoning = message.get('reasoning')
+            if mode == 'reasoning' and type(reasoning) is not str:
+                record = dict(status='unavailable', reason='reasoning_channel_not_normalized',
+                              completion=completion, usage=usage, called=True)
+            else:
+                score = _score(case['level'], case['exercise'], case['expected_answer'],
+                               completion, answer_mode=mode, reasoning=reasoning)
+                record = dict(status='scored', score=score, completion=completion,
+                              reasoning=reasoning if mode == 'reasoning' else None,
+                              usage=usage, called=True)
         except Exception as error:
             record = dict(status='unavailable', reason=type(error).__name__, called=True)
-        record.update(case_id=case_id, level=case['level'], skill_id=case['skill_id'],
+        record.update(case_id=case_id, level=case['level'], answer_mode=case['answer_mode'],
+                      skill_id=case['skill_id'],
                       profile_id=manifest['profile_id'])
         with path.open('xb') as stream:
             stream.write(canonical(record) + b'\n')
-        key = (case['skill_id'], case['level'])
+        key = (case['skill_id'], case['level'], case['answer_mode'])
         grouped.setdefault(key, []).append(record)
 
     assessments = []
-    for (skill_id, level), records in sorted(grouped.items()):
+    for (skill_id, level, answer_mode), records in sorted(grouped.items()):
         names = ('answer', 'format', 'content_preserved', 'joint')
         if level == 'answer':
-            names = ('answer',)
+            names = (('reasoning', 'answer', 'joint') if answer_mode == 'reasoning'
+                     else ('answer',))
         elif level == 'format':
             names = ('format', 'content_preserved', 'joint')
         else:
-            names = ('answer', 'format', 'joint')
+            names = (('reasoning', 'answer', 'format', 'joint') if answer_mode == 'reasoning'
+                     else ('answer', 'format', 'joint'))
         metrics = {}
         for name in names:
             statuses = [r.get('score', {}).get(name) for r in records
@@ -306,11 +355,13 @@ def evaluate_level_panel(frozen, model, *, maximum_seconds=3600):
                 pass_rate=(pass_count / (pass_count + fail_count)
                            if pass_count + fail_count else None),
             )
-        assessments.append(dict(skill_id=skill_id, level=level, metrics=metrics,
+        assessments.append(dict(skill_id=skill_id, level=level, answer_mode=answer_mode,
+                                metrics=metrics,
                                 qualification='not_attempted'))
     result = dict(
         schema=1, manifest_id=manifest['manifest_id'], profile_id=manifest['profile_id'],
-        format_schema=manifest['format_schema'], assessments=assessments,
+        answer_modes=manifest['answer_modes'], format_schema=manifest['format_schema'],
+        assessments=assessments,
         elapsed_seconds=time.monotonic() - started, weights_updated=False,
         promoted=False, scope=manifest['evaluation_scope'],
     )

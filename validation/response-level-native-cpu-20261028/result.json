@@ -1,0 +1,253 @@
+{
+  "status": "PASS",
+  "scope": "real native CPU single/batch/update/reload wiring through both CLIs and real BW tool boundaries",
+  "fixture": "generated tiny hybrid GGUF with byte vocabulary; not a language-quality test",
+  "spontaneous_model_failure": false,
+  "gpu_used": false,
+  "promoted": false,
+  "base_unchanged": true,
+  "model_sha256": "6b361d75c73c29d7db3b9892bef1def081944c111fd5c35c916fcc16b5895dea",
+  "executable_sha256": "76b165958f59187796c3c9d5bb277ad4fe51ac6659bc876dc0b1f37910c8be9a",
+  "single": {
+    "schema": 1,
+    "job_id": "double-lesson-train",
+    "state": "complete",
+    "request_sha256": "7cef983071737c4280d5d24dc334dce52187c8170e229647f5a1628404c57f44",
+    "lesson_ids": [
+      "af87b299fde59325a269b5a511a7157dc091bf926e02008240c7608be1b9a2a0"
+    ],
+    "mode": "lora",
+    "promoted": false,
+    "candidate": {
+      "sha256": "d9c1b0e9fddb39c6cbb713067ad58dd1d47c8c05ba912fad38b01d948af12026",
+      "mode": "lora"
+    },
+    "steps": [
+      {
+        "step": 0,
+        "before": 5.854779243469238,
+        "after": 5.854738712310791,
+        "examples": 1,
+        "example_cursor": 1,
+        "gradient_tensors": 32,
+        "nonzero_gradients": 16
+      }
+    ],
+    "example_cursor": 1
+  },
+  "batch": {
+    "schema": 1,
+    "job_id": "cpu-batch",
+    "state": "complete",
+    "request_sha256": "5731ba5d8c7187c930ebd4590a476b56e8ba1babf434bb596a0d9bedb0811fc0",
+    "lesson_ids": [
+      "cc0ec3056e01a5aa682e30d660f317c81548c4a2e7526b28994a508ddb1c62ac",
+      "d25dfacea4bda05598b7a600e0478ff1efcdc773e84ba4e5a58c8326f76f06fc",
+      "d67e17758e66f9f6339e3ea1c5bc963584b80648d2390a1b4e70c563a3b09f99"
+    ],
+    "mode": "lora",
+    "promoted": false,
+    "candidate": {
+      "sha256": "f76a9e973b71c9661870090174e7a421f446c8766dbd3c352364650d62896597",
+      "mode": "lora"
+    },
+    "steps": [
+      {
+        "step": 0,
+        "before": 5.593954086303711,
+        "after": 5.593924522399902,
+        "examples": 2,
+        "example_cursor": 2,
+        "gradient_tensors": 32,
+        "nonzero_gradients": 32
+      },
+      {
+        "step": 1,
+        "before": 5.7373247146606445,
+        "after": 5.737264633178711,
+        "examples": 1,
+        "example_cursor": 3,
+        "gradient_tensors": 32,
+        "nonzero_gradients": 32
+      }
+    ],
+    "example_cursor": 3
+  },
+  "full": {
+    "schema": 1,
+    "job_id": "cpu-full",
+    "state": "complete",
+    "request_sha256": "a52c684a6816de7c1212a81b8f82a00ae0a6713be046857173b188022bfdf8cb",
+    "lesson_ids": [
+      "af87b299fde59325a269b5a511a7157dc091bf926e02008240c7608be1b9a2a0"
+    ],
+    "mode": "full",
+    "promoted": false,
+    "candidate": {
+      "sha256": "08e9f8d3f4dd69e58a7caeb8183c41bd35099cb65149634609f5f088c79c3291",
+      "mode": "full"
+    },
+    "steps": [
+      {
+        "step": 0,
+        "before": 5.854779243469238,
+        "after": 5.852845668792725,
+        "examples": 1,
+        "example_cursor": 1,
+        "gradient_tensors": 28,
+        "nonzero_gradients": 28
+      }
+    ],
+    "example_cursor": 1
+  },
+  "full_continued": {
+    "schema": 1,
+    "job_id": "cpu-full-next",
+    "state": "complete",
+    "request_sha256": "12e32dcd4e8fc00ab1a477c56a75104b20e260dcd8a1c0e0cdf054b9c47a3c90",
+    "lesson_ids": [
+      "af87b299fde59325a269b5a511a7157dc091bf926e02008240c7608be1b9a2a0"
+    ],
+    "mode": "full",
+    "promoted": false,
+    "candidate": {
+      "sha256": "28dbf37d2785251ba77d89bb1dd7c542a0af3b464c1e47712f0f2de718e46a17",
+      "mode": "full"
+    },
+    "steps": [
+      {
+        "step": 0,
+        "before": 5.852845668792725,
+        "after": 5.850913047790527,
+        "examples": 1,
+        "example_cursor": 1,
+        "gradient_tensors": 28,
+        "nonzero_gradients": 28
+      }
+    ],
+    "example_cursor": 1
+  },
+  "lora_reload": {
+    "candidate_sha256": "f76a9e973b71c9661870090174e7a421f446c8766dbd3c352364650d62896597",
+    "loss": 5.737264633178711
+  },
+  "full_reload": {
+    "candidate_sha256": "08e9f8d3f4dd69e58a7caeb8183c41bd35099cb65149634609f5f088c79c3291",
+    "loss": 5.852845668792725
+  },
+  "multi_turn_v2": {
+    "single": {
+      "schema": 1,
+      "job_id": "v2-single",
+      "state": "complete",
+      "request_sha256": "d0567a5ddc4b82bf0b8ecd43ebe3ab865e8f75c2b2631823ae3fb56b998ae5b2",
+      "lesson_ids": [
+        "cb894ae525157daae7c030344822fc9038986df97fe0aac5d70c36afa0cbf0a5"
+      ],
+      "mode": "lora",
+      "promoted": false,
+      "candidate": {
+        "sha256": "fdd3f13b662a92e735120173c3df57c4d681e5d6afc88aece94722e6cb269287",
+        "mode": "lora"
+      },
+      "steps": [
+        {
+          "step": 0,
+          "before": 5.631245136260986,
+          "after": 5.631242752075195,
+          "examples": 1,
+          "example_cursor": 1,
+          "gradient_tensors": 32,
+          "nonzero_gradients": 16
+        }
+      ],
+      "example_cursor": 1
+    },
+    "batch": {
+      "schema": 1,
+      "job_id": "v2-batch",
+      "state": "complete",
+      "request_sha256": "e2d207214c1fbfe9aebc997559bbf16c6ab1910be848646e22413ca964e3f9a5",
+      "lesson_ids": [
+        "25bff2aa0bf45f1d8017d8893e6874317ee974b0ca15b78a6ac287d4754868ca",
+        "f3eb90dc1d17aa0e07ffd5b503e9186c5d5044301b9bc06bfb0a24eb8fd200a4"
+      ],
+      "mode": "full",
+      "promoted": false,
+      "candidate": {
+        "sha256": "980e38565c6923588b73d1544fcb117ef5ed7b2ca7f5b40f2a6c0d9a9a4f8745",
+        "mode": "full"
+      },
+      "steps": [
+        {
+          "step": 0,
+          "before": 5.54609489440918,
+          "after": 5.530614852905273,
+          "examples": 2,
+          "example_cursor": 2,
+          "gradient_tensors": 28,
+          "nonzero_gradients": 28
+        }
+      ],
+      "example_cursor": 2
+    },
+    "thinking_targets_optional": true,
+    "context_gradients_preserved": true
+  },
+  "s3_response_level_native_updates": [
+    {
+      "level": "answer",
+      "answer_mode": "direct",
+      "target_policy": "answer_only",
+      "supervised_tokens": 4,
+      "job_id": "s3-train-answer-direct",
+      "loss_before": 5.531243801116943,
+      "loss_after": 5.50589656829834,
+      "native_mask_equal": true
+    },
+    {
+      "level": "answer",
+      "answer_mode": "reasoning",
+      "target_policy": "reasoning_and_answer",
+      "supervised_tokens": 18,
+      "job_id": "s3-train-answer-reasoning",
+      "loss_before": 5.509738922119141,
+      "loss_after": 5.502757549285889,
+      "native_mask_equal": true
+    },
+    {
+      "level": "format",
+      "answer_mode": "direct",
+      "target_policy": "format_only",
+      "supervised_tokens": 17,
+      "job_id": "s3-train-format-direct",
+      "loss_before": 5.609729290008545,
+      "loss_after": 5.596924304962158,
+      "native_mask_equal": true
+    },
+    {
+      "level": "composed",
+      "answer_mode": "direct",
+      "target_policy": "answer_and_format",
+      "supervised_tokens": 21,
+      "job_id": "s3-train-composed-direct",
+      "loss_before": 5.59138298034668,
+      "loss_after": 5.581010341644287,
+      "native_mask_equal": true
+    },
+    {
+      "level": "composed",
+      "answer_mode": "reasoning",
+      "target_policy": "reasoning_answer_and_format",
+      "supervised_tokens": 35,
+      "job_id": "s3-train-composed-reasoning",
+      "loss_before": 5.583080291748047,
+      "loss_after": 5.576545238494873,
+      "native_mask_equal": true
+    }
+  ],
+  "duplicate_update_prevented": true,
+  "selected_batch_frozen": true,
+  "partial_final_batch": true,
+  "same_task_failure_and_repair": true
+}
