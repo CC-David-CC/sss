@@ -29,14 +29,19 @@ def pure_function(source,name):
 
 def run_check(case,boundary):
     work=boundary.workspace;observations=[];passed=False;reason=''
-    source_name='app.py' if case.id=='python.double' else 'task.py' if case.language=='python' else 'copy.sh' if case.id=='shell.quoted_filename' else 'check.sh'
-    module_name='app' if case.id=='python.double' else 'task'
+    source_name='app.py' if case.id in ('python.double','python.triple.practice') else 'task.py' if case.language=='python' else 'copy.sh' if case.id=='shell.quoted_filename' else 'check.sh'
+    module_name='app' if case.id in ('python.double','python.triple.practice') else 'task'
     source=read_owned(work,source_name).decode()
     if case.language=='python':
-        name={'python.sum_empty':'total','python.binary_search':'locate','python.stable_unique':'unique','python.double':'double'}[case.id]
+        name={'python.sum_empty':'total','python.binary_search':'locate','python.stable_unique':'unique','python.double':'double','python.triple.practice':'triple'}[case.id]
         if not pure_function(source,name):reason='This foundation task requires one pure function; unsupported source was not executed'
         else:
-            if case.id=='python.double':inputs=[[-1000000],[-7],[-1],[0],[1],[7],[1000000]];expected=[2*v[0] for v in inputs]
+            if case.id=='python.double':
+                inputs=[[-1000000],[-7],[-1],[0],[1],[7],[1000000]]
+                expected=[2*v[0] for v in inputs]
+            elif case.id=='python.triple.practice':
+                inputs=[[-1000000],[-11],[-1],[0],[1],[11],[1000000]]
+                expected=[3*v[0] for v in inputs]
             elif case.id=='python.sum_empty':inputs=[[v] for v in ([],[0],[-3,4,12],list(range(-30,31)))];expected=[sum(v[0]) for v in inputs]
             elif case.id=='python.binary_search':
                 inputs=[[xs,target] for xs in ([],[1],[1,1,2,4,4],list(range(-30,31))) for target in range(-32,33)]

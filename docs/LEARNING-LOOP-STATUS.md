@@ -14,7 +14,8 @@ driver or recovery path is a tooling result, not a learned model capability.
 | Coding/admin diagnostic connection | Original and Remix 2 executed 11 tasks; isolated code/config checks | Actual BW/native tool pathway and broader Linux administration |
 | Lesson verification and mixed review | Existing SSS/BW/PCC installation qualified, including prepared 128-lesson admission | Bind next curriculum to chosen current parent; old prepared policy is not a Remix 2 continuation |
 | Native training and checkpointing | Completed fixed 68-update comparisons; exports and archived states retained | Next mixed curriculum not trained yet |
-| Answering, formatting and reasoning separation | Matched scalar answer/format/composed panel and verified practice lesson builder implemented; S³ and PCC CPU tests prove separate span masks | Extend task-native adapters beyond scalars; run model panel; confirm masks in a native PCC training receipt; measure learning and retention |
+| Answering, formatting and reasoning separation | Matched scalar answer/format/composed panel and verified practice lesson builder implemented; S³ and PCC CPU tests prove separate span masks; native CPU receipt confirms five scalar masks | Extend task-native adapters beyond scalars; run model panel; measure learning and retention |
+| BW failure → S³ practice → PCC admission | Controlled BW failure/correction pair independently checked by S³; a distinct code-practice variation is checked, archived, admitted, and used for one native CPU update with the expected PCC token/loss mask | Repeat with a real model-backed BW task; measure unseen transfer and mixed-skill retention |
 | Operator next-action guidance | Pure state-to-action helper and guard tests | Connect trusted component receipts; not yet an end-to-end automatic driver |
 | Learning/forgetting measurement | Per-skill results, gains/losses, quant and external checks exist | Consolidated current reports and unseen qualification before mastery claims |
 | Checkpoint preservation and cleanup | Best/final preservation and verified fleet archival exercised | Continue explicit per-cycle retention receipts and space checks |
@@ -68,10 +69,22 @@ student failure.
   freezes and runs matched numeric-answer triplets, and `sss/learning_lessons.py`
   admits reference-checked practice with separate answer and format spans. The
   corresponding PCC feature adds masks for answer-only, format-only, composed, and
-  reasoning-plus-answer targets. S³'s 153-test suite passes on Windows and llm-79;
-  23 PCC lesson-service tests pass in WSL, and a cross-project S³-to-PCC admission
-  test passes on both Linux environments. No model panel or training run has used
-  these new conditions yet.
+  reasoning-plus-answer targets. The current S³ suite has 156 passing tests on
+  Windows (12 skipped) and llm-79 (no skips); 23 PCC lesson-service tests pass, and the native
+  CPU proof confirms five response masks. These are machinery checks, not a model
+  quality result.
+- `sss/suites/code_foundations.py` keeps a triple-function follow-up in a separate
+  practice registry. `sss_integration/bw_capture_verify.py` can require an
+  independently verified BW failure/correction pair, check the selected practice
+  reference, create a provenance-bound S³ archive, and verify PCC's persisted
+  tokens and loss mask. This is controlled-fixture evidence; it does not authorize
+  training, update weights, or establish a real model capability improvement.
+- `sss_integration/bw_practice_native_cpu.py` exercised that exact path through one
+  PCC full-weight CPU update: 32 supervised tokens, native mask matched S³,
+  candidate loss 5.67208 → 5.66749, base fixture unchanged, and no promotion.
+  The generated tiny fixture is not a language model, so loss movement only proves
+  that the update executed. Receipt:
+  [bw-practice-native-cpu-20261028/result.json](../validation/bw-practice-native-cpu-20261028/result.json).
 - Added nine explicitly planned reverse-engineering leaves: a disposable binary
   lab prerequisite, bitwise/XOR/shift/GF(2) foundations, controlled fixture
   generation, layout inference, CRC identification, iterative experiment, and
@@ -95,9 +108,7 @@ protected test responses, or checker internals into student examples. Any future
 lesson derived from a tooling incident must be deliberately authored, independently
 verified and admitted through the ordinary practice pathway.
 
-Next operator step: publish the paired S³/PCC code, extend format adapters to
-additional task-native structures, then run the frozen scalar panel on a pinned model
-and harness. Before training, admit examples against a specific parent, renderer,
-tokenizer, checker and split; confirm a PCC native update receipt records the intended
-loss masks, then run held-out learning and retention checks. No training round using
-this three-level split has run yet.
+Next operator step: run a real model-backed BW task, obtain a new independently
+verified S³ practice example, and measure unseen transfer plus mixed-skill
+retention. Keep feature branches separate until those gates and recovery behavior
+are repeatable; merge to `main` only after the pathway is stable.

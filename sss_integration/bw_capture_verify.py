@@ -13,9 +13,11 @@ import tempfile
 
 from sss.adapters.code_check import run_check
 from sss.adapters.linux_sandbox import EnvironmentUnavailable, LinuxSandbox
+from sss.adapters.episode_lessons import pcc_lesson
+from sss.episodes import EpisodeArchive, training_tokens
 from sss import records as sss_records
-from sss.records import digest
-from sss.suites.code_foundations import cases
+from sss.records import canonical, digest
+from sss.suites.code_foundations import cases, practice_cases
 
 _HEX = re.compile(r'[a-f0-9]{64}\Z')
 _MAX_SOURCE_BYTES = 64 * 1024
@@ -194,6 +196,147 @@ def verify_bw_capture_pair(*, failure_dir, correction_dir, failure_capture_id,
     return _receipt(status='verified', failure=failure, correction=correction,
                     case=case, source_name=source_name, source_hashes=source_hashes,
                     checks=checks)
+
+
+def build_practice_lesson_from_capture_pair(*, failure_dir, correction_dir,
+                                             failure_capture_id, correction_capture_id,
+                                             case_id, practice_case_id, skill_id,
+                                             archive_path, model_contract_id,
+                                             renderer_sha256, tokenizer_sha256,
+                                             render, tokenize, maximum=8192):
+    """Prepare a separate checked practice lesson from a verified BW pair.
+
+    The captured correction is evidence only: its source bytes never become the
+    target. A caller explicitly chooses a distinct S³ practice case and skill.
+    This admits a lesson to PCC but does not authorize or perform an update.
+    """
+    for value, name in ((model_contract_id, 'model contract'),
+                        (renderer_sha256, 'renderer'),
+                        (tokenizer_sha256, 'tokenizer')):
+        if type(value) is not str or not _HEX.fullmatch(value):
+            raise VerificationRefused(name + '_sha256_required')
+    receipt = verify_bw_capture_pair(
+        failure_dir=failure_dir, correction_dir=correction_dir,
+        failure_capture_id=failure_capture_id,
+        correction_capture_id=correction_capture_id, case_id=case_id)
+    if receipt['status'] != 'verified':
+        raise VerificationRefused('bw_failure_correction_pair_not_verified')
+    source_case = _case(case_id)
+    matches = [case for case in practice_cases() if case.id == practice_case_id]
+    if len(matches) != 1:
+        raise VerificationRefused('practice_case_not_in_separate_sss_registry')
+    practice = matches[0]
+    if (practice.id == source_case.id or practice.request == source_case.request
+            or skill_id not in source_case.skills or skill_id not in practice.skills):
+        raise VerificationRefused('practice_case_must_be_distinct_and_share_selected_skill')
+    if len(practice.before) != 1:
+        raise VerificationRefused('practice_case_must_name_one_source_file')
+    practice_source = _source_name(practice)
+    with tempfile.TemporaryDirectory(prefix='sss-practice-oracle-') as temporary:
+        workspace = Path(temporary)
+        for name, content in practice.reference.items():
+            if name != practice_source or type(content) is not str:
+                raise VerificationRefused('practice_reference_source_binding_failed')
+            (workspace / name).write_text(content, encoding='utf-8')
+        checked = run_check(practice, LinuxSandbox(workspace))
+    if checked.get('settled') is not True or checked.get('passed') is not True:
+        raise VerificationRefused('practice_reference_failed_sss_oracle')
+
+    logical = [
+        dict(role='user', kind='question',
+             content=practice.request, verified=False, scope='practice'),
+        dict(role='assistant', kind='answer',
+             content=practice.reference[practice_source],
+             verified=True, scope='practice'),
+    ]
+    rendered = render(logical)
+    if type(rendered) is not list or len(rendered) != len(logical):
+        raise VerificationRefused('renderer_must_preserve_practice_spans')
+    for source, row in zip(logical, rendered):
+        if (type(row) is not dict
+                or set(row) != {'role', 'kind', 'rendered', 'verified', 'scope'}
+                or any(row[key] != source[key]
+                       for key in ('role', 'kind', 'verified', 'scope'))
+                or type(row['rendered']) is not str or not row['rendered']):
+            raise VerificationRefused('renderer_changed_practice_lesson_structure')
+
+    verification = dict(
+        schema=1, origin='verified-bw-failure-derived-practice',
+        capture_receipt_sha256=receipt['receipt_sha256'],
+        source_case_id=source_case.id, practice_case_id=practice.id,
+        skill_id=skill_id, practice_checker_id=digest(practice.check_program),
+        practice_checker_implementation_sha256=checked['checker_implementation_sha256'],
+        practice_checker_evidence_sha256=checked['evidence_sha256'],
+        practice_reference_sha256=hashlib.sha256(
+            practice.reference[practice_source].encode('utf-8')).hexdigest(),
+        renderer_sha256=renderer_sha256, tokenizer_sha256=tokenizer_sha256,
+    )
+    verification_id = digest(verification)
+    expected = training_tokens(rendered, tokenize=tokenize,
+                              policy='answer_only', maximum=maximum)
+    archive = EpisodeArchive(
+        archive_path, create=True,
+        metadata=dict(origin='verified-bw-failure-derived-practice',
+                      capture_receipt_sha256=receipt['receipt_sha256'],
+                      source_case_id=source_case.id,
+                      practice_case_id=practice.id, skill_id=skill_id),
+    )
+    question_id = digest(dict(practice_case_id=practice.id,
+                              capture_receipt_sha256=receipt['receipt_sha256']))
+    archive.append('user', 'question', rendered[0]['rendered'],
+                   scope='practice', topic=skill_id, question_id=question_id)
+    archive.append('assistant', 'answer', rendered[1]['rendered'],
+                   verified=True, scope='practice', topic=skill_id,
+                   resolves=question_id)
+    reopened = EpisodeArchive(archive_path)
+    if reopened.head != archive.head or len(reopened.records()) != 2:
+        raise VerificationRefused('practice_archive_reopen_mismatch')
+    archive_hash = hashlib.sha256(canonical(dict(
+        metadata=(Path(archive_path) / 'metadata.json').read_bytes().hex(),
+        events=[path.read_bytes().hex() for path in sorted(
+            (Path(archive_path) / 'events').glob('*.json'))],
+    ))).hexdigest()
+    lesson = pcc_lesson(
+        'Verified BW follow-up: ' + practice.id, model_contract_id, rendered,
+        archive_sha256=archive_hash, verification_sha256=verification_id,
+        renderer_sha256=renderer_sha256, tokenizer_sha256=tokenizer_sha256,
+        skill_id=skill_id, target_policy='answer_only')
+    return dict(schema=1, lesson=lesson, verification=verification,
+                verification_id=verification_id, archive_sha256=archive_hash,
+                expected_example=expected, capture_receipt=receipt,
+                pcc_admission_confirmed=False, native_update_run=False,
+                training_authorized=False, weights_updated=False, promoted=False)
+
+
+def admit_bw_practice_lesson(service, operation_id, prepared):
+    """Store once in PCC and prove its tokens/mask match the S³ lesson plan."""
+    lesson = prepared['lesson']
+    if getattr(service, 'model', None) != lesson['model_contract_id']:
+        raise VerificationRefused('pcc_model_contract_mismatch')
+    acceptance = service.submit('/cow/training/lessons',
+                                dict(operation_id=operation_id, lesson=lesson))
+    lesson_id = acceptance.get('lesson_id') if type(acceptance) is dict else None
+    if type(lesson_id) is not str or not lesson_id:
+        raise VerificationRefused('pcc_did_not_return_immutable_lesson_id')
+    saved = service.lesson(lesson_id)
+    expected = prepared['expected_example']
+    example = saved.get('example') if type(saved) is dict else None
+    if type(saved) is not dict or saved.get('lesson') != lesson:
+        raise VerificationRefused('pcc_saved_different_practice_lesson')
+    if type(example) is not dict or any(
+            example.get(key) != expected.get(key)
+            for key in ('tokens', 'targets', 'loss_mask')):
+        raise VerificationRefused('pcc_tokens_or_loss_mask_differ_from_sss')
+    if (example.get('verified') is not True
+            or example.get('provenance_sha256') != digest(lesson['evidence'])):
+        raise VerificationRefused('pcc_did_not_retain_practice_provenance')
+    return dict(schema=1, lesson_id=lesson_id,
+                practice_case_id=prepared['verification']['practice_case_id'],
+                skill_id=prepared['verification']['skill_id'],
+                token_count=len(example['tokens']),
+                supervised_tokens=sum(example['loss_mask']),
+                pcc_admission_confirmed=True, native_update_run=False,
+                training_authorized=False, weights_updated=False, promoted=False)
 
 
 def main(argv=None):

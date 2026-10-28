@@ -50,6 +50,18 @@ def cases():
                  ('code.python.tests','code.python.debug')),
     )
 
+
+def practice_cases():
+    """Owned training variations kept separate from the assessment case list."""
+    return (
+        CodeCase('python.triple.practice','python',
+                 'Implement triple(n) so it returns exactly three times any integer input. Preserve the function name.',
+                 {'app.py':'def triple(n):\n    return n\n'},
+                 'import app\nfor n in (-1000000,-11,-1,0,1,11,1000000):\n assert app.triple(n)==3*n,(n,app.triple(n))\n',
+                 {'app.py':'def triple(n):\n    return 3*n\n'},
+                 ('code.python.tests','code.python.debug')),
+    )
+
 def grade(case,observations,final_files):
     if not observations or any(not r.get('settled') for r in observations):return dict(status='unavailable',reasons=['Missing settled host execution evidence'])
     last=observations[-1]

@@ -13,9 +13,10 @@ import sys
 import tempfile
 import unittest
 
-from sss.adapters.bw_fixtures import task
 from sss_integration.bw_capture_verify import (
     VerificationRefused,
+    admit_bw_practice_lesson,
+    build_practice_lesson_from_capture_pair,
     main,
     verify_bw_capture_pair,
 )
@@ -30,6 +31,7 @@ class BwCaptureVerifyTests(unittest.TestCase):
         sys.path.insert(0, str(bw_root))
 
     def test_exact_bw_failure_and_correction_are_independently_checked(self):
+        from sss.adapters.bw_fixtures import task
         from branchwrite.lesson_capture import capture_failure, capture_correction
         with tempfile.TemporaryDirectory(prefix='sss-bw-capture-test-') as temporary:
             root = Path(temporary)
@@ -67,6 +69,58 @@ class BwCaptureVerifyTests(unittest.TestCase):
             self.assertNotIn('rendered', receipt)
             self.assertEqual(receipt['receipt_sha256'], digest({
                 key: value for key, value in receipt.items() if key != 'receipt_sha256'}))
+
+            # A correction is evidence, not the target. The owner selects a
+            # separate registered practice variation with a verified reference.
+            from tools.pcc_lessons import LessonService
+            contract = 'a' * 64
+            tokenizer = lambda text: list(text.encode('utf-8'))
+
+            def render(rows):
+                return [dict(role=row['role'], kind=row['kind'],
+                             rendered=('U:' if row['role'] == 'user' else 'A:') + row['content'],
+                             verified=row['verified'], scope=row['scope'])
+                        for row in rows]
+
+            prepared = build_practice_lesson_from_capture_pair(
+                failure_dir=captures / 'failure',
+                correction_dir=captures / 'correction',
+                failure_capture_id=failure.capture_id,
+                correction_capture_id=correction.capture_id,
+                case_id='python.double', practice_case_id='python.triple.practice',
+                skill_id='code.python.debug', archive_path=root / 'practice-archive',
+                model_contract_id=contract, renderer_sha256='c' * 64,
+                tokenizer_sha256='d' * 64, render=render, tokenize=tokenizer)
+            self.assertFalse(prepared['training_authorized'])
+            self.assertFalse(prepared['weights_updated'])
+            self.assertEqual(prepared['verification']['source_case_id'], 'python.double')
+            self.assertEqual(prepared['verification']['practice_case_id'], 'python.triple.practice')
+            self.assertNotEqual(prepared['lesson']['segments'][1]['rendered'],
+                                correction.file_bytes('app.py').decode())
+            service = LessonService(root / 'pcc-store', contract, tokenizer,
+                                    lambda *args: None, rendered_tokenize=tokenizer,
+                                    max_tokens=8192)
+            try:
+                admitted = admit_bw_practice_lesson(service, 'bw-derived-practice-1', prepared)
+                self.assertTrue(admitted['pcc_admission_confirmed'])
+                self.assertFalse(admitted['native_update_run'])
+                self.assertFalse(admitted['training_authorized'])
+                saved = service.lesson(admitted['lesson_id'])
+                self.assertEqual(saved['example']['loss_mask'],
+                                 prepared['expected_example']['loss_mask'])
+            finally:
+                service.close()
+
+            with self.assertRaises(VerificationRefused):
+                build_practice_lesson_from_capture_pair(
+                    failure_dir=captures / 'failure',
+                    correction_dir=captures / 'correction',
+                    failure_capture_id=failure.capture_id,
+                    correction_capture_id=correction.capture_id,
+                    case_id='python.double', practice_case_id='python.double',
+                    skill_id='code.python.debug', archive_path=root / 'bad-archive',
+                    model_contract_id=contract, renderer_sha256='c' * 64,
+                    tokenizer_sha256='d' * 64, render=render, tokenize=tokenizer)
             receipt_path = os.environ.get('SSS_BW_CAPTURE_TEST_RECEIPT')
             if receipt_path:
                 flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, 'O_NOFOLLOW', 0)
