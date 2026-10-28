@@ -18,27 +18,31 @@ def run(a):
  from tools.pcc_native_training import execute_native,read_optimizer_state,validate_examples
  from tools.gguf_reader import GGUFFile
  selection=json.loads(a.selection.read_text())
- if selection.get('pilot_id')!=digest({k:v for k,v in selection.items() if k!='pilot_id'}):raise ValueError('Checked practice selection identity differs')
+ identity_field='practice_id' if selection.get('purpose')=='mixed_66_curriculum_practice' else 'pilot_id'
+ if selection.get(identity_field)!=digest({k:v for k,v in selection.items() if k!=identity_field}):raise ValueError('Checked practice selection identity differs')
+ selection_id=selection[identity_field]
+ sequence_profile='dense-llama-action-8k-v1' if identity_field=='practice_id' else 'dense-llama-short-v1'
  if selection.get('protected_cases_exported') is not False or selection.get('target_policy')!='actions_answer':raise ValueError('Unexpected pilot split/target policy')
- examples=validate_examples(selection['examples'],sequence_profile='dense-llama-short-v1')
+ examples=validate_examples(selection['examples'],sequence_profile=sequence_profile)
  if [x['id'] for x in examples]!=[x['lesson_id'] for x in selection['selection']]:raise ValueError('Selected token examples differ from admitted lessons')
  probe=json.loads(a.gradient_evidence.read_text())
- if probe.get('status')!='PASS' or probe.get('pilot_id')!=selection['pilot_id'] or probe.get('finite_gradient_tensors')!=381:raise ValueError('Actual-model gradient gate is not established for this selection')
+ if probe.get('status')!='PASS' or probe.get('pilot_id')!=selection_id or probe.get('finite_gradient_tensors')!=381 or probe.get('model_sha256')!=selection['model_sha256'] or (identity_field=='practice_id' and probe.get('sequence_profile')!=sequence_profile):raise ValueError('Actual-model gradient gate is not established for this selection')
+ if probe.get('executable_sha256')!=sha(a.native_executable):raise ValueError('Gradient probe used a different native executable')
  root=a.output.resolve();root.mkdir(mode=0o700,parents=True,exist_ok=False)
  original=a.model.resolve(strict=True)
  if sha(original)!=selection['model_sha256']:raise ValueError('Original MiniCPM weights differ')
  settings=json.loads(a.optimizer_settings.read_text()) if a.optimizer_settings else dict(schema=1,**({'aux_learning_rate':.000001} if a.optimizer=='muon' else {}))
- request=dict(model=str(original),base_sha256=selection['model_sha256'],mode='full',devices=['CUDA0'],sequence_profile='dense-llama-short-v1',memory_profile='allocator-v1',device_budget_bytes={'CUDA0':a.device_budget_gib<<30},reserve_bytes=a.reserve_gib<<30,host_reserve_bytes=a.host_reserve_gib<<30,examples=examples,optimizer=a.optimizer,optimizer_settings=settings,optimizer_state_mode='fresh',learning_rate=a.learning_rate,batch_size=a.batch_size,steps=a.steps,deadline_seconds=a.timeout_seconds)
+ request=dict(model=str(original),base_sha256=selection['model_sha256'],mode='full',devices=['CUDA0'],sequence_profile=sequence_profile,memory_profile='allocator-v1',device_budget_bytes={'CUDA0':a.device_budget_gib<<30},reserve_bytes=a.reserve_gib<<30,host_reserve_bytes=a.host_reserve_gib<<30,examples=examples,optimizer=a.optimizer,optimizer_settings=settings,optimizer_state_mode='fresh',learning_rate=a.learning_rate,batch_size=a.batch_size,steps=a.steps,deadline_seconds=a.timeout_seconds)
  parent=None
  if a.parent_result:
   parent=json.loads(a.parent_result.read_text())
-  if parent.get('result_id')!=digest({k:v for k,v in parent.items() if k!='result_id'}) or parent.get('pilot_id')!=selection['pilot_id'] or parent.get('status')!='MECHANICS_COMPLETE':raise ValueError('Parent result is not this completed pilot')
+  if parent.get('result_id')!=digest({k:v for k,v in parent.items() if k!='result_id'}) or parent.get('pilot_id')!=selection_id or parent.get('status')!='MECHANICS_COMPLETE':raise ValueError('Parent result is not this completed pilot')
   candidate=parent['candidate'];checkpoint=candidate['receipt']['optimizer_checkpoint']
   request.update(model=candidate['candidate_path'],base_sha256=candidate['candidate_sha256'],optimizer_state_mode='resume',initial_optimizer_state=checkpoint['path'],initial_optimizer_state_sha256=checkpoint['sha256'],example_cursor=candidate['receipt']['example_cursor'])
  info=GGUFFile(original);weights=sum(t.elements*4 for t in info.tensors);hidden=sum(t.elements*4 for t in info.tensors if t.name.startswith('blk.') and t.name.split('.',2)[2] in {'attn_q.weight','attn_k.weight','attn_v.weight','attn_output.weight','ffn_up.weight','ffn_gate.weight','ffn_down.weight'})
  states=2*weights if a.optimizer=='adamw' else hidden+2*(weights-hidden)
  if shutil.disk_usage(root).free<weights+states+(a.disk_reserve_gib<<30)+(64<<20):raise RuntimeError('Candidate/state/disk reserve admission refused')
- write(root/'intent.json',dict(schema=1,pilot_id=selection['pilot_id'],selection_sha256=sha(a.selection),gradient_evidence_sha256=sha(a.gradient_evidence),request=request,executable_sha256=sha(a.native_executable),source_sha256=sha(__file__),parent_result_id=None if parent is None else parent['result_id'],quality_acceptance=False))
+ write(root/'intent.json',dict(schema=1,pilot_id=selection_id,selection_sha256=sha(a.selection),gradient_evidence_sha256=sha(a.gradient_evidence),request=request,executable_sha256=sha(a.native_executable),source_sha256=sha(__file__),parent_result_id=None if parent is None else parent['result_id'],quality_acceptance=False))
  lock=Path.home()/'.local/state/context-cow'/('gpu-'+str(a.gpu_index)+'.lock');lock.parent.mkdir(mode=0o700,parents=True,exist_ok=True)
  start=time.monotonic();status='FAILED';candidate=None
  with lock.open('a') as lease:
@@ -63,7 +67,7 @@ def run(a):
    losses=json.loads((root/'reload-stdout-private.json').read_text())['losses'];error=abs(sum(losses)/len(losses)-last['after'])
    if error>2e-4:raise ValueError('Actual-model candidate reload loss mismatch')
    checkpoint=receipt['optimizer_checkpoint'];state=read_optimizer_state(checkpoint['path'],checkpoint['sha256'])
-   result=dict(schema=1,status='MECHANICS_COMPLETE',scope='Actual-model native update/reload; not learning acceptance',pilot_id=selection['pilot_id'],candidate=candidate,reload_loss_error=error,optimizer_completed_steps=state['completed_steps'],example_cursor=state['example_cursor'],gradient_tensors=[len(s['gradients']) for s in receipt['steps']],nonzero_gradient_tensors=[sum(g['l2']>0 for g in s['gradients']) for s in receipt['steps']],parent_result_id=None if parent is None else parent['result_id'],promoted=False)
+   result=dict(schema=1,status='MECHANICS_COMPLETE',scope='Actual-model native update/reload; not learning acceptance',pilot_id=selection_id,candidate=candidate,reload_loss_error=error,optimizer_completed_steps=state['completed_steps'],example_cursor=state['example_cursor'],gradient_tensors=[len(s['gradients']) for s in receipt['steps']],nonzero_gradient_tensors=[sum(g['l2']>0 for g in s['gradients']) for s in receipt['steps']],parent_result_id=None if parent is None else parent['result_id'],promoted=False)
    result['result_id']=digest(result);write(root/'result-private.json',result);status='MECHANICS_COMPLETE'
    print(json.dumps({k:result[k] for k in ['status','pilot_id','reload_loss_error','optimizer_completed_steps','example_cursor','gradient_tensors','nonzero_gradient_tensors','promoted']}),flush=True)
   finally:

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "status": "MECHANICS_COMPLETE",
+  "scope": "First actual full-model update and reload; not a learning result",
+  "selection_id": "e6f03b4bb1f4f1ee8472613a228c512ea0697d4c8597c6ba32e7f8d37c289c29",
+  "result_id": "330147fe24051ced5187d2b6c74e496012c70aab1c58ce9509d62d52b691eac2",
+  "candidate_sha256": "bde1adb47e9ecf81ecd9eadcdd31604f4f227b2aa53e3d9d238be08e306add7d",
+  "optimizer_completed_steps": 1,
+  "practice_presentations": 8,
+  "training_loss_before": 0.2694299519062042,
+  "training_loss_after": 0.10789180546998978,
+  "reload_loss_error": 3.661625669337809e-09,
+  "gradient_tensors": [
+    381
+  ],
+  "nonzero_gradient_tensors": [
+    381
+  ],
+  "promoted": false
+}

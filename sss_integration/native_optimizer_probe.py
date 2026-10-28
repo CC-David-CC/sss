@@ -25,11 +25,14 @@ def run(a):
     from tools.pcc_native_training import validate_examples
     from tools.gguf_reader import GGUFFile
     selection = json.loads(a.selection.read_text())
-    if selection.get('pilot_id') != digest({k: v for k, v in selection.items() if k != 'pilot_id'}):
+    identity_field = 'practice_id' if selection.get('purpose') == 'mixed_66_curriculum_practice' else 'pilot_id'
+    if selection.get(identity_field) != digest({k: v for k, v in selection.items() if k != identity_field}):
         raise ValueError('Checked practice selection identity differs')
     if selection.get('protected_cases_exported') is not False or selection.get('target_policy') != 'actions_answer':
         raise ValueError('Unexpected split/target policy')
-    examples = validate_examples(selection['examples'], sequence_profile='dense-llama-short-v1')
+    sequence_profile = ('dense-llama-action-8k-v1' if identity_field == 'practice_id'
+                        else 'dense-llama-short-v1')
+    examples = validate_examples(selection['examples'], sequence_profile=sequence_profile)
     if [e['id'] for e in examples] != [r['lesson_id'] for r in selection['selection']]:
         raise ValueError('Selected examples differ from admitted lessons')
     model = a.model.resolve(strict=True)
@@ -42,12 +45,12 @@ def run(a):
     root = a.output.resolve()
     root.mkdir(mode=0o700, parents=True, exist_ok=False)
     request = dict(model=str(model), base_sha256=selection['model_sha256'], mode='full',
-                   devices=['CUDA0'], sequence_profile='dense-llama-short-v1', memory_profile='allocator-v1',
+                   devices=['CUDA0'], sequence_profile=sequence_profile, memory_profile='allocator-v1',
                    device_budget_bytes={'CUDA0': a.device_budget_gib << 30}, reserve_bytes=a.reserve_gib << 30,
                    host_reserve_bytes=a.host_reserve_gib << 30, examples=[example], gradient_probe_only=True,
                    learning_rate=1e-6, batch_size=1, steps=1, deadline_seconds=a.timeout_seconds,
                    candidate=str(root / 'never-written.gguf'))
-    write(root / 'intent.json', dict(pilot_id=selection['pilot_id'], model_sha256=selection['model_sha256'],
+    write(root / 'intent.json', dict(selection_id=selection[identity_field], sequence_profile=sequence_profile, model_sha256=selection['model_sha256'],
                                     selection_sha256=sha(a.selection), executable_sha256=sha(a.native_executable),
                                     source_sha256=sha(__file__), expected_parameter_tensors=len(expected),
                                     weights_updated=False))
@@ -86,7 +89,8 @@ def run(a):
             if Path(request['candidate']).exists():
                 raise ValueError('Gradient-only probe wrote a candidate')
             result = dict(status='PASS', scope='Actual-model complete ordinary backprop gradients; no update',
-                          pilot_id=selection['pilot_id'], model_sha256=selection['model_sha256'],
+                          pilot_id=selection[identity_field], selection_id_kind=identity_field,
+                          sequence_profile=sequence_profile, model_sha256=selection['model_sha256'],
                           executable_sha256=sha(a.native_executable), tokens=len(example['tokens']),
                           selected_targets=sum(example['loss_mask']), parameter_tensors=len(expected),
                           finite_gradient_tensors=len(gradients), nonzero_gradient_tensors=len(gradients),

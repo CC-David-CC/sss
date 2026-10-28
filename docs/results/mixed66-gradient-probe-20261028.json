@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "scope": "Actual-model complete ordinary backprop gradients; no update",
+  "pilot_id": "e6f03b4bb1f4f1ee8472613a228c512ea0697d4c8597c6ba32e7f8d37c289c29",
+  "selection_id_kind": "practice_id",
+  "sequence_profile": "dense-llama-action-8k-v1",
+  "model_sha256": "7254cd2904ff5114d50ee5b5f961482789388dae3d609723ae67b759100288be",
+  "executable_sha256": "bac44671e85f4e65380c1228d68c71be5bc80442e175d06647f9267590ea42ba",
+  "tokens": 555,
+  "selected_targets": 81,
+  "parameter_tensors": 381,
+  "finite_gradient_tensors": 381,
+  "nonzero_gradient_tensors": 381,
+  "loss": 0.2864902913570404,
+  "weights_updated": false,
+  "promoted": false
+}

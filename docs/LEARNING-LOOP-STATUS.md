@@ -62,6 +62,15 @@ student failure.
   selected checkpoint, retain the parent and candidate, and measure both the
   intended skills and independent coding/admin and retention panels. Preparation
   alone does not prove a real-model automatic failure-to-learning cycle.
+- A native ordinary-backprop probe on the longest admitted example (555 tokens)
+  passed on llm-60: all 381 model parameter tensors had finite, nonzero gradients.
+  It made no weight update and is not an assessment of model quality.
+  [Gradient receipt](results/mixed66-gradient-probe-20261028.json). The first
+  full-model AdamW update separately completed on eight practice entries, and
+  its exported candidate reloaded with loss error 3.67e-9. This establishes an
+  update and checkpoint round trip, not learning, retention, or promotion. A
+  resumed run is intended to cover the first 136 practice presentations.
+  [First update receipt](results/mixed66-first-update-20261028.json).
 
 - Initial tool fixture grading demanded unrequested finish wording. Corrected it,
   added regression coverage, and rescored saved trusted observations; no inference
