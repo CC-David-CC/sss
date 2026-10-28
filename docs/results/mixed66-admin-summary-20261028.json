@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "scope": "Small custom diagnostic; simulated tools and isolated Linux checks; not BW native tool use",
+  "candidate_sha256": "e77134d8c9575fa3b49d0ba9b397a80f5a6669921ef82479ccf9eee27bff0ac5",
+  "cases": 11,
+  "passed": 9,
+  "results": [
+    {
+      "id": "tools.read_config",
+      "domain": "simulated_tools_admin",
+      "status": "pass"
+    },
+    {
+      "id": "tools.recover_missing",
+      "domain": "simulated_tools_admin",
+      "status": "pass"
+    },
+    {
+      "id": "admin.repair_port",
+      "domain": "simulated_tools_admin",
+      "status": "pass"
+    },
+    {
+      "id": "admin.diagnose_log",
+      "domain": "simulated_tools_admin",
+      "status": "pass"
+    },
+    {
+      "id": "python.sum_empty",
+      "domain": "isolated_linux_code",
+      "status": "pass"
+    },
+    {
+      "id": "python.binary_search",
+      "domain": "isolated_linux_code",
+      "status": "pass"
+    },
+    {
+      "id": "python.stable_unique",
+      "domain": "isolated_linux_code",
+      "status": "pass"
+    },
+    {
+      "id": "shell.quoted_filename",
+      "domain": "isolated_linux_code",
+      "status": "pass"
+    },
+    {
+      "id": "shell.failure_status",
+      "domain": "isolated_linux_code",
+      "status": "pass"
+    },
+    {
+      "id": "linux.config_port",
+      "domain": "isolated_linux_config",
+      "status": "fail"
+    },
+    {
+      "id": "linux.config_logging",
+      "domain": "isolated_linux_config",
+      "status": "fail"
+    }
+  ],
+  "original_reference": "docs/ADMIN-MODEL-PROBE.md",
+  "original_passed": 10,
+  "parent_passed": 9,
+  "mastery_established": false,
+  "promoted": false
+}

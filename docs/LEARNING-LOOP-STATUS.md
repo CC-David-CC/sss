@@ -80,6 +80,12 @@ student failure.
   splits, and it is not evidence of broad capability, held-out acceptance,
   coding/admin improvement, or model promotion.
   [Per-skill counts](results/mixed66-development-summary-20261028.json).
+- The candidate passed 9/11 of the existing small tool, code and configuration
+  diagnostic cases: the same nine tool/code cases as both earlier models, and
+  neither configuration repair. The original passed 10/11 and the parent 9/11.
+  This custom diagnostic uses simulated tools and isolated Linux checks; it is
+  not a BW native-tool result or a general admin score. [Candidate receipt](results/mixed66-admin-summary-20261028.json),
+  [earlier comparison](ADMIN-MODEL-PROBE.md).
 
 - Initial tool fixture grading demanded unrequested finish wording. Corrected it,
   added regression coverage, and rescored saved trusted observations; no inference
