@@ -1,0 +1,1524 @@
+{
+    "scope":  "catalog inventory; not model qualification",
+    "implemented":  66,
+    "planned":  62,
+    "trained_comparison_skills":  [
+                                      "math.add.carry",
+                                      "math.add.no_carry",
+                                      "math.add.signed",
+                                      "math.divide",
+                                      "math.fraction",
+                                      "math.fraction.add",
+                                      "math.multiply",
+                                      "math.place_value",
+                                      "state.registers"
+                                  ],
+    "skills":  [
+                   {
+                       "id":  "admin.deploy",
+                       "status":  "planned",
+                       "requires":  [
+                                        "linux.configuration",
+                                        "linux.network",
+                                        "tools.reconcile"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "blender.animation",
+                       "status":  "planned",
+                       "requires":  [
+                                        "blender.scene",
+                                        "spatial.transforms",
+                                        "state.registers"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "blender.environment",
+                       "status":  "planned",
+                       "requires":  [
+                                        "world.readiness",
+                                        "tools.schemas"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "blender.materials",
+                       "status":  "planned",
+                       "requires":  [
+                                        "blender.scene",
+                                        "reading.extraction"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "blender.render",
+                       "status":  "planned",
+                       "requires":  [
+                                        "blender.scene",
+                                        "tools.finish"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "blender.scene",
+                       "status":  "planned",
+                       "requires":  [
+                                        "blender.environment",
+                                        "spatial.coordinates",
+                                        "code.python.read"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "blender.video",
+                       "status":  "planned",
+                       "requires":  [
+                                        "blender.animation",
+                                        "blender.render"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "browser.actions",
+                       "status":  "planned",
+                       "requires":  [
+                                        "browser.observe",
+                                        "tools.recovery"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "browser.observe",
+                       "status":  "planned",
+                       "requires":  [
+                                        "web.html",
+                                        "tools.read"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "cad.carrier",
+                       "status":  "planned",
+                       "requires":  [
+                                        "cad.plate",
+                                        "cad.components"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "cad.catalogue",
+                       "status":  "planned",
+                       "requires":  [
+                                        "cad.environment",
+                                        "reading.extraction"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "cad.components",
+                       "status":  "planned",
+                       "requires":  [
+                                        "cad.catalogue",
+                                        "cad.features"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "cad.environment",
+                       "status":  "planned",
+                       "requires":  [
+                                        "world.readiness"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "cad.features",
+                       "status":  "planned",
+                       "requires":  [
+                                        "cad.solids",
+                                        "spatial.transforms"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "cad.measurement",
+                       "status":  "planned",
+                       "requires":  [
+                                        "cad.solids",
+                                        "spatial.constraints",
+                                        "tools.finish"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "cad.plate",
+                       "status":  "planned",
+                       "requires":  [
+                                        "cad.features",
+                                        "tools.finish"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "cad.sketches",
+                       "status":  "planned",
+                       "requires":  [
+                                        "cad.environment",
+                                        "spatial.constraints",
+                                        "code.python.read"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "cad.solids",
+                       "status":  "planned",
+                       "requires":  [
+                                        "cad.sketches",
+                                        "math.volume"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.concurrency",
+                       "status":  "planned",
+                       "requires":  [
+                                        "code.python.debug",
+                                        "state.registers"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.python.algorithms",
+                       "status":  "planned",
+                       "requires":  [
+                                        "code.python.read",
+                                        "state.registers"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.python.debug",
+                       "status":  "planned",
+                       "requires":  [
+                                        "code.python.tests",
+                                        "tools.edit"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.python.read",
+                       "status":  "planned",
+                       "requires":  [
+                                        "reading.extraction"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.python.tests",
+                       "status":  "planned",
+                       "requires":  [
+                                        "code.python.algorithms",
+                                        "tools.finish"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.shell.errors",
+                       "status":  "planned",
+                       "requires":  [
+                                        "code.shell.quoting"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "code.shell.quoting",
+                       "status":  "planned",
+                       "requires":  [
+                                        "tools.schemas",
+                                        "reading.extraction"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "documents.pdf.author",
+                       "status":  "planned",
+                       "requires":  [
+                                        "code.python.read",
+                                        "tools.write"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "documents.pdf.inspect",
+                       "status":  "planned",
+                       "requires":  [
+                                        "documents.pdf.author",
+                                        "tools.finish"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "linux.configuration",
+                       "status":  "planned",
+                       "requires":  [
+                                        "linux.services",
+                                        "tools.recovery"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "linux.files",
+                       "status":  "planned",
+                       "requires":  [
+                                        "tools.read",
+                                        "tools.permissions"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "linux.jobs",
+                       "status":  "planned",
+                       "requires":  [
+                                        "linux.processes",
+                                        "tools.reconcile"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "linux.network",
+                       "status":  "planned",
+                       "requires":  [
+                                        "linux.processes"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "linux.packages",
+                       "status":  "planned",
+                       "requires":  [
+                                        "linux.files",
+                                        "tools.permissions"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "linux.processes",
+                       "status":  "planned",
+                       "requires":  [
+                                        "code.shell.errors",
+                                        "tools.permissions"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "linux.services",
+                       "status":  "planned",
+                       "requires":  [
+                                        "linux.processes",
+                                        "tools.edit"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "logic.and",
+                       "status":  "implemented",
+                       "requires":  [
+
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "logic.deduction",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "logic.and",
+                                        "logic.or",
+                                        "logic.not"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "logic.joint_premises",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "logic.proof"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "logic.not",
+                       "status":  "implemented",
+                       "requires":  [
+
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "logic.or",
+                       "status":  "implemented",
+                       "requires":  [
+
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "logic.premise_robustness",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "logic.joint_premises",
+                                        "logic.deduction"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "logic.proof",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "logic.deduction"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "logic.reverse_support",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "logic.joint_premises"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "logic.xor",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "logic.or",
+                                        "logic.and",
+                                        "logic.not"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.absolute",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.subtract.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.area",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.multiply"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.bayes",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.probability",
+                                        "math.add.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.ceil",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.divide",
+                                        "math.greater"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.definite_integral",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.polynomial_derivative",
+                                        "math.fraction"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.determinant",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.matrix_product",
+                                        "math.subtract.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.divide",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.multiply"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  true,
+                       "mastery":  "not established",
+                       "training_action":  "review per-skill and per-gate failures; fresh practice"
+                   },
+                   {
+                       "id":  "math.dot",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.multiply",
+                                        "math.add.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.eigenvalues",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.determinant",
+                                        "math.quadratic_roots"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.equal",
+                       "status":  "implemented",
+                       "requires":  [
+
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.floor",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.divide",
+                                        "math.less"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.fraction",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.divide"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  true,
+                       "mastery":  "not established",
+                       "training_action":  "review per-skill and per-gate failures; fresh practice"
+                   },
+                   {
+                       "id":  "math.greater",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.equal"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.less",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.equal"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.linear_equation",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.subtract.signed",
+                                        "math.divide"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.linear_system",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.linear_equation",
+                                        "math.matrix_product"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.matrix_product",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.dot"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.maximum",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.greater"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.mean",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.divide",
+                                        "math.add.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.median",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.less"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.method_selection",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.add.signed",
+                                        "math.subtract.signed",
+                                        "math.multiply",
+                                        "math.divide"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.minimum",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.less"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.multiply",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.add.carry"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  true,
+                       "mastery":  "not established",
+                       "training_action":  "review per-skill and per-gate failures; fresh practice"
+                   },
+                   {
+                       "id":  "math.perimeter",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.add.carry",
+                                        "math.multiply"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.place_value",
+                       "status":  "implemented",
+                       "requires":  [
+
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  true,
+                       "mastery":  "not established",
+                       "training_action":  "review per-skill and per-gate failures; fresh practice"
+                   },
+                   {
+                       "id":  "math.polynomial_derivative",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.polynomial_value"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.polynomial_value",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.power",
+                                        "math.add.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.power",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.multiply"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.probability",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.quadratic_minimum",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.polynomial_derivative",
+                                        "math.linear_equation"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.quadratic_roots",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.linear_equation",
+                                        "math.power"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.ratio",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.multiply"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.remainder",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.divide",
+                                        "math.subtract.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.round",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.divide",
+                                        "math.place_value"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.triangle_area",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.area",
+                                        "math.divide"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.units",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.ratio"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.variance",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.mean",
+                                        "math.power"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.volume",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.area"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.add.carry",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.add.no_carry"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  true,
+                       "mastery":  "not established",
+                       "training_action":  "review per-skill and per-gate failures; fresh practice"
+                   },
+                   {
+                       "id":  "math.add.no_carry",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.place_value"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  true,
+                       "mastery":  "not established",
+                       "training_action":  "review per-skill and per-gate failures; fresh practice"
+                   },
+                   {
+                       "id":  "math.add.signed",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.add.carry"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  true,
+                       "mastery":  "not established",
+                       "training_action":  "review per-skill and per-gate failures; fresh practice"
+                   },
+                   {
+                       "id":  "math.decimal.add",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.add.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.decimal.divide",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.divide"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.decimal.multiply",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.multiply"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.decimal.subtract",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.subtract.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.fraction.add",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.add.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  true,
+                       "mastery":  "not established",
+                       "training_action":  "review per-skill and per-gate failures; fresh practice"
+                   },
+                   {
+                       "id":  "math.fraction.compare",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.less"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.fraction.divide",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.divide"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.fraction.multiply",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.multiply"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.fraction.subtract",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.fraction",
+                                        "math.subtract.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.percent.change",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.percent.of",
+                                        "math.subtract.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.percent.of",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.ratio"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.percent.reverse",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.percent.of",
+                                        "math.linear_equation"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.subtract.borrow",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.subtract.no_borrow"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.subtract.no_borrow",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.add.no_carry"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "math.subtract.signed",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.subtract.borrow",
+                                        "math.add.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "baseline assessment before lesson selection"
+                   },
+                   {
+                       "id":  "memory.archive",
+                       "status":  "planned",
+                       "requires":  [
+                                        "reading.extraction",
+                                        "tools.read"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "memory.compaction",
+                       "status":  "planned",
+                       "requires":  [
+                                        "reading.conflicts",
+                                        "memory.archive"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "planning.dependencies",
+                       "status":  "planned",
+                       "requires":  [
+                                        "state.registers",
+                                        "tools.finish"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "planning.recovery",
+                       "status":  "planned",
+                       "requires":  [
+                                        "planning.dependencies",
+                                        "tools.reconcile"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "reading.conflicts",
+                       "status":  "planned",
+                       "requires":  [
+                                        "reading.extraction"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "reading.extraction",
+                       "status":  "planned",
+                       "requires":  [
+
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "research.controls",
+                       "status":  "planned",
+                       "requires":  [
+                                        "research.questions",
+                                        "math.probability"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "research.experiments",
+                       "status":  "planned",
+                       "requires":  [
+                                        "research.controls",
+                                        "code.python.tests",
+                                        "planning.recovery"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "research.findings",
+                       "status":  "planned",
+                       "requires":  [
+                                        "research.experiments",
+                                        "math.variance",
+                                        "memory.compaction",
+                                        "logic.premise_robustness",
+                                        "logic.reverse_support"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "research.questions",
+                       "status":  "planned",
+                       "requires":  [
+                                        "reading.conflicts",
+                                        "logic.deduction"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "spatial.constraints",
+                       "status":  "planned",
+                       "requires":  [
+                                        "spatial.coordinates",
+                                        "logic.deduction"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "spatial.coordinates",
+                       "status":  "planned",
+                       "requires":  [
+                                        "math.units",
+                                        "state.registers"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "spatial.transforms",
+                       "status":  "planned",
+                       "requires":  [
+                                        "spatial.coordinates",
+                                        "math.matrix_product"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "state.registers",
+                       "status":  "implemented",
+                       "requires":  [
+                                        "math.add.signed"
+                                    ],
+                       "has_generator":  true,
+                       "trained_in_68_update_comparison":  true,
+                       "mastery":  "not established",
+                       "training_action":  "review per-skill and per-gate failures; fresh practice"
+                   },
+                   {
+                       "id":  "tools.edit",
+                       "status":  "planned",
+                       "requires":  [
+                                        "tools.read",
+                                        "tools.write"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "tools.finish",
+                       "status":  "planned",
+                       "requires":  [
+                                        "tools.recovery"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "tools.permissions",
+                       "status":  "planned",
+                       "requires":  [
+                                        "tools.schemas"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "tools.read",
+                       "status":  "planned",
+                       "requires":  [
+                                        "reading.extraction"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "tools.reconcile",
+                       "status":  "planned",
+                       "requires":  [
+                                        "tools.recovery"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "tools.recovery",
+                       "status":  "planned",
+                       "requires":  [
+                                        "tools.schemas",
+                                        "tools.edit"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "tools.schemas",
+                       "status":  "planned",
+                       "requires":  [
+                                        "reading.extraction"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "tools.write",
+                       "status":  "planned",
+                       "requires":  [
+                                        "tools.read"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "web.html",
+                       "status":  "planned",
+                       "requires":  [
+                                        "reading.extraction",
+                                        "tools.write"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "web.interaction",
+                       "status":  "planned",
+                       "requires":  [
+                                        "web.html",
+                                        "code.python.tests"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "web.layout",
+                       "status":  "planned",
+                       "requires":  [
+                                        "web.html",
+                                        "tools.finish"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "workflow.recovery",
+                       "status":  "planned",
+                       "requires":  [
+                                        "planning.recovery",
+                                        "memory.archive"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "world.deadlines",
+                       "status":  "planned",
+                       "requires":  [
+                                        "world.readiness",
+                                        "state.registers"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "world.readiness",
+                       "status":  "planned",
+                       "requires":  [
+                                        "tools.schemas",
+                                        "tools.permissions"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   },
+                   {
+                       "id":  "writing.revision",
+                       "status":  "planned",
+                       "requires":  [
+                                        "reading.extraction",
+                                        "tools.edit"
+                                    ],
+                       "has_generator":  false,
+                       "trained_in_68_update_comparison":  false,
+                       "mastery":  "not established",
+                       "training_action":  "implement and qualify before training"
+                   }
+               ]
+}
