@@ -14,7 +14,7 @@ driver or recovery path is a tooling result, not a learned model capability.
 | Coding/admin diagnostic connection | Original and Remix 2 executed 11 tasks; isolated code/config checks | Actual BW/native tool pathway and broader Linux administration |
 | Lesson verification and mixed review | Existing SSS/BW/PCC installation qualified, including prepared 128-lesson admission | Bind next curriculum to chosen current parent; old prepared policy is not a Remix 2 continuation |
 | Native training and checkpointing | Completed fixed 68-update comparisons; exports and archived states retained | Next mixed curriculum not trained yet |
-| Answering, formatting and reasoning separation | Direct skill checkers and answer/reasoning metadata exist; recent foundation screens conflate semantic correctness with strict-output demands | Build and run separate answer-only, known-answer format-only, and fresh answer-plus-format levels; report answer, format and joint rates independently; verify native loss masks |
+| Answering, formatting and reasoning separation | Pure condition validator and separate answer/format/composed/reasoning score functions implemented and unit-tested; earlier screens still conflate answer and format | Connect task-native conditions to frozen evaluation and reports; create held-out format-only cases; verify PCC native loss masks before training |
 | Operator next-action guidance | Pure state-to-action helper and guard tests | Connect trusted component receipts; not yet an end-to-end automatic driver |
 | Learning/forgetting measurement | Per-skill results, gains/losses, quant and external checks exist | Consolidated current reports and unseen qualification before mastery claims |
 | Checkpoint preservation and cleanup | Best/final preservation and verified fleet archival exercised | Continue explicit per-cycle retention receipts and space checks |
@@ -63,6 +63,10 @@ student failure.
   error. The three-level design and scoring rules are in
   [ANSWER-FORMAT-LEVELS.md](ANSWER-FORMAT-LEVELS.md); no controlled run has
   established those separate rates yet.
+- `sss/learning_levels.py` now validates explicit lesson levels and scores the
+  answer, format, reasoning and joint results independently. Five targeted unit
+  tests pass. It is not yet wired to the frozen evaluator or a data/training
+  pipeline, so it has not produced model scores or confirmed PCC supervision.
 
 ## Ownership and exclusion
 
@@ -76,7 +80,8 @@ protected test responses, or checker internals into student examples. Any future
 lesson derived from a tooling incident must be deliberately authored, independently
 verified and admitted through the ordinary practice pathway.
 
-Next operator step: prepare matched answer-only and format-only sets with task-native
+Next operator step: connect these conditions to frozen evaluation and reports, then
+prepare matched answer-only and known-answer format-only sets with task-native
 checkers, followed by fresh composed cases. Keep direct and reasoning mode as a
 separate experimental axis. Before training, bind the examples to a specific parent,
 checker version, data split and policy, and verify PCC's actual supervised token

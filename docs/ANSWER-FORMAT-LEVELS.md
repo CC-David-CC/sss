@@ -54,5 +54,10 @@ recent foundation screens combined semantic answering with strict output expecta
 They cannot isolate a formatting weakness from a skill weakness. The first generic
 JSON screen is invalid for broad comparison because it replaced task-native proof
 schemas; see [the audit](FORMAT-SCREEN-AUDIT.md). Its aggregate scores are excluded.
-The three-level split is the next measurement and training design; it has not yet
-been run as a controlled study, and no model improvement is claimed from it.
+
+`sss/learning_levels.py` now provides a strict condition validator and separate
+answer, format-only, composed, and reasoning score functions. Its targeted unit tests
+cover independent verdicts and unscorable checker errors. This is a pure scoring
+contract: the S³ model evaluator does not yet generate or run all three matched
+conditions, PCC has not confirmed per-example loss masks for these targets, and no
+model training or improvement is claimed from this split.
