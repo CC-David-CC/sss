@@ -1,0 +1,2010 @@
+{
+  "schema": 1,
+  "scope": "396-case small development triage, direct answer and strict output; not mastery or final acceptance",
+  "panel_id": "b0e67cd3e7681bde9d8d0011680c515a30b84162036428a770f0cd31475f349e",
+  "cases": 396,
+  "original": {
+    "correct": 50,
+    "finished": 343,
+    "sha256": "2323c47d8bf14fb2906e1275688aa784768cf39a364729bc52bf6ba5c0742764"
+  },
+  "parent": {
+    "correct": 141,
+    "finished": 396,
+    "sha256": "7254cd2904ff5114d50ee5b5f961482789388dae3d609723ae67b759100288be"
+  },
+  "candidate": {
+    "correct": 155,
+    "finished": 392,
+    "sha256": "e77134d8c9575fa3b49d0ba9b397a80f5a6669921ef82479ccf9eee27bff0ac5",
+    "updates": 17,
+    "presentations": 136
+  },
+  "gained_vs_parent": 40,
+  "lost_vs_parent": 26,
+  "groups": [
+    {
+      "skill_id": "math.place_value",
+      "gate": "independent",
+      "cases": 2,
+      "original": 1,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.place_value",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.place_value",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.add.carry",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.add.carry",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 2
+    },
+    {
+      "skill_id": "math.add.carry",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.multiply",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.multiply",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.multiply",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.divide",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 2
+    },
+    {
+      "skill_id": "math.divide",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.divide",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "independent",
+      "cases": 2,
+      "original": 2,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "composition",
+      "cases": 2,
+      "original": 1,
+      "parent": 2,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 2,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.ratio",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.ratio",
+      "gate": "composition",
+      "cases": 2,
+      "original": 1,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.ratio",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.units",
+      "gate": "independent",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.units",
+      "gate": "composition",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.units",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 1,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.add.signed",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.add.signed",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "math.add.signed",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "state.registers",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "state.registers",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "state.registers",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.dot",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.dot",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.dot",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.matrix_product",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.matrix_product",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.matrix_product",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.and",
+      "gate": "independent",
+      "cases": 2,
+      "original": 1,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.and",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "logic.and",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.or",
+      "gate": "independent",
+      "cases": 2,
+      "original": 1,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.or",
+      "gate": "composition",
+      "cases": 2,
+      "original": 1,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "logic.or",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 1,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.not",
+      "gate": "independent",
+      "cases": 2,
+      "original": 2,
+      "parent": 1,
+      "candidate": 2,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.not",
+      "gate": "composition",
+      "cases": 2,
+      "original": 1,
+      "parent": 1,
+      "candidate": 2,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.not",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.deduction",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.deduction",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.deduction",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.area",
+      "gate": "independent",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.area",
+      "gate": "composition",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.area",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.volume",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.volume",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.volume",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.xor",
+      "gate": "independent",
+      "cases": 2,
+      "original": 1,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.xor",
+      "gate": "composition",
+      "cases": 2,
+      "original": 1,
+      "parent": 2,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "logic.xor",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 1,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.subtract.no_borrow",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.subtract.no_borrow",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 2
+    },
+    {
+      "skill_id": "math.subtract.no_borrow",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.subtract.borrow",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.subtract.borrow",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "math.subtract.borrow",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.subtract.signed",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.subtract.signed",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.subtract.signed",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.remainder",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.remainder",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.remainder",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.probability",
+      "gate": "independent",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.probability",
+      "gate": "composition",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.probability",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.proof",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.proof",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.proof",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.joint_premises",
+      "gate": "independent",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.joint_premises",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.joint_premises",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.premise_robustness",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.premise_robustness",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.premise_robustness",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.reverse_support",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.reverse_support",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "logic.reverse_support",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.absolute",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.absolute",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.absolute",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.bayes",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 2,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.bayes",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 2,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.bayes",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.equal",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.equal",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.equal",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.greater",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.greater",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.greater",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.ceil",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 2,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.ceil",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "math.ceil",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 2,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.decimal.add",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 2
+    },
+    {
+      "skill_id": "math.decimal.add",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.decimal.add",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.decimal.divide",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.decimal.divide",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.decimal.divide",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.decimal.multiply",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 2
+    },
+    {
+      "skill_id": "math.decimal.multiply",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.decimal.multiply",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.decimal.subtract",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 2
+    },
+    {
+      "skill_id": "math.decimal.subtract",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.decimal.subtract",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.power",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.power",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.power",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 2,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.polynomial_value",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.polynomial_value",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.polynomial_value",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.polynomial_derivative",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.polynomial_derivative",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.polynomial_derivative",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.definite_integral",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.definite_integral",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.definite_integral",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.determinant",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.determinant",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.determinant",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.linear_equation",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.linear_equation",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.linear_equation",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.quadratic_roots",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.quadratic_roots",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.quadratic_roots",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.eigenvalues",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.eigenvalues",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.eigenvalues",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.less",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.less",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.less",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.floor",
+      "gate": "independent",
+      "cases": 2,
+      "original": 2,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.floor",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "math.floor",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 1,
+      "parent": 1,
+      "candidate": 2,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.compare",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.compare",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.compare",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 1,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.divide",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.divide",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.divide",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.multiply",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "math.fraction.multiply",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.multiply",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 2
+    },
+    {
+      "skill_id": "math.fraction.subtract",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.subtract",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.fraction.subtract",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.linear_system",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.linear_system",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.linear_system",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.maximum",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.maximum",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.maximum",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.mean",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.mean",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.mean",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.median",
+      "gate": "independent",
+      "cases": 2,
+      "original": 1,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.median",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.median",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.method_selection",
+      "gate": "independent",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "math.method_selection",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.method_selection",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 1,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 1
+    },
+    {
+      "skill_id": "math.minimum",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.minimum",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.minimum",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 1,
+      "candidate": 2,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.percent.of",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.percent.of",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.percent.of",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.percent.change",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.percent.change",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.percent.change",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.percent.reverse",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.percent.reverse",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.percent.reverse",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.perimeter",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.perimeter",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.perimeter",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.quadratic_minimum",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.quadratic_minimum",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.quadratic_minimum",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.round",
+      "gate": "independent",
+      "cases": 2,
+      "original": 1,
+      "parent": 0,
+      "candidate": 1,
+      "gained_vs_parent": 1,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.round",
+      "gate": "composition",
+      "cases": 2,
+      "original": 2,
+      "parent": 0,
+      "candidate": 2,
+      "gained_vs_parent": 2,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.round",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 2,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.triangle_area",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 2,
+      "candidate": 2,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.triangle_area",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.triangle_area",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.variance",
+      "gate": "independent",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.variance",
+      "gate": "composition",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    },
+    {
+      "skill_id": "math.variance",
+      "gate": "transfer_recovery",
+      "cases": 2,
+      "original": 0,
+      "parent": 0,
+      "candidate": 0,
+      "gained_vs_parent": 0,
+      "lost_vs_parent": 0
+    }
+  ],
+  "finite_boolean_truth_inputs_shared_across_splits": true,
+  "mastery_established": false,
+  "promoted": false
+}

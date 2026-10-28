@@ -69,8 +69,17 @@ student failure.
   full-model AdamW update separately completed on eight practice entries, and
   its exported candidate reloaded with loss error 3.67e-9. This establishes an
   update and checkpoint round trip, not learning, retention, or promotion. A
-  resumed run is intended to cover the first 136 practice presentations.
+  resumed run completed 17 total updates and 136 practice presentations,
+  covering all 66 skills' independent exercises; the checkpoint reloaded.
   [First update receipt](results/mixed66-first-update-20261028.json).
+- The same 396-case mixed development panel gave original F32 50 correct and
+  343 naturally finished, Remix 2 parent 141 correct and 396 finished, and the
+  17-update candidate 155 correct and 392 finished. Relative to the parent,
+  the candidate gained 40 and lost 26 individual answers. This strict-format
+  small panel is development triage; Boolean inputs overlap semantically across
+  splits, and it is not evidence of broad capability, held-out acceptance,
+  coding/admin improvement, or model promotion.
+  [Per-skill counts](results/mixed66-development-summary-20261028.json).
 
 - Initial tool fixture grading demanded unrequested finish wording. Corrected it,
   added regression coverage, and rescored saved trusted observations; no inference
