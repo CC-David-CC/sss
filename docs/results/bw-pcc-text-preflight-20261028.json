@@ -1,0 +1,24 @@
+{
+  "schema": "sss-bw-pcc-text-preflight-qualification-v1",
+  "date": "2026-10-28",
+  "status": "PASS",
+  "scope": "Controlled CPU fixture, text request capacity observation through COW and BW; no language-model inference",
+  "pcc_commit": "4903927710aacfd4b7187e71bff9c8e6ec4b092b",
+  "bw_commit": "e3f8ac950a33b4df8db37c0a708cdc9394990c43",
+  "pcc_tests_passed": 16,
+  "bw_tests_passed": 34,
+  "checked": [
+    "Snapshot and profile binding",
+    "Text suffix count using the serving encoder",
+    "Exact capacity boundary and overflow observation",
+    "Stale snapshot rejection and content digest validation",
+    "No model work or workflow advancement during observation"
+  ],
+  "automatic_generation_guard": false,
+  "compaction_implemented_by_this_change": false,
+  "multimodal_preflight_implemented": false,
+  "actual_long_context_model_qualification": false,
+  "model_quality_claim": false,
+  "training": false,
+  "original_unknown_operations_resolved": false
+}

@@ -118,6 +118,13 @@ capacity checked by PCC's generation code. The original error receipts are not
 available, so this is a supported failure mechanism rather than a proven error
 for either request. See the [context investigation](results/bw-minicpm-context-capacity-20261028.json).
 
+PCC and BW now expose an explicit snapshot-bound text context preflight. It uses
+the configured encoder for the next text suffix and reports whether the requested
+output fits; it does not dispatch model work, automatically change generation, or
+compact history. Controlled CPU checks passed 16 PCC and 34 BW tests. These do
+not qualify actual long-context model behavior, multimodal inputs, or recovery of
+the prior unknown operations. See the [preflight receipt](results/bw-pcc-text-preflight-20261028.json).
+
 The follow-up adapter `sss_integration.bw_task_adapter` materializes the public
 `shell.failure_status` and `shell.quoted_filename` fixtures with workspace-relative
 inputs. Five tests passed on llm-60, including admission through BW's existing
