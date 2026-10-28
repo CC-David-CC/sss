@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Actual scripted BW/COW/OS helper-file and explicit-mode archival; no model inference/training",
+  "bw_legacy_and_lifecycle_passing_methods": 19,
+  "updated_helper_workflow_methods": 1,
+  "bw_created_and_mode_regression_methods": 1,
+  "observed": [
+    "create_text_file returned created",
+    "set_mode returned mode_changed after explicit owner grant",
+    "captured helper bytes and 0644 mode replayed",
+    "current check and explicit finish retained",
+    "S3 accepts allowed helper artifacts while independently grading task.py"
+  ],
+  "source_sha256": {
+    "bw_capture": "9190d7954ecfc983e988524e87e6ce76bc686a76f1ad11d98e03f27b7376f5dd",
+    "sss_workflow": "f9a94474324a396e7c4d535176c09a7d94a9080c92f11e7e1901476d389105bc"
+  },
+  "original_receipts_sha256": {
+    "helper02.json": "e09a3c6826c28a11b439f6b301b002c5249c992aae50144ff4a410d63b329ab0",
+    "helper04.json": "0f2b97bf6bb69c3ad50b53c1a20f6b782fce25fe6041481221de910e12e6066e",
+    "capture-created01.json": "e5493033c4eca3f6378cdae882d198ac3ce13e9ca44cff677d8a961784d5f457"
+  },
+  "early_controls": {
+    "helper02": "One fixture lacked the separate mode grant; original permission boundary refused it",
+    "helper03": "Readable mode path also required; explicitly granted before successful control"
+  },
+  "weights_updated": false,
+  "independent_oracle_weakened": false
+}

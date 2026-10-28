@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "kind": "synthetic grammar stress after an observed prefix",
+  "original_prefix_tokens": 512,
+  "unobserved_continuation_limit": 4096,
+  "actual_missing_suffix_reconstructed": false,
+  "original_engine_id": "59795d4f2a57ba77017e89db0f41896a48ac51a2725da89f777b68fc75093529",
+  "model_calls": 0,
+  "training_updates": 0,
+  "accepted_observed": 512,
+  "accepted_synthetic": 194,
+  "status": "REPRODUCED_PARSER_FAILURE",
+  "exception": "RuntimeError: Matcher error after mask at 706",
+  "matcher_error": "lexer error: too many states: 250000 >= 250000\n<non-verbose/>",
+  "stop_reason": "InternalError",
+  "private_receipt_sha256": "a2184ae477ab61e35b54074409b203e0b90f30bbdef5d4284c22643aed88f56a"
+}

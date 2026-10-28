@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "scope": "Same trained AdamW update-1 weights; execution comparison, no new training",
+  "model_sha256": "1e901a49ee699f1aa98910aafb66f8472b0c66b0cdd10c3fac1ad4e41308bed5",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "cases": 864,
+  "passed": 234,
+  "finished": 786,
+  "different_sampled_sequences": 0,
+  "answer_gains": 0,
+  "answer_losses": 0,
+  "reference_runtime_id": "4a78701cc4d8f1f2951dca642e6ab84f7b1929e37b29805ceefb9615db1a12e5",
+  "cow_runtime_id": "b076146acda40cc60bb212ebfabb6d1a798b1e752f9e8e0d55b5962b6bfec528",
+  "fresh_wall_seconds": 2416.7024955330417,
+  "cow_wall_seconds": 904.1617245795205,
+  "fresh_allocated_gpu_seconds": 2408.633417483419,
+  "cow_allocated_gpu_seconds": 896.4344366993755,
+  "observed_wall_ratio": 2.672865295925822,
+  "timing_caveat": "Different shared A100 cards and uncontrolled other loads; preflight hashing excluded, not a universal bound",
+  "weights_updated_during_comparison": false
+}

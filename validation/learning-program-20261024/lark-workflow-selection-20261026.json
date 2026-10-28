@@ -1,0 +1,79 @@
+{
+  "bw_commit": "182316fc051fe040fcb8822dd48f6ba01d4c7dc1",
+  "corrected_child_installation": {
+    "errors": 0,
+    "passed": 3
+  },
+  "first_selection": {
+    "passed": 14,
+    "test_loader_errors": 1
+  },
+  "frozen_68_study_changed": false,
+  "kind": "Optional structured grammar through S3 workflow owner configuration",
+  "logs_sha256": {
+    "lark-sss-green01.log": "9224d19739e802ed7b720b38c7c928c043d9b55ed232857a6f78c41e320f1fad",
+    "lark-sss-green02.log": "93a65164d7349c343024fe97bae94bc5bce39b35daeaa05780c45e5ebde42aae",
+    "lark-sss-red01.log": "fa706a1a543fc21109a028fed998b51b16e6c7ab614024d09b018f63be90a114"
+  },
+  "model_forward_calls": 0,
+  "native_workflow_qualified": false,
+  "original_indeterminate_operation_rewritten": false,
+  "passing_distinct_controls": 17,
+  "pcc_commit": "3adc5deb82fcfd92ff767584081fda3079c2daf9",
+  "prefix_mask_comparison": {
+    "accepted_observed": 512,
+    "accepted_synthetic": 0,
+    "actual_missing_suffix_reconstructed": false,
+    "differing_mask_bits": 0,
+    "elapsed_seconds": 0.5212051549970056,
+    "experimental_compiler": "supported-explicit-lark",
+    "lark_sha256": "a13f47f41778b04381532f4a264680fd4b7d2e4b2a15b9276ddea7f94a8c689b",
+    "limits_changed": false,
+    "masks_compared": 512,
+    "matcher_error": "",
+    "model_calls": 0,
+    "new_engine_id": "4a3a045778016300ee995c22e3da1fad87ce8f9050df7cbdd038da96b0da007b",
+    "original_engine_id": "59795d4f2a57ba77017e89db0f41896a48ac51a2725da89f777b68fc75093529",
+    "original_prefix_tokens": 512,
+    "schema": 1,
+    "selected_rules": [
+      "CALL_0",
+      "CALL_1",
+      "CALL_2",
+      "CALL_3",
+      "CALL_4",
+      "CALL_5",
+      "CALL_6",
+      "CALL_7",
+      "CALL_8",
+      "CALL_9",
+      "TEXT_LINES"
+    ],
+    "status": "COMPLETE_PREFIX_MASK_COMPARISON",
+    "stop_reason": "NotStopped",
+    "synthetic_limit": 4096,
+    "training_updates": 0,
+    "unequal_masks": 0
+  },
+  "schema": 1,
+  "scripted_CPU_backend": true,
+  "source_profiles_require_new_binding": true,
+  "sources_sha256": {
+    "sss/adapters/artifact_evaluation.py": "60bdda0e727fa3a815450c07c55b5416617595e8c53904025d2e58c638dfdaa5",
+    "sss/adapters/workflow_evaluation.py": "91f06578415d84e8110a1e6525b10f338c840322bd82ca85a98cf4742ce7c9e5",
+    "sss/workflow_assessment.py": "e0657bfdb02531c2b8f6c7a44d45c2ca91c20354bf3441a439922bbb50b4d4fc",
+    "sss_integration/bw_verified_practice_cpu.py": "f889ccd23285bb18c622a39f7dc6a94a993e5724b7a51024551150d7b09f05f8",
+    "sss_integration/test_workflow_assessment.py": "cdfcbe93ea55e133de7ea7857ecf46f8f6e0b7e41b60b0c0668c3066d3bcbee8",
+    "sss_integration/test_workflow_grammar_selection.py": "ee0dcf7d8a3d0870646b18fe59eedcd952061530ff05c9d8e5e733fd5dada554"
+  },
+  "training_updates": 0,
+  "workflow_checks": [
+    "Actual BW tool execution and current checks",
+    "Read/edit/check/finish order",
+    "Preserved input",
+    "Failure and correction captures",
+    "Read-only completed replay",
+    "Explicit launch syntax with unchanged grants, task and bounds",
+    "No implicit grammar migration"
+  ]
+}

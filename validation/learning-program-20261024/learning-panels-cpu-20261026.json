@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "kind": "sss.installed-learning-panels-cpu-validation.v1",
+  "source_base_commit": "3dbd0757c4b9c6c6f7766f111c724e2dcc8440af",
+  "sources": {
+    "sss/adapters/learning_panels.py": "0874bea359a266a567290c96a52dc3bf2462decb9e11d0c06af1153f7f85766e",
+    "sss_tests/test_learning_panels.py": "1c2dbc2cac20e093aa107a027b8a29d3c9a9508f2098b6baae7a8f63f843e06c",
+    "sss_integration/test_learning_panels_cpu.py": "05ebfcbc6cfadc83fbef6b66fd7b6caa1a59e96dc4b1910914dff803ecef1244"
+  },
+  "bw_commit": "29078a1a914b828f4f3f8e82bf43ece75670a466",
+  "pcc_commit": "4a536ab6e26a7d97f200452479a201b414ce55fb",
+  "focused": {
+    "tests": 25,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "controlled_panels": true,
+    "actual_bw": false
+  },
+  "joined": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "wall_seconds": 47.126584838999406,
+    "actual_bw_capture_and_tools": true,
+    "scripted_proposals": true,
+    "actual_independent_artifact_oracle": true,
+    "actual_model_template_and_tokenizer": true,
+    "actual_registry": true,
+    "actual_pcc_service_and_learning_runs": true,
+    "controlled_score_panels": true,
+    "public_baseline": true,
+    "exact_stored_tokens_targets_masks": true,
+    "refused_unregistered_practice": true,
+    "service_restart_recovery": true,
+    "panel_calls_after_recovery": [
+      1,
+      1,
+      1
+    ]
+  },
+  "model_forward_passes": 0,
+  "native_training_calls": 0,
+  "gpu_used": false,
+  "promoted": false,
+  "original_private_evidence_sha256": {
+    "focused01.json": "d7cd14be0c5f0a3f3e118eadfc2d2c3f783b14727e290055aa7ebc53527e47d5",
+    "focused01-stderr.log": "c0d48e0a160583deb399bb432deb5355de38d4472f340512ace18f71b8a44784",
+    "installed01.json": "f35e98d7d272543d8d83dfac7ca5bc13bfc75f7989a5eeb3c2f82f74fba6c27c",
+    "installed02.json": "dd0c6833437b6ef0b1d74b93aabbeffafa2a4796a9f18f2929c7016abc2d7d4e",
+    "installed03.json": "2987320b52f1129fb201084f3849bf80254e28d9222d28ecb88c47cde5fd8786",
+    "installed04.json": "f4f2d01083fbcf7ed8b738045bc5050c7a28bbdb8d5bad76e7adb1cc35bd09c5",
+    "installed04-stderr.log": "cc53dd9c5f0f1e5cc00d3f34cf6a457ad7b5310d16812527a823edbb77fcabeb"
+  },
+  "setup_failures_retained": [
+    "Missing pinned BW document dependencies in quant-only environment",
+    "Missing pinned llguidance in new isolated environment",
+    "Test requested 4096 tokens from qualified dense profile limited to 512; test corrected to 512"
+  ],
+  "limitations": [
+    "Controlled target/workflow/retention score panels do not qualify real model measurements",
+    "Production configured factory and joined real-model train/test/acceptance remain incomplete",
+    "Recovery of complete original panels is supported; explicit continuation of unstarted panels remains outstanding"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "scope": "Owner evaluation placement correction, same saved native update10, no new training or numerical policy change",
+  "model_sha256": "9c8893eab422801a5dfc25bc735c946048728439b2ea2e3baa5e193633aed4ef",
+  "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "previous_partial_cases": 543,
+  "previous_partial_wall_seconds": 7637.338843415491,
+  "complete_cases": 864,
+  "complete_wall_seconds": 558.0049176104367,
+  "passed": 387,
+  "finished": 858,
+  "overlapping_cases_compared": 543,
+  "different_sampled_sequences": 0,
+  "different_case_outcomes": 0,
+  "observed_original_nonempty_process_sm_percent": [
+    11,
+    9
+  ],
+  "observed_dominant_other_process_sm_percent": [
+    88,
+    98
+  ],
+  "idle_suitable_cards_at_audit": 2,
+  "original_policy": "Prefer memory fragments before observed GPU utilization",
+  "amended_policy": "Prefer observed GPU utilization before memory fragmentation, retaining memory and PCC lease guards",
+  "native_update_repeated": false,
+  "previous_partial_evidence_retained": true,
+  "promoted": false,
+  "timing_limits": "Different shared GPUs and uncontrolled loads; partial versus complete panels; operational placement observation, not an algorithm benchmark"
+}

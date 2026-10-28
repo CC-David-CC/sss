@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Configured actual-model COW learning mechanics; 15 development cases, not broad acceptance",
+  "policy_id": "5697d9c2fc3ae1a0b65c0023b4f155036d16e1cd0a1caee5bbed9604c6b756a7",
+  "evaluator_id": "3625aa97edc2c45e9852ff9e156cf8a21f2973b6febc5b33ee191845fb569dfa",
+  "baseline": {
+    "passed": 1,
+    "finished": 3,
+    "cases": 15,
+    "evaluation_sha256": "8c6be3fdde70c94e02dc438cb7c6ed55dbcb3bdc03566eb16522f354ac090465"
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "passed": 5,
+      "finished": 9,
+      "cases": 15,
+      "adapter_sha256": "e0950c3e7209bf1e06a2dd42cb66c5f219e84ee6b2bb2895ee2a4f250b32e1e8",
+      "optimizer_state_sha256": "4517f571855e87a3515c1c043184521882642fc2ea11c035e3bb21ebad8a607e",
+      "native_updates": 1,
+      "presentations": 3,
+      "optimizer_state_policy": "fresh",
+      "baseline_answer_delta": 4,
+      "parent_answer_delta": 4,
+      "baseline_answer_losses": 0,
+      "working_decision": "KEEP_AND_ADVANCE",
+      "evaluation_sha256": "e3733e74c9c554325beffb781e67c79dfaea0b61f7900c39de300e63d6ec3c19",
+      "report_sha256": "997f94a2695191884d26b66a3da483269780ba4d474cad1e4ceead76f819ab20"
+    },
+    {
+      "round": 2,
+      "passed": 5,
+      "finished": 13,
+      "cases": 15,
+      "adapter_sha256": "ec8bdb6d5f99c1bff23f0e69a97281637d40bc03936be446410738b501d5c6e8",
+      "optimizer_state_sha256": "00ff88e7ba05e481a73a5a67413fb416480a79bf58a22f0208ad24757261f817",
+      "native_updates": 1,
+      "presentations": 3,
+      "optimizer_state_policy": "fresh",
+      "baseline_answer_delta": 4,
+      "parent_answer_delta": 0,
+      "baseline_answer_losses": 0,
+      "working_decision": "KEEP_AND_ADVANCE",
+      "evaluation_sha256": "117daba8792d9dbe89fbe0da01cc993667475e9f010ca40500fef6a409cd701a",
+      "report_sha256": "285a2d4b7e27dd7632b1413021b1b4871de7a5c299c804e9c8a9a541d5b338ba"
+    }
+  ],
+  "actual_cow_evaluations": 3,
+  "actual_native_jobs": 2,
+  "raw_case_grades_and_tokens_revalidated": 45,
+  "original_evidence_recovery_passed": true,
+  "raw_grade_tamper_rejected": true,
+  "both_real_cli_clients": true,
+  "duplicate_acknowledgements_verified": 11,
+  "duplicate_jobs_created": 0,
+  "protected_answers_exported": false,
+  "promoted": false,
+  "source_sha256": {
+    "sss/sss/adapters/cow_learning.py": "a076bb7b27b7b09eb78cf3671d034460e0b98da4cfd00d8054a8e0f0cb25712e",
+    "sss/sss/adapters/learning_policy.py": "31959211f1efe4c8048df8aca70153de5fcbd0c82596ec53299a628e485210e2",
+    "sss/sss_integration/optimizer_evaluate.py": "571dfd921b5e99dfb0997d4a877c32006f006e46fa5ba9d0d4b1adc39a55a9d1",
+    "pcc/tools/pcc_lessons.py": "371afea40e60e3f18aa1fdf9c27a932177f0d49fa1e8a512985060443d515d0d"
+  }
+}

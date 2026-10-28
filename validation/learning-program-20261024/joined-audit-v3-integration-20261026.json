@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "cpu_checks": 71,
+  "scope": "Integration of optional division generator and joined-report auditor; no new native model work",
+  "source_parents": [
+    "a08c1fea681caf0ddac10b417f7f53ee7cb61ed6",
+    "1195ece2d4475f1e030b3e0a36014834aa0a59f2"
+  ],
+  "log_sha256": "f0561b8c0488b3e97bf29f91c4e9afdbc0ac130a094bf067eafa406dfa495e85",
+  "auditor_sha256": "1653a2e2797959afd4dfebe6a2659f9481e32827fc87d77339e0a4a2beb19685",
+  "generator_sha256": "30f430f09598ff3fbd309feb850041bc2e40679116ecd7be7112e7c1b45b4474",
+  "original_running_installations_modified": false,
+  "fixed_68_study_changed": false,
+  "new_model_calls": 0,
+  "new_training_updates": 0
+}

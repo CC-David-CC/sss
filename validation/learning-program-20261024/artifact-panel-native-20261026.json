@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "kind": "sss.real-artifact-panel-qualification.v1",
+  "sss_base_commit": "f20493f07a4a9d13f14555014500d20a443ee7df",
+  "pcc_execution_source_commit": "98a46fc37f5d06a0d3e92829c020356089a00671",
+  "bw_commit": "29078a1a914b828f4f3f8e82bf43ece75670a466",
+  "sources": {
+    "sss/artifact_assessment.py": "cb9161296f1623be6bea936ed07dc698cc7efa2a4804ba73ad0f9ab544df450d",
+    "sss/adapters/artifact_evaluation.py": "21494bbda4b0ecae6051442e9a57f032b50327bb5333d763e0a84e9692c887df",
+    "sss/adapters/cow_learning.py": "b55aa2669420cebf585ea2423bd6ecb4b11398868088a537ed44540f0ce53d6e",
+    "sss_integration/artifact_evaluate.py": "c8dba74df1be80252a8c830b3eaef9da110c9658e36d24c580220debd2147759",
+    "sss_tests/test_artifact_assessment.py": "18c2b49970d6d3cd588589a6f03d93149c202279a08a9a25f3bdb9ccbf0f6d5d",
+    "sss_integration/test_artifact_evaluation.py": "70b2c857d6290625976dd76eec994086017a77ce7c7001d88686f1d60dcdc380"
+  },
+  "contract_tests": {
+    "core_and_composition": 34,
+    "existing_dispatch_recovery": 9,
+    "actual_saved_evidence_replay": 4,
+    "failures": 0,
+    "skips": 0
+  },
+  "native": {
+    "model": "Existing MiniCPM5-2B standard Muon full update42",
+    "model_sha256": "a9c527ad30ffca8ed639286ddf07a6fb6af42fdfbf1706e387d1302f4a5f367d",
+    "cases": 2,
+    "passed": 1,
+    "native_eos": 2,
+    "wall_seconds": 68.38166250499853,
+    "wall_includes_multiple_full_validation_and_recovery_passes": true,
+    "evaluation_id": "2ccda76cbc2008b935c215f03e71f512f39ee82600692078e38605fbb8b09d0f",
+    "runtime_id": "f62882658ea19f107054632b4e85bd7d392acae3c5fe7e0888b0e4d6c62b034e",
+    "context_tokens": 1024,
+    "prefill_batch_tokens": 512,
+    "maximum_generated_tokens": 256,
+    "input_tokens": [
+      424,
+      447
+    ],
+    "original_evidence_recovered_without_dispatch": true,
+    "programs_generated_by_actual_model": true,
+    "scripted_proposals": false,
+    "both_programs_executed_by_actual_isolated_bw_oracle": true
+  },
+  "evidence_sha256": {
+    "probe-exit-private.json": "ee8775f0893729e08d3bcde962602e9f6631c6864b5da1495290b771f6339c6e",
+    "backend/child-process-private.json": "b8edda585a96d9db21665bb54128bc8a09df1746fcdd202b6f916caab139674d",
+    "backend/child-exit-private.json": "7c94b177aec4a75251db04c9cdd801a102248f6c0f3a24ceff98a8bf7b3ab75e",
+    "backend/evaluation/result.json": "e5a36c36a0c3f05a76192649960c212f7a1917d675074d9b67f982399918e827",
+    "backend/evaluation/settlement.json": "b83c4c095d613809c974dccf420cf2b8fc9926c45ecc56f1cb9a823176f544d5",
+    "backend/evaluation/0000-private.json": "917724ca6a56d109c60ef41b22bde736b07d42eb190eced54c0b403f0881c112",
+    "backend/evaluation/0001-private.json": "edb954bd37da4febffb5c5c6c47107620fb61edf9f7dd87930907011c4ce6077",
+    "backend/evaluation/oracle-0000/result-private.json": "215a75ff07d71dfc142d66d36e4242853d305799c5f16e245198297bf18f65f4",
+    "backend/evaluation/oracle-0001/result-private.json": "578abc23a4f28cd3af4638807e2c45574cbee611b072091627b6338a56f178dd"
+  },
+  "training_calls": 0,
+  "weights_updated": false,
+  "promoted": false,
+  "protected_material_published": false,
+  "limitations": [
+    "Two narrow artifact questions are machinery evidence, not a capability rate or optimizer ranking",
+    "Explicitly distinct inference context profile; no change to dense training qualification or frozen68 study",
+    "Actual BW workflow panel and complete joined real-model learning round remain incomplete",
+    "Repeated full model hashes make validation costly; no inference throughput claim"
+  ]
+}

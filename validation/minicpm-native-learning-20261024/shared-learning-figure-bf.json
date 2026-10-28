@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "RENDERED_MEASUREMENTS",
+  "checkpoint_positions": 176,
+  "full_positions": 138,
+  "unique_full_result_hashes": 135,
+  "attached_lora_positions": 38,
+  "common_update": 29,
+  "original_cases": 864,
+  "independent_repetition_claim": false,
+  "complete_68_study": false,
+  "model_bytes_transferred": false,
+  "source_data_sha256": {
+    "shared-learning-block-bf.json": "68fe28790ad3b905912adb04c46ec78cca4cbffe9cf1152671309b9c513296f3",
+    "direct-lora-learning-bf.json": "f73b65668fac39ea8ded924c0df329aed732d2629ed3158f651034e77ee66b4e",
+    "common-update29-bf.json": "12dd070ea25e39d4aab779474c5ae5c019f114b5d3196462d8cd6a0b92f99ff9"
+  },
+  "plotting_source_sha256": "8d2d21c3913f9e2aec01fd876956f90a0466c5d548648dfcaf158f6d10674378"
+}

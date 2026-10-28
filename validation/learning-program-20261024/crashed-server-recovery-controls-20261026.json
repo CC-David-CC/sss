@@ -1,0 +1,35 @@
+{
+  "checks": [
+    {
+      "name": "recovered-budget-green-cf.log",
+      "sha256": "e466480ab2258dcac8ea5c2d46033829f9bbd1ad2754a28373c58af2b29b90cd",
+      "tests": 15
+    }
+  ],
+  "crash_adoption_default": false,
+  "full_joined_learning_cycle_complete": false,
+  "native_receipt_sha256": "bd1619ce70a04dccabab12478a0baeba17908a93f7b9d4ddae8c3991f82edb9d",
+  "original_failed_checks": [
+    {
+      "name": "crashed-server-red-cf.log",
+      "sha256": "e49cfbc52bb021e56a19018ec31d7d109585ededce7a40fbec7f7701c6875cd6",
+      "tests": null
+    },
+    {
+      "name": "recovered-budget-red-cf.log",
+      "sha256": "b3fd581bd0d214a1230255898832223ffa756d3c9cd339ee42d0df67d3f7b2f4",
+      "tests": null
+    }
+  ],
+  "original_sources_preserved": true,
+  "schema": 1,
+  "scope": "CPU HTTP/store/ledger/process and endpoint proof; native CLI qualification recorded separately",
+  "source_sha256": {
+    "scripts/recover_bw_workflow.py": "a8273713e181713fdaffb7ac9bd8d2e6b59ca0f71835e8b2927d3e63dfffa8ab",
+    "sss_integration/test_workflow_recovery.py": "4eaeed0dd4d140c808bf2dde322590eac0598be55e42435209f7a7016164abbb",
+    "sss_integration/workflow_recovery.py": "8ccae69773a2fbf1451652e55c66f6b2270059e8c622ce357112b4a3359dae6c"
+  },
+  "status": "PASS",
+  "training_from_incomplete_turns": false,
+  "unknown_generation_replay_default": false
+}

@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "regression_tests": {
+    "pcc-regression": 33,
+    "bw-regression": 9,
+    "sss-regression": 13
+  },
+  "processes": [
+    {
+      "name": "pcc-regression",
+      "exit_code": 0,
+      "seconds": 0.7145841200836003,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1266919d3c06b0fb4d19674ca11a97ead8bf8b24d35bd2f4ea53373e698b03b4"
+    },
+    {
+      "name": "bw-regression",
+      "exit_code": 0,
+      "seconds": 0.8649096989538521,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1a5f61f1ca88c03038f9ecef5fad3f5001b137e4133f676eb7fc910046c71a98"
+    },
+    {
+      "name": "sss-regression",
+      "exit_code": 0,
+      "seconds": 0.16377278813160956,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8647b71d85716d6b363d87c1ad05a1ba962ad50fe82c0a82867d5585a5ff2114"
+    },
+    {
+      "name": "native-parents",
+      "exit_code": 0,
+      "seconds": 1.1654931569937617,
+      "stdout_sha256": "a0a315b8935839c3a23e017394a55d785c99027e5a420457a1b8359ae5d2fad1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "cli-integration",
+      "exit_code": 0,
+      "seconds": 2.9170013528782874,
+      "stdout_sha256": "5f9ef8f7f28b2d1588702938ef44ea3484342727c348d8b8e98584d033476a39",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "source_sha256": {
+    "PCC/tools/pcc_candidate_parent.py": "9224ff405edfde77c2f6f44d1ef23dbcfcc5aa4084e4c746487a5e1e70d3c5bd",
+    "PCC/tools/pcc_lessons.py": "699ef673f9414c2b355f3511aeb2d7e6ab01b32372e9ed4435418a00ad44186f",
+    "PCC/tools/cow_cli.py": "275c560837c7462dce9ff797e8584df4e39101bda77ea1a99853f8c24973f042",
+    "PCC/tools/test_candidate_parent_native.py": "0c2d1adc6f5182b19440ded2a2ef90109b3fd771b3b57085b6ab1c741bcd6271",
+    "BW/branchwrite/lesson_cli.py": "418b9615453e7b30347f9cb0d6218446f78be87397aa6a3b9bbbdb8e45714370",
+    "SSS/sss_integration/resolve_parent.py": "200be20bf5a6ebc88dc1c4f0622229ed9e747d779baa6c56d620081594d29305",
+    "SSS/sss_integration/parent_resolution_cpu.py": "fd8a735c89bf843e95b36b524b391709e0bfc3d79996696cdefb596afc0d2d62"
+  },
+  "core_optional_import_guard": "PASS; actual core-venv guard blocked NumPy, PyTorch, BW, PCC tools and COW imports",
+  "gpu_used": false,
+  "semantic_scores_controlled": true,
+  "promoted": false
+}

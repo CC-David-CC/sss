@@ -1,5 +1,5 @@
 """Export approved practice spans to PCC's opt-in lesson schema, without training."""
-from sss.profiles import target_segments
+from sss.lesson_targets import target_segments
 from sss.learning_levels import RESPONSE_TARGET_POLICIES,response_target_segments
 from sss.records import digest
 

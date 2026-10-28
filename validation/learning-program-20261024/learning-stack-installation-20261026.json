@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Owner factory and actual metadata/archive/lesson admission; no real model scoring or native training",
+  "verification": {
+    "unit_control_methods": 64,
+    "actual_installation_methods": 1,
+    "skips": 0,
+    "core_seconds": 0.24782547200084082,
+    "installed_seconds": 241.1914766100017
+  },
+  "actual_installation": {
+    "panel_bindings": 3,
+    "admitted_exact_lessons": 2,
+    "source_api_and_execution_trees_distinct": true,
+    "role_set": [
+      "target",
+      "workflow",
+      "retention"
+    ],
+    "practice_roles": [
+      "target",
+      "review"
+    ],
+    "target_review_mix_enforced": true,
+    "all_selected_lessons_fit_native_batch": true,
+    "actual_template_tokenizer": true,
+    "actual_bw_tools_and_isolated_checker": true,
+    "teacher_proposals": "scripted owned synthetic",
+    "training_runner": "guarded against dispatch",
+    "real_panel_scoring": false,
+    "native_or_model_calls": 0
+  },
+  "refused_prior_attempt": {
+    "status": "REFUSED",
+    "reason": "Synthetic fixture baseline overlapped protected assessment",
+    "admitted_to_native_training": false,
+    "changed_protected_split": false
+  },
+  "source_files_sha256": {
+    "sss/adapters/cow_learning.py": "68c704a8fa9838b4f5ffeb39738400b6ac8f0dadaec344cb026f206f4bc8419e",
+    "sss/adapters/artifact_evaluation.py": "b4879f95bcd46955ddca81a60604e7b4862c06c7f0174762e9bb167c9d56ddb7",
+    "sss/adapters/runtime_sources.py": "82ddcefd1c5ee725cf85577b211e31f1d0928043cab4af62cd618c5272790cc6",
+    "sss/adapters/learning_panels.py": "022157a5230b09fd7ce71c0438db1e6d6f302edf6b8a0b4cd1204e96c8231a39",
+    "sss/adapters/learning_stack.py": "897111af5f570232b3a0919a0b5ce0b713f1030d64610e73a29dd0b177466ee7",
+    "sss/adapters/owner_configuration.py": "672d2d7f25ac4182ed25064f04546165ae4e10327dcec5d6442bb1bb5898ff3f",
+    "sss/adapters/verified_practice_registry.py": "eb2a02bad6e59de4948cec39119c42d0667f362b0a0f5448e57fe4e2b3739634",
+    "sss_integration/test_learning_stack_cpu.py": "c6d557ece2e669a5df885af43d173be74b09c1cb2d0d1e9e6ac7531497e992e3",
+    "sss_integration/bw_verified_practice_cpu.py": "36f7c962ce47cb1a781f6e15c5890cb34ee1be062df0c7ffe26919e683187e17",
+    "sss_tests/test_learning_stack.py": "8ebf3b959166dcdbba27b0fe2cf4662eb1b46c70f5bda5c3bc7316f18f6aeb19"
+  },
+  "original_evidence_sha256": {
+    "core01.json": "169084c5218233e6e97745ecb055e66219595235505457acdea3b72040d91180",
+    "installed01.json": "829ada7fe415c7b199ae37534ea04a72706c41212c1ae6b0bc34853c58b5f254",
+    "installed02.json": "2fb8dcd6e1d5a7c3ad2d535825c4d5d0410723b22dab7b71053cc28998feac27",
+    "installed02/result-private.json": "9f9dd3437de48dc7a50ffc647d9090b21f14683e29df4449a4be322c8a55c0cc"
+  },
+  "model_sha256": "a9c527ad30ffca8ed639286ddf07a6fb6af42fdfbf1706e387d1302f4a5f367d",
+  "weights_updated": false,
+  "promoted": false,
+  "learning_loop_complete": false,
+  "next_required": "Genuine joined native train, real target/workflow/retention assessment, decision and preservation"
+}

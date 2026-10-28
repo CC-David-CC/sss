@@ -1,0 +1,377 @@
+{
+  "schema": 1,
+  "kind": "sss.check-sensitivity-study.v1",
+  "scope": "Host-controlled check sensitivity on three independently graded program variants; no model skill or training result",
+  "study_status": "COMPLETE",
+  "current": {
+    "schema": 1,
+    "status": "COMPLETE",
+    "scope": "Host-controlled check sensitivity on three independently graded program variants; no model skill or training result",
+    "assessments": {
+      "proposed": {
+        "schema": 1,
+        "kind": "sss.check-sensitivity.v1",
+        "status": "MISSES_DECLARED_MUTANTS",
+        "case_id": "shell.quoted_filename",
+        "command_sha256": "b9000929968c35419e2c1085fed419d2552ccbbec53c4ada6ca17fd8b3b27f88",
+        "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+        "mutant_count": 2,
+        "detected_mutants": 1,
+        "missed_mutants": 1,
+        "unavailable_mutants": 0,
+        "invalid_mutants": 0,
+        "reference_check_passed": true,
+        "evidence_ids": [
+          "9ad2e4e67beaf00cfb96a5aef7d7beed51d33ce121f2f6cb848fb32fbb768bed",
+          "e30b6dc2401a97765f41aef1bde7440fc4fdb2fa0dd40e9bbdff6d572757958e",
+          "d44fd641cbd57c6520c2518a9dd1efdbbe744574728f084e2c640f28f764ca50"
+        ],
+        "scope": "Only these independently graded program variants; no broad test-quality or model-skill qualification",
+        "training_approved": false,
+        "promoted": false,
+        "assessment_id": "843eab241e9ef14c569a016a759da0d9a40f987af1a1ff7ea210888f4f254076"
+      },
+      "assertive_control": {
+        "schema": 1,
+        "kind": "sss.check-sensitivity.v1",
+        "status": "DETECTS_DECLARED_MUTANTS",
+        "case_id": "shell.quoted_filename",
+        "command_sha256": "eae857e1aeb09ba83ecf06397ba9c7fb0d4abaeef33412ad8018118dab4880d4",
+        "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+        "mutant_count": 2,
+        "detected_mutants": 2,
+        "missed_mutants": 0,
+        "unavailable_mutants": 0,
+        "invalid_mutants": 0,
+        "reference_check_passed": true,
+        "evidence_ids": [
+          "4f9d701d92b2fb294941af5875d2c16d736e91b6338d2072ab07d32173999643",
+          "2244bb8d7712b99f575eaa50c57b8feee6ab5af15acdcc0f6720f57fdfd8c7af",
+          "9dfa006f6024b5a7425f84ee5ed8f722e9b8caa31d8be42dbea3aa7d990e2211"
+        ],
+        "scope": "Only these independently graded program variants; no broad test-quality or model-skill qualification",
+        "training_approved": false,
+        "promoted": false,
+        "assessment_id": "eb83b3285686e3e5d389ec7e6df1a1fc356e793b26344df0e3ddc7330166fb86"
+      }
+    },
+    "observations": [
+      {
+        "check": "assertive_control",
+        "variant": "empty_output",
+        "observation": {
+          "schema": 1,
+          "kind": "sss.bw-check-observation.v1",
+          "case_id": "shell.quoted_filename",
+          "program_sha256": "1f7de96f403ecb846670d1e7c9f2c3062749fd107f616aeb1ff314840e39adbc",
+          "command_sha256": "eae857e1aeb09ba83ecf06397ba9c7fb0d4abaeef33412ad8018118dab4880d4",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "checker_implementation_sha256": "c9d3e5406ba5720c005712fc751129308dda037239a8d2850839d997819f1f2c",
+          "oracle_passed": false,
+          "oracle_evidence_sha256": "27afdd89619277df4538d44737ca1ce4f7daa45937ab6abe6c49c926f242c988",
+          "tool_disposition": "exited",
+          "tool_exit_code": 1,
+          "namespace_retired": true,
+          "source_unchanged": true,
+          "bw_ledger_sha256": "6eb9f0573b795ee1c8c63697247d7962d42f2061691751a1ec89096d98ac3130",
+          "bw_outcome_sha256": "a2ab6a831dc429ea312b689861d888c6ef81231483aa566e62b38208ad5a2554",
+          "bw_interpreter_id": "db35491a76fa79f07d7725ea5d43488e3b94a4704a918132295c9ad67289721a",
+          "bw_implementation_sha256": "4421b3702808bdaaa9e0d5898e38a921ba2986811cf3c846c89c61afaeff119c"
+        }
+      },
+      {
+        "check": "assertive_control",
+        "variant": "reference",
+        "observation": {
+          "schema": 1,
+          "kind": "sss.bw-check-observation.v1",
+          "case_id": "shell.quoted_filename",
+          "program_sha256": "bc939e6ecf9b782b85963b995c75c2274f8c227dcc88dc074ae5b61a4ba0fc1b",
+          "command_sha256": "eae857e1aeb09ba83ecf06397ba9c7fb0d4abaeef33412ad8018118dab4880d4",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "checker_implementation_sha256": "c9d3e5406ba5720c005712fc751129308dda037239a8d2850839d997819f1f2c",
+          "oracle_passed": true,
+          "oracle_evidence_sha256": "a733aab0e7c416f88576e849fbeb3bf9548440eb8fde3b4142cc7bf44e002715",
+          "tool_disposition": "exited",
+          "tool_exit_code": 0,
+          "namespace_retired": true,
+          "source_unchanged": true,
+          "bw_ledger_sha256": "4337b9ed96a64ecfe4617d5a9a69e3d020b91972ab37368db862f4a2e77b8944",
+          "bw_outcome_sha256": "65384a05214dff45d72e9243f104384e30e72632769a4ced6ce53ccdd57add0a",
+          "bw_interpreter_id": "947e37bd97b95af79f4115ee2d2654d7462b71321de3c240c83edb00238122ac",
+          "bw_implementation_sha256": "4421b3702808bdaaa9e0d5898e38a921ba2986811cf3c846c89c61afaeff119c"
+        }
+      },
+      {
+        "check": "assertive_control",
+        "variant": "unquoted_source",
+        "observation": {
+          "schema": 1,
+          "kind": "sss.bw-check-observation.v1",
+          "case_id": "shell.quoted_filename",
+          "program_sha256": "0a95c9f3e97d39909a1b136251c01cd9496f33daec44212a31eb9505e4e71f86",
+          "command_sha256": "eae857e1aeb09ba83ecf06397ba9c7fb0d4abaeef33412ad8018118dab4880d4",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "checker_implementation_sha256": "c9d3e5406ba5720c005712fc751129308dda037239a8d2850839d997819f1f2c",
+          "oracle_passed": false,
+          "oracle_evidence_sha256": "1f4dbe9011ceb2682d57be4482e982a7e756c6ba2b73df8ec2a000a4c173a513",
+          "tool_disposition": "exited",
+          "tool_exit_code": 1,
+          "namespace_retired": true,
+          "source_unchanged": true,
+          "bw_ledger_sha256": "34803a92c02e55dccdf7d233ae86093b981dbfc13bdea00e66ad745278d0654b",
+          "bw_outcome_sha256": "82ab1e2414fe65987ee410b16894c2fc7150a740ba05ee88b7146bae7c4ddbbb",
+          "bw_interpreter_id": "5d9ee7111767528dccf235ce54fa28b6cdc6273eb55024e07e145541d296b684",
+          "bw_implementation_sha256": "4421b3702808bdaaa9e0d5898e38a921ba2986811cf3c846c89c61afaeff119c"
+        }
+      },
+      {
+        "check": "proposed",
+        "variant": "empty_output",
+        "observation": {
+          "schema": 1,
+          "kind": "sss.bw-check-observation.v1",
+          "case_id": "shell.quoted_filename",
+          "program_sha256": "1f7de96f403ecb846670d1e7c9f2c3062749fd107f616aeb1ff314840e39adbc",
+          "command_sha256": "b9000929968c35419e2c1085fed419d2552ccbbec53c4ada6ca17fd8b3b27f88",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "checker_implementation_sha256": "c9d3e5406ba5720c005712fc751129308dda037239a8d2850839d997819f1f2c",
+          "oracle_passed": false,
+          "oracle_evidence_sha256": "1b9cecb32eff31f72b6b67da9f7f83ad1ffeada55a7ac6e558635e7ee5410ed2",
+          "tool_disposition": "exited",
+          "tool_exit_code": 1,
+          "namespace_retired": true,
+          "source_unchanged": true,
+          "bw_ledger_sha256": "9efe36a29a530f2aadbda3f98944165e909fcc8f2b77c3fdd988238f18ee4975",
+          "bw_outcome_sha256": "a55529fedd0f2f4702a1e37b8745d6692953ce5f567b9d56f414066b212bb13f",
+          "bw_interpreter_id": "833f7b59c0ecfd73dbc6dbb6189fabaa0ba83e720e3c32fde39506216ac120d3",
+          "bw_implementation_sha256": "4421b3702808bdaaa9e0d5898e38a921ba2986811cf3c846c89c61afaeff119c"
+        }
+      },
+      {
+        "check": "proposed",
+        "variant": "reference",
+        "observation": {
+          "schema": 1,
+          "kind": "sss.bw-check-observation.v1",
+          "case_id": "shell.quoted_filename",
+          "program_sha256": "bc939e6ecf9b782b85963b995c75c2274f8c227dcc88dc074ae5b61a4ba0fc1b",
+          "command_sha256": "b9000929968c35419e2c1085fed419d2552ccbbec53c4ada6ca17fd8b3b27f88",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "checker_implementation_sha256": "c9d3e5406ba5720c005712fc751129308dda037239a8d2850839d997819f1f2c",
+          "oracle_passed": true,
+          "oracle_evidence_sha256": "a5851c06f87fd301cf4231db329d27bf5f616ce89c81f71af0d68d978e7bddae",
+          "tool_disposition": "exited",
+          "tool_exit_code": 0,
+          "namespace_retired": true,
+          "source_unchanged": true,
+          "bw_ledger_sha256": "5a33db9df22fc695a6cf0c0be612d58e6646be8b27033265916fe88a3391b754",
+          "bw_outcome_sha256": "01e2e2e29f33da6aacfb10d611d45c3b3889e0d67805f972529ca6f91360db17",
+          "bw_interpreter_id": "a8edbc24549e16fabeba01263a59051492294fe08ca91baf4b774c4f6ba58cc3",
+          "bw_implementation_sha256": "4421b3702808bdaaa9e0d5898e38a921ba2986811cf3c846c89c61afaeff119c"
+        }
+      },
+      {
+        "check": "proposed",
+        "variant": "unquoted_source",
+        "observation": {
+          "schema": 1,
+          "kind": "sss.bw-check-observation.v1",
+          "case_id": "shell.quoted_filename",
+          "program_sha256": "0a95c9f3e97d39909a1b136251c01cd9496f33daec44212a31eb9505e4e71f86",
+          "command_sha256": "b9000929968c35419e2c1085fed419d2552ccbbec53c4ada6ca17fd8b3b27f88",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "checker_implementation_sha256": "c9d3e5406ba5720c005712fc751129308dda037239a8d2850839d997819f1f2c",
+          "oracle_passed": false,
+          "oracle_evidence_sha256": "608511c4914020f4eea3454508ac517d9eede8b7c8d686a281da8024a6cf519a",
+          "tool_disposition": "exited",
+          "tool_exit_code": 0,
+          "namespace_retired": true,
+          "source_unchanged": true,
+          "bw_ledger_sha256": "bd49eada6065503d60aeb82c223108d6740b7e7c9f7f36cdb3abb9a697b7fe32",
+          "bw_outcome_sha256": "3b558858565203366680e7fab2d8d561d90c81c3c9fbf792c38e8248a81e896c",
+          "bw_interpreter_id": "ea57384ca293253d8591d1230787d35d601107b6adb12ff24ff91951088c4315",
+          "bw_implementation_sha256": "4421b3702808bdaaa9e0d5898e38a921ba2986811cf3c846c89c61afaeff119c"
+        }
+      }
+    ],
+    "errors": [],
+    "elapsed_seconds": 1.5791626600548625,
+    "model_inference": false,
+    "gpu_used": false,
+    "training_approved": false,
+    "promoted": false
+  },
+  "prior_controls": [
+    {
+      "label": "Explicit /bin/sh before namespace fix",
+      "status": "COMPLETE",
+      "assessments": {
+        "proposed": {
+          "schema": 1,
+          "kind": "sss.check-sensitivity.v1",
+          "status": "MISSES_DECLARED_MUTANTS",
+          "case_id": "shell.quoted_filename",
+          "command_sha256": "b9000929968c35419e2c1085fed419d2552ccbbec53c4ada6ca17fd8b3b27f88",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "mutant_count": 2,
+          "detected_mutants": 1,
+          "missed_mutants": 1,
+          "reference_check_passed": true,
+          "evidence_ids": [
+            "e3b863aaca398926b0b4b16ca974b1aec27baaeee5eba0e90290700e9766d423",
+            "0014f09a5cf9aa1dd5f150f8847c9f1e1a1642dd6b1f18245be3ff3c7e287e96",
+            "53717c96f28bfa6fbcd59df7690abededae339a435ae994d4f756256ae1cb1e0"
+          ],
+          "scope": "Only these independently graded program variants; no broad test-quality or model-skill qualification",
+          "training_approved": false,
+          "promoted": false,
+          "assessment_id": "2fabe551293c656712f2689d86758e229cc5f34df417c0ef749c841e34e2f14c"
+        },
+        "assertive_control": {
+          "schema": 1,
+          "kind": "sss.check-sensitivity.v1",
+          "status": "REFERENCE_CHECK_FAILED",
+          "case_id": "shell.quoted_filename",
+          "command_sha256": "eae857e1aeb09ba83ecf06397ba9c7fb0d4abaeef33412ad8018118dab4880d4",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "mutant_count": 2,
+          "detected_mutants": 2,
+          "missed_mutants": 0,
+          "reference_check_passed": false,
+          "evidence_ids": [
+            "907213c1a5506be7eafec7ee8b75e665e4e71476fda08556f80bf4035011db7e",
+            "c59954bd3fb05640170814450d18fce48a8291c38454447e8f4813863a1800ff",
+            "f02b4940935d79c8f38c76236e2bec2cf895f9aada00e9e788a0003a33079bdb"
+          ],
+          "scope": "Only these independently graded program variants; no broad test-quality or model-skill qualification",
+          "training_approved": false,
+          "promoted": false,
+          "assessment_id": "a261db785e19d321579dfe2ed890318fe949de961518c93e3ce7ce1f279bcaf0"
+        }
+      },
+      "evidence_sha256": "6620618682137faab516dbcb387a30e02db57919cdc6efcdf74f25804244f307"
+    },
+    {
+      "label": "PATH shell before namespace fix",
+      "status": "COMPLETE",
+      "assessments": {
+        "proposed": {
+          "schema": 1,
+          "kind": "sss.check-sensitivity.v1",
+          "status": "MISSES_DECLARED_MUTANTS",
+          "case_id": "shell.quoted_filename",
+          "command_sha256": "b9000929968c35419e2c1085fed419d2552ccbbec53c4ada6ca17fd8b3b27f88",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "mutant_count": 2,
+          "detected_mutants": 1,
+          "missed_mutants": 1,
+          "unavailable_mutants": 0,
+          "invalid_mutants": 0,
+          "reference_check_passed": true,
+          "evidence_ids": [
+            "cd0b78c0239663facdfa217e3facff2f3f7f62574b797dbd7e4ce45ccb134bab",
+            "5989f26fb85b0347a3ca8cc2af7a254eef3bef4f8db611584746c24c950f6257",
+            "a31f505a44ad584444c3a038eb90bd89d25b3ec19284296d0376a041c5138bdd"
+          ],
+          "scope": "Only these independently graded program variants; no broad test-quality or model-skill qualification",
+          "training_approved": false,
+          "promoted": false,
+          "assessment_id": "ed6d90c95b0503f12e6a5c938981bcbffcd969bd7107e60dfd780630fdc96d65"
+        },
+        "assertive_control": {
+          "schema": 1,
+          "kind": "sss.check-sensitivity.v1",
+          "status": "DETECTS_DECLARED_MUTANTS",
+          "case_id": "shell.quoted_filename",
+          "command_sha256": "3ec67ea2c7581e160642a44b5ec8b9a41e3e0f25aa03f49650b4bf0801ef7e27",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "mutant_count": 2,
+          "detected_mutants": 2,
+          "missed_mutants": 0,
+          "unavailable_mutants": 0,
+          "invalid_mutants": 0,
+          "reference_check_passed": true,
+          "evidence_ids": [
+            "db5a4928f2447222f40039b7d887b7af048a2c62afc038203b09f9bcbb2f1c80",
+            "d3dc3a8b39a0f4b5a598dd206fc4504ac4d9c4fe20d8ad0c0458f1a0849df542",
+            "520ad94a1d1bfbedde4f756011c58fe073e9180430aaa76c58e21cd5c1492d48"
+          ],
+          "scope": "Only these independently graded program variants; no broad test-quality or model-skill qualification",
+          "training_approved": false,
+          "promoted": false,
+          "assessment_id": "cbee282c2cd89624ffbe78080223906522d1a39efd4e6da3934217e4da954172"
+        }
+      },
+      "evidence_sha256": "3f0d9fcc23a56c84434da8247047f8333a73004313b791208734c77a47adbdad"
+    },
+    {
+      "label": "Explicit /bin/sh after namespace fix",
+      "status": "COMPLETE",
+      "assessments": {
+        "proposed": {
+          "schema": 1,
+          "kind": "sss.check-sensitivity.v1",
+          "status": "MISSES_DECLARED_MUTANTS",
+          "case_id": "shell.quoted_filename",
+          "command_sha256": "b9000929968c35419e2c1085fed419d2552ccbbec53c4ada6ca17fd8b3b27f88",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "mutant_count": 2,
+          "detected_mutants": 1,
+          "missed_mutants": 1,
+          "unavailable_mutants": 0,
+          "invalid_mutants": 0,
+          "reference_check_passed": true,
+          "evidence_ids": [
+            "ff7c0093accf056f21aca3bff2422a5d25392e3e32ffefe02380c3c2c4e36f98",
+            "cff02fed3b5911fb26695789db03512738014501e96af4d1cb56b5b2b6e14c87",
+            "d10402538ad6867e8f8c388d8d40e28faa83bad33f5166410cd05f0f44c3e4f7"
+          ],
+          "scope": "Only these independently graded program variants; no broad test-quality or model-skill qualification",
+          "training_approved": false,
+          "promoted": false,
+          "assessment_id": "c073bfca52defb4113c3a93117953a6566219671057bbbe22828aee9f4d57999"
+        },
+        "assertive_control": {
+          "schema": 1,
+          "kind": "sss.check-sensitivity.v1",
+          "status": "DETECTS_DECLARED_MUTANTS",
+          "case_id": "shell.quoted_filename",
+          "command_sha256": "eae857e1aeb09ba83ecf06397ba9c7fb0d4abaeef33412ad8018118dab4880d4",
+          "checker_id": "17e29b9408f1fd860a39d22192ab4c834e10d2808f34477100285ccfdebe4bd9",
+          "mutant_count": 2,
+          "detected_mutants": 2,
+          "missed_mutants": 0,
+          "unavailable_mutants": 0,
+          "invalid_mutants": 0,
+          "reference_check_passed": true,
+          "evidence_ids": [
+            "d7c73e1c448b48526608fe931cbb2363cc88a75d4260b635297c85cc8092939b",
+            "ff5441160c02cec2c74c5bcea53780ac6416ab21410305ae55a4a8faa13e74c4",
+            "954c0144ff2fdcd141dc9523677bda85b4629f53eb06aff535950bc78d73dbe1"
+          ],
+          "scope": "Only these independently graded program variants; no broad test-quality or model-skill qualification",
+          "training_approved": false,
+          "promoted": false,
+          "assessment_id": "ce15468dc720f34f1f39e59f1800e10db3446b045bded1e17018f6637cd7914f"
+        }
+      },
+      "evidence_sha256": "6d8039bc6f172417b528691e83affea559d3e911c710c8619a6c0d4f5b9acc5e"
+    }
+  ],
+  "cpu_core_tests": {
+    "passed": 6,
+    "exit_code": 0,
+    "stderr_sha256": "3a626813691b117914126434ee24311eff0c42590e4bbbd44f9bb27d5eaad37b"
+  },
+  "implementation_sha256": {
+    "sss/studies/check_sensitivity.py": "d207b0aad20a2364e7e566e8e4f7f9d6a4ff579ccc07c75bb4a2683f04dacb67",
+    "sss/adapters/bw_check_probe.py": "e82ddab7d7b4caebce87fe5d6be5a858e9c0ba1063270d265e09cd67927bbadd",
+    "sss_integration/check_sensitivity.py": "e0a31f2418dbce8f9beba2d5f0fd92b5798d138420fe66464741f8d7a450ec71"
+  },
+  "raw_model_response_published": false,
+  "model_inference": false,
+  "weights_updated": false,
+  "training_approved": false,
+  "promoted": false
+}

@@ -58,7 +58,7 @@ def response_target_segments(segments, policy):
     if policy not in RESPONSE_TARGET_POLICIES:
         raise ValueError('Unknown response-level target policy')
     allowed = {'instruction', 'question', 'observation', 'thinking', 'action',
-               'answer', 'format', 'summary'}
+               'answer', 'format', 'summary', 'framing'}
     selected = []
     for row in segments:
         if type(row) is not dict or row.get('role') not in ('system', 'user', 'assistant', 'tool'):
@@ -67,6 +67,8 @@ def response_target_segments(segments, policy):
             raise ValueError('Invalid response-level span kind or verification')
         if row.get('kind') in ('thinking', 'action', 'answer', 'format', 'summary') and row['role'] != 'assistant':
             raise ValueError('Assistant target span has the wrong role')
+        if row.get('kind') == 'framing' and (row['role'] != 'assistant' or row['verified'] is not False):
+            raise ValueError('Framing must be unverified assistant template bytes')
         kind = row['kind']
         if policy == 'answer_only':
             target = row['role'] == 'assistant' and kind == 'answer'

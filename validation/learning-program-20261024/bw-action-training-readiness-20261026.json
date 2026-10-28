@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "PARTIALLY_QUALIFIED",
+  "scope": "Cross-project readiness for native BW action lessons; not a model learning result",
+  "sss_action_export_source": "6a093c4901e5b66563f608948fbe4051848a74eb",
+  "bw_action_source": "d804baace592775cddaa092fca8324b1dc76b553",
+  "pcc_profile_source": "49042ec9400b48c760e3281539ccdf8d5e199402",
+  "profile": "dense-llama-action-8k-v1",
+  "input_limit": 8192,
+  "selected_target_limit": 256,
+  "actual_action_input_lengths": [
+    3029,
+    3663,
+    4278,
+    4873
+  ],
+  "actual_selected_action_tokens": [
+    14,
+    108,
+    88,
+    19
+  ],
+  "tiny_cpu_cuda_8192_forward_and_backward": true,
+  "actual_cpu_http_jobs_and_automatic_reload": true,
+  "real_minicpm_long_context_allocation_qualified": false,
+  "real_minicpm_action_training_updates": 0,
+  "new_workflow_score_measured": false,
+  "production_training_membership_installed": false,
+  "frozen_68_comparison_modified": false,
+  "promoted": false
+}

@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "kind": "historical_minicpm_codec_dependency_audit",
+  "utc": "2026-10-25T22:55:06.638530+00:00",
+  "scope": "Specific new PCC Python MiniCPM tool framing/history defect, not blanket certification",
+  "rows": [
+    {
+      "path": "Codex",
+      "count": 21,
+      "backend": "native_llama_cpp standalone C++ server / Minja",
+      "endpoint": "/v1/responses",
+      "status": "UNAFFECTED_BY_SPECIFIC_PYTHON_CODEC_BUG",
+      "action": "Retain original records with their original profile, budget and exploratory limits."
+    },
+    {
+      "path": "pi",
+      "count": 21,
+      "backend": "native_llama_cpp standalone C++ server / Minja",
+      "endpoint": "/v1/chat/completions",
+      "status": "UNAFFECTED_BY_SPECIFIC_PYTHON_CODEC_BUG",
+      "action": "Retain original records with their original profile, budget and exploratory limits."
+    },
+    {
+      "path": "OpenCode",
+      "count": 21,
+      "backend": "native_llama_cpp standalone C++ server / Minja",
+      "endpoint": "/v1/chat/completions",
+      "status": "UNAFFECTED_BY_SPECIFIC_PYTHON_CODEC_BUG",
+      "action": "Retain original records with their original profile, budget and exploratory limits."
+    },
+    {
+      "path": "Hermes",
+      "count": 21,
+      "backend": "native_llama_cpp standalone C++ server / Minja",
+      "endpoint": "/v1/chat/completions",
+      "status": "UNAFFECTED_BY_SPECIFIC_PYTHON_CODEC_BUG",
+      "action": "Retain original records with their original profile, budget and exploratory limits."
+    },
+    {
+      "path": "Qwen Code",
+      "count": 21,
+      "backend": "native_llama_cpp standalone C++ server / Minja",
+      "endpoint": "/v1/chat/completions",
+      "status": "UNAFFECTED_BY_SPECIFIC_PYTHON_CODEC_BUG",
+      "action": "Retain original records with their original profile, budget and exploratory limits."
+    },
+    {
+      "path": "DeepSeek dsh",
+      "count": 21,
+      "backend": "native_llama_cpp standalone C++ server / Minja",
+      "endpoint": "/v1/chat/completions",
+      "status": "UNAFFECTED_BY_SPECIFIC_PYTHON_CODEC_BUG",
+      "action": "Retain original records with their original profile, budget and exploratory limits."
+    },
+    {
+      "path": "BW native",
+      "count": 778,
+      "evidence_roots": 13,
+      "endpoint": "/cow/*",
+      "codec": "JSON actions inside COW text; no /v1 typed tool conversion",
+      "status": "UNAFFECTED_BY_SPECIFIC_PYTHON_CODEC_BUG",
+      "action": "Qualified native records retained; earlier wrong-tokenizer C-F trials remain engineering-only."
+    },
+    {
+      "path": "Native fixed68 training",
+      "codec": "864 integer token/target arrays plus Boolean loss masks, native trainer",
+      "status": "UNAFFECTED_BY_SPECIFIC_PYTHON_CODEC_BUG",
+      "action": "Inspected A100 AdamW u38/Muon u41/rank1 u2 and60 AdamW u21 match canonical practice; retain checkpoints."
+    },
+    {
+      "path": "Native fixed68 COW evaluation",
+      "codec": "integer token prefixes -> CowEvaluationSession -> BranchingModel.run_greedy_request",
+      "status": "UNAFFECTED_BY_SPECIFIC_PYTHON_CODEC_BUG",
+      "action": "Retain original results; actual sampled evaluator/case/source bindings match receipts."
+    },
+    {
+      "path": "New PCC MiniCPM OpenAI compatibility tools",
+      "codec": "Python cow_compat XML tool parser and typed assistant tool-history rendering",
+      "status": "AFFECTED_NEW_BOUNDARY_NOT_LIVE_QUALIFIED",
+      "action": "Correct and qualify this compatibility boundary before reuse; other runtime approvals do not qualify it."
+    }
+  ],
+  "canonical_practice_sha256": "4c21029544f77cbc2a9904b50b4d21d50caacb06087caf694685b52dd683d2cf",
+  "restrictions": {
+    "model_or_gpu_calls": false,
+    "models_or_states_read_or_written": false,
+    "source_edits": false,
+    "protected_question_answer_exports": false,
+    "checkpoint_deletion_or_retraining": false
+  },
+  "private_evidence_sha256": {
+    "external-harness-provenance-private.json": "877142ba173b723a85a30b33b29e6e6756d80a6a3bc9f68f4a9775e652cb6e10",
+    "bw-native-route-provenance-private.json": "9e7d1c37ce9dbc864f44dc714f71249e6fa1fb10a45f5a442fa9d75e5906d848",
+    "llm60-training-practice-provenance-private.json": "8ddaf3847511a4b9dd3937bd2f08ef0b9385b49e18fe38add0519f0fe6ac6a1f",
+    "a100-training-practice-provenance-private.json": "b027f22017b7607e5dfdf595cf9f71e4fa4feeb506ad6b72052f9b34e5e1fb77",
+    "a100-tokenizer-binding-private.json": "14862b148a025f4e03e2b18caa5f37a409225bde873885c36ecffcd33155ef46"
+  },
+  "tokenizer": {
+    "frozen_source_sha256": "9e1eaccc699780818d18ce2f6fc329b85a5a4bef7ed4b7e28c6c44d93e380f22",
+    "qualified_record_sha256": "f9a9b418dc1b7b95f2a1db8c860d871726d168ed710ca98e21c97aa117ee29bb",
+    "token_id_comparisons": 2438,
+    "vocabulary_pieces_compared": 130560,
+    "mismatches": 0,
+    "exact_frozen_preparation_archive_source_match": true
+  },
+  "source_summary_sha256": "ff286d3c24584b801d6af8579e0eb76a561356cb3c4051b449bba98272a467e1",
+  "limitations": [
+    "This is a dependency audit for the Python MiniCPM tool codec defect, not a new qualification of all models, checkpoints, kernels or gradients.",
+    "Training inspection covers recorded representative native requests plus original frozen practice, ordering, source and qualification bindings.",
+    "External native-server profiles and budgets differ from strict COW; no identical-profile harness ranking follows.",
+    "Earlier wrong-tokenizer BW trials retain their existing engineering-only classification.",
+    "Corrected Python compatibility tools still need their own qualification; no checkpoint promotion or retraining is implied."
+  ]
+}

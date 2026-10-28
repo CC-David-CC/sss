@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "RENDERED_MEASUREMENTS",
+  "protocol_id": "667eaafe5dfc24bcc48a93e17350351c6080a5985f196761fe7503ad7f08ee9b",
+  "measured_points": 7,
+  "maximum_update_by_arm": {
+    "adamw-full": 1,
+    "muon-standard-full": 1,
+    "muon-rms-decay-full": 0,
+    "muon-fast-refine-full": 0,
+    "adamw-lora-r16": 0
+  },
+  "source_data_sha256": "aeecb10834a78e3b8093fe4bb35c516f599c026bf89ee5471bcfe7c10d2f4843",
+  "plotting_source_sha256": "fd1bb918fa486f37664c60be26d5ee6f1d23e55494638f2782b47f09ff21d65d",
+  "protocol_file_sha256": "9fcec8be6ed985f6e8762e583703022d0ea338a5e0822c7d21c46c52a965f2a0",
+  "matplotlib": "3.11.2",
+  "complete": false,
+  "weights_published": false
+}

@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "status": "PARTIAL_CURVE",
+  "scope": "Same-update/practice observation under the declared recipes; no optimizer or capacity-isolated ranking",
+  "captured_utc": "2026-10-25T15:23:31Z",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "cases": 864,
+  "update": 19,
+  "presentations": 513,
+  "practice_dataset_sha256": "4c21029544f77cbc2a9904b50b4d21d50caacb06087caf694685b52dd683d2cf",
+  "points": [
+    {
+      "arm": "adamw-full",
+      "update": 19,
+      "presentations": 513,
+      "passed": 433,
+      "finished": 864,
+      "answer_gains": 382,
+      "answer_losses": 8,
+      "model_sha256": "a7278dc450f1072e0c9c7d124df9f3699147f3555edbb7ba03b5e97429464046",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+      "evaluation_evidence_sha256": "768e775840ff2e77ed036a84bafe83f7e24a9612dd4b562140cea1a17b85442f"
+    },
+    {
+      "arm": "muon-fast-refine-full",
+      "update": 19,
+      "presentations": 513,
+      "passed": 412,
+      "finished": 862,
+      "answer_gains": 370,
+      "answer_losses": 17,
+      "model_sha256": "c3ae89a0a41625600e2696d176be1c82eff469d756d941186b9ad00c5c789dc9",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+      "evaluation_evidence_sha256": "9902cc3b7020d65902fe86655edecf17356c60bddb44e82529df7bfd1c4252b9"
+    },
+    {
+      "arm": "muon-rms-decay-full",
+      "update": 19,
+      "presentations": 513,
+      "passed": 403,
+      "finished": 859,
+      "answer_gains": 361,
+      "answer_losses": 17,
+      "model_sha256": "c782076e4bb3fc8ca1dc1197625f43e1fafd3f219f49644040056d6994662c2e",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+      "evaluation_evidence_sha256": "e3d973f854b20f8c20423b9eccfe24a69b9cb10f4ad7f51aac1d6589be65113b"
+    },
+    {
+      "arm": "muon-standard-full",
+      "update": 19,
+      "presentations": 513,
+      "passed": 400,
+      "finished": 859,
+      "answer_gains": 358,
+      "answer_losses": 17,
+      "model_sha256": "33b5cdac670e9c8d5c4c263a0a573d500539eac1cd96dd38815bd7060eda7497",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+      "evaluation_evidence_sha256": "9621508fcbaeda7f299665a4fb42407b58c0df8c3828d21931c36dddf3bbf2a8"
+    },
+    {
+      "arm": "adamw-lora-attached",
+      "update": 19,
+      "presentations": 513,
+      "passed": 426,
+      "finished": 864,
+      "answer_gains": 375,
+      "answer_losses": 8,
+      "candidate_model_contract_id": "f8d4fbb4289c58e7ba3a2e341d6b499a7ad39d2f3a1d89b66f37fa531f0111ea",
+      "candidate_adapters": [
+        {
+          "sha256": "df9c6adc756ea13ddbdd1d10eaf191c0395c2b7c950a33faf525bbc4da33ad32",
+          "scale": 1.0
+        }
+      ],
+      "runtime_id": "7960ca4a3a3a4dbadd8ff66e83b56e6e6cdff57076c4cab19b62205a1d221c0d",
+      "evaluation_evidence_sha256": "9fc6e6b212a7892dee620dd0828239c5430e975938c34ecdb71f6d8287f863ad"
+    }
+  ],
+  "settings_note": "Declared hidden-matrix rates: full AdamW 1e-6, standard Muon 5e-5, RMS/decay and fast-to-refine Muon 5e-6; Muon auxiliary AdamW rate 1e-6. Attached LoRA AdamW uses 1e-4 and rank16. Scaling, decay and projection also differ; see OPTIMIZER-GEOMETRY.md.",
+  "bridge_note": "Full and attached runtime identities remain separate, with existing original and trained execution bridges",
+  "parent_to_parent_lora_update24_delta": {
+    "previous_update": 23,
+    "answer_gains": 8,
+    "answer_losses": 15,
+    "completion_gains": 0,
+    "completion_losses": 0,
+    "assessment_id": "ce414281e97e0a727f581af20086723fc803982b785f6660e816e4d4261168b5"
+  },
+  "higher_feature_rank_established": false,
+  "merged_deployment_qualified": false,
+  "optimizer_ranking_established": false,
+  "promoted": false,
+  "weights_published": false
+}

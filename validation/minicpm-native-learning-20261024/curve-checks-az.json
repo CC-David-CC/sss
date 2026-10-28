@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "scope": "Current aggregate snapshot checks; no new training or inference",
+  "full_checkpoint_positions": 94,
+  "full_distinct_result_hashes": 91,
+  "lora_checkpoint_positions": 24,
+  "total_checkpoint_positions": 118,
+  "existing_positions_preserved": 85,
+  "existing_evidence_hashes_and_outcome_counts_unchanged": true,
+  "complete_contiguous_observations": true,
+  "gain_loss_arithmetic_verified": true,
+  "practice_presentations_verified": true,
+  "existing_lora_update7_native_cost_preserved": true,
+  "graph_original_and_trained_runtime_bridge_admission": "PASS",
+  "graph_visual_inspection": "PASS: labels, legend, four outcome panels and scope notes readable",
+  "exported_files": {
+    "shared-learning-block-az.json": "a341b6e881f2ab211dd63702024fbf8759f9ce8b2acf3aa1b3289376b4bac49e",
+    "direct-lora-learning-az.json": "d9b43e9ec600136addab00c65e71c750de6cb17a0b0d555998f27ee84b1388a0",
+    "common-update19-az.json": "eea28c3174f53967a4cdc1e387069c51c87f560d38015e917748d74ebfb734a7"
+  },
+  "model_bytes_transferred": false,
+  "promoted": false
+}

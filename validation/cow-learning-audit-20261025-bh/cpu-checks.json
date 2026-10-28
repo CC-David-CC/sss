@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "tests": 67,
+  "seconds": 0.134,
+  "modules": [
+    "sss_integration.test_cow_learning_audit",
+    "sss_integration.test_cow_learning_audit_lease",
+    "sss_tests.test_cow_learning",
+    "sss_tests.test_learning",
+    "sss_tests.test_composite_paired",
+    "sss_tests.test_assessment_growth",
+    "sss_tests.test_paired",
+    "sss_tests.test_learning_composite"
+  ],
+  "optional_pcc_source_required": true,
+  "auditor_sha256": "b72f6e202d7aceadc4e29953696d175150161279cded85022dbe4b50d60740b4",
+  "test_sources_sha256": {
+    "sss_integration/test_cow_learning_audit.py": "635528aa412c686c598897d23ba6b26aeae649c8eb01c17327cbe076fc9d5572",
+    "sss_integration/test_cow_learning_audit_lease.py": "e89669af028510a0daaa4f1b40ce7f9749c624d2da3f94cb80638fa78f8315c3"
+  },
+  "scope": "Real filesystem/lease and record readers with explicitly controlled nonmodel candidate and decision fixtures; separate actual MiniCPM audit qualification"
+}

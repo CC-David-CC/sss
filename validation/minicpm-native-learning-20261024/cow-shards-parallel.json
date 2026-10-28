@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "QUALIFIED",
+  "cases": 864,
+  "passed": 59,
+  "finished": 415,
+  "different_sampled_sequences": 0,
+  "answer_gains": 0,
+  "answer_losses": 0,
+  "worker_group_wall_seconds": 1305.2394323861226,
+  "allocated_gpu_seconds": 2210.9350675102323,
+  "runtime_id": "c57a0e454a3fc92e27ffa360d7e6235f104709db6410ad12551caf75ba02fc64",
+  "reference_runtime_id": "b076146acda40cc60bb212ebfabb6d1a798b1e752f9e8e0d55b5962b6bfec528",
+  "source": {
+    "sha256": "704809d4783865c928cbb476e62c4144cd53ce3c71e90c90c3a1b6600ca87cb8",
+    "files_sha256": {
+      "sss/studies/evaluation_shards.py": "bbb34a5c476c82a34e243d1af1f484efeb6a2ad79c312f52abff81218f148df1",
+      "sss_integration/optimizer_evaluate.py": "5ccf1cd240c7ebda9b04ed5cd3ee0afdfa17eef991454baf56593e37fc074c12",
+      "sss_integration/merge_evaluations.py": "311c826f3618d726c8e0001531b8d4aaab32a25b2b03f5b40dc522774b828fcb",
+      "sss_tests/test_evaluation_shards.py": "92a4ae3a00b2b2bbb90842a12fb48f65496d1a05abc0dc76be42c9c15aa7fdec",
+      "sss_tests/test_merge_evaluations.py": "e859f58f1d00698703253288f8a8e21294b0ed94b715e25fc66d1e5b9bdd37ef"
+    }
+  },
+  "gpu_indices": [
+    4,
+    7
+  ],
+  "weights_updated": false,
+  "timing_scope": "Two different shared A100 cards; other users active; observed group time, not isolated hardware throughput"
+}

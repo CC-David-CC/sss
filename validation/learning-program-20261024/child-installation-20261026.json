@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "cpu_checks": 33,
+  "skips": 0,
+  "checks_model_calls": 0,
+  "log_sha256": [
+    "ba401f995e78bddadb6a1551cc360979de373d001d654c1d54fb05ef5085ba43",
+    "42a5ca8eecdc76c637b97490c79f179cf1727778b7e01275efeb91e2a25abfcd"
+  ],
+  "real_split_installation_preflight": {
+    "status": "PASS",
+    "panels": 2,
+    "host": "llm-60",
+    "model_calls": 0,
+    "receipt_sha256": "9767887ebd06abdaa9a8fa0bddb9b072a23d74358285b6a250885d1adad51252",
+    "source_archive_sha256": "627fa1a4f1e5c3dcf70975bcb9dbeeaa913020bbd308ffeb643f6806a36ea22d"
+  },
+  "earlier_baseline": {
+    "completed_artifact_cases": 2,
+    "passed": 1,
+    "finished": 2,
+    "accepted_as_joined_baseline": false,
+    "issue": "Parent and child API source locations differed; original evidence retained",
+    "training_updates": 0
+  },
+  "corrected_round_complete": false,
+  "frozen_68_comparison_changed": false
+}

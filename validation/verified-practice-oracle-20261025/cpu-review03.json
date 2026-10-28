@@ -1,0 +1,200 @@
+{
+  "schema": 1,
+  "status": "cpu-engineering-qualified-not-integrated-lesson-provider",
+  "base_commit": "612bff2f443f6e4ff769841fd7aa667f71f09990",
+  "family": "affine-clamp-fold-v1",
+  "files_sha256": {
+    "docs/VERIFIED-PRACTICE-ORACLE.md": "0c76620bd244c51f25f271e8f9f2e57f303370c799dcd81bfd78665936f0c099",
+    "sss/adapters/bw_practice_oracle.py": "057c43776edb26800f515670d3a0381bceae10018dbaaabc4eb078e7f5053395",
+    "sss/practice_oracle.py": "320bd185898052e93cb08221b24e03d67b82516061c1c93f66f10a5f8bf9df36",
+    "sss_integration/test_bw_practice_oracle.py": "3d40bd9308bb63a098345fb85233dde8f3fea5b84572333333d4a219dc07f517",
+    "sss_tests/test_practice_oracle.py": "8ee09c300934dc5b0b7f69e057b5db075884e1e5c65bc6b1a6cb5f4279668dfc"
+  },
+  "tests": {
+    "documented_full_core": {
+      "tests": 217,
+      "passed": 217,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 7.555,
+      "bw_package_absent": true,
+      "command": "python -B -m unittest discover -s sss_tests -p test_*.py"
+    },
+    "targeted_optional_and_relevant_core": {
+      "tests": 42,
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 0.625,
+      "overlaps_full_core": true,
+      "command": "python -B -m unittest sss_tests.test_practice_oracle sss_integration.test_bw_practice_oracle sss_tests.test_code_check sss_tests.test_foundations sss_tests.test_check_sensitivity sss_tests.test_training_data -v"
+    }
+  },
+  "actual_owned_synthetic_cases": [
+    {
+      "name": "reference",
+      "status": "pass",
+      "execution_attempted": true,
+      "lesson_approved": false,
+      "result_file_sha256": "27d246568bd076ea956c879141c2f62de41096490971b89fcb2389c88108b9c4",
+      "evidence_sha256": "ef5a37829552f392809899888a7d50f27b6cd44861946bf44d7a0e42765df1f9",
+      "exit_code": 0,
+      "source_unchanged": true,
+      "captured_execution_source_matches": true,
+      "namespace_retired": true,
+      "stdout_sha256": "c0b0ab09b6fd18b5232c67573cb6a98a0f5509537e8f511dece24a6185f7d0e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "broken-affine",
+      "status": "fail",
+      "execution_attempted": true,
+      "lesson_approved": false,
+      "result_file_sha256": "2648af207348b1ffe69184cc652003c9027830afc8791acac511aaef817d87ba",
+      "evidence_sha256": "bee35bcb3b89ca51fcb6f778f5594c454ca1ceac637a6c07dfd3d8afe819bfe3",
+      "exit_code": 0,
+      "source_unchanged": true,
+      "captured_execution_source_matches": true,
+      "namespace_retired": true,
+      "stdout_sha256": "0227c7bebab707ae87573a209b5e6f3e9a80094a1a12b2673caef8e47c00ee5e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "weak-zero",
+      "status": "fail",
+      "execution_attempted": true,
+      "lesson_approved": false,
+      "result_file_sha256": "abcf6ea0deb7094b6781ead04fb6ee30193c90541b61081d889cc1a57de10379",
+      "evidence_sha256": "6b230ec4e5dd118f0e7a7dfeb8b762d2557619274fd33e0ec34cf0584d25161d",
+      "exit_code": 0,
+      "source_unchanged": true,
+      "captured_execution_source_matches": true,
+      "namespace_retired": true,
+      "stdout_sha256": "6136fb832884aebfe72a4f0fa78b48b7df3b65cc19e83f2760bb87e8ae9b1d81",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "input-mutator",
+      "status": "fail",
+      "execution_attempted": true,
+      "lesson_approved": false,
+      "result_file_sha256": "30f798bc2f46fe7bc578a74877cdb02f0ccba0cf60a4b5e713cad5df9b4ae055",
+      "evidence_sha256": "069588cf299acaae6530bd2e9deb11717468c393b56ba6e483ae41bcdc6deb0b",
+      "exit_code": 0,
+      "source_unchanged": true,
+      "captured_execution_source_matches": true,
+      "namespace_retired": true,
+      "stdout_sha256": "b8219a528d9c6453bd15ed1d0e099e291e4a9ed6b8ac4b03d977d09de1c0d21d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "boolean-total",
+      "status": "fail",
+      "execution_attempted": true,
+      "lesson_approved": false,
+      "result_file_sha256": "72819f0695f28e7b6823d5ea81cce4f29c8d86b5188eca7fb66dfcff3e18700a",
+      "evidence_sha256": "254c54422153d7300b5fa4a2326e6d218205c9bc848e923c4920b98c8953d38a",
+      "exit_code": 0,
+      "source_unchanged": true,
+      "captured_execution_source_matches": true,
+      "namespace_retired": true,
+      "stdout_sha256": "ea745d396df215402f2c76865aa619d53fccfa947e690a580a66b51050e83e62",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "forged-output-contract-invalid",
+      "status": "fail",
+      "execution_attempted": false,
+      "lesson_approved": false,
+      "result_file_sha256": "cbadc081b0c483e5f3cb65f32aa91bc401d7e743b79dcee7cb357163461aa221",
+      "evidence_sha256": "d2f0818aed30158e9eb34b9031e21090fda2c01a91728ecbd1fd76f97cfa5855"
+    },
+    {
+      "name": "selfedit-contract-invalid",
+      "status": "fail",
+      "execution_attempted": false,
+      "lesson_approved": false,
+      "result_file_sha256": "db78ba4bbf2ad0a0b351ecfaa12888a4cc4dacf45dceb1710aec8eff1544eb07",
+      "evidence_sha256": "6c2f310b9a1fe4b2f20d435d574b70edfc0fbfbbe2f173332d7496cc58491dc2"
+    },
+    {
+      "name": "authority-bypass-00-contract-invalid",
+      "status": "fail",
+      "execution_attempted": false,
+      "lesson_approved": false,
+      "result_file_sha256": "a7a5e990a5b80ac8069f97f21fa87b725b72b7087989459e14cfee7e00b11cf6",
+      "evidence_sha256": "ea6c650d43e9fe0e559bf437c9247c3f15d09b23f147e8d071700827775cd64f"
+    },
+    {
+      "name": "authority-bypass-01-contract-invalid",
+      "status": "fail",
+      "execution_attempted": false,
+      "lesson_approved": false,
+      "result_file_sha256": "f809ed70f431b71f3de2cf5ae4605e66c9d98d12a101e5ce528ed6d847d518c3",
+      "evidence_sha256": "0dd20cf2a6cc889fc5d7f65f5cb709a29a60844d702f930ea88e393df4ac0429"
+    },
+    {
+      "name": "authority-bypass-02-contract-invalid",
+      "status": "fail",
+      "execution_attempted": false,
+      "lesson_approved": false,
+      "result_file_sha256": "bdea69911e5501e2eead3797a449bef220e86bac69ac6e08507ffca830b4cdc5",
+      "evidence_sha256": "0d28bfed6cb7353a8b88f825d90bcff86ddf99d67e4345607b6a999eca060c3a"
+    },
+    {
+      "name": "authority-bypass-03-contract-invalid",
+      "status": "fail",
+      "execution_attempted": false,
+      "lesson_approved": false,
+      "result_file_sha256": "ad5ce83648483c0b6ec00941af6c7c0fad555b670bb24d3cd39c5af391624b21",
+      "evidence_sha256": "def5e2b4854db62a1e032815f4bc24485c4975392a60c1dc598a391980a01001"
+    },
+    {
+      "name": "authority-bypass-04-contract-invalid",
+      "status": "fail",
+      "execution_attempted": false,
+      "lesson_approved": false,
+      "result_file_sha256": "149cb29d14e88925bbb66da199cc130b724c4181605ba91ea28318d27e7675a9",
+      "evidence_sha256": "b19fc809d1f3c96c6b971d15dac654879ec64423439460b6b17bf0365b51eaa0"
+    },
+    {
+      "name": "authority-bypass-05-contract-invalid",
+      "status": "fail",
+      "execution_attempted": false,
+      "lesson_approved": false,
+      "result_file_sha256": "c70a49775560b8cb323280a93310f5a6fa40d5b008945e4f93530ea4fc503377",
+      "evidence_sha256": "93c3b3fbc48ea6b5f71f52164098f23c8caf8dcbe1ec79acabc9c4bce46d1d06"
+    }
+  ],
+  "review_corrections": [
+    "Close legacy AST callable-alias/default/shadow/callback bypasses in new adapter only",
+    "Bind actual BW projected task.py path/hash/byte count, not merely after-file equality",
+    "Keep optional BW integration outside documented stdlib-only core test discovery",
+    "Verify true BW package absence with system Python; earlier venv PYTHONPATH separation alone was insufficient"
+  ],
+  "evidence_hashes": {
+    "review03-full-core.json": "8566ce01cd69e0b2dbba907035dd9d9615cb5e437c1959931fed9fa43414cf4c",
+    "review03-full-core.stderr": "007ffb142ebf05c1a6ac6cff45946050149171ab60c93b37d6b91e891ddc4881",
+    "review03-targeted.json": "6e7c969462b5c6dc94a2db6899edcf03ff91cf60b5d5f0b9eff46ec94898434a",
+    "review03-targeted.stderr": "9f3b9d886bfc553c813743d01d243b0c1b27cb9bb24e6ba13ad9bc471fcb9dda",
+    "review03-system-core-environment.json": "971118c05fa269a429afd28c14a77f930ec26b9d9d581a90946509d9a6e186b4",
+    "actual-review02/summary-private.json": "e62cde3c430567b1112650e9845feef5e4a3e302c2dd841fd3abbfcf319fc428",
+    "review03-source-manifest-private.json": "6b9138d39b20e381beb0666253f2abe47b3ec4d2491c86ba27c5c8c14e3ee302"
+  },
+  "scope": [
+    "Real BW read-only terminal namespace, retirement and source binding",
+    "Explicit fault-injection unit cases separately test grading decisions",
+    "All sources newly owned synthetic engineering fixtures, not spontaneous model failures"
+  ],
+  "not_implemented": [
+    "Immutable BW capture authentication and pairing",
+    "Independently derived exact training-target export",
+    "Provider registration/admission to configured PCC learning route",
+    "Target/workflow/retention composite evaluation"
+  ],
+  "weights_updated": false,
+  "model_calls": 0,
+  "gpu_jobs": 0,
+  "approved_lessons": 0,
+  "legacy_checker_modified": false
+}

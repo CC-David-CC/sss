@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "actual_original_model": "MiniCPM5-2B",
+  "auditor_sha256": "b72f6e202d7aceadc4e29953696d175150161279cded85022dbe4b50d60740b4",
+  "new_model_calls": 0,
+  "new_native_jobs": 0,
+  "subprocess_launch_attempts": 0,
+  "scope": "Read-only recovery and analysis of the existing two-round real-model run; not another training trial"
+}

@@ -1,0 +1,741 @@
+{
+  "scope": "Instrumented two-case smoke; timings affected by profiling, not benchmark results",
+  "profiles": [
+    {
+      "shard": 0,
+      "total_profiled_seconds": 61.66187181399999,
+      "top_self": [
+        {
+          "file": "~",
+          "function": "<method 'update' of '_hashlib.HASH' objects>",
+          "line": 0,
+          "primitive_calls": 119191,
+          "calls": 119191,
+          "self_seconds": 24.482423928000003,
+          "cumulative_seconds": 24.482423928000003
+        },
+        {
+          "file": "~",
+          "function": "<method 'readinto' of '_io.BufferedReader' objects>",
+          "line": 0,
+          "primitive_calls": 120020,
+          "calls": 120020,
+          "self_seconds": 6.31376658,
+          "cumulative_seconds": 6.31376658
+        },
+        {
+          "file": "~",
+          "function": "<built-in method _io.open>",
+          "line": 0,
+          "primitive_calls": 2279,
+          "calls": 2279,
+          "self_seconds": 5.850353814,
+          "cumulative_seconds": 5.885175323
+        },
+        {
+          "file": "real.py",
+          "function": "restore",
+          "line": 184,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 4.456989329000001,
+          "cumulative_seconds": 4.461115905000001
+        },
+        {
+          "file": "~",
+          "function": "<method '__exit__' of '_io._IOBase' objects>",
+          "line": 0,
+          "primitive_calls": 2354,
+          "calls": 2354,
+          "self_seconds": 4.349280433000001,
+          "cumulative_seconds": 4.349280433000001
+        },
+        {
+          "file": "qwen35_backend.py",
+          "function": "_load_model",
+          "line": 155,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 3.7539891770000002,
+          "cumulative_seconds": 3.754151986
+        },
+        {
+          "file": "~",
+          "function": "<method 'read' of '_io.BufferedReader' objects>",
+          "line": 0,
+          "primitive_calls": 1047040,
+          "calls": 1047040,
+          "self_seconds": 3.349003761,
+          "cumulative_seconds": 3.349003761
+        },
+        {
+          "file": "~",
+          "function": "<built-in method posix.lstat>",
+          "line": 0,
+          "primitive_calls": 28293,
+          "calls": 28293,
+          "self_seconds": 3.259839218,
+          "cumulative_seconds": 3.259839218
+        },
+        {
+          "file": "~",
+          "function": "<built-in method posix.scandir>",
+          "line": 0,
+          "primitive_calls": 60,
+          "calls": 60,
+          "self_seconds": 0.66587717,
+          "cumulative_seconds": 0.66591668
+        },
+        {
+          "file": "~",
+          "function": "<built-in method _io.open_code>",
+          "line": 0,
+          "primitive_calls": 80,
+          "calls": 80,
+          "self_seconds": 0.374818453,
+          "cumulative_seconds": 0.374818453
+        },
+        {
+          "file": "~",
+          "function": "<method 'poll' of 'select.poll' objects>",
+          "line": 0,
+          "primitive_calls": 18,
+          "calls": 18,
+          "self_seconds": 0.363754992,
+          "cumulative_seconds": 0.363754992
+        },
+        {
+          "file": "real.py",
+          "function": "export",
+          "line": 166,
+          "primitive_calls": 2,
+          "calls": 2,
+          "self_seconds": 0.308895431,
+          "cumulative_seconds": 0.316144721
+        },
+        {
+          "file": "qwen35_backend.py",
+          "function": "consume",
+          "line": 218,
+          "primitive_calls": 3,
+          "calls": 3,
+          "self_seconds": 0.283631002,
+          "cumulative_seconds": 0.283864555
+        },
+        {
+          "file": "copy.py",
+          "function": "deepcopy",
+          "line": 118,
+          "primitive_calls": 147,
+          "calls": 264417,
+          "self_seconds": 0.202664959,
+          "cumulative_seconds": 0.422499088
+        },
+        {
+          "file": "gguf_reader.py",
+          "function": "_str",
+          "line": 111,
+          "primitive_calls": 260781,
+          "calls": 260781,
+          "self_seconds": 0.193315504,
+          "cumulative_seconds": 0.41381549700000003
+        },
+        {
+          "file": "~",
+          "function": "<method 'decode' of 'bytes' objects>",
+          "line": 0,
+          "primitive_calls": 521743,
+          "calls": 521743,
+          "self_seconds": 0.18338220400000002,
+          "cumulative_seconds": 0.18338220400000002
+        },
+        {
+          "file": "~",
+          "function": "<built-in method posix.stat>",
+          "line": 0,
+          "primitive_calls": 600,
+          "calls": 600,
+          "self_seconds": 0.167916475,
+          "cumulative_seconds": 0.16839959100000002
+        },
+        {
+          "file": "strata_tokenizer.py",
+          "function": "__init__",
+          "line": 85,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.164266253,
+          "cumulative_seconds": 0.331754369
+        },
+        {
+          "file": "~",
+          "function": "<built-in method posix.open>",
+          "line": 0,
+          "primitive_calls": 19,
+          "calls": 19,
+          "self_seconds": 0.143705033,
+          "cumulative_seconds": 0.143808671
+        },
+        {
+          "file": "~",
+          "function": "<built-in method _ctypes.dlopen>",
+          "line": 0,
+          "primitive_calls": 2,
+          "calls": 2,
+          "self_seconds": 0.141340258,
+          "cumulative_seconds": 0.141340258
+        }
+      ],
+      "top_cumulative": [
+        {
+          "file": "~",
+          "function": "<built-in method builtins.exec>",
+          "line": 0,
+          "primitive_calls": 1,
+          "calls": 157,
+          "self_seconds": 0.008568042,
+          "cumulative_seconds": 61.924313717000004
+        },
+        {
+          "file": "<string>",
+          "function": "<module>",
+          "line": 1,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 7.3340000000000004e-06,
+          "cumulative_seconds": 61.924218937000006
+        },
+        {
+          "file": "<frozen runpy>",
+          "function": "run_module",
+          "line": 201,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 1.9678e-05,
+          "cumulative_seconds": 61.924211603
+        },
+        {
+          "file": "<frozen runpy>",
+          "function": "_run_code",
+          "line": 65,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 5.249e-06,
+          "cumulative_seconds": 61.847269359
+        },
+        {
+          "file": "optimizer_evaluate.py",
+          "function": "<module>",
+          "line": 1,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.100905902,
+          "cumulative_seconds": 61.847224254000004
+        },
+        {
+          "file": "optimizer_evaluate.py",
+          "function": "run",
+          "line": 16,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.004807446,
+          "cumulative_seconds": 61.734196189
+        },
+        {
+          "file": "~",
+          "function": "<built-in method builtins.next>",
+          "line": 0,
+          "primitive_calls": 22,
+          "calls": 40,
+          "self_seconds": 0.000208068,
+          "cumulative_seconds": 26.378697543
+        },
+        {
+          "file": "hashlib.py",
+          "function": "file_digest",
+          "line": 195,
+          "primitive_calls": 2060,
+          "calls": 2060,
+          "self_seconds": 0.10834475,
+          "cumulative_seconds": 24.777580129
+        },
+        {
+          "file": "~",
+          "function": "<method 'update' of '_hashlib.HASH' objects>",
+          "line": 0,
+          "primitive_calls": 119191,
+          "calls": 119191,
+          "self_seconds": 24.482423928000003,
+          "cumulative_seconds": 24.482423928000003
+        },
+        {
+          "file": "cow_evaluation.py",
+          "function": "cow_session",
+          "line": 37,
+          "primitive_calls": 2,
+          "calls": 2,
+          "self_seconds": 0.000157323,
+          "cumulative_seconds": 21.591894331000002
+        },
+        {
+          "file": "contextlib.py",
+          "function": "__enter__",
+          "line": 132,
+          "primitive_calls": 9,
+          "calls": 17,
+          "self_seconds": 0.000154239,
+          "cumulative_seconds": 17.983586911
+        },
+        {
+          "file": "optimizer_evaluate.py",
+          "function": "sha",
+          "line": 10,
+          "primitive_calls": 55,
+          "calls": 55,
+          "self_seconds": 0.000377369,
+          "cumulative_seconds": 17.048908828000002
+        },
+        {
+          "file": "pcc_cow_evaluation.py",
+          "function": "sha",
+          "line": 11,
+          "primitive_calls": 2005,
+          "calls": 2005,
+          "self_seconds": 0.008900761,
+          "cumulative_seconds": 16.231045068
+        },
+        {
+          "file": "pcc_cow_evaluation.py",
+          "function": "__init__",
+          "line": 39,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 7.2488e-05,
+          "cumulative_seconds": 12.708224909
+        },
+        {
+          "file": "real.py",
+          "function": "load_backend",
+          "line": 257,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 1.3237e-05,
+          "cumulative_seconds": 12.230601177
+        },
+        {
+          "file": "llama_dense_backend.py",
+          "function": "__init__",
+          "line": 40,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.023147549,
+          "cumulative_seconds": 12.171090277000001
+        },
+        {
+          "file": "qwen35_backend.py",
+          "function": "__init__",
+          "line": 106,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.000160022,
+          "cumulative_seconds": 12.042531438000001
+        },
+        {
+          "file": "real.py",
+          "function": "__init__",
+          "line": 54,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.002223641,
+          "cumulative_seconds": 12.041734789000001
+        },
+        {
+          "file": "pcc_cow_evaluation.py",
+          "function": "verify_sources",
+          "line": 16,
+          "primitive_calls": 3,
+          "calls": 3,
+          "self_seconds": 0.008400018,
+          "cumulative_seconds": 11.886897579000001
+        },
+        {
+          "file": "contextlib.py",
+          "function": "__exit__",
+          "line": 141,
+          "primitive_calls": 16,
+          "calls": 17,
+          "self_seconds": 5.0484e-05,
+          "cumulative_seconds": 8.441413334
+        }
+      ]
+    },
+    {
+      "shard": 1,
+      "total_profiled_seconds": 45.60557918799997,
+      "top_self": [
+        {
+          "file": "~",
+          "function": "<method 'update' of '_hashlib.HASH' objects>",
+          "line": 0,
+          "primitive_calls": 119191,
+          "calls": 119191,
+          "self_seconds": 24.503595134,
+          "cumulative_seconds": 24.503595134
+        },
+        {
+          "file": "~",
+          "function": "<method 'readinto' of '_io.BufferedReader' objects>",
+          "line": 0,
+          "primitive_calls": 120020,
+          "calls": 120020,
+          "self_seconds": 6.128798723,
+          "cumulative_seconds": 6.128798723
+        },
+        {
+          "file": "real.py",
+          "function": "restore",
+          "line": 184,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 4.440941359,
+          "cumulative_seconds": 4.442430907
+        },
+        {
+          "file": "qwen35_backend.py",
+          "function": "_load_model",
+          "line": 155,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 3.6403590450000003,
+          "cumulative_seconds": 3.6403896430000002
+        },
+        {
+          "file": "~",
+          "function": "<method 'read' of '_io.BufferedReader' objects>",
+          "line": 0,
+          "primitive_calls": 1047039,
+          "calls": 1047039,
+          "self_seconds": 2.31284509,
+          "cumulative_seconds": 2.31284509
+        },
+        {
+          "file": "qwen35_backend.py",
+          "function": "consume",
+          "line": 218,
+          "primitive_calls": 9,
+          "calls": 9,
+          "self_seconds": 0.5112722150000001,
+          "cumulative_seconds": 0.5115641470000001
+        },
+        {
+          "file": "~",
+          "function": "<method 'poll' of 'select.poll' objects>",
+          "line": 0,
+          "primitive_calls": 18,
+          "calls": 18,
+          "self_seconds": 0.483711924,
+          "cumulative_seconds": 0.483711924
+        },
+        {
+          "file": "real.py",
+          "function": "export",
+          "line": 166,
+          "primitive_calls": 2,
+          "calls": 2,
+          "self_seconds": 0.306191133,
+          "cumulative_seconds": 0.312739776
+        },
+        {
+          "file": "copy.py",
+          "function": "deepcopy",
+          "line": 118,
+          "primitive_calls": 153,
+          "calls": 264455,
+          "self_seconds": 0.20324852300000001,
+          "cumulative_seconds": 0.422083193
+        },
+        {
+          "file": "gguf_reader.py",
+          "function": "_str",
+          "line": 111,
+          "primitive_calls": 260781,
+          "calls": 260781,
+          "self_seconds": 0.191631968,
+          "cumulative_seconds": 0.41124954700000005
+        },
+        {
+          "file": "~",
+          "function": "<method 'decode' of 'bytes' objects>",
+          "line": 0,
+          "primitive_calls": 521743,
+          "calls": 521743,
+          "self_seconds": 0.17843277700000001,
+          "cumulative_seconds": 0.17843277700000001
+        },
+        {
+          "file": "strata_tokenizer.py",
+          "function": "__init__",
+          "line": 85,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.16778133,
+          "cumulative_seconds": 0.333618992
+        },
+        {
+          "file": "~",
+          "function": "<built-in method _io.open>",
+          "line": 0,
+          "primitive_calls": 2279,
+          "calls": 2279,
+          "self_seconds": 0.157150947,
+          "cumulative_seconds": 0.19233654600000002
+        },
+        {
+          "file": "~",
+          "function": "<built-in method posix.lstat>",
+          "line": 0,
+          "primitive_calls": 28293,
+          "calls": 28293,
+          "self_seconds": 0.145730522,
+          "cumulative_seconds": 0.145730522
+        },
+        {
+          "file": "hashlib.py",
+          "function": "file_digest",
+          "line": 195,
+          "primitive_calls": 2060,
+          "calls": 2060,
+          "self_seconds": 0.11122962800000001,
+          "cumulative_seconds": 24.606049056
+        },
+        {
+          "file": "real.py",
+          "function": "close",
+          "line": 198,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.11052537300000001,
+          "cumulative_seconds": 0.11052537300000001
+        },
+        {
+          "file": "real.py",
+          "function": "is_eog",
+          "line": 131,
+          "primitive_calls": 130576,
+          "calls": 130576,
+          "self_seconds": 0.104978129,
+          "cumulative_seconds": 0.104978129
+        },
+        {
+          "file": "~",
+          "function": "<method '__exit__' of '_io._IOBase' objects>",
+          "line": 0,
+          "primitive_calls": 2352,
+          "calls": 2352,
+          "self_seconds": 0.09579193000000001,
+          "cumulative_seconds": 0.09579193000000001
+        },
+        {
+          "file": "encoder.py",
+          "function": "iterencode",
+          "line": 205,
+          "primitive_calls": 55,
+          "calls": 55,
+          "self_seconds": 0.093039725,
+          "cumulative_seconds": 0.09306447400000001
+        },
+        {
+          "file": "~",
+          "function": "<method 'get' of 'dict' objects>",
+          "line": 0,
+          "primitive_calls": 536535,
+          "calls": 536535,
+          "self_seconds": 0.079549267,
+          "cumulative_seconds": 0.079549267
+        }
+      ],
+      "top_cumulative": [
+        {
+          "file": "~",
+          "function": "<built-in method builtins.exec>",
+          "line": 0,
+          "primitive_calls": 1,
+          "calls": 157,
+          "self_seconds": 0.008178663000000001,
+          "cumulative_seconds": 45.861935206000005
+        },
+        {
+          "file": "<string>",
+          "function": "<module>",
+          "line": 1,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 5.500000000000001e-06,
+          "cumulative_seconds": 45.861871896000004
+        },
+        {
+          "file": "<frozen runpy>",
+          "function": "run_module",
+          "line": 201,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 8.957e-06,
+          "cumulative_seconds": 45.861866396
+        },
+        {
+          "file": "<frozen runpy>",
+          "function": "_run_code",
+          "line": 65,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 5.01e-06,
+          "cumulative_seconds": 45.857964416
+        },
+        {
+          "file": "optimizer_evaluate.py",
+          "function": "<module>",
+          "line": 1,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.045167325,
+          "cumulative_seconds": 45.857925132000005
+        },
+        {
+          "file": "optimizer_evaluate.py",
+          "function": "run",
+          "line": 16,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.0052363520000000005,
+          "cumulative_seconds": 45.800391449
+        },
+        {
+          "file": "~",
+          "function": "<built-in method builtins.next>",
+          "line": 0,
+          "primitive_calls": 22,
+          "calls": 40,
+          "self_seconds": 0.00019582300000000003,
+          "cumulative_seconds": 25.750590683000002
+        },
+        {
+          "file": "hashlib.py",
+          "function": "file_digest",
+          "line": 195,
+          "primitive_calls": 2060,
+          "calls": 2060,
+          "self_seconds": 0.11122962800000001,
+          "cumulative_seconds": 24.606049056
+        },
+        {
+          "file": "~",
+          "function": "<method 'update' of '_hashlib.HASH' objects>",
+          "line": 0,
+          "primitive_calls": 119191,
+          "calls": 119191,
+          "self_seconds": 24.503595134,
+          "cumulative_seconds": 24.503595134
+        },
+        {
+          "file": "cow_evaluation.py",
+          "function": "cow_session",
+          "line": 37,
+          "primitive_calls": 2,
+          "calls": 2,
+          "self_seconds": 0.000182704,
+          "cumulative_seconds": 21.222532289
+        },
+        {
+          "file": "contextlib.py",
+          "function": "__enter__",
+          "line": 132,
+          "primitive_calls": 9,
+          "calls": 17,
+          "self_seconds": 0.00012737300000000002,
+          "cumulative_seconds": 17.369802059
+        },
+        {
+          "file": "optimizer_evaluate.py",
+          "function": "sha",
+          "line": 10,
+          "primitive_calls": 55,
+          "calls": 55,
+          "self_seconds": 0.0006052700000000001,
+          "cumulative_seconds": 16.555522898
+        },
+        {
+          "file": "pcc_cow_evaluation.py",
+          "function": "__init__",
+          "line": 39,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 3.091e-05,
+          "cumulative_seconds": 12.368191091
+        },
+        {
+          "file": "real.py",
+          "function": "load_backend",
+          "line": 257,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 7.423000000000001e-06,
+          "cumulative_seconds": 12.115988384000001
+        },
+        {
+          "file": "llama_dense_backend.py",
+          "function": "__init__",
+          "line": 40,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.022324187000000002,
+          "cumulative_seconds": 12.113977676000001
+        },
+        {
+          "file": "qwen35_backend.py",
+          "function": "__init__",
+          "line": 106,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 8.6464e-05,
+          "cumulative_seconds": 11.986697721
+        },
+        {
+          "file": "real.py",
+          "function": "__init__",
+          "line": 54,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 0.002026237,
+          "cumulative_seconds": 11.986219325
+        },
+        {
+          "file": "contextlib.py",
+          "function": "__exit__",
+          "line": 141,
+          "primitive_calls": 16,
+          "calls": 17,
+          "self_seconds": 4.5487e-05,
+          "cumulative_seconds": 8.384108933
+        },
+        {
+          "file": "pcc_cow_evaluation.py",
+          "function": "close",
+          "line": 102,
+          "primitive_calls": 1,
+          "calls": 1,
+          "self_seconds": 6.0525e-05,
+          "cumulative_seconds": 8.341778525
+        },
+        {
+          "file": "real.py",
+          "function": "digest_file",
+          "line": 45,
+          "primitive_calls": 21,
+          "calls": 21,
+          "self_seconds": 0.0036825750000000004,
+          "cumulative_seconds": 8.262946376
+        }
+      ]
+    }
+  ]
+}

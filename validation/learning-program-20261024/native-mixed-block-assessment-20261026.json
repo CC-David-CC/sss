@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "status": "REJECTED_FOR_USE_PARTIAL_JOINED_COVERAGE",
+  "updates": 1,
+  "presentations": 28,
+  "candidate_sha256": "444026933262bced581a84cae77fe20c38cd90aead873233eb45db0d69cbe1a9",
+  "base_sha256": "050e75d6cca444068e77e88132e2a93f8e1d4e653472ee3c7e905382309cb5d9",
+  "retention": {
+    "cases": 864,
+    "before": 438,
+    "after": 26,
+    "finished_before": 864,
+    "finished_after": 864,
+    "gained": 5,
+    "lost": 417,
+    "per_skill": {
+      "math.place_value": {
+        "cases": 96,
+        "before": 26,
+        "after": 8,
+        "gained": 5,
+        "lost": 23
+      },
+      "math.add.no_carry": {
+        "cases": 96,
+        "before": 95,
+        "after": 1,
+        "gained": 0,
+        "lost": 94
+      },
+      "math.add.carry": {
+        "cases": 96,
+        "before": 80,
+        "after": 0,
+        "gained": 0,
+        "lost": 80
+      },
+      "math.multiply": {
+        "cases": 96,
+        "before": 59,
+        "after": 0,
+        "gained": 0,
+        "lost": 59
+      },
+      "math.divide": {
+        "cases": 96,
+        "before": 60,
+        "after": 7,
+        "gained": 0,
+        "lost": 53
+      },
+      "math.fraction": {
+        "cases": 96,
+        "before": 32,
+        "after": 3,
+        "gained": 0,
+        "lost": 29
+      },
+      "math.add.signed": {
+        "cases": 96,
+        "before": 75,
+        "after": 4,
+        "gained": 0,
+        "lost": 71
+      },
+      "state.registers": {
+        "cases": 96,
+        "before": 1,
+        "after": 0,
+        "gained": 0,
+        "lost": 1
+      },
+      "math.fraction.add": {
+        "cases": 96,
+        "before": 10,
+        "after": 3,
+        "gained": 0,
+        "lost": 7
+      }
+    }
+  },
+  "artifact": {
+    "cases": 2,
+    "before": 2,
+    "after": 2
+  },
+  "workflow_panel_complete": false,
+  "joined_round_complete": false,
+  "accepted_for_use": false,
+  "gguf_retained_privately": true,
+  "repeated_model_questions": 0,
+  "repeated_training_updates": 0,
+  "save_reload": {
+    "status": "PASS",
+    "absolute_error": 6.978267008683758e-08,
+    "bound": 0.0002,
+    "examples": 28,
+    "receipt_sha256": "ba0a36f0391a6b2fccb0be8f9477ec804cb227cc764dd1ec207e34897b1585d2",
+    "repeated_training_updates": 0
+  },
+  "baseline_result_sha256": "b7e1ef4a6c512c2478c89409e05dc02d3a539acb816d43ea139edb249fdcce42",
+  "candidate_result_sha256": "03dd45e5fa1f329023ec5c556562db0524c64863568f69f985ae3e3e77da6bfa",
+  "report_sha256": "91652ebab2f639eec18d9af00a83987d1c0ab270f9117d1dbe2f364c686ca45f",
+  "causal_interpretation": "Measured candidate regression. Independent same-example save/reload loss matches; this does not yet explain the optimization failure or prove all inference behavior equivalent.",
+  "frozen_68_comparison_changed": false,
+  "weights_published": false,
+  "export_id": "5b13ce50850c94c3e43ce529475e06de166bcc5d007b53d18f7c68377349b884"
+}

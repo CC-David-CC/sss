@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "status": "AUDITED_ORIGINAL_EVIDENCE",
+  "scope": "Completed configured COW learning rounds; not broad skill mastery or release acceptance",
+  "policy_id": "5697d9c2fc3ae1a0b65c0023b4f155036d16e1cd0a1caee5bbed9604c6b756a7",
+  "baseline": {
+    "passed": 1,
+    "finished": 3,
+    "cases": 15,
+    "evaluation_sha256": "8c6be3fdde70c94e02dc438cb7c6ed55dbcb3bdc03566eb16522f354ac090465"
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "passed": 5,
+      "finished": 9,
+      "cases": 15,
+      "candidate_sha256": "e0950c3e7209bf1e06a2dd42cb66c5f219e84ee6b2bb2895ee2a4f250b32e1e8",
+      "optimizer_state_sha256": "4517f571855e87a3515c1c043184521882642fc2ea11c035e3bb21ebad8a607e",
+      "native_updates": 1,
+      "presentations": 3,
+      "optimizer_state_policy": "fresh",
+      "baseline_answer_delta": 4,
+      "parent_answer_delta": 4,
+      "baseline_answer_losses": 0,
+      "working_decision": "KEEP_AND_ADVANCE",
+      "evaluation_sha256": "e3733e74c9c554325beffb781e67c79dfaea0b61f7900c39de300e63d6ec3c19",
+      "report_sha256": "997f94a2695191884d26b66a3da483269780ba4d474cad1e4ceead76f819ab20"
+    },
+    {
+      "round": 2,
+      "passed": 5,
+      "finished": 13,
+      "cases": 15,
+      "candidate_sha256": "ec8bdb6d5f99c1bff23f0e69a97281637d40bc03936be446410738b501d5c6e8",
+      "optimizer_state_sha256": "00ff88e7ba05e481a73a5a67413fb416480a79bf58a22f0208ad24757261f817",
+      "native_updates": 1,
+      "presentations": 3,
+      "optimizer_state_policy": "fresh",
+      "baseline_answer_delta": 4,
+      "parent_answer_delta": 0,
+      "baseline_answer_losses": 0,
+      "working_decision": "KEEP_AND_ADVANCE",
+      "evaluation_sha256": "117daba8792d9dbe89fbe0da01cc993667475e9f010ca40500fef6a409cd701a",
+      "report_sha256": "285a2d4b7e27dd7632b1413021b1b4871de7a5c299c804e9c8a9a541d5b338ba"
+    }
+  ],
+  "distinct_referenced_native_jobs": 2,
+  "untrained_stopped_tail_round": null,
+  "original_backend_case_records_revalidated": 45,
+  "protected_answers_exported": false,
+  "model_calls_started": 0,
+  "native_jobs_started": 0,
+  "source_records_modified": false,
+  "promoted": false,
+  "auditor_sha256": "b72f6e202d7aceadc4e29953696d175150161279cded85022dbe4b50d60740b4"
+}

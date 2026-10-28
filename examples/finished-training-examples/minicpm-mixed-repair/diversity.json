@@ -1,0 +1,144 @@
+{
+  "practice_id": "94b10892b5769b9309217acdedbe0b5dded09a8afdc2f7fdd3fd714819314656",
+  "occurrences": 960,
+  "unique_questions": 944,
+  "rehearsals": 16,
+  "distribution": [
+    {
+      "skill_id": "math.add.carry",
+      "gate": "composition",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.add.carry",
+      "gate": "independent",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.add.carry",
+      "gate": "transfer_recovery",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "gate": "composition",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "gate": "independent",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.add.no_carry",
+      "gate": "transfer_recovery",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.add.signed",
+      "gate": "composition",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.add.signed",
+      "gate": "independent",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.add.signed",
+      "gate": "transfer_recovery",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.divide",
+      "gate": "composition",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.divide",
+      "gate": "independent",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.divide",
+      "gate": "transfer_recovery",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "composition",
+      "occurrences": 64
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "independent",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.fraction",
+      "gate": "transfer_recovery",
+      "occurrences": 64
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "gate": "composition",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "gate": "independent",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.fraction.add",
+      "gate": "transfer_recovery",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.multiply",
+      "gate": "composition",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.multiply",
+      "gate": "independent",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.multiply",
+      "gate": "transfer_recovery",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.place_value",
+      "gate": "composition",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "math.place_value",
+      "gate": "independent",
+      "occurrences": 64
+    },
+    {
+      "skill_id": "math.place_value",
+      "gate": "transfer_recovery",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "state.registers",
+      "gate": "composition",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "state.registers",
+      "gate": "independent",
+      "occurrences": 32
+    },
+    {
+      "skill_id": "state.registers",
+      "gate": "transfer_recovery",
+      "occurrences": 32
+    }
+  ],
+  "protected_material_exported": false
+}

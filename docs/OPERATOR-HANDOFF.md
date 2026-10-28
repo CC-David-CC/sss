@@ -180,3 +180,19 @@ with the exact tested scope, why it matters, next action and evidence/limits.
 For example, the captured Codex workflow needs 16K while pi/OpenCode fit 4K;
 that is a workload-specific tokenizer finding, not a universal client minimum.
 Preserve earlier observations when adding corrections or new evidence.
+
+
+Before selecting the next training parent, read [the next-block identity contract](NEXT-SKILL-BLOCK.md).
+Use the complete version2 next_parent reference; a base GGUF hash alone cannot
+identify a LoRA hat. Resolve it from actual PCC receipts before another job.
+
+Use [check sensitivity](CHECK-SENSITIVITY.md) before treating a proposed check
+as a verified lesson control. A check must pass a correct reference and detect
+declared faults; timeouts and environment failures are unavailable evidence.
+For optimizer investigation, [saved-matrix geometry](OPTIMIZER-GEOMETRY.md)
+uses PCC’s checked offline reader with exact checkpoint/score identity joins.
+
+Before dispatching a new update, use [proposal resolution](RESOLVED-LEARNING-PARENT.md)
+and the registered parent hash guard. Fresh moments for new practice and exact
+same-stream optimizer resume are deliberate different choices. A resolved
+reference is not resource admission, lesson approval or release acceptance.

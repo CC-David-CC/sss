@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "tests": 11,
+  "skips": 0,
+  "model_calls": 0,
+  "training_updates": 0,
+  "log_sha256": "c43c3cb767c113576061402c425fcd00fa405e174fb97a4f66d38a19cdcc0d75",
+  "original_failed_seed": 2026102601,
+  "old_profile": "without-replacement-v1",
+  "new_profile": "without-replacement-v2",
+  "development_cases": 864,
+  "frozen_68_comparison_changed": false,
+  "original_refusal_preserved": true
+}

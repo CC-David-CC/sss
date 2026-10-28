@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "core_standard_library_tests": 140,
+  "optional_numpy_token_protocol_tests": 3,
+  "longest_actual_model_gradient": {
+    "status": "PASS",
+    "tokens": 379,
+    "selected_targets": 26,
+    "parameter_tensors": 381,
+    "finite_nonzero_tensors": 381,
+    "weights_updated": false
+  },
+  "training_source_archive_sha256": "42e200060fcdd3e46a9fdcfb9558244e8558a8e0281c6f153998fce4d00767cd",
+  "source_file_count": 97,
+  "promoted": false
+}

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "status": "QUALIFIED",
+  "cases": 2,
+  "maximum_tokens": 8,
+  "source": {
+    "sha256": "666b8c9fa5140d6ff91b7476436d047cf0058cf81cd3675e49c03ca5a6b5a642",
+    "files_sha256": {
+      "sss/studies/evaluation_shards.py": "bbb34a5c476c82a34e243d1af1f484efeb6a2ad79c312f52abff81218f148df1",
+      "sss_integration/optimizer_evaluate.py": "2103ef9b70b86ab9e4282774bb12dd598004be2d4383267aee4a2231568c6883",
+      "sss_integration/merge_evaluations.py": "67d835c8861775be311eace7d2591cc3d275378ee4a62d03e31af6a024a0acb8",
+      "sss_tests/test_evaluation_shards.py": "92a4ae3a00b2b2bbb90842a12fb48f65496d1a05abc0dc76be42c9c15aa7fdec",
+      "sss_tests/test_merge_evaluations.py": "b3b7795b39f462e53db407baaa4413bc6eb834cc37168ed329d1ef78106659c6"
+    }
+  },
+  "runtime_id": "1f86129e7c962fbe6c622424c760cdc5b79adebd2910fa6898d7bcef5d197dd1",
+  "sampled_prefixes_match_saved_serial_reference": true,
+  "allocated_gpu_seconds": 55.57700968161225,
+  "scope": "Two-case final source-pin/merge smoke with real MiniCPM; not a capability score or parallel speed measurement",
+  "weights_updated": false
+}

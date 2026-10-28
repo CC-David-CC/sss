@@ -1,5 +1,7 @@
 # Preparing the MiniCPM fixed-compute comparison
 
+**Historical preparation checkpoint.** The [subsequent baseline and learning study](MINICPM-NATIVE-LEARNING.md) now close the longer-gradient, evaluation-context and completed-update-budget gates described below.
+
 The native training machinery is qualified on the dedicated RTX PRO 6000 and
 now on an A100. The larger S³ practice/evaluation set passes actual MiniCPM
 rendering, tokenization and PCC lesson admission. This checkpoint does not

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "scope": "Same saved hat7 readonly reassessment across different shared loads, not an algorithm speedup",
+  "base_model_sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25",
+  "candidate_model_contract_id": "17fe9e4bd0fa89d56e5e5c37bbaae12d125215ed1164822dbbb7e396de4a1b42",
+  "candidate_adapters": [
+    {
+      "sha256": "9193505fdf2e612a245a94414fca4a2738bd87a55db3cfc983099ad9e77cb286",
+      "scale": 1.0
+    }
+  ],
+  "runtime_id": "7960ca4a3a3a4dbadd8ff66e83b56e6e6cdff57076c4cab19b62205a1d221c0d",
+  "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+  "previous_partial_cases": 246,
+  "previous_partial_wall_seconds": 3573.304916879162,
+  "complete_cases": 864,
+  "complete_wall_seconds": 739.8110977830365,
+  "passed": 320,
+  "finished": 853,
+  "overlapping_cases_compared": 246,
+  "different_sampled_sequences": 0,
+  "different_case_outcomes": 0,
+  "native_update_repeated": false,
+  "optimizer_state_continued": true,
+  "previous_partial_evidence_retained": true,
+  "amended_policy": "Three observed utilization samples; readonly eval admission <=50% peak observed utilization plus original VRAM and lease checks",
+  "old_controller_retired": true,
+  "promoted": false,
+  "timing_limits": "Unequal partial/full panel lengths, changing shared workloads and GPU placements; not a controlled kernel, algorithm, optimizer or training-efficiency comparison"
+}

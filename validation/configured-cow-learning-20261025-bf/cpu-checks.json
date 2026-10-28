@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "sss_tests": 40,
+  "pcc_lesson_tests": 17,
+  "scope": "Recovery/tamper controls, paired decisions, assessment coverage, evaluator sharding, practice preparation and existing PCC lesson controls",
+  "python_compile": true,
+  "git_diff_check": true,
+  "gpu_quality_claim": false
+}

@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "status": "COMPLETE_COMMON_UPDATE_SLICE",
+  "captured_utc": "2026-10-25T14:53:46Z",
+  "scope": "Two declared AdamW full/LoRA recipes at equal updates and ordered practice; separate qualified execution series, not isolated capacity or optimizer causation",
+  "results": [
+    {
+      "arm": "adamw-full",
+      "update": 21,
+      "presentations": 567,
+      "cases": 864,
+      "passed": 424,
+      "finished": 864,
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "cdf8b38787710f22b95ea3c107bdfcf68ec8f92e0f74cb2301b3eb3e6ddc4bbd",
+      "candidate_sha256": "16d9b637d1b45a87bc098159b6de80347197a0193ba286c1fc4f0564fb813822",
+      "base_model_sha256": "16d9b637d1b45a87bc098159b6de80347197a0193ba286c1fc4f0564fb813822",
+      "candidate_model_contract_id": null,
+      "candidate_adapters": null,
+      "optimizer_config": {
+        "aux_learning_rate": 0.0003000000142492354,
+        "aux_weight_decay": 0.0,
+        "beta1": 0.8999999761581421,
+        "beta2": 0.949999988079071,
+        "epsilon": 9.99999993922529e-09,
+        "learning_rate": 9.999999974752427e-07,
+        "momentum": 0.949999988079071,
+        "nesterov": true,
+        "normalization_epsilon": 1.0000000116860974e-07,
+        "ns_steps": 5,
+        "optimizer": "adamw",
+        "precision": "native-f32-v1",
+        "projection": "jordan5",
+        "refine_start_step": 1,
+        "refine_steps": 5,
+        "scaling": "original",
+        "schema": 1,
+        "weight_decay": 0.0
+      },
+      "practice_dataset_sha256": "4c21029544f77cbc2a9904b50b4d21d50caacb06087caf694685b52dd683d2cf",
+      "result_sha256": "86d913114539d8524c6239e71a0a09e388ad2b38f996e90b945e2c08ed5706b3",
+      "mechanics_sha256": "6be51f5bb6b095e17280a07b2a522267b7f64257c444c2d22aa19c8bb48b01eb"
+    },
+    {
+      "arm": "adamw-lora-r16",
+      "update": 21,
+      "presentations": 567,
+      "cases": 864,
+      "passed": 456,
+      "finished": 864,
+      "evaluation_id": "a65ccad42c14b44dbf8fb37d3a84374df2c58d2e39fc5ff18469933d054c35d4",
+      "runtime_id": "7960ca4a3a3a4dbadd8ff66e83b56e6e6cdff57076c4cab19b62205a1d221c0d",
+      "candidate_sha256": "4512c0de61e7925c140b5597e809f845512c5b070083793d6ba72a97152823fa",
+      "base_model_sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25",
+      "candidate_model_contract_id": "4302cf192650bef3d642e460cef096a0799aa0cd4e950f200e9e2070bf05d2b0",
+      "candidate_adapters": [
+        {
+          "sha256": "4512c0de61e7925c140b5597e809f845512c5b070083793d6ba72a97152823fa",
+          "scale": 1.0
+        }
+      ],
+      "optimizer_config": {
+        "aux_learning_rate": 0.0003000000142492354,
+        "aux_weight_decay": 0.0,
+        "beta1": 0.8999999761581421,
+        "beta2": 0.949999988079071,
+        "epsilon": 9.99999993922529e-09,
+        "learning_rate": 9.999999747378752e-05,
+        "momentum": 0.949999988079071,
+        "nesterov": true,
+        "normalization_epsilon": 1.0000000116860974e-07,
+        "ns_steps": 5,
+        "optimizer": "adamw",
+        "precision": "native-f32-v1",
+        "projection": "jordan5",
+        "refine_start_step": 1,
+        "refine_steps": 5,
+        "scaling": "original",
+        "schema": 1,
+        "weight_decay": 0.0
+      },
+      "practice_dataset_sha256": "4c21029544f77cbc2a9904b50b4d21d50caacb06087caf694685b52dd683d2cf",
+      "result_sha256": "316efdddc2bb062212f30e85dc20bb8a0c4432f5d5ea30537f2b72432736afe4",
+      "mechanics_sha256": "e6a33ac38fae0b731e9bbce8486a128111d3921dd4e8f0d1def9bdae00228894"
+    }
+  ],
+  "optimizer_ranking_established": false,
+  "promoted": false,
+  "weights_published": false
+}

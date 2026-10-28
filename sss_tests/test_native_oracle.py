@@ -34,4 +34,18 @@ class NativeOracle(unittest.TestCase):
                 with self.module.oracle_process('/fixture/oracle','/fixture/model','GPU-fixture',self.root/'oracle.log'):pass
             launch.assert_not_called()
 
+    def test_explicit_shared_admission_and_larger_context_do_not_change_defaults(self):
+        proc=Mock();proc.poll.return_value=0
+        answers=['2, GPU-fixture, 14000, 90\n','GPU-fixture, 14000, 90\n']
+        with patch.object(self.module.Path,'home',return_value=self.root),patch.object(self.module.subprocess,'check_output',side_effect=answers),patch.object(self.module.subprocess,'Popen',return_value=proc) as launch:
+            with self.module.oracle_process('/fixture/oracle','/fixture/model','GPU-fixture',self.root/'oracle.log',context_tokens=512,batch_tokens=512,minimum_free_mib=8192,maximum_initial_utilization=100,all_logits=True):pass
+            self.assertEqual(launch.call_args.args[0][2:4],['512','512'])
+            self.assertEqual(launch.call_args.kwargs['env']['PCC_ORACLE_ALL_LOGITS'],'1')
+    def test_invalid_resource_policy_is_refused_before_inventory_or_launch(self):
+        with patch.object(self.module.subprocess,'check_output') as inventory,patch.object(self.module.subprocess,'Popen') as launch:
+            for policy in [dict(context_tokens=64),dict(batch_tokens=512),dict(maximum_initial_utilization=101),dict(minimum_free_mib=0)]:
+                with self.assertRaises(ValueError):
+                    with self.module.oracle_process('/fixture/oracle','/fixture/model','GPU-fixture',self.root/'oracle.log',**policy):pass
+            inventory.assert_not_called();launch.assert_not_called()
+
 if __name__=='__main__':unittest.main()
