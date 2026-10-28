@@ -148,6 +148,28 @@ spontaneous failure, lesson quality or learning. The [sanitized test record](../
 and [oracle receipt](../validation/learning-program-20261024/bw-capture-oracle-receipt.json)
 contain only hashes and verdict metadata; the private BW archives are not included.
 
+### Public shell task command adapter
+
+For visible `shell.failure_status` and `shell.quoted_filename`
+tooling-qualification tasks, S³ can materialize the starting script and
+relative test inputs that BW's isolated workspace needs:
+
+```python
+from sss_integration.bw_task_adapter import prepare_public_bw_task
+
+task = prepare_public_bw_task('shell.failure_status', '/private/new-empty-project')
+# Pass task['task'], task['read_paths'], task['edit_paths'], and
+# [task['test_command']] to BW's existing coding CLI.
+```
+
+These are public development fixtures, not hidden benchmarks. Each command is
+visible to the model and runs entirely inside the BW workspace; commands contain
+no host-specific paths. A command receipt proves BW ran that check, not that the
+code is correct. Validate the captured source with the matching independent S³
+host checker before reporting a pass, creating a lesson, or training. Do not use
+these visible fixtures as held-out scores. Contract tests compare each exact
+command against both the broken and reference script; run them on a Linux host.
+
 ## Audit native completion recovery separately
 
 PCC owns recovery of the original native job, and BW provides the person/agent

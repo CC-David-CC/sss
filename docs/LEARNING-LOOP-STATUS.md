@@ -15,7 +15,7 @@ driver or recovery path is a tooling result, not a learned model capability.
 | Lesson verification and mixed review | Existing SSS/BW/PCC installation qualified, including prepared 128-lesson admission | Bind next curriculum to chosen current parent; old prepared policy is not a Remix 2 continuation |
 | Native training and checkpointing | Completed fixed 68-update comparisons; exports and archived states retained | Next mixed curriculum not trained yet |
 | Answering, formatting and reasoning separation | Matched scalar answer/format/composed panel and verified practice lesson builder implemented; S³ and PCC CPU tests prove separate span masks; native CPU receipt confirms five scalar masks | Extend task-native adapters beyond scalars; run model panel; measure learning and retention |
-| BW failure → S³ practice → PCC admission | Controlled fixture path passes; one real MiniCPM BW attempt reached tools and produced an independently checker-passing isolated edit | Fix the test adapter for BW's isolated world, settle the original operation, then qualify a distinct end-to-end task before deriving a lesson |
+| BW failure → S³ practice → PCC admission | Controlled fixture path passes; two public shell adapters pass BW launch admission and broken/reference controls | Resolve both pending model operations, then qualify an end-to-end completion/recovery before deriving a lesson |
 | Operator next-action guidance | Pure state-to-action helper and guard tests | Connect trusted component receipts; not yet an end-to-end automatic driver |
 | Learning/forgetting measurement | Per-skill results, gains/losses, quant and external checks exist | Consolidated current reports and unseen qualification before mastery claims |
 | Checkpoint preservation and cleanup | Best/final preservation and verified fleet archival exercised | Continue explicit per-cycle retention receipts and space checks |
@@ -111,6 +111,15 @@ student failure.
   verified BW completion or S³ lesson was recorded. See the sanitized
   [MiniCPM integration result](results/bw-minicpm-integration-20261028.json).
 
+The follow-up adapter `sss_integration.bw_task_adapter` materializes the public
+`shell.failure_status` and `shell.quoted_filename` fixtures with workspace-relative
+inputs. Five tests passed on llm-60, including admission through BW's existing
+coding launcher and both commands' broken/reference controls. This is tooling
+evidence only: checks are visible, the independent S³ host checker was not
+invoked, and the model tasks did not complete. Both original COW operations remain
+unresolved and were not replayed. See the [adapter qualification receipt](results/bw-task-adapter-qualification-20261028.json)
+and [separate quoted-filename model attempt](results/bw-quoted-filename-attempt-20261028.json).
+
 ## Ownership and exclusion
 
 S³ owns coverage, test definitions, checking and curriculum/measurement policy.
@@ -123,11 +132,10 @@ protected test responses, or checker internals into student examples. Any future
 lesson derived from a tooling incident must be deliberately authored, independently
 verified and admitted through the ordinary practice pathway.
 
-Next operator step: correct the BW test adapter so the exact independent check is
-available inside the authorized isolated world, then settle the original COW
-operation through its recovery path. Do not derive a lesson or repeat this task
-until that operation is resolved and a stable verified completion boundary exists.
-Afterward, use a distinct model-backed task, admit only a separately checked lesson,
-and measure unseen transfer plus mixed-skill retention.
+Next operator step: investigate and settle both COW operations through their
+original recovery paths. Neither may be replayed while unresolved. Do not derive a
+lesson until there is a stable verified completion boundary. Then independently
+check a completed capture, admit only a separately checked lesson, and measure
+unseen transfer plus mixed-skill retention.
 Keep feature branches separate; merge to `main` only after the pathway and recovery
 behavior are stable.

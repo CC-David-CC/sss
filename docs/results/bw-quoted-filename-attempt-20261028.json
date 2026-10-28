@@ -1,0 +1,35 @@
+{
+  "schema": "sss-bw-model-task-attempt-v1",
+  "date": "2026-10-28",
+  "case_id": "shell.quoted_filename",
+  "status": "incomplete_unresolved_model_operation",
+  "model": {
+    "name": "MiniCPM5-2B official F16",
+    "weights_sha256": "0ffba3682a853295566b98bc38c0ab755d6b2d91b994bc031ed727a08cfcdf25"
+  },
+  "adapter": {
+    "sss_module": "sss_integration.bw_task_adapter",
+    "case_command_is_workspace_relative": true,
+    "bw_coding_cli_sha256": "4c7f1eb00a01ba75a55f7547e6066aad171eb4017c70c323d1ffa5b00feb4612"
+  },
+  "operation_identity_sha256": "cee0413f1fb5922f9a90864c112786bc5822d5aa4fbaf92f5779ea7046971af2",
+  "bw_state": {
+    "status": "Waiting",
+    "recorded_verified": null,
+    "pending_model_operation": true,
+    "pending_tool_operations": 0
+  },
+  "recovery": {
+    "attempted_with_original_identity": true,
+    "durable_completion_receipt_found": false,
+    "operation_replayed": false,
+    "interpretation": "The original operation remains unresolved; absence of a receipt does not prove abort."
+  },
+  "independent_sss_check": "not_run_no_completed_capture",
+  "verified_lesson_created": false,
+  "training": false,
+  "model_weights_changed": false,
+  "candidate_promoted": false,
+  "model_quality_conclusion": "none_from_incomplete_attempt",
+  "next_step": "Investigate the provider-side incomplete-generation path, then reconcile this exact operation before any further model request on it."
+}

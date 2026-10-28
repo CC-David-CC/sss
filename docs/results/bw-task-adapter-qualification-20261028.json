@@ -1,0 +1,51 @@
+{
+  "schema": "sss-bw-public-task-adapter-qualification-v1",
+  "date": "2026-10-28",
+  "status": "PASS",
+  "scope": "S3 fixture materialization and BW coding-launch admission only; no model inference or BW task execution",
+  "case_ids": [
+    "shell.failure_status",
+    "shell.quoted_filename"
+  ],
+  "qualification_only": true,
+  "visible_to_model": true,
+  "test_command": "sh check.sh tests/ready.txt && if sh check.sh tests/not-ready.txt; then exit 1; else status=$?; test \"$status\" -ne 0; fi",
+  "fixture_sha256": {
+    "check.sh": "8baa0f87bc9a3efc315d08e3584e765bed808a77bd8055efa2488d961c9a1dfd",
+    "tests/not-ready.txt": "88cfdad93f125a602afaee91caede5692f2d4e8b4dcaf84d0d11b2443c1f3905",
+    "tests/ready.txt": "3dfa3fb239f56c778a1e9b33eb31328349edd155a95806dac4378904e88527e5"
+  },
+  "source_identity": {
+    "sss_base_commit": "2640352d81e644728904f9c07ab9b940742bce54",
+    "sss_adapter_sha256": "285e00d2d5caf298cc804ce7a83c993b47c05ef5980fe1eb99dbdc4f03824b7e",
+    "sss_test_sha256": "394a14be6de78418208bc6b631dbfbc2a9a1a5f925af2361b7510476096f7957",
+    "bw_coding_cli_sha256": "4c7f1eb00a01ba75a55f7547e6066aad171eb4017c70c323d1ffa5b00feb4612"
+  },
+  "execution": {
+    "host": "llm-60",
+    "python": "3.12",
+    "adapter_tests": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    "bw_launch_builder_accepted_exact_command": true,
+    "command_controls": {
+      "shell.failure_status": {
+        "broken_exit": 1,
+        "reference_exit": 0
+      },
+      "shell.quoted_filename": {
+        "broken_exit": 1,
+        "reference_exit": 0
+      }
+    },
+    "declared_command_uses_only_workspace_relative_paths": true
+  },
+  "independent_sss_checker_run": false,
+  "model_inference": false,
+  "training": false,
+  "model_quality_claim": false,
+  "original_bw_operation_resolved": false,
+  "interpretation": "The adapter removes the prior host-path mismatch and its exact command passes the broken/reference shell control plus BW launch admission. This does not complete the unresolved prior request, prove BW model-task completion or recovery, or create a verified lesson."
+}
